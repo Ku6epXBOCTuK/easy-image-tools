@@ -15,6 +15,8 @@
 		textSource?: string;
 		running?: boolean;
 		fileCount?: number;
+		warnings?: string[];
+		errors?: { label: string; detail?: string }[];
 		ontextinput?: (text: string) => void;
 		onrendertext?: () => void;
 		onupload?: (file: File) => void;
@@ -27,6 +29,8 @@
 		textSource = "",
 		running = false,
 		fileCount = 0,
+		warnings = [],
+		errors = [],
 		ontextinput,
 		onrendertext,
 		onupload,
@@ -83,7 +87,13 @@
 	}
 </script>
 
-<PreviewTile label={t("sourceCard.source")} viewMode={mode} dims={sourceDims}>
+<PreviewTile
+	label={t("sourceCard.source")}
+	viewMode={mode}
+	dims={sourceDims}
+	{warnings}
+	{errors}
+>
 	{#if mode === "text"}
 		<div class="text-source-wrap">
 			<SchemaTextSource

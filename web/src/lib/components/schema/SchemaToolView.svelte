@@ -32,6 +32,7 @@
 	import { createOutputControls } from "./output-controls.svelte";
 	import { hasPreviewResult } from "./schema-preview-model";
 	import { createSchemaToolRunner } from "./schema-tool-runner.svelte";
+	import type { DisplayError } from "./schema-tool-runner.svelte";
 	import {
 		createSchemaToolState,
 		toolSchemaOf,
@@ -63,7 +64,7 @@
 		setSteps: (v) => (stepState.steps = v),
 		touchedFor: (key) => stepState.touchedFor(key),
 		reportError: (e) => runner.reportError(e),
-		clearError: () => (runner.displayError = null),
+		clearError: () => runner.clearSourceError(),
 	});
 
 	const stepState = createSchemaToolState({
@@ -122,12 +123,36 @@
 	const stepResults = $derived(runner.stepResults);
 	const stepFileSets = $derived(runner.stepFileSets);
 	const runWarnings = $derived(runner.runWarnings);
-	const displayError = $derived(runner.displayError);
-	const warningTexts = $derived(
-		[...upload.sourceWarnings, ...runWarnings, ...runner.downloadWarnings].map(
-			chainWarningText,
-		),
+	// Feedback zones: source tile / step tiles / download button area.
+	const sourceWarningTexts = $derived(
+		upload.sourceWarnings.map(chainWarningText),
 	);
+	const warningsByStep = $derived.by(() => {
+		const byStep: string[][] = steps.map(() => []);
+		for (const w of runWarnings) {
+			if ("step" in w && w.step >= 1 && w.step <= byStep.length) {
+				byStep[w.step - 1].push(chainWarningText(w));
+			}
+		}
+		return byStep;
+	});
+	const downloadWarningTexts = $derived(
+		runner.downloadWarnings.map(chainWarningText),
+	);
+	const stepError = $derived(runner.stepError);
+	const sourceError = $derived(runner.sourceError);
+	const actionError = $derived(runner.actionError);
+
+	function displayText(e: DisplayError | null): string {
+		if (!e) return "";
+		return e.kind === "i18n" ? t(e.key, e.vars) : e.text;
+	}
+
+	function errorBadge(e: DisplayError | null) {
+		return e
+			? [{ label: t("actions.actionFailed"), detail: displayText(e) }]
+			: [];
+	}
 
 	const masks = createStepMasks({
 		steps: () => steps,
@@ -175,14 +200,6 @@
 			? lastTool.resultNote(lastParams ?? {}, result)
 			: null,
 	);
-
-	const errorText = $derived.by(() => {
-		const current = displayError;
-		if (!current) return "";
-		return current.kind === "i18n"
-			? t(current.key, current.vars)
-			: current.text;
-	});
 
 	const debouncedRun = debounce(() => run(), 200);
 
@@ -288,6 +305,8 @@
 					textSource={upload.textSource}
 					running={busy}
 					fileCount={upload.sourceFiles.length}
+					warnings={sourceWarningTexts}
+					errors={errorBadge(sourceError)}
 					ontextinput={(v) => (upload.textSource = v)}
 					onrendertext={run}
 					onupload={upload.handleFile}
@@ -320,7 +339,10 @@
 					resultKind={displayResultKind}
 					result={out}
 					{resultNote}
-					warnings={warningTexts}
+					warnings={warningsByStep[i] ?? []}
+					errors={stepError && stepError.step === i
+						? [{ label: stepError.label, detail: stepError.detail }]
+						: []}
 					{fileResult}
 					{textResult}
 					textVars={verdictVars}
@@ -341,6 +363,10 @@
 					viewMode="image"
 					dims={out ? `${out.width} × ${out.height}` : undefined}
 					parts={outSet.length > 1 ? outSet.length : undefined}
+					warnings={warningsByStep[i] ?? []}
+					errors={stepError && stepError.step === i
+						? [{ label: stepError.label, detail: stepError.detail }]
+						: []}
 				>
 					{#snippet actions()}
 						{@render maskChip(i)}
@@ -381,6 +407,13 @@
 					quality={output.quality}
 					limitKb={output.limitKb}
 					alphaLoss={output.alphaLoss}
+					warnings={downloadWarningTexts}
+					error={actionError
+						? {
+								label: t("actions.actionFailed"),
+								detail: displayText(actionError),
+							}
+						: null}
 					onupload={upload.handleFile}
 					ondownload={download}
 					onformat={(v) => (output.format = v)}
@@ -441,9 +474,6 @@
 						</div>
 					</section>
 				</div>
-			{/if}
-			{#if errorText}
-				<p class="error" role="alert">{errorText}</p>
 			{/if}
 			<StepReorderOverlay {steps} dnd={stepDnd} />
 		</DragDropProvider>
@@ -610,11 +640,6 @@
 		border-top: none;
 		border-radius: 0 0 var(--radius-m) var(--radius-m);
 		background: var(--color-panel);
-	}
-	.error {
-		margin: var(--space-l) 0 0;
-		color: var(--color-danger);
-		font: var(--font-size-s) var(--font-mono);
 	}
 	.empty {
 		font: var(--font-size-s) var(--font-mono);

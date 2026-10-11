@@ -18,6 +18,9 @@
 		// Runtime warnings (chain/download events): shown as badges next to the
 		// derived result note, but from a different source.
 		warnings?: string[];
+		// Runtime errors: danger badges; detail goes to the native tooltip until
+		// a popover with full text exists.
+		errors?: { label: string; detail?: string }[];
 		actions?: Snippet;
 	}
 	let {
@@ -31,6 +34,7 @@
 		note = undefined,
 		noteTone = "warning",
 		warnings = [],
+		errors = [],
 		actions = undefined,
 	}: Props = $props();
 </script>
@@ -56,6 +60,14 @@
 			{#if note}
 				<Badge tone={noteTone} label={note} />
 			{/if}
+			{#each errors as error (error.label + (error.detail ?? ""))}
+				<Badge
+					tone="danger"
+					label={error.label}
+					title={error.detail}
+					role="alert"
+				/>
+			{/each}
 			{#each warnings as warning (warning)}
 				<Badge tone="warning" label={warning} role="status" />
 			{/each}

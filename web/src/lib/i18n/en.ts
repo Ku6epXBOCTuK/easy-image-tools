@@ -69,6 +69,7 @@ export const en: Dict = {
 		warnSourceSkip: "{skipped} of {total} files could not be read",
 		warnSizeLimitMiss:
 			"Could not fit into {limit} KB — downloaded file is {actual} KB",
+		stepFailed: "Step {n} failed",
 	},
 	savedChains: {
 		pageTitle: "Saved pipelines — easy-png-tools",
@@ -141,6 +142,7 @@ export const en: Dict = {
 		sizeLimitKb: "Max size, KB",
 		sizeLimitBmp:
 			"Size limit does not apply to BMP — it is always uncompressed",
+		actionFailed: "Failed",
 	},
 	textSource: {
 		placeholder: "Paste base64 / hex / bytes…",

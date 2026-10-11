@@ -71,6 +71,7 @@ export const ru: Dict = {
 		warnSourceSkip: "{skipped} из {total} файлов не удалось прочитать",
 		warnSizeLimitMiss:
 			"Не удалось ужаться до {limit} КБ — скачан файл на {actual} КБ",
+		stepFailed: "Шаг {n}: ошибка",
 	},
 	savedChains: {
 		pageTitle: "Сохранённые пайплайны — easy-png-tools",
@@ -142,6 +143,7 @@ export const ru: Dict = {
 		alphaLoss: "В результате есть прозрачность — {format} её уберёт",
 		sizeLimitKb: "Лимит, КБ",
 		sizeLimitBmp: "Лимит размера не действует на BMP — он всегда несжатый",
+		actionFailed: "Ошибка",
 	},
 	textSource: {
 		placeholder: "Вставьте base64 / hex / байты…",

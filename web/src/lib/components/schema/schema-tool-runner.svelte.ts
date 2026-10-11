@@ -58,7 +58,12 @@ interface RunnerState {
 	runWarnings: ChainWarning[];
 	// Size-limit feedback from the last download (limit unreachable etc.).
 	downloadWarnings: ChainWarning[];
-	displayError: DisplayError | null;
+	// Chain step failure: badge lands on that step's tile (0-based index).
+	stepError: { step: number; label: string; detail: string } | null;
+	// Source decode/upload failures (via reportError): badge on the source tile.
+	sourceError: DisplayError | null;
+	// Download/copy and non-chain run failures: badge near the download button.
+	actionError: DisplayError | null;
 }
 
 function toDisplayError(e: unknown): DisplayError {
@@ -101,7 +106,8 @@ async function run(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 	const steps = ctx.steps();
 	if (!schema || steps.length === 0) return;
 	const gen = ++s.runGen;
-	s.displayError = null;
+	s.stepError = null;
+	s.actionError = null;
 	s.running = true;
 	try {
 		const source = ctx.source();
@@ -125,16 +131,17 @@ async function run(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 		if (e instanceof ChainStepError) {
 			const base = toDisplayError(e.cause);
 			const msg = base.kind === "i18n" ? t(base.key, base.vars) : base.text;
-			s.displayError = {
-				kind: "plain",
-				text: t("toolPage.stepError", {
+			s.stepError = {
+				step: e.stepIndex,
+				label: t("chain.stepFailed", { n: e.stepIndex + 1 }),
+				detail: t("toolPage.stepError", {
 					n: e.stepIndex + 1,
 					title: chainStepTitle(e.toolId),
 					msg,
 				}),
 			};
 		} else {
-			s.displayError = toDisplayError(e);
+			s.actionError = toDisplayError(e);
 		}
 	} finally {
 		if (gen === s.runGen) s.running = false;
@@ -144,7 +151,7 @@ async function run(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 async function download(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 	if (!ctx.schema()) return;
 	s.downloading = true;
-	s.displayError = null;
+	s.actionError = null;
 	try {
 		if (s.fileResult) {
 			await downloadZip(s.fileResult.files, `${ctx.pageSlug()}.zip`);
@@ -179,7 +186,7 @@ async function download(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 			downloadBlob(blob, `${ctx.pageSlug()}.${out.ext}`);
 		}
 	} catch (e) {
-		s.displayError = toDisplayError(e);
+		s.actionError = toDisplayError(e);
 	} finally {
 		s.downloading = false;
 	}
@@ -195,7 +202,7 @@ async function copyText(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 	try {
 		await navigator.clipboard.writeText(copyValue);
 	} catch (e) {
-		s.displayError = toDisplayError(e);
+		s.actionError = toDisplayError(e);
 	}
 }
 
@@ -205,7 +212,7 @@ async function downloadText(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 		const blob = new Blob([s.textResult], { type: "text/plain" });
 		downloadBlob(blob, `${ctx.pageSlug()}.txt`);
 	} catch (e) {
-		s.displayError = toDisplayError(e);
+		s.actionError = toDisplayError(e);
 	}
 }
 
@@ -215,7 +222,8 @@ function clearResults(s: RunnerState) {
 	s.textResult = null;
 	s.verdictVars = undefined;
 	s.downloadWarnings = [];
-	s.displayError = null;
+	s.stepError = null;
+	s.actionError = null;
 }
 
 // Execution state and actions of SchemaToolView: run/download/clipboard and
@@ -234,7 +242,9 @@ export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
 		stepFileSets: [],
 		runWarnings: [],
 		downloadWarnings: [],
-		displayError: null,
+		stepError: null,
+		sourceError: null,
+		actionError: null,
 	});
 	return {
 		get running() {
@@ -270,11 +280,17 @@ export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
 		get downloadWarnings() {
 			return s.downloadWarnings;
 		},
-		get displayError() {
-			return s.displayError;
+		get stepError() {
+			return s.stepError;
 		},
-		set displayError(v: DisplayError | null) {
-			s.displayError = v;
+		get sourceError() {
+			return s.sourceError;
+		},
+		get actionError() {
+			return s.actionError;
+		},
+		clearSourceError: () => {
+			s.sourceError = null;
 		},
 		run: () => run(s, ctx),
 		download: () => download(s, ctx),
@@ -290,7 +306,7 @@ export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
 		},
 		clearResults: () => clearResults(s),
 		reportError: (e: unknown) => {
-			s.displayError = toDisplayError(e);
+			s.sourceError = toDisplayError(e);
 		},
 	};
 }
