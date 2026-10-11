@@ -8,6 +8,33 @@
 > сохраняется ради перекрёстных ссылок («идея 4 зависит от идеи 3»). Оценки
 > (S/M/L) — оценка труда, не приоритет.
 
+## Тесты и lint
+
+- [ ] правило - только английские комментарии не работает на svelte файлы
+- [ ] правило - ограницить комментарии вроде уменьшило простыни из комментариев,
+      но всё равно они есть и часто пишет очевидные вещи. надо более строгое
+      правило. может такой вариант: разрешено писать комментарии в коде, но
+      только внутри функций, название которых начинается с `complex_` или
+      `tricky_` (или помеченных специальным декоратором/аннотацией).
+- [ ] линтер на deprecated иконки возможен? 'FilePlus2' is deprecated.
+- [ ] `tseslint.config(...)` deprecated: сигнатура
+      `(...configs: InfiniteDepthConfigWithExtends[]): ConfigArray` помечена
+      устаревшей, нужен переход на `defineConfig` из `eslint/config` (ESLint
+      core, а не `typescript-eslint`) — `web/eslint.config.js`.
+- [ ] удалить мёртвые `tools.*.params` из root i18n после проверки потребителей;
+      до этого действует pattern-based policy-исключение
+      (`web/eslint-plugins/README.md`, раздел `dict-consistency`)
+- [ ] e2e: `i18n.spec.ts` и `text-and-verdicts.spec.ts` дублируют локаторы из
+      `helpers/page.ts` вместо вызова — правило «спека зовёт helpers»
+      (`docs/testing-strategy.md`, раздел 5)
+- [ ] Пересмотреть тесты — убрать точные совпадения текстов и любые селекторы,
+      привязанные к разметке или svelte-классам (сейчас остались:
+      `tool-flows.spec.ts`, `schema-tool-strings.test.ts`)
+- [ ] можно ли в тестах получать i18n ключ вместо текста? можно ли написать lint
+      правило такое (запретить toContain без i18n)
+- [ ] посмотреть ошибки e2e, разрешить запускать е2е без ручного подтверждения,
+      и рассмотреть - может уже пора включить их в ci\cd гейт
+
 ## Pipeline
 
 - [ ] названия инструментов — в pipeline инструмент называется «обрезать png»,
@@ -200,25 +227,6 @@
       каталог остаётся группировкой с фильтрами. Детектор дублирования разметки
       сознательно не вводим — `docs/decisions.md`, раздел 1, поэтому расхождение
       ловится на ревью.
-
-## Тесты и lint
-
-- [ ] линтер на deprecated иконки возможен? 'FilePlus2' is deprecated.
-- [ ] `tseslint.config(...)` deprecated: сигнатура
-      `(...configs: InfiniteDepthConfigWithExtends[]): ConfigArray` помечена
-      устаревшей, нужен переход на `defineConfig` из `eslint/config` (ESLint
-      core, а не `typescript-eslint`) — `web/eslint.config.js`.
-- [ ] удалить мёртвые `tools.*.params` из root i18n после проверки потребителей;
-      до этого действует pattern-based policy-исключение
-      (`web/eslint-plugins/README.md`, раздел `dict-consistency`)
-- [ ] e2e: `i18n.spec.ts` и `text-and-verdicts.spec.ts` дублируют локаторы из
-      `helpers/page.ts` вместо вызова — правило «спека зовёт helpers»
-      (`docs/testing-strategy.md`, раздел 5)
-- [ ] Пересмотреть тесты — убрать точные совпадения текстов и любые селекторы,
-      привязанные к разметке или svelte-классам (сейчас остались:
-      `tool-flows.spec.ts`, `schema-tool-strings.test.ts`)
-- [ ] можно ли в тестах получать i18n ключ вместо текста? можно ли написать lint
-      правило такое (запретить toContain без i18n)
 
 ## SEO/GEO
 
