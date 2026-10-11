@@ -3,6 +3,7 @@
 	import { RefreshCw } from "@lucide/svelte";
 	import { t } from "$lib/i18n/t";
 	import Badge from "$lib/components/ui/Badge.svelte";
+	import DetailBadge from "$lib/components/ui/DetailBadge.svelte";
 	import type { Snippet } from "svelte";
 
 	interface Props {
@@ -15,11 +16,11 @@
 		dims?: string;
 		note?: string;
 		noteTone?: "warning" | "info";
-		// Runtime warnings (chain/download events): shown as badges next to the
-		// derived result note, but from a different source.
-		warnings?: string[];
-		// Runtime errors: danger badges; detail goes to the native tooltip until
-		// a popover with full text exists.
+		// Runtime warnings (chain/source/download events): shown as badges next
+		// to the derived result note, full message in the "?" popover.
+		warnings?: { label: string; detail?: string }[];
+		// Runtime errors: danger badges; the full message lives in the
+		// DetailBadge popover behind the "?" button.
 		errors?: { label: string; detail?: string }[];
 		actions?: Snippet;
 	}
@@ -61,15 +62,20 @@
 				<Badge tone={noteTone} label={note} />
 			{/if}
 			{#each errors as error (error.label + (error.detail ?? ""))}
-				<Badge
+				<DetailBadge
 					tone="danger"
 					label={error.label}
-					title={error.detail}
+					detail={error.detail}
 					role="alert"
 				/>
 			{/each}
-			{#each warnings as warning (warning)}
-				<Badge tone="warning" label={warning} role="status" />
+			{#each warnings as warning (warning.label + (warning.detail ?? ""))}
+				<DetailBadge
+					tone="warning"
+					label={warning.label}
+					detail={warning.detail}
+					role="status"
+				/>
 			{/each}
 		</span>
 	</figcaption>

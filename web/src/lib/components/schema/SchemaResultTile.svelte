@@ -13,7 +13,7 @@
 		resultKind?: ResultKind;
 		result: PixelImage | null;
 		resultNote?: ResultNote | null;
-		warnings?: string[];
+		warnings?: { label: string; detail?: string }[];
 		errors?: { label: string; detail?: string }[];
 		fileResult?: FileResult | null;
 		textResult?: string | null;

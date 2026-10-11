@@ -1,7 +1,7 @@
 <script lang="ts">
 	import DownloadButton from "$lib/components/ui/DownloadButton.svelte";
 	import UploadButton from "$lib/components/ui/UploadButton.svelte";
-	import Badge from "$lib/components/ui/Badge.svelte";
+	import DetailBadge from "$lib/components/ui/DetailBadge.svelte";
 	import type { OutputMime } from "$lib/core/io";
 	import { outputFormatByMime } from "$lib/output-formats";
 	import { t } from "$lib/i18n/t";
@@ -18,7 +18,7 @@
 		limitKb?: number;
 		alphaLoss?: boolean;
 		// Download-zone feedback: size-limit misses and action failures.
-		warnings?: string[];
+		warnings?: { label: string; detail?: string }[];
 		error?: { label: string; detail?: string } | null;
 		onupload: (file: File) => void;
 		ondownload: () => void;
@@ -67,14 +67,19 @@
 			disabled={running}
 		/>
 	{/if}
-	{#each warnings as warning (warning)}
-		<Badge tone="warning" label={warning} role="status" />
+	{#each warnings as warning (warning.label + (warning.detail ?? ""))}
+		<DetailBadge
+			tone="warning"
+			label={warning.label}
+			detail={warning.detail}
+			role="status"
+		/>
 	{/each}
 	{#if error}
-		<Badge
+		<DetailBadge
 			tone="danger"
 			label={error.label}
-			title={error.detail}
+			detail={error.detail}
 			role="alert"
 		/>
 	{/if}

@@ -70,6 +70,10 @@ export const en: Dict = {
 		warnSizeLimitMiss:
 			"Could not fit into {limit} KB — downloaded file is {actual} KB",
 		stepFailed: "Step {n} failed",
+		warnPartialShort: "Some files failed",
+		warnFirstOnlyShort: "First file only",
+		warnSourceSkipShort: "Files skipped",
+		warnSizeLimitMissShort: "Over size limit",
 	},
 	savedChains: {
 		pageTitle: "Saved pipelines — easy-png-tools",
@@ -172,6 +176,7 @@ export const en: Dict = {
 		nothingFound: "Nothing found — try another word.",
 	},
 	ui: {
+		detailsAria: "Show details",
 		showMask: "Show mask",
 		decrease: "Decrease",
 		increase: "Increase",

@@ -72,6 +72,10 @@ export const ru: Dict = {
 		warnSizeLimitMiss:
 			"Не удалось ужаться до {limit} КБ — скачан файл на {actual} КБ",
 		stepFailed: "Шаг {n}: ошибка",
+		warnPartialShort: "Часть файлов с ошибкой",
+		warnFirstOnlyShort: "Только первый файл",
+		warnSourceSkipShort: "Файлы пропущены",
+		warnSizeLimitMissShort: "Больше лимита",
 	},
 	savedChains: {
 		pageTitle: "Сохранённые пайплайны — easy-png-tools",
@@ -173,6 +177,7 @@ export const ru: Dict = {
 		nothingFound: "Ничего не найдено — попробуйте другое слово.",
 	},
 	ui: {
+		detailsAria: "Показать подробности",
 		showMask: "Показать маску",
 		decrease: "Уменьшить",
 		increase: "Увеличить",

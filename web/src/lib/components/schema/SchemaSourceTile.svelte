@@ -15,7 +15,7 @@
 		textSource?: string;
 		running?: boolean;
 		fileCount?: number;
-		warnings?: string[];
+		warnings?: { label: string; detail?: string }[];
 		errors?: { label: string; detail?: string }[];
 		ontextinput?: (text: string) => void;
 		onrendertext?: () => void;

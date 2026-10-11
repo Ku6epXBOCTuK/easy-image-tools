@@ -68,23 +68,41 @@ export function verdictTone(key: string): "success" | "danger" | "info" {
 	return "info";
 }
 
-/** Human-readable text for a chain run/source warning. */
-export function chainWarningText(w: ChainWarning): string {
+/** Short label for a warning badge; detail holds the full message (popover). */
+export interface WarningNotice {
+	label: string;
+	detail: string;
+}
+
+/** Human-readable badge + popover text for a chain run/source warning. */
+export function chainWarningNotice(w: ChainWarning): WarningNotice {
 	switch (w.kind) {
 		case "partial":
-			return t("chain.warnPartial", { n: w.step, ok: w.ok, total: w.total });
+			return {
+				label: t("chain.warnPartialShort"),
+				detail: t("chain.warnPartial", { n: w.step, ok: w.ok, total: w.total }),
+			};
 		case "firstOnly":
-			return t("chain.warnFirstOnly", { n: w.step, total: w.total });
+			return {
+				label: t("chain.warnFirstOnlyShort"),
+				detail: t("chain.warnFirstOnly", { n: w.step, total: w.total }),
+			};
 		case "sourceSkip":
-			return t("chain.warnSourceSkip", {
-				skipped: w.skipped,
-				total: w.total,
-			});
+			return {
+				label: t("chain.warnSourceSkipShort"),
+				detail: t("chain.warnSourceSkip", {
+					skipped: w.skipped,
+					total: w.total,
+				}),
+			};
 		case "sizeLimitMiss":
-			return t("chain.warnSizeLimitMiss", {
-				limit: w.limitKb,
-				actual: w.actualKb,
-			});
+			return {
+				label: t("chain.warnSizeLimitMissShort"),
+				detail: t("chain.warnSizeLimitMiss", {
+					limit: w.limitKb,
+					actual: w.actualKb,
+				}),
+			};
 	}
 }
 

@@ -9,9 +9,10 @@
 	import type { PixelImage } from "$lib/core/types";
 	import {
 		chainStepTitle,
-		chainWarningText,
+		chainWarningNotice,
 		pageDescription,
 		pageTitle,
+		type WarningNotice,
 	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
 	import { moveStep, type ChainStep } from "$lib/pipeline.svelte";
@@ -124,20 +125,18 @@
 	const stepFileSets = $derived(runner.stepFileSets);
 	const runWarnings = $derived(runner.runWarnings);
 	// Feedback zones: source tile / step tiles / download button area.
-	const sourceWarningTexts = $derived(
-		upload.sourceWarnings.map(chainWarningText),
-	);
+	const sourceNotices = $derived(upload.sourceWarnings.map(chainWarningNotice));
 	const warningsByStep = $derived.by(() => {
-		const byStep: string[][] = steps.map(() => []);
+		const byStep: WarningNotice[][] = steps.map(() => []);
 		for (const w of runWarnings) {
 			if ("step" in w && w.step >= 1 && w.step <= byStep.length) {
-				byStep[w.step - 1].push(chainWarningText(w));
+				byStep[w.step - 1].push(chainWarningNotice(w));
 			}
 		}
 		return byStep;
 	});
-	const downloadWarningTexts = $derived(
-		runner.downloadWarnings.map(chainWarningText),
+	const downloadNotices = $derived(
+		runner.downloadWarnings.map(chainWarningNotice),
 	);
 	const stepError = $derived(runner.stepError);
 	const sourceError = $derived(runner.sourceError);
@@ -305,7 +304,7 @@
 					textSource={upload.textSource}
 					running={busy}
 					fileCount={upload.sourceFiles.length}
-					warnings={sourceWarningTexts}
+					warnings={sourceNotices}
 					errors={errorBadge(sourceError)}
 					ontextinput={(v) => (upload.textSource = v)}
 					onrendertext={run}
@@ -407,7 +406,7 @@
 					quality={output.quality}
 					limitKb={output.limitKb}
 					alphaLoss={output.alphaLoss}
-					warnings={downloadWarningTexts}
+					warnings={downloadNotices}
 					error={actionError
 						? {
 								label: t("actions.actionFailed"),
