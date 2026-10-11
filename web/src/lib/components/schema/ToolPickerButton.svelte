@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from "$lib/components/ui/Icon.svelte";
-	import { onDismiss } from "$lib/components/ui/dismiss";
+	import { trackPopover } from "$lib/components/ui/popover-position";
 	import { pageTitle } from "$lib/i18n/schema-tool-strings";
 	import { chainablePages } from "$lib/pipeline.svelte";
 	import type { Page } from "$lib/registry";
@@ -15,31 +15,33 @@
 
 	const pages = chainablePages();
 
+	const menuId = $props.id();
 	let open = $state(false);
-	let root = $state<HTMLDivElement | null>(null);
+	let btn = $state<HTMLButtonElement | null>(null);
+	let menu = $state<HTMLDivElement | null>(null);
+
+	// While open, keep the popover placed next to the button (scroll/resize).
+	$effect(() => {
+		if (!open || !menu || !btn) return;
+		return trackPopover(menu, btn, "end");
+	});
 
 	function choose(page: Page) {
 		onadd(page.steps[0].id);
-		open = false;
+		menu?.hidePopover();
 	}
-
-	$effect(() => {
-		if (!open) return;
-		return onDismiss(
-			() => root,
-			() => (open = false),
-		);
-	});
 </script>
 
-<div class="tool-picker" bind:this={root}>
+<div class="tool-picker">
 	<button
+		bind:this={btn}
 		type="button"
 		class={iconOnly ? "icon-btn" : "add-btn"}
 		aria-haspopup="menu"
 		aria-expanded={open}
+		aria-controls={menuId}
 		aria-label={iconOnly ? label : undefined}
-		onclick={() => (open = !open)}
+		popovertarget={menuId}
 	>
 		{#if iconOnly}
 			<Icon icon={Repeat} size={14} />
@@ -48,25 +50,29 @@
 			<span>{label}</span>
 		{/if}
 	</button>
-	{#if open}
-		<div class="menu" role="menu">
-			{#each pages as page (page.slug)}
-				<button
-					type="button"
-					class="item"
-					role="menuitem"
-					onclick={() => choose(page)}
-				>
-					{pageTitle(page)}
-				</button>
-			{/each}
-		</div>
-	{/if}
+	<div
+		bind:this={menu}
+		id={menuId}
+		class="menu"
+		role="menu"
+		popover="auto"
+		ontoggle={(e) => (open = e.newState === "open")}
+	>
+		{#each pages as page (page.slug)}
+			<button
+				type="button"
+				class="item"
+				role="menuitem"
+				onclick={() => choose(page)}
+			>
+				{pageTitle(page)}
+			</button>
+		{/each}
+	</div>
 </div>
 
 <style>
 	.tool-picker {
-		position: relative;
 		display: inline-flex;
 	}
 	.add-btn {
@@ -99,19 +105,24 @@
 		color: var(--color-text);
 	}
 	.menu {
-		position: absolute;
-		top: calc(100% + var(--space-s));
-		right: 0;
-		z-index: var(--z-dropdown);
+		/* Native popover: top layer + light dismiss + Escape из коробки;
+		   позиционирование — trackPopover (anchor() поддержан не везде). */
+		position: fixed;
+		margin: 0;
+		translate: 0 var(--space-s);
 		min-width: calc(var(--space-xxxl) * 8);
 		max-height: calc(var(--space-xxxl) * 8);
 		overflow-y: auto;
-		display: grid;
 		gap: var(--space-s);
 		padding: var(--space-m);
 		border: var(--size-border) solid var(--color-border);
 		border-radius: var(--radius-m);
 		background: var(--color-panel);
+	}
+	/* display задаётся только в открытом состоянии: авторский display
+	   перебивает UA-правило [popover]:not(:popover-open) { display: none }. */
+	.menu:popover-open {
+		display: grid;
 	}
 	.item {
 		padding: var(--space-m) var(--space-l);

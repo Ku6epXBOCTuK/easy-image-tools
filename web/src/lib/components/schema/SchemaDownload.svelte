@@ -1,7 +1,7 @@
 <script lang="ts">
 	import RangeControl from "$lib/components/fields/schema/RangeControl.svelte";
 	import Icon from "$lib/components/ui/Icon.svelte";
-	import { onDismiss } from "$lib/components/ui/dismiss";
+	import { trackPopover } from "$lib/components/ui/popover-position";
 	import type { OutputMime } from "$lib/core/io";
 	import { OUTPUT_FORMATS, outputFormatByMime } from "$lib/output-formats";
 	import type { SliderSpec } from "$lib/registry-schema";
@@ -43,8 +43,16 @@
 			: undefined,
 	);
 
+	const menuId = $props.id();
 	let open = $state(false);
-	let root = $state<HTMLDivElement | null>(null);
+	let btn = $state<HTMLButtonElement | null>(null);
+	let menu = $state<HTMLDivElement | null>(null);
+
+	// While open, keep the popover placed next to the button (scroll/resize).
+	$effect(() => {
+		if (!open || !menu || !btn) return;
+		return trackPopover(menu, btn, "end");
+	});
 
 	function choose(mime: OutputMime) {
 		// Menu doubles as a format-settings panel: keep it open on select
@@ -56,23 +64,15 @@
 		const raw = (e.target as HTMLInputElement).valueAsNumber;
 		onlimit(Number.isFinite(raw) && raw >= 1 ? Math.round(raw) : undefined);
 	}
-
-	$effect(() => {
-		if (!open) return;
-		return onDismiss(
-			() => root,
-			() => (open = false),
-		);
-	});
 </script>
 
-<div class="download-split" bind:this={root}>
+<div class="download-split">
 	<button
 		type="button"
 		class="main"
 		disabled={running}
 		onclick={() => {
-			open = false;
+			menu?.hidePopover();
 			ondownload();
 		}}
 	>
@@ -80,66 +80,72 @@
 		<span>{t("actions.download")}</span>
 	</button>
 	<button
+		bind:this={btn}
 		type="button"
 		class="toggle"
 		aria-haspopup="menu"
 		aria-expanded={open}
+		aria-controls={menuId}
 		aria-label={t("actions.formatAria")}
 		disabled={running}
-		onclick={() => (open = !open)}
+		popovertarget={menuId}
 	>
 		<span>{current.label}</span>
 		<Icon icon={ChevronDown} size={14} />
 	</button>
-	{#if open}
-		<div class="menu" role="menu">
-			{#each OUTPUT_FORMATS as f (f.mime)}
-				<button
-					type="button"
-					class="item"
-					class:selected={f.mime === format}
-					role="menuitemradio"
-					aria-checked={f.mime === format}
-					onclick={() => choose(f.mime)}
-				>
-					{f.label}
-				</button>
-			{/each}
-			{#if qualitySpec && quality !== undefined}
-				<div class="quality">
-					<RangeControl
-						label={t("fields.quality")}
-						value={quality}
-						spec={qualitySpec}
-						onchange={(q) => onquality(q)}
-					/>
-				</div>
-			{/if}
-			<div class="limit">
-				<label class="limit-field">
-					<span>{t("actions.sizeLimitKb")}</span>
-					<input
-						type="number"
-						min="1"
-						step="1"
-						placeholder="∞"
-						value={limitKb ?? ""}
-						oninput={handleLimit}
-					/>
-				</label>
-				{#if limitKb !== undefined && format === "image/bmp"}
-					<p class="limit-warn" role="status">
-						{t("actions.sizeLimitBmp")}
-					</p>
-				{/if}
+	<div
+		bind:this={menu}
+		id={menuId}
+		class="menu"
+		role="menu"
+		popover="auto"
+		ontoggle={(e) => (open = e.newState === "open")}
+	>
+		{#each OUTPUT_FORMATS as f (f.mime)}
+			<button
+				type="button"
+				class="item"
+				class:selected={f.mime === format}
+				role="menuitemradio"
+				aria-checked={f.mime === format}
+				onclick={() => choose(f.mime)}
+			>
+				{f.label}
+			</button>
+		{/each}
+		{#if qualitySpec && quality !== undefined}
+			<div class="quality">
+				<RangeControl
+					label={t("fields.quality")}
+					value={quality}
+					spec={qualitySpec}
+					onchange={(q) => onquality(q)}
+				/>
 			</div>
+		{/if}
+		<div class="limit">
+			<label class="limit-field">
+				<span>{t("actions.sizeLimitKb")}</span>
+				<input
+					type="number"
+					min="1"
+					step="1"
+					placeholder="∞"
+					value={limitKb ?? ""}
+					oninput={handleLimit}
+				/>
+			</label>
+			{#if limitKb !== undefined && format === "image/bmp"}
+				<p class="limit-warn" role="status">
+					{t("actions.sizeLimitBmp")}
+				</p>
+			{/if}
 		</div>
-	{/if}
+	</div>
 </div>
 
 <style>
 	.download-split {
-		position: relative;
 		display: inline-flex;
 	}
 	.main,
@@ -171,18 +177,23 @@
 		cursor: not-allowed;
 	}
 	.menu {
-		position: absolute;
-		top: calc(100% + var(--space-s));
-		right: 0;
-		z-index: var(--z-dropdown);
+		/* Native popover: top layer + light dismiss + Escape из коробки;
+		   позиционирование — trackPopover (anchor() поддержан не везде). */
+		position: fixed;
+		margin: 0;
+		translate: 0 var(--space-s);
 		/* Ширина под строку качества: числовое поле + степперы + сброс. */
 		min-width: calc(var(--space-xxxl) * 9);
-		display: grid;
 		gap: var(--space-s);
 		padding: var(--space-m);
 		border: var(--size-border) solid var(--color-border);
 		border-radius: var(--radius-m);
 		background: var(--color-panel);
+	}
+	/* display задаётся только в открытом состоянии: авторский display
+	   перебивает UA-правило [popover]:not(:popover-open) { display: none }. */
+	.menu:popover-open {
+		display: grid;
 	}
 	.item {
 		padding: var(--space-m) var(--space-l);

@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { t } from "$lib/i18n/t";
 	import Badge from "./Badge.svelte";
+	import { trackPopover } from "./popover-position";
 
 	interface Props {
-		tone: "warning" | "danger" | "info";
+		tone: "warning" | "danger";
 		label: string;
 		detail?: string;
 		role?: "alert" | "status";
@@ -11,19 +12,24 @@
 	let { tone, label, detail = undefined, role = "status" }: Props = $props();
 
 	const id = $props.id();
-	// Anchor name is per-instance: with a shared name several popovers would
-	// fight over the same anchor element.
-	let anchorName = `--badge-${id}`;
 	let open = $state(false);
+	let btn = $state<HTMLButtonElement | null>(null);
+	let popover = $state<HTMLSpanElement | null>(null);
+
+	// While open, keep the popover placed next to the "?" button.
+	$effect(() => {
+		if (!open || !popover || !btn) return;
+		return trackPopover(popover, btn, "start");
+	});
 </script>
 
 <span class="detail-badge">
 	<Badge {tone} {label} {role} />
 	{#if detail}
 		<button
+			bind:this={btn}
 			type="button"
 			class="more"
-			style:anchor-name={anchorName}
 			aria-label={t("ui.detailsAria")}
 			aria-expanded={open}
 			aria-controls={id}
@@ -32,12 +38,12 @@
 			?
 		</button>
 		<span
+			bind:this={popover}
 			{id}
 			class="popover"
 			role="tooltip"
 			popover="auto"
-			style:position-anchor={anchorName}
-			onbeforetoggle={(e) => (open = e.newState === "open")}
+			ontoggle={(e) => (open = e.newState === "open")}
 		>
 			{detail}
 		</span>
@@ -73,16 +79,17 @@
 		border-color: var(--color-main);
 	}
 	/* Нативный popover живёт в top layer: light dismiss, Escape и раскладка
-	   поверх всего — из коробки, без z-index и ручных подписок. */
+	   поверх всего — из коробки. Позиционирование — trackPopover: anchor()
+	   поддержан не во всех браузерах. */
 	.popover {
 		position: fixed;
 		margin: 0;
-		top: anchor(bottom);
-		left: anchor(left);
 		translate: 0 var(--space-s);
-		/* Не уезжает за правый край: доступная ширина считается от якоря. */
 		width: max-content;
-		max-width: calc(100vw - anchor(left) - var(--space-xl));
+		max-width: min(
+			calc(var(--space-xxxl) * 12),
+			calc(100vw - 2 * var(--space-xl))
+		);
 		padding: var(--space-m) var(--space-l);
 		border: var(--size-border-thick) solid var(--color-text-muted);
 		border-radius: var(--radius-m);
