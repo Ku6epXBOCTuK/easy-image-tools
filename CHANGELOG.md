@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.8.0](https://github.com/Ku6epXBOCTuK/easy-png-tools/compare/f67ddb3b0a7c69316caa3bed30d976f41d7a1219..v0.8.0) - 2026-10-11
+#### Features
+- add tooltip for errors\warnings - ([be9ecd0](https://github.com/Ku6epXBOCTuK/easy-png-tools/commit/be9ecd0e8edfbe83a6c148cad5c61cce22687ccb)) - Ku6epXBOCTuK
+- add download size limit warning - ([f67ddb3](https://github.com/Ku6epXBOCTuK/easy-png-tools/commit/f67ddb3b0a7c69316caa3bed30d976f41d7a1219)) - Ku6epXBOCTuK
+#### Bug Fixes
+- move to popover realisation - ([6166960](https://github.com/Ku6epXBOCTuK/easy-png-tools/commit/6166960c4b3a893e9a5be281a688a846b8a6e09f)) - Ku6epXBOCTuK
+- update error\warning flow - ([3c9175f](https://github.com/Ku6epXBOCTuK/easy-png-tools/commit/3c9175f8a39fa156009733a775efefb85ee0208d)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.7.0](https://github.com/Ku6epXBOCTuK/easy-png-tools/compare/7bbcec5ff0c72044dcec70d5ba41c513a0eac16b..v0.7.0) - 2026-10-10
 #### Features
 - update dnd tools in pipeline - ([7bbcec5](https://github.com/Ku6epXBOCTuK/easy-png-tools/commit/7bbcec5ff0c72044dcec70d5ba41c513a0eac16b)) - Ku6epXBOCTuK
