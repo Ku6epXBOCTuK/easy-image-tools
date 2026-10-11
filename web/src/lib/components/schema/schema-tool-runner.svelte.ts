@@ -56,6 +56,8 @@ interface RunnerState {
 	// Full named set per step (batch/fan-out); intermediate tiles show a grid.
 	stepFileSets: ToolImageFile[][];
 	runWarnings: ChainWarning[];
+	// Size-limit feedback from the last download (limit unreachable etc.).
+	downloadWarnings: ChainWarning[];
 	displayError: DisplayError | null;
 }
 
@@ -153,10 +155,29 @@ async function download(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 		const q = ctx.quality();
 		const limit = ctx.limitKb();
 		const quality = q !== undefined ? q / 100 : undefined;
-		const blob = limit
-			? await fitWithinBytes(s.result, out.mime, limit * 1024, quality, encode)
-			: await encode(s.result, out.mime, quality);
-		downloadBlob(blob, `${ctx.pageSlug()}.${out.ext}`);
+		s.downloadWarnings = [];
+		if (limit) {
+			const fitted = await fitWithinBytes(
+				s.result,
+				out.mime,
+				limit * 1024,
+				quality,
+				encode,
+			);
+			if (fitted.achievedBytes > limit * 1024) {
+				s.downloadWarnings = [
+					{
+						kind: "sizeLimitMiss",
+						limitKb: limit,
+						actualKb: Math.ceil(fitted.achievedBytes / 1024),
+					},
+				];
+			}
+			downloadBlob(fitted.blob, `${ctx.pageSlug()}.${out.ext}`);
+		} else {
+			const blob = await encode(s.result, out.mime, quality);
+			downloadBlob(blob, `${ctx.pageSlug()}.${out.ext}`);
+		}
 	} catch (e) {
 		s.displayError = toDisplayError(e);
 	} finally {
@@ -193,6 +214,7 @@ function clearResults(s: RunnerState) {
 	s.fileResult = null;
 	s.textResult = null;
 	s.verdictVars = undefined;
+	s.downloadWarnings = [];
 	s.displayError = null;
 }
 
@@ -211,6 +233,7 @@ export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
 		stepResults: [],
 		stepFileSets: [],
 		runWarnings: [],
+		downloadWarnings: [],
 		displayError: null,
 	});
 	return {
@@ -243,6 +266,9 @@ export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
 		},
 		get runWarnings() {
 			return s.runWarnings;
+		},
+		get downloadWarnings() {
+			return s.downloadWarnings;
 		},
 		get displayError() {
 			return s.displayError;

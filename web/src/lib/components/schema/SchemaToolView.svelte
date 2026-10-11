@@ -123,7 +123,11 @@
 	const stepFileSets = $derived(runner.stepFileSets);
 	const runWarnings = $derived(runner.runWarnings);
 	const displayError = $derived(runner.displayError);
-	const allWarnings = $derived([...upload.sourceWarnings, ...runWarnings]);
+	const warningTexts = $derived(
+		[...upload.sourceWarnings, ...runWarnings, ...runner.downloadWarnings].map(
+			chainWarningText,
+		),
+	);
 
 	const masks = createStepMasks({
 		steps: () => steps,
@@ -316,6 +320,7 @@
 					resultKind={displayResultKind}
 					result={out}
 					{resultNote}
+					warnings={warningTexts}
 					{fileResult}
 					{textResult}
 					textVars={verdictVars}
@@ -440,9 +445,6 @@
 			{#if errorText}
 				<p class="error" role="alert">{errorText}</p>
 			{/if}
-			{#each allWarnings as w (chainWarningText(w))}
-				<p class="warn" role="status">{chainWarningText(w)}</p>
-			{/each}
 			<StepReorderOverlay {steps} dnd={stepDnd} />
 		</DragDropProvider>
 	</div>
@@ -618,11 +620,6 @@
 		font: var(--font-size-s) var(--font-mono);
 	}
 	.no-schema {
-		font: var(--font-size-s) var(--font-mono);
-	}
-	.warn {
-		margin: var(--space-s) 0 0;
-		color: var(--color-warning);
 		font: var(--font-size-s) var(--font-mono);
 	}
 	@media (--bp-tablet) {

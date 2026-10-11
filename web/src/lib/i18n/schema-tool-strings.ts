@@ -80,6 +80,11 @@ export function chainWarningText(w: ChainWarning): string {
 				skipped: w.skipped,
 				total: w.total,
 			});
+		case "sizeLimitMiss":
+			return t("chain.warnSizeLimitMiss", {
+				limit: w.limitKb,
+				actual: w.actualKb,
+			});
 	}
 }
 

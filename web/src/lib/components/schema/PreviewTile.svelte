@@ -15,6 +15,9 @@
 		dims?: string;
 		note?: string;
 		noteTone?: "warning" | "info";
+		// Runtime warnings (chain/download events): shown as badges next to the
+		// derived result note, but from a different source.
+		warnings?: string[];
 		actions?: Snippet;
 	}
 	let {
@@ -27,6 +30,7 @@
 		dims = undefined,
 		note = undefined,
 		noteTone = "warning",
+		warnings = [],
 		actions = undefined,
 	}: Props = $props();
 </script>
@@ -52,6 +56,9 @@
 			{#if note}
 				<Badge tone={noteTone} label={note} />
 			{/if}
+			{#each warnings as warning (warning)}
+				<Badge tone="warning" label={warning} role="status" />
+			{/each}
 		</span>
 	</figcaption>
 	<div class="canvas" class:checker={mode === "image"}>

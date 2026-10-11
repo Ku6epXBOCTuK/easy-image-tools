@@ -69,6 +69,8 @@ export const ru: Dict = {
 		warnFirstOnly:
 			"Шаг {n}: анализ работает с одним изображением — показан первый из {total}",
 		warnSourceSkip: "{skipped} из {total} файлов не удалось прочитать",
+		warnSizeLimitMiss:
+			"Не удалось ужаться до {limit} КБ — скачан файл на {actual} КБ",
 	},
 	savedChains: {
 		pageTitle: "Сохранённые пайплайны — easy-png-tools",

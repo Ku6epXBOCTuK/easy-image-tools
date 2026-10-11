@@ -67,6 +67,8 @@ export const en: Dict = {
 		warnFirstOnly:
 			"Step {n}: analyze works on one image — showing the first of {total}",
 		warnSourceSkip: "{skipped} of {total} files could not be read",
+		warnSizeLimitMiss:
+			"Could not fit into {limit} KB — downloaded file is {actual} KB",
 	},
 	savedChains: {
 		pageTitle: "Saved pipelines — easy-png-tools",

@@ -17,7 +17,8 @@ export type ChainExecutor = (
 export type ChainWarning =
 	| { kind: "partial"; step: number; ok: number; total: number }
 	| { kind: "firstOnly"; step: number; total: number }
-	| { kind: "sourceSkip"; skipped: number; total: number };
+	| { kind: "sourceSkip"; skipped: number; total: number }
+	| { kind: "sizeLimitMiss"; limitKb: number; actualKb: number };
 
 export class ChainStepError extends Error {
 	constructor(

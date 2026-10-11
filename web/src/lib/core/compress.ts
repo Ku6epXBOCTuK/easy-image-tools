@@ -91,6 +91,12 @@ export type EncodeFn = (
 	quality?: number,
 ) => Promise<Blob>;
 
+export interface FitWithinBytesResult {
+	blob: Blob;
+	/** Size of the returned blob; > targetBytes means the limit was unreachable. */
+	achievedBytes: number;
+}
+
 /** Encodes img to fit targetBytes (quality search for lossy, color count for
  *  PNG; BMP as-is). `encodeFn` injected (core/io.encode): policy stays DOM-free. */
 export async function fitWithinBytes(
@@ -99,18 +105,24 @@ export async function fitWithinBytes(
 	targetBytes: number,
 	quality: number | undefined,
 	encodeFn: EncodeFn,
-): Promise<Blob> {
-	if (mime === "image/bmp") return encodeFn(img, mime);
+): Promise<FitWithinBytesResult> {
+	if (mime === "image/bmp") {
+		const blob = await encodeFn(img, mime);
+		return { blob, achievedBytes: blob.size };
+	}
 	const initial = await encodeFn(img, mime, quality);
-	if (initial.size <= targetBytes) return initial;
+	if (initial.size <= targetBytes)
+		return { blob: initial, achievedBytes: initial.size };
 	if (mime === "image/png") {
 		const encodeSize = async (k: number) =>
 			(await encodeFn(quantizeImage(img, k).image, mime)).size;
 		const k = await findMaxColorsWithin(targetBytes, 256, encodeSize);
-		return encodeFn(quantizeImage(img, k).image, mime);
+		const blob = await encodeFn(quantizeImage(img, k).image, mime);
+		return { blob, achievedBytes: blob.size };
 	}
 	const encodeSize = async (q: number) =>
 		(await encodeFn(img, mime, q / 100)).size;
 	const q = await findQualityWithin(targetBytes, encodeSize);
-	return encodeFn(img, mime, q / 100);
+	const blob = await encodeFn(img, mime, q / 100);
+	return { blob, achievedBytes: blob.size };
 }

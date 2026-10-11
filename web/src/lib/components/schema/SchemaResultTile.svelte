@@ -13,6 +13,7 @@
 		resultKind?: ResultKind;
 		result: PixelImage | null;
 		resultNote?: ResultNote | null;
+		warnings?: string[];
 		fileResult?: FileResult | null;
 		textResult?: string | null;
 		textVars?: Record<string, string | number>;
@@ -28,6 +29,7 @@
 		resultKind = "image",
 		result,
 		resultNote = null,
+		warnings = [],
 		fileResult = null,
 		textResult = null,
 		textVars = undefined,
@@ -68,6 +70,7 @@
 	dims={resultDims}
 	note={resultNote ? t(resultNote.key) : undefined}
 	noteTone={resultNote?.tone ?? "warning"}
+	{warnings}
 >
 	{#snippet actions()}
 		{#if ontogglemask}
