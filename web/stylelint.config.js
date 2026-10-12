@@ -1,4 +1,4 @@
-// Stylelint config: design-token enforcement for easy-png-tools.
+// Stylelint config: design-token enforcement for easy-image-tools.
 // FWHM: keeps the design system a single source of truth. Colors and sizes must
 // come from prefixed tokens; direct color values are allowed only for the two
 // brand tokens.

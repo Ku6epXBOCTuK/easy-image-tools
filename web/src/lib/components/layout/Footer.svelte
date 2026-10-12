@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { version } from "../../../../package.json";
+	import { t } from "$lib/i18n/t";
 
 	const versionLabel = `v${version}`;
 </script>
 
 <footer class="preview-footer">
-	<span>easy-png-tools <b class="version">{versionLabel}</b></span>
+	<span>{t("brand")} <b class="version">{versionLabel}</b></span>
 	<span>© 2026</span>
 </footer>
 

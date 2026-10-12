@@ -1,4 +1,4 @@
-# easy-png-tools
+# easy-image-tools
 
 Browser-based image utility toolkit — no server, no data upload, everything runs
 locally in your browser.

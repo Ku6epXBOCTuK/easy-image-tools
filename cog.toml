@@ -8,7 +8,7 @@ pre_bump_hooks = ["node scripts/sync-version.mjs {{version}}"]
 path = "CHANGELOG.md"
 template = "remote"
 remote = "github.com"
-repository = "easy-png-tools"
+repository = "easy-image-tools"
 owner = "Ku6epXBOCTuK"
 
 [commit_types]

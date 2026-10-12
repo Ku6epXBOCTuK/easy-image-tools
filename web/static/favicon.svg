@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-	<title>easy-png-tools</title>
+	<title>easy-image-tools</title>
 	<rect width="32" height="32" rx="7" fill="#2563eb"/>
 	<rect x="5" y="5" width="22" height="22" rx="4" fill="#ffffff"/>
 	<clipPath id="pic">

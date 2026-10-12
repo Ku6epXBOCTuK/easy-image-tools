@@ -41,13 +41,9 @@
 | Направления развития, фазы 1–11                | `docs/roadmap.md`                  |
 | SEO/GEO-план (адреса, `noindex`, sitemap)      | `docs/plan-seo.md`                 |
 | API/PWA/шрифты                                 | `docs/plan-platform.md`            |
-| Переименование бренда и покупка домена         | `docs/plan-domain.local.md` †      |
 | Сырые UX-находки по инструментам (вход аудита) | `docs/tools-audit.md`              |
 | Архивирование и удаление старых документов     | `docs/archive/README.md`           |
 | Индекс остальных документов                    | `docs/README.md`                   |
-
-† `docs/plan-domain.local.md` вне git, в клоне отсутствует — в этом случае
-задачу ищут по `docs/plan-seo.md` §6.
 
 ## Инварианты, которые линтер не проверяет
 

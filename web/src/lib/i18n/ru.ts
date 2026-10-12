@@ -1,6 +1,7 @@
 import type { Dict } from "./dict";
 
 export const ru: Dict = {
+	brand: "easy-image-tools",
 	header: {
 		workspace: "Рабочая область",
 		catalog: "Каталог",
@@ -24,7 +25,7 @@ export const ru: Dict = {
 		generate: "Генерация",
 	},
 	home: {
-		defaultTitle: "easy-png-tools — PNG-утилиты прямо в браузере",
+		defaultTitle: "easy-image-tools — PNG-утилиты прямо в браузере",
 		heroTitle: "Что делаем с изображением?",
 		heroLead:
 			"Найдите инструмент — все операции выполняются локально в браузере.",
@@ -32,7 +33,7 @@ export const ru: Dict = {
 		changeTool: "← Сменить инструмент",
 	},
 	catalog: {
-		pageTitle: "Все инструменты — easy-png-tools",
+		pageTitle: "Все инструменты — easy-image-tools",
 		metaDescription:
 			"Полный каталог PNG-утилит: конвертация, прозрачность, цвет, геометрия, анализ и генерация изображений.",
 		heading: "Каталог инструментов",
@@ -78,7 +79,7 @@ export const ru: Dict = {
 		warnSizeLimitMissShort: "Больше лимита",
 	},
 	savedChains: {
-		pageTitle: "Сохранённые пайплайны — easy-png-tools",
+		pageTitle: "Сохранённые пайплайны — easy-image-tools",
 		metaDescription:
 			"Ваши сохранённые пайплайны изображений: именованные цепочки инструментов, хранятся локально в браузере.",
 		heading: "Сохранённые пайплайны",

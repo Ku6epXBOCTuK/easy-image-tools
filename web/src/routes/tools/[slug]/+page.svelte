@@ -18,14 +18,14 @@
 
 {#if page}
 	<Seo
-		title={`easy-png-tools / ${pageTitle(page)}`}
+		title={`${t("brand")} / ${pageTitle(page)}`}
 		description={pageDescription(page)}
 		path={`/tools/${page.slug}`}
 	/>
 {/if}
 <svelte:head>
 	{#if !page}
-		<title>easy-png-tools / {t("toolPage.fallbackTitle")}</title>
+		<title>{t("brand")} / {t("toolPage.fallbackTitle")}</title>
 	{/if}
 	<meta name="robots" content="noindex, nofollow" />
 </svelte:head>

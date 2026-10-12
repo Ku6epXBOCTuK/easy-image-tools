@@ -35,7 +35,7 @@
 </script>
 
 <svelte:head>
-	<title>easy-png-tools / {chain?.name ?? t("header.pipeline")}</title>
+	<title>{t("brand")} / {chain?.name ?? t("header.pipeline")}</title>
 	<meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 

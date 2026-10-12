@@ -178,13 +178,7 @@ export default tseslint.config(
 			i18n: i18nPlugin,
 		},
 		rules: {
-			"i18n/no-hardcoded-user-text": [
-				"warn",
-				{
-					// The product name is a brand, not translatable text.
-					allowWords: ["easy-png-tools"],
-				},
-			],
+			"i18n/no-hardcoded-user-text": "warn",
 		},
 	},
 	{

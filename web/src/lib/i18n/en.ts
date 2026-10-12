@@ -1,6 +1,7 @@
 ﻿import type { Dict } from "./dict";
 
 export const en: Dict = {
+	brand: "easy-image-tools",
 	header: {
 		workspace: "Workspace",
 		catalog: "Catalog",
@@ -24,14 +25,14 @@ export const en: Dict = {
 		generate: "Generate",
 	},
 	home: {
-		defaultTitle: "easy-png-tools — PNG utilities right in your browser",
+		defaultTitle: "easy-image-tools — PNG utilities right in your browser",
 		heroTitle: "What do you want to do with the image?",
 		heroLead: "Find a tool — everything runs locally in your browser.",
 		restoreLast: "↩ Restore last: {title}",
 		changeTool: "← Change tool",
 	},
 	catalog: {
-		pageTitle: "All tools — easy-png-tools",
+		pageTitle: "All tools — easy-image-tools",
 		metaDescription:
 			"Full catalog of PNG utilities: convert, transparency, color, geometry, analysis and image generation.",
 		heading: "Tool catalog",
@@ -76,7 +77,7 @@ export const en: Dict = {
 		warnSizeLimitMissShort: "Over size limit",
 	},
 	savedChains: {
-		pageTitle: "Saved pipelines — easy-png-tools",
+		pageTitle: "Saved pipelines — easy-image-tools",
 		metaDescription:
 			"Your saved image pipelines: named tool chains stored locally in your browser.",
 		heading: "Saved pipelines",

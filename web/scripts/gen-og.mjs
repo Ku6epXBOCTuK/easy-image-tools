@@ -1,6 +1,4 @@
 // Generates static/og/default.png: the default 1200x630 OG card.
-// Run: pnpm --dir web gen:og. The card is rendered in a browser (text,
-// icons); per-tool cards will reuse this harness (docs/plan-seo.md S1e).
 import { mkdirSync } from "node:fs";
 import { chromium } from "playwright";
 
@@ -13,26 +11,26 @@ function cardHtml() {
 	return `<!doctype html><html><body style="margin:0">
 	<div style="
 		width:${W}px;height:${H}px;box-sizing:border-box;
-		background:#0a120c;
-		background-image:linear-gradient(#12281a 1px, transparent 1px),linear-gradient(90deg,#12281a 1px, transparent 1px);
+		background:#272827;
+		background-image:linear-gradient(#373a37 1px, transparent 1px),linear-gradient(90deg,#373a37 1px, transparent 1px);
 		background-size:40px 40px;
 		display:flex;align-items:center;justify-content:space-between;
 		padding:80px;font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;
-		border:3px solid #16a34a;
+		border:3px solid #009a5a;
 	">
 		<div>
 			<div style="
 				width:72px;height:72px;background:#86efac;color:#052e16;
 				display:flex;align-items:center;justify-content:center;
 				font-size:34px;font-weight:700;margin-bottom:32px;
-			">EP</div>
-			<div style="color:#86efac;font-size:56px;font-weight:700;letter-spacing:-1px;">easy-png-tools</div>
-			<div style="color:#a7c4b1;font-size:28px;margin-top:24px;">PNG utilities right in your browser</div>
-			<div style="color:#4d7c5f;font-size:22px;margin-top:16px;">Convert · Crop · Resize — locally, no uploads</div>
+			">EIT</div>
+			<div style="color:#c3eccd;font-size:56px;font-weight:700;letter-spacing:-1px;">easy-image-tools</div>
+			<div style="color:#92b39a;font-size:28px;margin-top:24px;">Image utilities right in your browser</div>
+			<div style="color:#009a5a;font-size:22px;margin-top:16px;">Convert · Crop · Resize — locally, no uploads</div>
 		</div>
 		<div style="
-			color:#86efac;width:300px;height:300px;border:3px solid #16a34a;
-			background:#0f1f14;display:flex;align-items:center;justify-content:center;
+			color:#86efac;width:300px;height:300px;border:3px solid #009a5a;
+			background:#3c3e3c;display:flex;align-items:center;justify-content:center;
 		"><div style="width:240px;height:240px;">${IMAGE_ICON}</div></div>
 	</div>
 </body></html>`;

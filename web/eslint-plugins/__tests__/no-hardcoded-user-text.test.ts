@@ -22,7 +22,7 @@ const ruleTester = new RuleTester({
 	},
 });
 
-const OPTIONS = [{ allowWords: ["easy-png-tools"] }];
+const OPTIONS = [{ allowWords: ["easy-image-tools"] }];
 
 ruleTester.run("no-hardcoded-user-text", asRuleModule(rule), {
 	valid: [
@@ -62,12 +62,12 @@ ruleTester.run("no-hardcoded-user-text", asRuleModule(rule), {
 		},
 		// Brand configured as an allowed word.
 		{
-			code: "<span>easy-png-tools</span>",
+			code: "<span>easy-image-tools</span>",
 			filename: "Component.svelte",
 			options: OPTIONS,
 		},
 		{
-			code: "<footer><span>easy-png-tools</span><span>v0.1.0</span></footer>",
+			code: "<footer><span>easy-image-tools</span><span>v0.1.0</span></footer>",
 			filename: "Component.svelte",
 			options: OPTIONS,
 		},
@@ -130,7 +130,7 @@ ruleTester.run("no-hardcoded-user-text", asRuleModule(rule), {
 		{
 			// Without the option the brand word is reported: the exclusion is
 			// configuration, not a hardcoded constant inside the rule.
-			code: "<span>easy-png-tools</span>",
+			code: "<span>easy-image-tools</span>",
 			filename: "Component.svelte",
 			errors: [{ messageId: "hardcodedText" }],
 		},
@@ -156,8 +156,8 @@ describe("hasUserWords", () => {
 	});
 
 	it("accepts configured brand words", () => {
-		expect(hasUserWords("easy-png-tools", ["easy-png-tools"])).toBe(false);
-		expect(hasUserWords("easy-png-tools")).toBe(true);
+		expect(hasUserWords("easy-image-tools", ["easy-image-tools"])).toBe(false);
+		expect(hasUserWords("easy-image-tools")).toBe(true);
 	});
 
 	it("accepts formats and units next to real copy", () => {

@@ -44,6 +44,8 @@ export type HeaderStrings = {
 };
 
 export type Dict = {
+	/** Product brand name; identical in every locale, kept here as the single source. */
+	brand: string;
 	header: HeaderStrings;
 	categories: Record<CategoryId | "all", string>;
 	home: Record<string, string>;

@@ -18,8 +18,8 @@
 
 <header class="topbar">
 	<a class="brand" href={resolve("/")}>
-		<span class="brand-mark">EP</span>
-		<span>easy-png-tools</span>
+		<span class="brand-mark">EIT</span>
+		<span>{t("brand")}</span>
 		{#if crumb}
 			<span class="crumb">{crumb}</span>
 		{/if}
@@ -28,7 +28,7 @@
 	<div class="top-actions">
 		<a
 			class="social"
-			href="https://github.com/Ku6epXBOCTuK/easy-png-tools"
+			href="https://github.com/Ku6epXBOCTuK/easy-image-tools"
 			target="_blank"
 			rel="noopener noreferrer"
 			aria-label={t("ui.github")}
