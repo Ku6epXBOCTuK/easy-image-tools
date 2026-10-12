@@ -6,6 +6,7 @@ import type { SeoContent } from "./dict";
 import { getMergedDict } from "./locale.svelte";
 import { normalizeForSearch, scoreDoc, type SearchDoc } from "./matching";
 import { ru } from "./ru";
+import { en } from "./en";
 import { interpolate, t } from "./t";
 
 function labelOf(id: string): string {
@@ -26,6 +27,15 @@ export function pageDescription(page: Page): string {
 /** Long-form page copy, or undefined while a page has none. */
 export function pageSeo(page: Page): SeoContent | undefined {
 	return getMergedDict().pages?.[page.slug]?.seo;
+}
+
+/**
+ * Indexability follows the content: having EN copy is the only signal, so no
+ * hand-maintained list can drift. Read from the base dict so that switching to
+ * RU (no `seo` block there yet) cannot flip the robots tag.
+ */
+export function isPageIndexable(page: Page): boolean {
+	return en.pages?.[page.slug]?.seo !== undefined;
 }
 
 /** SERP `<title>`; the brand prefix is only a fallback for pages without copy. */

@@ -3,7 +3,11 @@ import { PAGES } from "../registry";
 import { setLocale } from "./locale.svelte";
 import { en } from "./en";
 import { ru } from "./ru";
-import { searchPages, verdictText } from "./schema-tool-strings";
+import {
+	searchPages,
+	verdictText,
+	isPageIndexable,
+} from "./schema-tool-strings";
 
 const YO = "\u0451";
 const YE = "\u0435";
@@ -63,6 +67,72 @@ describe("searchPages (cross-locale catalog search)", () => {
 
 	it("no match returns an empty list", () => {
 		expect(searchPages(PAGES, "zzz qqq")).toEqual([]);
+	});
+});
+
+describe("SEO copy and indexability", () => {
+	const withCopy = PAGES.filter((page) => en.pages?.[page.slug]?.seo);
+
+	function words(text: string): number {
+		return text.split(/\s+/).filter((word) => word.length > 0).length;
+	}
+
+	it("some pages have copy and some do not (the test is not vacuous)", () => {
+		expect(withCopy.length).toBeGreaterThan(0);
+		expect(withCopy.length).toBeLessThan(PAGES.length);
+	});
+
+	it("indexable iff the page has EN copy", () => {
+		for (const page of PAGES) {
+			expect(isPageIndexable(page), page.slug).toBe(
+				en.pages?.[page.slug]?.seo !== undefined,
+			);
+		}
+	});
+
+	it("indexable pages keep the tag under a locale switch", () => {
+		setLocale("ru");
+		for (const page of withCopy) {
+			expect(isPageIndexable(page), page.slug).toBe(true);
+		}
+	});
+
+	// The robots tag follows the presence of the `seo` block, so a stub block
+	// would index a thin page. These are the gates of docs/plan-seo.md S2.
+	it.each(withCopy.map((page) => [page.slug]))(
+		"%s passes the content gate before it can be indexed",
+		(slug) => {
+			const seo = en.pages?.[slug]?.seo;
+			if (!seo) throw new Error(`no copy for ${slug}`);
+			expect(
+				seo.longDescription.length,
+				`${slug} longDescription`,
+			).toBeGreaterThan(200);
+			expect(seo.howTo.length, `${slug} howTo`).toBeGreaterThanOrEqual(3);
+			expect(seo.faq.length, `${slug} faq`).toBeGreaterThanOrEqual(3);
+			expect(seo.metaTitle.length, `${slug} metaTitle`).toBeGreaterThan(20);
+			expect(seo.metaTitle.length, `${slug} metaTitle`).toBeLessThan(70);
+			expect(
+				seo.metaDescription.length,
+				`${slug} metaDescription`,
+			).toBeGreaterThan(70);
+			expect(
+				seo.metaDescription.length,
+				`${slug} metaDescription`,
+			).toBeLessThan(200);
+			const total =
+				words(seo.longDescription) +
+				seo.howTo.reduce((n, step) => n + words(step), 0) +
+				seo.faq.reduce((n, item) => n + words(item.q) + words(item.a), 0);
+			expect(total, `${slug} total words`).toBeGreaterThanOrEqual(250);
+		},
+	);
+
+	it("copy slugs point at real pages", () => {
+		const known = new Set(slugs(PAGES));
+		for (const slug of Object.keys(en.pages ?? {})) {
+			if (en.pages?.[slug]?.seo) expect(known, slug).toContain(slug);
+		}
 	});
 });
 

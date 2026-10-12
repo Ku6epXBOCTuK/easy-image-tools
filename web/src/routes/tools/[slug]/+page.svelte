@@ -4,6 +4,7 @@
 	import SchemaToolView from "$lib/components/schema/SchemaToolView.svelte";
 	import Seo from "$lib/components/Seo.svelte";
 	import {
+		isPageIndexable,
 		pageMetaDescription,
 		pageMetaTitle,
 	} from "$lib/i18n/schema-tool-strings";
@@ -27,11 +28,18 @@
 		path={`/tools/${page.slug}`}
 	/>
 {/if}
+<!-- Indexable exactly when the page has EN copy: no hand-maintained list, so a
+     page cannot be indexed with a stub and cannot be forgotten when copy lands. -->
 <svelte:head>
 	{#if !page}
 		<title>{t("brand")} / {t("toolPage.fallbackTitle")}</title>
 	{/if}
-	<meta name="robots" content="noindex, nofollow" />
+	<meta
+		name="robots"
+		content={page && isPageIndexable(page)
+			? "index, follow"
+			: "noindex, nofollow"}
+	/>
 </svelte:head>
 
 {#if !page || !tool}
