@@ -205,19 +205,24 @@ test("split-into-parts-png downloads a zip with named PNG parts", async ({
 	await uploadImage(page, landscapePng);
 	await rangeInput(page, "Columns").fill("3");
 	await rangeInput(page, "Rows").fill("2");
-	await expect(page.getByText("part-1-3.png")).toBeVisible();
+	// Entries are prefixed with the source name (run-chain glueName), so the
+	// base is derived from the fixture instead of repeated as a literal.
+	const base = landscapePng.name.replace(/\.[^.]+$/, "");
+	await expect(
+		page.getByText(`${base}-part-1-3.png`, { exact: true }),
+	).toBeVisible();
 
 	const { name, bytes } = await downloadResultBytes(page);
 	expect(name).toBe("split-into-parts-png.zip");
 	const entries = unzipSync(bytes);
 
 	expect(Object.keys(entries)).toEqual([
-		"part-1-1.png",
-		"part-1-2.png",
-		"part-1-3.png",
-		"part-2-1.png",
-		"part-2-2.png",
-		"part-2-3.png",
+		`${base}-part-1-1.png`,
+		`${base}-part-1-2.png`,
+		`${base}-part-1-3.png`,
+		`${base}-part-2-1.png`,
+		`${base}-part-2-2.png`,
+		`${base}-part-2-3.png`,
 	]);
 	for (const bytes of Object.values(entries)) {
 		expect(Array.from(bytes.subarray(0, 8))).toEqual([
@@ -296,8 +301,11 @@ test("chain: remove step returns to a single tool", async ({ page }) => {
 	});
 	await expect(stepTwo).toBeVisible();
 	// Click remove in the Grayscale card specifically: step order depends on
-	// render timing and can differ between engines.
-	const card = page.getByRole("article").filter({ hasText: "Grayscale PNG" });
+	// render timing and can differ between engines. The card is matched by its
+	// own heading, not by hasText on the article - the per-step "Change tool"
+	// popover lists every tool title inside the card, so the text filter would
+	// match all cards at once.
+	const card = page.getByRole("article").filter({ has: stepTwo });
 	await card.getByLabel("Remove step").click();
 	await expect(stepTwo).toHaveCount(0);
 	expectNoErrors(sink);
