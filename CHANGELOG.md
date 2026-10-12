@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.10.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/0e6a8464aff985e6304c2657ce8c750bcb73e40f..v0.10.0) - 2026-10-12
+#### Features
+- seo descriptions for 20 core tools, index follows content - ([0b30eef](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/0b30eef16cd32bda942c8bceb6b4b39adcaf146b)) - Ku6epXBOCTuK
+- initial seo descriptions texts - ([984f71c](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/984f71c8224c3cbb90941dfad0baae63918c0730)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.9.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/b7ba1f501fc704b699dec67d46e69d6892432a38..v0.9.0) - 2026-10-12
 #### Features
 - update brand name, add domain - ([b7ba1f5](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/b7ba1f501fc704b699dec67d46e69d6892432a38)) - Ku6epXBOCTuK
