@@ -1,3 +1,9 @@
 # allow crawling everything by default
 User-agent: *
 Disallow:
+
+# Service pages (/kit) are excluded from the index with a `noindex` meta tag,
+# not with Disallow: a blocked-but-not-noindexed URL shows up in Search Console
+# as an error and keeps its old indexed snippet.
+
+Sitemap: https://easy-image-tools.com/sitemap.xml

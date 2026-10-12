@@ -41,6 +41,10 @@
 	);
 </script>
 
+<svelte:head>
+	<meta name="robots" content="noindex, nofollow" />
+</svelte:head>
+
 <div class="showcase">
 	<header class="showcase-head">
 		<span class="showcase-eyebrow">KIT SHOWCASE</span>

@@ -103,18 +103,17 @@
 
 Чего нет (пробелы закрываются этапами ниже):
 
-| Пробел                                             | Где сейчас                          | Этап |
-| -------------------------------------------------- | ----------------------------------- | ---- |
-| `noindex` на страницах инструментов                | стоит (`+page.svelte`)              | S1   |
-| `sitemap.xml`                                      | нет                                 | S1   |
-| `robots.txt` без `Sitemap:`                        | allow-all (`web/static/robots.txt`) | S1   |
-| `rel=canonical`                                    | нет                                 | S1   |
-| OG/Twitter-теги, OG-картинки                       | нет                                 | S1   |
-| Канонический домен в абсолютных URL                | нет, деплой на GitHub Pages с базой | S1   |
-| Контент страницы (how-to, FAQ, related)            | title, robots и отрендеренный H1    | S2   |
-| JSON-LD (SoftwareApplication, FAQPage, Breadcrumb) | нет                                 | S3   |
-| `llms.txt`, хабы категорий с текстом               | нет                                 | S3   |
-| GSC + доводка GA до cookieless-конфигурации        | GA4 стоит, GSC не подключён         | S4   |
+| Пробел                                             | Где сейчас                       | Этап |
+| -------------------------------------------------- | -------------------------------- | ---- |
+| `noindex` на страницах инструментов                | стоит (`+page.svelte`)           | S1   |
+| `sitemap.xml`                                      | генерируется при сборке (S1b)    | —    |
+| `robots.txt` без `Sitemap:`                        | allow-all + `Sitemap:` (S1c)     | —    |
+| `rel=canonical`                                    | есть, `Seo.svelte` (S1d)         | —    |
+| OG/Twitter-теги                                    | есть; per-tool картинки — S1e    | S1   |
+| Контент страницы (how-to, FAQ, related)            | title, robots и отрендеренный H1 | S2   |
+| JSON-LD (SoftwareApplication, FAQPage, Breadcrumb) | нет                              | S3   |
+| `llms.txt`, хабы категорий с текстом               | нет                              | S3   |
+| GSC + доводка GA до cookieless-конфигурации        | GA4 стоит, GSC не подключён      | S4   |
 
 Строка `noindex` — первая не потому, что её сложнее всего, а потому, что она
 блокирует всё остальное: пока тег стоит, остальные строки таблицы не дают
@@ -211,19 +210,29 @@
       (301) делает сам GitHub Pages при включённом кастомном домене. Делается
       одновременно с S1d (canonical), чтобы Google проиндексировал сразу с
       правильным доменом.
-- [ ] **[S1b]** Скрипт `web/scripts/gen-sitemap.mjs`: генерирует `sitemap.xml` в
-      `build/` из `PAGES` реестра (`web/src/lib/registry`) + статических
-      страниц. Взять адреса у страниц, а не у инструментов: страниц может быть
-      несколько на один инструмент, у инструмента адреса нет. Вызов из
-      `pnpm build` после `vite build` (adapter-static пишет в `build/`,
-      дописываем файл там же). Origin — из env (`PUBLIC_SITE_ORIGIN`), учёт
-      опционального `BASE_PATH`.
-- [ ] **[S1c]** `robots.txt`: `Sitemap:` + закрыть служебный `/kit`; после
-      cleanup — вернуть минимальный allow-all.
-- [ ] **[S1d]** Компонент `Seo.svelte` (kit): canonical (абсолютный URL по
-      актуальному маршруту), OG-теги (title/description/type/url/image),
-      twitter:card. Подключить в root-layout. **Требует `PUBLIC_SITE_ORIGIN`**
-      для абсолютных URL в canonical и OG:url.
+- [x] **[S1b]** Скрипт `web/scripts/gen-sitemap.mjs` — **сделано 2026-10-12**:
+      пишет `sitemap.xml` в `build/` после `vite build` (вызов добавлен в
+      `pnpm build`). Адреса берутся **из собранного HTML**, а не из импорта
+      `PAGES`: список prerender-страниц и есть фактический набор URL, а страницы
+      с `noindex` в HTML автоматически исключаются — sitemap не может разойтись
+      с тем, что реально задеплоено, и не рекламирует то, что мы просим
+      краулеров игнорировать. Проверено: в sitemap попадают `/`, `/list-tools`,
+      `/chains`, но не `/kit`, `/pipeline` и страницы инструментов (пока S1h).
+      Origin — `PUBLIC_SITE_ORIGIN`, фолбэк — `static/CNAME` (тот же домен, что
+      публикует GitHub Pages, без третьей копии литерала); опциональный
+      `BASE_PATH` учитывается как в `vite.config.ts`.
+- [x] **[S1c]** `robots.txt` — **сделано 2026-10-12**: `Sitemap:` добавлен,
+      allow-all сохранён. **Служебный `/kit` закрыт не через `Disallow:`, а
+      через `noindex` в HTML** (как `/pipeline`): заблокированный краулером, но
+      не помеченный noindex URL Google помечает «проиндексирован, несмотря на
+      блокировку в robots.txt» и оставляет старый сниппет. Побочная выгода: тот
+      же признак автоматически выкидывает `/kit` из sitemap.
+- [x] **[S1d]** Компонент `Seo.svelte` (kit) — **был сделан до S1b, отмечено
+      2026-10-12**: canonical (абсолютный URL от `PUBLIC_SITE_ORIGIN` +
+      `SITE_URL`, `web/src/lib/seo.ts`), OG (title/description/type/url/image) и
+      `twitter:card`. Подключён на `/`, `/list-tools`, `/chains`,
+      `/tools/[slug]`. Картинка пока общая `og/default.png` — per-tool остаётся
+      за S1e.
 
 > **Порядок S1:** S1e/S1f/S1g → покупка домена → S1a+S1b+S1c+S1d → **S1h**
 > (снятие `noindex`) → S2-контент. Гейты: `pnpm --dir web build` зелёный; в
