@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.12.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/1981afbc641807a2e95a4fecd109f94f00024b67..v0.12.0) - 2026-10-12
+#### Features
+- ga consent mode v2 - ([dad71f0](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/dad71f0bda3b745735a6de767978f3f5a69aa316)) - Ku6epXBOCTuK
+- add json-ld - ([1981afb](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/1981afbc641807a2e95a4fecd109f94f00024b67)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.11.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/399c3fb282687811c5047f4cee5299a00e3ec8a8..v0.11.0) - 2026-10-12
 #### Features
 - breadcrumbs, related tools - ([399c3fb](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/399c3fb282687811c5047f4cee5299a00e3ec8a8)) - Ku6epXBOCTuK
