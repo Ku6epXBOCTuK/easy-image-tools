@@ -34,6 +34,16 @@
       правило такое (запретить toContain без i18n)
 - [ ] посмотреть ошибки e2e, разрешить запускать е2е без ручного подтверждения,
       и рассмотреть - может уже пора включить их в ci\cd гейт
+- [ ] пересмотреть `{@html}` в `web/src/lib/components/JsonLd.svelte`: сейчас
+      там инлайновый `eslint-disable-next-line svelte/no-at-html-tags`, потому
+      что `<script>{json}</script>` не подставляет значение (Svelte читает
+      содержимое script как raw text — это видно по ошибке «'json' is assigned a
+      value but never used»), а другой способ вставки разметки в Svelte нет.
+      Варианты к рассмотрению: исключение для файла в `web/eslint.config.js`
+      вместо suppress'а в коде; генерация JSON-LD на этапе сборки рядом с
+      sitemap (`web/scripts/gen-sitemap.mjs`); отказ от компонента. Критерий
+      закрытия: в production-коде нет `eslint-disable`, и разметка продолжает
+      попадать в собранный HTML
 
 ## Pipeline
 

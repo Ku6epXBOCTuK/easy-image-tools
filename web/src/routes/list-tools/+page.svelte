@@ -5,6 +5,7 @@
 	import CatalogToolbar from "$lib/components/catalog/CatalogToolbar.svelte";
 	import ToolCard from "$lib/components/catalog/ToolCard.svelte";
 	import Seo from "$lib/components/Seo.svelte";
+	import JsonLd from "$lib/components/JsonLd.svelte";
 	import { favFirst, isFav } from "$lib/favorites.svelte";
 	import {
 		pageDescription,
@@ -13,6 +14,7 @@
 	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
 	import { PAGES } from "$lib/registry";
+	import { breadcrumbSchemaLd } from "$lib/seo";
 	import { toolIcon } from "$lib/tool-icons";
 
 	let query = $state("");
@@ -42,6 +44,11 @@
 	title={t("catalog.pageTitle")}
 	description={t("catalog.metaDescription")}
 	path="/list-tools"
+/>
+<JsonLd
+	data={breadcrumbSchemaLd([
+		{ name: t("toolPage.breadcrumbCatalog"), path: "/list-tools" },
+	])}
 />
 
 <div class="catalog-page">

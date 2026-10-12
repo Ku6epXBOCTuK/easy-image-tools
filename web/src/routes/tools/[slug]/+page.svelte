@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Breadcrumbs from "$lib/components/Breadcrumbs.svelte";
 	import EmptyState from "$lib/components/feedback/EmptyState.svelte";
+	import JsonLd from "$lib/components/JsonLd.svelte";
 	import PageContent from "$lib/components/PageContent.svelte";
 	import SchemaToolView from "$lib/components/schema/SchemaToolView.svelte";
 	import Seo from "$lib/components/Seo.svelte";
@@ -8,8 +9,11 @@
 		isPageIndexable,
 		pageMetaDescription,
 		pageMetaTitle,
+		pageSeo,
+		pageTitle,
 	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
+	import { toolSchemaLd } from "$lib/seo";
 	import { getPageBySlug, getTool } from "$lib/registry";
 	import { SlidersHorizontal as ToolIcon } from "@lucide/svelte";
 
@@ -27,6 +31,19 @@
 		title={pageMetaTitle(page)}
 		description={pageMetaDescription(page)}
 		path={`/tools/${page.slug}`}
+	/>
+	<JsonLd
+		data={toolSchemaLd({
+			title: pageTitle(page),
+			description: pageMetaDescription(page),
+			path: `/tools/${page.slug}`,
+			faq: pageSeo(page)?.faq ?? [],
+			crumbs: [
+				{ name: t("toolPage.breadcrumbCatalog"), path: "/list-tools" },
+				{ name: t(`categories.${page.category}`) },
+				{ name: pageTitle(page) },
+			],
+		})}
 	/>
 {/if}
 <!-- Indexable exactly when the page has EN copy: no hand-maintained list, so a

@@ -326,11 +326,18 @@
 
 ### S3. Структурированные данные + GEO
 
-- [ ] **[S3a]** JSON-LD: `SoftwareApplication` (+ `offers` price 0) и `FAQPage`
-      на страницах инструментов; `WebSite` + `Organization` на главной;
-      `BreadcrumbList` на всех внутренних. Учесть: Google ограничил rich results
-      по FAQ/HowTo для мелких сайтов — разметка нужна прежде всего для
-      LLM-парсинга, она безвредна.
+- [x] **[S3a]** JSON-LD — на странице инструмента `SoftwareApplication`
+      (`offers` price 0), `FAQPage` (из уже написанного FAQ) и `BreadcrumbList`
+      (из тех же крошек, что видны в UI); на главной — `WebSite` +
+      `Organization`; на каталоге — `BreadcrumbList`. Построители в
+      `web/src/lib/seo.ts`, вывод — `web/src/lib/components/JsonLd.svelte`.
+      Проверено на сборке: три разбора в `build/tools/crop-png.html`, FAQPage с
+      4 вопросами, два узла на главной. **Известная грязь:** в `JsonLd.svelte`
+      инлайновый `eslint-disable svelte/no-at-html-tags` — `{@html}`
+      единственный способ вставить значение в Svelte, а
+      `<script>{json}</script>` не работает (Svelte читает содержимое script как
+      raw text). Suppress обоснован экранированием `<` в `\u003c`, но
+      пересмотрен не позже: задача в `docs/backlog.md`, раздел «Тесты и lint».
 - [ ] **[S3b]** `llms.txt` в статике: короткий манифест сайта + список
       инструментов с одним предложением на каждый (генерится из реестра тем же
       скриптом, что sitemap).
