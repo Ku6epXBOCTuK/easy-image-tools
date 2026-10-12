@@ -1,7 +1,14 @@
 <script lang="ts">
-	import { pageSeo } from "$lib/i18n/schema-tool-strings";
+	import { relatedPages } from "$lib/catalog";
+	import ToolCard from "$lib/components/catalog/ToolCard.svelte";
+	import {
+		pageDescription,
+		pageSeo,
+		pageTitle,
+	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
 	import type { Page } from "$lib/registry";
+	import { toolIcon } from "$lib/tool-icons";
 
 	interface Props {
 		page: Page;
@@ -9,6 +16,7 @@
 	let { page }: Props = $props();
 
 	const seo = $derived(pageSeo(page));
+	const related = $derived(relatedPages(page, 6));
 </script>
 
 <!-- Below the tool, not above it: the workspace is what the visitor came for,
@@ -31,6 +39,21 @@
 					<summary>{item.q}</summary>
 					<p>{item.a}</p>
 				</details>
+			{/each}
+		</div>
+
+		<!-- Internal links: the only way a crawler reaches the neighbours of
+		     this page, so the block stays derived from the category, never a
+		     hand-picked list. -->
+		<h2>{t("toolPage.relatedHeading")}</h2>
+		<div class="related">
+			{#each related as item (item.slug)}
+				<ToolCard
+					title={pageTitle(item)}
+					slug={item.slug}
+					description={pageDescription(item)}
+					icon={toolIcon(item.slug)}
+				/>
 			{/each}
 		</div>
 	</section>
@@ -91,9 +114,17 @@
 		font-size: var(--font-size-m);
 		line-height: 1.6;
 	}
+	.related {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--space-l);
+	}
 	@media (--bp-tablet) {
 		.long {
 			font-size: var(--font-size-m);
+		}
+		.related {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>

@@ -1,12 +1,12 @@
 <script lang="ts">
 	import Button from "$lib/components/ui/Button.svelte";
+	import ChipButton from "$lib/components/ui/ChipButton.svelte";
+	import Toggle from "$lib/components/ui/Toggle.svelte";
 	import { ButtonVariantDefine } from "$lib/components/ui/define";
-	import { isFav, toggleFav } from "$lib/favorites.svelte";
-	import { Star } from "@lucide/svelte";
-	import { DragDropProvider } from "@dnd-kit/svelte";
 	import { debounce } from "$lib/core/debounce";
 	import { cachedDataUrl } from "$lib/core/io";
 	import type { PixelImage } from "$lib/core/types";
+	import { isFav, toggleFav } from "$lib/favorites.svelte";
 	import {
 		chainStepTitle,
 		chainWarningNotice,
@@ -17,8 +17,8 @@
 	import { t } from "$lib/i18n/t";
 	import { moveStep, type ChainStep } from "$lib/pipeline.svelte";
 	import { getTool, type Page, type Tool } from "$lib/registry";
-	import ChipButton from "$lib/components/ui/ChipButton.svelte";
-	import Toggle from "$lib/components/ui/Toggle.svelte";
+	import { DragDropProvider } from "@dnd-kit/svelte";
+	import { Star } from "@lucide/svelte";
 	import AddStepButton from "./AddStepButton.svelte";
 	import PartsGrid from "./PartsGrid.svelte";
 	import PreviewTile from "./PreviewTile.svelte";
@@ -32,8 +32,8 @@
 	import { createChainHost } from "./chain-host.svelte";
 	import { createOutputControls } from "./output-controls.svelte";
 	import { hasPreviewResult } from "./schema-preview-model";
-	import { createSchemaToolRunner } from "./schema-tool-runner.svelte";
 	import type { DisplayError } from "./schema-tool-runner.svelte";
+	import { createSchemaToolRunner } from "./schema-tool-runner.svelte";
 	import {
 		createSchemaToolState,
 		toolSchemaOf,
@@ -483,8 +483,8 @@
 
 <style>
 	.schema-tool {
-		padding: calc(var(--space-xxxl) + var(--space-l))
-			clamp(var(--space-m), 4vw, var(--space-xxxl));
+		padding: var(--space-l) clamp(var(--space-m), 4vw, var(--space-xxxl))
+			calc(var(--space-xxxl) + var(--space-l));
 		flex: 1;
 	}
 	.header {

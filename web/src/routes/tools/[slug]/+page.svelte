@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Breadcrumbs from "$lib/components/Breadcrumbs.svelte";
 	import EmptyState from "$lib/components/feedback/EmptyState.svelte";
 	import PageContent from "$lib/components/PageContent.svelte";
 	import SchemaToolView from "$lib/components/schema/SchemaToolView.svelte";
@@ -51,6 +52,7 @@
 		/>
 	</div>
 {:else}
+	<Breadcrumbs {page} />
 	<SchemaToolView {page} {tool} />
 	<PageContent {page} />
 {/if}

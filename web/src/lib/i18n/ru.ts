@@ -53,6 +53,9 @@ export const ru: Dict = {
 		stepError: "Шаг {n} ({title}): {msg}",
 		howToHeading: "Как пользоваться",
 		faqHeading: "Вопросы",
+		relatedHeading: "Похожие инструменты",
+		breadcrumbAria: "Хлебные крошки",
+		breadcrumbCatalog: "Все инструменты",
 	},
 	chain: {
 		addStep: "Добавить шаг",

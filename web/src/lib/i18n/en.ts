@@ -52,6 +52,9 @@ export const en: Dict = {
 		stepError: "Step {n} ({title}): {msg}",
 		howToHeading: "How to use it",
 		faqHeading: "Questions",
+		relatedHeading: "Related tools",
+		breadcrumbAria: "Breadcrumb",
+		breadcrumbCatalog: "All tools",
 	},
 	chain: {
 		addStep: "Add step",
