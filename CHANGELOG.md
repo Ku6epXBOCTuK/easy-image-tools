@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.9.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/b7ba1f501fc704b699dec67d46e69d6892432a38..v0.9.0) - 2026-10-12
+#### Features
+- update brand name, add domain - ([b7ba1f5](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/b7ba1f501fc704b699dec67d46e69d6892432a38)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.8.0](https://github.com/Ku6epXBOCTuK/easy-png-tools/compare/f67ddb3b0a7c69316caa3bed30d976f41d7a1219..v0.8.0) - 2026-10-11
 #### Features
 - add tooltip for errors\warnings - ([be9ecd0](https://github.com/Ku6epXBOCTuK/easy-png-tools/commit/be9ecd0e8edfbe83a6c148cad5c61cce22687ccb)) - Ku6epXBOCTuK
