@@ -164,7 +164,7 @@ export default tseslint.config(
 				"warn",
 				{
 					baseLocaleFallback: ["pages.*.title", "pages.*.description"],
-					ignoreMissingPatterns: ["tools.*.params"],
+					ignoreMissingPatterns: ["tools.*.params", "pages.*.seo"],
 				},
 			],
 		},

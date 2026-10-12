@@ -102,7 +102,10 @@
   проверяются.
 - `ignoreMissingPatterns: string[]` — паттерны ключей, которые временно не
   проверяются на missing; в текущей конфигурации это неиспользуемые
-  `tools.*.params`. Эта опция не отключает empty/placeholder checks.
+  `tools.*.params` и `pages.*.seo` — длинный текст страниц инструмента
+  (SEO-блок, `docs/plan-seo.md` S2a) пишется только на индексируемой EN-локали,
+  RU придёт вместе с префиксом `/ru/`. Эта опция не отключает empty/placeholder
+  checks.
 - Тесты: `__tests__/dict-consistency.test.ts`, фикстуры-словари в
   `__fixtures__/src/lib/i18n/` (`en`, `ru`, `de` — консистентные, zero-warn) — в
   тестах подаются модифицированные варианты `en.ts`/`ru.ts` против эталонных на

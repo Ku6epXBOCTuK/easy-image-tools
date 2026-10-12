@@ -50,6 +50,8 @@ export const en: Dict = {
 		stepHeading: "Step {n}",
 		removeStepAria: "Remove step",
 		stepError: "Step {n} ({title}): {msg}",
+		howToHeading: "How to use it",
+		faqHeading: "Questions",
 	},
 	chain: {
 		addStep: "Add step",
@@ -392,7 +394,80 @@ export const en: Dict = {
 	},
 	// Page titles/descriptions are not duplicated in the base locale: the EN
 	// string from the page registry (`web/src/lib/registry/pages/`) is used.
-	pages: {},
+	// The `seo` copy is the exception: it has no registry counterpart and
+	// exists only in the dictionary.
+	pages: {
+		"crop-png": {
+			title: "Crop PNG online",
+			seo: {
+				metaTitle: "Crop PNG Online - Free Image Cropper, No Upload",
+				metaDescription:
+					"Crop a PNG right in your browser: choose the area, set the size, download the result. Free, no upload, no signup. Works with PNG, JPG, WebP and BMP.",
+				longDescription:
+					"Crop PNG cuts a rectangular area out of an image and keeps only what you selected. Everything happens inside your browser tab: the file is decoded, cut and re-encoded on your device, so it is never uploaded, never stored on a server and never visible to anyone else. The upload accepts PNG, JPG, WebP and BMP, and the Download button writes the result back as PNG, JPG, WebP or BMP. Coordinates are pixels counted from the top-left corner, and the selected area is clipped to the image — a rectangle that hangs over the edge is cut down to the part that actually exists, and the result tile says so when that happens.",
+				howTo: [
+					"Drop an image into the source area, or pick a file from your device.",
+					"Set X and Y to the top-left corner of the area you want to keep.",
+					"Set Width and Height to the size of that area; both default to the full image.",
+					"The preview redraws as you type, and values beyond the image edge are clipped for you.",
+					"Pick the output format in the Download button and save the result.",
+				],
+				faq: [
+					{
+						q: "Does cropping a PNG reduce its quality?",
+						a: "No. Cropping copies the pixels of the selected area exactly as they are — no resampling and no re-compression inside the tool. If you export to JPG or WebP, the encoder of that format applies its own compression, and the quality slider in the Download button controls how much.",
+					},
+					{
+						q: "Are my images uploaded to a server?",
+						a: "No. Decoding, cutting and encoding all run in the page you have open. The tool sends no request with your file, needs no account, has no daily limit, and is free for commercial use. It is open source, so the claim can be checked in the code.",
+					},
+					{
+						q: "Can I crop a JPG or a WebP, not only a PNG?",
+						a: "Yes — PNG, JPG, WebP and BMP are all accepted. The page address keeps the png name because that is the most searched spelling of this tool, but the tool itself does not care about formats.",
+					},
+					{
+						q: "What happens if the crop area goes outside the image?",
+						a: "The area is clipped to the intersection with the image, so the result is never bigger than the original. When the output ends up smaller than the requested rectangle, a note on the result tile tells you the area was clamped.",
+					},
+				],
+			},
+		},
+		"resize-png": {
+			title: "Resize PNG online",
+			seo: {
+				metaTitle: "Resize PNG Online - Free Image Resizer, No Upload",
+				metaDescription:
+					"Resize PNG images in your browser and keep the aspect ratio. Free, no upload, no limits, no signup. Works with PNG, JPG, WebP and BMP.",
+				longDescription:
+					"Resize PNG scales an image to new pixel dimensions with bilinear interpolation, which keeps edges smooth when the picture is enlarged or reduced. The scaling runs locally in your browser, so the original file is never uploaded and never leaves your device. The upload takes PNG, JPG, WebP and BMP, and you choose the output format in the Download button. With the aspect ratio kept, one side defines the scale and the other follows; if you set both sides, the image is fitted inside them, so it is scaled down until it fits rather than stretched.",
+				howTo: [
+					"Drop an image into the source area, or pick a file from your device.",
+					"Enter the new width or height; with aspect kept the other side is recalculated for you.",
+					"Set both sides only when you want the image to fit inside a fixed box.",
+					"Check the preview: the dimensions under the tile show the real output size.",
+					"Choose PNG, JPG, WebP or BMP in the Download button and save.",
+				],
+				faq: [
+					{
+						q: "Does resizing make the image blurry?",
+						a: "Enlarging adds pixels that were not in the original, so fine detail softens — that is unavoidable at any tool. Bilinear interpolation keeps the transition smooth instead of blocky. For photos that must stay sharp when enlarged, generate or upscale at a higher source resolution instead.",
+					},
+					{
+						q: "Will the aspect ratio change?",
+						a: "Not while the aspect ratio is kept: set one side and the other follows the original ratio. Set both sides and the image is scaled until it fits inside them, which keeps the ratio but may leave the result smaller than the box.",
+					},
+					{
+						q: "Are my images uploaded anywhere?",
+						a: "No. Resizing runs in your browser with no server involved — no upload, no account, no daily limit, free for commercial use, and open source.",
+					},
+					{
+						q: "Can I resize a JPG or WebP instead of a PNG?",
+						a: "Yes. PNG, JPG, WebP and BMP are accepted on upload, and the output format is yours to choose in the Download button, including a quality slider for the lossy formats.",
+					},
+				],
+			},
+		},
+	},
 	tools: {
 		"file-size": {
 			results: {

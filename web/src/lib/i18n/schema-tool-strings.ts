@@ -2,6 +2,7 @@ import type { Page } from "$lib/registry";
 import { PAGES } from "../registry";
 import type { ChainWarning } from "$lib/run-chain";
 import type { Field } from "$lib/registry-schema";
+import type { SeoContent } from "./dict";
 import { getMergedDict } from "./locale.svelte";
 import { normalizeForSearch, scoreDoc, type SearchDoc } from "./matching";
 import { ru } from "./ru";
@@ -20,6 +21,28 @@ export function pageTitle(page: Page): string {
 
 export function pageDescription(page: Page): string {
 	return getMergedDict().pages?.[page.slug]?.description ?? page.description;
+}
+
+/** Long-form page copy, or undefined while a page has none. */
+export function pageSeo(page: Page): SeoContent | undefined {
+	return getMergedDict().pages?.[page.slug]?.seo;
+}
+
+/** SERP `<title>`; the brand prefix is only a fallback for pages without copy. */
+export function pageMetaTitle(page: Page): string {
+	const brand = t("brand");
+	return (
+		getMergedDict().pages?.[page.slug]?.seo?.metaTitle ??
+		`${brand} / ${pageTitle(page)}`
+	);
+}
+
+/** SERP meta description; falls back to the registry description. */
+export function pageMetaDescription(page: Page): string {
+	return (
+		getMergedDict().pages?.[page.slug]?.seo?.metaDescription ??
+		pageDescription(page)
+	);
 }
 
 /** Step title for chain UIs: the owning page title, else the raw tool id. */

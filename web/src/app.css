@@ -162,6 +162,8 @@
 		--size-parts-grid-min: 120px;
 		--size-workspace-min: 260px;
 		--size-content-max-wide: 1680px;
+		--size-content-prose: 1120px;
+		--size-content-measure: 84ch;
 
 		--font-size-s: 12px;
 		--font-size-m: 14px;

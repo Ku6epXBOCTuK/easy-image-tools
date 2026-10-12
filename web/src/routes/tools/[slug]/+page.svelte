@@ -1,8 +1,12 @@
 <script lang="ts">
 	import EmptyState from "$lib/components/feedback/EmptyState.svelte";
+	import PageContent from "$lib/components/PageContent.svelte";
 	import SchemaToolView from "$lib/components/schema/SchemaToolView.svelte";
 	import Seo from "$lib/components/Seo.svelte";
-	import { pageDescription, pageTitle } from "$lib/i18n/schema-tool-strings";
+	import {
+		pageMetaDescription,
+		pageMetaTitle,
+	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
 	import { getPageBySlug, getTool } from "$lib/registry";
 	import { SlidersHorizontal as ToolIcon } from "@lucide/svelte";
@@ -18,8 +22,8 @@
 
 {#if page}
 	<Seo
-		title={`${t("brand")} / ${pageTitle(page)}`}
-		description={pageDescription(page)}
+		title={pageMetaTitle(page)}
+		description={pageMetaDescription(page)}
 		path={`/tools/${page.slug}`}
 	/>
 {/if}
@@ -40,6 +44,7 @@
 	</div>
 {:else}
 	<SchemaToolView {page} {tool} />
+	<PageContent {page} />
 {/if}
 
 <style>

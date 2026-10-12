@@ -51,6 +51,8 @@ export const ru: Dict = {
 		stepHeading: "Шаг {n}",
 		removeStepAria: "Убрать шаг",
 		stepError: "Шаг {n} ({title}): {msg}",
+		howToHeading: "Как пользоваться",
+		faqHeading: "Вопросы",
 	},
 	chain: {
 		addStep: "Добавить шаг",

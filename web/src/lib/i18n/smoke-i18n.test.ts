@@ -53,7 +53,9 @@ describe("smoke: i18n (new UI)", () => {
 		setLocale("ru");
 		expect(pageTitle(page)).toBe(ru.pages?.[page.slug]?.title);
 		setLocale("en");
-		expect(pageTitle(page)).toBe(page.title);
+		// EN uses the registry title unless the dict overrides it (pages whose
+		// copy was written get an SEO-oriented H1).
+		expect(pageTitle(page)).toBe(en.pages?.[page.slug]?.title ?? page.title);
 	});
 
 	it("5. errors with vars localize to both languages", () => {
