@@ -128,8 +128,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		/* Вложен в PreviewTile.canvas: без растяжения сжимался по контенту и
-		   ломал parts-grid в одну колонку. */
+		/* Nested in PreviewTile.canvas: without stretch it shrank to its
+		   content and collapsed parts-grid into a single column. */
 		width: 100%;
 		align-self: stretch;
 		min-height: var(--size-tile-canvas-min);

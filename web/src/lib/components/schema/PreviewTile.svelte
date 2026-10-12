@@ -90,7 +90,7 @@
 		align-items: center;
 		justify-content: space-between;
 		gap: var(--space-m);
-		/* Резерв под бейдж: строка не прыгает, когда заметка появляется. */
+		/* Reserve for the badge: the row does not jump when the note appears. */
 		min-height: var(--space-xxl);
 		margin-bottom: var(--space-m);
 		font: var(--font-size-s) var(--font-mono);
@@ -105,7 +105,7 @@
 		align-items: center;
 		gap: var(--space-m);
 	}
-	/* Место под заметки результата: бейджи-предупреждения. */
+	/* Slot for result notes: warning badges. */
 	.tile-note {
 		display: inline-flex;
 		align-items: center;

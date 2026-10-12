@@ -1,8 +1,13 @@
 // Rule: COMMENT FORMAT: bounded blocks and bounded density.
 // maxBlockLines caps one comment block; maxRatio caps the share of comment
-// lines in files with minLines+ non-blank lines. Warn-only tripwires:
-// excess means refactor the code, not squeeze the comment.
+// lines in files with minLines+ non-blank lines. In .svelte, <script>,
+// template <!-- --> and <style> CSS (postcss AST) count alike.
 // Details: web/eslint-plugins/README.md.
+
+import {
+	getStyleNodeLoc,
+	getStyleRoot,
+} from "../design-tokens/style-context.js";
 
 function lineSpan(comment) {
 	return comment.loc.end.line - comment.loc.start.line + 1;
@@ -40,10 +45,42 @@ export default {
 		const maxRatio = context.options[0]?.maxRatio ?? 0.15;
 		const minLines = context.options[0]?.minLines ?? 0;
 
+		const htmlComments = [];
+
+		// `<style>` is a postcss AST, not a token stream, so ESLint's comment
+		// tokens never include those comments; they come from the shared helper
+		// the design-tokens rules use (null outside Svelte components).
+		const styleRoot = getStyleRoot(context);
+		const styleNodeLoc = getStyleNodeLoc(context);
+
 		return {
-			Program(node) {
+			// svelte-eslint-parser keeps `<!-- -->` template comments out of the
+			// token stream (they are AST nodes, not comment tokens), so
+			// getAllComments() below never sees them. Collected during traversal
+			// to catch template comments nested inside markup elements too.
+			SvelteHTMLComment(node) {
+				htmlComments.push(node);
+			},
+			"Program:exit"(node) {
 				const sourceCode = context.sourceCode;
-				const comments = sourceCode.getAllComments();
+				// `type: "Block"` keeps a CSS comment from merging with the run
+				// above it: only adjacent `//` lines continue one block.
+				const styleComments = [];
+				if (styleRoot && styleNodeLoc) {
+					styleRoot.walkComments((comment) => {
+						const loc = styleNodeLoc(comment);
+						if (loc.start) styleComments.push({ loc, type: "Block" });
+					});
+				}
+				const comments = [
+					...sourceCode.getAllComments(),
+					...htmlComments,
+					...styleComments,
+				].sort(
+					(a, b) =>
+						a.loc.start.line - b.loc.start.line ||
+						a.loc.start.column - b.loc.start.column,
+				);
 				if (comments.length === 0) return;
 
 				const commentLines = new Set();
@@ -67,7 +104,8 @@ export default {
 						commentLines.add(l);
 					}
 					if (i === 0) continue;
-					// Adjacent `//` lines form one block; anything else starts a new one.
+					// Adjacent `//` lines form one block; HTML template comments and
+					// everything else start a new one (their own span is the block).
 					if (
 						comment.type === "Line" &&
 						comments[i - 1].type === "Line" &&

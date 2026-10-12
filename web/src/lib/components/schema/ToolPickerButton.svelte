@@ -105,8 +105,8 @@
 		color: var(--color-text);
 	}
 	.menu {
-		/* Native popover: top layer + light dismiss + Escape из коробки;
-		   позиционирование — trackPopover (anchor() поддержан не везде). */
+		/* Native popover: top layer + light dismiss + Escape out of the box;
+		   positioning is trackPopover (anchor() is not supported everywhere). */
 		position: fixed;
 		margin: 0;
 		translate: 0 var(--space-s);
@@ -119,8 +119,8 @@
 		border-radius: var(--radius-m);
 		background: var(--color-panel);
 	}
-	/* display задаётся только в открытом состоянии: авторский display
-	   перебивает UA-правило [popover]:not(:popover-open) { display: none }. */
+	/* display applies only while open: the author display overrides the
+	   UA rule [popover]:not(:popover-open) { display: none }. */
 	.menu:popover-open {
 		display: grid;
 	}

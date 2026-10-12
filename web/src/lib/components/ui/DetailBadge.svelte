@@ -60,7 +60,7 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		/* Мини-размер цели в 24px: попадание пальцем без промаха. */
+		/* Mini target size at 24px: tap without missing. */
 		width: calc(var(--space-xxxl) * 0.66);
 		height: calc(var(--space-xxxl) * 0.66);
 		padding: 0;
@@ -78,9 +78,9 @@
 		color: var(--color-text);
 		border-color: var(--color-main);
 	}
-	/* Нативный popover живёт в top layer: light dismiss, Escape и раскладка
-	   поверх всего — из коробки. Позиционирование — trackPopover: anchor()
-	   поддержан не во всех браузерах. */
+	/* The native popover lives in the top layer: light dismiss, Escape and
+	   stacking above everything come for free. Positioning is trackPopover:
+	   anchor() is not supported in every browser. */
 	.popover {
 		position: fixed;
 		margin: 0;
