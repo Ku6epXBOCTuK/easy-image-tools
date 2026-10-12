@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.11.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/399c3fb282687811c5047f4cee5299a00e3ec8a8..v0.11.0) - 2026-10-12
+#### Features
+- breadcrumbs, related tools - ([399c3fb](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/399c3fb282687811c5047f4cee5299a00e3ec8a8)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.10.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/0e6a8464aff985e6304c2657ce8c750bcb73e40f..v0.10.0) - 2026-10-12
 #### Features
 - seo descriptions for 20 core tools, index follows content - ([0b30eef](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/0b30eef16cd32bda942c8bceb6b4b39adcaf146b)) - Ku6epXBOCTuK
