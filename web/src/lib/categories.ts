@@ -18,3 +18,7 @@ export type CategoryId = (typeof CATEGORIES)[keyof typeof CATEGORIES];
 
 /** Category order in the catalog (as defined in `CATEGORIES`). */
 export const CATEGORY_IDS = Object.keys(CATEGORIES) as CategoryId[];
+
+export function isCategoryId(value: string): value is CategoryId {
+	return (CATEGORY_IDS as string[]).includes(value);
+}

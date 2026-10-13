@@ -1,18 +1,30 @@
 <script lang="ts">
+	import { resolve } from "$app/paths";
 	import type { Snippet } from "svelte";
+	import type { CategoryId } from "$lib/categories";
 	import { t } from "$lib/i18n/t";
 
 	interface Props {
 		label: string;
 		count: number;
+		/** Category of the group; the heading becomes a link to its hub page. */
+		category?: CategoryId;
 		children: Snippet;
 	}
-	let { label, count, children }: Props = $props();
+	let { label, count, category, children }: Props = $props();
+
+	const href = $derived(
+		category ? resolve("/categories/[category]", { category }) : undefined,
+	);
 </script>
 
 <section class="catalog-group">
 	<div class="group-title">
-		<h2>{label}</h2>
+		{#if href}
+			<h2><a {href}>{label}</a></h2>
+		{:else}
+			<h2>{label}</h2>
+		{/if}
 		<i>{count.toString().padStart(2, "0")} <!-- --> {t("catalog.toolsCount")}</i
 		>
 	</div>
@@ -41,6 +53,13 @@
 		letter-spacing: var(--space-text-xl);
 		text-transform: uppercase;
 		color: var(--color-text);
+	}
+	.group-title h2 a {
+		color: inherit;
+		text-decoration: none;
+	}
+	.group-title h2 a:hover {
+		color: var(--color-main);
 	}
 	.group-title i {
 		font: var(--font-size-s) var(--font-mono);

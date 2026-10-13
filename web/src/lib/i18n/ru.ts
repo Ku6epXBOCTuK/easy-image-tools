@@ -13,6 +13,10 @@ export const ru: Dict = {
 		footerNote:
 			"Все операции выполняются локально в вашем браузере — файлы никуда не отправляются.",
 	},
+	footer: {
+		hubsHeading: "Категории инструментов",
+		hubsAria: "Категории инструментов",
+	},
 	categories: {
 		all: "Все",
 		convert: "Конвертация",
@@ -56,6 +60,12 @@ export const ru: Dict = {
 		relatedHeading: "Похожие инструменты",
 		breadcrumbAria: "Хлебные крошки",
 		breadcrumbCatalog: "Все инструменты",
+	},
+	categoryHub: {
+		heading: "Инструменты: {label}",
+		toolsHeading: "Инструменты этой категории",
+		fallbackDescription:
+			"Инструменты категории «{label}» работают локально в браузере: без загрузки файлов, без регистрации и без лимитов.",
 	},
 	chain: {
 		addStep: "Добавить шаг",

@@ -14,12 +14,12 @@
 	const title = $derived(pageTitle(page));
 </script>
 
-<!-- Middle crumb is plain text: a category has no address of its own until the
-     category hubs land (docs/plan-seo.md S3c), then it becomes a link here. -->
 <nav class="crumbs" aria-label={t("toolPage.breadcrumbAria")}>
 	<a href={resolve("/list-tools")}>{t("toolPage.breadcrumbCatalog")}</a>
 	<ChevronRight size={13} aria-hidden="true" />
-	<span>{categoryLabel}</span>
+	<a href={resolve("/categories/[category]", { category: page.category })}>
+		{categoryLabel}
+	</a>
 	<ChevronRight size={13} aria-hidden="true" />
 	<span class="current" aria-current="page">{title}</span>
 </nav>

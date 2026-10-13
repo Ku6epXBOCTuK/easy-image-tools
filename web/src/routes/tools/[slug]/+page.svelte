@@ -5,6 +5,7 @@
 	import PageContent from "$lib/components/PageContent.svelte";
 	import SchemaToolView from "$lib/components/schema/SchemaToolView.svelte";
 	import Seo from "$lib/components/Seo.svelte";
+	import { categoryHubPath } from "$lib/i18n/category-hubs";
 	import {
 		isPageIndexable,
 		pageMetaDescription,
@@ -40,7 +41,10 @@
 			faq: pageSeo(page)?.faq ?? [],
 			crumbs: [
 				{ name: t("toolPage.breadcrumbCatalog"), path: "/list-tools" },
-				{ name: t(`categories.${page.category}`) },
+				{
+					name: t(`categories.${page.category}`),
+					path: categoryHubPath(page.category),
+				},
 				{ name: pageTitle(page) },
 			],
 		})}

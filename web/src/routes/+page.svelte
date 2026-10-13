@@ -61,7 +61,11 @@
 			</CatalogGroup>
 		{/if}
 		{#each groups as group (group.id)}
-			<CatalogGroup label={group.label} count={group.pages.length}>
+			<CatalogGroup
+				label={group.label}
+				count={group.pages.length}
+				category={group.id}
+			>
 				{#each group.pages as page, i (page.slug)}
 					<ToolCard
 						title={pageTitle(page)}

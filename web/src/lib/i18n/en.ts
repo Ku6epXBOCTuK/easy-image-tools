@@ -13,6 +13,10 @@ export const en: Dict = {
 		footerNote:
 			"All operations run locally in your browser — your files are never uploaded anywhere.",
 	},
+	footer: {
+		hubsHeading: "Tool categories",
+		hubsAria: "Tool categories",
+	},
 	categories: {
 		all: "All",
 		convert: "Convert",
@@ -55,6 +59,12 @@ export const en: Dict = {
 		relatedHeading: "Related tools",
 		breadcrumbAria: "Breadcrumb",
 		breadcrumbCatalog: "All tools",
+	},
+	categoryHub: {
+		heading: "{label} tools",
+		toolsHeading: "Tools in this category",
+		fallbackDescription:
+			"{label} tools that run locally in your browser: no upload, no signup, no limits.",
 	},
 	chain: {
 		addStep: "Add step",
@@ -1081,6 +1091,91 @@ export const en: Dict = {
 					},
 				],
 			},
+		},
+	},
+	// Hub copy for `/categories/<id>`. Written per category from the real tools
+	// of the group, not by template: a hub is the topical entry point the
+	// tool pages link up to (docs/plan-seo.md S3c).
+	categoryHubs: {
+		convert: {
+			metaTitle: "Image Converters Online - PNG, JPG, WebP, SVG",
+			metaDescription:
+				"Convert between PNG, JPG, WebP and BMP, rasterize SVG, and turn images into Base64, data URIs, hex pixels or raw bytes. Free, no upload, runs in your browser.",
+			paragraphs: [
+				"Conversion tools change the format of an image, not its content. A lossless format such as PNG or WebP keeps every pixel exactly as it was; a lossy format such as JPG discards detail to reach a smaller file, and the Download button lets you pick the quality that decides how much. Converting to JPG flattens transparency onto a background color, because JPG has no alpha channel - pick a white, black or custom background instead of losing the transparent areas to black.",
+				"Text-based conversions go the other way: Base64, data URIs, hex pixel values and byte arrays are the encodings developers use to embed an image in HTML, CSS, JSON or a source file. The reverse tools rebuild an image from any of those encodings, so a round trip through Base64 gives back the same picture you started with.",
+				"SVG to PNG is the one conversion that changes resolution: a vector source has no fixed pixel size, so the width and height you set decide how sharp the raster output is. Pick a size at least as large as the largest place the image will be shown - SVG stays sharp at any size, a rasterized PNG does not.",
+			],
+		},
+		alpha: {
+			metaTitle: "Transparent PNG Tools - Cut Out, Masks, Alpha Channel",
+			metaDescription:
+				"Make a PNG transparent, remove its background or one color, round the corners, apply circle, square or star masks, and edit the alpha channel. Free, no upload, in your browser.",
+			paragraphs: [
+				"Transparency in a PNG is stored in the alpha channel: a fourth value per pixel that says how opaque it is, from fully invisible to fully solid. The tools here work with that channel directly. Removing one color or the background makes matching pixels transparent, setting or removing the alpha channel switches transparency on or off as a whole, and inverting it swaps what is visible with what is hidden.",
+				"Cutting out a subject is the most common task here. The background removal tool picks the corner pixels as the background color and erases everything close to it - it is a color-key algorithm, not an AI model, so it works on logos, icons, product shots and screenshots with a flat background, and struggles with hair, fur or busy scenes. When a hard cut leaves a fringe of the old background, the defringing tool pulls that halo back toward the edge color, and the edge cleaning tools remove stray specks and small holes.",
+				"Masks are the geometric way to get the same result: a circle, square, star or wavy mask keeps the pixels inside the shape and makes everything else transparent, which is how avatars and app icons are made. Round corners does the same with a radius, and the thicker, thinner, feathered and hardened tools adjust the edge of a selection that already exists - useful when a cutout needs to be a little softer or a little tighter.",
+			],
+		},
+		color: {
+			metaTitle: "Color Tools Online - Grayscale, Sepia, Hue, Palettes",
+			metaDescription:
+				"Change image colors in your browser: grayscale, sepia, invert, hue, temperature, brightness, gamma, posterize, dithering, palettes and HSL, CMYK, Lab conversions.",
+			paragraphs: [
+				"Color tools adjust the channels inside each pixel. Grayscale and the black-and-white threshold reduce an image to shades of gray or to pure black and white, sepia and tint shift the whole image toward one color, invert flips every channel, and hue rotation moves colors around the wheel while keeping their brightness and saturation. Gamma correction and brightness-contrast work differently: gamma changes the midtones, brightness adds or subtracts across the whole range.",
+				"Color models matter when an image has to match something else. The conversion tools show the same pixels expressed as HSL, HSV, HSI, CMYK, YCbCr or Lab values, which is how you read what a color is in the system a printer, a designer or a developer will ask about. Extract Channel pulls one channel out on its own, and swap channels exchanges two - useful when a file's channels are in an unexpected order.",
+				"Reducing the number of colors is a separate job from changing them. Quantize maps the image onto a limited palette, dithering adds noise to fake intermediate shades with fewer colors, and a custom palette lets you choose exactly which colors survive. Fewer colors means a smaller file in an indexed PNG, and it is also how you make an image look deliberately retro.",
+			],
+		},
+		geometry: {
+			metaTitle: "Image Geometry Tools - Crop, Resize, Rotate, Flip",
+			metaDescription:
+				"Crop, resize, rotate, flip, pad and reshape images in your browser. Free, no upload, no signup. Works with PNG, JPG, WebP and BMP.",
+			paragraphs: [
+				"Geometry tools change the shape and the size of an image, never its colors. Crop cuts a rectangle out of it, resize scales the whole picture to new pixel dimensions, and change canvas size moves the picture inside a larger or smaller frame without scaling it - that is the difference between resizing the artwork and adding space around it. Change aspect ratio forces new proportions, and trim empty space removes the transparent or uniform border a screenshot came with.",
+				"Rotation comes in two forms. The 90, 180 and 270 degree turn moves every pixel exactly, so nothing is resampled and nothing gets blurry - that is the one to use for photos. A free rotation takes any angle, and any angle other than a right one has to interpolate the pixels it lands between, which softens the edges slightly. Flipping mirrors the image horizontally or vertically instead.",
+				"The remaining tools place and repeat. Padding and a border add space and a frame, zooming scales up around the center, shifting moves the picture inside its canvas, tiling repeats the image as a pattern, and splitting cuts it into parts - rows, columns, or a grid - which is the way to export a long screenshot or a contact sheet as separate files.",
+			],
+		},
+		filters: {
+			metaTitle: "Image Filters Online - Blur, Sharpen, Pixelate, Noise",
+			metaDescription:
+				"Apply filters to images in your browser: blur, sharpen, pixelate, add noise, vignette, silhouette and JPEG artifacts. Free, no upload, no signup.",
+			paragraphs: [
+				"Filters process every pixel of an image and produce another image. Blur averages each pixel with its neighbors, sharpen does the opposite and boosts local contrast, and both take a radius: small values are subtle, large ones are heavy. Pixelate does the averaging in blocks instead, which collapses detail into visible squares - the classic way to hide a face or shrink a picture's detail without resizing it.",
+				"Noise tools add grain rather than remove it. Adding noise sprays random values over the image, randomizing pixels shuffles them, and JPEG artifacts simulate what happens when an image is saved in a lossy format, so you can see the blocking and smearing before you actually export a JPG. A vignette darkens the edges to pull attention to the center, and silhouette turns the image into a solid shape on a transparent background.",
+				"All of these run on your device, which matters for a second reason: the result is a new image you download, not an edit to the file on your disk. Save the original again whenever you want to compare the before and after - every filter here is non-destructive in that sense.",
+			],
+		},
+		text: {
+			metaTitle: "Add Text to Image Online - Watermark, Date Stamp",
+			metaDescription:
+				"Add text, a date stamp or a tiled watermark to an image in your browser. Free, no upload, no signup, works with PNG, JPG, WebP and BMP.",
+			paragraphs: [
+				"Text tools draw on top of an image without touching the pixels underneath. Add Text places a line of text at a chosen position, with the font, size, color and alignment you pick, and the result keeps the rest of the image exactly as it was - saving it as PNG or WebP stays lossless, only JPG and low-quality WebP will re-compress it. A date stamp does the same thing with today's date in the format you choose.",
+				"A watermark protects an image you share but still want to look finished. The tiled watermark repeats the text or the logo across the whole picture, which is the usual way to mark a preview, and setting its opacity is what keeps it readable as a watermark instead of covering the picture. For a single mark in one corner, Add Text with a low opacity does the same job more quietly.",
+				"Everything is rendered in your browser on a canvas, so the file never leaves your device and no account is needed. Because the text is rasterized at export time, it appears exactly as sharp as the output size you choose - scaling a small image up later will blur the letters along with the picture.",
+			],
+		},
+		analyze: {
+			metaTitle: "Image Analysis Tools - Check PNG, Size, Transparency",
+			metaDescription:
+				"Check an image in your browser: verify it is a PNG, read the file size, check transparency, orientation, grayscale and color count. Nothing is uploaded.",
+			paragraphs: [
+				"Analysis tools read an image and answer a question about it instead of changing it. The format check tells you whether a file really is a PNG or something renamed with a .png extension, the file size tool reports how heavy the file is in kilobytes, and the orientation tool reads the size and the shape of the picture. These are quick facts, useful before you decide whether to resize, recompress or re-save anything.",
+				"Color analysis goes deeper. The transparency check reports whether the image has an alpha channel and whether any pixel is actually see-through, the grayscale check reports whether all pixels share the same value in the three color channels, and the two-color check reports whether the image uses exactly two distinct colors - the signature of a simple logo or icon. Extract color reads the dominant color out of the picture.",
+				"The pixel viewers are the visual counterpart: they highlight the pixels that match a condition, so you can see where the transparency is, where the grays are, where the light and dark areas are, and where the unique colors hide. Use them when an image looks wrong and you need to know which pixels are responsible before you touch anything.",
+			],
+		},
+		generate: {
+			metaTitle: "Generate Images Online - Solid, Gradient, Noise, Color Wheel",
+			metaDescription:
+				"Generate images from scratch in your browser: empty canvas, solid color, linear gradient, noise, grid, placeholder, color wheel, emoji and text to PNG.",
+			paragraphs: [
+				"Generation tools create an image from numbers instead of editing an existing one, which makes them the fastest way to get an exact canvas: a transparent empty image of a given size, a solid color fill, a linear gradient between two or more colors, a color spectrum, or a grid of lines. A placeholder image is a quick way to get a labeled rectangle of the right size for a layout that is still in progress.",
+				"The color tools here are design aids rather than converters. A color wheel shows the hue circle, and the harmony schemes - complementary, triadic, tetradic, analogous and monochromatic - lay out the colors that go with a chosen one. Shades of a color, mixed colors and a sorted palette are the practical version of the same idea: pick colors, see how they relate, export them as an image or as a list.",
+				"Text to image is the last group here. Emoji to PNG and text to PNG render a character or a line of text onto a canvas with a transparent background, which is what you need when a glyph has to become a file - an icon, a sticker, a label. Two images can also be blended pixel by pixel, which is a quick way to compare or combine two versions of the same picture.",
+			],
 		},
 	},
 	tools: {

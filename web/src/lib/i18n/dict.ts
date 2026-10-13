@@ -16,42 +16,33 @@ export function isLocale(value: unknown): value is Locale {
 	);
 }
 
-/**
- * Long-form copy of a tool page (`pages.<slug>.seo`), rendered under the tool
- * UI. EN only for now: EN is the indexable locale, RU gets its copy when the
- * `/ru/` prefix and hreflang land (`docs/plan-seo.md`, section 0).
- */
+/** Long-form page copy. EN only until the `/ru/` prefix lands (docs/plan-seo.md). */
 export type SeoContent = {
-	/**
-	 * SERP `<title>` (~55-60 chars, no brand prefix: the brand only earns a
-	 * query of its own). Falls back to the brand + page title.
-	 */
 	metaTitle: string;
-	/** SERP meta description (~150-160 chars): the claim that wins the click. */
 	metaDescription: string;
-	/** Direct definition of what the tool does; GEO answers in the first paragraph. */
 	longDescription: string;
-	/** Manual steps; the array order is the reading order of the `<ol>`. */
 	howTo: string[];
-	/** FAQ pairs; reused verbatim by the FAQPage JSON-LD (S3a). */
 	faq: { q: string; a: string }[];
 };
 
-/** Page strings (`pages.<slug>`): title, description, and long-form content. */
+/** Page strings (`pages.<slug>`); `seo` absent while the copy is unwritten. */
 export type PageStrings = {
 	title?: string;
 	description?: string;
-	/** Absent on pages whose copy is not written yet. */
 	seo?: SeoContent;
+};
+
+/** Hub copy (`categoryHubs.<id>`); EN only, same locale rule as `SeoContent`. */
+export type CategoryHubContent = {
+	metaTitle: string;
+	metaDescription: string;
+	paragraphs: string[];
 };
 
 /** Tool strings (`tools.<id>`): field labels, verdict keys. */
 export type ToolStrings = {
-	/** Param labels by param id. */
 	params?: Record<string, string>;
-	/** Select option labels: paramId -> value -> label. */
 	options?: Record<string, Record<string, string>>;
-	/** Result strings of text tools (analyze): key -> string. */
 	results?: Record<string, string>;
 };
 
@@ -66,14 +57,21 @@ export type HeaderStrings = {
 	pipeline: string;
 };
 
+export type FooterStrings = {
+	hubsHeading: string;
+	hubsAria: string;
+};
+
 export type Dict = {
-	/** Product brand name; identical in every locale, kept here as the single source. */
+	/** Brand name; identical in every locale, kept here as the single source. */
 	brand: string;
 	header: HeaderStrings;
+	footer: FooterStrings;
 	categories: Record<CategoryId | "all", string>;
 	home: Record<string, string>;
 	catalog: Record<string, string>;
 	toolPage: Record<string, string>;
+	categoryHub: Record<string, string>;
 	chain: Record<string, string>;
 	savedChains: Record<string, string>;
 	sourceCard: Record<string, string>;
@@ -87,15 +85,12 @@ export type Dict = {
 	search: Record<string, string>;
 	ui: Record<string, string>;
 	errors: Record<string, string>;
-	/** Page titles/descriptions; absent in the base locale, EN from the registry is used. */
+	/** Absent in the base locale, EN from the registry is used. */
 	pages?: Record<string, PageStrings>;
+	categoryHubs?: Record<string, CategoryHubContent>;
 	tools: Record<string, ToolStrings>;
-	/** Result/generation panel actions (Generate, Open image...). */
 	actions?: Record<string, string>;
-	/** Text input fields of the new UI (placeholder, Try sample...). */
 	textSource?: Record<string, string>;
-	/** Field labels by key (decision C: label key on the field). */
 	fields?: Record<string, string>;
-	/** Field group titles by key (decision A). */
 	groups?: Record<string, string>;
 };

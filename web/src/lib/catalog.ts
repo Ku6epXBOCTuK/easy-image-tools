@@ -1,8 +1,8 @@
-import { CATEGORY_IDS } from "./categories";
+import { CATEGORY_IDS, type CategoryId } from "./categories";
 import { PAGES, type Page } from "./registry";
 
 export type PreviewGroup = {
-	id: string;
+	id: CategoryId;
 	pages: Page[];
 };
 

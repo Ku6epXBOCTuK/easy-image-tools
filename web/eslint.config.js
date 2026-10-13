@@ -164,7 +164,12 @@ export default tseslint.config(
 				"warn",
 				{
 					baseLocaleFallback: ["pages.*.title", "pages.*.description"],
-					ignoreMissingPatterns: ["tools.*.params", "pages.*.seo"],
+					// EN-only until the `/ru/` prefix lands (docs/plan-seo.md).
+					ignoreMissingPatterns: [
+						"tools.*.params",
+						"pages.*.seo",
+						"categoryHubs.*",
+					],
 				},
 			],
 		},
