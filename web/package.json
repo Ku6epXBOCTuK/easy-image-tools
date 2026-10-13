@@ -20,7 +20,8 @@
 		"lint": "eslint .",
 		"lint:css": "stylelint \"./src/**/*.css\"",
 		"lint:all": "node scripts/lint-all.mjs",
-		"lint:tokens": "node scripts/check-tokens.mjs"
+		"lint:tokens": "node scripts/check-tokens.mjs",
+		"check:seo": "node scripts/check-seo.mjs"
 	},
 	"devDependencies": {
 		"@csstools/postcss-global-data": "^4.0.0",
