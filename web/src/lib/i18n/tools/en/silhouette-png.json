@@ -1,0 +1,32 @@
+{
+	"title": "Make an image a silhouette",
+	"seo": {
+		"metaTitle": "Silhouette PNG - Turn Image Into A Solid Shape",
+		"metaDescription": "Turn any image into a flat silhouette in your browser: every visible pixel becomes one solid color while transparency is kept. Free, no upload.",
+		"longDescription": "Silhouette flattens an image into its outline. Every pixel that is visible becomes one solid color of your choice, while fully transparent areas stay transparent and partially transparent edges keep their own alpha, so a cut-out logo stays a cut-out logo instead of becoming a filled rectangle. A threshold decides how faint a pixel may be and still count as part of the shape - raising it eats away at soft, anti-aliased edges and can leave a ragged outline. This is a shape filter, not a background remover: it does not find the subject, it takes everything you already have visible. Everything runs locally in your browser.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick the fill color for the shape.",
+			"Set the threshold: pixels fainter than it are treated as empty.",
+			"Download the result as a transparent PNG."
+		],
+		"faq": [
+			{
+				"q": "What exactly happens to the colors?",
+				"a": "They are gone: every visible pixel is repainted in the fill color you picked. Only the alpha channel survives, so the result shows the outline of what was there."
+			},
+			{
+				"q": "Does it keep my transparent background?",
+				"a": "Yes. Fully transparent pixels are skipped, and partially transparent ones keep their own alpha, so soft edges and shadows survive as a soft edge rather than a hard step."
+			},
+			{
+				"q": "Why did the outline get holes in it?",
+				"a": "The threshold is too high. Pixels with low alpha were treated as empty and dropped, which happens first on anti-aliased and semi-transparent edges. Lower it until the shape is solid again."
+			},
+			{
+				"q": "Is this a background removal tool?",
+				"a": "No. It does not look for a subject: whatever was already visible becomes the shape. To isolate one object first, cut it out with the remove background or extract color tools, then run the silhouette on the result."
+			}
+		]
+	}
+}

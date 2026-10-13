@@ -1,0 +1,32 @@
+{
+	"title": "Split PNG into HSI",
+	"seo": {
+		"metaTitle": "Split PNG into HSI - Hue, Saturation, Intensity Map",
+		"metaDescription": "Break an image into hue, saturation and intensity, where intensity is the plain average of the channels. Free, no upload - the split is drawn in your browser.",
+		"longDescription": "HSI separates a color into the hue it sits at on the wheel, how strongly it is colored, and how much light it has - intensity being the plain average of the three channel values. Unlike HSL or HSV, none of the three parts reaches its maximum on a primary color, so no component gets pinned at full scale, which is why HSI turns up in classical color processing and segmentation work. It runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is copied through untouched.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick Component: H for the hue map, S for saturation or I for intensity.",
+			"Switch Display to Space as RGB to see hue, saturation and intensity as red, green and blue.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why does no pixel reach full intensity if it is a bright red?",
+				"a": "Because intensity is the average of red, green and blue, and a pure red has zero in the other two. Only a neutral white gets intensity 1. If you want brightness that does reach 1 on a saturated color, use the HSV page instead, where V is the brightest channel."
+			},
+			{
+				"q": "How does the hue map differ from HSL and HSV?",
+				"a": "Not at all in the hue calculation - all three spaces derive hue the same way, and a blue pixel lands at the same angle in each. Only the second and third components differ."
+			},
+			{
+				"q": "What is saturation really telling me?",
+				"a": "How far the pixel's three channels sit from each other. Zero means gray whatever its brightness; high means they are widely spread. A pale pink and a deep red can share a hue and still be very different in saturation."
+			},
+			{
+				"q": "What does the result actually look like?",
+				"a": "Each component is a number from 0 to 1, drawn as a shade of gray from black to white, or dropped into a color channel when you pick Space as RGB. It is a map to read, not a picture to look at."
+			}
+		]
+	}
+}

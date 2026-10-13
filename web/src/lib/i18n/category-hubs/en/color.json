@@ -1,0 +1,10 @@
+{
+	"heading": "Image color tools",
+	"metaTitle": "Color Tools Online - Grayscale, Sepia, Hue, Palettes",
+	"metaDescription": "Change image colors in your browser: grayscale, sepia, invert, hue, temperature, brightness, gamma, posterize, dithering, palettes and HSL, CMYK, Lab conversions.",
+	"paragraphs": [
+		"Color tools adjust the channels inside each pixel. Grayscale and the black-and-white threshold reduce an image to shades of gray or to pure black and white, sepia and tint shift the whole image toward one color, invert flips every channel, and hue rotation moves colors around the wheel while keeping their brightness and saturation. Gamma correction and brightness-contrast work differently: gamma changes the midtones, brightness adds or subtracts across the whole range.",
+		"Color models matter when an image has to match something else. The conversion tools show the same pixels expressed as HSL, HSV, HSI, CMYK, YCbCr or Lab values, which is how you read what a color is in the system a printer, a designer or a developer will ask about. Extract Channel pulls one channel out on its own, and swap channels exchanges two - useful when a file's channels are in an unexpected order.",
+		"Reducing the number of colors is a separate job from changing them. Quantize maps the image onto a limited palette, dithering adds noise to fake intermediate shades with fewer colors, and a custom palette lets you choose exactly which colors survive. Fewer colors means a smaller file in an indexed PNG, and it is also how you make an image look deliberately retro."
+	]
+}

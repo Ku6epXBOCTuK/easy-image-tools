@@ -1,0 +1,32 @@
+{
+	"title": "Build a data URI from an image",
+	"seo": {
+		"metaTitle": "PNG to Data URI - Free Embed String, No Upload, No Limits",
+		"metaDescription": "Turn an image into a complete data:image/png;base64,... value for CSS, HTML or JSON and copy it in one click. Free, no upload, no limits, encoded locally.",
+		"longDescription": "A data URI is the complete string that lets an image live inside a text file: the data: prefix, the media type, the base64 marker, a comma and then the encoded picture. This page takes an image and builds exactly that string, ready to paste into a background-image declaration, an HTML src attribute, a JSON config or an email template, with a button that copies the whole value. The encoding always produces a PNG, whatever you loaded, because the pixels are re-encoded through a canvas as a PNG - so a JPG or WebP comes back as PNG bytes inside the data URI. That is the honest catch: you get a data URI for a PNG, not for the WebP you started with. Everything runs in your browser.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Wait for the full data:image/png;base64,... string to appear in the result panel.",
+			"Press the copy button to take the whole value, prefix included.",
+			"Paste it into a background-image declaration, a src attribute or a JSON config."
+		],
+		"faq": [
+			{
+				"q": "How is this different from the Base64 string?",
+				"a": "The Base64 output is only the payload. The data URI adds the data: prefix, the image/png media type and the comma, which an attribute expects as a whole. The data URI to PNG page here does the reverse."
+			},
+			{
+				"q": "Does it stay a PNG if I upload a JPG?",
+				"a": "Yes, and that is worth knowing: the pixels are encoded again as a PNG, so the data URI always says image/png and carries PNG data."
+			},
+			{
+				"q": "Why is the string so much longer than the file?",
+				"a": "Base64 stores six bits per character, so it costs about a third more characters than the raw bytes. It is a transport format, not a compression one."
+			},
+			{
+				"q": "Is the string uploaded anywhere?",
+				"a": "No. The image is read, encoded and displayed in your browser tab, and no copy is stored - which matters because a data URI contains the whole picture."
+			}
+		]
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"heading": "Image filters",
+	"metaTitle": "Image Filters Online - Blur, Sharpen, Pixelate, Noise",
+	"metaDescription": "Apply filters to images in your browser: blur, sharpen, pixelate, add noise, vignette, silhouette and JPEG artifacts. Free, no upload, no signup.",
+	"paragraphs": [
+		"Filters process every pixel of an image and produce another image. Blur averages each pixel with its neighbors, sharpen does the opposite and boosts local contrast, and both take a radius: small values are subtle, large ones are heavy. Pixelate does the averaging in blocks instead, which collapses detail into visible squares - the classic way to hide a face or shrink a picture's detail without resizing it.",
+		"Noise tools add grain rather than remove it. Adding noise sprays random values over the image, randomizing pixels shuffles them, and JPEG artifacts simulate what happens when an image is saved in a lossy format, so you can see the blocking and smearing before you actually export a JPG. A vignette darkens the edges to pull attention to the center, and silhouette turns the image into a solid shape on a transparent background.",
+		"All of these run on your device, which matters for a second reason: the result is a new image you download, not an edit to the file on your disk. Save the original again whenever you want to compare the before and after - every filter here is non-destructive in that sense."
+	]
+}

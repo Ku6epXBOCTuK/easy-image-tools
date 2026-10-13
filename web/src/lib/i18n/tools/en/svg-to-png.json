@@ -1,0 +1,32 @@
+{
+	"title": "Convert SVG to PNG",
+	"seo": {
+		"metaTitle": "SVG to PNG - Free Converter, No Upload",
+		"metaDescription": "Rasterize an SVG into a PNG in your browser: paste the markup, set the size, download the bitmap. No upload of files, no account, no watermark.",
+		"longDescription": "SVG is vector markup: it stores shapes, paths and text, and the browser draws it at whatever size the layout asks for. Some programs do not draw SVG at all, so an icon or a chart sometimes has to be handed over as a bitmap. This page pastes the markup, rasterizes it into a PNG of the size you set, and lets you download it. The SVG is rendered by the browser engine on your machine - no file is uploaded, and no external asset referenced by the SVG is fetched from a server either.",
+		"howTo": [
+			"Paste the SVG code into the text field on the left.",
+			"Set the output size in pixels; the drawing is scaled to fit.",
+			"Check the preview of the rasterized result.",
+			"Download the PNG from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Will the PNG look the same as the SVG?",
+				"a": "Yes, because the same browser engine that renders SVG on a web page renders it here. Curves, strokes, gradients and fonts supported by the browser are reproduced; features that only exist in a desktop editor are not part of SVG in the first place."
+			},
+			{
+				"q": "Which size should I export?",
+				"a": "Export at the size it will be displayed, or at 2x that for a high-density screen. SVG scales without limit, so a bigger export costs file size but stays sharp."
+			},
+			{
+				"q": "What happens to fonts?",
+				"a": "Text is rendered with the fonts available to the browser. If the SVG does not embed its font and relies on a family you do not have, the preview shows a fallback - convert such text to outlines before rasterizing if the exact shapes matter."
+			},
+			{
+				"q": "Is my SVG uploaded anywhere?",
+				"a": "No. The markup is rasterized in your browser tab, so the code never reaches a server. The same applies to any image the SVG references by URL: it is not fetched for you."
+			}
+		]
+	}
+}

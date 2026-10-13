@@ -1,0 +1,32 @@
+{
+	"title": "Make a cutout thinner",
+	"seo": {
+		"metaTitle": "Thin Out a PNG Cutout - Free, Runs in Your Browser",
+		"metaDescription": "Shrink an opaque shape inward by 1 to 10 px so strokes and letters get slimmer, without resizing the picture. Free, no upload, and the file is never stored.",
+		"longDescription": "Making a cutout thinner eats into the opaque area: the shape is shrunk by Radius pixels with a round brush, and any pixel not completely surrounded by visible pixels becomes fully transparent. The colors of surviving pixels are untouched, but the result holds only fully transparent and fully opaque pixels - the soft anti-aliased rim does not survive an erosion. The radius runs from 1 to 10 px, and pixels outside the canvas are not counted, so an object flush with the frame is not eaten away from that side. PNG, JPG, WebP and BMP are accepted, all inside your browser.",
+		"howTo": [
+			"Drop the cutout into the source area, or pick a file from your device.",
+			"Set Radius from 1 to 10 px; 1 is the gentlest setting.",
+			"Check the preview - fine details shrink first, the flat sides move last.",
+			"Download the result as PNG so the thinned shape keeps its transparency."
+		],
+		"faq": [
+			{
+				"q": "My text and hairlines disappeared.",
+				"a": "Anything narrower than the Radius is removed entirely. Keep the Radius at 1 for line art, and extract the alpha mask first if you want to see the real shape before eroding it."
+			},
+			{
+				"q": "Does it also eat the side that touches the frame?",
+				"a": "No. Pixels outside the canvas count as solid, so an object lying against the border keeps that edge and is only thinned on the sides where the picture continues."
+			},
+			{
+				"q": "Why did my soft edge vanish?",
+				"a": "Erosion needs a solid neighborhood and a semi-transparent pixel counts as empty, so what is left is a hard rim with no fade. Feather it afterwards to bring the softness back."
+			},
+			{
+				"q": "Can I make it thicker again?",
+				"a": "Yes, with the make thicker tool. Thinning and thickening use the same round brush and the same Radius scale, so a shape you trimmed can be grown back to roughly where it started."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Change canvas size",
+	"seo": {
+		"metaTitle": "Change PNG Canvas Size - Crop or Pad, No Upload",
+		"metaDescription": "Set an image to an exact canvas size: the overflow is cropped and the missing space is filled with transparency. Nine anchors, free, no upload, no signup.",
+		"longDescription": "Changing the canvas size sets an image to exact pixel dimensions, whatever its original size was. If the new canvas is smaller than the picture, the excess is cropped; if it is larger, the missing space is filled with transparency. The Anchor control decides which part of the image survives and where it sits on the new canvas, with nine positions from top left to bottom right and center as the default. Nothing is scaled, so the remaining picture keeps its full resolution and no interpolation happens anywhere. This is the tool for making a file match a fixed frame that a layout, a game engine or a print template insists on. Everything runs in your browser, and PNG, JPG, WebP and BMP can all be loaded and saved.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Canvas size to the exact width and height you need, or pick a preset.",
+			"Choose Anchor: it decides which edge stays when the canvas is smaller.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Does it crop or does it stretch?",
+				"a": "It crops, and it never stretches. Anything outside the new canvas is cut away at full resolution, so no part of the image is squashed or blurred. To scale the picture instead, use the resize tool."
+			},
+			{
+				"q": "What color fills the new space?",
+				"a": "Always transparent: the added area has a zero alpha channel, so the picture stays clean over any background. If you want a solid color there, run the add padding tool afterwards, where an Opacity slider and a fill color are available."
+			},
+			{
+				"q": "Which anchor should I pick?",
+				"a": "Center by default, which is right for centering a logo in a frame. Pick top left or top center when the top of the image matters, such as a screenshot or a scanned page, and a bottom anchor when the lower part carries the content."
+			},
+			{
+				"q": "Can it enlarge my image?",
+				"a": "It enlarges the canvas, not the picture: the new area stays empty and transparent and the image keeps its original size inside it. For a genuinely bigger picture use the resize tool, or the change aspect ratio page to fit a target ratio."
+			}
+		]
+	}
+}

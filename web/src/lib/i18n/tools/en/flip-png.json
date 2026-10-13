@@ -1,0 +1,32 @@
+{
+	"title": "Flip PNG",
+	"seo": {
+		"metaTitle": "Flip PNG - Mirror Image Horizontally, No Upload",
+		"metaDescription": "Mirror a PNG in your browser: flip it horizontally or vertically with no quality loss and no cropping. Free, no upload, no signup, instant.",
+		"longDescription": "Flipping mirrors an image along one axis: horizontally turns left into right, vertically turns top into bottom. The pixels are only moved to mirrored positions - nothing is rotated, scaled or resampled, and the canvas keeps its size, so a flipped image is exactly as sharp as the original. It is the quick fix for a selfie taken with a mirrored preview, a scanned page that came out backwards, or a design mockup that needs the opposite direction.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Choose the axis: Horizontal for left to right, Vertical for top to bottom.",
+			"Switch between the two to compare - the preview updates instantly.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What is the difference between flip and mirror?",
+				"a": "They are the same operation, named differently. Flipping horizontally mirrors the picture left to right, which is what corrects a photo taken with a mirrored camera preview."
+			},
+			{
+				"q": "Does flipping lose quality?",
+				"a": "No. Each pixel keeps its exact value and only its position changes, so the result is as sharp as the source. This is unlike rotating by an arbitrary angle, which has to resample the whole image."
+			},
+			{
+				"q": "Will text end up backwards?",
+				"a": "Only if the text was part of the picture - a horizontal flip mirrors letters as well. Turn the text layer off or apply the flip before drawing text onto the image."
+			},
+			{
+				"q": "Can I flip both axes at once?",
+				"a": "Yes - run the tool twice. Flipping horizontally and then vertically is the same as a 180 degree rotation, and it costs nothing but a second click."
+			}
+		]
+	}
+}

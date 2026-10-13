@@ -1,0 +1,32 @@
+{
+	"title": "Add a vignette to an image",
+	"seo": {
+		"metaTitle": "Vignette PNG Online - Darken Edges, Free, No Upload",
+		"metaDescription": "Add a vignette to an image in your browser: the edges darken smoothly while the center stays untouched. Free, no upload, no signup.",
+		"longDescription": "A vignette darkens the outer part of an image and leaves the middle alone, the way a lens shades the corners of a photograph. The falloff is smooth rather than a hard frame, which is why it reads as a photographic effect instead of a border. It is a quick way to focus attention on the middle of a photo, to match a caption to an image, or to hide the edges of a composite. The effect is computed in your browser and the image is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set the strength: zero leaves the image alone, higher values darken the edges more.",
+			"Check the preview; the center should stay as bright as the source.",
+			"Download the result in the format you need from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Does the vignette touch the center of the image?",
+				"a": "No. The darkening grows towards the edges and falls to nothing in the middle, so the subject stays as bright as it was in the original."
+			},
+			{
+				"q": "What does the strength setting do?",
+				"a": "It sets how dark the corners become. At 0 the image is unchanged; as the value rises the edges deepen. Because the falloff is smooth, there is no edge where the darkening suddenly starts."
+			},
+			{
+				"q": "Why does my picture look banded after a strong vignette?",
+				"a": "Very dark areas have fewer color steps available, so the smooth gradient can break into visible rings in an 8-bit image. A gentler strength, or saving the result as a high quality JPG or WebP, reduces it."
+			},
+			{
+				"q": "Is the image uploaded?",
+				"a": "No. The vignette is applied in your browser tab, so the file is never sent to a server and nothing is stored."
+			}
+		]
+	}
+}

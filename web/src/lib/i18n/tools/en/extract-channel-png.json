@@ -1,0 +1,32 @@
+{
+	"title": "Extract channel PNG",
+	"seo": {
+		"metaTitle": "Extract Color Channel PNG - Red, Green, Blue, Free",
+		"metaDescription": "Pull the red, green or blue channel out of an image and see it as shades of gray. Free and instant, nothing is uploaded - the channel split happens in your browser.",
+		"longDescription": "Extracting a channel keeps one of the three color values of every pixel and writes it into all three output channels, so the picture comes back as a grayscale image in which bright means a lot of that color. It is a diagnostic view rather than a converter: on a photo the green channel usually reveals the most detail because human vision is most sensitive to it, while blue picks up shadows. Everything runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is preserved.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Choose Channel: Red, Green or Blue.",
+			"Switch between them to compare - the differences are the information the picture is hiding.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Can I pull out the transparency channel?",
+				"a": "No. Only red, green and blue are available; the alpha channel is carried through to the result rather than shown. To see transparency itself, use the show transparent areas tool."
+			},
+			{
+				"q": "Why is the result black and white if I picked Red?",
+				"a": "The chosen value is written to all three output channels, so it shows as a shade of gray. A pixel with a full red value becomes white, a pixel with no red at all becomes black."
+			},
+			{
+				"q": "Does the green channel really have the most detail?",
+				"a": "In most photographs, yes. The luma weights used across this site give green roughly twice the weight of red and five times that of blue, so the green channel is usually the smoothest and red the noisiest."
+			},
+			{
+				"q": "What if I want a real grayscale picture instead?",
+				"a": "Use the grayscale tool, which mixes all three channels into one luminance value. It is the right choice when the output is meant to be monochrome rather than an inspection of one channel."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Make a color transparent",
+	"seo": {
+		"metaTitle": "Make a Color Transparent in PNG - Free, No Upload",
+		"metaDescription": "Clear every pixel close to a chosen color and leave the rest of the picture alone, with a tolerance from 0 to 100 percent. Free, local, no account needed.",
+		"longDescription": "Removing a color makes every pixel close to a chosen one fully transparent, which is the quick way to drop a flat backdrop. Pick the Target color and the Color tolerance: the tool measures the distance between each pixel and that color in RGB space and clears everything inside the tolerance, expressed as a share of the largest distance a color can have. Nothing else is touched, so the remaining pixels keep their colors and their alpha, and the match is by value only - the same color inside your subject disappears too. It runs in your browser, and PNG, JPG, WebP and BMP are accepted.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick the Target color in the swatch - set it to the exact backdrop color.",
+			"Raise Color tolerance until the backdrop is gone; 0 matches one exact shade.",
+			"Turn on Show mask to see what matched, then download the result as PNG."
+		],
+		"faq": [
+			{
+				"q": "What does the tolerance percentage mean?",
+				"a": "It is the allowed distance from the target color as a share of the maximum possible one. Zero removes only near-exact matches, 10 already covers a visibly different shade, and 100 removes every pixel."
+			},
+			{
+				"q": "It ate a part of my subject that had the same color.",
+				"a": "Expected: the match is by color value, not by position, so anything of that shade goes. Turn on the outer only option in the remove background tool instead and it will stop at the edge of the object."
+			},
+			{
+				"q": "Is this AI background removal?",
+				"a": "No. There is no model and no subject detection here, just a color comparison. For a flat backdrop that is exact and instant, while a photo with a busy scene will not give a clean cutout this way."
+			},
+			{
+				"q": "The edge of the result is hard. Can it be soft?",
+				"a": "Every pixel either matches or does not, so the tool produces no semi-transparent pixels at all. Run feather edges on the result to get a graded rim."
+			}
+		]
+	}
+}

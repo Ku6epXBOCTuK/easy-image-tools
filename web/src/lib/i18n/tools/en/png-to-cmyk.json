@@ -1,0 +1,32 @@
+{
+	"title": "Convert PNG to CMYK Colors",
+	"seo": {
+		"metaTitle": "Convert PNG to CMYK - Free Ink Decomposition, No Upload",
+		"metaDescription": "Split an image into the cyan, magenta, yellow and black inks a press would lay down. Free and local - the separation runs in your browser, nothing is uploaded.",
+		"longDescription": "CMYK is how a page describes color as ink: cyan, magenta, yellow and a black key. This tool takes an image apart into those four components, one after another, so you can look at what each ink would be laying down - K is how much black the darkest channel needs, and C, M and Y are the extra color required once black is removed. The math is the standard conversion from screen RGB. Everything runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and alpha is untouched.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick Component: C, M, Y or K to see one ink at a time in grayscale.",
+			"Switch Display to Space as RGB to see cyan, magenta and yellow side by side.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Is this a CMYK file I can send to a printer?",
+				"a": "No. The download is a PNG of the component map, not a CMYK image - a press-ready file has to be produced by an editor that writes a real CMYK TIFF or JPEG with an embedded profile. This shows you the separation, it does not package it."
+			},
+			{
+				"q": "Why is the black channel so much of the picture?",
+				"a": "K is one minus the brightest channel, so anything short of a fully lit primary picks up black. Screens were never built to show ink coverage, which is why a flat bright screen color often maps to a surprisingly heavy combination."
+			},
+			{
+				"q": "What does Space as RGB actually show?",
+				"a": "The first three components go into the red, green and blue channels: cyan in red, magenta in green, yellow in blue. It looks like a false-color overlap, and the black key has nowhere to go and is left out."
+			},
+			{
+				"q": "Which one should I look at first for a print job?",
+				"a": "K, since it carries most of the tonal detail, and then the three color inks on the areas where the color actually matters. To judge brightness on its own, the grayscale tool gives the same weights a press uses."
+			}
+		]
+	}
+}

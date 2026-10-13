@@ -1,0 +1,32 @@
+{
+	"title": "Create empty PNG",
+	"seo": {
+		"metaTitle": "Create Empty PNG - Blank Image Generator, No Upload",
+		"metaDescription": "Create a blank PNG of any size in your browser: fully transparent or filled with a solid color. No signup, no limits, generated and downloaded instantly.",
+		"longDescription": "Creating an empty PNG gives you a blank canvas of exactly the size you ask for, either fully transparent or filled with one solid color. Nothing is uploaded because there is nothing to upload: the canvas is generated on your device from the width, height, opacity and color you set, and the file is encoded and saved straight to your machine. Use it as a backdrop for a mockup, as a transparent layer in a design tool, as a spacer in a layout, or as a placeholder that has the exact dimensions your project expects. Sizes run from 1 to 20000 pixels on each side, with presets for the common formats.",
+		"howTo": [
+			"Set Width and Height in pixels, or pick one of the presets such as a square or a screen size.",
+			"Leave Opacity at 0 for a fully transparent canvas, or raise it to fill with the chosen color.",
+			"Pick the fill color if you want a solid background instead of transparency.",
+			"Download the generated PNG from the Download button."
+		],
+		"faq": [
+			{
+				"q": "How do I make a transparent PNG?",
+				"a": "Set Opacity to 0. Every pixel is then written with a fully transparent alpha channel, which is exactly what a transparent PNG is. Raising the slider fills the canvas with the fill color instead; partial values give a semi-transparent sheet."
+			},
+			{
+				"q": "What size can the canvas be?",
+				"a": "From 1 to 20000 pixels per side, with presets for the usual targets. Very large canvases take a moment to generate because every pixel is filled - a 20000 by 20000 canvas is 400 million pixels."
+			},
+			{
+				"q": "Is the file really a valid PNG?",
+				"a": "Yes. The canvas is encoded as a real PNG by the browser, not a renamed blank file, so it opens in any image viewer and works as a source image for the other tools on this site."
+			},
+			{
+				"q": "Do I have to sign up or upload anything?",
+				"a": "No account, no upload, no daily limit, no watermark. The canvas is created and encoded in your browser, and the tool is free for commercial use and open source."
+			}
+		]
+	}
+}

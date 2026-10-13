@@ -1,0 +1,32 @@
+{
+	"title": "Split PNG into HSV",
+	"seo": {
+		"metaTitle": "Split PNG into HSV - Hue, Saturation, Value Map, Free",
+		"metaDescription": "See an image as hue, saturation and value, the three parts behind every color picker. Free, no upload, no signup - the decomposition runs in your browser tab.",
+		"longDescription": "HSV is the color model behind most pickers on screen: a hue angle around the wheel, a saturation that says how far the color sits from gray, and a value that is simply the brightest of the three channels. Because value takes the maximum rather than an average, a fully lit primary does reach the top of the scale - pure red shows value 1. That makes it convenient for picking and for masks that should follow brightness. It runs in your browser on PNG, JPG, WebP and BMP files, uploads nothing, and preserves alpha.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick Component: H for the hue map, S for saturation or V for brightness.",
+			"Switch Display to Space as RGB to see hue, saturation and value as red, green and blue.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "How is value different from intensity in the HSI page?",
+				"a": "Value is the largest of the three channel values, so a strong yellow is as bright as a strong blue. HSI intensity averages them instead, which darkens any color missing a full channel. For a shadow mask, value is the better signal; for overall lightness, intensity is."
+			},
+			{
+				"q": "Why do the shadows of a face look speckled in the hue map?",
+				"a": "Hue is computed from the relative order of the channels, not their magnitude. In a dark area the values sit close together and the differences become noise, so the angle flips around and the map looks broken exactly where the picture has detail."
+			},
+			{
+				"q": "Is a low value the same as low saturation?",
+				"a": "No, and mixing them up is the usual reason a recolor looks wrong. Saturation near zero means the pixel is gray whatever its brightness; value near zero means it is black however colorful it would otherwise have been."
+			},
+			{
+				"q": "What do the two Display options do?",
+				"a": "Grayscale paints only the component you selected, black at zero and white at the top. Space as RGB drops all three into the red, green and blue channels at once for a false-color look at the whole decomposition - and then the Component selector has no effect."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Check if a PNG is transparent",
+	"seo": {
+		"metaTitle": "Check If PNG Is Transparent - Free Local Checker",
+		"metaDescription": "Find out whether an image has transparent or semi-transparent pixels. Free, no upload, nothing is stored - the file is checked in your browser, not on a server.",
+		"longDescription": "A PNG can store transparency, but the file extension does not promise it: a PNG saved from a JPG has no alpha channel at all, and a PNG that does have one may still be fully opaque. This checker decodes the image and reports whether any pixel is fully or partly transparent. Everything runs in your browser on your device - the file is not uploaded, and no copy of it is kept anywhere. Upload accepts PNG, JPG, WebP and BMP, so you can check any of them, not only a PNG.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Wait for the verdict - the image is decoded locally, there is nothing to configure.",
+			"Read the answer: yes means at least one pixel has an alpha value below full opacity.",
+			"If the answer is no and you need transparency, take the picture through the remove background or remove color tools first."
+		],
+		"faq": [
+			{
+				"q": "How does it decide that an image is transparent?",
+				"a": "It reads the alpha channel of every decoded pixel. A pixel counts as transparent when its alpha value is below full opacity, so a single see-through pixel in the corner is enough for a yes."
+			},
+			{
+				"q": "Does a JPG ever count as transparent?",
+				"a": "No. JPEG has no alpha channel, so a JPG always comes back as not transparent. If you converted a transparent PNG to JPG and then want the transparency back, that information is already gone - go back to the original file."
+			},
+			{
+				"q": "Is my image uploaded to check it?",
+				"a": "No. The image is decoded and inspected in your browser tab. The page sends no request with your file and keeps no copy."
+			},
+			{
+				"q": "The answer is yes but I cannot see any transparency. Why?",
+				"a": "Semi-transparent pixels are easy to miss - a light 5% fade over a white background looks white. Use the show transparent areas tool on this site: it paints every pixel that is not fully opaque, so the transparent parts become obvious."
+			}
+		]
+	}
+}

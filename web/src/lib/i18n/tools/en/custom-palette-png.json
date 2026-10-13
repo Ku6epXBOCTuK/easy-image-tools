@@ -1,0 +1,32 @@
+{
+	"title": "Custom palette PNG",
+	"seo": {
+		"metaTitle": "Custom Palette PNG - Map Pixels to Your Hex Colors",
+		"metaDescription": "Snap every pixel to the nearest color from a list of hex codes you type in. Free and local - your palette and your picture are processed in the browser, never uploaded.",
+		"longDescription": "The custom palette tool snaps every pixel to the nearest color from a list you type in, which is how pixel art, brand palettes and duotone conversions get their exact colors. Paste the hex codes separated by commas, and each pixel is matched to whichever entry is closest in red, green and blue distance; the picture then contains no color that is not on your list. It runs entirely in your browser and accepts PNG, JPG, WebP and BMP, with nothing uploaded and the alpha channel left as it was.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Type the colors into the Hex list as full six-digit codes, for example #1b2838,#f4c430,#f7f7f7.",
+			"Anything that is not a six-digit hex code is ignored, so check for typos if a color you typed is missing.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Which format do the colors have to be in?",
+				"a": "Full six-digit hex codes with a leading hash, like #1b2838, separated by commas, spaces or semicolons. Three-digit shorthand such as #fff is skipped, as is any code with a mistake in it, so a silently dropped entry shows up as a color the result never uses."
+			},
+			{
+				"q": "Will the result contain exactly my colors?",
+				"a": "Yes, those and nothing else, but only for the opaque pixels. Fully transparent pixels keep their alpha and their original color values rather than being pulled to a palette entry."
+			},
+			{
+				"q": "Is this pixel art?",
+				"a": "Not by itself - it maps what is already there, it does not redraw anything. If you are converting a photograph into a limited palette and want the banding broken up, take the result through the dithering tool afterwards."
+			},
+			{
+				"q": "How do I come up with the colors?",
+				"a": "Pick one seed color and build from it - complementary, triadic, analogous and shade sets are all a single hue rotation away from each other. Whichever set you land on can be pasted straight into this Hex list field."
+			}
+		]
+	}
+}

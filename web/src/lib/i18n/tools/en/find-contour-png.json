@@ -1,0 +1,32 @@
+{
+	"title": "Trace the outline of an image",
+	"seo": {
+		"metaTitle": "Trace the Contour of a PNG Shape - Free, No Upload",
+		"metaDescription": "Reduce a cutout to a line drawing: keep only the boundary band, 1 to 5 px wide, painted in the color you pick. Free and unlimited, entirely inside your browser.",
+		"longDescription": "Finding the contour reduces a cutout to a line drawing: the shape is shrunk by the Thickness you set, and the pixels that vanish in that step - the band along the boundary - are kept and painted in the Stroke color. Everything else, including the whole interior of the object, becomes fully transparent, so what comes out is an outline rather than a picture with a border. The line is Thickness pixels wide, from 1 to 5 px, and it sits inside the silhouette. PNG, JPG, WebP and BMP are accepted, and the tracing happens in your browser.",
+		"howTo": [
+			"Drop the cutout into the source area, or pick a file from your device.",
+			"Set Thickness from 1 to 5 px; 1 px gives the finest line.",
+			"Pick the Stroke color in the swatch; black is the starting value.",
+			"Download the result - only the line survives, everything else is transparent."
+		],
+		"faq": [
+			{
+				"q": "Where does the line sit, inside or outside the shape?",
+				"a": "Inside. The contour is the band the shape loses when it is shrunk by Thickness, so the outline eats into the object instead of being painted around it."
+			},
+			{
+				"q": "Why did the picture content disappear?",
+				"a": "That is the point of the tool: only the boundary is kept. If you want the picture with a ring drawn around it, use the outline tool instead, which leaves the original pixels alone."
+			},
+			{
+				"q": "What happens to a shape thinner than the line?",
+				"a": "It turns into a solid blob, because every one of its pixels belongs to the boundary band. Hairlines and thin letters need Thickness 1 to stay readable."
+			},
+			{
+				"q": "Can I get the outline and the picture in one file?",
+				"a": "Not from this tool. Save the traced line, then compose the two images with the blend tool if you want them layered in a single picture."
+			}
+		]
+	}
+}

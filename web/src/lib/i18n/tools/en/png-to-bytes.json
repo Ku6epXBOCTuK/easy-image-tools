@@ -1,0 +1,32 @@
+{
+	"title": "List image pixels as RGBA byte values",
+	"seo": {
+		"metaTitle": "PNG to RGBA Bytes - Free Pixel Dump, Nothing Is Uploaded",
+		"metaDescription": "Dump every pixel of an image as four decimal bytes, one image row per line, ready for a canvas script or a shader. Free and private: nothing is uploaded.",
+		"longDescription": "Listing the pixels of an image as RGBA byte values means writing out, for every pixel, four decimal numbers between 0 and 255: red, green, blue, alpha. That is the raw form a canvas script works with - the array handed to a typed array, the buffer written into a shader, the sample a colleague wants as numbers rather than as a picture. This page decodes the file and prints the list in the result panel, one image row per line, so the shape of the image stays readable in the text. PNG, JPG, WebP and BMP are accepted on upload, and what you get is always the decoded pixels, so a JPG simply contributes fully opaque alpha values. There is no quality setting involved: the numbers are the picture.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Read the R G B A groups in the result panel - one line per image row.",
+			"Press the copy button to put the whole list on the clipboard.",
+			"Feed the numbers to a typed array, or switch to the hex listing if the target language prefers that form."
+		],
+		"faq": [
+			{
+				"q": "How many numbers should I see?",
+				"a": "Four for every pixel, so a 100 by 100 image prints 40000 numbers. One image row is one line, which is how you count the width."
+			},
+			{
+				"q": "Are the values the same for every kind of image?",
+				"a": "They describe the decoded picture, so a screenshot, a photo and a flat icon all print four numbers per pixel."
+			},
+			{
+				"q": "Can I paste these numbers back?",
+				"a": "Yes. The bytes to PNG tool rebuilds the image from exactly this layout once you give it the width of a row. The pixel values survive unchanged; the re-encoded file is not guaranteed to match byte for byte."
+			},
+			{
+				"q": "Why do transparent pixels show 0 in the last column?",
+				"a": "Zero alpha is fully transparent, and it is a real value rather than a missing one. A JPG or BMP has no alpha channel, so it reports 255."
+			}
+		]
+	}
+}

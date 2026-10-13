@@ -1,0 +1,32 @@
+{
+	"title": "Blend two colors into a gradient",
+	"seo": {
+		"metaTitle": "Blend Two Colors PNG - Free Gradient Maker, No Upload",
+		"metaDescription": "Blend two colors into one continuous horizontal gradient PNG. Set the pair and the width, then download as PNG, JPG, WebP or BMP. Free, nothing is uploaded.",
+		"longDescription": "Blending two colors means showing every step of the path between them, and this page draws that path as a single continuous horizontal strip: the first color at the left edge, the second at the right edge, and every pixel in between carrying its own mix of the two. It needs no upload and no settings beyond the colors themselves, because there is no source file - the blend is computed per pixel on your device and encoded into a file you can save as PNG, JPG, WebP or BMP. Use it to see how a background fade will really look before writing the CSS, to preview a hover transition between a button color and its pressed state, or to sample the middle tone of a two-color scheme. The honest limits are narrow ones: the strip is always horizontal, its height is fixed at a quarter of its width, and there is no angle control - for a diagonal or any exact size, use the linear gradient tool.",
+		"howTo": [
+			"No upload needed - this tool draws the strip from the two colors you pick.",
+			"Set the Color pair: the first color lands on the left edge, the second on the right.",
+			"Set the Width between 128 and 1024 pixels; the height follows at a quarter of it.",
+			"Download the blend as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What is the difference between this and the linear gradient tool?",
+				"a": "This one is deliberately minimal: two colors, a width, always horizontal. The linear gradient tool adds an angle and lets you set any canvas size, which is what you want for a diagonal fade or an exact hero section size."
+			},
+			{
+				"q": "Can I get the intermediate colors as separate swatches?",
+				"a": "Not here, because the blend is continuous. Use the color steps tool to get a discrete, evenly spaced set of the same two colors, or the monochromatic tool to build a tone ramp from a single base."
+			},
+			{
+				"q": "Why does the strip look like it has visible bands?",
+				"a": "The blend is computed in floating point and rounded to whole bytes, so a very wide, very low contrast pair can still show faint steps once it is quantized. Raise the contrast between the two colors and the banding disappears."
+			},
+			{
+				"q": "Do I need an account or to upload anything?",
+				"a": "No. There is no signup, no watermark and no daily limit, and no file is ever sent anywhere - the strip is built in your browser and the tool is open source."
+			}
+		]
+	}
+}

@@ -1,0 +1,31 @@
+{
+	"title": "Decode a Base64 string into an image",
+	"seo": {
+		"metaTitle": "Base64 to PNG - Free Browser Decoder, Nothing Is Uploaded",
+		"metaDescription": "Paste a Base64 string or a data URI and get the picture back, ready to download. Free, no upload, no account - the decoding happens right in your browser.",
+		"longDescription": "Decoding a Base64 string turns text back into the image bytes it was made from. This page runs the PNG to Base64 encoder backwards: you paste the string, the bytes are decoded in your browser and the picture appears beside the text field. Whitespace and line breaks are ignored, and a complete data: URI works as well as the bare payload because the prefix is stripped first. What comes back is the picture, not the original file: the bytes are decoded to pixels and encoded again, so every pixel is identical while the file bytes are not guaranteed to match. Nothing is uploaded - pasted Base64 is often a credential rather than a photo.",
+		"howTo": [
+			"Copy the Base64 string and paste it into the text field on the left; a full data: URI works too.",
+			"The decoded picture appears in the result tile on the right.",
+			"Save it from the Download button, as PNG or in another format."
+		],
+		"faq": [
+			{
+				"q": "Do I need the MIME type or the file name?",
+				"a": "Neither. Paste the payload alone and it is decoded as it is; paste the whole data:image/png;base64,... value and the prefix is removed first. The PNG signature check on this site reads the first bytes if you want a yes or no before decoding."
+			},
+			{
+				"q": "Why is the downloaded file not identical to my original?",
+				"a": "The string holds compressed bytes while the picture you see is decoded pixels, and saving encodes those pixels again. The pixels match; the bytes are not promised to."
+			},
+			{
+				"q": "Will it decode a Base64 string of a JPG or a WebP?",
+				"a": "Yes. The decoder reads whatever format the bytes describe, so a JPG payload gives back the JPG picture. You can still save it as PNG."
+			},
+			{
+				"q": "Is my pasted string sent to a server?",
+				"a": "No. It is decoded and discarded in your browser tab, and the page makes no request with it - which matters when the string is a secret rather than a picture."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Remove specks from a cutout",
+	"seo": {
+		"metaTitle": "Remove Speckles From a PNG Mask - Free, No Signup",
+		"metaDescription": "Delete isolated dots, dust and one-pixel hairs from a transparent cutout, without touching its colors. Free, no limits, and the cleanup runs in your browser.",
+		"longDescription": "Despeckling is the cleaning pass for a mask that came out of a noisy cut: the shape is first shrunk by Radius pixels and then grown back by the same amount, which removes anything too small to survive the shrink - isolated dots, dust, stray hairs - while restoring the rest of the outline. The colors of surviving pixels are left exactly as they were and keep their own opacity, while the ones that do not survive become fully transparent. The Radius runs from 1 to 3 px. It works in your browser, and PNG, JPG, WebP and BMP are accepted.",
+		"howTo": [
+			"Drop the cutout into the source area, or pick a file from your device.",
+			"Set Radius from 1 to 3 px; start at 1, the gentlest setting.",
+			"Compare the result with the source tile - the isolated dots are gone.",
+			"Download the result and save it as PNG to keep the transparency."
+		],
+		"faq": [
+			{
+				"q": "What exactly counts as a speck?",
+				"a": "Any group of visible pixels thinner than the Radius. The opening shrinks the shape first, and whatever vanishes in that step stays gone, so specks, dust and one-pixel hairs all disappear at once."
+			},
+			{
+				"q": "My thin lines and fine text disappeared.",
+				"a": "That is the honest cost of this operation: a stroke one pixel wide cannot survive the shrink. Keep the Radius at 1, and run the despeckle before adding fine detail rather than after."
+			},
+			{
+				"q": "Does it change the colors of the object?",
+				"a": "No. Only alpha changes - surviving pixels keep their original color and their original transparency, and only the removed ones become fully transparent."
+			},
+			{
+				"q": "What is the opposite of this tool?",
+				"a": "The close holes tool. Both use the same round brush and the same radius: one erases specks smaller than the radius, the other fills gaps smaller than it."
+			}
+		]
+	}
+}

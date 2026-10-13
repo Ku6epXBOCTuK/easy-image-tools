@@ -1,0 +1,32 @@
+{
+	"title": "Build an image from hex pixel values",
+	"seo": {
+		"metaTitle": "HEX Pixels to PNG - Free Image Builder, Nothing Uploaded",
+		"metaDescription": "Assemble an image from rrggbbaa hex values: paste the tokens, set the width, the height is calculated automatically. Free, private, nothing is uploaded.",
+		"longDescription": "Building an image from hex pixel values is the reverse of dumping one: every pixel is written as eight hexadecimal characters - rrggbbaa, two each for red, green, blue and alpha - and this page assembles those values back into the picture they came from. Paste them into the text field, set Width to the number of pixels in a row, and the height is worked out from the total, so a 64 by 64 sprite is 4096 tokens at a width of 64. The format is strict on purpose: each token must be exactly eight hex characters and whitespace is the only separator, which keeps the list readable as a grid. It is also the form a canvas script or a shader snippet already uses, where a color constant is written as 0xrrggbbaa.",
+		"howTo": [
+			"Paste the rrggbbaa tokens into the text field; spaces and line breaks between them are fine.",
+			"Set Width to the pixel count of one row - the height follows from the token count.",
+			"Check the preview: a wrong width shifts every row and the picture shears, which is the fastest way to spot a bad width.",
+			"Download the assembled PNG from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why does every token need eight characters?",
+				"a": "The alpha byte is part of the value, so six digits are not enough. Shorthand such as #fff or #ff000080 is rejected; expand it to eight."
+			},
+			{
+				"q": "Does the height have to be typed too?",
+				"a": "No, only the width. The height is the token count divided by it, and a remainder stops the page with an error instead of dropping pixels."
+			},
+			{
+				"q": "What about uppercase values or a leading hash?",
+				"a": "Case does not matter - uppercase and lowercase both parse. A hash character does not: it is not a separator here, so remove it."
+			},
+			{
+				"q": "Can I get this format out of an image?",
+				"a": "Yes. The PNG to HEX pixels tool lists every pixel as rrggbbaa in exactly this layout, one image row per line, an exact round trip for sprites."
+			}
+		]
+	}
+}

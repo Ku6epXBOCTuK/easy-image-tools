@@ -1,0 +1,32 @@
+{
+	"title": "Cut an image into a circle",
+	"seo": {
+		"metaTitle": "Cut a PNG Into a Circle - Free Mask, No Upload Needed",
+		"metaDescription": "Trim an image to a circle with a movable center: pick the diameter as a share of the shorter side. Free and unlimited, processed right in your browser.",
+		"longDescription": "A circle mask keeps the pixels inside a circle and makes everything outside it transparent. The Shape size slider sets the diameter as a share of the shorter side of the picture, so 100 on a 1200 by 800 image produces a circle 800 pixels wide, and Offset moves that circle into the free space around it. The picture is not resized and its colors are not touched; only the corners lose their opacity. The cut is a hard edge with no anti-aliasing. PNG, JPG, WebP and BMP go in, and the result is written in your browser without an upload.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Shape size from 20 to 100; the diameter is a share of the shorter side.",
+			"Move the circle with Offset if it should not sit in the middle.",
+			"Turn on Show mask to see the shape alone, then download the result."
+		],
+		"faq": [
+			{
+				"q": "Does it crop the picture?",
+				"a": "No. The canvas keeps its size and everything outside the circle becomes transparent instead of being deleted. Use trim empty space afterwards if you want the frame tightened around the circle."
+			},
+			{
+				"q": "Is the edge smooth?",
+				"a": "No, the mask is cut hard, so at full size the rim shows a one-pixel staircase. Run feather edges on the result if you want a soft rim."
+			},
+			{
+				"q": "Why is my circle smaller than I expected on a wide photo?",
+				"a": "Shape size is measured against the shorter side, so on a landscape photo 100 means a circle as tall as the picture and centered, with empty margins at the sides."
+			},
+			{
+				"q": "Can I keep the transparency when I save?",
+				"a": "Yes, as long as you pick PNG or WebP in the Download button. JPG and BMP have no alpha channel, so the corners come out as a flat background color there."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Add border to PNG",
+	"seo": {
+		"metaTitle": "Add Border to PNG - Free Online Image Border, No Upload",
+		"metaDescription": "Draw a colored frame around an image right in your browser: set the thickness and the color, then download the bordered picture. Free, no upload, no signup.",
+		"longDescription": "Adding a border to a PNG means growing the canvas by a chosen number of pixels on every side and filling that frame with one solid color. The picture itself is never touched: no pixel is resampled, rescaled or recompressed, so the result is exactly as sharp as the source and only larger, by twice the thickness in each direction. Thickness runs from 1 to 500 pixels, and the frame is drawn fully opaque, which is what a border usually has to be. Use it for a print mat, a framed screenshot, a mockup plate or a certificate edge. Everything is processed locally in your browser, so the file is never uploaded, and PNG, JPG, WebP and BMP can all be loaded and saved.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Thickness in pixels, from 1 to 500; the default is 5.",
+			"Pick Border color with the color picker or type a hex value.",
+			"Download the bordered image from the Download button as PNG, JPG, WebP or BMP."
+		],
+		"faq": [
+			{
+				"q": "Does adding a border shrink or stretch the image?",
+				"a": "No. The picture keeps its exact pixel dimensions and is placed in the middle of a larger canvas, so nothing is resampled and no quality is lost. Only the canvas grows, by twice the thickness in width and in height."
+			},
+			{
+				"q": "Can the border be transparent?",
+				"a": "Not on this page: the frame is drawn fully opaque, which is what makes it read as a border. For a soft margin that keeps the alpha channel, use the add padding tool, where an Opacity slider decides between a transparent and a colored fill."
+			},
+			{
+				"q": "Are my images uploaded to a server?",
+				"a": "No. Decoding, border drawing and encoding all run in the page you have open, so the file stays on your device. No account, no signup, no daily limit, free for commercial use, and the source is open."
+			},
+			{
+				"q": "Can I use a different width on each side?",
+				"a": "Not here, the frame is the same thickness on all four sides. For asymmetric spacing, use the shift tool to move the picture inside the canvas, or the change canvas size tool, where the Anchor picks which part stays."
+			}
+		]
+	}
+}

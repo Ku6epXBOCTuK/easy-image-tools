@@ -1,0 +1,32 @@
+{
+	"title": "Unique color mask",
+	"seo": {
+		"metaTitle": "Unique Color Mask - Find Rare One-Off Pixels",
+		"metaDescription": "Mark the colors that appear only a few times in an image: compression noise, stray dots and one-off pixels. Free, local, no upload.",
+		"longDescription": "Most images are built from a small number of repeated colors, so the pixels that appear only once are the odd ones out - a compression artifact, a stray dot, a hot pixel, or a line that was left behind in a photo-editing tool. This tool counts how often each color occurs and marks the ones that do not repeat more than the number you set, as a mask. Raising the rarity limit marks more pixels, which is how you look for artifacts that repeat a few times rather than once. The counting happens in your browser, so the image is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Choose the view: a black and white mask, or a highlight over the original picture.",
+			"Set the rarity limit: 1 marks colors that occur once, higher values catch rare colors that repeat a few times.",
+			"Set the highlight color and opacity, then download the mask."
+		],
+		"faq": [
+			{
+				"q": "What counts as a unique color?",
+				"a": "A color that appears no more often than the rarity limit you set. With the limit at 1 the tool marks the colors that occur exactly once, which in a compressed image are usually artifacts."
+			},
+			{
+				"q": "Why does a photo show a lot of marked pixels?",
+				"a": "Photographs contain thousands of slightly different shades, and in a large picture many of them occur only a few times. That is expected for photos, and the tool is most useful on flat graphics, logos and icons."
+			},
+			{
+				"q": "What can I do with the mask?",
+				"a": "Use it to find the pixels that break an otherwise clean image, then remove them with the despeckle tool from this site, or repaint them with the color extract tool."
+			},
+			{
+				"q": "Is the image uploaded?",
+				"a": "No. The color count and the mask are computed in your browser tab, so the file stays on your device and nothing is stored."
+			}
+		]
+	}
+}

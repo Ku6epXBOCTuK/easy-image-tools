@@ -1,0 +1,32 @@
+{
+	"title": "Tint PNG",
+	"seo": {
+		"metaTitle": "Tint PNG - Push a Whole Image Toward One Color, Free",
+		"metaDescription": "Scale every color channel of an image toward one color you choose, with a strength from 0 to 100. Free, no upload - the tint is applied in your browser.",
+		"longDescription": "Tinting scales the three color channels of every pixel toward one color you choose, with a strength that decides how far it goes. At 0 strength the picture is untouched; as the strength rises, the red, green and blue values are multiplied by the matching parts of the tint, so an orange tint pulls the red channel up and the blue channel down. It is a global cast rather than a recoloring: every pixel moves the same distance in the same direction, whatever it shows. Everything runs in your browser on PNG, JPG, WebP and BMP files, uploads nothing, and keeps alpha.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick the tint in the Color swatch; the default is a warm amber.",
+			"Set Strength from 0 to 100, check what full strength looks like, then ease it back.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Can tint change one object in the picture?",
+				"a": "No. Tint applies to every pixel equally, so the red car and the blue sky are both pulled toward the tint color. If you want one subject changed, mask it out first with the extract color from tool or the remove background tool."
+			},
+			{
+				"q": "What happens at 0 and at 100?",
+				"a": "At 0 nothing changes at all - it is a safe no-op for checking a setting. At 100 the channels are multiplied by the tint itself, which can clip bright areas to solid white."
+			},
+			{
+				"q": "How is this different from the sepia page?",
+				"a": "Sepia is one fixed matrix with no settings, tuned for that particular brown. Tint takes any color and any strength, so it covers the whole range from a barely visible cast to a heavy wash."
+			},
+			{
+				"q": "Why do bright areas look unchanged?",
+				"a": "Channel values are multiplied, and a pixel already near 255 has no headroom left to go up. The tint shows most in the midtones and shadows - use the brightness and contrast page first if the picture is too dark."
+			}
+		]
+	}
+}

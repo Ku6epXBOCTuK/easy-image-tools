@@ -1,0 +1,31 @@
+{
+	"title": "Invert PNG colors",
+	"seo": {
+		"metaTitle": "Invert PNG Colors - Free Negative Image Tool",
+		"metaDescription": "Invert the colors of a PNG in your browser: every channel becomes 255 minus its value, like photographic film negative. Alpha stays unchanged. Free, no upload.",
+		"longDescription": "Inverting an image replaces every color channel with its opposite, so white becomes black, a blue sky turns orange and the whole picture looks like a photographic negative. The operation is arithmetic - each channel is mapped to 255 minus its value - and the alpha channel is deliberately left alone, so transparent regions stay transparent instead of turning into an opaque block. It is instant and lossless: no resampling, no re-compression, just a per-pixel subtraction that happens in your browser with no upload of your file.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"The colors invert as soon as the image is loaded - there are no settings.",
+			"Save the inverted result as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why are my transparent areas not inverted?",
+				"a": "The alpha channel is not touched, only the colors. A fully transparent pixel keeps alpha 0 no matter what its color values are, so a transparent PNG stays transparent and does not turn into a solid inverted block."
+			},
+			{
+				"q": "Does inverting reduce image quality?",
+				"a": "No. Inverting is a reversible per-channel operation, not a filter: the result inverted twice is identical to the original. Only the export format can introduce loss, so save as PNG or WebP for a byte-exact negative."
+			},
+			{
+				"q": "What is this called in Photoshop?",
+				"a": "The same thing: Image > Adjustments > Invert, or a Negate adjustment layer in GIMP. Mathematically it is 255 minus each channel value."
+			},
+			{
+				"q": "Does the tool upload my image?",
+				"a": "No. The conversion runs in your browser tab, with no server, no account and no watermark. It is free for commercial use and open source."
+			}
+		]
+	}
+}

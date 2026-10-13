@@ -1,0 +1,33 @@
+{
+	"title": "Color wheel",
+	"seo": {
+		"metaTitle": "Color Wheel PNG - Free HSL Wheel Generator, No Upload",
+		"metaDescription": "Draw an HSL color wheel PNG: hue around the circle, saturation from the center to the rim. Free, no upload, no signup, downloads straight from your browser.",
+		"longDescription": "A color wheel is a circle that encodes two of the three HSL channels at once: the angle around the circle is the hue, and the distance from the center is the saturation, so the middle is a neutral gray that blooms into full color as you move outward. The lightness is held at the one value you choose, which keeps the whole disk readable, and everything outside the circle is left transparent so the wheel drops onto any background. This page needs no upload and no source file - the wheel is drawn pixel by pixel in your browser and saved as PNG, JPG, WebP or BMP. Use it as a picking surface, as the illustration on a color theory page, or as the starting point for a harmony: read a hue off the rim, then feed that color into the complementary, triadic or analogous palette tools. The one real limitation is the lightness slider: pushed to either end the disk becomes flat black or flat white and the hue information is gone.",
+		"howTo": [
+			"No upload needed - the wheel is generated from the Image size and Lightness values.",
+			"Set the Image size between 128 and 1024 pixels; the wheel is always a square.",
+			"Choose the Lightness: near 50 keeps every hue visible, the extremes flatten the disk.",
+			"Hover the preview to read a hue off the rim, then copy that color into a harmony tool.",
+			"Download the wheel as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What do the axes of the wheel mean?",
+				"a": "The angle gives the hue, starting at red on the right and running clockwise through yellow, green, cyan, blue and magenta. The radius gives the saturation, from zero at the center to full at the rim. Lightness is the same for the whole disk."
+			},
+			{
+				"q": "Why is the area outside the circle blank?",
+				"a": "Those pixels are never drawn, so they stay fully transparent. That is useful: the wheel can be placed on any background without a white square around it, and saving it as JPG flattens those corners to the background color instead."
+			},
+			{
+				"q": "How do I turn a hue I like into a palette?",
+				"a": "Pick the color, then run it through the complementary tool for two opposite hues, the triadic tool for three, or the analogous tool for a calm set of neighbours. The wheel itself is for choosing, not for building ramps."
+			},
+			{
+				"q": "Does anything get uploaded?",
+				"a": "No. The wheel is drawn and encoded locally in your browser, with no signup, no watermark and no daily limit."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Check if a PNG is grayscale",
+	"seo": {
+		"metaTitle": "Check If PNG Is Grayscale - Free Local Test",
+		"metaDescription": "Test whether an image uses only shades of gray, or has any color in it. Free, no upload, no signup - the check runs in your browser and the file never leaves it.",
+		"longDescription": "A grayscale image is one where the red, green and blue values of every pixel are identical, which means it can be displayed as pure shades of gray. This test checks that condition on the decoded pixels and answers with a plain yes or no. It runs locally in your browser, so the file is decoded on your own device and is never uploaded. Upload accepts PNG, JPG, WebP and BMP, so the same check works for any of them - the page keeps the png name only because that is how people search for this test.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"The verdict appears immediately; there are no settings to change.",
+			"A yes means every pixel has equal red, green and blue values.",
+			"A no means at least one pixel carries color - use the show color pixels mask to see exactly where."
+		],
+		"faq": [
+			{
+				"q": "What counts as a grayscale image?",
+				"a": "An image where the red, green and blue values of every pixel are the same number. Such a picture holds no hue information, so converting it to a gray mode cannot lose anything that is not already there."
+			},
+			{
+				"q": "Can a color image still look black and white?",
+				"a": "Yes. A photo of a black and white subject stored in color will report no, because the channels are not exactly equal - compression and lighting leave small differences. Visually it is gray, technically it carries color."
+			},
+			{
+				"q": "Does the file get uploaded?",
+				"a": "No. Decoding and the check both happen in your browser tab. Nothing is sent anywhere and nothing is stored."
+			},
+			{
+				"q": "How do I find the colored pixels in a gray-looking image?",
+				"a": "Use the show color pixels tool from this site: it renders every pixel whose channels differ as a mask, so you can see where the leftover color sits before you convert the picture to grayscale."
+			}
+		]
+	}
+}

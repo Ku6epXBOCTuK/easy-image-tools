@@ -1,0 +1,32 @@
+{
+	"title": "List image pixels as hex values",
+	"seo": {
+		"metaTitle": "PNG to HEX Pixels - Free Color List, Runs in Your Browser",
+		"metaDescription": "Print every pixel as an rrggbbaa hex value, one image row per line, for palettes, sprite tables and canvas scripts. Free, private, decoded in your browser.",
+		"longDescription": "Reading the pixels of an image as hex values means printing every pixel as eight hexadecimal characters - rrggbbaa - with two digits each for red, green, blue and alpha, one image row per line. That is the notation you meet wherever a color is written as a constant: a palette in a design tool, a sprite definition in an engine, a fill value in a canvas script or a snippet in a shader, where a color usually appears as 0xrrggbbaa. Because the alpha byte is included, a transparent corner shows up as 00 in the last two characters instead of disappearing, which makes the listing a complete description of the picture. PNG, JPG, WebP and BMP are accepted, and what you read is the decoded picture - there is no quality setting and nothing to choose.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Read the rrggbbaa values in the result panel, one image row per line.",
+			"Press the copy button to put the whole list on the clipboard.",
+			"Paste it into a canvas script or a sprite table."
+		],
+		"faq": [
+			{
+				"q": "What does each group of two characters mean?",
+				"a": "Red, green, blue, then alpha. ff in the last position is fully opaque, 00 fully transparent: ff0000ff is visible red, ff000000 is not."
+			},
+			{
+				"q": "How do I read one specific pixel?",
+				"a": "Count along a line: each token is one pixel and each line is one row. The first token of the first line is the top-left pixel."
+			},
+			{
+				"q": "Will a large image fit in the result panel?",
+				"a": "A 64 by 64 sprite is 4096 tokens and a 256 by 256 photo is 65536, so this is meant for small graphics. Resize first if it is large."
+			},
+			{
+				"q": "Is the round trip lossless?",
+				"a": "In pixel values, yes: feeding the list back into the hex to PNG tool reproduces every pixel exactly. The re-encoded file bytes are not promised to match."
+			}
+		]
+	}
+}

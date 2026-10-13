@@ -1,0 +1,32 @@
+{
+	"title": "Split PNG into parts",
+	"seo": {
+		"metaTitle": "Split PNG into Equal Parts - Download a ZIP, No Upload",
+		"metaDescription": "Cut a PNG into a grid of equal pieces or into fixed size tiles and get them all in one zip archive. Free, runs in your browser, no upload, no signup.",
+		"longDescription": "Splitting an image into parts cuts it into separate files instead of producing one picture. Choose a grid and say how many columns and rows you need, or switch to Tile size and name the exact piece dimensions you want; the canvas is padded with transparency so that every part comes out the same size and no content is lost. This is the tool for taking a sprite sheet apart, for cutting a long screenshot into phone-sized frames, for a texture atlas ready to import, or for feeding a contact sheet into a text-recognition step. Unlike the other tools here, the result is not a single image: the parts come back as separate PNG files named part-01-01, part-01-02 and so on in reading order, delivered as a single zip archive. Everything is done in your browser.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Choose Split by: Grid for a count of columns and rows, or Tile size for fixed parts.",
+			"Set Columns and Rows, or the Tile size width and height; all parts match.",
+			"Download all parts as one zip archive from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What do I get as output?",
+				"a": "Many files, not one image: each part is a separate PNG, named part-01-01, part-01-02, part-02-01 and so on in reading order, and the Download button saves them all together as a single zip archive."
+			},
+			{
+				"q": "Why are my parts not exactly the image size divided by the grid?",
+				"a": "The part size is rounded up so that it divides evenly, and the canvas is padded with transparency on the right and bottom to match. That way every part has identical dimensions and nothing is cut off, at the cost of empty pixels in the last row and column."
+			},
+			{
+				"q": "What is the difference between Grid and Tile size?",
+				"a": "Grid asks for a count and decides the part dimensions for you. Tile size asks for the piece you want, such as 32 by 32 or 512 by 512, and the tool works out how many columns and rows that needs."
+			},
+			{
+				"q": "How many parts can I get?",
+				"a": "Up to 1024 files per run; the tool refuses a larger grid instead of freezing the tab. Columns and Rows in Grid mode go from 1 to 32 each, which is 1024 at the maximum."
+			}
+		]
+	}
+}

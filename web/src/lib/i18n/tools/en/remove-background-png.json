@@ -1,0 +1,33 @@
+{
+	"title": "Remove background from PNG",
+	"seo": {
+		"metaTitle": "Remove PNG Background - Free, No Upload",
+		"metaDescription": "Remove a solid background from a PNG and get a transparent image in your browser. Pick a color, set the tolerance, smooth the edges. Free, no upload.",
+		"longDescription": "Remove background from a PNG makes every pixel of one chosen color transparent, so the subject is left standing on an empty canvas. Pick the background color, widen the tolerance until the whole backdrop disappears, and smooth the boundary if the cut edge looks hard. The result keeps the original resolution and the untouched color of the subject, and it is produced entirely in your browser: the file is decoded, processed and re-encoded on your own device, so nothing is uploaded and nothing is kept on a server. PNG, JPG, WebP and BMP are accepted on upload, and the transparent result can be saved as PNG, JPG, WebP or BMP from the Download button.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Background color to the color of the backdrop you want to get rid of.",
+			"Raise Tolerance until the background disappears; lower it if the subject starts losing parts.",
+			"Keep Outer regions on when the same color appears inside the subject - it protects the inside.",
+			"Raise Smooth to soften the cut edge, then save the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Is this AI background removal?",
+				"a": "No. This is a color-based cut: it removes pixels close to the color you name, not a trained model guessing at objects. That is why it is instant and works offline, and also why it needs a background of roughly one solid color - for hair, fur or busy scenes use a dedicated AI matting tool."
+			},
+			{
+				"q": "Why do parts of my subject stay in the background color?",
+				"a": "Tolerance compares each pixel with the color you picked by distance. Anti-aliased edges and shadows differ from the flat backdrop, so they fall outside a narrow tolerance. Raise it gradually, and switch Outer regions off if the same color appears inside the subject and you do want it removed."
+			},
+			{
+				"q": "Does removing the background reduce image quality?",
+				"a": "No resampling and no re-compression of the subject happens: the pixels are either kept or set to fully transparent. Only the export format matters - a lossy format such as JPG will smooth the new transparent edge once it is composited onto a background."
+			},
+			{
+				"q": "Does it work with JPG and WebP, not only PNG?",
+				"a": "Yes. PNG, JPG, WebP and BMP can all be loaded, and after the cut you can save the transparent result as PNG, JPG, WebP or BMP. Note that JPG cannot store transparency, so a transparent area exported to JPG is filled with the background color."
+			}
+		]
+	}
+}

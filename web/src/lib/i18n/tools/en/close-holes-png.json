@@ -1,0 +1,32 @@
+{
+	"title": "Fill holes inside a cutout",
+	"seo": {
+		"metaTitle": "Fill Small Holes in a Transparent PNG - Free, No Upload",
+		"metaDescription": "Seal pinholes and dropped pixels inside a transparent object with a radius of 1 to 3 px. Free, no signup, the cutout is processed in your browser.",
+		"longDescription": "Morphological closing fills the small transparent gaps inside an object: the shape is first grown by Radius pixels and then shrunk back by the same amount, which swallows holes narrower than about twice the radius. Only pixels that were fully transparent and became covered are added, and they are painted black; the tool never removes a visible pixel, so it cannot eat into the subject. The radius runs from 1 to 3 px, which is what a speck of dust or a dropped pixel needs, while bigger gaps are out of its reach. PNG, JPG, WebP and BMP are accepted and processed locally.",
+		"howTo": [
+			"Drop the cutout with the pinholes into the source area, or pick a file from your device.",
+			"Set Radius from 1 to 3 px; 1 is enough for a single missing pixel.",
+			"Check the result: the dots inside the object are filled, the outside is untouched.",
+			"Download the result, saving as PNG so the object keeps its transparency."
+		],
+		"faq": [
+			{
+				"q": "Why is the filled area black?",
+				"a": "Newly filled pixels have no source color, so they are written as black. Run the silhouette tool afterwards if the object should end up one solid color."
+			},
+			{
+				"q": "My hole sits against the edge of the picture and stays open.",
+				"a": "Closing can only fill what the shape can grow across, and it cannot grow past the canvas. A gap that touches the border counts as part of the outside."
+			},
+			{
+				"q": "How big a hole can it close?",
+				"a": "Anything narrower than about twice the Radius, and the Radius slider stops at 3 px. Wider gaps are not speckles - crop them out with the crop tool or paint them in by hand."
+			},
+			{
+				"q": "Does it also remove specks outside the object?",
+				"a": "No, closing only adds. To delete isolated transparent or semi-transparent dots outside the shape, use the despeckle tool, which is the same operation run the other way round."
+			}
+		]
+	}
+}

@@ -1,0 +1,31 @@
+{
+	"title": "Extract the alpha mask of an image",
+	"seo": {
+		"metaTitle": "Extract the Alpha Mask of an Image - Free, No Upload",
+		"metaDescription": "Turn the transparency of a picture into a black-and-white mask: white is opaque, black is see-through, gray is in between. Free and local: nothing is uploaded.",
+		"longDescription": "Extracting the alpha mask turns a picture into a black-and-white image of its own transparency: every pixel takes the opacity value of the original as its gray level, so full opacity becomes white, full transparency black, and everything between them a shade of gray. The result is completely opaque - no transparency of its own is left - and all color information is discarded, which makes it a working picture for filters and thresholds rather than something to show. PNG, JPG, WebP and BMP are all accepted, and the conversion happens in your browser.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Read the mask: white is opaque, black is transparent, gray is semi-transparent.",
+			"Download the mask and feed it into a threshold or a blur step for a hard shape."
+		],
+		"faq": [
+			{
+				"q": "Why is my mask gray instead of black and white?",
+				"a": "Because alpha is a continuous value. A pixel at 40 percent opacity becomes a mid gray, and that is exactly the information the mask is meant to keep. Use harden edges if you want every pixel fully on or fully off."
+			},
+			{
+				"q": "What can I do with a mask?",
+				"a": "It is an ordinary black-and-white image, so the black and white threshold, blur, sharpen and posterize tools all work on it, and the result can be used as an alpha channel of its own."
+			},
+			{
+				"q": "Does it keep my colors?",
+				"a": "No. Colors are replaced by the opacity value, so the mask shows shape and nothing else. Use the show transparent areas tool when you want to see the see-through pixels in the picture itself."
+			},
+			{
+				"q": "Is this the same as making the background transparent?",
+				"a": "No, it is the opposite. The mask has no transparency at all: it describes where your object was instead of keeping it. For a usable cut-out, use remove background or remove color."
+			}
+		]
+	}
+}

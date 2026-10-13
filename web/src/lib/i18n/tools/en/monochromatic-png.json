@@ -1,0 +1,33 @@
+{
+	"title": "Monochromatic color palette",
+	"seo": {
+		"metaTitle": "Monochromatic Palette PNG - Free Tone Ramp Generator",
+		"metaDescription": "Build a monochromatic palette from one base color: lightness walks a range while hue and saturation stay fixed. Free, no upload, runs in your browser.",
+		"longDescription": "A monochromatic palette is a set of tones built from a single hue, where the hue and the saturation never change and only the lightness moves, which is what gives you a scale that stays recognizably the same color from the palest tint to the deepest shade. This page freezes the hue and saturation of your base color and walks its lightness across a range you set, centered on the base lightness itself - a Range of 40 spreads the swatches 20 lightness points either side of where the base sits. It needs no upload and no source file: the tones are computed on your device and drawn as flat swatches you can save as PNG, JPG, WebP or BMP. Use it for a single-brand interface, a sequential data ramp where one color has to carry the whole scale, or a dark mode built from one hue. The honest edge case is clamping: a very dark base with a wide range pushes the light end past zero and several swatches collapse into the same near-black.",
+		"howTo": [
+			"No upload needed - the tones are derived from the Base color you pick.",
+			"Set the Base color; its hue and saturation are locked and copied into every swatch.",
+			"Set the Count between 2 and 9 tones.",
+			"Set the Lightness range from 10 to 90; the tones spread that far either side of the base.",
+			"Choose a Grid or Strip layout, set the Width, then download as PNG, JPG, WebP or BMP."
+		],
+		"faq": [
+			{
+				"q": "How is this different from the shade ramp tool?",
+				"a": "This one walks both ways from the base, giving you lighter and darker tones within a lightness range you choose. The shade ramp only goes darker, and its first swatch is the base color itself. Use monochromatic for a full tone scale and shades for a one-directional fade."
+			},
+			{
+				"q": "Why do two of my swatches come out identical?",
+				"a": "Lightness cannot go below zero or above one. With a very dark base and a wide range the light end is pushed past zero and clamped, so several steps end up on the same near-black value. Narrow the Lightness range or lighten the base color."
+			},
+			{
+				"q": "Is the hue of every tone really identical?",
+				"a": "Yes. Each tone is the base color with its lightness replaced, so hue and saturation are untouched. Note that tones of one hue do not carry the same perceived weight - a light yellow and a light blue at the same lightness number still look very different in brightness."
+			},
+			{
+				"q": "Do I have to upload a logo or pick from a list?",
+				"a": "No. There is no upload and no library - you type one hex color and the scale is built from it, for free, with no signup and no watermark."
+			}
+		]
+	}
+}

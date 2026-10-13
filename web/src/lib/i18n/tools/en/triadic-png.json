@@ -1,0 +1,32 @@
+{
+	"title": "Triadic color palette",
+	"seo": {
+		"metaTitle": "Triadic Palette PNG - Free Three Color Harmony Tool",
+		"metaDescription": "Build a triadic palette from one base color: three hues evenly spaced 120 degrees apart. Free, no upload, no signup, drawn in your browser.",
+		"longDescription": "Triadic colors are three hues spaced evenly around the color wheel, each one 120 degrees from the others, so every pair in the set is exactly as far apart as every other pair - there is no dominant relationship inside a triadic palette, which is what makes it feel balanced rather than dramatic. This page takes your base color and rotates its hue by 120 and 240 degrees to get the other two, then draws all three as swatches. Nothing is uploaded, since no file is involved: the three colors are derived on your device and saved as PNG, JPG, WebP or BMP. Reach for it when you genuinely have three equal things - a chart with three series, three onboarding steps, a tricolour mark - or when you want a palette that will not privilege one color. The honest warning is that three saturated colors at equal lightness compete for attention, and that hue rotation in HSL does not balance apparent brightness, so a yellow, a cyan and a red will never weigh the same on screen.",
+		"howTo": [
+			"No upload needed - the three colors are derived from the Base color you pick.",
+			"Set the Base color; the tool adds hues 120 and 240 degrees away from it.",
+			"Choose a Grid or Strip layout and set the Width of the result.",
+			"Download the palette as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What makes a palette triadic?",
+				"a": "The three hues are spaced 120 degrees apart around the wheel. Because the spacing is even, no single color sits opposite another - unlike a complementary pair, where two of the three would clash directly."
+			},
+			{
+				"q": "Why do the three colors look so different in weight?",
+				"a": "They all carry the same HSL lightness value, but perceived brightness depends heavily on hue - a yellow at the same lightness as a blue still looks far lighter. That is a property of hue rotation, not a flaw in the palette rule."
+			},
+			{
+				"q": "When should I not use three colors?",
+				"a": "When you need one clear focal point. With three saturated colors at equal strength nothing leads the eye, so pick one as the dominant and use the other two for accents, or build the depth you need with the monochromatic tool."
+			},
+			{
+				"q": "Is it free with no upload at all?",
+				"a": "Yes. No account, no upload, no watermark and no daily limit; the palette is generated in your browser and the project is open source."
+			}
+		]
+	}
+}

@@ -1,0 +1,31 @@
+{
+	"title": "Convert PNG to grayscale",
+	"seo": {
+		"metaTitle": "Grayscale PNG Converter - Free, No Upload",
+		"metaDescription": "Turn a PNG into shades of gray with the standard BT.601 luminance formula. Transparency is preserved. Free, no upload, no settings, runs in your browser.",
+		"longDescription": "Converting an image to grayscale replaces every color with a shade of gray, computed from the standard BT.601 luminance formula that matches human brightness perception, so a red pixel becomes the same gray a camera would render rather than a flat average of its channels. Transparency is left untouched, which means a logo keeps its clean edges instead of gaining a gray box around it. There are no settings to tune - upload, read the result, download - and the whole thing happens in your browser, with your file never leaving the device.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Read the preview: the colors are already replaced by shades of gray.",
+			"Save the result as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What is the difference between grayscale and black and white?",
+				"a": "Grayscale keeps a continuous range of grays, so the image still looks like the original - just without color. Black and white reduces everything to exactly two values with a sharp threshold, which flattens photos. If you need the two-value version, run the black-and-white tool afterwards."
+			},
+			{
+				"q": "Does grayscale keep transparency?",
+				"a": "Yes. Only the color channels are converted; the alpha channel is copied as it is, so a transparent PNG stays transparent and the edges of a cut-out logo stay clean."
+			},
+			{
+				"q": "Is the conversion lossless?",
+				"a": "Within the tool, yes: it is a per-pixel channel calculation, not a compression, so no detail is thrown away. The output format still matters - save as PNG or WebP to keep it lossless, and remember JPG has no transparency."
+			},
+			{
+				"q": "Are my images uploaded to convert them?",
+				"a": "No. The conversion runs in your browser tab, with no upload, no account, no daily limit and no watermark. The tool is free for commercial use and open source."
+			}
+		]
+	}
+}

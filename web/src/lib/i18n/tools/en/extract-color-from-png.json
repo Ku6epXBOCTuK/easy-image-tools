@@ -1,0 +1,32 @@
+{
+	"title": "Extract a color from an image",
+	"seo": {
+		"metaTitle": "Extract Color From PNG - Keep One Color, Drop The Rest",
+		"metaDescription": "Keep only the pixels close to a chosen color and make everything else transparent. Free, no upload - the image is processed in your browser.",
+		"longDescription": "Extract Color is the inverse of removing a color: instead of making one color transparent, it keeps that color and clears everything else, so the result is one flat shape on a transparent background. It is how you pull a single logo color or badge out of a picture and drop it on a page. A tolerance setting decides how far a pixel may sit from the chosen color and still count as it, so a slightly soft edge can be kept or trimmed away. Everything runs in your browser, so the image is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick the color you want to keep; the eyedropper on the color field samples a pixel of the image.",
+			"Set the tolerance: lower values keep only exact matches, higher values include shades nearby.",
+			"Download the result as a transparent PNG, or pick another output format in the Download button."
+		],
+		"faq": [
+			{
+				"q": "What does the result look like?",
+				"a": "The pixels close to the chosen color, unchanged, on a fully transparent background. Anything outside the tolerance is cleared, including its own alpha, so the shape has no leftover halo."
+			},
+			{
+				"q": "How do I choose a tolerance?",
+				"a": "Start low and raise it while the result looks cut off at the edges. Gradients, shadows and anti-aliased edges all sit slightly off the pure color, so a little tolerance usually gives a cleaner shape than none."
+			},
+			{
+				"q": "Is this the same as remove color?",
+				"a": "It is the opposite operation. Remove Color makes the chosen color transparent and keeps everything else; this tool keeps the chosen color and removes everything else."
+			},
+			{
+				"q": "Is my image uploaded?",
+				"a": "No. The pixels are read and the mask is computed in your browser tab, so the file never travels to a server and is not stored."
+			}
+		]
+	}
+}

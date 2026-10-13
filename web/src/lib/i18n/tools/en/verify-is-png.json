@@ -1,0 +1,32 @@
+{
+	"title": "Check if an image really is a PNG",
+	"seo": {
+		"metaTitle": "Verify If Image Is a PNG - Signature Check, Free",
+		"metaDescription": "Check whether pasted Base64 or data-URI content is really a PNG by looking at its file signature. Free, no upload - the text is checked in your browser.",
+		"longDescription": "A file extension is not proof: a JPG renamed to .png still has JPG bytes inside, and some downloads arrive with a name that does not match the content. This checker takes Base64 or a data URI, decodes it in your browser and looks at the signature at the start of the data. PNG always begins with the same eight bytes; anything else reports as not a PNG. The text never leaves your browser tab, which matters here more than usual, because pasted Base64 is often a secret - an API key, a session cookie or a signed URL.",
+		"howTo": [
+			"Copy the Base64 string or the full data URI that you want to check.",
+			"Paste it into the text area - a data: prefix is stripped automatically.",
+			"Run the check and read the verdict.",
+			"A no means the content is a different format, or not an image at all."
+		],
+		"faq": [
+			{
+				"q": "How does it decide that the content is a PNG?",
+				"a": "It decodes the Base64 in your browser and compares the first bytes against the PNG signature. A real PNG always starts with the same eight-byte marker; a renamed JPG does not."
+			},
+			{
+				"q": "Can I paste a whole data URI?",
+				"a": "Yes. The data: prefix and the media type are stripped before decoding, so a complete src attribute value works as well as the Base64 part alone."
+			},
+			{
+				"q": "Is my pasted string uploaded anywhere?",
+				"a": "No, and this is the important part: the decoding and the check happen entirely in your browser tab. Pasted Base64 is often a credential or a signed link, so it is never sent to a server."
+			},
+			{
+				"q": "It says no, but the file really is a PNG. Why?",
+				"a": "Usually the content is not valid Base64, was copied with line breaks and stray characters, or is a URL rather than the image data. Check that the text contains only Base64 characters."
+			}
+		]
+	}
+}

@@ -1,0 +1,31 @@
+{
+	"title": "Flatten transparency onto white",
+	"seo": {
+		"metaTitle": "Remove the PNG Alpha Channel - Free, No Upload",
+		"metaDescription": "Blend a transparent image onto a white background and save it with no transparency left at all. Free and unlimited, done in your browser with no upload.",
+		"longDescription": "Removing the alpha channel flattens an image: every pixel is blended with a white background using its own opacity, and the alpha value of the result is set to full everywhere, so the saved file carries no transparency at all. The white is fixed - there is no color control on this page - and the canvas keeps its size, which means a transparent logo comes out as a white square. That is exactly what JPG and BMP expect, and it is the safe way to hand a cutout to an application that does not understand alpha. PNG, JPG, WebP and BMP are accepted and never leave your browser.",
+		"howTo": [
+			"Drop the transparent image into the source area, or pick a file from your device.",
+			"The result appears at once, opaque, with the transparent parts filled white.",
+			"Download it as PNG or JPG; both store the flattened result correctly."
+		],
+		"faq": [
+			{
+				"q": "Can I choose the background color?",
+				"a": "Not on this page, which always flattens onto white. To put the cutout on a color of your choice, use the fit onto background tool, which places the image on a canvas filled with the color you pick."
+			},
+			{
+				"q": "Why does my transparent logo look like a white square?",
+				"a": "Because the transparent area is now filled, and the fill is white. A logo that looked right on a dark page will look wrong after this step, so keep the alpha when the file allows it."
+			},
+			{
+				"q": "Do I even need this for a JPG?",
+				"a": "No, JPEG has no alpha channel, so saving as JPG flattens on its own. The step matters when the file has to stay a PNG but must not carry transparency, as in some print workflows."
+			},
+			{
+				"q": "Can I get the transparency back afterwards?",
+				"a": "No. Once the alpha channel is gone that information is not in the file any more, so run the flattening again from the original transparent source rather than from the flattened copy."
+			}
+		]
+	}
+}

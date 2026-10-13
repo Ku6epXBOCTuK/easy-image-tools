@@ -1,0 +1,32 @@
+{
+	"title": "Randomize pixels in an image",
+	"seo": {
+		"metaTitle": "Randomize PNG Pixels - Shuffle Blocks Locally",
+		"metaDescription": "Shuffle blocks of an image in your browser. The result is deterministic by seed, so the same settings always give the same scrambled picture. Free, no upload.",
+		"longDescription": "Randomize Pixels cuts the image into square blocks and moves them to each other's places, so the picture turns into an arrangement that is meaningless but built from its own content. It is a quick way to produce an abstract texture, to check that two images really differ, or to anonymize a screenshot so the layout is still visible but the content is not - the block size decides how readable it stays. Because the shuffling comes from a seed rather than from chance, the same settings always produce the same result, and the blocks keep their internal pixels, so a block is never torn apart. Everything runs in your browser and the image is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set the block size: small blocks keep the texture, large ones destroy the picture.",
+			"Keep the seed if you want to reproduce the same arrangement, or change it for a different one.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Does it shuffle individual pixels or blocks?",
+				"a": "Blocks. The image is divided into squares of the size you set, and whole squares are exchanged while every pixel inside a square stays where it was. There is no setting that scrambles the picture pixel by pixel."
+			},
+			{
+				"q": "Why is the result the same every time?",
+				"a": "Because the arrangement comes from the seed value, not from a random generator that changes on each run. Same image, same block size, same seed, same result - which is what lets you come back to an arrangement you liked."
+			},
+			{
+				"q": "Can I use this to anonymize a screenshot?",
+				"a": "You can make the content unreadable while keeping the general layout, which is often enough for a shared mockup. It is not privacy protection in the strict sense: the original pixels are still there in the file, just in the wrong places, so treat the result as a mockup rather than a redacted document."
+			},
+			{
+				"q": "Is the image uploaded?",
+				"a": "No. The blocks are rearranged in your browser tab; the file is never sent to a server and nothing is stored."
+			}
+		]
+	}
+}

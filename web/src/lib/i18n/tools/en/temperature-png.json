@@ -1,0 +1,32 @@
+{
+	"title": "Temperature PNG",
+	"seo": {
+		"metaTitle": "Temperature PNG - Warm or Cool Color Shift, Free",
+		"metaDescription": "Make a picture warmer or cooler by pushing red and blue in opposite directions. Free, no upload - the color temperature shift runs locally in your browser.",
+		"longDescription": "The temperature slider makes a picture warmer or cooler by pushing the red channel up and the blue channel down, or the other way round, in one step. Positive values add orange, as if the photo were shot under tungsten light, while negative values add blue for a cold overcast look. Green is not touched at all, which keeps skin tones from going fluorescent but also means the effect is a simple cast rather than a full white-balance correction. It runs in your browser on PNG, JPG, WebP and BMP files, uploads nothing, and preserves alpha.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Percent positive for a warmer, more orange picture, negative for a cooler, bluer one; 0 changes nothing.",
+			"Compare the two ends of the slider before settling on a value.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why is green left alone?",
+				"a": "Green is the channel the eye weights most heavily, and pushing it along with the others turns skin tones gray-green or waxy. Holding it steady keeps the effect to a cast, which is what most pictures need."
+			},
+			{
+				"q": "Is this the same as the tint tool?",
+				"a": "Similar job, different mechanism. Temperature only ever moves red and blue in opposite directions, so the image stays neutral on the green axis. Tint takes any color you name and scales all three channels toward it, so a green tint pulls green up and the other two down."
+			},
+			{
+				"q": "Can this fix a badly white-balanced photo?",
+				"a": "It moves you closer. A picture shot in shade looks blue and one shot under tungsten looks orange, and the slider corrects that cast directly. It will not fix the brightness problems, which is what the auto contrast tool is for."
+			},
+			{
+				"q": "How strong is the effect at the ends of the slider?",
+				"a": "At 100 the red channel is multiplied by 1.25 and blue by 0.75; at -100 it is the other way round. Highlights clip before that, so a picture with a lot of bright area goes flat at the extremes."
+			}
+		]
+	}
+}

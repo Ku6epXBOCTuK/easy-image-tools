@@ -1,0 +1,31 @@
+{
+	"title": "Build an image from RGBA byte values",
+	"seo": {
+		"metaTitle": "RGBA Bytes to PNG - Free Image Builder, Nothing Uploaded",
+		"metaDescription": "Turn decimal RGBA byte values back into a picture: paste the numbers, set the width, the height is worked out for you. Free, private, runs in your browser.",
+		"longDescription": "Turning RGBA byte values back into an image is what a canvas script does when it fills a pixel buffer by hand: every pixel is four numbers - red, green, blue, alpha - and this page assembles them into the picture they describe. Paste them into the text field, set the Width so the rows can be counted, and the height follows from how many pixels you pasted. The parser is forgiving about separators, because only the digits are read, so a list copied out of a JavaScript array works untouched; it is not forgiving about values. Each must be a whole number from 0 to 255, the count must be a multiple of four, and the pixel count must divide evenly by the width.",
+		"howTo": [
+			"Paste the RGBA numbers into the text field; any separators between them are ignored.",
+			"Set Width to the number of pixels in one image row - the height is computed from the rest.",
+			"Download the assembled PNG from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why do I have to enter the width?",
+				"a": "A flat list of RGBA values has no row structure, so its pixels would run into one long line. Width turns the list into a grid."
+			},
+			{
+				"q": "Which separators are accepted?",
+				"a": "None in particular. Spaces, commas, semicolons, parentheses and line breaks are all ignored, because the parser only reads the digits. The hex to PNG page on this site is the stricter sibling: it wants exactly eight hex characters per pixel."
+			},
+			{
+				"q": "Can the values be fractions or percentages?",
+				"a": "No. A channel is a byte, so every value must be a whole number from 0 to 255 and 12.5 is rejected. Multiply a CSS alpha by 255 first."
+			},
+			{
+				"q": "What happens when the pixel count does not fit the width?",
+				"a": "The page refuses to guess. If the division leaves a remainder, nothing is assembled and the error names both numbers."
+			}
+		]
+	}
+}

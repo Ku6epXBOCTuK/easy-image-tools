@@ -1,0 +1,10 @@
+{
+	"heading": "Crop, resize and rotate tools",
+	"metaTitle": "Image Geometry Tools - Crop, Resize, Rotate, Flip",
+	"metaDescription": "Crop, resize, rotate, flip, pad and reshape images in your browser. Free, no upload, no signup. Works with PNG, JPG, WebP and BMP.",
+	"paragraphs": [
+		"Geometry tools change the shape and the size of an image, never its colors. Crop cuts a rectangle out of it, resize scales the whole picture to new pixel dimensions, and change canvas size moves the picture inside a larger or smaller frame without scaling it - that is the difference between resizing the artwork and adding space around it. Change aspect ratio forces new proportions, and trim empty space removes the transparent or uniform border a screenshot came with.",
+		"Rotation comes in two forms. The 90, 180 and 270 degree turn moves every pixel exactly, so nothing is resampled and nothing gets blurry - that is the one to use for photos. A free rotation takes any angle, and any angle other than a right one has to interpolate the pixels it lands between, which softens the edges slightly. Flipping mirrors the image horizontally or vertically instead.",
+		"The remaining tools place and repeat. Padding and a border add space and a frame, zooming scales up around the center, shifting moves the picture inside its canvas, tiling repeats the image as a pattern, and splitting cuts it into parts - rows, columns, or a grid - which is the way to export a long screenshot or a contact sheet as separate files."
+	]
+}

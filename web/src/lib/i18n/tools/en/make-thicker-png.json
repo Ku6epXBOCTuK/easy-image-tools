@@ -1,0 +1,32 @@
+{
+	"title": "Make a cutout thicker",
+	"seo": {
+		"metaTitle": "Thicken a PNG Cutout - Free, No Upload, No Limits",
+		"metaDescription": "Grow an opaque shape outward by 1 to 10 px with a round brush, filling in small gaps as it goes. Free and unlimited, the image is processed in your browser.",
+		"longDescription": "Making a cutout thicker grows the opaque area: every pixel with any opacity is treated as solid and the shape is expanded by Radius pixels in every direction with a round brush. Pixels inside the original shape keep their colors, and the ring that appears outside them becomes fully opaque with whatever color the file stored in those transparent spots, which is normally black. The radius runs from 1 to 10 px and the canvas never grows, so an object close to the frame is pressed flat against it. PNG, JPG, WebP and BMP are accepted and processed in your browser.",
+		"howTo": [
+			"Drop the cutout into the source area, or pick a file from your device.",
+			"Set Radius from 1 to 10 px; 2 is the default and adds a slim band.",
+			"Watch the preview - the object fattens and its soft rim turns solid.",
+			"Download the result and save it as PNG so the grown shape keeps its background."
+		],
+		"faq": [
+			{
+				"q": "Why did my soft anti-aliased edge become hard?",
+				"a": "The tool works on a plain yes-or-no mask of visible pixels, so everything that had any opacity survives at full strength. Feather the result afterwards if you want the rim soft again."
+			},
+			{
+				"q": "Why is the new band black?",
+				"a": "The band copies the color stored under those pixels, and a transparent area normally stores black, so a new ring usually comes out black. This tool has no color setting for the band itself."
+			},
+			{
+				"q": "Does the canvas grow so the object can expand freely?",
+				"a": "No. Growth stops at the frame, so an object already touching an edge is pressed flat against it. Add padding or change the canvas size first to leave room around it."
+			},
+			{
+				"q": "Is it the opposite of making a cutout thinner?",
+				"a": "Yes, the same round brush run in the other direction, and both tools share the Radius scale from 1 to 10 px."
+			}
+		]
+	}
+}

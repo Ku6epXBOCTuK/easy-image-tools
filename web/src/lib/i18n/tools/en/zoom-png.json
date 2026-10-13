@@ -1,0 +1,32 @@
+{
+	"title": "Zoom PNG",
+	"seo": {
+		"metaTitle": "Zoom PNG - Magnify Toward the Center, No Upload",
+		"metaDescription": "Magnify an image toward its center without changing the canvas size, in your browser. Zoom from 100 to 500 percent, free, no upload, no signup, instant.",
+		"longDescription": "Zooming magnifies an image toward its center while deliberately keeping the canvas the same size, so the edges are pushed out of view and cropped away. That makes it the right tool for inspecting the middle of a picture, for looking closely before you commit to a real crop, and for pulling detail out of a large image into a smaller frame. The zoom runs from 100 to 500 percent in steps of 10, and 200 percent is the default. The magnification is done by sampling, so at high percentages you are looking at fewer source pixels spread over the same canvas and detail softens as you go up. If you want a bigger file rather than a closer look, use the resize tool: zoom keeps the canvas, resize changes it. All of this happens in your browser.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set the Zoom percentage from 100 to 500; the default is 200.",
+			"Watch the center as you move the slider, then settle on a percentage.",
+			"Download the zoomed image from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why did my image not get bigger?",
+				"a": "Because zoom keeps the canvas exactly as it was and only magnifies the content toward the middle, so the edges slide out of view. That is the design. To get a larger file, use the resize tool, which changes the canvas size."
+			},
+			{
+				"q": "Does zooming lose detail?",
+				"a": "At anything above 100 percent yes, and unavoidably: a magnified image is built from fewer source pixels spread over the same area, and interpolation softens them. Zooming is for looking closer, not for adding resolution."
+			},
+			{
+				"q": "What happens to the edges?",
+				"a": "They are cropped. Zooming to 200 percent keeps only the central quarter of the picture in the same canvas, and the rest is discarded rather than squeezed in."
+			},
+			{
+				"q": "Can I zoom in on a corner instead of the center?",
+				"a": "No, the magnification is always toward the middle. To work on a corner, cut it out first with the crop tool and then zoom the result."
+			}
+		]
+	}
+}

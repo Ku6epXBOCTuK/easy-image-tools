@@ -1,0 +1,32 @@
+{
+	"title": "Convert PNG to YCbCr Colors",
+	"seo": {
+		"metaTitle": "Convert PNG to YCbCr - Luma and Chroma Channel Map",
+		"metaDescription": "Split an image into luma and the two blue- and red-difference chroma channels used by video and JPEG. Free, no upload - the split runs in your browser tab.",
+		"longDescription": "YCbCr is the color arrangement almost every video codec and JPEG uses: one brightness channel called luma, and two color-difference channels called Cb and Cr. A gray pixel is one where the color channels sit exactly at the middle value, so Cb and Cr double as a map of how much color a pixel carries rather than what color it is. This tool splits your image into those three parts with the full-range weights. It runs in your browser on PNG, JPG, WebP and BMP files, uploads nothing, and leaves alpha alone.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick Component: Y for luma, CB for the blue-difference channel or CR for the red-difference channel.",
+			"Switch Display to Space as RGB to see the three parts together as red, green and blue.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why do the Cb and Cr pictures look pale?",
+				"a": "Both channels sit near the middle of the range for a neutral color and drift away from it with saturation, so only the colorful parts of the image stand out from a gray background. They are differences, not colors, and half the scale is zero difference by design."
+			},
+			{
+				"q": "Is Y the same as the grayscale tool?",
+				"a": "Yes, the weights are the same BT.601 set, so both give an identical gray picture. The difference is what comes with it: YCbCr splits the color out into two extra channels, while grayscale throws that information away."
+			},
+			{
+				"q": "Can I use this to convert an image to video color?",
+				"a": "Not as a file. What comes out is a PNG of the channel maps, which is useful for checking a conversion by eye; to get an actual YCbCr file for a video workflow, encode it in a video or image editor."
+			},
+			{
+				"q": "What do the numbers mean here?",
+				"a": "Each component is normalized to 0 to 1, so a neutral color reads about 0.5 in Cb and Cr. Picking one channel and viewing it in grayscale shows where that value sits relative to its extremes, bright being higher."
+			}
+		]
+	}
+}

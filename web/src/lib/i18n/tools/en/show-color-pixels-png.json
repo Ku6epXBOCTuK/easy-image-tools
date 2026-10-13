@@ -1,0 +1,32 @@
+{
+	"title": "Show color pixels in an image",
+	"seo": {
+		"metaTitle": "Show Color Pixels - Find Colored Areas In A PNG",
+		"metaDescription": "Mark every pixel that carries color, so you can see where the hue sits in an image. Free, runs in your browser, no upload and no signup.",
+		"longDescription": "This tool does the opposite of the gray pixel view: it marks every pixel whose red, green and blue values differ, which is exactly the set of pixels that carry color. Use it when an image looks black and white but is not, when you want to keep only the colored part of a logo, or when a scan has picked up a color cast you cannot see any more. A tolerance decides how large the difference between the channels has to be to count, so lightly tinted pixels can be included or left out. The mask is drawn in your browser and the image is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Choose the view: a black and white mask, or a highlight over the original picture.",
+			"Set the channel tolerance to control how visible a color has to be to be marked.",
+			"Set the highlight color and opacity, then download the mask."
+		],
+		"faq": [
+			{
+				"q": "What exactly gets marked?",
+				"a": "Pixels where the red, green and blue values are not equal, which means they carry hue. Neutral grays stay unmarked, and so do pixels whose channels differ only within the tolerance you set."
+			},
+			{
+				"q": "Why does a photo that looks gray light up completely?",
+				"a": "Photography almost never has exactly equal channels - noise, lighting and compression put small differences everywhere. Raise the tolerance to ignore the weak differences and keep only the clearly colored pixels."
+			},
+			{
+				"q": "Can I use this to keep only the colored part of a logo?",
+				"a": "The mask is the picture of where the color is, but it is black and white or tinted. To cut the rest away, use the remove color tool with the background color of the logo."
+			},
+			{
+				"q": "Is the image sent to a server?",
+				"a": "No. Decoding and rendering both run in your browser tab, so your file never leaves your device and nothing is stored."
+			}
+		]
+	}
+}

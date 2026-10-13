@@ -1,0 +1,32 @@
+{
+	"title": "Swap channels PNG",
+	"seo": {
+		"metaTitle": "Swap Color Channels PNG - Red Green Blue, Free",
+		"metaDescription": "Exchange two color channels of an image for a striking recolor that loses no data at all. Free, no upload - the swap runs in your browser and stays lossless.",
+		"longDescription": "Swapping channels exchanges two of the three color values of every pixel and leaves the third where it is. It is a lossless operation - nothing is calculated and no value is discarded - but it changes what the picture looks like, often dramatically: turning red into green and green into red turns a green landscape red, and swapping red with blue gives the strange cyan and orange look of a color negative. It runs in your browser on PNG, JPG, WebP and BMP files, uploads nothing, and does not touch the alpha channel.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Choose Channel pair: Red and Green, Red and Blue, or Green and Blue.",
+			"Compare the three options; each one moves the color in a different direction.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Does swapping lose any information?",
+				"a": "No. It is a rearrangement - applying the same swap a second time gives back exactly the original picture, and every number in the file is still there. Compare that with the grayscale tool, which mixes three values into one and does lose them."
+			},
+			{
+				"q": "Which swap gives the weird negative look?",
+				"a": "Red and Blue. Green is left in place while the warm channel becomes the cold one, which is why the result resembles a color negative with the midtones roughly preserved."
+			},
+			{
+				"q": "Is this a recoloring tool?",
+				"a": "No - it is one fixed rearrangement applied to the whole picture, not a way to pick out an object and repaint it. To isolate a single color, use the extract color from tool; to shift the whole picture toward a color, use the tint tool."
+			},
+			{
+				"q": "How is this different from the invert colors page?",
+				"a": "Inverting replaces every value with 255 minus itself, which flips the whole picture and its lightness structure. Swapping only rearranges the three channels, so the relationships between them survive."
+			}
+		]
+	}
+}

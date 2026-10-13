@@ -1,0 +1,32 @@
+{
+	"title": "Decrease Color Count PNG",
+	"seo": {
+		"metaTitle": "Decrease Color Count PNG - Free Local Color Reducer",
+		"metaDescription": "Drop a picture to a small palette using the preset levels 2 to 256. Free and no upload - the median-cut reduction runs in your browser and keeps transparency.",
+		"longDescription": "Decrease color count strips a picture down to a small palette using a median-cut algorithm: the pixels are repeatedly split into buckets along their widest channel until the requested number of buckets exists, each bucket collapses to its average color, and every pixel is then repainted with whichever of those colors sits closest to it. Everything runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and fully transparent pixels are passed through untouched instead of being counted as black.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick Max colors from the preset list; 16 (extreme) is the starting point.",
+			"Lower values give a stronger poster effect, higher ones keep more of the original shading.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What do the extreme, strong, balanced and light presets mean?",
+				"a": "They are the classic loss levels - 16, 44, 96 and 192 colors - named for how far the reduction bites. They are labels on the same engine, not different algorithms."
+			},
+			{
+				"q": "The list goes up to 256. Will it really give me 256 colors?",
+				"a": "The palette builder caps itself at 64 buckets, so 96, 128, 192 and 256 all produce exactly the same result as 64. For a smaller, fully reachable ceiling, use the quantize tool or name the colors yourself in the custom palette tool."
+			},
+			{
+				"q": "Which is better, this or the dithering tool?",
+				"a": "This one gives clean flat patches, which suits icons and flat art. When the source is a photograph with smooth gradients, the dithering tool breaks the banding up by spreading the rounding error into neighbouring pixels."
+			},
+			{
+				"q": "Does it resize the file?",
+				"a": "It does not touch the dimensions, but a picture with fewer distinct colors compresses far smaller as a PNG, so the Download button usually shows a much lighter file at the same size."
+			}
+		]
+	}
+}

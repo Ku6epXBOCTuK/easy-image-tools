@@ -1,0 +1,32 @@
+{
+	"title": "Tetradic color palette",
+	"seo": {
+		"metaTitle": "Tetradic Palette PNG - Free Four Color Harmony Tool",
+		"metaDescription": "Build a tetradic palette from one base color: four hues in two complementary pairs, 90 degrees apart. Free, no upload, no signup, in your browser.",
+		"longDescription": "A tetradic palette is four colors built from one base by stepping around the wheel in quarters - 0, 90, 180 and 270 degrees - which is exactly two complementary pairs sitting side by side. Pair one is your base and its opposite; pair two is the same rule applied a quarter turn away, so you get the two-color scheme and a second scheme to match it with. Nothing is uploaded because there is no file involved: the four colors are derived from your base and drawn in your browser, ready to save as PNG, JPG, WebP or BMP. Use it for a two-theme product, a chart with four series, or a split-complementary layout where you want more freedom than a straight pair gives you. The honest framing is that this is not a different rule from the complementary one - it is the same 180 degree opposition applied twice - and four saturated colors at equal lightness will fight each other unless two of them stay in the background.",
+		"howTo": [
+			"No upload needed - the four colors are derived from the Base color you pick.",
+			"Set the Base color; the tool adds hues 90, 180 and 270 degrees away from it.",
+			"Choose a Grid or Strip layout and set the Width of the result.",
+			"Download the palette as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What is the actual rule behind a tetradic palette?",
+				"a": "Step around the color wheel in four equal jumps of 90 degrees. That gives you your base color, its direct complement, and the same pair rotated a quarter turn - so a tetradic set is literally two complementary pairs, not four unrelated colors."
+			},
+			{
+				"q": "Should I use all four colors in one interface?",
+				"a": "Rarely. Four saturated hues at the same lightness compete equally and the result looks unsettled. The usual pattern is to let the base and one partner carry the design and use the other two for accents, charts or states."
+			},
+			{
+				"q": "How does this compare with the triadic palette?",
+				"a": "Triadic uses three colors in jumps of 120 degrees, so every pair in the set is the same distance apart and none of them are opposites. Tetradic uses four in jumps of 90 degrees, which guarantees two exact opposites - use tetradic when you want contrast, triadic when you want balance."
+			},
+			{
+				"q": "Is it free and is anything uploaded?",
+				"a": "No account, no upload, no watermark and no daily limit. The palette is generated in your browser and the project is open source."
+			}
+		]
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"title": "Color steps between two colors",
+	"seo": {
+		"metaTitle": "Color Steps PNG - Free Even Color Ramp Generator",
+		"metaDescription": "Generate evenly spaced color steps between two colors as swatches or a strip. Free, no upload, no signup, built in your browser as PNG or JPG.",
+		"longDescription": "Color steps are the discrete colors you get when you cut the path between two colors into equal intervals, and this page generates that set from a start color and an end color. Pick a pair, choose how many steps you want, and you get evenly spaced colors running from the first to the last, drawn either as a grid of square swatches or as one horizontal strip. No upload is involved and there is no source file: the steps are interpolated and drawn on your device, ready to save as PNG, JPG, WebP or BMP. Use it to define a ramp between a background and an accent, to build a scale for a chart, or to see how many colors a design system needs. Two honest details: the count includes both endpoints, so six steps means five intervals between seven endpoint colors, and the interpolation is a straight line through the raw RGB numbers, which is why blending a color with its complement passes through gray.",
+		"howTo": [
+			"No upload needed - the steps are computed from the Color pair you set.",
+			"Set the Color pair; the first color is the first step and the second is the last.",
+			"Set the Steps from 2 to 12; the count includes both endpoint colors.",
+			"Choose a Grid of square swatches or a Strip, and set the Width.",
+			"Download the steps as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why does the middle of the ramp go gray when I use opposite colors?",
+				"a": "Because the interpolation is a straight line through the red, green and blue numbers, not a perceptual blend. Two colors that are complements have nothing in common channel by channel, so the midpoint is the average of both - a neutral gray. It is correct arithmetic, just not what a painter would do."
+			},
+			{
+				"q": "Does the step count include the two colors I typed?",
+				"a": "Yes. The steps are spread evenly from the first color to the last and both ends are included, so Steps set to 2 gives you just the two colors with nothing in between and Steps set to 6 gives six colors across five intervals."
+			},
+			{
+				"q": "What is the difference between Grid and Strip?",
+				"a": "Grid lays the swatches out as near-square cells in as square a block as the count allows, which is easiest to read. Strip puts them side by side as equal columns in one row, which is the format you want when the palette will become a gradient or a legend."
+			},
+			{
+				"q": "Do I need to upload a brand guide or a list?",
+				"a": "No. There is no upload and no library here - you type two hex values and the ramp is built for free in your browser, with no signup and no watermark."
+			}
+		]
+	}
+}

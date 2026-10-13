@@ -1,0 +1,33 @@
+{
+	"title": "Color spectrum",
+	"seo": {
+		"metaTitle": "Color Spectrum PNG - Free Hue Rainbow Generator",
+		"metaDescription": "Generate a full hue spectrum PNG from red around the wheel and back, horizontal or vertical. Free, no upload, no signup - drawn and saved in your browser.",
+		"longDescription": "A color spectrum is a strip that walks the entire hue circle, from 0 to 360 degrees, so it shows every pure hue at once and finishes where it started. This page draws that strip in the direction you pick and lets you hold the saturation and lightness still while the hue moves, which turns the rainbow into a muted pastel band or a set of deep tones with two slider moves. It needs no upload and no source image: the spectrum is computed pixel by pixel in your browser and can be saved as PNG, JPG, WebP or BMP. Use it as a lookup strip when you want to pick a color by eye, as the background of a spectrum chart, or as the swatch strip on a design system page. The honest details are simple and worth knowing: both ends of the strip are the same red, because hue wraps around at 360, and at zero saturation the whole thing is a single shade of gray.",
+		"howTo": [
+			"No upload needed - the spectrum is generated from the Direction, Saturation and Lightness values.",
+			"Set the Canvas size in pixels, or pick one of the presets.",
+			"Choose the Direction: Horizontal runs left to right, Vertical runs top to bottom.",
+			"Raise Saturation for pure hues, lower Lightness for deeper tones or push it to the ends for flat black and white.",
+			"Download the spectrum as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why does the strip start and end on the same red?",
+				"a": "Hue is a circle. The tool walks from 0 to 360 degrees, and 360 degrees is the same color as 0, so both ends meet at red. That is correct, not a rendering bug."
+			},
+			{
+				"q": "What happens at the slider extremes?",
+				"a": "At Saturation 0 there is no hue left, so the strip is one flat gray. At Lightness 0 it is all black and at Lightness 100 it is all white. The hue information only exists between those points."
+			},
+			{
+				"q": "How is this different from the color wheel?",
+				"a": "The wheel puts hue around a circle and saturation from the center to the rim, which is how you read a hue against its saturation. The spectrum lays hue out in a straight line with saturation and lightness fixed, which is better for scanning or for a chart."
+			},
+			{
+				"q": "Is it free to download and use commercially?",
+				"a": "Yes. No signup, no watermark, no daily limit and no upload, and the project is open source."
+			}
+		]
+	}
+}

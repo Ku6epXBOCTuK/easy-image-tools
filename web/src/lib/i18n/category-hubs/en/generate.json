@@ -1,0 +1,10 @@
+{
+	"heading": "Image generators",
+	"metaTitle": "Generate Images Online - Solid, Gradient, Noise, Color Wheel",
+	"metaDescription": "Generate images from scratch in your browser: empty canvas, solid color, linear gradient, noise, grid, placeholder, color wheel, emoji and text to PNG.",
+	"paragraphs": [
+		"Generation tools create an image from numbers instead of editing an existing one, which makes them the fastest way to get an exact canvas: a transparent empty image of a given size, a solid color fill, a linear gradient between two or more colors, a color spectrum, or a grid of lines. A placeholder image is a quick way to get a labeled rectangle of the right size for a layout that is still in progress.",
+		"The color tools here are design aids rather than converters. A color wheel shows the hue circle, and the harmony schemes - complementary, triadic, tetradic, analogous and monochromatic - lay out the colors that go with a chosen one. Shades of a color, mixed colors and a sorted palette are the practical version of the same idea: pick colors, see how they relate, export them as an image or as a list.",
+		"Text to image is the last group here. Emoji to PNG and text to PNG render a character or a line of text onto a canvas with a transparent background, which is what you need when a glyph has to become a file - an icon, a sticker, a label. Two images can also be blended pixel by pixel, which is a quick way to compare or combine two versions of the same picture."
+	]
+}

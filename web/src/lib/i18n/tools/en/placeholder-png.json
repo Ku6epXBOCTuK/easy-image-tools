@@ -1,0 +1,33 @@
+{
+	"title": "Create a placeholder image",
+	"seo": {
+		"metaTitle": "Create Placeholder PNG - Free Size Label Image Maker",
+		"metaDescription": "Make a placeholder PNG with its dimensions printed in the center. Free, no upload, no signup - built in your browser as PNG, JPG, WebP or BMP.",
+		"longDescription": "A placeholder image is a stand-in rectangle that shows its own size, so a layout has something real to hold before the artwork exists and every image slot looks the right shape. This page fills a canvas of the size you choose with a background color and prints the width and height in the middle, for example 800 x 400, in a bold sans face scaled to about 14 percent of the shorter side. Nothing is uploaded because there is nothing to upload: the rectangle is drawn on your device and saved as PNG, JPG, WebP or BMP. Turn off Show text and you get a plain flat rectangle of the same size, which is handy when you only need the dimensions to exist. The one honest limitation is extreme proportions: the label has a minimum readable size, so on a very lopsided canvas such as 40 pixels wide by 500 tall the text can be wider than the canvas and gets clipped at the edges.",
+		"howTo": [
+			"No upload needed - the rectangle is drawn from the size and color values you set.",
+			"Set the Canvas size in pixels, or pick one of the presets.",
+			"Choose the Background color and the Text color.",
+			"Leave Show text on for the dimensions in the middle, or turn it off for a flat rectangle.",
+			"Download the placeholder as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Is this the same as creating an empty PNG?",
+				"a": "Not quite. Create empty PNG gives you a transparent or solid canvas with no lettering at all, which is what a layout or a compositor needs. This page adds the printed dimensions, so a human looking at the file can see what size it is supposed to be."
+			},
+			{
+				"q": "Why is the label cut off on my image?",
+				"a": "The text scales with the shorter side of the canvas but never goes below a readable minimum, so on a very narrow or very short canvas the label ends up wider than the frame and is cropped. Make the canvas less extreme or turn Show text off."
+			},
+			{
+				"q": "Can the background be transparent?",
+				"a": "Not directly - this tool fills the whole canvas with the background color you choose. For a transparent canvas with nothing in it, use the create empty PNG tool and set Opacity to 0."
+			},
+			{
+				"q": "Is it free to use in a project?",
+				"a": "Yes. No signup, no upload, no watermark and no daily limit, the image is built in your browser, and the project is open source."
+			}
+		]
+	}
+}

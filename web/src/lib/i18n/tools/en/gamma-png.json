@@ -1,0 +1,32 @@
+{
+	"title": "Gamma correction PNG",
+	"seo": {
+		"metaTitle": "Gamma Correction PNG - Free Brightness Fix, No Upload",
+		"metaDescription": "Lift or drop the midtones without touching black or white. Free, no upload, no signup - gamma correction runs on your device, in your browser, instantly.",
+		"longDescription": "Gamma correction reshapes the midtones of a picture without moving the black and white end points. The value is used as a lookup on every channel: below 1 the curve pulls midtones down so the picture darkens, above 1 it lifts them so it brightens, and exactly 1 leaves the image alone. That is the tool for a washed-out scan, a photo that looks flat next to a screenshot, or an image saved with the wrong gamma assumption. It runs in your browser on PNG, JPG, WebP and BMP, uploads nothing, and keeps the alpha channel intact.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Gamma below 1 for darker midtones or above 1 for lighter ones; 1 is the untouched original.",
+			"Work in small steps - the slider moves by 0.05, and past about 1.6 the shadows start to block up.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Is this the same as the brightness slider?",
+				"a": "They overlap but are not equal. Brightness shifts every value by the same amount and clips at the ends, while gamma bends the curve: the ends of the range stay put and only the middle moves, so gamma lifts the shadows without flattening the highlights."
+			},
+			{
+				"q": "Where does the value 1 come from?",
+				"a": "It is the identity - the assumption that the stored values are already right. A value below 1 says the image was encoded too dark for the display and needs lifting; above 1 says it was encoded too light."
+			},
+			{
+				"q": "Does it change resolution or alpha?",
+				"a": "Neither. The same pixels come out at the same size, the alpha channel is copied through unchanged, and only the red, green and blue lookup changes."
+			},
+			{
+				"q": "My whole picture is too dark and gamma is not enough. What next?",
+				"a": "Try the auto contrast tool, which measures the actual darkest and brightest values in your image and stretches them to the full range instead of applying a fixed curve. If only the color cast is wrong, the temperature tool shifts red and blue."
+			}
+		]
+	}
+}

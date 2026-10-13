@@ -1,0 +1,32 @@
+{
+	"title": "Brightness & contrast PNG",
+	"seo": {
+		"metaTitle": "Brightness and Contrast PNG - Free Local Adjustments",
+		"metaDescription": "Lift or darken a picture and push its contrast, with both sliders running from -100 to 100. Free, no upload - the pixels are adjusted right in your browser tab.",
+		"longDescription": "Brightness and contrast are the two adjustments an image most often needs, and they do different jobs. Brightness shifts every channel value by the same amount, lifting the shadows or dropping the highlights. Contrast stretches or compresses those values around mid-gray, pushing the lights further from the darks or pulling them back together. Both sliders run from -100 to 100 and sit at 0 by default, which means no change at all. Everything runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is left untouched.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Brightness first - negative to pull the picture down, positive to lift it.",
+			"Set Contrast after that; a flat picture usually wants a few points, a faded one a lot more.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Does raising brightness lose detail in the highlights?",
+				"a": "Yes, if you go too far. Values are shifted and anything that reaches the top stays flat white. Watch the bright areas of the preview rather than the overall impression, and back off before they start to clip."
+			},
+			{
+				"q": "Why do my colors look dull after a big contrast change?",
+				"a": "Contrast pushes channels away from mid-gray, and near the ends they run out of room, so strong settings squeeze the color into fewer values. Lowering contrast, or using the gamma tool to move the midtones instead, keeps more of the range."
+			},
+			{
+				"q": "Can I make the picture automatic?",
+				"a": "The auto contrast page measures the darkest and brightest values in your image and stretches them across the full range, which is a good first pass on a washed-out scan."
+			},
+			{
+				"q": "Does this change the size of the file?",
+				"a": "No, the dimensions stay the same, but re-encoding always re-compresses the pixels, so compare the reported file size in the Download button and keep PNG when you need the result to stay lossless."
+			}
+		]
+	}
+}

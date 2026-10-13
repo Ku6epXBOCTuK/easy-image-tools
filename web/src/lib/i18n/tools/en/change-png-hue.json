@@ -1,0 +1,32 @@
+{
+	"title": "Change hue PNG",
+	"seo": {
+		"metaTitle": "Change Hue PNG - Free Color Shift in Your Browser",
+		"metaDescription": "Rotate every color in a picture around the hue wheel while saturation and lightness stay put. Free, no upload, no signup - the shift runs entirely in your browser tab.",
+		"longDescription": "Changing hue rotates every color around the color wheel by the angle you give while leaving how saturated and how light each pixel is exactly as it was. A red shirt stays as bright and as vivid as it was, it just arrives at a different color: plus 120 degrees turns red into green, plus 180 gives the opposite color, minus 90 lands on blue. The work happens in your browser tab on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is passed through unchanged.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Degrees between -180 and 180; the slider starts at 0, which leaves the picture as it is.",
+			"Watch the preview and adjust the angle until the color reads the way you want.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why does the slider stop at 180?",
+				"a": "Half a turn is the useful range, because 180 degrees already swaps a color for its opposite and anything past that is the same rotation coming back around. A smaller correction, say 20 degrees, comes from the same slider."
+			},
+			{
+				"q": "Why did my gray areas stay gray?",
+				"a": "Gray pixels have no hue at all - red, green and blue are equal, so there is no angle to rotate. Use the tint tool if you want to push a whole picture, grays included, toward a color."
+			},
+			{
+				"q": "Does the shift change how bright the picture is?",
+				"a": "No. Saturation and lightness are preserved through the rotation, so the picture keeps its contrast and its shading and only the color family moves."
+			},
+			{
+				"q": "Can this recolor a picture by what is in it?",
+				"a": "No, and this is not an automatic recoloring tool: every pixel is shifted by the same fixed angle, whatever it depicts. To pull one color out of a photo and keep it, use the extract color from tool instead."
+			}
+		]
+	}
+}

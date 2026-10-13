@@ -1,0 +1,33 @@
+{
+	"title": "Resize PNG online",
+	"seo": {
+		"metaTitle": "Resize PNG Online - Free Image Resizer, No Upload",
+		"metaDescription": "Resize PNG images in your browser and keep the aspect ratio. Free, no upload, no limits, no signup. Works with PNG, JPG, WebP and BMP.",
+		"longDescription": "Resize PNG scales an image to new pixel dimensions with bilinear interpolation, which keeps edges smooth when the picture is enlarged or reduced. The scaling runs locally in your browser, so the original file is never uploaded and never leaves your device. The upload takes PNG, JPG, WebP and BMP, and you choose the output format in the Download button. With the aspect ratio kept, one side defines the scale and the other follows; if you set both sides, the image is fitted inside them, so it is scaled down until it fits rather than stretched.",
+		"howTo": [
+			"Drop an image into the source area, or pick a file from your device.",
+			"Enter the new width or height; with aspect kept the other side is recalculated for you.",
+			"Set both sides only when you want the image to fit inside a fixed box.",
+			"Check the preview: the dimensions under the tile show the real output size.",
+			"Choose PNG, JPG, WebP or BMP in the Download button and save."
+		],
+		"faq": [
+			{
+				"q": "Does resizing make the image blurry?",
+				"a": "Enlarging adds pixels that were not in the original, so fine detail softens — that is unavoidable at any tool. Bilinear interpolation keeps the transition smooth instead of blocky. For photos that must stay sharp when enlarged, generate or upscale at a higher source resolution instead."
+			},
+			{
+				"q": "Will the aspect ratio change?",
+				"a": "Not while the aspect ratio is kept: set one side and the other follows the original ratio. Set both sides and the image is scaled until it fits inside them, which keeps the ratio but may leave the result smaller than the box."
+			},
+			{
+				"q": "Are my images uploaded anywhere?",
+				"a": "No. Resizing runs in your browser with no server involved — no upload, no account, no daily limit, free for commercial use, and open source."
+			},
+			{
+				"q": "Can I resize a JPG or WebP instead of a PNG?",
+				"a": "Yes. PNG, JPG, WebP and BMP are accepted on upload, and the output format is yours to choose in the Download button, including a quality slider for the lossy formats."
+			}
+		]
+	}
+}

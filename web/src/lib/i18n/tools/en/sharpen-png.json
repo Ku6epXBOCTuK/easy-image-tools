@@ -1,0 +1,32 @@
+{
+	"title": "Sharpen a PNG online",
+	"seo": {
+		"metaTitle": "Sharpen PNG Online - Free Image Sharpener, No Upload",
+		"metaDescription": "Sharpen an image in your browser by boosting local contrast around edges. Free, no upload, no limits. Works with PNG, JPG, WebP and BMP.",
+		"longDescription": "Sharpen PNG strengthens the contrast between each pixel and its neighbors, which makes edges look crisper. The strength setting blends the sharpened result with the original: at 0% the image comes back unchanged, and at 100% the sharpening kernel is applied at full strength. The tool is for images that are already correctly sized and slightly soft - it does not add detail that was never captured, so it cannot rescue a photo that was enlarged too far. Processing happens in your browser and the file is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set the strength: start low, because too much creates bright halos around edges.",
+			"Compare the preview against the original by toggling the before and after view.",
+			"Download the result, choosing the format in the Download button."
+		],
+		"faq": [
+			{
+				"q": "What does 0% strength mean?",
+				"a": "No change at all - the tool returns the original image. The effect grows from there, so it is safe to start at the default and lower it if the result looks harsh."
+			},
+			{
+				"q": "Why did my sharpened image develop bright edges?",
+				"a": "That is the classic halo effect: the kernel pushes extreme values outward along every edge, which makes light outlines and dark outlines around shapes. Lower the strength, or apply it after a light blur, which is the usual way to tame it."
+			},
+			{
+				"q": "Can sharpening add detail that was never there?",
+				"a": "No. Sharpening works with the pixels that already exist - it raises local contrast around them. If a photo was enlarged far beyond its original size, the missing detail cannot be recovered by sharpening."
+			},
+			{
+				"q": "Is the file uploaded?",
+				"a": "No. Decoding, sharpening and encoding all run in your browser tab, so your image stays on your device."
+			}
+		]
+	}
+}

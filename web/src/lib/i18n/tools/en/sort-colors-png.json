@@ -1,0 +1,33 @@
+{
+	"title": "Sort colors into swatches",
+	"seo": {
+		"metaTitle": "Sort Colors PNG - Free Hue, Brightness, Saturation Order",
+		"metaDescription": "Render your hex colors as swatches sorted by hue, brightness or saturation. Free, no upload, no signup - drawn and exported in your browser.",
+		"longDescription": "Sorting colors is what turns a list you pasted from anywhere into a set you can actually look at, and this page draws your hex values as swatches in a chosen order: by hue for a rainbow sequence, by brightness for a dark to light scale, or by saturation for a dull to vivid scale. The brightness order uses the standard perceptual weighting, where green counts for most and blue for least, so it matches how bright a color actually looks rather than the average of its three channels. No upload is required and there is no source file: the list is sorted in your browser and drawn as swatches you can save as PNG, JPG, WebP or BMP. The honest edge case is the hue order, which sorts on hue angle alone - grays have no meaningful hue, so every gray in your list piles up at one end regardless of how light it is.",
+		"howTo": [
+			"No upload needed - the swatches are drawn from the hex values you type.",
+			"Enter the colors to sort in the Color list, as hex values separated by commas or spaces.",
+			"Set the Order to Hue, Brightness or Saturation.",
+			"Choose a Grid or Strip layout and set the Width of the result.",
+			"Download the sorted swatches as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What is the difference between Hue and Brightness order?",
+				"a": "Hue order follows the angle of the color around the wheel, which gives you a rainbow. Brightness order follows perceived luminance, where green counts the most and blue the least, which gives you a light-to-dark scale. Saturation order puts the vivid colors together and the muted ones together."
+			},
+			{
+				"q": "Why do all my grays end up in the same place?",
+				"a": "Hue order sorts on hue angle, and a gray has no hue at all, so every gray in the list reports the same angle and clusters together no matter how light or dark it is. Switch the Order to Brightness to lay grays out properly."
+			},
+			{
+				"q": "Does the tool change my colors?",
+				"a": "No. It reorders the list you entered and draws each value as it is. Every swatch is the exact hex you typed, with no adjustment of brightness, saturation or anything else."
+			},
+			{
+				"q": "Is it free and does anything get uploaded?",
+				"a": "Yes to both - no signup, no upload, no watermark and no daily limit. The swatches are generated in your browser and the project is open source."
+			}
+		]
+	}
+}

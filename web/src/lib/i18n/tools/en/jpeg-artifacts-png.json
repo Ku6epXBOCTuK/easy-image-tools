@@ -1,0 +1,32 @@
+{
+	"title": "Simulate JPEG compression artifacts",
+	"seo": {
+		"metaTitle": "JPEG Artifacts PNG - See What JPG Compression Does",
+		"metaDescription": "See what a low-quality JPG does to an image before you export it: real JPEG compression, with blocking and smearing, applied in your browser. Free, no upload.",
+		"longDescription": "This tool answers a question you can only answer by trying: what will this picture look like after a JPEG save at a low quality? It does not draw fake blocks - it really encodes the image as JPEG at the quality you set and decodes it back, so the blocking, the ringing along edges and the smeared colors are the actual artifacts an encoder produces. Use it to pick a quality that keeps the picture acceptable, or to compare a lossy export against the lossless original. One honest limitation: JPEG has no alpha channel, so transparent areas are lost and come back black in the result. The processing happens in your browser and the image is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set the quality: low values show heavy artifacts, high values stay close to the original.",
+			"Compare the preview with the original to judge whether the quality is acceptable.",
+			"Download the result, choosing PNG or JPG as the output format in the Download button."
+		],
+		"faq": [
+			{
+				"q": "Is this a real JPEG conversion or a drawn effect?",
+				"a": "A real one. The image is encoded as JPEG at the quality you pick and decoded back, which is exactly the round trip your picture would take on a lossy export. That is also why it takes a moment and why transparency cannot survive it."
+			},
+			{
+				"q": "What happened to the transparent areas?",
+				"a": "They turned black. JPEG has no alpha channel, so when the image is encoded the transparent pixels are composited onto black instead of staying see-through. Work on a flattened copy if the original transparency matters to you."
+			},
+			{
+				"q": "Does the tool make my file smaller?",
+				"a": "It shows you the damage, not the file. To actually export a small JPG, use the convert PNG to JPG tool from this site, where the Download button holds the quality setting."
+			},
+			{
+				"q": "Is the image uploaded?",
+				"a": "No. Encoding and decoding both happen in your browser tab, so the picture never leaves your device and nothing is stored."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Black & white threshold PNG",
+	"seo": {
+		"metaTitle": "Black and White PNG - Free Threshold Tool, Runs Locally",
+		"metaDescription": "Turn any picture into pure black and white by cutting it at a luminance threshold you set. Free, no upload - the file is thresholded in your browser, not sent anywhere.",
+		"longDescription": "The black and white threshold tool turns a photo into pure black and pure white with no gray left in between. Every pixel's luminance is computed with the standard BT.601 weights, compared to the threshold you set, and replaced by white when it is at or above the threshold or black when it is below. The result holds exactly two colors, which is what scanners, e-mail signatures and photocopy workflows ask for. It runs in your browser, works on PNG, JPG, WebP and BMP, and leaves the alpha channel of the source untouched.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set the Threshold; 50 is the middle of the brightness range.",
+			"Lower it to grow the black areas, raise it to keep more of the light areas.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why do my letters look ragged?",
+				"a": "The threshold is a hard cut with no smoothing: a pixel near the cut keeps or goes depending on a single value. Posterizing instead keeps whatever anti-aliasing the source already has, and a slightly blurred source gives the cleanest edge of all."
+			},
+			{
+				"q": "Does it keep the transparency?",
+				"a": "Yes, the alpha channel is copied through untouched, so a PNG logo with a transparent background stays transparent after the cut."
+			},
+			{
+				"q": "Is this the same as grayscale?",
+				"a": "No. The grayscale tool gives you a continuous ramp of grays using the same luma weights; this one collapses that ramp to exactly two values, which is why all the fine shading disappears."
+			},
+			{
+				"q": "Where should I put the threshold for a faint scan?",
+				"a": "Raise it, since that pushes more of the paper into white. Lower it instead if thin strokes and small type start vanishing into the black."
+			}
+		]
+	}
+}

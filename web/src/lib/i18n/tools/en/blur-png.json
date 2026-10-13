@@ -1,0 +1,32 @@
+{
+	"title": "Blur a PNG online",
+	"seo": {
+		"metaTitle": "Blur PNG Online - Free Image Blur, No Upload",
+		"metaDescription": "Blur an image in your browser with a Gaussian blur: smooth, fast at any radius, and transparent edges do not darken. Free, no upload, no signup.",
+		"longDescription": "Blur PNG softens an image by averaging each pixel with the ones around it. The blur is a true Gaussian approximation - three passes of a separable box blur - which is why it stays fast even at a large radius, where a naive blur would freeze the page. Transparency is handled properly: the blur works on the alpha channel as well, so a transparent area stays transparent instead of picking up dark fringes from the visible pixels next to it. Everything runs in your browser, so the image is decoded, blurred and encoded on your own device and is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set the radius: small values soften, large values dissolve detail.",
+			"Watch the preview - the blur applies on every change, without a separate apply step.",
+			"Pick the output format in the Download button and save the result."
+		],
+		"faq": [
+			{
+				"q": "What does the radius mean?",
+				"a": "How many pixels around each one take part in the average. Radius 2 is a slight softening for a small avatar, radius 20 removes detail altogether. It is not a percentage: the same radius has a much stronger effect on a small image than on a large one."
+			},
+			{
+				"q": "Does blurring a transparent PNG create dark edges?",
+				"a": "Not here. The blur is computed with the alpha channel, so transparent pixels do not leak their color into the visible area. A blur that ignores alpha is what produces the black halo around transparent logos you often see elsewhere."
+			},
+			{
+				"q": "Is a Gaussian blur the same as any other blur?",
+				"a": "It is built as three passes of a box blur, which is a common fast approximation of a Gaussian rather than a mathematically exact one. Visually the difference is small, and it holds up at radii where an exact Gaussian would be too slow to run on every keystroke."
+			},
+			{
+				"q": "Is my image uploaded?",
+				"a": "No. The whole operation happens in your browser tab: no request carries your file, nothing is stored, and no account is needed."
+			}
+		]
+	}
+}

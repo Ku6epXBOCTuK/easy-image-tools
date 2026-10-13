@@ -1,0 +1,10 @@
+{
+	"heading": "Image analysis tools",
+	"metaTitle": "Image Analysis Tools - Check PNG, Size, Transparency",
+	"metaDescription": "Check an image in your browser: verify it is a PNG, read the file size, check transparency, orientation, grayscale and color count. Nothing is uploaded.",
+	"paragraphs": [
+		"Analysis tools read an image and answer a question about it instead of changing it. The format check tells you whether a file really is a PNG or something renamed with a .png extension, the file size tool reports how heavy the file is in kilobytes, and the orientation tool reads the size and the shape of the picture. These are quick facts, useful before you decide whether to resize, recompress or re-save anything.",
+		"Color analysis goes deeper. The transparency check reports whether the image has an alpha channel and whether any pixel is actually see-through, the grayscale check reports whether all pixels share the same value in the three color channels, and the two-color check reports whether the image uses exactly two distinct colors - the signature of a simple logo or icon. Extract color reads the dominant color out of the picture.",
+		"The pixel viewers are the visual counterpart: they highlight the pixels that match a condition, so you can see where the transparency is, where the grays are, where the light and dark areas are, and where the unique colors hide. Use them when an image looks wrong and you need to know which pixels are responsible before you touch anything."
+	]
+}

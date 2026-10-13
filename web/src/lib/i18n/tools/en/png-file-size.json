@@ -1,0 +1,32 @@
+{
+	"title": "PNG file size checker",
+	"seo": {
+		"metaTitle": "PNG File Size Checker - How Big Is My Image, Free",
+		"metaDescription": "See how large an image is when encoded as PNG, in kilobytes. Free and local - the picture is encoded in your browser and never uploaded to a server.",
+		"longDescription": "This tool encodes the image you load as a PNG and reports the size of the result in kilobytes. That number is the size of a fresh PNG encoding, not necessarily the size of the file already on your disk: re-encoding can produce a different file, sometimes smaller, sometimes larger, depending on the encoder settings and the content. For a rough idea of the weight of the original, look at the file properties in your file manager. Everything here happens in your browser, so the image never leaves your device.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"The tool encodes it as PNG and shows the resulting size in KB.",
+			"Compare that with the size limit of the place you plan to upload it to.",
+			"If the number is too high, resize the image, reduce its colors or convert it to JPG before exporting."
+		],
+		"faq": [
+			{
+				"q": "Is this the size of my original file?",
+				"a": "Not always. It is the size of the file produced by re-encoding the image as PNG in your browser, which can differ from the original: a different encoder or settings may compress it differently."
+			},
+			{
+				"q": "Why is my PNG bigger after editing?",
+				"a": "Editing and saving a PNG usually produces a larger file than the original, because the image is decoded to pixels and encoded again, and an encoder does not know which pixels you did not touch. Cropping first usually keeps the result small."
+			},
+			{
+				"q": "How do I make the file smaller?",
+				"a": "Resize it down, reduce the number of colors with the quantize tool, or save as JPG or WebP, which are lossy formats designed for exactly this. Transparent areas also cost bytes in PNG - flattening them onto a solid background can shrink a file a lot."
+			},
+			{
+				"q": "Is the image uploaded to measure it?",
+				"a": "No. The encoding happens in your browser tab, so your file never travels to a server and is not stored anywhere."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Tile PNG",
+	"seo": {
+		"metaTitle": "Tile PNG in a Grid - Repeat Image Pattern, No Upload",
+		"metaDescription": "Repeat an image in a grid of the columns and rows you set and download one big PNG. Runs in your browser, free, no upload, no signup, instant.",
+		"longDescription": "Tiling repeats an image in a grid, producing one single output file that is the columns times wider and the rows times taller than the source. It is the quick way to build a pattern for a wallpaper, a contact sheet of thumbnails, a print of repeated icons, or a background when the source tile has matching edges. Each copy is a pixel-for-pixel duplicate: nothing is resampled, blended or overlapped, so the result is exactly as sharp as the input and simply larger. Both counts run from 1 to 50, and a one by one setting returns the image unchanged. Everything is computed inside your browser tab, so the file is never uploaded, and PNG, JPG, WebP and BMP can be loaded and saved.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Columns and Rows, from 1 to 50 each; 2 by 2 is a good starting point.",
+			"Check the size under the preview: it is the original multiplied by both counts.",
+			"Download the tiled picture from the Download button as one image."
+		],
+		"faq": [
+			{
+				"q": "Can I control the gap between tiles?",
+				"a": "Not on this page: the copies sit edge to edge with no spacing and no offset, and the first tile is not shifted so its edges would match the last one. For spacing, tile the image and then add padding to it."
+			},
+			{
+				"q": "Does tiling reduce quality?",
+				"a": "No. Every tile is a direct copy of the source pixels, with no interpolation, blending or compression step inside the tool. Any loss can only come from the format you export to, not from the tiling."
+			},
+			{
+				"q": "How do I cut the tiled image back into single images?",
+				"a": "Run the result through the split into parts tool and set Split by to Grid with the same columns and rows. You get each tile back as its own file inside one zip archive."
+			},
+			{
+				"q": "What is the largest grid I can make?",
+				"a": "Up to 50 columns by 50 rows, which is 2500 copies. The output grows with both numbers, so tile a modest source for large grids, or the result can exceed what a browser canvas can hold."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Clean the color fringe on a cutout",
+	"seo": {
+		"metaTitle": "Remove the Halo From PNG Cutouts - Free, Runs in Browser",
+		"metaDescription": "Pull the leftover background color out of the semi-transparent pixels along a cutout edge, and the transparency stays as it was. Free, runs locally, no upload.",
+		"longDescription": "A color fringe is the halo a cutout picks up when the pixels along its edge still hold the background color even though they have become semi-transparent. Defringing replaces the color of every partly transparent pixel with the color of the nearest fully opaque pixel within the Radius you set, which pulls the background out of the edge and leaves the object's own color behind. Alpha is never touched, so the shape and its softness stay exactly as they were. The scan runs inside your browser, which accepts PNG, JPG, WebP and BMP and sends nothing to a server.",
+		"howTo": [
+			"Drop the image with the halo into the source area, or pick a file from your device.",
+			"Set Radius from 1 to 10 px; 3 px is enough for a typical one-pixel halo.",
+			"Watch the edge in the preview - the fringe disappears, the transparency stays.",
+			"Download the result as PNG to keep the alpha channel intact."
+		],
+		"faq": [
+			{
+				"q": "What exactly gets recolored?",
+				"a": "Only pixels whose alpha is between zero and full opacity. Fully transparent and fully opaque pixels are skipped, so the body of the picture is left alone."
+			},
+			{
+				"q": "How far does it look for a replacement color?",
+				"a": "Ring by ring, up to Radius pixels away, and it stops at the first fully opaque pixel it meets. A halo thicker than the Radius keeps part of its old color."
+			},
+			{
+				"q": "My halo is still there. What now?",
+				"a": "Raise the Radius until the colored rim is gone. If the soft edge is very wide, feather edges first and then run this tool, which cleans the colors of the newly soft pixels as well."
+			},
+			{
+				"q": "Does this soften or blur the edge?",
+				"a": "No. It copies a neighboring color onto the semi-transparent pixels and leaves alpha alone, so the edge stays exactly as sharp or as soft as it already was."
+			}
+		]
+	}
+}

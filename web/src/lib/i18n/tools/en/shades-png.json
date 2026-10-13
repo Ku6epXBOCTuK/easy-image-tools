@@ -1,0 +1,33 @@
+{
+	"title": "Color shades ramp",
+	"seo": {
+		"metaTitle": "Color Shades Ramp PNG - Free Darker Tone Generator",
+		"metaDescription": "Make a shade ramp from a base color: the same hue getting darker step by step to a depth you set. Free, no upload, no signup, drawn in your browser.",
+		"longDescription": "A shade ramp is a one-directional scale that starts at your color and walks only downward into darker versions of it, keeping the hue and saturation fixed the whole way, which is what you need for shadows, hover states, tinted backgrounds and any scale that has to read as the same color getting deeper. This page builds it from a base color, a number of steps and a darken depth, and the first swatch is always the base color exactly as typed. No upload is required and there is no source file: the tones are computed in your browser and drawn as swatches you can save as PNG, JPG, WebP or BMP. The honest edge case is the floor - the darkest tone stops at the base color's own lightness minus a small margin rather than at black, so a dark base with a large depth gives you a short ramp with barely visible steps.",
+		"howTo": [
+			"No upload needed - the ramp is derived from the Base color you pick.",
+			"Set the Base color; it becomes the first and lightest swatch of the ramp.",
+			"Set the Count between 2 and 9 tones.",
+			"Set the Darken depth from 10 to 90 percent to control how far the last tone goes.",
+			"Choose a Grid or Strip layout, set the Width, then download as PNG, JPG, WebP or BMP."
+		],
+		"faq": [
+			{
+				"q": "What is the difference between this and the monochromatic tool?",
+				"a": "Direction. The shade ramp only goes darker and its first swatch is your base color, so it ends at a floor set by the base lightness. The monochromatic tool walks both ways around the base lightness, so it gives you light tints as well as deep tones."
+			},
+			{
+				"q": "Why does my ramp stop short of black?",
+				"a": "The darkest tone is the base lightness minus the depth you set, with a small margin kept above zero. If the base is already dark there is not much room left, so a depth of 90 on a near-black color produces only a few distinguishable steps."
+			},
+			{
+				"q": "Do the shades keep the hue of my base color?",
+				"a": "Yes. Only the lightness is replaced, so hue and saturation are copied into every step and the ramp stays recognizably one color as it deepens."
+			},
+			{
+				"q": "Is anything uploaded or paid for?",
+				"a": "No. The ramp is computed and drawn in your browser, with no signup, no watermark, no daily limit and an open source project."
+			}
+		]
+	}
+}

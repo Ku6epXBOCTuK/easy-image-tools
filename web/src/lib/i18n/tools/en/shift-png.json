@@ -1,0 +1,32 @@
+{
+	"title": "Shift PNG",
+	"seo": {
+		"metaTitle": "Shift PNG - Move Image Content, No Upload",
+		"metaDescription": "Move the content of an image by any X and Y offset in pixels, filling the space it leaves behind. Free, no upload, no signup, runs in your browser.",
+		"longDescription": "Shifting moves the whole content of an image by a given number of pixels horizontally and vertically, which is how you nudge a picture inside its frame without changing the file size. The canvas keeps its original dimensions and the area the content vacates is filled with the Fill color, so the result stays exactly the same size as the source. Offsets run from minus 5000 to 5000 pixels per axis, and negative values push the content the other way. Use it to align a subject inside a fixed frame, to add breathing room on one side only, or to build a layered offset for a shadow or glitch effect. Note that the vacated area is filled with a solid color here, not left transparent: if you want a transparent margin, use the add padding tool, which has an opacity control. Everything runs in your browser.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Offset X to move the content left or right, from -5000 to 5000 pixels.",
+			"Set Offset Y to move it up or down, and pick the Fill color for the vacated area.",
+			"Download the shifted image from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What fills the space the content leaves behind?",
+				"a": "A solid Fill color, and it is opaque. There is no opacity control on this page, so export to PNG if the image has to stay clean over other artwork; for a transparent margin use the add padding tool, whose Opacity slider starts at 0."
+			},
+			{
+				"q": "Does the file size change?",
+				"a": "No. The canvas keeps the original width and height, so a shifted file is the same size as the source; content pushed past the edge is cropped by the canvas rather than wrapped around."
+			},
+			{
+				"q": "How is this different from cropping?",
+				"a": "Cropping chooses a piece of the picture and throws the rest away, so the result is smaller. Shifting keeps the canvas and moves the content inside it, so nothing is lost, but the empty part is filled with the chosen color."
+			},
+			{
+				"q": "Can I shift on only one axis?",
+				"a": "Yes, leave the other offset at 0. That moves the content purely sideways or purely up and down, which is the usual case when you are aligning it inside a frame."
+			}
+		]
+	}
+}

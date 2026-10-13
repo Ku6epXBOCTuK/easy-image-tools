@@ -1,0 +1,34 @@
+{
+	"title": "Draw a grid",
+	"seo": {
+		"metaTitle": "Draw Grid PNG - Free Grid Line Image Generator",
+		"metaDescription": "Draw a grid PNG in your browser: choose columns, rows, line width and color over a transparent or white background. Free, no upload, no signup.",
+		"longDescription": "A grid image is a set of evenly spaced horizontal and vertical lines drawn on a canvas, and this page draws one from four numbers: how many columns, how many rows, how thick the lines are and what color they are. The background is yours to choose - leave Opacity at zero and the result is a transparent PNG with nothing but the lines, which is what you want to overlay on a mockup, a screenshot or a photo; raise it and the background is painted white at that opacity instead. No upload is involved and no source file exists: the grid is rendered in your browser and can be saved as PNG, JPG, WebP or BMP. Use it to check a layout, to draw a table skeleton, or to produce a calibration target. The honest detail is that the column and row counts are the number of spaces between lines, so a count of 8 draws nine lines with one flush against each edge, and the cells are only square when the canvas is.",
+		"howTo": [
+			"No upload needed - the grid is drawn from the Cols, Rows, Line width and Line color values.",
+			"Set the Canvas size in pixels, or pick a preset.",
+			"Set Cols and Rows, each from 1 to 64; the count is the spaces between lines, so 8 gives 9 lines.",
+			"Set the Line width from 1 to 40 pixels and choose the Line color.",
+			"Leave Opacity at 0 for a transparent background, or raise it to paint the background white at that opacity.",
+			"Download the grid as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why do I get one more line than the number I typed?",
+				"a": "The Cols and Rows sliders count the spaces between lines, and a line is drawn on both sides of every space. A value of 8 therefore draws 9 vertical lines and 9 horizontal ones, with the outer pair sitting flush against the canvas edges."
+			},
+			{
+				"q": "How do I get square cells?",
+				"a": "Cells are the canvas width divided by Cols and the height divided by Rows. On a square canvas equal counts give square cells; on a wide canvas you need a proportionally smaller row count, or a wider canvas for the same row count."
+			},
+			{
+				"q": "Can I get a transparent grid with no white box?",
+				"a": "Keep Opacity at 0. Every pixel outside the lines is then fully transparent, and saving as PNG or WebP keeps it that way. Saving as JPG has no alpha channel and will flatten the background to white."
+			},
+			{
+				"q": "Do I have to upload or sign up?",
+				"a": "No. The grid is generated entirely in your browser, with no account, no watermark and no daily limit."
+			}
+		]
+	}
+}

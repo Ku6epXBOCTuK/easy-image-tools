@@ -1,0 +1,10 @@
+{
+	"heading": "Text and watermark tools",
+	"metaTitle": "Add Text to Image Online - Watermark, Date Stamp",
+	"metaDescription": "Add text, a date stamp or a tiled watermark to an image in your browser. Free, no upload, no signup, works with PNG, JPG, WebP and BMP.",
+	"paragraphs": [
+		"Text tools draw on top of an image without touching the pixels underneath. Add Text places a line of text at a chosen position, with the font, size, color and alignment you pick, and the result keeps the rest of the image exactly as it was - saving it as PNG or WebP stays lossless, only JPG and low-quality WebP will re-compress it. A date stamp does the same thing with today's date in the format you choose.",
+		"A watermark protects an image you share but still want to look finished. The tiled watermark repeats the text or the logo across the whole picture, which is the usual way to mark a preview, and setting its opacity is what keeps it readable as a watermark instead of covering the picture. For a single mark in one corner, Add Text with a low opacity does the same job more quietly.",
+		"Everything is rendered in your browser on a canvas, so the file never leaves your device and no account is needed. Because the text is rasterized at export time, it appears exactly as sharp as the output size you choose - scaling a small image up later will blur the letters along with the picture."
+	]
+}

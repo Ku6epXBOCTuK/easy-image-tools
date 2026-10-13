@@ -1,0 +1,32 @@
+{
+	"title": "Convert PNG to LAB Colors",
+	"seo": {
+		"metaTitle": "Convert PNG to LAB - Perceptual Lightness and Color Map",
+		"metaDescription": "Decompose an image into perceptual lightness plus the green-magenta and blue-yellow axes. Free and local, nothing is uploaded - the conversion runs in your browser.",
+		"longDescription": "LAB is the space built so that equal numeric steps look like equal perceptual steps. L is lightness on the familiar 0 to 100 scale, while a and b are two opponent axes - a runs from green to magenta and b from blue to yellow - each centered on zero, which is neutral gray. The values here are normalized into 0 to 1 with the axes centered at mid gray, because a PNG can only store three bytes per pixel. It runs in your browser on PNG, JPG, WebP and BMP files, uploads nothing, and keeps alpha intact.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick Component: L for lightness, A for the green-magenta axis or B for the blue-yellow axis.",
+			"Switch Display to Space as RGB to see all three as red, green and blue.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why are a and b shown as brightness instead of signed numbers?",
+				"a": "A PNG channel cannot be negative. The green-magenta and blue-yellow axes are therefore centered at mid gray: 0.5 is neutral, darker means green or blue, lighter means magenta or yellow. That is a display choice, not a different measurement."
+			},
+			{
+				"q": "How is LAB different from the HSL split?",
+				"a": "HSL numbers were built for convenience; LAB was built so that a difference in the numbers matches a difference you can see. Two colors at the same L in LAB really do look equally bright, where HSL lightness does not promise that."
+			},
+			{
+				"q": "Do I need this for printing?",
+				"a": "No. LAB is the working space for color management, not an output format. For ink coverage use the CMYK page, and for a print-ready file convert in an editor that can embed an output profile."
+			},
+			{
+				"q": "What happens to very dark pixels?",
+				"a": "The conversion follows the standard sRGB curve first, so shadows lift much more than a plain average would. That is deliberate - it matches how the eye reads brightness - but it means the L map of a dark photo carries more detail than the raw channels."
+			}
+		]
+	}
+}

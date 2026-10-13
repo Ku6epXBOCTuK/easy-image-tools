@@ -1,0 +1,32 @@
+{
+	"title": "Convert PNG to Base64",
+	"seo": {
+		"metaTitle": "PNG to Base64 - Free Encoder, No Upload",
+		"metaDescription": "Encode a PNG as a Base64 string in your browser and copy it into CSS, HTML or JSON. No upload, no account, no limits, and the data never leaves the page.",
+		"longDescription": "Base64 is the text encoding that turns binary image data into a string safe to paste into source code: a CSS background, an HTML attribute, a JSON config or an email template. Encoding a PNG here produces that string in the result panel, with a button to copy it to the clipboard. The image is read in your browser and encoded there, so the picture and the resulting data never leave your device - which matters because a Base64 string is the image itself, and uploading it would be uploading your file. The result can be used as a data URI directly.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Wait for the string to appear in the result panel.",
+			"Press the copy button to put the whole string on the clipboard.",
+			"Use it in CSS as url(data:image/png;base64,...) or paste it where you need."
+		],
+		"faq": [
+			{
+				"q": "Why is the string longer than the file?",
+				"a": "Base64 stores six bits per character, so it costs about 33 percent more characters than the raw bytes: a 300 KB PNG becomes roughly 400 KB of text. It is a transport format, not a compression one."
+			},
+			{
+				"q": "Should I embed images as Base64?",
+				"a": "For small assets - icons, sprites, logos, a few kilobytes - yes, it removes a request and guarantees the image travels with the file. For photos and anything large it usually hurts: the text is bigger, it cannot be cached separately and it blocks parsing."
+			},
+			{
+				"q": "Is the string the whole image?",
+				"a": "Yes, which is why this page never uploads anything. A Base64 string of your picture is as sensitive as the picture itself, so keep it on your machine."
+			},
+			{
+				"q": "What is the difference between Base64 and a data URI?",
+				"a": "A data URI is the full string you put in an attribute: the prefix with the MIME type, then the Base64 payload. Copy the data URI variant when you need the ready-made value for src or background-image."
+			}
+		]
+	}
+}

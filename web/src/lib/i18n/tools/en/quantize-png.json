@@ -1,0 +1,32 @@
+{
+	"title": "Quantize PNG",
+	"seo": {
+		"metaTitle": "Quantize PNG - Reduce to a Fixed Color Count, Free",
+		"metaDescription": "Reduce any picture to a chosen number of colors, 2 to 64, with median-cut. Free, no upload - quantizing runs in your browser and keeps transparency intact.",
+		"longDescription": "Quantizing reduces an image to a chosen number of colors. The tool samples the pixels, groups them into buckets by repeatedly splitting the bucket with the widest spread down its longest channel, takes each bucket's average as one palette entry, and then repaints every pixel with the nearest of those entries. Fully transparent pixels are skipped rather than treated as black, so cut-out graphics survive the reduction. Everything happens in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is preserved.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Color count between 2 and 64; 16 is the starting point.",
+			"Go lower for a strong graphic look, higher to keep more of the original detail.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "How is this different from the decrease color count page?",
+				"a": "That page is the same algorithm behind fixed presets named after the usual compression levels, which is convenient when you just want a known loss level. This one is the free-form version: any number from 2 to 64."
+			},
+			{
+				"q": "What happens to the colors that get dropped?",
+				"a": "They are replaced by whichever surviving color is nearest, measured as distance in red, green and blue. Close pairs merge and end up slightly wrong; colors far apart stay recognizable."
+			},
+			{
+				"q": "Why does it look patchy?",
+				"a": "That is the usual result of reducing a smooth gradient: broad flat areas appear where the original had a gentle change. The dithering tool trades the patches for a speckled texture that reads as continuous tone."
+			},
+			{
+				"q": "Can I choose the palette myself?",
+				"a": "Not on this page - the palette is derived from the image. To decide the exact colors, list them as hex codes in the custom palette tool, and to keep the banding out of a photograph add the dithering tool after."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Split PNG into HSL",
+	"seo": {
+		"metaTitle": "Split PNG into HSL - Hue, Saturation, Lightness Map",
+		"metaDescription": "Decompose an image into hue, saturation and lightness to see where the colors and the tones sit. Free and local, nothing is uploaded - it runs in your browser.",
+		"longDescription": "HSL breaks a color into the three parts a designer thinks in: hue is the angle on the color wheel, saturation is how vivid the color is, and lightness is how light it looks, taken as the midpoint between the brightest and the darkest channel. A fully saturated red therefore has lightness 0.5 rather than 1, because the formula measures the middle of the range instead of the top. It runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and alpha is left exactly as it was.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick Component: H for hue, S for saturation or L for lightness.",
+			"Switch Display to Space as RGB to see the three parts as red, green and blue at once.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Where does the hue scale start?",
+				"a": "Hue 0 is pure red and it runs through yellow at 60, green at 120, cyan at 180, blue at 240 and magenta at 300, back to red at 360. Every gray pixel reads 0, which is just the default - there is no hue to report."
+			},
+			{
+				"q": "Why is a vivid red not at lightness 100?",
+				"a": "Lightness is the average of the brightest and the darkest channel. For a pure red that is 255 and 0, so L lands in the middle of the scale. A color that is dark by lightness rather than by hue, navy blue for instance, scores low on L even though its hue is perfectly clear."
+			},
+			{
+				"q": "Should I use HSL or HSV instead?",
+				"a": "HSL is the model behind CSS colors, so it matches web work. HSV matches how people pick colors on screen with a value slider, so it fits design tools. If you want the average brightness of the pixels rather than either of those, the HSI page gives you that."
+			},
+			{
+				"q": "Can I get these numbers as text?",
+				"a": "No. The page shows them as pictures, one component or all three, so you can see the shape of each map across the image - the hue map in particular shows where the color families are."
+			}
+		]
+	}
+}

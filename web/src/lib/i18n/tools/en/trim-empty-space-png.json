@@ -1,0 +1,32 @@
+{
+	"title": "Trim empty space from PNG",
+	"seo": {
+		"metaTitle": "Trim PNG Empty Space - Remove Transparent Border, Free",
+		"metaDescription": "Cut the transparent margins off a PNG and keep only the content, with an alpha threshold for faint halos. Free, no upload, no signup, runs in your browser.",
+		"longDescription": "Trimming empty space cuts away the transparent or nearly transparent margins around the content of a PNG, so the file ends up with no wasted border. Every pixel whose alpha channel is above the Alpha threshold counts as content, the bounding box of those pixels becomes the new image, and nothing else is touched: no resampling, no smoothing of the cut edge, no change to the colors of the content itself. The threshold matters for cutouts, where a faint halo of near-transparent pixels survives a hard edge; raising it drops that halo at the cost of shaving the outline. This is the cleanup step before exporting a logo, a sticker or an icon, and it also shrinks a screenshot that was padded for sharing. Everything runs in your browser, so nothing is uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Leave Alpha threshold at 0 to keep every pixel that is not fully transparent.",
+			"Raise Alpha threshold when a faint halo should count as empty space.",
+			"Download the trimmed image from the Download button as PNG, JPG, WebP or BMP."
+		],
+		"faq": [
+			{
+				"q": "What does the alpha threshold do?",
+				"a": "It decides how visible a pixel has to be to count as content. At 0 anything not fully transparent is kept; raising it drops nearly invisible pixels too, which is how you remove the pale halo a rough cutout leaves behind."
+			},
+			{
+				"q": "Does trimming blur or resample the image?",
+				"a": "No. The content is taken at full resolution with a straight cut at the bounding box, so the edges are exactly as they were. No interpolation happens anywhere in the process."
+			},
+			{
+				"q": "Will it work on a JPG?",
+				"a": "No, there is nothing to trim. A JPG has no alpha channel, so every pixel counts as content and the file comes back the same size. Trimming works on PNG and on WebP, which both support transparency."
+			},
+			{
+				"q": "I want to keep the canvas and center the content instead",
+				"a": "Use the center by content tool. It keeps the original canvas size and only redistributes the empty space, whereas trimming removes the margins and makes the file smaller."
+			}
+		]
+	}
+}

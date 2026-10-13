@@ -1,0 +1,32 @@
+{
+	"title": "Cut an image into a star",
+	"seo": {
+		"metaTitle": "Cut a PNG Into a Star Shape - Free, No Upload",
+		"metaDescription": "Cut an image into a star with 3 to 12 points, adjustable inner radius, size and rotation. Free and unlimited, the mask is drawn in your browser.",
+		"longDescription": "A star mask cuts the image into a polygon star. Points sets the number of rays from 3 to 12, Inner radius is the depth of the valleys between them as a share of the outer radius, Shape size is the diameter of the outer circle as a share of the shorter side, and Rotation turns the whole shape in degrees so a star can point up, down or sideways. Offset moves it into the free space. Everything outside the star becomes transparent, the canvas keeps its size, and the edge is a hard cut without anti-aliasing. PNG, JPG, WebP and BMP are accepted, all inside your browser.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Points from 3 to 12 and Inner radius from 10 to 90 percent.",
+			"Set Shape size, then turn the star with Rotation from -180 to 180 degrees.",
+			"Use Offset to place it, then download the result as PNG."
+		],
+		"faq": [
+			{
+				"q": "Why does my star look like a thin asterisk?",
+				"a": "Inner radius controls how far the valleys cut in. Near 90 the star is almost a disc, while near 10 the points become narrow spikes, and with 12 points that reads as a sunburst."
+			},
+			{
+				"q": "How is the size measured?",
+				"a": "Shape size is the diameter of the circle that reaches the tips of the star, given as a share of the shorter side. 100 fills the picture with the tips touching the edges."
+			},
+			{
+				"q": "Can the star point downwards?",
+				"a": "Yes, the Rotation slider runs from -180 to 180 degrees, which is enough to turn the star to any angle, including upside down."
+			},
+			{
+				"q": "Do I need this for a holiday badge?",
+				"a": "The star itself yes, the badge no. This tool has no text and no background color, so add the wording with the add text tool and the plate with the fit onto background tool."
+			}
+		]
+	}
+}

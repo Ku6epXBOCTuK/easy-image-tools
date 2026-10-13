@@ -1,0 +1,32 @@
+{
+	"title": "Set alpha channel of PNG",
+	"seo": {
+		"metaTitle": "Set PNG Alpha Channel - Uniform Opacity, No Upload",
+		"metaDescription": "Give every pixel of a PNG the same opacity, or restore full opacity to a faded image. One percentage, colors untouched. Free, runs in your browser.",
+		"longDescription": "Setting the alpha channel writes one and the same opacity into every pixel of the image, while the colors stay untouched. That is different from scaling the existing transparency: a logo that is already half transparent at the edges becomes uniformly 50 percent everywhere after this operation, and a picture someone flattened to a single low opacity can be brought back to solid. It is the fastest way to make a whole PNG translucent, or to repair an image whose alpha channel was flattened. The file is processed in your browser and never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set the percentage: 100 makes every pixel fully opaque, 50 makes them all half transparent.",
+			"Check the preview - the checkerboard shows how much transparency is left.",
+			"Save the result as PNG or WebP from the Download button to keep the alpha channel."
+		],
+		"faq": [
+			{
+				"q": "How is this different from changing image opacity?",
+				"a": "Changing opacity multiplies the existing alpha, so the differences between more and less transparent pixels are preserved. Setting the alpha channel overwrites it: every pixel ends up with exactly the same value. Use multiply when you want to keep the picture's own transparency, and overwrite when you need it uniform."
+			},
+			{
+				"q": "Can this restore a faded PNG?",
+				"a": "Yes, if the image still has an alpha channel and only the values are low: set 100 percent and every pixel becomes fully opaque again. If transparency was already flattened into a solid background color, no alpha channel is left to restore - the pixels are just background-colored."
+			},
+			{
+				"q": "Will the colors change?",
+				"a": "No. Only the alpha value is written; the red, green and blue channels are copied byte for byte."
+			},
+			{
+				"q": "Does it work offline?",
+				"a": "Yes. Once the page is loaded the processing is entirely local, so the tool works without a connection and your file is never uploaded anywhere."
+			}
+		]
+	}
+}

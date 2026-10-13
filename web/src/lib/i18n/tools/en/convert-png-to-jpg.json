@@ -1,0 +1,33 @@
+{
+	"title": "Convert PNG to JPG",
+	"seo": {
+		"metaTitle": "Convert PNG to JPG - Free Converter, No Upload",
+		"metaDescription": "Convert PNG to JPG right in your browser. Transparent areas are filled with the background color you pick, and you set the JPEG quality. Free, no upload.",
+		"longDescription": "Converting a PNG to JPG makes a smaller file that any device and program can open, at the cost of the two things JPG cannot do: transparency and lossless pixels. Everything is done locally in your browser, so your image is never uploaded and never stored anywhere. Pick the background color that transparent areas are filled with - white by default, which is what most white-backed documents expect - set the JPEG quality, and download. The result carries no watermark, no account requirement and no daily limit.",
+		"howTo": [
+			"Drop the PNG into the source area, or pick a file from your device.",
+			"Set Background to the color that transparent parts should be filled with.",
+			"Raise or lower Quality: 90 keeps the picture clean, 70-80 makes a visibly smaller file.",
+			"Check the preview - the dimensions under the tile show the output size.",
+			"Download the .jpg file from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What happens to transparency when converting to JPG?",
+				"a": "JPG has no alpha channel, so transparent pixels cannot be stored. Each of them is composited onto the background color you chose - white unless you pick another one. Pick white for screenshots on white, or your brand color when the picture will sit on a colored page."
+			},
+			{
+				"q": "Does converting to JPG make the image worse?",
+				"a": "JPG is lossy: it keeps the picture close to the original but throws away detail the eye rarely notices. At quality 90 the difference is hard to see and the file is several times smaller. If you need not to lose a single pixel, keep the PNG and compress it instead."
+			},
+			{
+				"q": "Why is my JPG bigger than I expected?",
+				"a": "Quality and size pull against each other. Dropping from 90 to 75 usually halves the file with barely visible change; below 60 blocking and ringing around sharp edges become obvious. When the goal is a specific file size rather than the best picture, use the size limit in the Download button."
+			},
+			{
+				"q": "Will the result have a watermark?",
+				"a": "No. There is no watermark, no signup and no upload - the file is encoded in your browser and saved straight to your device. The tool is free for commercial use and open source."
+			}
+		]
+	}
+}

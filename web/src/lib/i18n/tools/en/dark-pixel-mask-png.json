@@ -1,0 +1,32 @@
+{
+	"title": "Dark pixel mask",
+	"seo": {
+		"metaTitle": "Dark Pixel Mask - Mark Shadow Areas Of An Image",
+		"metaDescription": "Select the pixels darker than a luminance threshold and see them as a mask. Runs free in your browser - your image is never uploaded.",
+		"longDescription": "The dark counterpart of the light pixel mask: this tool marks every pixel below a brightness threshold, using the same luminance measure as the eye perceives light. It is the way to find the shadow side of a photo, to see how much of an image is almost black, or to pull out the dark areas for separate editing. Lowering the threshold makes the mask grow, so it also covers midtones and any color that is simply deep. The mask is rendered in your browser and the image itself is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Choose the view: a black and white mask, or a highlight over the original picture.",
+			"Move the luminance threshold: lower values mark more pixels, including midtones.",
+			"Set the highlight color and opacity, then download the mask."
+		],
+		"faq": [
+			{
+				"q": "How is brightness measured here?",
+				"a": "By luminance, the same perceptual mix of red, green and blue that the light pixel mask uses, so the two tools split an image into bright and dark parts of the same scale."
+			},
+			{
+				"q": "What does the threshold mean?",
+				"a": "The brightness level a pixel has to stay below to be marked, as a percentage. Zero marks only fully black pixels; raising it takes in shadows and then midtones."
+			},
+			{
+				"q": "Does it mark dark colors that are not black?",
+				"a": "Yes. A deep blue is dark in luminance terms even though its blue channel is high, so it gets marked. The tool measures light, not hue."
+			},
+			{
+				"q": "Is the image uploaded?",
+				"a": "No. Decoding, the threshold check and the mask rendering all happen in your browser tab. Your file is not sent anywhere and nothing is stored."
+			}
+		]
+	}
+}

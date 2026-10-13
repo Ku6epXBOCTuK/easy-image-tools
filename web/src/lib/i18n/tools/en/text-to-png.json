@@ -1,0 +1,34 @@
+{
+	"title": "Text to PNG",
+	"seo": {
+		"metaTitle": "Text to PNG - Free Image From Text Generator, No Upload",
+		"metaDescription": "Turn text into a PNG sized to fit the label plus padding: font, size, bold, color, background. Free, no upload, no signup, made in your browser.",
+		"longDescription": "A text image is a picture of a label rather than text on a web page, which you need when the words have to survive being copied into a slide, a design tool or an email where the font you chose is not installed. This page measures your string with the browser's own text engine, then sizes the canvas to fit the text plus the padding you set, so the result is cropped tight to the label rather than being a fixed frame with empty space around it. Choose a font, a size from 8 to 300 pixels, bold or regular and a text color, add a background with its own opacity, and it is drawn on your device - no upload, no source file, and the image saves as PNG, JPG, WebP or BMP. The honest limitation is that the text is a single line: there is no wrapping here, so a long sentence produces a very wide and very short image. The other honest fact is that the glyphs come from the fonts installed on your machine, so the export looks like your system, not like everyone else's.",
+		"howTo": [
+			"No upload needed - the image is drawn from the text you type.",
+			"Type your label into the Text field.",
+			"Set the Text style: font family, size from 8 to 300 pixels, bold and color.",
+			"Set the background Opacity and Background color; opacity 0 leaves the image transparent.",
+			"Set the Padding from 0 to 200 pixels to add space around the label.",
+			"Download the image as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Does my text wrap onto several lines?",
+				"a": "No. The canvas is sized to fit one line of text plus the padding, so a long sentence gives you a very wide, short image. If you need text laid over a picture and wrapped, use the add text tool on this site instead."
+			},
+			{
+				"q": "Why does the result look different on another computer?",
+				"a": "Because it is rendered with the fonts installed on this device. A machine without the font you chose substitutes its own, and the measured width changes with it. Export at the size and style you actually need and check the result where it will be used."
+			},
+			{
+				"q": "Can I get a transparent background?",
+				"a": "Set Opacity to 0 and leave the background color alone. The padding area then stays fully transparent, which keeps the PNG and WebP formats clean; saving as JPG flattens those areas to the background color instead."
+			},
+			{
+				"q": "How is the image size decided?",
+				"a": "The width is the measured text width plus twice the padding, and the height is the font size times a fixed line height plus twice the padding. There is no separate width control - it follows the text."
+			}
+		]
+	}
+}

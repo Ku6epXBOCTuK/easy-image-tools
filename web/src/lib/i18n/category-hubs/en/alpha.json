@@ -1,0 +1,10 @@
+{
+	"heading": "Transparent PNG tools",
+	"metaTitle": "Transparent PNG Tools - Cut Out, Masks, Alpha Channel",
+	"metaDescription": "Make a PNG transparent, remove its background or one color, round the corners, apply circle, square or star masks, and edit the alpha channel. Free, no upload, in your browser.",
+	"paragraphs": [
+		"Transparency in a PNG is stored in the alpha channel: a fourth value per pixel that says how opaque it is, from fully invisible to fully solid. The tools here work with that channel directly. Removing one color or the background makes matching pixels transparent, setting or removing the alpha channel switches transparency on or off as a whole, and inverting it swaps what is visible with what is hidden.",
+		"Cutting out a subject is the most common task here. The background removal tool picks the corner pixels as the background color and erases everything close to it - it is a color-key algorithm, not an AI model, so it works on logos, icons, product shots and screenshots with a flat background, and struggles with hair, fur or busy scenes. When a hard cut leaves a fringe of the old background, the defringing tool pulls that halo back toward the edge color, and the edge cleaning tools remove stray specks and small holes.",
+		"Masks are the geometric way to get the same result: a circle, square, star or wavy mask keeps the pixels inside the shape and makes everything else transparent, which is how avatars and app icons are made. Round corners does the same with a radius, and the thicker, thinner, feathered and hardened tools adjust the edge of a selection that already exists - useful when a cutout needs to be a little softer or a little tighter."
+	]
+}

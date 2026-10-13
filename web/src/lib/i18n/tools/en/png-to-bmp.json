@@ -1,0 +1,31 @@
+{
+	"title": "Convert PNG to BMP",
+	"seo": {
+		"metaTitle": "Convert PNG to BMP - Free Converter, No Upload",
+		"metaDescription": "Convert PNG to BMP in your browser. The result is a 24-bit bitmap for Windows and old software. Free, no upload, no signup, no watermark.",
+		"longDescription": "BMP is the uncompressed bitmap format that Windows, office software and a lot of older engineering and printing software still expect. Converting a PNG to BMP writes a plain 24-bit bitmap: every pixel is stored as is, with no compression and no quality loss from the encoding step itself. The catch is alpha - a 24-bit BMP has no transparency, so transparent parts of your PNG are flattened onto black when they are saved this way. The conversion runs in your browser, so the source file is never uploaded.",
+		"howTo": [
+			"Drop the PNG into the source area, or pick a file from your device.",
+			"Preview the result; transparent areas are flattened onto black.",
+			"Download the .bmp file from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What happens to transparency when saving as BMP?",
+				"a": "The output is a 24-bit bitmap, which has no alpha channel, so transparent pixels are written as opaque black. If you need transparency to survive, export to PNG or WebP instead."
+			},
+			{
+				"q": "Why is my BMP so much bigger than the PNG?",
+				"a": "BMP is uncompressed: every pixel is stored literally, so a 1000 by 1000 picture takes about 3 MB regardless of how simple it looks. PNG compresses the same image down to a fraction of that, which is why BMP survived only where compatibility matters more than size."
+			},
+			{
+				"q": "Is the conversion lossless?",
+				"a": "The pixels are copied unchanged - BMP does not compress and does not subsample colors. What you lose compared to the source PNG is only the alpha channel and, if the source was scaled before, whatever resampling already did."
+			},
+			{
+				"q": "Which programs open BMP?",
+				"a": "Essentially all of them: Windows itself, most image editors, office suites and printing software. That reliability is the only reason to choose BMP over PNG or WebP."
+			}
+		]
+	}
+}

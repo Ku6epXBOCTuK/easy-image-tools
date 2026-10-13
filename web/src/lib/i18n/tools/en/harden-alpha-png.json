@@ -1,0 +1,32 @@
+{
+	"title": "Turn soft transparency into hard edges",
+	"seo": {
+		"metaTitle": "Crisp Hard Edges for PNG - Free, Runs Locally",
+		"metaDescription": "Snap every semi-transparent pixel to fully on or fully off with one threshold, from 0 to 100 percent, while colors stay untouched. Free, no signup, no upload.",
+		"longDescription": "Hardening an alpha channel makes transparency a decision instead of a gradient: each pixel's opacity is compared with the Alpha threshold, and everything at or above it becomes fully opaque while everything below becomes fully transparent. Semi-transparent pixels therefore snap to one side or the other, colors are left untouched, and the picture ends up with crisp, unfiltered edges - the same look a mask-based cutout has. The threshold runs from 0 to 100 percent and starts at 50. PNG, JPG, WebP and BMP are accepted, and the whole pass runs in your browser.",
+		"howTo": [
+			"Drop the image with soft edges into the source area, or pick a file from your device.",
+			"Set Alpha threshold; 50 splits the opacity range in half.",
+			"Lower it to keep more of the soft rim, raise it to cut the rim away.",
+			"Download the result as PNG - JPG has no alpha channel to store it."
+		],
+		"faq": [
+			{
+				"q": "What happens to a pixel at exactly the threshold?",
+				"a": "It becomes fully opaque. The rule is that a value at or above the threshold goes on and anything below it goes off, so 50 leaves every pixel with 50 percent opacity or more visible."
+			},
+			{
+				"q": "Will the edges look smooth afterwards?",
+				"a": "No, they look hard. The soft ramp collapses into a hard rim with a visible staircase along a diagonal, and feathering is the opposite of what this tool does."
+			},
+			{
+				"q": "My soft shadow vanished.",
+				"a": "A shadow lives in the semi-transparent range, and hardening sends everything below the threshold to fully transparent. Lower the threshold to keep it, or keep the shadow by feathering instead."
+			},
+			{
+				"q": "Does it change the colors of the picture?",
+				"a": "No. Red, green and blue are copied through untouched and only the fourth channel is rewritten. Use the show transparent areas tool first to see which pixels are about to flip."
+			}
+		]
+	}
+}

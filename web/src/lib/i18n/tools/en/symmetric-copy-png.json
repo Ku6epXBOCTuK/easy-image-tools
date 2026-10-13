@@ -1,0 +1,32 @@
+{
+	"title": "Make a symmetric copy",
+	"seo": {
+		"metaTitle": "Symmetric Copy PNG - Mirror Pattern in One Click",
+		"metaDescription": "Mirror one half of an image onto the other for an instant symmetric pattern, in your browser. Pixel-exact, free, no upload, no signup, instant download.",
+		"longDescription": "Making a symmetric copy doubles the canvas and mirrors the half you keep into the empty half, producing a reflection that lines up down the middle. Pick Vertical to mirror across a vertical line, which doubles the width, or Horizontal to mirror across a horizontal one, which doubles the height, then choose which side is kept: left, right, top or bottom. The kept side lands in the first half of the result and its reflection in the second, so the two halves meet at a seamless seam. Pixels are only copied, never resampled or blended, so the pattern is exactly as sharp as the source and the mirror is a true reflection rather than a fade. Use it for symmetrical layouts, a two-panel banner, a mirrored logo mark, or a texture that has to repeat symmetrically. Everything runs in your browser.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Choose the axis: Vertical doubles the width, Horizontal doubles the height.",
+			"Pick the Kept side: left or right for a vertical mirror, top or bottom for a horizontal one.",
+			"Download the symmetric result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What is the difference between the axis options?",
+				"a": "Vertical mirrors across a vertical line, so the left and right halves meet and the width doubles. Horizontal mirrors across a horizontal line, so the top and bottom halves meet and the height doubles."
+			},
+			{
+				"q": "What does the kept side do?",
+				"a": "It decides which half of the original is kept and reflected. The kept side is written into the first half of the output and its mirror into the second, so the seam falls exactly down the middle whichever side you choose."
+			},
+			{
+				"q": "Does it blur the mirrored half?",
+				"a": "No. A true mirror is a copy of the source pixels to reversed positions, with no interpolation and no opacity fade, so both halves are equally sharp and identical apart from the flip."
+			},
+			{
+				"q": "Can I get a four-way symmetric pattern?",
+				"a": "Run the tool twice. Mirror once to double the width, then take that result and mirror it again to double the height, which gives the four-fold pattern in two passes."
+			}
+		]
+	}
+}

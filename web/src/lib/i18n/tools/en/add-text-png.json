@@ -1,0 +1,33 @@
+{
+	"title": "Add text to PNG",
+	"seo": {
+		"metaTitle": "Add Text to PNG - Free Image Text Tool, No Upload",
+		"metaDescription": "Draw a text label on a PNG in your browser: font, size, color, bold, a position on a 3x3 grid and an optional backing plate. Free, no upload.",
+		"longDescription": "Adding text to an image draws it straight onto the pixels, which is what you want for a label, a watermark, a caption on a mockup or a date on a photo. Pick the font family, size, weight and color, choose one of nine positions around the frame, set the margin from the edge, and switch on a semi-transparent backing plate when the picture behind the text is too busy. The text is rendered by the browser on your device, so the image never leaves it and the result can be saved as PNG, JPG, WebP or BMP.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Type the text, then set the font, size, bold and color.",
+			"Choose a position on the 3x3 grid and set the margin from the edge.",
+			"Turn on the plate and tune its color and opacity if the text needs contrast.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Is this a watermark tool?",
+				"a": "It draws a single label at a chosen position. For a repeated pattern across the whole picture, use the watermark tile tool on this site instead."
+			},
+			{
+				"q": "Why is my text hard to read?",
+				"a": "Turn on the backing plate and lower its opacity until the text reads without looking like a sticker, or place the label over a quieter part of the picture by moving the margin."
+			},
+			{
+				"q": "Which fonts are available?",
+				"a": "The browser fonts on your system - a sans-serif and a monospace family are offered. Because the rendering happens locally, the look depends on the fonts installed on the device, which is also why an uploaded PNG always looks the same everywhere."
+			},
+			{
+				"q": "Does adding text reduce image quality?",
+				"a": "The picture is not resampled - the label is drawn on top of the original pixels, and saving as PNG or WebP keeps the rest of the image lossless."
+			}
+		]
+	}
+}

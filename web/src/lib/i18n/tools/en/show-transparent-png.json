@@ -1,0 +1,32 @@
+{
+	"title": "Show transparent areas in an image",
+	"seo": {
+		"metaTitle": "Show Transparent Pixels - Visualize PNG Transparency",
+		"metaDescription": "Highlight every transparent and semi-transparent pixel in an image so hidden gaps become visible. Free, no upload - the mask is drawn in your browser.",
+		"longDescription": "A missing corner, a faded logo or a PNG that looks white on a white page can hide a lot of see-through pixels that the eye never notices. This tool paints every pixel that is not fully opaque, so the holes and the soft edges appear at a glance. Two views are available: a black and white mask that marks transparency in a single color, and a highlight that tints the original image so you keep the context. Both run locally in your browser and the picture is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Choose the view: a black and white mask, or a highlight over the original picture.",
+			"Set the highlight color and its opacity so marked pixels read clearly.",
+			"Download the mask, or use it to decide what has to be fixed first."
+		],
+		"faq": [
+			{
+				"q": "What does the tool mark?",
+				"a": "Every pixel whose alpha value is below full opacity. That includes fully transparent pixels and partially transparent ones, so a soft fade or a semi-transparent shadow shows up as well as a hard hole."
+			},
+			{
+				"q": "What is the difference between the mask and the highlight?",
+				"a": "The mask replaces the image with black and white: marked pixels in white, everything else black. The highlight keeps the picture and tints the marked pixels with the color you choose, which is easier to read when you need to see where the gap is."
+			},
+			{
+				"q": "Does saving the mask keep the transparency?",
+				"a": "The mask is a new image: in the mask view it is black and white, and in the highlight view it is the tinted original. It is a diagnostic picture, not a transparent copy of your file."
+			},
+			{
+				"q": "Is the image uploaded?",
+				"a": "No. Decoding and rendering both happen in your browser tab, so the file is never sent anywhere and never stored."
+			}
+		]
+	}
+}

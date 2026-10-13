@@ -1,0 +1,32 @@
+{
+	"title": "Change PNG opacity",
+	"seo": {
+		"metaTitle": "Change PNG Opacity - Make Image Transparent, No Upload",
+		"metaDescription": "Reduce the opacity of a PNG in your browser: the alpha channel is multiplied by a percentage, so 0% is invisible and 100% is unchanged. Free, no upload.",
+		"longDescription": "Changing the opacity of a PNG scales its alpha channel, so a fully opaque image becomes semi-transparent and a 0 percent result is completely invisible. The color channels are left exactly as they were, which is what makes the difference between making an image translucent and making it faded: nothing is blended, every pixel keeps its own color. The result stays a PNG with a real alpha channel, so it still drops onto a page, a slide or another image without a white box around it. Everything runs in your browser, so the file is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set the opacity percentage: 100 leaves it untouched, 50 makes it half transparent.",
+			"Watch the preview against the checkerboard background.",
+			"Download the result as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What is the difference between changing opacity and adding a white background?",
+				"a": "Opacity touches only the alpha channel, so the picture itself stays pure and keeps its edges. A white background paints over the transparent parts and leaves the pixels underneath untouched - the picture can still look washed out when it sits on another background."
+			},
+			{
+				"q": "Does making an image transparent reduce its quality?",
+				"a": "No. The alpha value is multiplied per pixel; the color data is copied without resampling. Only the export format matters: save as PNG or WebP to keep transparency, and remember JPG flattens it onto a color."
+			},
+			{
+				"q": "Can I make only part of the image transparent?",
+				"a": "Not here - this page scales the whole alpha channel. To fade one region, remove that background color first and then apply the opacity to the result."
+			},
+			{
+				"q": "Are my images uploaded?",
+				"a": "No. The alpha channel is multiplied in your browser, with no upload, no account and no watermark. It is free for commercial use and open source."
+			}
+		]
+	}
+}

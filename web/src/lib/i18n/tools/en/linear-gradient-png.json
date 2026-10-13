@@ -1,0 +1,32 @@
+{
+	"title": "Create gradient PNG",
+	"seo": {
+		"metaTitle": "Create Gradient PNG - Free Linear Gradient Generator",
+		"metaDescription": "Generate a linear gradient PNG in your browser: two colors, a direction and any canvas size. Free, no upload, no signup, downloads instantly.",
+		"longDescription": "A linear gradient is a smooth transition from one color to another along a straight line, and this page draws one as a PNG of any size. Choose the start and end colors, set the angle, and the canvas is filled with the blend in your browser - there is no upload, because there is no source file: the gradient is computed pixel by pixel and encoded into a PNG you can download. Gradients are the background of most landing pages, slide decks and app shells, and exporting one as an image gives you a background that does not depend on CSS support at all.",
+		"howTo": [
+			"Set the canvas size in pixels, or pick a preset.",
+			"Choose the color the gradient starts from and the color it ends at.",
+			"Set the angle: 0 runs left to right, 90 runs bottom to top.",
+			"Download the gradient as a PNG from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What does the angle mean?",
+				"a": "It is the direction of the gradient line in degrees. At 0 the first color is on the left and the last on the right; at 90 the first color is at the bottom; 180 is right to left and 270 top to bottom."
+			},
+			{
+				"q": "Can I get a radial gradient instead?",
+				"a": "Not on this page - it draws linear gradients. For a radial fade, create a transparent canvas, run the remove-background tool against one edge, and raise the tolerance until the fade covers the image."
+			},
+			{
+				"q": "Does the PNG get banded?",
+				"a": "The blend is computed per pixel in floating point and encoded with a high bit depth, so smooth transitions stay smooth. Very wide low-contrast gradients can still show faint steps after the PNG is quantized, which is a property of the format, not of the generator."
+			},
+			{
+				"q": "Is this free to use in commercial work?",
+				"a": "Yes. There is no signup, no watermark and no daily limit, no file is uploaded, and the project is open source."
+			}
+		]
+	}
+}

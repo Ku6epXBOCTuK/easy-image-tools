@@ -1,0 +1,32 @@
+{
+	"title": "Add an outline to an image",
+	"seo": {
+		"metaTitle": "Outline PNG With a Colored Border - Free, No Upload",
+		"metaDescription": "Paint a colored ring right outside every visible pixel of a picture, 1 to 10 px thick, in the color you choose. Free, no upload, no size limit, runs locally.",
+		"longDescription": "Adding an outline means painting a ring of color immediately outside every pixel that is already visible in the picture. The tool takes everything that has any opacity, grows that shape outward by the chosen Thickness, and fills only the newly covered pixels with the Stroke color; the original pixels keep their own colors and their own transparency. The ring is drawn inside the canvas, so an outline that would leave the picture is clipped at the border. PNG, JPG, WebP and BMP are accepted, and every step happens in your browser.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Open the Stroke color swatch and pick the color of the ring; red is the starting value.",
+			"Set Thickness from 1 to 10 px; 3 px is the default and reads well on a logo.",
+			"Read the preview, then save the result from the Download button as PNG."
+		],
+		"faq": [
+			{
+				"q": "Does the outline replace my picture?",
+				"a": "No. Only the pixels that the ring covers are painted; everything inside keeps its original color and its own opacity, including a soft anti-aliased edge."
+			},
+			{
+				"q": "Why do I get no outline on a JPG?",
+				"a": "JPEG has no transparency, so every pixel counts as visible and there is no free space left to paint into. Convert the file to PNG first, or drop its background with the remove background tool, then run the outline again."
+			},
+			{
+				"q": "Why is the outline flat against one edge?",
+				"a": "The canvas is never enlarged, so a ring that would leave the picture is cut at the border. Add padding or change the canvas size first if you need space around the subject."
+			},
+			{
+				"q": "Will the ring close the gaps inside the subject?",
+				"a": "Yes. The ring follows every visible pixel, so the hole inside a letter or the gap between two strokes is filled too, not only the outer silhouette."
+			}
+		]
+	}
+}

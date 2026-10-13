@@ -1,0 +1,32 @@
+{
+	"title": "Sepia effect",
+	"seo": {
+		"metaTitle": "Sepia Effect PNG - Free One-Click Vintage Tone",
+		"metaDescription": "Give a picture the warm brown tone of an old photograph in one click. Free, no upload, nothing to configure - the classic sepia tone is applied in your browser.",
+		"longDescription": "The sepia effect gives a picture the warm brown tone of an old photograph by pushing a fixed combination of the three channels into red, green and blue - red gets the largest share of the original brightness, green slightly less, blue the least, and that imbalance is what produces the brown cast. It takes no settings and no strength slider: the tone is the classic one, applied in full. Everything runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is left untouched.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"There is nothing to configure - the classic sepia tone is applied at once.",
+			"If it comes out too strong, the tint tool with a low strength is the gentler route.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Can I dial the sepia effect down?",
+				"a": "Not with this page, which always applies the full tone. For a lighter touch use the tint tool: pick a brown, set the strength low, and the picture shifts toward it without losing as much of its original color."
+			},
+			{
+				"q": "Does it work on a color picture?",
+				"a": "Yes, and the color is what disappears. Each channel gets its own fixed mix of the original, so hue differences compress toward brown - which is exactly why sepia works, and why a very colorful original ends up flatter than a neutral one."
+			},
+			{
+				"q": "Is it the same as converting to grayscale and adding a tint?",
+				"a": "Close but not identical. Sepia applies one matrix to the original color, so some channel differences survive inside the brown; grayscale first throws them away, which gives a smoother and more uniform result."
+			},
+			{
+				"q": "Does it keep transparency?",
+				"a": "Yes. Only the color channels are rewritten, and the alpha value of every pixel is copied through unchanged."
+			}
+		]
+	}
+}

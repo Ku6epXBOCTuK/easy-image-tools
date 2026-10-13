@@ -1,0 +1,32 @@
+{
+	"title": "Soften the edges of a cutout",
+	"seo": {
+		"metaTitle": "Feather PNG Edges - Free Soft Alpha in Your Browser",
+		"metaDescription": "Blur only the alpha channel so a hard cutout edge becomes a soft gradient, with the colors of the picture left untouched. Free, no upload, nothing is stored.",
+		"longDescription": "Feathering softens the boundary of a cutout by blurring only the alpha channel: the opacity of every pixel is mixed with its neighbors over the Radius you set, so a hard rim turns into a gradual ramp while the red, green and blue values are written through untouched. The radius runs from 1 to 20 px and starts at 3. Colors stay exactly as they were, which is what makes this the right tool for shadows, glows and cutouts that were scaled up. It runs in your browser, accepts PNG, JPG, WebP and BMP, and never uploads the file.",
+		"howTo": [
+			"Drop the cutout into the source area, or pick a file from your device.",
+			"Set Radius from 1 to 20 px; small values soften, large ones dissolve the outline.",
+			"Look at the rim in the preview - colors stay sharp, only opacity spreads.",
+			"Download the result as PNG so the new soft edge survives."
+		],
+		"faq": [
+			{
+				"q": "Does it blur the picture as well?",
+				"a": "No. The blur is applied to a grayscale copy of the alpha channel only, and the original colors are written back unchanged, so text and sharp detail inside the object stay crisp."
+			},
+			{
+				"q": "How far does the soft edge spread?",
+				"a": "Roughly the Radius in pixels on each side of the boundary. At 3 px you get a subtle fade, while at 10 px and above the shape starts to look out of focus."
+			},
+			{
+				"q": "My edges are soft now but the halo color is still there.",
+				"a": "Feathering does not touch color, so the old background tint survives in the semi-transparent pixels. Follow it with the clean edges tool, which pulls the fringe out of exactly those pixels."
+			},
+			{
+				"q": "Can I make the edges hard again?",
+				"a": "Yes, by thresholding the alpha with the harden edges tool, which turns every semi-transparent pixel either fully on or fully off. The result is crisp but not anti-aliased."
+			}
+		]
+	}
+}

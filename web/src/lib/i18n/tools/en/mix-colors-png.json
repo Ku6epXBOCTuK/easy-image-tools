@@ -1,0 +1,32 @@
+{
+	"title": "Mix colors",
+	"seo": {
+		"metaTitle": "Mix Colors PNG - Free Average Color Mixer Tool",
+		"metaDescription": "Average two or more colors into one flat swatch PNG. Free, no upload, no signup - the mix is computed and drawn in your browser instantly.",
+		"longDescription": "Mixing colors here means taking the plain arithmetic mean of the red, green and blue channels of every color you list and filling a rectangle with the result. That is exactly what happens, and being precise about it matters: this is channel arithmetic, not paint, so mixing blue and yellow does not give green - it gives the gray you get from averaging their numbers, and yellow with purple lands on a dull olive. It is the right tool for a quick sanity check on a palette, for producing one representative tone from several similar swatches, or for seeing the flat average of a set of photo colors. No upload is involved and there is no source file: the average is computed and the swatch drawn on your device, then encoded as PNG, JPG, WebP or BMP. Two honest limits follow from the definition - every color counts the same no matter how much area it covers, and the page prints the mix as a flat rectangle rather than a hex code.",
+		"howTo": [
+			"No upload needed - the mix is computed from the hex values you type.",
+			"Enter the colors to average in the Color list, as hex values separated by commas or spaces.",
+			"Set the Width between 128 and 1024 pixels; the swatch height follows the width.",
+			"Download the mix as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why do two vivid colors mix into something dull?",
+				"a": "Because each channel is averaged on its own. Two saturated colors of opposite hue have little in common channel by channel, so the mean lands on a low-saturation neutral. This is arithmetic, not the way pigments behave on a palette."
+			},
+			{
+				"q": "Do the colors get weighted by how much they cover?",
+				"a": "No. Every color in the list counts exactly once, no matter how similar they are or how large an area each occupies. To average the colors actually present in a picture, run that picture through the extract color tool first."
+			},
+			{
+				"q": "Where is the resulting hex code?",
+				"a": "The page fills a solid rectangle with the mixed color and does not print its hex value. Load that swatch into the extract color tool if you need the code itself, or set the same average up by hand in a color tool of your choice."
+			},
+			{
+				"q": "Is it free and does anything get uploaded?",
+				"a": "No account, no upload, no watermark and no daily limit - the average and the swatch are produced in your browser, and the project is open source."
+			}
+		]
+	}
+}

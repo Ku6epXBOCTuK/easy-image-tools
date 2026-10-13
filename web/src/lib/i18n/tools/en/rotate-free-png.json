@@ -1,0 +1,32 @@
+{
+	"title": "Rotate PNG by any angle",
+	"seo": {
+		"metaTitle": "Rotate PNG by Any Angle - Free Online, No Upload",
+		"metaDescription": "Turn a PNG to any angle from -180 to 180 degrees in your browser, with a canvas that grows to fit. Free, no upload, no signup, instant download.",
+		"longDescription": "Rotating a PNG by a free angle turns the picture to any value you like, from minus 180 to 180 degrees in one-degree steps. The canvas grows to the bounding box the rotated picture needs, so the whole image survives the turn and the empty corners stay transparent instead of being cut away. Unlike the right-angle rotate tool, which only moves whole pixels and therefore cannot lose quality, an arbitrary angle has to sample every output pixel from between the source pixels, so edges soften a little. That trade-off is the price of the freedom to pick any angle: use the right-angle tool when 90, 180 or 270 will do and you want a strictly lossless result, and use this one for everything else, such as straightening a photo shot at a slant. Everything runs in your browser, so nothing is uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Angle from -180 to 180 degrees; negative values turn the other way.",
+			"Check the preview: the canvas grows to the new bounds and the corners stay transparent.",
+			"Download the rotated image from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What is the difference from the rotate tool?",
+				"a": "The rotate tool does 90, 180 and 270 degrees by moving whole pixels, so it is strictly lossless. This tool takes any angle and has to resample, which softens edges slightly. Right angles need no resampling, so use rotate for those and this one for everything else."
+			},
+			{
+				"q": "Will the corners be cut off?",
+				"a": "No. The canvas grows to fit the rotated picture, so the whole image is kept and the four corners of the new canvas stay transparent. Nothing is cropped."
+			},
+			{
+				"q": "Does rotating by an angle damage quality?",
+				"a": "There is a small loss, and it is unavoidable: pixels that land between two source pixels must be interpolated. Fine text and hard diagonal edges are where you notice it first. A multiple of 90 degrees does not have this problem and is exact."
+			},
+			{
+				"q": "Can I use this to straighten a photo?",
+				"a": "Yes, that is exactly what this page is for. Load the shot, set the angle that makes the horizon level, and download; the canvas grows so every edge of the picture is kept."
+			}
+		]
+	}
+}

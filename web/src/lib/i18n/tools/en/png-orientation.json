@@ -1,0 +1,32 @@
+{
+	"title": "Check PNG orientation: portrait, landscape or square",
+	"seo": {
+		"metaTitle": "PNG Orientation Checker - Portrait, Landscape, Square",
+		"metaDescription": "Find out whether an image is portrait, landscape or square, and see its pixel dimensions. Free, no upload - the file is inspected in your browser, never sent to a server.",
+		"longDescription": "Orientation is decided by the width and height of the image: a shape wider than it is tall is landscape, taller than it is wide is portrait, and equal dimensions make it square. This tool reads those two numbers from the decoded image and reports which case yours is, together with the pixel size. It is useful before a layout decision, because a portrait screenshot and a landscape one need different containers. The check runs locally in your browser, so the file is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"The tool reports portrait, landscape or square and shows the pixel dimensions.",
+			"Compare the reported size with the slot the image has to fit into.",
+			"If the orientation is not what you expected, use the swap orientation or rotate tools."
+		],
+		"faq": [
+			{
+				"q": "How is orientation decided?",
+				"a": "By comparing width and height of the decoded image. Wider than tall is landscape, taller than wide is portrait, and any case where the two numbers are equal is square."
+			},
+			{
+				"q": "Is this the same as the EXIF orientation of a photo?",
+				"a": "No. This tool reads the pixel dimensions of the image itself and says nothing about a camera rotation flag. A photo can be stored with a rotation flag that makes viewers display it differently from how the pixels are stored."
+			},
+			{
+				"q": "Does it support PNG only?",
+				"a": "No. PNG, JPG, WebP and BMP are all accepted, and the answer describes the picture rather than its format."
+			},
+			{
+				"q": "Is my image uploaded?",
+				"a": "No. The image is decoded in your browser tab; no request carries your file and nothing is stored."
+			}
+		]
+	}
+}

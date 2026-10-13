@@ -1,0 +1,32 @@
+{
+	"title": "Auto contrast PNG",
+	"seo": {
+		"metaTitle": "Auto Contrast PNG - Free Local Tool, No Upload Needed",
+		"metaDescription": "Stretch the real brightness range of a flat or washed-out picture across the full scale. Free and instant, nothing is uploaded - the adjustment happens inside your browser.",
+		"longDescription": "Auto contrast is a one-click fix for a picture whose brightness range is squeezed: a dark scan where the blacks are gray and the whites are off-white. The tool measures the darkest and the brightest value of each color channel separately, then stretches that range across the full 0 to 255 span, so the picture uses all the brightness it can. Everything runs in your browser on PNG, JPG, WebP and BMP files - nothing is uploaded and the alpha channel is left alone.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"There is nothing to configure - the tool finds the real black and white points itself and remaps them.",
+			"Compare the result with the brightness and contrast page if you want to push it further by hand.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Does auto contrast change the colors?",
+				"a": "It can. Each channel is stretched on its own, so a picture with a cast in it gets that cast amplified: if red in the source runs only from 20 to 200 while blue runs from 0 to 255, blue gets pushed further than red. The temperature tool is gentler for that, since it moves red and blue in opposite directions by the same amount."
+			},
+			{
+				"q": "My picture is a flat gray block and nothing happens. Why?",
+				"a": "A channel whose darkest and brightest values are identical has no range to stretch, so that channel is passed through untouched. Run the grayscale tool first if the picture should be monochrome to begin with."
+			},
+			{
+				"q": "Does it fix a dark picture?",
+				"a": "That is exactly what it is for. If the darkest pixel is not black, the tool pushes it to black and the brightest to white, which recovers a lot of a dim or underexposed photo without you having to guess a number."
+			},
+			{
+				"q": "Does it work on transparent images?",
+				"a": "Yes. Only the red, green and blue values are remapped; every pixel keeps exactly the alpha value it came with, so cut-outs stay cut out."
+			}
+		]
+	}
+}

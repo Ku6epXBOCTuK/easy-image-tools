@@ -1,0 +1,32 @@
+{
+	"title": "Cut an image into a wavy circle",
+	"seo": {
+		"metaTitle": "Wavy Circle Mask for PNG - Free, Runs in Browser",
+		"metaDescription": "Trim an image to a circle whose radius follows a sine wave: set the amplitude, the number of waves and the phase. Free, no limits, all done in your browser.",
+		"longDescription": "A wavy mask cuts the image into a circle whose radius is modulated by a sine wave, which is what gives the badge or flower look. Shape size sets the base radius as a share of the shorter side, Amplitude says how far the edge swings in and out, Waves counts the bulges around the circle, and Phase rotates that wobble so the peaks can start anywhere. Offset moves the shape into the free space. Everything outside becomes transparent, the canvas keeps its size, and the edge is a hard cut with no anti-aliasing. PNG, JPG, WebP and BMP are accepted and nothing is uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Shape size and Amplitude to control how deep the waves bite.",
+			"Set Waves from 3 to 24 and Phase from 0 to 360 to shape the pattern.",
+			"Use Offset if you need it off center, then download the result as PNG."
+		],
+		"faq": [
+			{
+				"q": "What do Waves and Amplitude do?",
+				"a": "Waves is the number of bulges the edge makes on its way around the circle, and Amplitude is how far each bulge reaches in or out, both as a share of the shorter side. More waves with a smaller amplitude reads as a soft ripple."
+			},
+			{
+				"q": "What is Phase for?",
+				"a": "It rotates the whole wobble in degrees. Two stars that differ only in phase are the same shape turned around, so use it to line the peaks up with your design."
+			},
+			{
+				"q": "Can this make a square or a rectangle?",
+				"a": "No. The radius only changes along a sine, so the outline is a circle with a rippled edge in every direction. Use the square mask tool for a rectangle."
+			},
+			{
+				"q": "The outline looks jagged. Why?",
+				"a": "The mask is cut hard with no anti-aliasing, so a slanted edge shows a one-pixel staircase. Feather the result to soften the rim if it will be seen against a color."
+			}
+		]
+	}
+}

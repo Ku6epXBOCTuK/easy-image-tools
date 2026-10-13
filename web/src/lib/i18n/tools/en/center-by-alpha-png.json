@@ -1,0 +1,32 @@
+{
+	"title": "Center PNG by content",
+	"seo": {
+		"metaTitle": "Center PNG Content - Fix Off-Center Images, No Upload",
+		"metaDescription": "Move the visible part of a PNG to the middle of its canvas in one click, in your browser. Nothing to configure, free, no upload, no signup, instant.",
+		"longDescription": "Centering a PNG by content finds the rectangle that actually holds visible pixels, ignores the empty margins around it, and moves that content to the middle of the unchanged canvas. It is the one-click fix for a picture that came out shifted into a corner, for a logo sitting off-center inside a transparent square, and for a sprite exported with padding it never needed. The canvas keeps its original width and height and no pixel is resampled, so the result is exactly as sharp as the source: the empty margins simply move to the edges. There are no settings at all, and the content area is shown as a mask in the preview so you can see what the tool treats as visible. Processing runs in your browser, so nothing is uploaded.",
+		"howTo": [
+			"Drop the PNG into the source area, or pick a file from your device.",
+			"Look at the preview: the mask marks the visible content that will be centered.",
+			"There is nothing to set; the content moves to the middle as soon as it loads.",
+			"Download the centered image from the Download button."
+		],
+		"faq": [
+			{
+				"q": "How is this different from trimming the empty space?",
+				"a": "Trimming removes the margins for good, so the canvas gets smaller. Centering keeps the original canvas and only redistributes the empty space, which is what you want when the file must stay at a fixed size."
+			},
+			{
+				"q": "Will it work on a JPG without transparency?",
+				"a": "Not to any effect. The tool reads the alpha channel, and a JPG has none: every pixel counts as content, so the image comes back unchanged. Transparent and partly transparent PNG and WebP are what it is meant for."
+			},
+			{
+				"q": "Does it lose the soft edges of a cutout?",
+				"a": "No. Nothing is resampled or recompressed, the pixels are only copied to new positions, so antialiased edges and faint shadows survive the move exactly as they were."
+			},
+			{
+				"q": "What if the image is fully transparent?",
+				"a": "There is no content to find, so the tool leaves the picture alone and returns the same empty canvas rather than an error. Put something in the image first, then center it."
+			}
+		]
+	}
+}

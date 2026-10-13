@@ -1,0 +1,32 @@
+{
+	"title": "Posterize PNG",
+	"seo": {
+		"metaTitle": "Posterize PNG - Reduce Color Levels, Free and Local",
+		"metaDescription": "Cut an image down to a few tone levels per channel for a flat printed-poster look. Free, no upload - the posterization runs in your browser, instantly.",
+		"longDescription": "Posterizing cuts the number of tone levels each color channel is allowed to have, so a photograph collapses into flat bands of color the way a screen-printed poster does. Each channel value is rounded to the nearest step of a fixed ladder running from black to white - two levels gives pure black and white, four gives the chunky look of cheap printing, sixteen is already close to the original. The steps are applied to red, green and blue independently, which is why the result can shift hue slightly. It runs in your browser on PNG, JPG, WebP and BMP, uploads nothing, and keeps alpha.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Levels between 2 and 16; the default of 4 is a strong poster effect.",
+			"Raise the count to bring more of the original gradient back.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Does this just make the image black and white?",
+				"a": "Only at 2 levels, where every channel can be nothing but black or white. The black and white threshold tool does that job directly with a brightness threshold you can aim; posterize stays in color from 3 levels upward."
+			},
+			{
+				"q": "Why did the colors drift?",
+				"a": "Each of red, green and blue is snapped to its own ladder, and the three can land on different steps for the same pixel. That moves the hue a little, which is normal for posterization and is why a strong setting on a skin tone can turn it orange."
+			},
+			{
+				"q": "Can I get flat patches in more than two colors?",
+				"a": "Yes, and posterize and dithering are the pair for it. Posterize keeps the bands clean; the dithering tool breaks them into a speckled texture when you need a photograph to survive a very low count."
+			},
+			{
+				"q": "Does it change size or alpha?",
+				"a": "Neither. Same dimensions and same alpha values; only the tone levels of the three color channels change."
+			}
+		]
+	}
+}

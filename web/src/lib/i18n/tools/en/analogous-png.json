@@ -1,0 +1,33 @@
+{
+	"title": "Analogous Color Palette",
+	"seo": {
+		"metaTitle": "Analogous Color Palette PNG - Free Color Harmony Tool",
+		"metaDescription": "Build an analogous palette from one base color: 3 to 9 neighbouring hues with adjustable spread. Free, runs in your browser, no upload, no signup.",
+		"longDescription": "Analogous colors are hues that sit next to each other on the color wheel, and this page turns one base color into a ready-made set of three to nine of them. The base color sits in the middle and the neighbours are rotated away from it by the Spread you choose, so a spread of 30 with five colors gives you minus 60, minus 30, the base itself, plus 30 and plus 60 degrees of hue. Because every member comes from one hue family, the result reads as calm and related rather than loud, which is why analogous palettes turn up in page backgrounds, dashboards, onboarding flows and nature photography. Nothing is uploaded, because there is no file to upload: the palette is computed on your device and drawn as flat swatches you can save as PNG, JPG, WebP or BMP. One honest caveat: the rotation happens in HSL, so saturation and lightness are copied across unchanged and two colors only 30 degrees apart can still differ a lot in apparent brightness.",
+		"howTo": [
+			"No upload is needed - the palette is drawn from the Base color you pick, straight in the browser.",
+			"Set the Base color; every other swatch is a hue rotation away from it.",
+			"Choose the Spread, from 10 to 90 degrees, to set how far the neighbours sit from the base.",
+			"Set the Count between 3 and 9, then pick a Grid or Strip layout and set the Width.",
+			"Download the palette as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What exactly is an analogous palette?",
+				"a": "A set of neighboring hues taken from one region of the wheel, usually within about 90 degrees of the base. They share a hue family and blend into each other without clashing, which is what makes them safe for large surfaces and backgrounds."
+			},
+			{
+				"q": "Why does an even Count look off-centre?",
+				"a": "With an odd Count the base color lands exactly in the middle of the set. With an even Count, such as 4, the steps run from minus twice the spread to plus once, so the base ends up next to the end of the run instead of in the middle. Pick an odd count when the base has to be centered."
+			},
+			{
+				"q": "Can I get a smooth fade between these colors?",
+				"a": "Not on this page - it draws flat swatches. For a continuous fade between two colors use the blend two colors tool, and for evenly spaced intermediate colors use the color steps tool."
+			},
+			{
+				"q": "Is this free, and does anything get uploaded?",
+				"a": "No account, no upload, no watermark and no daily limit. The palette is generated and encoded in your browser, and the project is open source."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Create solid color PNG",
+	"seo": {
+		"metaTitle": "Create Solid Color PNG - Free Flat Color Rectangle",
+		"metaDescription": "Generate a solid color PNG of any size in your browser: pick a color, set width and height, download. Free, no upload, no signup, no limits.",
+		"longDescription": "A solid color PNG is a rectangle in which every pixel carries the same red, green and blue value, and this page makes one at any size you like. You set the width, the height and the color, and every pixel is filled with it, fully opaque - there is no transparency in the result, because the alpha channel is set to fully opaque for all of them. Nothing is uploaded, since there is no source file involved: the rectangle is generated on your device and encoded into a file you can save as PNG, JPG, WebP or BMP. Use it for a background plate under a layout, a mask shape, a color sample in a spec, or a canvas that other tools on this site can then work on. One honest note: the canvas runs from 1 to 20000 pixels on each side, and a canvas at the top of that range is 400 million pixels, so generation takes a moment. For a rectangle you can also make see-through, use the create empty PNG tool instead.",
+		"howTo": [
+			"No upload needed - the rectangle is generated from the size and color you set.",
+			"Set Width and Height in pixels, or pick one of the presets such as a square or a screen size.",
+			"Choose the Color to fill the rectangle with.",
+			"Download the solid image as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Can I make a solid color image with transparency?",
+				"a": "Not on this page - every pixel is written fully opaque. If you need a semi-transparent sheet of one color, use the create empty PNG tool and set Opacity to anything below 100."
+			},
+			{
+				"q": "How large can the canvas be?",
+				"a": "From 1 to 20000 pixels per side, with presets for the usual targets. The top end is genuinely heavy - 20000 by 20000 is 400 million pixels - so allow a moment and expect your browser to use a lot of memory."
+			},
+			{
+				"q": "Does the file come out as a real PNG?",
+				"a": "Yes. It is encoded by the browser as a genuine PNG, not a renamed blank file, so it opens in any viewer and works as the source image for the editing tools on this site."
+			},
+			{
+				"q": "Is it free to use commercially?",
+				"a": "Yes - no account, no upload, no watermark and no daily limit, and the project is open source."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Add padding to PNG",
+	"seo": {
+		"metaTitle": "Add Padding to PNG - Transparent Margin Maker, Free",
+		"metaDescription": "Add an even margin around an image in your browser: transparent by default, or filled with any solid color you pick. Free, no upload, no signup, instant.",
+		"longDescription": "Adding padding expands an image by the same number of pixels on all four sides, which gives it room to breathe or makes the file the size a layout expects. The padding can stay fully transparent, so the image gains an invisible margin over any background, or it can be filled with any solid color through the Opacity and Fill color controls. The picture itself is untouched, so nothing is resampled and the result is exactly as sharp as the source, only larger by twice the padding in each direction. Padding from 1 to 2000 pixels per side is available, and the common uses are social posts that need a uniform frame, product photos that need white space, and icons that must not sit flush against a border. All of it runs locally in your browser, so nothing is uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Padding in pixels, from 1 to 2000; the default is 10 on every side.",
+			"Leave Opacity at 0 for a transparent margin, or raise it and pick a Fill color.",
+			"Download the padded image from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Is the padding transparent by default?",
+				"a": "Yes. Opacity starts at 0, which writes the added area with a fully transparent alpha channel, so the image gets an invisible margin that works on any background. Raise Opacity and the same margin is filled with the Fill color instead."
+			},
+			{
+				"q": "Can I pad only one side?",
+				"a": "Not on this page, the same number of pixels is added to all four sides. To move the picture inside the canvas, use the shift tool with a fill color, or set an exact canvas and pick the anchor in the change canvas size tool."
+			},
+			{
+				"q": "Does padding affect image quality?",
+				"a": "No resampling and no recompression happen: the original pixels are copied into a larger canvas as they are. Only the export format matters, and a lossy format such as JPG will smooth the edges of the picture once saved."
+			},
+			{
+				"q": "What is the difference between padding and a border?",
+				"a": "Both grow the canvas, but padding defaults to transparent and takes an opacity, while a border is always drawn in one solid color and takes a thickness in pixels. Padding is for breathing room, a border is for a frame."
+			}
+		]
+	}
+}

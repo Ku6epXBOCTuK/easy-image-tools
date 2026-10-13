@@ -1,0 +1,32 @@
+{
+	"title": "Rotate PNG",
+	"seo": {
+		"metaTitle": "Rotate PNG - Free Image Rotator, No Upload",
+		"metaDescription": "Rotate a PNG by 90, 180 or 270 degrees in your browser. Lossless, no quality loss, no upload of your file. Free, no signup, no limits.",
+		"longDescription": "Rotating a PNG turns the picture by a quarter turn or by half a turn. Because the angle is a multiple of 90 degrees, the pixels are only moved to new positions: nothing is resampled, nothing is interpolated and no quality is lost, which is not true of arbitrary-angle rotation. The canvas grows to the new orientation, so a portrait shot rotated becomes landscape and nothing gets cropped. It all happens in your browser - the file is never uploaded, so screenshots, scans and private photos can be turned without leaving your device.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick the angle: 90 degrees clockwise turns it a quarter turn, 180 flips it upside down, 270 turns it the other way.",
+			"Check the preview: the dimensions under the tile swap for portrait and landscape.",
+			"Download the result from the Download button in any of the four formats."
+		],
+		"faq": [
+			{
+				"q": "Can I rotate by an angle that is not 90, 180 or 270?",
+				"a": "Not here, on purpose. An arbitrary angle resamples every pixel, which softens edges and can cut the corners off. The three right-angle options move pixels only, so the result is bit-for-bit as sharp as the source."
+			},
+			{
+				"q": "Does rotating lose quality or blur the image?",
+				"a": "No. The rotation is a pure remapping of pixel positions, exactly as rotating a physical photo on the scanner glass would. There is no interpolation step and no re-compression inside the tool."
+			},
+			{
+				"q": "Will part of my image be cut off?",
+				"a": "No. The canvas is resized to the new orientation, so the full picture survives the turn. Width and height simply swap when you rotate by 90 or 270 degrees."
+			},
+			{
+				"q": "How do I flip the image instead of rotating it?",
+				"a": "Use the flip tool on this site: it mirrors the picture horizontally or vertically, which is what you want for a mirrored selfie or a scanned page. Rotation turns the picture, flipping turns it inside out."
+			}
+		]
+	}
+}

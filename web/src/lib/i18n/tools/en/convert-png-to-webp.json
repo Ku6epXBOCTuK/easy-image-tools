@@ -1,0 +1,32 @@
+{
+	"title": "Convert PNG to WebP",
+	"seo": {
+		"metaTitle": "Convert PNG to WebP - Free Converter, No Upload",
+		"metaDescription": "Convert PNG to WebP in your browser with a quality slider. Transparency is preserved and the file gets much smaller. Free, no upload, no signup.",
+		"longDescription": "WebP is the modern image format that usually beats PNG on size while still storing transparency. Converting a PNG to WebP here re-encodes the picture in your browser with a quality slider: at high quality the difference is hard to see and the file is noticeably smaller, and at lower quality the savings grow while detail starts to go. Because WebP supports an alpha channel, everything transparent stays transparent - unlike JPG. Nothing is uploaded, there is no watermark, no account and no daily limit.",
+		"howTo": [
+			"Drop the PNG into the source area, or pick a file from your device.",
+			"Raise or lower Quality: around 80-90 is the sweet spot between size and detail.",
+			"Check the preview - transparency is kept, so the checkerboard still shows through.",
+			"Download the .webp file from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Is WebP better than PNG?",
+				"a": "For photos and screenshots on the web, usually yes: WebP reaches a similar picture at a noticeably smaller file. PNG stays better for flat graphics with few colors, for files you have to edit again, and for tools that do not accept WebP yet."
+			},
+			{
+				"q": "Does converting to WebP lose the transparency?",
+				"a": "No. WebP has an alpha channel, so transparent areas stay transparent. This is the main practical reason to pick WebP over JPG when a PNG has transparency."
+			},
+			{
+				"q": "Which quality value should I choose?",
+				"a": "Between 80 and 90 for most images. Below about 60 the encoder starts smoothing fine detail and text edges; the difference in file size between 95 and 100 is usually not worth the re-encoding."
+			},
+			{
+				"q": "Can I convert WebP back to PNG?",
+				"a": "Open any WebP in this site - the upload accepts WebP - and pick PNG in the Download button. No separate converter is needed for the direction you already have a file for."
+			}
+		]
+	}
+}

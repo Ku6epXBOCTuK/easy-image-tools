@@ -1,0 +1,33 @@
+{
+	"title": "Random color blocks",
+	"seo": {
+		"metaTitle": "Random Color Blocks PNG - Free Seeded Color Mosaic",
+		"metaDescription": "Fill a canvas with random vivid color blocks of the size you choose, fixed by seed. Free, no upload, no signup, generated in your browser.",
+		"longDescription": "Random color blocks are a mosaic where every square of a fixed size is filled with one bright random color, and this page generates exactly that: the canvas is walked in blocks from the top left, each block getting its own hue, and the colors are deliberately vivid, sitting between 65 and 100 percent saturation and between 45 and 70 percent lightness so nothing comes out near-black or washed out. No upload is involved and there is no source file - the mosaic is built in your browser and saved as PNG, JPG, WebP or BMP. Use it as texture behind a title card, as a test pattern, or as a deterministic set of random colors you can reuse: the Seed field decides the whole picture, so the same seed with the same canvas size and block size always rebuilds the identical image. The honest caveat is that the hues are picked independently, so neighbouring blocks can land on colors that clash badly - it is a random mosaic, not a palette.",
+		"howTo": [
+			"No upload needed - the blocks are generated from the Canvas size, Block size and Seed values.",
+			"Set the Canvas size in pixels, or pick a preset.",
+			"Set the Block size from 4 to 256 pixels; larger blocks mean fewer, bigger squares.",
+			"Set the Seed from 0 to 999999999 to choose which mosaic you get.",
+			"Download the mosaic as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What does the Seed actually do?",
+				"a": "It is the starting number of the small random generator that picks the hues. The same seed with the same canvas size and block size always produces exactly the same mosaic, which is how you keep a texture consistent across a set of pages. It is not a password and protects nothing."
+			},
+			{
+				"q": "Why do the blocks look dull or too dark?",
+				"a": "They should not - the generator keeps saturation between 65 and 100 percent and lightness between 45 and 70 percent, so every block is a vivid mid-tone. If a block looks flat next to its neighbours it is simply a random pairing; adjacent hues can be very far apart on the wheel."
+			},
+			{
+				"q": "How is this different from the random noise tool?",
+				"a": "Random noise assigns a separate random color to every single pixel, which reads as television static. This tool assigns one color per block, which reads as a mosaic. Both are fixed by seed in the same way."
+			},
+			{
+				"q": "Do the blocks fit evenly at the edges?",
+				"a": "Blocks are laid out in steps of the block size from the top left, so the right and bottom edges get a smaller clipped block when the canvas size is not a multiple of it. Pick a size that divides evenly if you need a perfect tile."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Dithering PNG",
+	"seo": {
+		"metaTitle": "PNG Dithering Tool - Floyd-Steinberg and Bayer, Free",
+		"metaDescription": "Reduce a picture to 2 to 16 colors without the flat banding, using Floyd-Steinberg error diffusion or an ordered Bayer 4x4 pattern. Free, no upload, runs locally.",
+		"longDescription": "Dithering is how a picture is reduced to very few colors without the harsh flat patches that usually come with it. The tool builds a small palette from the image, then either diffuses the rounding error into neighbouring pixels with Floyd-Steinberg or adds an ordered Bayer 4x4 offset before choosing the nearest palette color. The result uses only a handful of colors yet keeps the gradients readable. It runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is untouched.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Color count between 2 and 16; 4 is a good starting point for a picture that should still read as a picture.",
+			"Choose Pattern: Floyd-Steinberg for a photographic look, Bayer 4x4 for a regular visible grid.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Which pattern should I pick?",
+				"a": "Floyd-Steinberg scatters the error as fine random-looking speckle and suits photos and gradients. Bayer 4x4 adds the same offset per position in a repeating four by four tile, so the texture is an even ordered pattern that fits retro and pixel-art looks."
+			},
+			{
+				"q": "Why does my image look noisy?",
+				"a": "That noise is the point: the error each pixel leaves behind is carried into its neighbours, which is how four colors can suggest a smooth sky. At 2 or 3 colors the speckle becomes obvious, so raise the Color count or switch to Bayer."
+			},
+			{
+				"q": "Does dithering change the dimensions?",
+				"a": "No. The pixels are rewritten in place - the result is the same size as the source, with the same alpha channel, just painted with palette colors."
+			},
+			{
+				"q": "Can I use my own colors?",
+				"a": "Not on this page - the palette is built from the image by the same median-cut engine the quantize tool uses. If you need specific colors, name them in the custom palette tool first."
+			}
+		]
+	}
+}

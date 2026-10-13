@@ -1,0 +1,32 @@
+{
+	"title": "Round PNG corners",
+	"seo": {
+		"metaTitle": "Round Corners PNG - Free Rounded Corner Tool",
+		"metaDescription": "Round the corners of a PNG in your browser: the radius is a percentage of half the smaller side, so it scales with the image. Free, no upload, no signup.",
+		"longDescription": "Rounding the corners of a PNG clips the four corners of the picture and leaves the rest of the pixels untouched, producing the rounded rectangle used by avatars, app icons and cards. The radius is given as a percentage of half the smaller side, so a single value behaves the same on a thumbnail and on a poster - 50 percent is the full circle, and at that point the result becomes a round avatar. No pixel is resampled, and the clipped corner becomes fully transparent instead of being painted over, so the shape stays correct on any background.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Radius as a percentage of half the smaller side: 10 is a subtle rounding, 50 a circle.",
+			"Watch the preview - the clipped corners become transparent.",
+			"Download the result as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "How do I get a perfect circle?",
+				"a": "Set the radius to 50 percent. The clip is then a circle inscribed in the shorter side, and the rectangular parts outside it become transparent, leaving a round avatar."
+			},
+			{
+				"q": "Why is the radius a percentage and not pixels?",
+				"a": "A percentage of half the smaller side keeps the proportion identical on any image size, so one value works for a whole set of icons and avatars. If you need an exact pixel radius, round an image whose size makes the percentage land where you want it, or clip it further afterwards."
+			},
+			{
+				"q": "Does rounding blur the corner?",
+				"a": "No. Nothing is scaled or resampled - the pixels outside the clip are made transparent, and everything inside stays exactly as it was."
+			},
+			{
+				"q": "Can I round only some of the corners?",
+				"a": "This page rounds all four at once. For a single corner, chain the circular or square mask tool after it, or crop the image so that only the corner you want is left."
+			}
+		]
+	}
+}

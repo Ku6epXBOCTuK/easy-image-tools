@@ -1,0 +1,32 @@
+{
+	"title": "Complementary color palette",
+	"seo": {
+		"metaTitle": "Complementary Palette PNG - Free Two Color Harmony",
+		"metaDescription": "Get the complement of any base color as a two swatch PNG: the base and its opposite on the color wheel. Free, no upload, no signup, runs in your browser.",
+		"longDescription": "Complementary colors sit directly opposite each other on the color wheel, exactly 180 degrees of hue apart, and this page shows you that pair: your base color and its opposite, drawn as two swatches. It is the simplest color harmony there is and the most useful one, because a single opposite hue gives you a natural accent for a brand color - blue with orange, red with green, yellow with violet. Nothing is uploaded, since there is no file involved: the second color is derived from the base by rotating the hue and the pair is drawn in your browser, ready to save as PNG, JPG, WebP or BMP. The honest limitation matters more here than anywhere else in the harmony family: only the hue is rotated, so saturation and lightness are carried across unchanged, and a pale base produces a pale complement while a dark base produces a dark one.",
+		"howTo": [
+			"No upload needed - the complement is derived from the Base color you pick.",
+			"Set the Base color; the tool rotates its hue by 180 degrees to make the second swatch.",
+			"Choose a Grid or Strip layout and set the Width of the result.",
+			"Download the pair as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What makes two colors complementary?",
+				"a": "They sit 180 degrees apart on the wheel, directly across from each other. That maximum hue distance is what makes them feel like opposites and why the pair reads as high contrast without needing a second brightness to carry it."
+			},
+			{
+				"q": "Why does my complement look darker or lighter than I expected?",
+				"a": "Only the hue is rotated. A yellow and its blue complement share the same HSL lightness value but do not share the same perceived brightness, so the blue will read as heavier. This is a property of hue rotation in HSL, not a bug."
+			},
+			{
+				"q": "Two swatches are not enough for a whole interface - what next?",
+				"a": "Keep the base as your primary, use the complement only for accents such as links or a call to action, and build a neutral ramp around the base with the monochromatic tool. For three or four related colors use the triadic or tetradic palette tools."
+			},
+			{
+				"q": "Is it really free with no upload?",
+				"a": "Yes - no account, no upload, no watermark, no daily limit, and the code is open source."
+			}
+		]
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"title": "Crop PNG online",
+	"seo": {
+		"metaTitle": "Crop PNG Online - Free Image Cropper, No Upload",
+		"metaDescription": "Crop a PNG right in your browser: choose the area, set the size, download the result. Free, no upload, no signup. Works with PNG, JPG, WebP and BMP.",
+		"longDescription": "Crop PNG cuts a rectangular area out of an image and keeps only what you selected. Everything happens inside your browser tab: the file is decoded, cut and re-encoded on your device, so it is never uploaded, never stored on a server and never visible to anyone else. The upload accepts PNG, JPG, WebP and BMP, and the Download button writes the result back as PNG, JPG, WebP or BMP. Coordinates are pixels counted from the top-left corner, and the selected area is clipped to the image — a rectangle that hangs over the edge is cut down to the part that actually exists, and the result tile says so when that happens.",
+		"howTo": [
+			"Drop an image into the source area, or pick a file from your device.",
+			"Set X and Y to the top-left corner of the area you want to keep.",
+			"Set Width and Height to the size of that area; both default to the full image.",
+			"The preview redraws as you type, and values beyond the image edge are clipped for you.",
+			"Pick the output format in the Download button and save the result."
+		],
+		"faq": [
+			{
+				"q": "Does cropping a PNG reduce its quality?",
+				"a": "No. Cropping copies the pixels of the selected area exactly as they are — no resampling and no re-compression inside the tool. If you export to JPG or WebP, the encoder of that format applies its own compression, and the quality slider in the Download button controls how much."
+			},
+			{
+				"q": "Are my images uploaded to a server?",
+				"a": "No. Decoding, cutting and encoding all run in the page you have open. The tool sends no request with your file, needs no account, has no daily limit, and is free for commercial use. It is open source, so the claim can be checked in the code."
+			},
+			{
+				"q": "Can I crop a JPG or a WebP, not only a PNG?",
+				"a": "Yes — PNG, JPG, WebP and BMP are all accepted. The page address keeps the png name because that is the most searched spelling of this tool, but the tool itself does not care about formats."
+			},
+			{
+				"q": "What happens if the crop area goes outside the image?",
+				"a": "The area is clipped to the intersection with the image, so the result is never bigger than the original. When the output ends up smaller than the requested rectangle, a note on the result tile tells you the area was clamped."
+			}
+		]
+	}
+}

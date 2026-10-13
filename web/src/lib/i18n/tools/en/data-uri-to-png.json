@@ -1,0 +1,31 @@
+{
+	"title": "Decode a data URI into an image",
+	"seo": {
+		"metaTitle": "Data URI to PNG - Free Browser Decoder, Nothing Uploaded",
+		"metaDescription": "Turn a data:image/...;base64,... value from a stylesheet or a template back into a downloadable picture. Paste the whole string - free, private, no signup.",
+		"longDescription": "Decoding a data URI means taking the whole value out of an attribute - the data:image/png;base64,... string that sits inside src, href or background-image - and turning it back into a picture. Paste that value as it appears in your code and the prefix is removed, the payload decoded and the image shown, ready to save as a real file. That is what makes this useful when a stylesheet contains a giant inline image and you need to see what is inside it, or when a template holds an embedded icon that has to land on disk. The decoding runs in your browser, so the string is never sent anywhere, and what comes back is decoded pixels re-encoded: the picture is faithful, the file bytes may differ.",
+		"howTo": [
+			"Copy the complete data: URI, media type and base64 payload, comma included.",
+			"Paste it into the text field on the left - the prefix is stripped automatically.",
+			"The picture appears in the result tile; download it from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What exactly is a data URI?",
+				"a": "It is the entire string used inside an attribute: the data: prefix, the media type, the base64 marker, a comma and the payload. The PNG to data URI tool on this site builds one from a file when you need a value to paste into CSS."
+			},
+			{
+				"q": "Do I have to include the prefix?",
+				"a": "No. It is stripped whenever it is there, so a complete src attribute value works and so does the bare payload if you copied only that part."
+			},
+			{
+				"q": "Is a data URI private?",
+				"a": "Treat it as the image itself, because it is - a copy of every pixel sits in that text. This page decodes it in your browser tab without sending a request."
+			},
+			{
+				"q": "Does the decoded picture keep its transparency?",
+				"a": "Yes, when the payload is a PNG, because the alpha channel is part of those pixels. A data URI built from a JPG cannot hold transparency at all."
+			}
+		]
+	}
+}

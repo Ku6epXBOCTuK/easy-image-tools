@@ -1,0 +1,32 @@
+{
+	"title": "Change PNG aspect ratio",
+	"seo": {
+		"metaTitle": "Change Image Aspect Ratio - Crop or Pad, No Upload",
+		"metaDescription": "Fit a PNG into another aspect ratio: crop the center to fill the frame, or pad it with transparency. 1:1, 4:3, 16:9 and more. Free, no upload.",
+		"longDescription": "Putting an image into a different aspect ratio means one of two things, and the difference matters: either you fill the new frame and lose the overflowing edges, or you keep the whole picture and fill the rest. This page offers both, for the usual ratios - 1:1 for avatars and covers, 4:3 and 3:2 for photos, 16:9 and 9:16 for video and stories. Crop to fill cuts the center, pad to fit adds a transparent border instead. Processing happens in your browser, so the file is never uploaded.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Pick the target ratio: 1:1, 4:3, 3:4, 3:2, 2:3, 16:9 or 9:16.",
+			"Choose Crop to fill to keep the frame edge to edge, or Pad to fit to keep every pixel.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Should I crop or pad?",
+				"a": "Crop when the new frame is the visible area and edges may go - covers, avatars, video thumbnails. Pad when nothing may be lost - product shots and logos, where a transparent border is safer than a cut-off edge."
+			},
+			{
+				"q": "What does padding add, and what color?",
+				"a": "Transparent. The extra space is left with a zero alpha channel, so the picture stays clean on any background. If you need a solid color instead, run the canvas size or padding tool afterwards."
+			},
+			{
+				"q": "Does cropping lose quality?",
+				"a": "No - crop to fill takes the center at full resolution and only discards the edges. The result is as sharp as the source, just smaller."
+			},
+			{
+				"q": "Can I enter a custom ratio?",
+				"a": "The page offers the common ones. For an unusual frame, resize the image to the size you need first and then crop the excess with the crop tool."
+			}
+		]
+	}
+}

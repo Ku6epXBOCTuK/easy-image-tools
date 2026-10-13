@@ -1,0 +1,32 @@
+{
+	"title": "Emoji to PNG",
+	"seo": {
+		"metaTitle": "Emoji to PNG - Free Transparent Emoji Image Maker",
+		"metaDescription": "Turn any emoji or Unicode symbol into a transparent PNG of the size you choose. Free, no upload, no signup, rendered and saved in your browser.",
+		"longDescription": "An emoji PNG is a single character drawn onto a transparent square at the size you ask for, which is what you need when a symbol has to be an image rather than text - a favicon, an avatar, an app icon, a bullet in a document that will not keep its own fonts. Type any emoji or Unicode symbol into the field and pick the Image size; the character is drawn by the platform emoji font at roughly 72 percent of the canvas, centred, on a fully transparent background, and the result is encoded as a PNG in your browser. No upload is needed and no file ever leaves the device, and you can also save it as JPG, WebP or BMP if you need one of those. The honest limitation is that the picture comes from the font on your operating system, not from this tool: the same character looks different on Windows, macOS, Android and Linux, so export it on the machine that matters and check the result on the other platforms.",
+		"howTo": [
+			"No upload needed - the image is drawn from the character you type.",
+			"Type or paste an emoji, or any Unicode symbol, into the Emoji field.",
+			"Set the Image size from 32 to 1024 pixels; the canvas is always a square.",
+			"Download the result as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Why does my emoji look different from someone else's?",
+				"a": "Each operating system ships its own emoji font - Segoe UI Emoji on Windows, Apple Color Emoji on macOS, Noto Color Emoji on Linux - and each draws the same character with its own shapes and colors. The PNG is a snapshot of your system's font, so re-exporting on another machine can give a different picture."
+			},
+			{
+				"q": "What happens if I enter a plain letter or a symbol?",
+				"a": "Anything the font can draw will be drawn. Plain letters and many symbols come out in a single text color rather than in color, and a character no installed font has comes out as an empty box or a replacement mark."
+			},
+			{
+				"q": "Can I make the background transparent?",
+				"a": "It already is - every pixel outside the glyph is fully transparent, so the image drops onto any background without a box around it. Keep the PNG or WebP format; JPG flattens the transparency."
+			},
+			{
+				"q": "Is there a size limit or an upload step?",
+				"a": "No upload, no signup and no watermark. The image size goes from 32 to 1024 pixels and the file is drawn and encoded entirely in your browser."
+			}
+		]
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"title": "Create random noise PNG",
+	"seo": {
+		"metaTitle": "Create Random Noise PNG - Free Seeded Noise Generator",
+		"metaDescription": "Generate a random noise PNG where every pixel gets its own color, fixed by seed. Free, no upload, no signup, made and saved in your browser.",
+		"longDescription": "Random noise is an image in which every single pixel is given its own independent red, green and blue value, which is what produces television static, film grain and a flat test pattern. This page writes exactly that, over an opaque canvas with no transparency anywhere, and it needs no upload and no source file: the pixels are generated on your device and the result saved as PNG, JPG, WebP or BMP. Use it as a transparency test pattern, as a base texture to blend something over, or as an unpredictable-looking background. The Seed field is the part worth understanding - it is the starting number of the small random generator, so the same seed with the same canvas size always rebuilds the identical picture, which is how you get a repeatable noise texture rather than a new one on every visit. It is a reproducibility control, not a security feature.",
+		"howTo": [
+			"No upload needed - the pixels are generated from the Canvas size and the Seed.",
+			"Set the Canvas size in pixels, or pick a preset; the noise fills every pixel.",
+			"Set the Seed from 0 to 999999999 to choose which noise field you get.",
+			"Change the seed again to jump to a completely different noise field.",
+			"Download the result as PNG, JPG, WebP or BMP from the Download button."
+		],
+		"faq": [
+			{
+				"q": "What exactly does the seed do?",
+				"a": "It seeds the pseudo-random generator that picks the color of each pixel. The same seed with the same canvas size gives byte-for-byte the same image every time; a different seed gives a completely unrelated field. It is not encryption and it is not a password."
+			},
+			{
+				"q": "Is the noise transparent anywhere?",
+				"a": "No. Every pixel is written fully opaque, so the result has no alpha channel at all even though it is saved as a PNG. If you want grain added to an existing picture instead, use the add noise tool on this site."
+			},
+			{
+				"q": "How is this different from random color blocks?",
+				"a": "Here every pixel is independent, which reads as static or grain. Random color blocks gives each square of a chosen size a single flat color, which reads as a mosaic. Pick noise for fine grain and blocks for a chunky pattern."
+			},
+			{
+				"q": "Is there any limit on size or any upload?",
+				"a": "No upload and no account. The canvas runs from 1 to 5000 pixels per side, and very large canvases take a moment because every pixel is written - a 5000 by 5000 canvas is 25 million pixels."
+			}
+		]
+	}
+}

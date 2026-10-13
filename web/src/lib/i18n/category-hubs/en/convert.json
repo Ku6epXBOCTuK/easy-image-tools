@@ -1,0 +1,10 @@
+{
+	"heading": "Image converters",
+	"metaTitle": "Image Converters Online - PNG, JPG, WebP, SVG",
+	"metaDescription": "Convert between PNG, JPG, WebP and BMP, rasterize SVG, and turn images into Base64, data URIs, hex pixels or raw bytes. Free, no upload, runs in your browser.",
+	"paragraphs": [
+		"Conversion tools change the format of an image, not its content. A lossless format such as PNG or WebP keeps every pixel exactly as it was; a lossy format such as JPG discards detail to reach a smaller file, and the Download button lets you pick the quality that decides how much. Converting to JPG flattens transparency onto a background color, because JPG has no alpha channel - pick a white, black or custom background instead of losing the transparent areas to black.",
+		"Text-based conversions go the other way: Base64, data URIs, hex pixel values and byte arrays are the encodings developers use to embed an image in HTML, CSS, JSON or a source file. The reverse tools rebuild an image from any of those encodings, so a round trip through Base64 gives back the same picture you started with.",
+		"SVG to PNG is the one conversion that changes resolution: a vector source has no fixed pixel size, so the width and height you set decide how sharp the raster output is. Pick a size at least as large as the largest place the image will be shown - SVG stays sharp at any size, a rasterized PNG does not."
+	]
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Two colors PNG",
+	"seo": {
+		"metaTitle": "Two Colors PNG - Free Two-Tone Reduction, No Upload",
+		"metaDescription": "Reduce an image to exactly two colors you pick, split at a luminance threshold. Free and instant, no upload - the two-tone result is built in your browser.",
+		"longDescription": "The two colors tool reduces a picture to exactly two shades you pick. Every pixel's brightness is measured with the standard BT.601 luminance weights and compared against the threshold: brighter pixels take the From color, darker ones take the To color. The cut is hard, with no blending along the edge, which is what gives it the crisp look of a poster, a logo silhouette or a duotone. It runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is preserved.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set the Color pair: From is the color for the bright areas, To the color for the dark ones.",
+			"Move the Threshold to decide how much of the picture counts as bright; 50 splits it in the middle.",
+			"Download the result from the Download button."
+		],
+		"faq": [
+			{
+				"q": "Which of my two colors goes where?",
+				"a": "From is the light color and To the dark one - that is the order the tool reads them in. With the defaults it simply reproduces black and white; swap the two and the picture turns into a photographic negative."
+			},
+			{
+				"q": "Will the edges be smooth?",
+				"a": "No, and that is the character of the tool. A pixel is either one color or the other with nothing in between, so diagonal edges come out as stair steps. Posterizing instead keeps whatever anti-aliasing was already in the source."
+			},
+			{
+				"q": "Does it keep transparency?",
+				"a": "The alpha channel is copied through unchanged, so a transparent background stays transparent even though the color values behind it are recolored."
+			},
+			{
+				"q": "Can I get more than two colors?",
+				"a": "Not from this page. For a longer ramp, build one in the tint tool and posterize afterwards, or use the custom palette tool to map the picture onto a list of exact colors instead."
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"title": "Cut an image into a rectangle",
+	"seo": {
+		"metaTitle": "Cut a PNG Into a Rectangle - Free Mask, No Upload",
+		"metaDescription": "Trim an image to a movable rectangle: set the width and height as shares of the shorter side. Free, no signup, and the picture is never sent anywhere.",
+		"longDescription": "A square mask keeps the pixels inside a rectangle and makes everything outside it transparent. Width and Height are both set as a share of the shorter side of the picture, so 100 on a 1200 by 800 image gives an 800 by 800 block in the middle with empty margins at the sides, and Offset slides that block into the free space around it. The canvas keeps its size and the colors are not touched; the cut is hard, with no anti-aliasing. PNG, JPG, WebP and BMP are accepted, and the whole thing is computed in your browser with no upload.",
+		"howTo": [
+			"Drop the image into the source area, or pick a file from your device.",
+			"Set Width and Height from 10 to 100 percent of the shorter side.",
+			"Use Offset if the block should not sit in the middle of the picture.",
+			"Turn on Show mask to check the frame, then download the result as PNG."
+		],
+		"faq": [
+			{
+				"q": "Why is 100 percent a square on a landscape photo?",
+				"a": "Both sides are measured against the shorter side of the image, so the largest rectangle is as tall as the picture and as wide as its height. For the full frame, skip this tool and use the crop tool."
+			},
+			{
+				"q": "Does it resize the picture?",
+				"a": "No. The canvas stays the original size and the area outside the rectangle becomes transparent. Use trim empty space afterwards to cut the frame down to the rectangle."
+			},
+			{
+				"q": "Is the edge of the rectangle anti-aliased?",
+				"a": "No, it is a hard cut. Feathering the result is the way to soften it when the edge is going to be seen against a colored background."
+			},
+			{
+				"q": "Can I make a rounded rectangle instead?",
+				"a": "Not with this tool. Use the round corners tool after this one: the mask makes the rectangle and the radius rounds its four corners."
+			}
+		]
+	}
+}
