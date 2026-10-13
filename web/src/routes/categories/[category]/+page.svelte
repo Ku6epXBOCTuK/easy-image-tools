@@ -71,7 +71,7 @@
 	</nav>
 
 	<article class="hub">
-		<h1>{t("categoryHub.heading", { label })}</h1>
+		<h1>{hub?.heading ?? t("categoryHub.heading", { label })}</h1>
 		{#if hub}
 			<div class="prose">
 				{#each hub.paragraphs as paragraph (paragraph)}

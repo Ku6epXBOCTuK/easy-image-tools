@@ -34,6 +34,7 @@ export type PageStrings = {
 
 /** Hub copy (`categoryHubs.<id>`); EN only, same locale rule as `SeoContent`. */
 export type CategoryHubContent = {
+	heading: string;
 	metaTitle: string;
 	metaDescription: string;
 	paragraphs: string[];

@@ -21,7 +21,9 @@ pnpm verify
 5. `pnpm --dir web format:check` — форматирование кода `web/`.
 6. `pnpm check:docs` — форматирование Markdown (`AGENTS.md`, `README.md`,
    `docs/`).
-7. `pnpm --dir web build` — production build.
+7. `pnpm --dir web build` — production build, затем генераторы `sitemap.xml` и
+   `llms.txt` в `build/` (набор страниц берётся из собранного HTML, правило —
+   `docs/plan-seo.md`, §4 S1b и S3b).
 
 Полный `test` уже включает тесты lint-правил; отдельный `test:rules` в `verify`
 оставлен как явный быстрый диагностический этап.

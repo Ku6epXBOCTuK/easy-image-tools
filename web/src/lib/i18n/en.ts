@@ -1098,6 +1098,7 @@ export const en: Dict = {
 	// tool pages link up to (docs/plan-seo.md S3c).
 	categoryHubs: {
 		convert: {
+			heading: "Image converters",
 			metaTitle: "Image Converters Online - PNG, JPG, WebP, SVG",
 			metaDescription:
 				"Convert between PNG, JPG, WebP and BMP, rasterize SVG, and turn images into Base64, data URIs, hex pixels or raw bytes. Free, no upload, runs in your browser.",
@@ -1108,6 +1109,7 @@ export const en: Dict = {
 			],
 		},
 		alpha: {
+			heading: "Transparent PNG tools",
 			metaTitle: "Transparent PNG Tools - Cut Out, Masks, Alpha Channel",
 			metaDescription:
 				"Make a PNG transparent, remove its background or one color, round the corners, apply circle, square or star masks, and edit the alpha channel. Free, no upload, in your browser.",
@@ -1118,6 +1120,7 @@ export const en: Dict = {
 			],
 		},
 		color: {
+			heading: "Image color tools",
 			metaTitle: "Color Tools Online - Grayscale, Sepia, Hue, Palettes",
 			metaDescription:
 				"Change image colors in your browser: grayscale, sepia, invert, hue, temperature, brightness, gamma, posterize, dithering, palettes and HSL, CMYK, Lab conversions.",
@@ -1128,6 +1131,7 @@ export const en: Dict = {
 			],
 		},
 		geometry: {
+			heading: "Crop, resize and rotate tools",
 			metaTitle: "Image Geometry Tools - Crop, Resize, Rotate, Flip",
 			metaDescription:
 				"Crop, resize, rotate, flip, pad and reshape images in your browser. Free, no upload, no signup. Works with PNG, JPG, WebP and BMP.",
@@ -1138,6 +1142,7 @@ export const en: Dict = {
 			],
 		},
 		filters: {
+			heading: "Image filters",
 			metaTitle: "Image Filters Online - Blur, Sharpen, Pixelate, Noise",
 			metaDescription:
 				"Apply filters to images in your browser: blur, sharpen, pixelate, add noise, vignette, silhouette and JPEG artifacts. Free, no upload, no signup.",
@@ -1148,6 +1153,7 @@ export const en: Dict = {
 			],
 		},
 		text: {
+			heading: "Text and watermark tools",
 			metaTitle: "Add Text to Image Online - Watermark, Date Stamp",
 			metaDescription:
 				"Add text, a date stamp or a tiled watermark to an image in your browser. Free, no upload, no signup, works with PNG, JPG, WebP and BMP.",
@@ -1158,6 +1164,7 @@ export const en: Dict = {
 			],
 		},
 		analyze: {
+			heading: "Image analysis tools",
 			metaTitle: "Image Analysis Tools - Check PNG, Size, Transparency",
 			metaDescription:
 				"Check an image in your browser: verify it is a PNG, read the file size, check transparency, orientation, grayscale and color count. Nothing is uploaded.",
@@ -1168,6 +1175,7 @@ export const en: Dict = {
 			],
 		},
 		generate: {
+			heading: "Image generators",
 			metaTitle: "Generate Images Online - Solid, Gradient, Noise, Color Wheel",
 			metaDescription:
 				"Generate images from scratch in your browser: empty canvas, solid color, linear gradient, noise, grid, placeholder, color wheel, emoji and text to PNG.",

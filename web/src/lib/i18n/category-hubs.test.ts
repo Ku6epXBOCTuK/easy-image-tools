@@ -43,6 +43,8 @@ describe("category hub copy", () => {
 			expect(hub.paragraphs.length, `${id} paragraphs`).toBeGreaterThanOrEqual(
 				2,
 			);
+			expect(hub.heading.length, `${id} heading`).toBeGreaterThan(3);
+			expect(hub.heading.length, `${id} heading`).toBeLessThan(60);
 			expect(hub.metaTitle.length, `${id} metaTitle`).toBeGreaterThan(20);
 			expect(hub.metaTitle.length, `${id} metaTitle`).toBeLessThan(70);
 			expect(
