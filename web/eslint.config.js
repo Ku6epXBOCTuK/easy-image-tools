@@ -4,9 +4,9 @@ import svelte from "eslint-plugin-svelte";
 import globals from "globals";
 import svelteParser from "svelte-eslint-parser";
 import tseslint from "typescript-eslint";
-import designTokens from "./eslint-plugins/index.js";
 import conventionsPlugin from "./eslint-plugins/conventions/index.js";
 import i18nPlugin from "./eslint-plugins/i18n/index.js";
+import designTokens from "./eslint-plugins/index.js";
 
 // Production UI: the full recommended sets apply to it.
 const productionCode = ["**/src/lib/components/**", "**/src/routes/**"];
@@ -164,11 +164,10 @@ export default tseslint.config(
 				"warn",
 				{
 					baseLocaleFallback: ["pages.*.title", "pages.*.description"],
-					// EN-only until the `/ru/` prefix lands (docs/plan-seo.md).
 					ignoreMissingPatterns: [
 						"tools.*.params",
 						"pages.*.seo",
-						"categoryHubs.*",
+						"categoryHubs",
 					],
 				},
 			],

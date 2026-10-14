@@ -3,7 +3,7 @@
 // indexable
 // Usage: pnpm --dir web check:seo [en|ru]
 
-import { readdirSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -22,6 +22,25 @@ async function loadRegistryPages() {
 		}
 	}
 	return slugs;
+}
+
+// Long-form copy, read from the JSON files.
+function loadCopy(locale) {
+	const pages = {};
+	const hubs = {};
+	for (const [dir, target] of [
+		[join(ROOT, "i18n", "tools", locale), pages],
+		[join(ROOT, "i18n", "category-hubs", locale), hubs],
+	]) {
+		if (!existsSync(dir)) continue;
+		for (const file of readdirSync(dir)) {
+			if (!file.endsWith(".json")) continue;
+			target[file.slice(0, -".json".length)] = JSON.parse(
+				readFileSync(join(dir, file), "utf8"),
+			);
+		}
+	}
+	return { pages, categoryHubs: hubs };
 }
 
 function emptyFields(seo) {
@@ -79,13 +98,9 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
 		const slugs = await loadRegistryPages();
 
 		for (const locale of locales) {
-			// Dictionaries export their name (`en`, `ru`), so access by locale key.
-			const mod = await import(
-				pathToFileURL(join(ROOT, "i18n", `${locale}.ts`)).href
-			);
 			const { pageGaps, hubGaps, total } = reportSeo(
 				slugs,
-				mod[locale],
+				loadCopy(locale),
 				CATEGORY_IDS,
 			);
 

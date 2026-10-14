@@ -77,9 +77,13 @@ describe("SEO copy and indexability", () => {
 		return text.split(/\s+/).filter((word) => word.length > 0).length;
 	}
 
-	it("some pages have copy and some do not (the test is not vacuous)", () => {
+	// Copy is no longer partial: every registry page has a `seo` block, so the
+	// guard here is only that the list is not empty (the `it.each` below must
+	// not run on nothing). Content gates for the copy live in
+	// `seo-copy.test.ts`, next to the files they read.
+	it("the suite is not vacuous (a page with copy exists)", () => {
 		expect(withCopy.length).toBeGreaterThan(0);
-		expect(withCopy.length).toBeLessThan(PAGES.length);
+		expect(withCopy.length).toBeLessThanOrEqual(PAGES.length);
 	});
 
 	it("indexable iff the page has EN copy", () => {

@@ -1,4 +1,5 @@
 import type { Dict } from "./dict";
+import { EN_HUB_COPY, EN_TOOL_COPY } from "./seo-copy";
 
 export const en: Dict = {
 	brand: "easy-image-tools",
@@ -405,6 +406,10 @@ export const en: Dict = {
 		tile: "Tile",
 		watermark: "Watermark",
 	},
+	// Spread, not a reference: `dict-consistency` reads the dict as syntax and
+	// must still see the section keys (see web/eslint-plugins/README.md).
+	pages: { ...EN_TOOL_COPY },
+	categoryHubs: { ...EN_HUB_COPY },
 	tools: {
 		"file-size": {
 			results: {

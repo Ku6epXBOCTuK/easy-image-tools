@@ -1,10 +1,4 @@
-// Split the per-page and per-hub copy out of `web/src/lib/i18n/<locale>.ts`:
-//   - `pages.<slug>`  -> `web/src/lib/i18n/tools/<locale>/<slug>.json`
-//                       ({ "title": ..., "seo": {...} })
-//   - `categoryHubs.<id>` -> `web/src/lib/i18n/category-hubs/<locale>/<id>.json`
-// Extraction only: how these JSONs get back into the dictionary (import, merge,
-// index) is a separate task, so the dictionary itself is left untouched.
-// Usage: pnpm --dir web node scripts/split-seo.mjs [en|ru]
+// Extract the per-page and per-hub copy out of `web/src/lib/i18n/<locale>.ts`:
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
