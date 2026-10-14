@@ -2,6 +2,18 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.13.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/83bc3a6ef172f47c800af7e008bd49b9b74494f9..v0.13.0) - 2026-10-14
+#### Features
+- add pages seo descriptions - ([6fca511](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/6fca511554b1af68d8858fac8f736302ee98386f)) - Ku6epXBOCTuK
+- separate seo texts from main dict - ([8072561](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/8072561cd1a13b4cdcbd75ac611dd62676b43057)) - Ku6epXBOCTuK
+- add seo descriptions for tools - ([b4b646e](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/b4b646e332f922cd86a28a83edad4b2e44df40db)) - Ku6epXBOCTuK
+- gen llms.txt - ([0dc499e](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/0dc499e570d8c479e00a7db6315839258056c508)) - Ku6epXBOCTuK
+- add catalog pages, descriptions, seo - ([33deed5](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/33deed53af3c5222a86e1286267e5e5a3f07a118)) - Ku6epXBOCTuK
+#### Bug Fixes
+- load seo texts from json files - ([6158325](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/6158325b4aeb8da40e8192fbff662f87f8e063c9)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.12.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/1981afbc641807a2e95a4fecd109f94f00024b67..v0.12.0) - 2026-10-12
 #### Features
 - ga consent mode v2 - ([dad71f0](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/dad71f0bda3b745735a6de767978f3f5a69aa316)) - Ku6epXBOCTuK
