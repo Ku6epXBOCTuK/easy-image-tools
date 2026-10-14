@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 import { CATEGORY_IDS } from "../categories";
 import { PAGES } from "../registry";
 import { en } from "./en";
+import { SITE_PAGE_IDS } from "./seo-copy";
 
 const I18N_DIR = fileURLToPath(new URL("./", import.meta.url));
 
@@ -22,11 +23,13 @@ function words(text: string): number {
 
 const TOOL_FILES = jsonNames("tools/en");
 const HUB_FILES = jsonNames("category-hubs/en");
+const SITE_FILES = jsonNames("site/en");
 
 describe("seo copy files", () => {
 	it("every file is indexed in the dict (the glob picked it up)", () => {
 		const pages = Object.keys(en.pages ?? {});
 		const hubs = Object.keys(en.categoryHubs ?? {});
+		const site = Object.keys(en.site ?? {});
 		expect(
 			TOOL_FILES.filter((slug) => !pages.includes(slug)),
 			"copy file not reachable through en.pages",
@@ -35,6 +38,14 @@ describe("seo copy files", () => {
 			HUB_FILES.filter((id) => !hubs.includes(id)),
 			"hub copy file not reachable through en.categoryHubs",
 		).toEqual([]);
+		expect(
+			SITE_FILES.filter((id) => !site.includes(id)),
+			"site copy file not reachable through en.site",
+		).toEqual([]);
+	});
+
+	it("the site files are exactly the known fixed pages", () => {
+		expect(SITE_FILES).toEqual([...SITE_PAGE_IDS].sort());
 	});
 
 	it("every tool copy file points at a real page", () => {
@@ -86,5 +97,16 @@ describe("seo copy content", () => {
 		expect(hub.paragraphs.length, `${id} paragraphs`).toBeGreaterThanOrEqual(2);
 		const total = hub.paragraphs.reduce((n, text) => n + words(text), 0);
 		expect(total, `${id} total words`).toBeGreaterThanOrEqual(120);
+	});
+
+	it.each(SITE_PAGE_IDS)("site %s has SERP copy", (id) => {
+		const copy = en.site?.[id];
+		expect(copy, `${id}: no site copy`).toBeDefined();
+		if (!copy) return;
+		expect(copy.metaTitle.length, `${id} metaTitle`).toBeGreaterThan(20);
+		expect(
+			copy.metaDescription.length,
+			`${id} metaDescription`,
+		).toBeGreaterThan(70);
 	});
 });

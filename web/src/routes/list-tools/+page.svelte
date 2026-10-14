@@ -11,6 +11,7 @@
 		pageDescription,
 		pageTitle,
 		searchPages,
+		siteSeo,
 	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
 	import { PAGES } from "$lib/registry";
@@ -41,8 +42,9 @@
 </script>
 
 <Seo
-	title={t("catalog.pageTitle")}
-	description={t("catalog.metaDescription")}
+	title={siteSeo("list-tools")?.metaTitle ?? t("catalog.pageTitle")}
+	description={siteSeo("list-tools")?.metaDescription ??
+		t("catalog.metaDescription")}
 	path="/list-tools"
 />
 <JsonLd

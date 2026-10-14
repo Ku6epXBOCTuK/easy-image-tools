@@ -168,6 +168,7 @@ export default tseslint.config(
 						"tools.*.params",
 						"pages.*.seo",
 						"categoryHubs",
+						"site",
 					],
 				},
 			],

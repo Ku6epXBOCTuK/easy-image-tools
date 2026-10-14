@@ -2,11 +2,12 @@ import type { Page } from "$lib/registry";
 import { PAGES } from "../registry";
 import type { ChainWarning } from "$lib/run-chain";
 import type { Field } from "$lib/registry-schema";
-import type { SeoContent } from "./dict";
+import type { SeoContent, SiteSeo } from "./dict";
 import { getMergedDict } from "./locale.svelte";
 import { normalizeForSearch, scoreDoc, type SearchDoc } from "./matching";
 import { ru } from "./ru";
 import { en } from "./en";
+import type { SitePageId } from "./seo-copy";
 import { interpolate, t } from "./t";
 
 function labelOf(id: string): string {
@@ -27,6 +28,11 @@ export function pageDescription(page: Page): string {
 /** Long-form page copy, or undefined while a page has none. */
 export function pageSeo(page: Page): SeoContent | undefined {
 	return getMergedDict().pages?.[page.slug]?.seo;
+}
+
+/** SERP copy of a fixed site page (home, catalog, pipelines), or undefined. */
+export function siteSeo(id: SitePageId): SiteSeo | undefined {
+	return getMergedDict().site?.[id];
 }
 
 /**

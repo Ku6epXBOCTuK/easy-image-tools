@@ -14,7 +14,7 @@
 		renameChain,
 		type NamedChain,
 	} from "$lib/chains.svelte";
-	import { chainStepTitle } from "$lib/i18n/schema-tool-strings";
+	import { chainStepTitle, siteSeo } from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
 	import { createChain } from "$lib/pipeline.svelte";
 	import { PAGES } from "$lib/registry";
@@ -67,8 +67,9 @@
 </script>
 
 <Seo
-	title={t("savedChains.pageTitle")}
-	description={t("savedChains.metaDescription")}
+	title={siteSeo("chains")?.metaTitle ?? t("savedChains.pageTitle")}
+	description={siteSeo("chains")?.metaDescription ??
+		t("savedChains.metaDescription")}
 	path="/chains"
 />
 

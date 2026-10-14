@@ -11,6 +11,7 @@
 		pageDescription,
 		pageTitle,
 		searchPages,
+		siteSeo,
 	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
 	import { PAGES } from "$lib/registry";
@@ -40,7 +41,11 @@
 	);
 </script>
 
-<Seo title={t("home.defaultTitle")} description={t("home.heroLead")} path="/" />
+<Seo
+	title={siteSeo("home")?.metaTitle ?? t("home.defaultTitle")}
+	description={siteSeo("home")?.metaDescription ?? t("home.heroLead")}
+	path="/"
+/>
 <JsonLd data={siteSchemaLd(t("brand"))} />
 
 <div class="catalog-page">

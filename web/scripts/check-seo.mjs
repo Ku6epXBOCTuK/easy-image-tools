@@ -9,6 +9,9 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = fileURLToPath(new URL("../src/lib/", import.meta.url));
 
+/** Fixed site pages (`site/en/<id>.json`), same ids as in `seo-copy.ts`. */
+const SITE_PAGE_IDS = ["home", "list-tools", "chains"];
+
 async function loadRegistryPages() {
 	const dir = join(ROOT, "registry", "pages");
 	const slugs = [];
@@ -28,9 +31,11 @@ async function loadRegistryPages() {
 function loadCopy(locale) {
 	const pages = {};
 	const hubs = {};
+	const site = {};
 	for (const [dir, target] of [
 		[join(ROOT, "i18n", "tools", locale), pages],
 		[join(ROOT, "i18n", "category-hubs", locale), hubs],
+		[join(ROOT, "i18n", "site", locale), site],
 	]) {
 		if (!existsSync(dir)) continue;
 		for (const file of readdirSync(dir)) {
@@ -40,7 +45,7 @@ function loadCopy(locale) {
 			);
 		}
 	}
-	return { pages, categoryHubs: hubs };
+	return { pages, categoryHubs: hubs, site };
 }
 
 function emptyFields(seo) {
@@ -82,7 +87,20 @@ export function reportSeo(slugs, dict, categoryIds) {
 			hubGaps.push(`${id}: categoryHubs metaDescription`);
 	}
 
-	return { pageGaps, hubGaps, total: slugs.length };
+	const siteGaps = [];
+	for (const id of SITE_PAGE_IDS) {
+		const copy = dict.site?.[id];
+		if (!copy) {
+			siteGaps.push(`${id}: no site.${id} entry`);
+			continue;
+		}
+		const missing = [];
+		if (!copy.metaTitle?.trim()) missing.push("metaTitle");
+		if (!copy.metaDescription?.trim()) missing.push("metaDescription");
+		if (missing.length > 0) siteGaps.push(`${id}: site.${missing.join(", ")}`);
+	}
+
+	return { pageGaps, hubGaps, siteGaps, total: slugs.length };
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
@@ -98,7 +116,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
 		const slugs = await loadRegistryPages();
 
 		for (const locale of locales) {
-			const { pageGaps, hubGaps, total } = reportSeo(
+			const { pageGaps, hubGaps, siteGaps, total } = reportSeo(
 				slugs,
 				loadCopy(locale),
 				CATEGORY_IDS,
@@ -121,7 +139,20 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
 				for (const gap of hubGaps) console.log(`    ${gap}`);
 			}
 
-			if (pageGaps.length === 0 && hubGaps.length === 0) {
+			const siteFilled = SITE_PAGE_IDS.length - siteGaps.length;
+			console.log(
+				`[${locale}] SEO site pages: ${siteFilled}/${SITE_PAGE_IDS.length} filled`,
+			);
+			if (siteGaps.length > 0) {
+				console.log(`  site gaps (${siteGaps.length}):`);
+				for (const gap of siteGaps) console.log(`    ${gap}`);
+			}
+
+			if (
+				pageGaps.length === 0 &&
+				hubGaps.length === 0 &&
+				siteGaps.length === 0
+			) {
 				console.log(`[${locale}] all SEO copy is filled.`);
 			}
 			console.log("");

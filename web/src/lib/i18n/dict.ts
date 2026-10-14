@@ -40,6 +40,15 @@ export type CategoryHubContent = {
 	paragraphs: string[];
 };
 
+/**
+ * SERP copy for a fixed site page (`site.<id>`: home, catalog, pipelines).
+ * EN only, same locale rule as `SeoContent`.
+ */
+export type SiteSeo = {
+	metaTitle: string;
+	metaDescription: string;
+};
+
 /** Tool strings (`tools.<id>`): field labels, verdict keys. */
 export type ToolStrings = {
 	params?: Record<string, string>;
@@ -89,6 +98,8 @@ export type Dict = {
 	/** Absent in the base locale, EN from the registry is used. */
 	pages?: Record<string, PageStrings>;
 	categoryHubs?: Record<string, CategoryHubContent>;
+	/** Fixed site pages (`site/home.json`, ...); EN only. */
+	site?: Record<string, SiteSeo>;
 	tools: Record<string, ToolStrings>;
 	actions?: Record<string, string>;
 	textSource?: Record<string, string>;

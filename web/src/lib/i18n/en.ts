@@ -1,5 +1,5 @@
 import type { Dict } from "./dict";
-import { EN_HUB_COPY, EN_TOOL_COPY } from "./seo-copy";
+import { EN_HUB_COPY, EN_SITE_COPY, EN_TOOL_COPY } from "./seo-copy";
 
 export const en: Dict = {
 	brand: "easy-image-tools",
@@ -410,6 +410,7 @@ export const en: Dict = {
 	// must still see the section keys (see web/eslint-plugins/README.md).
 	pages: { ...EN_TOOL_COPY },
 	categoryHubs: { ...EN_HUB_COPY },
+	site: { ...EN_SITE_COPY },
 	tools: {
 		"file-size": {
 			results: {
