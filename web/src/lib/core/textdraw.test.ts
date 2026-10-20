@@ -41,7 +41,7 @@ describe("anchorOrigin", () => {
 
 describe("wrapText", () => {
 	it("greedily fills lines within width", () => {
-		// measure: 10px per char -> line <= 120px = 12 chars
+		// NOTE: measure returns 10px per char, so a line of 120px holds 12 chars
 		expect(wrapText("four two six banana pear", 120, measure)).toEqual([
 			"four two six",
 			"banana pear",

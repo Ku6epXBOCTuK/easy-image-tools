@@ -1,6 +1,6 @@
-// Shared read model over the build output: what is deployed and what may be
-// advertised. Both `gen-sitemap.mjs` and `gen-llms.mjs` take the URL set from
-// here, so the two artifacts can never disagree about what ships.
+// NOTE: Shared read model over the build output: what is deployed and what may
+// be advertised. Both `gen-sitemap.mjs` and `gen-llms.mjs` take the URL set
+// from here, so the two artifacts can never disagree about what ships.
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -11,8 +11,8 @@ export function siteOrigin() {
 	const fromEnv = (process.env.PUBLIC_SITE_ORIGIN ?? "").trim();
 	if (fromEnv !== "") return fromEnv.replace(/\/+$/, "");
 
-	// Local builds run without CI env vars; `static/CNAME` is the domain GitHub
-	// Pages publishes under, so it is the same truth as the deploy-time env.
+	// NOTE: Local builds run without CI env vars; `static/CNAME` is the domain
+	// GitHub Pages publishes under, so it is the same truth as the deploy env.
 	const cnamePath = fileURLToPath(new URL("../static/CNAME", import.meta.url));
 	if (!existsSync(cnamePath)) {
 		throw new Error(
@@ -26,7 +26,7 @@ export function siteOrigin() {
 	return `https://${cname}`;
 }
 
-/** Mirrors the `base` normalization in vite.config.ts. */
+// NOTE: Mirrors the `base` normalization in vite.config.ts.
 export function siteBase() {
 	const rawBase = (process.env.BASE_PATH ?? "").trim();
 	return rawBase === "" || rawBase === "/"
@@ -42,11 +42,9 @@ function* htmlFiles(dir) {
 	}
 }
 
-/**
- * adapter-static names prerendered pages `<route>.html` (`tools/crop-png.html`)
- * because `trailingSlash` is "never"; the `index.html` form covers a future
- * switch. GitHub Pages serves the flat file at the extension-less URL.
- */
+// NOTE: adapter-static names prerendered pages `<route>.html` because
+// `trailingSlash` is "never"; the `index.html` form covers a future switch.
+// GitHub Pages serves the flat file at the extension-less URL.
 function routePath(file) {
 	const rel = relative(BUILD_DIR, file).split(sep).join("/");
 	if (rel === "404.html") return null;
@@ -56,11 +54,9 @@ function routePath(file) {
 	return `/${rel.slice(0, -".html".length)}`;
 }
 
-/**
- * Prerendered pages that may be advertised: a page whose HTML carries
- * `noindex` is skipped, so no artifact can list a page we ask crawlers to
- * ignore.
- */
+// NOTE: Prerendered pages that may be advertised: a page whose HTML carries
+// `noindex` is skipped, so no artifact can list a page we ask crawlers to
+// ignore.
 export function indexablePages() {
 	if (!existsSync(BUILD_DIR)) {
 		throw new Error("site-pages: build/ is missing — run `vite build` first");

@@ -26,7 +26,7 @@
 		ontoggle,
 	}: Props = $props();
 
-	// feedback: "none" -- no transform shifting; step-dnd.svelte.ts hides the
+	// NOTE: feedback: "none" -- no transform shifting; step-dnd.svelte.ts hides the
 	// source and renders a dashed drop indicator instead.
 	const sortable = createSortable({
 		get id() {

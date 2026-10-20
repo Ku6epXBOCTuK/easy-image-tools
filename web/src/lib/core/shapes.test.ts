@@ -26,22 +26,23 @@ describe("shape predicates", () => {
 
 	it("star: ray inside further than valley", () => {
 		const t = starTest(5, 0.5, 1, 0);
-		expect(t(0.9, 0)).toBe(true); // along the ray (theta=0)
-		const valleyAngle = Math.PI / 5; // midway between rays
+		expect(t(0.9, 0)).toBe(true);
+		const valleyAngle = Math.PI / 5;
 		expect(t(Math.cos(valleyAngle) * 0.8, Math.sin(valleyAngle) * 0.8)).toBe(
 			false,
 		);
-		expect(t(0.4, 0)).toBe(true); // valley radius 0.5 - 0.4 always inside
+		expect(t(0.4, 0)).toBe(true);
 	});
 
 	it("wave: phase moves the edge", () => {
 		const a = wavyTest(0.5, 0.1, 6, 0);
 		const b = wavyTest(0.5, 0.1, 6, 180);
-		const deg = 15; // sin(6*15deg)=1 -> edge 0.6; at phase 180 deg edge 0.4
+		// NOTE: sin(6*15deg)=1 -> edge 0.6; at phase 180 deg edge 0.4
+		const deg = 15;
 		const rad = (deg * Math.PI) / 180;
 		const px = 0.55;
-		expect(a(px * Math.cos(rad), px * Math.sin(rad))).toBe(true); // edge 0.6
-		expect(b(px * Math.cos(rad), px * Math.sin(rad))).toBe(false); // edge 0.4
+		expect(a(px * Math.cos(rad), px * Math.sin(rad))).toBe(true);
+		expect(b(px * Math.cos(rad), px * Math.sin(rad))).toBe(false);
 	});
 });
 
@@ -54,7 +55,7 @@ describe("renderShape", () => {
 		for (let i = 3; i < out.data.length; i += 4)
 			if (out.data[i] === 255) opaque++;
 		expect(opaque).toBe(4);
-		expect(out.data[4]).toBe(255); // RGB inside shape preserved
+		expect(out.data[4]).toBe(255);
 	});
 
 	it("center offset moves the mask", () => {
@@ -67,8 +68,6 @@ describe("renderShape", () => {
 		expect(shifted.data[4 + 3]).toBe(255);
 	});
 
-	// Regression of old square-mask bug: full size without offset must
-	// keep the whole square image.
 	it("100% box without offset keeps whole square image", () => {
 		const out = renderShape(
 			makeImage(4, 4, new Array(16).fill([255, 255, 255, 255])),
@@ -77,8 +76,6 @@ describe("renderShape", () => {
 		for (let i = 3; i < out.data.length; i += 4) expect(out.data[i]).toBe(255);
 	});
 
-	// Offset is a fraction of free space: +/-0.5 pins the shape to the edge
-	// at any size; the shape never leaves the canvas.
 	it("max offset pins shape to edge", () => {
 		const out = renderShape(
 			makeImage(4, 4, new Array(16).fill([255, 255, 255, 255])),

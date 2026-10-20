@@ -19,8 +19,9 @@
 	const related = $derived(relatedPages(page, 6));
 </script>
 
-<!-- Below the tool, not above it: the workspace is what the visitor came for,
-     and the copy is here to rank and to answer questions without a scroll. -->
+<!-- NOTE: The copy sits below the tool, not above it: the workspace is what
+     the visitor came for, the copy is here to rank and to answer questions
+     without a scroll. -->
 {#if seo}
 	<section class="content">
 		<p class="long">{seo.longDescription}</p>
@@ -42,8 +43,8 @@
 			{/each}
 		</div>
 
-		<!-- Internal links: the only way a crawler reaches the neighbours of
-		     this page, so the block stays derived from the category, never a
+		<!-- NOTE: Internal links: the only way a crawler reaches the neighbours
+		     of this page, so the block stays derived from the category, never a
 		     hand-picked list. -->
 		<h2>{t("toolPage.relatedHeading")}</h2>
 		<div class="related">

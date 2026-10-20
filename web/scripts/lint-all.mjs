@@ -4,10 +4,9 @@ import { fileURLToPath } from "node:url";
 const WEB_DIR = fileURLToPath(new URL("../", import.meta.url));
 const node = process.execPath;
 
-// Every lint layer in one command. Each step runs even if a previous one
+// NOTE: Every lint layer in one command. Each step runs even if a previous one
 // fails; the exit code is nonzero if any did. Children inherit our stdout FD
-// directly (no pipes), so `> out.txt` catches every byte; stylelint paints
-// even to a non-TTY, hence the explicit --no-color there.
+// directly (no pipes), so `> out.txt` catches every byte.
 const colorFlag = process.stdout.isTTY ? [] : ["--no-color"];
 
 const bins = {

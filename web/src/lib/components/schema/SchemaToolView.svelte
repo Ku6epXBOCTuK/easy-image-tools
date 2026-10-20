@@ -45,7 +45,7 @@
 	interface Props {
 		page: Page;
 		tool: Tool;
-		/** Named-chain mode: the chain id and display name; page is virtual. */
+		// NOTE: Named-chain mode: the chain id and display name; page is virtual.
 		chainId?: string;
 	}
 	let { page, tool, chainId = undefined }: Props = $props();
@@ -56,7 +56,7 @@
 
 	let aligned = $state(false);
 
-	// Composition root: feature state lives in sibling composables
+	// NOTE: Composition root: feature state lives in sibling composables
 	// (source-upload, output-controls, step-mask, chain-host); execution in
 	// schema-tool-runner, step state in schema-tool-state.
 	const upload = createSourceUpload({
@@ -114,7 +114,7 @@
 	});
 	const { run, download, copyText, downloadText } = runner;
 	const running = $derived(runner.running);
-	// Display-level busy: either a run or a download is in flight.
+	// NOTE: Display-level busy: either a run or a download is in flight.
 	const busy = $derived(running || runner.downloading);
 	const result = $derived(runner.result);
 	const fileResult = $derived(runner.fileResult);
@@ -124,7 +124,7 @@
 	const stepResults = $derived(runner.stepResults);
 	const stepFileSets = $derived(runner.stepFileSets);
 	const runWarnings = $derived(runner.runWarnings);
-	// Feedback zones: source tile / step tiles / download button area.
+	// NOTE: Feedback zones: source tile / step tiles / download button area.
 	const sourceNotices = $derived(upload.sourceWarnings.map(chainWarningNotice));
 	const warningsByStep = $derived.by(() => {
 		const byStep: WarningNotice[][] = steps.map(() => []);
@@ -173,10 +173,10 @@
 	});
 
 	const resultKind = $derived(lastTool.result ?? "image");
-	// Display kind follows the actual output: a batch run of an image tool
+	// NOTE: Display kind follows the actual output: a batch run of an image tool
 	// produces a file set, not a single image.
 	const displayResultKind = $derived(fileResult ? "files" : resultKind);
-	// Chain can be extended while the last step outputs images (one or many).
+	// NOTE: Chain can be extended while the last step outputs images (one or many).
 	const canExtend = $derived(
 		["image", "files"].includes(lastTool.result ?? "image"),
 	);
@@ -522,11 +522,9 @@
 		font-size: var(--font-size-s);
 		line-height: 1.5;
 	}
-	/* Two scaffoldings over shared snippets: normal mode keeps two independent
-	   columns (cards pack under each other, tiles pack two per row inside one
-	   panel); aligned mode is a flat 3-column grid where each card shares its
-	   grid row with the input/output pair and the right side reads as one
-	   continuous panel. */
+	/* NOTE: Two scaffoldings over shared snippets: normal mode keeps two independent
+	   columns; aligned mode is a flat 3-column grid where each card shares its row
+	   with the input/output pair and the right side reads as one panel. */
 	.workspace {
 		display: grid;
 		grid-template-columns: minmax(var(--size-workspace-min), 1fr) minmax(
@@ -579,10 +577,9 @@
 		min-width: 0;
 	}
 
-	/* Aligned mode: cards in column 1, each step's input/output pair spans
+	/* NOTE: Aligned mode: cards in column 1, each step's input/output pair spans
 	   columns 2-3 on the card's row. The right side forms one panel: head and
-	   foot carry the top/bottom borders, pairs and row bridges carry the side
-	   borders, so rows have no vertical gaps. */
+	   foot carry the top/bottom borders, pairs and row bridges the side ones. */
 	.workspace.aligned {
 		grid-template-columns: minmax(var(--size-workspace-min), 1fr) 1fr 1fr;
 		gap: 0 var(--space-xxl);
@@ -612,9 +609,8 @@
 		border-left: var(--size-border) solid var(--color-border);
 		background: var(--color-panel);
 	}
-	/* The workspace has align-items: start; panel pieces must stretch to the
-	   row height or the side borders break when a card is taller than its
-	   pair. */
+	/* NOTE: The workspace has align-items: start; panel pieces must stretch to the
+	   row height or the side borders break when a card is taller than its pair. */
 	.aligned .panel-head,
 	.aligned .pair,
 	.aligned .row-bridge,

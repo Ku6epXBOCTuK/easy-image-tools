@@ -1,16 +1,10 @@
-// Rule: NO UNDEFINED CSS-TOKEN USAGE IN COMPONENTS.
-// A var(--...) referenced in a Svelte <style> block must exist in the design
-// token file (src/app.css) or be a local override defined in the same
-// component. Catches typos and drop-in tokens that were never added to the
-// "single source of truth".
-
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { getStyleNodeLoc, getStyleRoot } from "./style-context.js";
 
-// A custom property DEFINITION: "--x:" followed by a colon.
+// NOTE: A custom property DEFINITION is "--x:" followed by a colon; a var()
+// REFERENCE uses the primary argument only (fallbacks are optional overrides).
 const DEFINED_RE = /--[\w-]+(?=\s*:)/g;
-// A var() REFERENCE (primary argument only; fallbacks are optional overrides).
 const VAR_REF_RE = /var\(\s*(--[\w-]+)/g;
 
 const definedCache = new Map();
@@ -66,7 +60,8 @@ export default {
 					});
 				};
 
-				// Custom properties defined INSIDE this component count as defined.
+				// NOTE: Custom properties defined INSIDE this component count as
+				// defined.
 				const localTokens = new Set();
 				root.walkDecls((decl) => {
 					if (decl.prop?.startsWith("--")) localTokens.add(decl.prop);

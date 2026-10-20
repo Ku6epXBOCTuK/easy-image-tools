@@ -25,7 +25,7 @@ export const RESULT_KINDS = {
 } as const;
 export type ResultKind = (typeof RESULT_KINDS)[keyof typeof RESULT_KINDS];
 
-/** Unified tool input. `source`/`text` are present strictly per `input`. */
+// NOTE: `source`/`text` are present strictly per the tool's `input` mode.
 export interface ToolContext<P> {
 	params: P;
 	source?: PixelImage;
@@ -37,12 +37,13 @@ export interface ToolImageFile {
 	image: PixelImage;
 }
 
-/** File-set result (1 -> many); downloaded as a zip archive. */
+// NOTE: File-set result (1 -> many); downloaded as a zip archive.
 export interface FileResult {
 	files: ToolImageFile[];
 }
 
-/** Verdict: dict `key` + `vars` for `{name}` interpolation; localized on the UI side, never inside run(). */
+// NOTE: Verdict: dict `key` + `vars` for `{name}` interpolation; localized on the
+// UI side, never inside run().
 export interface VerdictResult {
 	key: string;
 	vars?: Record<string, string | number>;
@@ -52,23 +53,21 @@ export type ToolResult = PixelImage | string | FileResult | VerdictResult;
 
 export type ResultNote = { key: string; tone?: "warning" | "info" };
 
-/**
- * Tool: unique implementation without address, strings, or category; those
- * belong to the page, and one tool may serve many pages. Schema is required
- * (single source of defaults/validation/UI). Exactly one `run(ctx)` method.
- */
+// NOTE: Tool: unique implementation without address, strings, or category; those
+// belong to the page. Schema is required (defaults/validation/UI). One `run(ctx)`.
 export type Tool<P = Record<string, unknown>> = {
-	/** Dict key of the tool, `toolId` of the worker protocol, pipeline record. */
+	// NOTE: Dict key of the tool, `toolId` of the worker protocol, pipeline record.
 	id: string;
 	schema: ToolSchema<P>;
 	input: InputMode;
 	result?: ResultKind;
 	run(ctx: ToolContext<P>): Promise<ToolResult> | ToolResult;
-	/** Needs the DOM (canvas/document); the preview executor runs it directly, not in a worker. */
+	// NOTE: Needs the DOM (canvas/document); the preview executor runs it in the main thread.
 	domOnly?: boolean;
 	output?: OutputFormat;
 	runMask?: (ctx: ToolContext<P>) => PixelImage;
-	/** Note at the result tile when the outcome differs from requested (clamped, aspect-corrected, grew past canvas). */
+	// NOTE: Note at the result tile when the outcome differs from requested
+	// (clamped, aspect-corrected, grew past canvas).
 	resultNote?: (params: P, result: PixelImage) => ResultNote | null;
 };
 
@@ -77,11 +76,12 @@ export type PageStep = {
 	params?: Record<string, unknown>;
 };
 
-/** Page: unique address, strings, and the ordered tool list in `steps` (a page may be a ready-made chain run by `SchemaToolView`). */
+// NOTE: Page: unique address, strings, and the ordered tool list in `steps`
+// (a page may be a ready-made chain run by `SchemaToolView`).
 export type Page = {
-	/** Address `/tools/<slug>`, downloaded file name, and icon key. */
+	// NOTE: Address `/tools/<slug>`, downloaded file name, and icon key.
 	readonly slug: string;
-	/** EN string; the translation lives in the dictionary by slug. */
+	// NOTE: EN string; the translation lives in the dictionary by slug.
 	readonly title: string;
 	readonly description: string;
 	readonly category: CategoryId;
@@ -102,7 +102,6 @@ export function requireText<P>(ctx: ToolContext<P>): string {
 	return ctx.text;
 }
 
-/** Wrapper for image-to-image tools: injects source and params from the context, keeping the tool body as `(img, p) => ...`. */
 export function imgTool<P>(
 	fn: (img: PixelImage, params: P) => ToolResult | Promise<ToolResult>,
 ): (ctx: ToolContext<P>) => ToolResult | Promise<ToolResult> {

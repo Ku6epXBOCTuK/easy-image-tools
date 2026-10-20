@@ -1,6 +1,6 @@
-// Unresolved references: every var(--x) in app.css must point at a token the
-// same file defines: a typo silently drops the declaration, so this is a
-// defect, not a style choice. `var(--x, fallback)` is legal without --x.
+// NOTE: Every var(--x) in app.css must point at a token the same file
+// defines: a typo silently drops the declaration, so this is a defect, not a
+// style choice. `var(--x, fallback)` is legal without --x.
 
 const VAR_REF_RE = /var\(\s*(--[\w-]+)\s*([,)])/g;
 
@@ -15,7 +15,7 @@ export function checkUnresolvedRefs(root) {
 	root.walkDecls((decl) => {
 		for (const match of decl.value.matchAll(VAR_REF_RE)) {
 			const [, token, terminator] = match;
-			// terminator ")" after whitespace means no fallback argument
+			// NOTE: A terminator ")" after whitespace means no fallback argument
 			if (defined.has(token)) continue;
 			if (terminator === ",") continue;
 			if (seen.has(token)) continue;

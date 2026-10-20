@@ -14,7 +14,7 @@ function uid(): string {
 	return crypto.randomUUID();
 }
 
-/** Tool can be inserted mid-chain: image in, one or many images out. */
+// NOTE: Chainable means image in, one or many images out.
 export function isChainable(toolId: string): boolean {
 	const tool = getTool(toolId);
 	if (!tool || tool.input !== "image") return false;
@@ -22,7 +22,6 @@ export function isChainable(toolId: string): boolean {
 	return kind === "image" || kind === "files";
 }
 
-/** Pages whose tools can be added as steps (for the picker). */
 export function chainablePages(): Page[] {
 	return PAGES.filter((p) => isChainable(p.steps[0].id));
 }
@@ -47,7 +46,8 @@ export function createChain(page: Page): ChainStep[] {
 	return steps;
 }
 
-/** Validates a saved chain; invalid data -> null (page default). */
+// NOTE: Validates a saved chain; invalid data returns null and the caller
+// falls back to the page default.
 export function parseChain(data: unknown): ChainStep[] | null {
 	if (
 		!data ||
@@ -78,7 +78,7 @@ export function parseChain(data: unknown): ChainStep[] | null {
 	return out.length > 0 ? out : null;
 }
 
-/** Serialized step shape shared by per-slug chains and named chains. */
+// NOTE: Serialized step shape shared by per-slug chains and named chains.
 export function serializeSteps(steps: ChainStep[]): Record<string, unknown>[] {
 	return steps.map((s) => ({
 		id: s.id,
@@ -87,7 +87,7 @@ export function serializeSteps(steps: ChainStep[]): Record<string, unknown>[] {
 	}));
 }
 
-/** True while steps match the page definition identity-wise (params ignored). */
+// NOTE: True while steps match the page definition by tool id only (params ignored).
 export function isStructuralDefault(page: Page, steps: ChainStep[]): boolean {
 	return (
 		steps.length === page.steps.length &&

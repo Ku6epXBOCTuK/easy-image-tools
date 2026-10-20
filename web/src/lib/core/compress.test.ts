@@ -23,10 +23,9 @@ describe("COMPRESSION_LEVELS", () => {
 });
 
 describe("findMaxColorsWithin", () => {
-	const sizeOf = (k: number) => 1000 + k * 100; // size grows with k
+	const sizeOf = (k: number) => 1000 + k * 100;
 
 	it("picks max k fitting the target", async () => {
-		// target 5200 -> k<=42 fits -> expect 42 at maxK>=42
 		const k = await findMaxColorsWithin(5200, 256, async (kk) => sizeOf(kk));
 		expect(k).toBeGreaterThanOrEqual(40);
 		expect(sizeOf(k)).toBeLessThanOrEqual(5200);
@@ -48,15 +47,14 @@ describe("findMaxColorsWithin", () => {
 			calls++;
 			return sizeOf(kk);
 		});
-		expect(calls).toBeLessThanOrEqual(12); // log2(254)+probe(2)
+		expect(calls).toBeLessThanOrEqual(12);
 	});
 });
 
 describe("findQualityWithin", () => {
-	const sizeOf = (q: number) => 500 + q * 50; // size grows with quality
+	const sizeOf = (q: number) => 500 + q * 50;
 
 	it("picks max quality fitting the target", async () => {
-		// target 5000 -> q<=90 fits
 		const q = await findQualityWithin(5000, async (qq) => sizeOf(qq));
 		expect(q).toBe(90);
 		expect(sizeOf(q)).toBeLessThanOrEqual(5000);
@@ -83,7 +81,7 @@ describe("findQualityWithin", () => {
 			calls++;
 			return sizeOf(qq);
 		});
-		expect(calls).toBeLessThanOrEqual(10); // log2(99)+2 probes
+		expect(calls).toBeLessThanOrEqual(10);
 	});
 });
 

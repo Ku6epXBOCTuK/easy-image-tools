@@ -1,9 +1,9 @@
 <script lang="ts">
 	interface Props {
-		/** Primary pattern: bind:checked. */
+		// NOTE: Primary pattern: bind:checked.
 		checked: boolean;
 		label?: string;
-		/** Only for side effects beyond the value flip. */
+		// NOTE: Only for side effects beyond the value flip.
 		onchange?: (checked: boolean) => void;
 	}
 	let { checked = $bindable(), label, onchange }: Props = $props();

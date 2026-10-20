@@ -31,9 +31,9 @@ describe("drawGrid", () => {
 	it("grid lines opaque, background transparent", () => {
 		const out = drawGrid(100, 100, 4, 4, 2, "#000000", 0);
 		expect(out.data[0]).toBe(0);
-		expect(out.data[3]).toBe(255); // (0,0) on a line
+		expect(out.data[3]).toBe(255);
 		const mid = (53 * 100 + 53) * 4;
-		expect(out.data[mid + 3]).toBe(0); // transparent between lines
+		expect(out.data[mid + 3]).toBe(0);
 	});
 
 	it("white opaque background at bgOpacity=100", () => {

@@ -1,7 +1,6 @@
-// SEO coverage report: which registry pages / category hubs still lack the
-// locale copy (`pages.<slug>.seo`, `categoryHubs.<id>`) that makes them
-// indexable
-// Usage: pnpm --dir web check:seo [en|ru]
+// NOTE: SEO coverage report: which registry pages / category hubs still lack
+// the locale copy (`pages.<slug>.seo`, `categoryHubs.<id>`) that makes them
+// indexable. Usage: pnpm --dir web check:seo [en|ru]
 
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -9,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = fileURLToPath(new URL("../src/lib/", import.meta.url));
 
-/** Fixed site pages (`site/en/<id>.json`), same ids as in `seo-copy.ts`. */
+// NOTE: Fixed site pages (`site/en/<id>.json`), same ids as in `seo-copy.ts`.
 const SITE_PAGE_IDS = ["home", "list-tools", "chains"];
 
 async function loadRegistryPages() {
@@ -27,7 +26,6 @@ async function loadRegistryPages() {
 	return slugs;
 }
 
-// Long-form copy, read from the JSON files.
 function loadCopy(locale) {
 	const pages = {};
 	const hubs = {};

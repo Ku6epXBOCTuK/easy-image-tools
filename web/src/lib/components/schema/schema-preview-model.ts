@@ -16,7 +16,6 @@ export type SchemaPreviewModelInput = {
 	textResult: string | null;
 };
 
-/** Whether the result is downloadable: it exists and is non-empty. */
 export function hasPreviewResult(input: SchemaPreviewModelInput): boolean {
 	const { resultKind, result, fileResult, textResult } = input;
 	if (resultKind === "image") return Boolean(result);
@@ -26,10 +25,10 @@ export function hasPreviewResult(input: SchemaPreviewModelInput): boolean {
 	return Boolean(textResult);
 }
 
-// Grouped view-models of SchemaPreview: one object per inner consumer
+// NOTE: Grouped view-models of SchemaPreview: one object per inner consumer
 // (field names mirror the consumer's own props, so they spread directly).
 
-/** SchemaActions: download policy and format settings. */
+/** NOTE: SchemaActions: download policy and format settings. */
 export interface PreviewHeadModel {
 	format: OutputMime;
 	quality?: number;
@@ -42,7 +41,7 @@ export interface PreviewHeadModel {
 	onlimit?: (kb: number | undefined) => void;
 }
 
-/** SchemaSourceTile minus mode/running/onupload (top-level/head props). */
+/** NOTE: SchemaSourceTile minus mode/running/onupload (top-level/head props). */
 export interface PreviewSourceModel {
 	source: PixelImage | null;
 	sources?: ToolImageFile[];
@@ -53,7 +52,7 @@ export interface PreviewSourceModel {
 	onuploadmany?: (files: File[]) => void;
 }
 
-/** Intermediate step tiles (chain mode). */
+/** NOTE: Intermediate step tiles of the chain preview. */
 export interface PreviewStepsModel {
 	results?: (PixelImage | null)[];
 	fileSets?: ToolImageFile[][];
@@ -63,7 +62,7 @@ export interface PreviewStepsModel {
 	ontogglestepmask?: (i: number) => void;
 }
 
-/** SchemaResultTile minus resultKind/toolId/running (top-level props). */
+/** NOTE: SchemaResultTile minus resultKind/toolId/running (top-level props). */
 export interface PreviewResultModel {
 	result: PixelImage | null;
 	resultNote?: ResultNote | null;

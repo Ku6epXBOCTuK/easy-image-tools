@@ -11,11 +11,11 @@ export interface StepMasksCtx {
 	stepResults: () => (PixelImage | null)[];
 }
 
-// Per-step mask preview of SchemaToolView: the toggle lives on every step
+// NOTE: Per-step mask preview of SchemaToolView: the toggle lives on every step
 // result tile (keyed by step.key), the mask never enters the chain itself.
 export function createStepMasks(ctx: StepMasksCtx) {
 	const onKeys = new SvelteSet<string>();
-	// Recomputed on the main thread per toggled step from that step's input.
+	// NOTE: Recomputed on the main thread per toggled step from that step's input.
 	const results = $derived.by(() => {
 		const next: Record<string, PixelImage | null> = {};
 		ctx.steps().forEach((step, i) => {
@@ -24,7 +24,7 @@ export function createStepMasks(ctx: StepMasksCtx) {
 			if (!stepTool?.runMask) return;
 			const input = i === 0 ? ctx.source() : ctx.stepResults()[i - 1];
 			if (!input) return;
-			// Same contract as executor.ts: params are sanitized against the
+			// NOTE: Same contract as executor.ts: params are sanitized against the
 			// schema with the step input as the source context.
 			const stepSchema = toolSchemaOf(step);
 			const params = stepSchema

@@ -16,7 +16,7 @@
 		return () => dnd.registerList(null);
 	});
 
-	// Align the overlay so its source row sits exactly under the cursor (the
+	// NOTE: Align the overlay so its source row sits exactly under the cursor (the
 	// dragged card's grab point); the page behind never moves.
 	const top = $derived.by(() => {
 		const anchor = dnd.anchor;
@@ -64,7 +64,7 @@
 {/if}
 
 <style>
-	/* The scrim dims the page so the floating list does not blend into the
+	/* NOTE: The scrim dims the page so the floating list does not blend into the
 	   step cards underneath; it never intercepts the drag. */
 	.reorder-scrim {
 		position: fixed;

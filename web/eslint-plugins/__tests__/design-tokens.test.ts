@@ -1,13 +1,6 @@
-// Tests for the design-tokens plugin rules (web/eslint-plugins/design-tokens).
-//
-// Strategy:
-//   - no-hardcoded-in-svelte, no-category-mismatch, no-token-definition-in-svelte
-//     are pure AST checks -> standard RuleTester with string cases.
-//   - no-undefined-in-svelte reads the token dictionary from <cwd>/src/app.css,
-//     so it runs through the Linter API with cwd pinned to the fixtures dir
-//     (see __tests__/helpers.ts). The fixture dictionary has exactly five
-//     tokens; anything else must be reported even if it exists in the REAL
-//     web/src/app.css.
+// NOTE: no-undefined-in-svelte reads the token dictionary from <cwd>/src/app.css,
+// so it runs through the Linter API with cwd pinned to the fixtures dir (see
+// __tests__/helpers.ts); the other rules are pure AST checks (RuleTester).
 import { RuleTester } from "eslint";
 import svelteParser from "svelte-eslint-parser";
 import tseslint from "typescript-eslint";
@@ -22,9 +15,9 @@ const parserOptions = {
 	parser: tseslint.parser,
 };
 
-// Vitest doesn't expose describe/it as globals (no `globals: true` in the
-// config), so RuleTester would fall back to its synchronous default handler.
-// Register the real ones so each case becomes a proper vitest test.
+// NOTE: Vitest doesn't expose describe/it as globals (no `globals: true` in
+// the config), so RuleTester would fall back to its synchronous default
+// handler. Register the real ones so each case becomes a proper vitest test.
 RuleTester.describe = describe;
 RuleTester.it = it;
 
@@ -35,7 +28,6 @@ const ruleTester = new RuleTester({
 	},
 });
 
-/** Wrap CSS from a <style> block into a minimal Svelte component. */
 const component = (style: string): string =>
 	`<div class="box">x</div>\n\n<style>\n${style}\n</style>\n`;
 

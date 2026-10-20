@@ -2,7 +2,7 @@ import { createPixelImage, type PixelImage } from "./types";
 import { hslToRgb } from "./palette";
 import { mulberry32 } from "./pixel-fx";
 
-/** Rainbow spectrum: hue 0..360 along the chosen axis. */
+// NOTE: Rainbow spectrum: hue runs 0..360 along the chosen axis.
 export function colorSpectrum(
 	width: number,
 	height: number,
@@ -32,7 +32,7 @@ export function colorSpectrum(
 	return out;
 }
 
-/** Random vivid blocks: deterministic per seed. */
+// NOTE: Random vivid blocks, deterministic per seed.
 export function randomColorBlocks(
 	width: number,
 	height: number,
@@ -79,7 +79,7 @@ function lineMask(
 	return mask;
 }
 
-/** Line grid on a white background of given opacity (0 = transparent). */
+// NOTE: Line grid on a white background of the given opacity (0 = transparent).
 export function drawGrid(
 	width: number,
 	height: number,

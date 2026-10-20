@@ -51,7 +51,7 @@
 		onchange?: (value: unknown, axis?: "width" | "height" | "both") => void;
 	}
 
-	// The kind key of FIELDS guarantees the spec subtype at runtime (fieldSpecs
+	// NOTE: The kind key of FIELDS guarantees the spec subtype at runtime (fieldSpecs
 	// map in registry-schema); the cast lives once here, so each control
 	// declares its exact spec type instead of casting internally.
 	type ControlFor<S extends FieldSpec> = Component<
@@ -85,7 +85,7 @@
 		schema: ToolSchema<Record<string, unknown>>;
 		values: Record<string, unknown>;
 		toolId: string;
-		/** Step input dimensions: for maxFromSource fields (crop, etc.). */
+		// NOTE: Step input dimensions; the cap for maxFromSource fields (crop, etc.).
 		sourceDims?: Dimension;
 		onchange: (
 			id: string,

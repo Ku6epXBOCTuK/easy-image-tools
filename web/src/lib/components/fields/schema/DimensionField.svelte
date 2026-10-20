@@ -12,7 +12,7 @@
 		label: string;
 		value: unknown;
 		spec: DimensionSpec;
-		/** Step input dimensions: axis cap for maxFromSource fields. */
+		// NOTE: Step input dimensions; the axis cap for maxFromSource fields.
 		sourceDims?: Dimension;
 		onchange?: (value: Dimension, axis?: "width" | "height" | "both") => void;
 	}
@@ -50,7 +50,7 @@
 	}
 
 	function applyPreset(n: number) {
-		// Preset sets both axes explicitly; lockAspect does not recompute it.
+		// NOTE: A preset sets both axes explicitly; lockAspect does not recompute it.
 		onchange?.({ width: n, height: n }, "both");
 	}
 </script>

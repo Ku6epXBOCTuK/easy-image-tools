@@ -12,16 +12,16 @@ export interface OutputControlsCtx {
 	setStepValue: (index: number, id: string, value: unknown) => void;
 }
 
-// Download controls of SchemaToolView: output format, lossy quality and the
-// optional size limit, plus the alpha-loss warning for the current format.
+// NOTE: Download controls of SchemaToolView: output format, lossy quality,
+// the optional size limit and the alpha-loss warning for the current format.
 export function createOutputControls(ctx: OutputControlsCtx) {
 	let format = $state<OutputMime>("image/png");
-	// Lossy-format quality for tools without a quality param in the schema.
+	// NOTE: Lossy-format quality for tools without a quality param in the schema.
 	let formatQuality = $state<Record<string, number>>({});
-	// Optional download size limit (KB); undefined = no limit.
+	// NOTE: Optional download size limit (KB); undefined means no limit.
 	let limitKb = $state<number | undefined>(undefined);
 
-	// If the last step's schema has a quality param (convert tools), it is the
+	// NOTE: If the last step's schema has a quality param (convert tools), it is the
 	// single source of quality; the dropdown edits the same value.
 	const qualityParamId = $derived(ctx.lastTool().output?.qualityParamId);
 	const lastParams = $derived(ctx.steps().at(-1)?.params);

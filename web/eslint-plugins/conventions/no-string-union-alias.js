@@ -1,9 +1,3 @@
-// Rule: NO STRING-LITERAL UNION TYPE ALIASES. A `type Kind = 'a' | 'b'`
-// alias duplicates the literal set across files and derived aliases drift
-// from the source; prefer one `as const` object + indexed access. Only
-// TSTypeAliasDeclaration is checked. Details: web/eslint-plugins/README.md.
-
-/** True when the union and all its (possibly nested) members are string literals. */
 function allStringLiterals(/** @type {any} */ union) {
 	for (const member of union.types) {
 		if (member.type === "TSUnionType") {

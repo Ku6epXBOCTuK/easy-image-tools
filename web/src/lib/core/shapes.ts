@@ -3,16 +3,14 @@ import { createPixelImage } from "./types";
 
 export type ShapeTest = (nx: number, ny: number) => boolean;
 
-/** Half-size of the shape in normalized test coordinates, per axis. */
+// NOTE: Half-size of the shape in normalized test coordinates, per axis.
 export interface ShapeExtent {
 	x: number;
 	y: number;
 }
 
-/**
- * Test coordinates: normalized to half of the image's smaller side,
- * center at (0,0), Y axis pointing down as in pixels.
- */
+// NOTE: Test coordinates: normalized to half of the image's smaller side,
+// center at (0,0), Y axis pointing down as in pixels.
 
 export function circleTest(radiusFrac: number): ShapeTest {
 	return (nx, ny) => Math.hypot(nx, ny) <= radiusFrac;
@@ -22,7 +20,7 @@ export function boxTest(halfWFrac: number, halfHFrac: number): ShapeTest {
 	return (nx, ny) => Math.abs(nx) <= halfWFrac && Math.abs(ny) <= halfHFrac;
 }
 
-/** Star with `points` rays; innerFrac is the valley radius as a fraction of the outer radius. */
+// NOTE: Star with `points` rays; innerFrac is the valley radius as a fraction of the outer radius.
 export function starTest(
 	points: number,
 	innerFrac: number,
@@ -36,13 +34,13 @@ export function starTest(
 		const r = Math.hypot(nx, ny);
 		if (r > outerFrac) return false;
 		const t = ((theta * n) / (2 * Math.PI)) % 1;
-		const tri = Math.abs(t - Math.floor(t + 0.5)) * 2; // 0 on a ray, 1 in a valley
+		const tri = Math.abs(t - Math.floor(t + 0.5)) * 2; // NOTE: 0 on a ray, 1 in a valley
 		const edge = outerFrac - (outerFrac - innerFrac) * tri;
 		return r <= edge;
 	};
 }
 
-/** Wavy circle: radius modulated by a sine of frequency `waves`. */
+// NOTE: Wavy circle: radius modulated by a sine of frequency `waves`.
 export function wavyTest(
 	baseFrac: number,
 	amplitudeFrac: number,
@@ -58,11 +56,9 @@ export function wavyTest(
 	};
 }
 
-/**
- * Shared geometry: shape center in pixels from offset fractions and extent.
- * Offset is a fraction of free space per axis: +-0.5 pins the shape to the
- * edge regardless of size. Free space derives from extent (half-size).
- */
+// NOTE: Shape center in pixels from offset fractions and extent.
+// Offset is a fraction of free space per axis: +-0.5 pins the shape to the
+// edge regardless of size. Free space derives from the extent (half-size).
 function shapeOrigin(
 	width: number,
 	height: number,
@@ -80,10 +76,8 @@ function shapeOrigin(
 	};
 }
 
-/**
- * Cuts a shape out of the image: source pixels kept inside, alpha zeroed
- * outside.
- */
+// NOTE: Cuts a shape out of the image: source pixels are kept inside,
+// alpha is zeroed outside.
 export function renderShape(
 	img: PixelImage,
 	test: ShapeTest,
@@ -112,7 +106,7 @@ export function renderShape(
 	return out;
 }
 
-/** B/w preview of the shape itself: white inside, black outside. */
+// NOTE: B/w preview of the shape itself: white inside, black outside.
 export function renderShapeMask(
 	width: number,
 	height: number,

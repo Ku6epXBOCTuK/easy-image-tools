@@ -424,7 +424,7 @@ interface ChannelParams {
 	display: "gray" | "color";
 }
 
-// Spaces that have a tool and a page; page strings live in
+// NOTE: Spaces that have a tool and a page; page strings live in
 // `registry/pages/color.ts`, so only identifiers are kept here.
 const CHANNEL_SPACES: SpaceId[] = ["hsl", "hsv", "hsi", "cmyk", "ycbcr", "lab"];
 

@@ -21,7 +21,7 @@ export interface SourceUploadCtx {
 	clearError: () => void;
 }
 
-// Source state of SchemaToolView: image files / text input, decode warnings,
+// NOTE: Source state of SchemaToolView: image files / text input, decode warnings,
 // paste-to-load. `source` is the first image for preview/defaults;
 // `sourceFiles` is the full named input set (single upload = one element).
 export function createSourceUpload(ctx: SourceUploadCtx) {

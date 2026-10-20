@@ -406,7 +406,7 @@ export const en: Dict = {
 		tile: "Tile",
 		watermark: "Watermark",
 	},
-	// Spread, not a reference: `dict-consistency` reads the dict as syntax and
+	// NOTE: Spread, not a reference: `dict-consistency` reads the dict as syntax and
 	// must still see the section keys (see web/eslint-plugins/README.md).
 	pages: { ...EN_TOOL_COPY },
 	categoryHubs: { ...EN_HUB_COPY },

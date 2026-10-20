@@ -1,9 +1,7 @@
 const PAD2 = (n: number) => String(n).padStart(2, "0");
 
-/**
- * Mini date-stamp formatter: tokens YYYY MM DD hh mm ss are replaced with
- * local time values, other characters are kept as-is.
- */
+// NOTE: Tokens YYYY MM DD hh mm ss are replaced with local time values,
+// all other characters are kept as-is.
 export function formatStamp(date: Date, pattern: string): string {
 	return pattern.replace(/YYYY|MM|DD|hh|mm|ss/g, (token) => {
 		switch (token) {

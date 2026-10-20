@@ -28,11 +28,9 @@ export function setTheme(next: ThemeChoice): void {
 	apply();
 }
 
-/**
- * Catches up state after hydration: the actual attribute is already set by
- * the inline script in app.html; here it is read and synced with runes so
- * the header button reflects the real theme.
- */
+// NOTE: Catches up state after hydration: the actual attribute is already set
+// by the inline script in app.html; here it is read and synced with runes so
+// the header button reflects the real theme.
 export function initTheme(): void {
 	if (typeof window === "undefined") return;
 	const attr =

@@ -17,7 +17,7 @@ export function getDict(): Dict {
 	return DICTS[locale];
 }
 
-/** Dictionary of the active locale; missing values fall back to the base locale. */
+// NOTE: Dictionary of the active locale; missing values fall back to the base locale.
 export function getMergedDict(): Dict {
 	if (locale === BASE_LOCALE) return DICTS[BASE_LOCALE];
 	const active = DICTS[locale];
@@ -40,7 +40,7 @@ export function setLocale(next: Locale): void {
 	syncLangAttr();
 }
 
-/** Reads the saved choice and syncs the lang attribute. Called on the client. */
+// NOTE: Reads the saved choice and syncs the lang attribute. Called on the client.
 export function initLocale(): void {
 	if (typeof window === "undefined") return;
 	const saved = storage()?.getItem(STORAGE_KEY);

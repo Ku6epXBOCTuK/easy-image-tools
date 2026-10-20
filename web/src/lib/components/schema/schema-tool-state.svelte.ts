@@ -45,7 +45,7 @@ function setStepValue(
 	const next: Record<string, unknown> = { ...step.params, [id]: value };
 	const stepSchema = toolSchemaOf(step);
 	const spec = stepSchema?.fields[id]?.spec;
-	// Aspect derives from the step input: source for the first step,
+	// NOTE: Aspect derives from the step input: source for the first step,
 	// previous step's result for the rest (dims known after the run).
 	const dims =
 		index === 0 ? (ctx.source() ?? undefined) : ctx.stepDims()[index - 1];
@@ -63,7 +63,7 @@ function setStepValue(
 				aspect,
 			);
 		} else if (spec.kind === "checkbox" && value === true) {
-			// lockAspect just enabled: snap bound fields to the aspect at once.
+			// NOTE: lockAspect just enabled: snap bound fields to the aspect at once.
 			for (const [fid, f] of Object.entries(stepSchema.fields)) {
 				const fs = f.spec;
 				if (fs.kind === "dimension" && fs.lockAspectWith === id) {
@@ -101,10 +101,10 @@ function resetStep(
 }
 
 interface Marks {
-	// Fields edited by the user (per step): on new file load they must not be
+	// NOTE: Fields edited by the user (per step): on new file load they must not be
 	// overwritten by source defaults. Step reset clears the mark.
 	touchedByStep: SvelteMap<string, SvelteSet<string>>;
-	// Last edited axis of a dimension field; leads under lockAspect.
+	// NOTE: Last edited axis of a dimension field; leads under lockAspect.
 	lastAxis: Record<string, "width" | "height">;
 }
 
@@ -117,7 +117,7 @@ function touchedFor(marks: Marks, key: string): SvelteSet<string> {
 	return set;
 }
 
-// Chain-step state of SchemaToolView: the steps array, per-step edit marks
+// NOTE: Chain-step state of SchemaToolView: the steps array, per-step edit marks
 // and all mutations. Results/execution live in schema-tool-runner.svelte.ts.
 export function createSchemaToolState(ctx: SchemaToolStateCtx) {
 	const s = $state<StepsState>({ steps: [] });
@@ -133,7 +133,7 @@ export function createSchemaToolState(ctx: SchemaToolStateCtx) {
 			s.steps = v;
 		},
 		touchedFor: (key: string) => touchedFor(marks, key),
-		// Marks are keyed by step.key from the previous host; keep them and
+		// NOTE: Marks are keyed by step.key from the previous host; keep them and
 		// stale keys leak into the new chain's fields.
 		clearMarks: () => {
 			marks.touchedByStep.clear();
@@ -160,7 +160,7 @@ export function createSchemaToolState(ctx: SchemaToolStateCtx) {
 				collapsed: !step.collapsed,
 			});
 		},
-		// In-place tool swap: step key and collapsed state are kept, params
+		// NOTE: In-place tool swap: step key and collapsed state are kept, params
 		// become the new tool's defaults, input is recomputed on run.
 		replaceStepTool: (index: number, toolId: string) => {
 			const step = s.steps[index];

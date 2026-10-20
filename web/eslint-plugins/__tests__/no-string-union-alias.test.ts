@@ -1,9 +1,3 @@
-// Tests for the conventions/no-string-union-alias rule
-// (web/eslint-plugins/conventions/no-string-union-alias.js).
-//
-// The rule is a pure AST check (no filesystem), so it runs through the standard
-// RuleTester: plain .ts via the tseslint parser, and (because the rule is also
-// enabled on new .svelte scripts) .svelte via the svelte tester. No fixtures.
 import { RuleTester } from "eslint";
 import svelteParser from "svelte-eslint-parser";
 import tseslint from "typescript-eslint";
@@ -49,7 +43,7 @@ tsTester.run("no-string-union-alias", asRuleModule(noStringUnionAlias), {
 			errors: [{ messageId: "stringUnion" }],
 		},
 		{
-			// Nested/parenthesized unions still resolve to string literals.
+			// NOTE: Nested/parenthesized unions still resolve to string literals.
 			code: "type Kind = ('a' | 'b') | 'c';",
 			filename: "types.ts",
 			errors: [{ messageId: "stringUnion" }],
@@ -62,7 +56,7 @@ tsTester.run("no-string-union-alias", asRuleModule(noStringUnionAlias), {
 	],
 });
 
-// The rule also runs on new .svelte files (their scripts are TS).
+// NOTE: The rule also runs on new .svelte files (their scripts are TS).
 svelteTester.run(
 	"no-string-union-alias (svelte script)",
 	asRuleModule(noStringUnionAlias),

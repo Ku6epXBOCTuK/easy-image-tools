@@ -1,13 +1,7 @@
-// Rule: NO DESIGN PRIMITIVE IN COMPONENT TOKEN DEFINITIONS (variant A).
-// A custom property may be DEFINED in a component's <style>, but its value
-// must not introduce a design primitive (raw color, absolute size): the
-// design surface stays in app.css, while local DERIVED variables (var(),
-// calc(), unitless ratios) remain legitimate.
-
 import { COLOR_LITERAL, FORBIDDEN_SIZE_TOKEN } from "./lists.js";
 import { getStyleNodeLoc, getStyleRoot } from "./style-context.js";
 
-// Sub-rule: stripe var(...) bodies out of a value, so tokens inside are never
+// NOTE: Strip var(...) bodies out of a value, so tokens inside are never
 // mistaken for literals.
 const stripVars = (value) => value.replace(/var\([^)]*\)/g, "");
 
@@ -45,7 +39,7 @@ export default {
 					});
 				};
 
-				// Only inspect custom property DEFINITIONS (--foo: value).
+				// NOTE: Only custom property DEFINITIONS (--foo: value) are checked.
 				root.walkDecls((decl) => {
 					const prop = decl.prop ?? "";
 					if (!prop.startsWith("--")) return;
@@ -55,7 +49,6 @@ export default {
 
 					const primitive = stripVars(value);
 
-					// A color literal in the definition is a primitive.
 					const colorHit = primitive.match(COLOR_LITERAL);
 					if (colorHit) {
 						report(decl, "tokenPrimitive", {
@@ -65,7 +58,6 @@ export default {
 						return;
 					}
 
-					// An absolute size (px/rem/em) in the definition is a primitive.
 					const sizeHit = primitive.match(FORBIDDEN_SIZE_TOKEN);
 					if (sizeHit) {
 						report(decl, "tokenPrimitive", {

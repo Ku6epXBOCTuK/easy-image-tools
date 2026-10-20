@@ -40,11 +40,11 @@ export interface SchemaToolRunnerCtx {
 }
 
 interface RunnerState {
-	// run() and download() have separate flags: a parallel auto-run and a
+	// NOTE: run() and download() have separate flags: a parallel auto-run and a
 	// download click must not clobber each other's indicator/disabled state.
 	running: boolean;
 	downloading: boolean;
-	// Generation of the latest run(): a stale in-flight chain (params changed
+	// NOTE: Generation of the latest run(): a stale in-flight chain (params changed
 	// while the worker was busy) must not overwrite newer results.
 	runGen: number;
 	result: PixelImage | null;
@@ -53,16 +53,16 @@ interface RunnerState {
 	verdictVars: Record<string, string | number> | undefined;
 	stepDims: (Dimension | undefined)[];
 	stepResults: (PixelImage | null)[];
-	// Full named set per step (batch/fan-out); intermediate tiles show a grid.
+	// NOTE: Full named set per step (batch/fan-out); intermediate tiles show a grid.
 	stepFileSets: ToolImageFile[][];
 	runWarnings: ChainWarning[];
-	// Size-limit feedback from the last download (limit unreachable etc.).
+	// NOTE: Size-limit feedback from the last download (limit unreachable etc.).
 	downloadWarnings: ChainWarning[];
-	// Chain step failure: badge lands on that step's tile (0-based index).
+	// NOTE: Chain step failure: badge lands on that step's tile (0-based index).
 	stepError: { step: number; label: string; detail: string } | null;
-	// Source decode/upload failures (via reportError): badge on the source tile.
+	// NOTE: Source decode/upload failures (via reportError): badge on the source tile.
 	sourceError: DisplayError | null;
-	// Download/copy and non-chain run failures: badge near the download button.
+	// NOTE: Download/copy and non-chain run failures: badge near the download button.
 	actionError: DisplayError | null;
 }
 
@@ -226,7 +226,7 @@ function clearResults(s: RunnerState) {
 	s.actionError = null;
 }
 
-// Execution state and actions of SchemaToolView: run/download/clipboard and
+// NOTE: Execution state and actions of SchemaToolView: run/download/clipboard and
 // all results. Owns the generation counter (see RunnerState.runGen).
 export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
 	const s = $state<RunnerState>({
@@ -296,7 +296,7 @@ export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
 		download: () => download(s, ctx),
 		copyText: () => copyText(s, ctx),
 		downloadText: () => downloadText(s, ctx),
-		// Host changed (another page/chain): drop run state and invalidate any
+		// NOTE: Host changed (another page/chain): drop run state and invalidate any
 		// in-flight run from the previous host.
 		resetForHost: () => {
 			s.runGen++;

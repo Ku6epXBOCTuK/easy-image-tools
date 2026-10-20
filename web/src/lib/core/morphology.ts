@@ -167,7 +167,7 @@ export function contourImage(
 	return out;
 }
 
-/** B/w preview of the contour line: white where the stroke will land. */
+// NOTE: B/w preview of the contour line: white where the stroke will land.
 export function contourMask(img: PixelImage, radiusPx: number): PixelImage {
 	const r = Math.max(1, Math.trunc(radiusPx));
 	const mask = buildAlphaMask(img);

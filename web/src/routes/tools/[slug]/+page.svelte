@@ -50,8 +50,8 @@
 		})}
 	/>
 {/if}
-<!-- Indexable exactly when the page has EN copy: no hand-maintained list, so a
-     page cannot be indexed with a stub and cannot be forgotten when copy lands. -->
+<!-- NOTE: Indexable exactly when the page has EN copy; the list is derived, so
+     a page is never indexed with a stub and never missed when copy lands. -->
 <svelte:head>
 	{#if !page}
 		<title>{t("brand")} / {t("toolPage.fallbackTitle")}</title>

@@ -1,10 +1,5 @@
-// Tests for the i18n/no-hardcoded-user-text rule
-// (web/eslint-plugins/i18n/no-hardcoded-user-text.js).
-//
-// The rule is a pure AST check over the Svelte template, so it runs through the
-// standard RuleTester with svelte-eslint-parser + the TS sub-parser. The
-// exclusion list (brand, formats, units, registry source strings) is the whole
-// point of the pilot, so every exclusion has a case here.
+// NOTE: The exclusion list (brand, formats, units, registry source strings)
+// is the whole point of the pilot, so every exclusion has a case here.
 import { RuleTester } from "eslint";
 import svelteParser from "svelte-eslint-parser";
 import tseslint from "typescript-eslint";
@@ -26,23 +21,23 @@ const OPTIONS = [{ allowWords: ["easy-image-tools"] }];
 
 ruleTester.run("no-hardcoded-user-text", asRuleModule(rule), {
 	valid: [
-		// Translated text comes from t(), never from a literal.
+		// NOTE: Translated text comes from t(), never from a literal.
 		{ code: '<p>{t("ui.reset")}</p>', filename: "Component.svelte" },
 		{
 			code: '<Button label={t("actions.download")} />',
 			filename: "Component.svelte",
 		},
-		// Formats, units and file names are not copy.
+		// NOTE: Formats, units and file names are not copy.
 		{ code: "<p>PNG</p>", filename: "Component.svelte" },
 		{ code: "<p>result.png</p>", filename: "Component.svelte" },
 		{ code: "<p>512×512</p>", filename: "Component.svelte" },
 		{ code: '<span class="u">px</span>', filename: "Component.svelte" },
 		{ code: "<p>1.0 s</p>", filename: "Component.svelte" },
 		{ code: "<p>v0.1.0</p>", filename: "Component.svelte" },
-		// Registry source strings and other shouted identifiers.
+		// NOTE: Registry source strings and other shouted identifiers.
 		{ code: "<p>BACKGROUND</p>", filename: "Component.svelte" },
 		{ code: '<StepCard type="TRANSFORM" />', filename: "Component.svelte" },
-		// Technical attributes are out of scope.
+		// NOTE: Technical attributes are out of scope.
 		{
 			code: '<Button variant="outline" tone="danger" size="lg" />',
 			filename: "Component.svelte",
@@ -51,7 +46,7 @@ ruleTester.run("no-hardcoded-user-text", asRuleModule(rule), {
 			code: '<a href="/tools/resize-png">{t("nav.home")}</a>',
 			filename: "x.svelte",
 		},
-		// Values written as expressions are computed elsewhere.
+		// NOTE: Values written as expressions are computed elsewhere.
 		{
 			code: "<p>{value}</p>",
 			filename: "Component.svelte",
@@ -60,7 +55,7 @@ ruleTester.run("no-hardcoded-user-text", asRuleModule(rule), {
 			code: "<EmptyState title={copy} description={hint} />",
 			filename: "Component.svelte",
 		},
-		// Brand configured as an allowed word.
+		// NOTE: The brand is configured as an allowed word.
 		{
 			code: "<span>easy-image-tools</span>",
 			filename: "Component.svelte",
@@ -71,7 +66,7 @@ ruleTester.run("no-hardcoded-user-text", asRuleModule(rule), {
 			filename: "Component.svelte",
 			options: OPTIONS,
 		},
-		// <style> and <script> bodies are code, not copy.
+		// NOTE: <style> and <script> bodies are code, not copy.
 		{
 			code: '<p>{t("ui.reset")}</p>\n<style>.a { color: red; }</style>',
 			filename: "Component.svelte",
@@ -110,26 +105,26 @@ ruleTester.run("no-hardcoded-user-text", asRuleModule(rule), {
 			errors: [{ messageId: "hardcodedText" }],
 		},
 		{
-			// Mixed content: the text part carries copy, the unit part does not.
+			// NOTE: Mixed content: the text part carries copy, the unit part does not.
 			code: "<p>Result {value} px</p>",
 			filename: "Component.svelte",
 			errors: [{ messageId: "hardcodedText" }],
 		},
 		{
-			// Navigation copy is user text too.
+			// NOTE: Navigation copy is user text too.
 			code: '<a href="/tools/resize-png">Home</a>',
 			filename: "Component.svelte",
 			errors: [{ messageId: "hardcodedText" }],
 		},
 		{
-			// Nested elements are walked too.
+			// NOTE: Nested elements are walked too.
 			code: "<div><span><b>Delete file</b></span></div>",
 			filename: "Component.svelte",
 			errors: [{ messageId: "hardcodedText" }],
 		},
 		{
-			// Without the option the brand word is reported: the exclusion is
-			// configuration, not a hardcoded constant inside the rule.
+			// NOTE: Without the option the brand word is reported: the exclusion
+			// is configuration, not a hardcoded constant inside the rule.
 			code: "<span>easy-image-tools</span>",
 			filename: "Component.svelte",
 			errors: [{ messageId: "hardcodedText" }],

@@ -1,7 +1,6 @@
-// Position a top-layer popover next to its anchor button. The Popover API
-// itself does not place the element; CSS anchor positioning is not available
-// in every browser, so placement is computed from the anchor rect and kept
-// in sync with scroll/resize while the popover stays open.
+// NOTE: Position a top-layer popover next to its anchor button. The Popover API
+// itself does not place the element and CSS anchor positioning is unavailable in
+// every browser, so placement comes from the anchor rect, kept in sync on scroll.
 export function trackPopover(
 	popover: HTMLElement,
 	anchor: HTMLElement,
@@ -9,7 +8,7 @@ export function trackPopover(
 ): () => void {
 	const place = () => {
 		const a = anchor.getBoundingClientRect();
-		// The UA stylesheet gives popovers inset: 0; without resetting it the
+		// NOTE: The UA stylesheet gives popovers inset: 0; without resetting it the
 		// over-constrained box (left: 0 vs our right) resolves to left: 0.
 		popover.style.inset = "auto";
 		popover.style.top = `${a.bottom}px`;

@@ -36,15 +36,17 @@ function makePng(width, height, pixelAt) {
   const ihdr = Buffer.alloc(13);
   ihdr.writeUInt32BE(width, 0);
   ihdr.writeUInt32BE(height, 4);
-  ihdr[8] = 8; // bit depth
-  ihdr[9] = 6; // color type RGBA
-  ihdr[10] = 0; // compression
-  ihdr[11] = 0; // filter
-  ihdr[12] = 0; // interlace
+  // NOTE: IHDR bytes 8-12 are bit depth, color type (6 = RGBA), compression,
+  // filter and interlace; each scanline is prefixed with filter byte 0.
+  ihdr[8] = 8;
+  ihdr[9] = 6;
+  ihdr[10] = 0;
+  ihdr[11] = 0;
+  ihdr[12] = 0;
   const stride = width * 4 + 1;
   const raw = Buffer.alloc(height * stride);
   for (let y = 0; y < height; y++) {
-    raw[y * stride] = 0; // filter: none
+    raw[y * stride] = 0;
     for (let x = 0; x < width; x++) {
       const [r, g, b, a] = pixelAt(x, y);
       const p = y * stride + 1 + x * 4;
@@ -67,13 +69,14 @@ function makePalettePng(width, height, palette, pixelAt) {
   const ihdr = Buffer.alloc(13);
   ihdr.writeUInt32BE(width, 0);
   ihdr.writeUInt32BE(height, 4);
-  ihdr[8] = 8; // bit depth
-  ihdr[9] = 3; // color type: indexed
+  // NOTE: Color type 3 = indexed: PLTE carries the palette, each scanline byte
+  // is a palette index.
+  ihdr[8] = 8;
+  ihdr[9] = 3;
   ihdr[10] = 0;
   ihdr[11] = 0;
   ihdr[12] = 0;
 
-  // PLTE: palette entries (R,G,B × count), padded to multiple of 3
   const plteData = Buffer.alloc(256 * 3);
   for (let i = 0; i < palette.length && i < 256; i++) {
     plteData[i * 3] = palette[i][0];
@@ -81,7 +84,6 @@ function makePalettePng(width, height, palette, pixelAt) {
     plteData[i * 3 + 2] = palette[i][2];
   }
 
-  // Raw image data: 1 byte per pixel (index)
   const stride = width + 1;
   const raw = Buffer.alloc(height * stride);
   for (let y = 0; y < height; y++) {
@@ -105,8 +107,9 @@ function make16bitPng(width, height, pixelAt) {
   const ihdr = Buffer.alloc(13);
   ihdr.writeUInt32BE(width, 0);
   ihdr.writeUInt32BE(height, 4);
-  ihdr[8] = 16; // bit depth
-  ihdr[9] = 6; // color type RGBA
+  // NOTE: Color type 6 = RGBA, channels are 16-bit.
+  ihdr[8] = 16;
+  ihdr[9] = 6;
   ihdr[10] = 0;
   ihdr[11] = 0;
   ihdr[12] = 0;
@@ -139,7 +142,8 @@ function makeCorruptPng() {
   ihdr.writeUInt32BE(4, 0);
   ihdr.writeUInt32BE(4, 4);
   ihdr[8] = 8;
-  ihdr[9] = 2; // RGB
+  // NOTE: Color type 2 = RGB (no alpha channel).
+  ihdr[9] = 2;
   ihdr[10] = 0;
   ihdr[11] = 0;
   ihdr[12] = 0;
@@ -157,7 +161,7 @@ function makeCorruptPng() {
   }
 
   const idat = chunk("IDAT", deflateSync(raw));
-  // Corrupt CRC: flip a byte in the CRC field
+  // NOTE: The last byte of the IDAT chunk is its CRC: it is flipped on purpose.
   idat[idat.length - 1] ^= 0xff;
 
   return Buffer.concat([sig, chunk("IHDR", ihdr), idat, chunk("IEND", Buffer.alloc(0))]);
@@ -169,16 +173,13 @@ function makeTruncatedPng() {
 
 const outDir = join(__dirname);
 
-// 1. PNG 1×1
 writeFileSync(join(outDir, "1x1.png"), makePng(1, 1, () => [255, 0, 0, 255]));
 
-// 2. PNG 1×1 fully transparent
 writeFileSync(
   join(outDir, "1x1-transparent.png"),
   makePng(1, 1, () => [0, 0, 0, 0]),
 );
 
-// 3. Large 1024×1024 checkerboard (≈1 megapixel RGBA)
 writeFileSync(
   join(outDir, "1024x1024-checker.png"),
   makePng(1024, 1024, (x, y) =>
@@ -186,7 +187,6 @@ writeFileSync(
   ),
 );
 
-// 4. 1920×1080 gradient (≈2 megapixels, tests larger displays)
 writeFileSync(
   join(outDir, "1920x1080-gradient.png"),
   makePng(1920, 1080, (x, y) => [
@@ -197,7 +197,6 @@ writeFileSync(
   ]),
 );
 
-// 5. Transparency checkerboard (black/white with alpha pattern)
 writeFileSync(
   join(outDir, "alpha-checkerboard.png"),
   makePng(64, 64, (x, y) => {
@@ -207,7 +206,6 @@ writeFileSync(
   }),
 );
 
-// 6. Palette / indexed-color PNG (4 colors: red, green, blue, white)
 const palette = [
   [255, 0, 0],
   [0, 255, 0],
@@ -222,7 +220,6 @@ writeFileSync(
   }),
 );
 
-// 7. Palette with many colors (256-color full palette)
 const fullPalette = Array.from({ length: 256 }, (_, i) => [
   i,
   (i * 3) % 256,
@@ -233,7 +230,6 @@ writeFileSync(
   makePalettePng(64, 64, fullPalette, (x, y) => (x + y * 64) % 256),
 );
 
-// 8. 16-bit RGBA PNG (subtle gradient to test high bit depth)
 writeFileSync(
   join(outDir, "16bit-subtle.png"),
   make16bitPng(32, 32, (x, y) => [
@@ -244,37 +240,30 @@ writeFileSync(
   ]),
 );
 
-// 9. Corrupt PNG (bad CRC in IDAT)
 writeFileSync(join(outDir, "corrupt-bad-crc.png"), makeCorruptPng());
 
-// 10. Truncated PNG (only header, no data)
 writeFileSync(join(outDir, "truncated.png"), makeTruncatedPng());
 
-// 11. Non-PNG file disguised as PNG
 writeFileSync(
   join(outDir, "fake-png.txt"),
   Buffer.from("this is definitely not a png file"),
 );
 
-// 12. All-black fully opaque
 writeFileSync(
   join(outDir, "all-black-opaque.png"),
   makePng(64, 64, () => [0, 0, 0, 255]),
 );
 
-// 13. All-white fully opaque
 writeFileSync(
   join(outDir, "all-white-opaque.png"),
   makePng(64, 64, () => [255, 255, 255, 255]),
 );
 
-// 14. All-transparent
 writeFileSync(
   join(outDir, "all-transparent.png"),
   makePng(64, 64, () => [0, 0, 0, 0]),
 );
 
-// 15. Semi-transparent gradient (alpha 0→255 across width)
 writeFileSync(
   join(outDir, "alpha-gradient.png"),
   makePng(128, 64, (x, y) => [
@@ -285,7 +274,6 @@ writeFileSync(
   ]),
 );
 
-// 16. Noise pattern (random-ish pixels)
 writeFileSync(
   join(outDir, "noise-pattern.png"),
   makePng(100, 100, (x, y) => {
@@ -294,7 +282,6 @@ writeFileSync(
   }),
 );
 
-// 17. Minimal size: 2×2 with extreme colors
 writeFileSync(
   join(outDir, "2x2-extreme.png"),
   makePng(2, 2, (x, y) => {
@@ -305,19 +292,16 @@ writeFileSync(
   }),
 );
 
-// 18. Long strip (1×4000) — tests scroll / vertical tools
 writeFileSync(
   join(outDir, "1x4000-strip.png"),
   makePng(1, 4000, (x, y) => [y % 256, (y * 2) % 256, (y * 3) % 256, 255]),
 );
 
-// 19. Wide strip (4000×1) — tests horizontal handling
 writeFileSync(
   join(outDir, "4000x1-strip.png"),
   makePng(4000, 1, (x, y) => [x % 256, (x * 2) % 256, (x * 3) % 256, 255]),
 );
 
-// 20. PNG with very high alpha variance (sparse transparency)
 writeFileSync(
   join(outDir, "sparse-alpha.png"),
   makePng(100, 100, (x, y) => {

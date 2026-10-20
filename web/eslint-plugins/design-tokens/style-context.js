@@ -1,8 +1,6 @@
-// Shared helpers to talk to the postcss AST of Svelte <style> blocks that
-// svelte-eslint-parser exposes. All rules use the same plumbing.
+// NOTE: The <style> block of a Svelte component is a postcss AST (via
+// svelte-eslint-parser); all design-token rules share this plumbing.
 
-// Returns the postcss Root of the <style> block, or null when the file is not
-// a Svelte component (or its style failed to parse).
 export function getStyleRoot(context) {
 	const parserServices = context.sourceCode?.parserServices;
 	if (!parserServices || typeof parserServices.getStyleContext !== "function") {
@@ -12,8 +10,6 @@ export function getStyleRoot(context) {
 	return styleContext?.status === "success" ? styleContext.sourceAst : null;
 }
 
-// Returns a converter from a postcss node to an ESLint loc, or null if the
-// parser doesn't expose it.
 export function getStyleNodeLoc(context) {
 	return context.sourceCode?.parserServices?.styleNodeLoc ?? null;
 }

@@ -10,10 +10,8 @@ export function interpolate(
 	);
 }
 
-/**
- * Translation by dot path like 'header.workspace' or 'errors.ERR_BAD_HEX'.
- * Active locale first, then base; if the key is nowhere, the path itself is returned.
- */
+// NOTE: Translation by dot path like 'header.workspace' or 'errors.ERR_BAD_HEX'.
+// Active locale first, then base; if the key is nowhere, the path itself is returned.
 export function t(
 	path: string,
 	vars?: Record<string, string | number>,

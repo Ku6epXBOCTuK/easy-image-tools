@@ -9,10 +9,8 @@ export type Position9 =
 	| "bottom-center"
 	| "bottom-right";
 
-/**
- * Top-left corner of content sized contentW x contentH placed on a cw x ch
- * canvas with margin, per the 9-position grid.
- */
+// NOTE: Top-left corner of content sized contentW x contentH placed on a
+// cw x ch canvas with margin, per the 9-position grid.
 export function anchorOrigin(
 	position: Position9,
 	contentW: number,
@@ -46,10 +44,8 @@ export function anchorOrigin(
 	return { x, y };
 }
 
-/**
- * Greedy word-wrap of text to maxWidth.
- * measure is an injected line-width meter. Empty text -> empty line array.
- */
+// NOTE: Greedy word-wrap of text to maxWidth.
+// measure is an injected line-width meter; empty text gives an empty array.
 export function wrapText(
 	text: string,
 	maxWidth: number,
@@ -79,11 +75,9 @@ export type TilePoint = { x: number; y: number };
 
 const MAX_TILES = 2500;
 
-/**
- * Grid of watermark tile positions in the rotated coordinate system:
- * the drawing code rotates the context once and stamps blocks at these points.
- * Steps grow when the tile count exceeds the cap, so big canvases stay fast.
- */
+// NOTE: Grid of watermark tile positions in the rotated coordinate system:
+// the drawing code rotates the context once and stamps blocks at these
+// points. Steps grow past the tile cap, so big canvases stay fast.
 export function tileGrid(
 	cw: number,
 	ch: number,

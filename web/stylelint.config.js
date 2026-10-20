@@ -1,8 +1,3 @@
-// Stylelint config: design-token enforcement for easy-image-tools.
-// FWHM: keeps the design system a single source of truth. Colors and sizes must
-// come from prefixed tokens; direct color values are allowed only for the two
-// brand tokens.
-
 export default {
 	extends: ["stylelint-config-standard"],
 	ignoreFiles: [
@@ -12,10 +7,9 @@ export default {
 		"**/static/**",
 	],
 	rules: {
-		// Every CSS variable must carry a system prefix so the design
-		// vocabulary stays a single greppable source of truth; the two brand
-		// tokens are the only exceptions. NOTE: stylelint tests the pattern
-		// WITHOUT the leading "--", so the regex must not start with --.
+		// NOTE: Every CSS variable must carry a system prefix, so the design
+		// vocabulary stays one greppable source of truth. Stylelint tests the
+		// pattern WITHOUT the leading "--", so the regex must not start with --.
 		"custom-property-pattern": [
 			"^(brand-main|brand-alt)$|^(color|space|size|text|radius|bp|font|duration|ease|z)-",
 			{
@@ -23,13 +17,12 @@ export default {
 					'"%s" must be prefixed: --color-*, --space-*, --size-*, --text-*, --radius-*, --bp-*, --font-*, --duration-*, --ease-*, --z-*; brand: only --brand-main/--brand-alt',
 			},
 		],
-		// Rule: !important is banned in CSS files. Overriding a look must happen
-		// through tokens/layers, not by force. (Not part of the standard set.)
+		// NOTE: !important is banned: overriding a look must happen through
+		// tokens/layers, not by force. Not part of the standard set.
 		"declaration-no-important": true,
-		// Grouping whitespace for the token file. The standard config puts
-		// "after-custom-property" into `except`, which makes --fix DELETE blank
-		// lines between consecutive custom properties, collapsing token groups
-		// into one wall. `ignore` keeps groups readable.
+		// NOTE: The standard config puts "after-custom-property" into `except`,
+		// which makes --fix DELETE blank lines between consecutive custom
+		// properties, collapsing token groups into one wall. `ignore` keeps them.
 		"custom-property-empty-line-before": [
 			"always",
 			{
@@ -46,10 +39,9 @@ export default {
 		{
 			files: ["src/**/*.css"],
 			rules: {
-				// Rule: only --brand-main and --brand-alt may set a color
-				// directly (hex/rgb/hsl/named). Every other color token must be oklch().
-				// The key matches ANY custom property EXCEPT the two brand exceptions
-				// (negative lookahead (?!...)).
+				// NOTE: Only --brand-main and --brand-alt may set a color directly
+				// (hex/rgb/hsl/named); every other color token must be oklch().
+				// The key matches ANY custom property except those two.
 				"declaration-property-value-disallowed-list": {
 					"/^--(?!brand-main$|brand-alt$).*/": [
 						"/#[0-9a-fA-F]{3,8}\\b/",

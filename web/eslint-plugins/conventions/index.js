@@ -1,8 +1,3 @@
-/**
- * Local ESLint plugin "conventions": cross-cutting code conventions the
- * recommended rule sets do not enforce. Rule details:
- * web/eslint-plugins/README.md.
- */
 import asciiOnly from "./ascii-only.js";
 import commentFormat from "./comment-format.js";
 import commentsEnglish from "./comments-english.js";

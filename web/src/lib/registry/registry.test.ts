@@ -26,8 +26,7 @@ describe("registry-new (migrated tools)", () => {
 	});
 
 	it("id and slug are usable in URLs and in code", () => {
-		// Same format that `tools-map-doc.test.ts` parses: lowercase latin,
-		// words joined by hyphens.
+		// NOTE: Id format contract: lowercase latin, words joined by hyphens.
 		const shape = /^[a-z][a-z0-9]*(-[a-z0-9]+)*$/;
 		for (const tool of TOOLS) {
 			expect(shape.test(tool.id), `id: ${tool.id}`).toBe(true);
@@ -56,9 +55,9 @@ describe("registry-new (migrated tools)", () => {
 	});
 
 	it("guard: a page has exactly one step", () => {
-		// The model allows a chain, but `SchemaToolView` runs the first step
-		// and there is one params form per page. Chain execution and a shared
-		// form over two tools' fields are phase 11 of `docs/roadmap.md`.
+		// NOTE: The model allows a chain, but `SchemaToolView` runs the first step
+		// and there is one params form per page; chain execution is phase 11 of
+		// `docs/roadmap.md`.
 		for (const page of PAGES) {
 			expect(page.steps.length, `${page.slug}: steps`).toBe(1);
 		}
@@ -158,8 +157,8 @@ describe("registry-new (migrated tools)", () => {
 	});
 
 	it("runMask returns an opaque source-sized mask for tools declaring it", () => {
-		// Mask preview contract: same geometry as the step input, fully opaque
-		// b/w rendering, synchronous and DOM-free.
+		// NOTE: Mask preview contract: same geometry as the step input, fully
+		// opaque b/w rendering, synchronous and DOM-free.
 		const source = makeImage(4, 3, [
 			[255, 0, 0, 255],
 			[0, 255, 0, 255],
@@ -406,7 +405,7 @@ describe("registry-new (migrated tools)", () => {
 			tone: "info",
 		});
 		expect(tool.resultNote?.(p, solid(500, 300))).toBeNull();
-		// without keepAspect the result is always exactly as requested
+		// NOTE: Without keepAspect the result is always exactly as requested.
 		expect(
 			tool.resultNote?.(
 				{ size: { width: 500, height: 300 }, keepAspect: false },
@@ -481,7 +480,6 @@ describe("registry-new (migrated tools)", () => {
 
 	it("two-colors: recolors light/dark pixels by the pair", async () => {
 		const tool = TOOLS.find((t) => t.id === "two-colors")!;
-		// 50x1, left half dark, right half light
 		const data = new Uint8ClampedArray(50 * 4).fill(255);
 		const img = { width: 50, height: 1, data };
 		for (let x = 0; x < 25; x++) {
@@ -499,7 +497,6 @@ describe("registry-new (migrated tools)", () => {
 				}),
 			}),
 		);
-		// Light pixel -> from (#ffffff), dark pixel -> to (#ff0000)
 		expect(out.data[0]).toBe(255);
 		expect(out.data[1]).toBe(0);
 		expect(out.data[2]).toBe(0);
@@ -516,7 +513,7 @@ describe("registry-new (migrated tools)", () => {
 			to: "#ffffff",
 			angle: 0,
 		});
-		// 0 deg - left to right: leftmost pixel = from, rightmost = to
+		// NOTE: 0 deg - left to right: leftmost pixel = from, rightmost = to
 		let img = asImage(
 			await tool.run({
 				params: sanitizeSchemaParams(tool.schema, {
@@ -527,7 +524,7 @@ describe("registry-new (migrated tools)", () => {
 		);
 		expect(img.data[0]).toBe(0);
 		expect(img.data[12]).toBe(255);
-		// 90 deg - top to bottom: top pixel = from, bottom = to
+		// NOTE: 90 deg - top to bottom: top pixel = from, bottom = to
 		img = asImage(
 			await tool.run({
 				params: sanitizeSchemaParams(tool.schema, {
@@ -538,7 +535,7 @@ describe("registry-new (migrated tools)", () => {
 		);
 		expect(img.data[0]).toBe(0);
 		expect(img.data[12]).toBe(255);
-		// 180 deg - reversed: left pixel = to
+		// NOTE: 180 deg - reversed: left pixel = to
 		img = asImage(
 			await tool.run({
 				params: sanitizeSchemaParams(tool.schema, {
@@ -590,9 +587,8 @@ describe("registry-new (migrated tools)", () => {
 				}),
 			}),
 		);
-		// Outer corner (0,0) is outside the circle of radius 50 -> transparent
+		// NOTE: Outer corner (0,0) is outside the circle of radius 50 -> transparent
 		expect(img.data[3]).toBe(0);
-		// Center (50,50) is inside
 		expect(img.data[(50 * img.width + 50) * 4 + 3]).toBe(255);
 	});
 
@@ -607,7 +603,7 @@ describe("registry-new (migrated tools)", () => {
 				}),
 			}),
 		);
-		// Radius 25, center shifted to x=100; pixel (75,50) inside, (49,50) outside
+		// NOTE: Radius 25, center shifted to x=100; pixel (75,50) inside, (49,50) outside
 		expect(img.data[(50 * img.width + 75) * 4 + 3]).toBe(255);
 		expect(img.data[(50 * img.width + 49) * 4 + 3]).toBe(0);
 	});
@@ -807,7 +803,7 @@ describe("split-into-parts", () => {
 				}),
 			}),
 		).files;
-		// 100/32 -> 4 columns, 70/32 -> 3 rows
+		// NOTE: 100/32 -> 4 columns, 70/32 -> 3 rows
 		expect(files).toHaveLength(12);
 		for (const file of files) {
 			expect(file.image.width).toBe(32);

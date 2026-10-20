@@ -66,7 +66,6 @@ describe("shuffleBlocks / addNoise - seed determinism", () => {
 
 describe("featherAlpha", () => {
 	it("hard edge gets intermediate alphas", () => {
-		// left half opaque, right transparent
 		const img = makeImage(6, 1, [
 			[255, 0, 0, 255],
 			[255, 0, 0, 255],
@@ -91,7 +90,7 @@ describe("defringe", () => {
 		const out = defringe(img, 2);
 		expect(out.data[4]).toBe(250);
 		expect(out.data[6]).toBe(250);
-		expect(out.data[7]).toBe(128); // alpha preserved
+		expect(out.data[7]).toBe(128);
 	});
 
 	it("fully transparent areas untouched", () => {

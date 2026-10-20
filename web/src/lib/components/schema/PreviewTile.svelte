@@ -16,10 +16,10 @@
 		dims?: string;
 		note?: string;
 		noteTone?: "warning" | "info";
-		// Runtime warnings (chain/source/download events): shown as badges next
-		// to the derived result note, full message in the "?" popover.
+		// NOTE: Runtime warnings (chain/source/download events): badges next to the
+		// derived result note, full message in the "?" popover.
 		warnings?: { label: string; detail?: string }[];
-		// Runtime errors: danger badges; the full message lives in the
+		// NOTE: Runtime errors: danger badges; the full message lives in the
 		// DetailBadge popover behind the "?" button.
 		errors?: { label: string; detail?: string }[];
 		actions?: Snippet;
@@ -90,7 +90,7 @@
 		align-items: center;
 		justify-content: space-between;
 		gap: var(--space-m);
-		/* Reserve for the badge: the row does not jump when the note appears. */
+		/* NOTE: Reserve for the badge: the row does not jump when the note appears. */
 		min-height: var(--space-xxl);
 		margin-bottom: var(--space-m);
 		font: var(--font-size-s) var(--font-mono);
@@ -105,7 +105,6 @@
 		align-items: center;
 		gap: var(--space-m);
 	}
-	/* Slot for result notes: warning badges. */
 	.tile-note {
 		display: inline-flex;
 		align-items: center;

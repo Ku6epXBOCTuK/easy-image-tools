@@ -7,7 +7,7 @@
 	interface Props {
 		label: string;
 		count: number;
-		/** Category of the group; the heading becomes a link to its hub page. */
+		// NOTE: A category turns the heading into a link to the category hub page.
 		category?: CategoryId;
 		children: Snippet;
 	}

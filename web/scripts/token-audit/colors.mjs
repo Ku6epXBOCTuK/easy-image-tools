@@ -1,7 +1,6 @@
-// Color authorship: every color value in app.css must be authored as hct()
-// (literals and derived forms), so the whole palette is computed through HCT
-// and output as sRGB by postcss-hct. Exceptions: the seed tokens
-// --brand-main/--brand-alt and color-mix(...) (the only sanctioned blend).
+// NOTE: Every color value in app.css must be authored as hct() (literals and
+// derived forms), so the whole palette is computed through HCT and output as
+// sRGB. Exceptions: the seed tokens --brand-main/--brand-alt and color-mix().
 
 import { isColorValue } from "./helpers.mjs";
 

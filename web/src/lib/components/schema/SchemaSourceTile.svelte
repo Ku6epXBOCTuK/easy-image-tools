@@ -49,7 +49,7 @@
 
 	let dragging = $state(false);
 	let input = $state<HTMLInputElement | null>(null);
-	// Replace hint: show on hover, fade after 10s until the next hover.
+	// NOTE: Replace hint: show on hover, fade after 10s until the next hover.
 	let hintVisible = $state(false);
 	let hintTimer: ReturnType<typeof setTimeout> | null = null;
 

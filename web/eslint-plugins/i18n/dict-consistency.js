@@ -1,15 +1,9 @@
-/**
- * Cross-locale dictionary linter: each dict in lib/i18n/ is checked against
- * ALL others (key parity, empty values, placeholders), warn-only.
- * Full semantics and options: web/eslint-plugins/README.md.
- */
 import fs from "node:fs";
 import path from "node:path";
 import tseslint from "typescript-eslint";
 
 const PLACEHOLDER = /\{(\w+)\}/g;
 
-/** Parse a TS source string into an ESTree Program (syntax only). */
 function parseTs(code, filename) {
 	const result = tseslint.parser.parseForESLint(code, {
 		filePath: filename,
@@ -19,7 +13,6 @@ function parseTs(code, filename) {
 	return result.ast;
 }
 
-/** Unwrap `as const` / `satisfies` wrappers around a value node. */
 function unwrap(node) {
 	while (
 		node &&
@@ -30,10 +23,6 @@ function unwrap(node) {
 	return node;
 }
 
-/**
- * The exported dict `export const <name>: Dict = {...}`: the declarator id
- * (for reporting) and the object literal, or null.
- */
 function findDictExport(ast) {
 	for (const node of ast.body) {
 		if (node.type !== "ExportNamedDeclaration") continue;
@@ -65,7 +54,6 @@ function findBaseLocale(ast) {
 	return null;
 }
 
-/** The `LOCALES` list exported from `dict.ts`, or null. */
 function findLocalesList(ast) {
 	for (const node of ast.body) {
 		if (node.type !== "ExportNamedDeclaration") continue;
@@ -84,10 +72,8 @@ function findLocalesList(ast) {
 	return null;
 }
 
-/**
- * String literal node. The parser emits `Literal` in some ESTree versions and
- * `StringLiteral` in others; accept both.
- */
+// NOTE: The parser emits `Literal` in some ESTree versions and `StringLiteral`
+// in others; accept both.
 function isStringLiteral(node) {
 	if (!node) return false;
 	if (node.type === "StringLiteral") return true;
@@ -98,7 +84,6 @@ const OBJECT = "object";
 const STRING = "string";
 const OPAQUE = "opaque";
 
-/** Leaf kind of a property value (objects are followed, the rest are opaque). */
 function entryKind(node) {
 	if (node.type === "ObjectExpression") return OBJECT;
 	if (isStringLiteral(node)) return STRING;
@@ -124,11 +109,8 @@ function propKey(prop) {
 	return null;
 }
 
-/**
- * Flatten an exported dict into `path -> { node, kind, value }`. Computed
- * properties are skipped; intermediate objects are recorded too, so a
- * missing whole section is reported once.
- */
+// NOTE: Intermediate objects are recorded too, so a missing whole section is
+// reported once.
 function buildKeyMap(objectNode) {
 	const map = new Map();
 	const stack = [[objectNode, []]];
@@ -172,7 +154,6 @@ function matchesPattern(key, pattern) {
 	);
 }
 
-/** Ancestor paths of a dot-path (e.g. `a.b` and `a` for `a.b.c`). */
 function* ancestorPaths(key) {
 	let i = key.lastIndexOf(".");
 	while (i !== -1) {
@@ -181,8 +162,8 @@ function* ancestorPaths(key) {
 	}
 }
 
-// Sibling dicts are read once per directory and cached for the whole lint run
-// (mirrors how no-undefined-in-svelte caches the token dictionary).
+// NOTE: Sibling dicts are read once per directory and cached for the whole
+// lint run (mirrors how no-undefined-in-svelte caches the token dictionary).
 const dirCache = new Map();
 
 function loadDir(dir) {
@@ -202,7 +183,7 @@ function readDir(dir) {
 	for (const locale of locales) {
 		const file = path.join(dir, `${locale}.ts`);
 		if (!fs.existsSync(file)) {
-			// Declared in LOCALES but not yet translated; treated as an empty
+			// NOTE: Declared in LOCALES but not yet translated; treated as an empty
 			// dict so every key it lacks reports `missing key ... in <locale>`.
 			dicts.push({ locale, map: new Map() });
 			continue;
@@ -213,11 +194,11 @@ function readDir(dir) {
 		dicts.push({ locale, map: buildKeyMap(dictExport.object) });
 	}
 
-	// Union of every key across all locales (intermediate paths included), so a
-	// file can report exactly what it is missing.
+	// NOTE: Union of every key across all locales (intermediate paths
+	// included), so a file can report exactly what it is missing.
 	const unionPaths = new Set();
-	// Non-empty string leaves per key: loccales contribute to the canonical
-	// placeholder set voting (empty values are already broken on their own).
+	// NOTE: Non-empty string leaves per key: locales contribute to the
+	// canonical placeholder set voting (empty values are broken on their own).
 	const stringLeaves = new Map();
 	for (const d of dicts) {
 		for (const [key, entry] of d.map) {
@@ -232,8 +213,8 @@ function readDir(dir) {
 		}
 	}
 
-	// Canonical placeholder set per key: the set shared by the most locales;
-	// on a tie the base locale wins before LOCALES order.
+	// NOTE: Canonical placeholder set per key: the set shared by the most
+	// locales; on a tie the base locale wins before LOCALES order.
 	const canonicalSets = new Map();
 	for (const [key, entries] of stringLeaves) {
 		const counts = new Map();
@@ -351,7 +332,6 @@ export default {
 			});
 		}
 
-		// Empty values and shared-key placeholder parity.
 		for (const [key, entry] of own) {
 			if (allowPaths.has(key) || entry.kind !== STRING) continue;
 			if ((entry.value ?? "").trim() === "") {

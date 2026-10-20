@@ -1,8 +1,6 @@
-/**
- * Public site URL for canonical/OG. From build-time `PUBLIC_SITE_ORIGIN` (set in
- * CI), falling back to the production domain; `$app/paths.base` is relative and
- * won't work here. `docs/plan-seo.md` section 6.
- */
+// NOTE: Public site URL for canonical/OG. From build-time `PUBLIC_SITE_ORIGIN`
+// (set in CI), falling back to the production domain; `$app/paths.base` is
+// relative and won't work here. `docs/plan-seo.md` section 6.
 const rawOrigin = import.meta.env.PUBLIC_SITE_ORIGIN;
 export const SITE_URL =
 	typeof rawOrigin === "string" && rawOrigin.trim() !== ""
@@ -15,7 +13,7 @@ export function absoluteUrl(path: string): string {
 
 type SchemaNode = Record<string, unknown>;
 
-/** Breadcrumb crumb; a crumb without a path is the current page. */
+// NOTE: Breadcrumb crumb; a crumb without a path is the current page.
 export type Crumb = { name: string; path?: string };
 
 function breadcrumbNode(crumbs: Crumb[]): SchemaNode {
@@ -30,9 +28,6 @@ function breadcrumbNode(crumbs: Crumb[]): SchemaNode {
 	};
 }
 
-/**
- * WebSite + Organization for the home page.
- */
 export function siteSchemaLd(brand: string): SchemaNode[] {
 	return [
 		{
@@ -51,11 +46,9 @@ export function siteSchemaLd(brand: string): SchemaNode[] {
 	];
 }
 
-/**
- * A tool page: what it is, what it costs, and the FAQ it answers. Breadcrumbs
- * ride along because the visible trail already exists. Google caps FAQ rich
- * results for small sites, so the payoff here is LLM parsing.
- */
+// NOTE: A tool page: what it is, what it costs, and the FAQ it answers.
+// Breadcrumbs ride along because the visible trail already exists. Google caps
+// FAQ rich results for small sites, so the payoff here is LLM parsing.
 export function toolSchemaLd(input: {
 	title: string;
 	description: string;
@@ -97,7 +90,6 @@ export function toolSchemaLd(input: {
 	return nodes;
 }
 
-/** Breadcrumbs for a page that has no tool schema of its own. */
 export function breadcrumbSchemaLd(crumbs: Crumb[]): SchemaNode {
 	return { "@context": "https://schema.org", ...breadcrumbNode(crumbs) };
 }

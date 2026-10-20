@@ -14,7 +14,7 @@
 		children?: Snippet;
 		onremove?: () => void;
 		ontoggle?: () => void;
-		// dnd-kit attachments wired by SortableStepCard; noop on static usage.
+		// NOTE: Drag attachments are wired by SortableStepCard; noop on static usage.
 		elementAttachment?: Attachment<HTMLElement>;
 		handleAttachment?: Attachment<HTMLElement>;
 	}

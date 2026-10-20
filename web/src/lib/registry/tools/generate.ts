@@ -37,11 +37,9 @@ function rgba(hex: string): [number, number, number, number] {
 	return [r, g, b, 255];
 }
 
-/**
- * Linear gradient at an arbitrary angle. 0 deg: left to right, 90 deg: top
- * to bottom (angle grows clockwise, Y axis down). The angle sets the
- * gradient axis direction; a pixel's t is its normalized projection on it.
- */
+// NOTE: Linear gradient at an arbitrary angle: 0 deg left to right, 90 deg top to
+// bottom (angle grows clockwise, Y axis down). A pixel's t is its normalized
+// projection on the gradient axis.
 function angleGradient(
 	width: number,
 	height: number,
@@ -52,7 +50,7 @@ function angleGradient(
 	const rad = (angle * Math.PI) / 180;
 	const vx = Math.cos(rad);
 	const vy = Math.sin(rad);
-	// Projection min and max on the axis are reached at opposite corners.
+	// NOTE: Projection min and max on the axis are reached at opposite corners.
 	const rightX = vx >= 0 ? width - 1 : 0;
 	const bottomY = vy >= 0 ? height - 1 : 0;
 	const projMax = rightX * vx + bottomY * vy;

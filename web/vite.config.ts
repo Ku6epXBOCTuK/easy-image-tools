@@ -11,7 +11,7 @@ const base: "" | `/${string}` =
 		: (`/${rawBase.replace(/^\/+/, "").replace(/\/+$/, "")}` as `/${string}`);
 
 export default defineConfig({
-	// PUBLIC_* lands in import.meta.env: environment flags like GA.
+	// NOTE: PUBLIC_* lands in import.meta.env: environment flags like GA.
 	envPrefix: ["VITE_", "PUBLIC_"],
 	ssr: {
 		noExternal: ["@lucide/svelte"],
@@ -23,7 +23,8 @@ export default defineConfig({
 			},
 
 			compilerOptions: {
-				// Force runes mode for the project, except for libraries. Can be removed in svelte 6.
+				// NOTE: Force runes mode for the project, except for libraries.
+				// Can be removed in svelte 6.
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes("node_modules") ? undefined : true,
 			},

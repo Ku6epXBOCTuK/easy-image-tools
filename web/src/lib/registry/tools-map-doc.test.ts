@@ -10,18 +10,16 @@ const MAP_PATH = fileURLToPath(
 const SECTION_START = /^## 1\.\s/;
 const SECTION_PLANNED = /^## 2\.\s/;
 
-// Every page slug contains a hyphen, so the shape is strict: it excludes
+// NOTE: Every page slug contains a hyphen, so the shape is strict: it excludes
 // description words like `median-cut` in "colors (k, median-cut)".
 const ID_SHAPE = /^[a-z][a-z0-9]*(-[a-z0-9]+)+$/;
 const ID_TOKEN = /[a-z][a-z0-9]*(?:-[a-z0-9]+)+/g;
 
 type Mention = { id: string; line: number };
 
-/**
- * Section bullets with the line number of the first line. Continuation lines
- * are glued to the bullet: otherwise a slug wrapped to the next line would
- * silently drop out of parsing and the page would count as undocumented.
- */
+// NOTE: Section bullets with the line number of the first line. Continuation
+// lines are glued to the bullet: otherwise a slug wrapped to the next line
+// would silently drop out of parsing and the page would count as undocumented.
 function sectionBullets(
 	markdown: string,
 	startPattern: RegExp,
@@ -60,11 +58,9 @@ function sectionBullets(
 	return bullets;
 }
 
-/**
- * Everything before the first em dash is slugs separated by `/` or `,`; the
- * free-form parameter description after the dash is not parsed. The format is
- * pinned by the map itself.
- */
+// NOTE: Everything before the first em dash is slugs separated by `/` or `,`;
+// the free-form parameter description after the dash is not parsed. The format
+// is pinned by the map itself.
 function mentionedIds(markdown: string): Mention[] {
 	const found: Mention[] = [];
 	for (const { text, line } of sectionBullets(
@@ -81,11 +77,9 @@ function mentionedIds(markdown: string): Mention[] {
 	return found;
 }
 
-/**
- * Planned sections "2."/"3." are prose: a slug may appear anywhere in the
- * bullet, after the dash or in parentheses. Take every token of the required
- * shape from the whole bullet, not just the head before the dash.
- */
+// NOTE: Planned sections "2."/"3." are prose: a slug may appear anywhere in the
+// bullet, after the dash or in parentheses. Take every token of the required
+// shape from the whole bullet, not just the head before the dash.
 function plannedIds(markdown: string): Mention[] {
 	const found: Mention[] = [];
 	for (const { text, line } of sectionBullets(

@@ -1,7 +1,7 @@
 import { clamp } from "../core/math";
 import type { Dimension, DimensionSpec, NumberSpec, ToolSchema } from "./specs";
 
-/** Field cap: from source dimensions under maxFromSource, else static. */
+// NOTE: Field cap: from source dimensions under maxFromSource, else static.
 export function effectiveMax(
 	spec: NumberSpec,
 	source?: Dimension,
@@ -20,7 +20,7 @@ export function dimensionAxisMax(
 	return spec.maxFromSource && source ? source[axis] : spec.max;
 }
 
-/** Clamps maxFromSource fields to the current cap (source changed). */
+// NOTE: Clamps maxFromSource fields to the current cap (source changed).
 export function clampSourceAwareMaxes<P>(
 	schema: ToolSchema<P>,
 	params: Record<string, unknown>,
@@ -67,10 +67,8 @@ export function clampSourceAwareMaxes<P>(
 	return changed ? out : params;
 }
 
-/**
- * Recompute under lockAspect: the leading axis (last user edit) is kept,
- * the other is fitted to the source aspect.
- */
+// NOTE: Recompute under lockAspect: the leading axis (last user edit) is kept,
+// the other is fitted to the source aspect.
 export function withAspectLock(
 	next: Dimension,
 	leading: "width" | "height",

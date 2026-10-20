@@ -20,7 +20,7 @@ function resolveDimensionDefaults(
 	};
 }
 
-/** Defaults from the schema: the single source of default values for the UI. */
+// NOTE: Defaults from the schema: the single source of default values for the UI.
 export function defaultSchemaParams<P>(
 	schema: ToolSchema<P>,
 	context?: SchemaContext,
@@ -62,11 +62,9 @@ export function defaultSchemaParams<P>(
 	return out;
 }
 
-/**
- * Recomputes defaults from a new source, preserving user values. Fields in
- * touched (edited manually) are not overwritten even with a source default;
- * otherwise loading a new file would wipe configured sizes.
- */
+// NOTE: Recomputes defaults from a new source, preserving user values. Fields in
+// touched (edited manually) are not overwritten even with a source default;
+// otherwise loading a new file would wipe configured sizes.
 export function applySourceDefaults<P>(
 	schema: ToolSchema<P>,
 	values: Record<string, unknown>,
@@ -85,7 +83,8 @@ export function applySourceDefaults<P>(
 	return defaults;
 }
 
-/** Validation/normalization of values against the schema. Successor of `sanitizeParams`. */
+// NOTE: Validation/normalization of values against the schema.
+// Successor of `sanitizeParams`.
 export function sanitizeSchemaParams<P>(
 	schema: ToolSchema<P>,
 	values: Record<string, unknown>,

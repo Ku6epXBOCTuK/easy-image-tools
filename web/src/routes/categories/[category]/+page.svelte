@@ -42,7 +42,7 @@
 		])}
 	/>
 {/if}
-<!-- Same rule as tool pages: indexable exactly when the hub has EN copy. -->
+<!-- NOTE: Same rule as tool pages: the hub is indexable exactly when it has EN copy. -->
 <svelte:head>
 	{#if !id}
 		<title>{t("brand")} / {t("toolPage.fallbackTitle")}</title>

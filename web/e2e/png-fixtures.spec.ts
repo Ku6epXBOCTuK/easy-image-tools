@@ -56,8 +56,8 @@ const decodeContracts: readonly DecodeContract[] = [
 	{ file: sixteenBitPng, rejectedIn: [] },
 ];
 
-// On these files createImageBitmap in webkit never settles: no result and no
-// error, so the "accept or reject" contract cannot be verified.
+// NOTE: On these files createImageBitmap in webkit never settles: no result and
+// no error, so the "accept or reject" contract cannot be verified.
 const webkitHangs = new Set([
 	"truncated-header.png",
 	"crc-bad-ancillary.png",

@@ -4,7 +4,7 @@ import { createPixelImage } from "./types";
 import { gaussianBlur } from "./convolution";
 import { clampByte } from "./math";
 
-/** Deterministic PRNG (mulberry32): same seed gives the same result. */
+// NOTE: Deterministic PRNG (mulberry32): the same seed gives the same result.
 export function mulberry32(seed: number): () => number {
 	let a = seed >>> 0;
 	return () => {
@@ -16,7 +16,7 @@ export function mulberry32(seed: number): () => number {
 	};
 }
 
-/** Averages each blockSize x blockSize block into a single color. */
+// NOTE: Averages each blockSize x blockSize block into a single color.
 export function pixelate(img: PixelImage, blockSize: number): PixelImage {
 	const bs = Math.max(1, Math.round(blockSize));
 	const out = createPixelImage(img.width, img.height);
@@ -55,7 +55,7 @@ export function pixelate(img: PixelImage, blockSize: number): PixelImage {
 	return out;
 }
 
-/** Shuffles blockSize x blockSize blocks deterministically per seed. */
+// NOTE: Shuffles blockSize x blockSize blocks deterministically per seed.
 export function shuffleBlocks(
 	img: PixelImage,
 	blockSize: number,
@@ -95,7 +95,8 @@ export function shuffleBlocks(
 
 export type NoiseMode = "mono" | "color";
 
-/** Grain: amountPercent is the deviation strength from the original. Deterministic per seed. */
+// NOTE: Grain: amountPercent is the deviation strength from the original.
+// Deterministic per seed.
 export function addNoise(
 	img: PixelImage,
 	amountPercent: number,
@@ -125,7 +126,7 @@ export function addNoise(
 	return out;
 }
 
-/** Blurs only the alpha channel: soft edges with unchanged color. */
+// NOTE: Blurs only the alpha channel: soft edges with unchanged color.
 export function featherAlpha(img: PixelImage, radius: number): PixelImage {
 	const gray = createPixelImage(img.width, img.height);
 	for (let i = 0; i < img.data.length; i += 4) {
@@ -145,11 +146,9 @@ export function featherAlpha(img: PixelImage, radius: number): PixelImage {
 	return out;
 }
 
-/**
- * Removes the color fringe on semi-transparent edges: the RGB of a
- * semi-transparent pixel is replaced by the color of the nearest fully
- * opaque neighbor within radius.
- */
+// NOTE: Removes the color fringe on semi-transparent edges: the RGB of a
+// semi-transparent pixel is replaced by the color of the nearest fully
+// opaque neighbor within the radius.
 export function defringe(img: PixelImage, radius: number): PixelImage {
 	const out = createPixelImage(img.width, img.height);
 	out.data.set(img.data);
@@ -182,7 +181,7 @@ export function defringe(img: PixelImage, radius: number): PixelImage {
 	return out;
 }
 
-/** Silhouette: all visible pixels filled with one color, alpha preserved. */
+// NOTE: Silhouette: all visible pixels filled with one color, alpha preserved.
 export function silhouette(
 	img: PixelImage,
 	colorHex: string,

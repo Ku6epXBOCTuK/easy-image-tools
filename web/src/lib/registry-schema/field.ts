@@ -109,10 +109,8 @@ export const field = {
 	}),
 };
 
-/**
- * Builds a `ToolSchema<P>` from declared fields.
- * The compiler checks: `fields` keys === keys of `P`, field types match `P[K]`.
- */
+// NOTE: Builds a `ToolSchema<P>` from declared fields. The compiler checks:
+// `fields` keys === keys of `P`, field types match `P[K]`.
 export function toolSchema<P>(
 	fields: { [K in keyof P]: Field<P[K]> },
 	meta?: ToolSchemaMeta,

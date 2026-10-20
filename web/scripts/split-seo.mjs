@@ -1,4 +1,4 @@
-// Extract the per-page and per-hub copy out of `web/src/lib/i18n/<locale>.ts`:
+// NOTE: Extracts the per-page and per-hub copy out of `web/src/lib/i18n/<locale>.ts`.
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";

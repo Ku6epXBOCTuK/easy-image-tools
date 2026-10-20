@@ -53,7 +53,7 @@ describe("smoke: i18n (new UI)", () => {
 		setLocale("ru");
 		expect(pageTitle(page)).toBe(ru.pages?.[page.slug]?.title);
 		setLocale("en");
-		// EN uses the registry title unless the dict overrides it (pages whose
+		// NOTE: EN uses the registry title unless the dict overrides it (pages whose
 		// copy was written get an SEO-oriented H1).
 		expect(pageTitle(page)).toBe(en.pages?.[page.slug]?.title ?? page.title);
 	});
@@ -76,7 +76,7 @@ describe("smoke: i18n (new UI)", () => {
 	it("6. U+0451 (yo) does not break query normalization", () => {
 		const YO = "\u0451";
 		const YE = "\u0435";
-		// dictionary word containing U+0451, from the ru grayscale title
+		// NOTE: Dictionary word containing U+0451, from the ru grayscale title
 		const word = (ru.pages?.["grayscale-png"]?.title ?? "").split(" ")[0];
 		expect(word).toContain(YO);
 		expect(normalizeForSearch(word)).toBe(

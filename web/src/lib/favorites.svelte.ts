@@ -14,7 +14,7 @@ export function initFavorites(): void {
 			for (const s of list) if (typeof s === "string") slugs.add(s);
 		}
 	} catch {
-		// garbage in localStorage: fall back to an empty set
+		// NOTE: garbage in localStorage: fall back to an empty set
 	}
 }
 
@@ -31,12 +31,11 @@ export function toggleFav(slug: string): void {
 	safeSetItem(KEY, JSON.stringify([...slugs]));
 }
 
-/** Favorite pages from the list (order preserved). */
 export function favPages<T extends { slug: string }>(pages: readonly T[]): T[] {
 	return pages.filter((p) => slugs.has(p.slug));
 }
 
-/** Same pages, favorites first (a boost in search results). */
+// NOTE: Same pages as favPages, but favorites first (a boost in search results).
 export function favFirst<T extends { slug: string }>(pages: readonly T[]): T[] {
 	return [...pages].sort(
 		(a, b) => Number(slugs.has(b.slug)) - Number(slugs.has(a.slug)),

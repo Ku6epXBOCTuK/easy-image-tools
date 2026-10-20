@@ -25,7 +25,8 @@ function nearestIndex(palette: Rgb[], r: number, g: number, b: number): number {
 	return best;
 }
 
-/** Median-cut: splits the bucket with the largest spread along its widest channel until k buckets. */
+// NOTE: Median-cut: splits the bucket with the largest spread along its
+// widest channel until k buckets.
 export function medianCutPalette(img: PixelImage, k: number): Rgb[] {
 	const maxColors = Math.max(2, Math.min(64, Math.round(k)));
 	const pixels: Rgb[] = [];
@@ -102,7 +103,8 @@ export interface QuantizeResult {
 	palette: string[];
 }
 
-/** Reduces the image to k colors: median-cut + nearest palette color. Transparent pixels untouched. */
+// NOTE: Reduces the image to k colors: median-cut plus nearest palette color.
+// Transparent pixels are untouched.
 export function quantizeImage(img: PixelImage, k: number): QuantizeResult {
 	const palette = medianCutPalette(img, k);
 	const out = createPixelImage(img.width, img.height);
@@ -122,7 +124,6 @@ export function quantizeImage(img: PixelImage, k: number): QuantizeResult {
 	return { image: out, palette: palette.map(rgbToHex) };
 }
 
-/** Maps each pixel to the nearest color of the user-provided list. */
 export function mapToNearest(
 	img: PixelImage,
 	paletteHexes: string[],
@@ -154,10 +155,8 @@ const BAYER_4 = [
 
 export type DitherPattern = "floyd-steinberg" | "bayer";
 
-/**
- * Dithering to a k-color palette (median-cut) or an explicit hex list.
- * floyd-steinberg: error diffusion; bayer: ordered 4x4.
- */
+// NOTE: Dithering to a k-color palette (median-cut) or an explicit hex list.
+// floyd-steinberg is error diffusion, bayer is ordered 4x4.
 export function ditherImage(
 	img: PixelImage,
 	k: number,

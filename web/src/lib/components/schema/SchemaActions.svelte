@@ -17,7 +17,7 @@
 		quality?: number;
 		limitKb?: number;
 		alphaLoss?: boolean;
-		// Download-zone feedback: size-limit misses and action failures.
+		// NOTE: Download-zone feedback: size-limit misses and action failures.
 		warnings?: { label: string; detail?: string }[];
 		error?: { label: string; detail?: string } | null;
 		onupload: (file: File) => void;

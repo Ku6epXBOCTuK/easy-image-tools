@@ -1,9 +1,3 @@
-// Rule: COMMENTS IN ENGLISH ONLY. Whitelist, not blacklist: a comment must
-// be plain ASCII, so Arabic/CJK/Korean are caught just like Cyrillic.
-// Intentional glyphs go to the allowChars option. String literals are NOT
-// checked: localized dictionary values legitimately contain other scripts.
-// Details: web/eslint-plugins/README.md.
-
 import {
 	getStyleNodeLoc,
 	getStyleRoot,
@@ -62,18 +56,17 @@ export default {
 			});
 		};
 
-		// `<style>` is a postcss AST, not a token stream, so ESLint's comment
-		// tokens never include those comments; they come from the shared helper
-		// the design-tokens rules use (null outside Svelte components).
+		// NOTE: `<style>` is a postcss AST, not a token stream, so ESLint's
+		// comment tokens never include those comments; they come from the shared
+		// helper the design-tokens rules use (null outside Svelte components).
 		const styleRoot = getStyleRoot(context);
 		const styleNodeLoc = getStyleNodeLoc(context);
 		const htmlComments = [];
 
 		return {
-			// svelte-eslint-parser keeps `<!-- -->` template comments out of the
-			// token stream (they are AST nodes, not comment tokens), so
-			// getAllComments() below never sees them. Collected during traversal
-			// to catch template comments nested inside markup elements too.
+			// NOTE: svelte-eslint-parser keeps `<!-- -->` template comments out
+			// of the token stream (they are AST nodes), so getAllComments()
+			// never sees them. Collected during traversal to catch nested ones.
 			SvelteHTMLComment(node) {
 				htmlComments.push(node);
 			},

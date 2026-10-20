@@ -1,6 +1,5 @@
-/**
- * Search string normalization: lowercase, yo->ye (Cyrillic), strip diacritics (NFD).
- */
+// NOTE: Search string normalization: lowercase, yo->ye (Cyrillic), strip
+// diacritics (NFD).
 export function normalizeForSearch(value: string): string {
 	return value
 		.toLowerCase()
@@ -44,10 +43,8 @@ function bestTitleScore(titles: string[], q: string): number | null {
 	return best;
 }
 
-/**
- * Scores a document against a normalized query.
- * Empty query: neutral score; no match: null.
- */
+// NOTE: Scores a document against a normalized query.
+// Empty query: neutral score; no match: null.
 export function scoreDoc(
 	doc: SearchDoc,
 	normalizedQuery: string,

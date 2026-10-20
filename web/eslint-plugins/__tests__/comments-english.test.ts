@@ -1,10 +1,6 @@
-// Tests for the conventions/comments-english rule
-// (web/eslint-plugins/conventions/comments-english.js).
-//
-// Pure AST check over comment nodes with an ASCII whitelist; string literals
-// are ignored by construction (they are not comments), which the cases below
-// pin down. .svelte gets its own pass: template `<!-- -->` comments are AST
-// nodes (SvelteHTMLComment), not comment tokens, so they need a svelte parser.
+// NOTE: String literals are ignored by construction (they are not comments).
+// .svelte gets its own pass: template `<!-- -->` comments are AST nodes
+// (SvelteHTMLComment), not comment tokens, so they need a svelte parser.
 import { RuleTester } from "eslint";
 import svelteParser from "svelte-eslint-parser";
 import tseslint from "typescript-eslint";
@@ -33,18 +29,17 @@ tester.run("comments-english", asRuleModule(commentsEnglish), {
 		{ code: "// resize the canvas\nconst x = 1;", filename: "a.ts" },
 		{ code: "/* multi\nline */\nconst x = 1;", filename: "a.ts" },
 		{
-			// Localized strings are dictionary content, not comments.
+			// NOTE: Localized strings are dictionary content, not comments.
 			code: "const title = 'Пример';",
 			filename: "a.ts",
 		},
 		{
-			// Glyphs listed in allowChars pass.
 			code: "// size 512×512\nconst x = 1;",
 			filename: "a.ts",
 			options: [{ allowChars: ["×"] }],
 		},
 		{
-			// A tab inside a comment is legitimate whitespace.
+			// NOTE: A tab inside a comment is legitimate whitespace.
 			code: "//\tnote\nconst x = 1;",
 			filename: "a.ts",
 		},
@@ -56,7 +51,7 @@ tester.run("comments-english", asRuleModule(commentsEnglish), {
 			errors: [{ messageId: "nonAscii" }],
 		},
 		{
-			// Whitelist catches scripts beyond Cyrillic too.
+			// NOTE: The whitelist catches scripts beyond Cyrillic too.
 			code: "// 调整画布大小\nconst x = 1;",
 			filename: "a.ts",
 			errors: [{ messageId: "nonAscii" }],
@@ -67,7 +62,7 @@ tester.run("comments-english", asRuleModule(commentsEnglish), {
 			errors: [{ messageId: "nonAscii" }],
 		},
 		{
-			// Typography in an otherwise English comment is still non-ASCII.
+			// NOTE: Typography in an otherwise English comment is still non-ASCII.
 			code: "// resize — then crop\nconst x = 1;",
 			filename: "a.ts",
 			errors: [{ messageId: "nonAscii" }],
@@ -83,20 +78,20 @@ tester.run("comments-english", asRuleModule(commentsEnglish), {
 			errors: [{ messageId: "nonAscii" }],
 		},
 		{
-			// One report per offending comment, not per file.
+			// NOTE: One report per offending comment, not per file.
 			code: "// раз\n// два\nconst x = 1;",
 			filename: "a.ts",
 			errors: [{ messageId: "nonAscii" }, { messageId: "nonAscii" }],
 		},
 		{
-			// allowChars does not whitelist other glyphs in the same comment.
+			// NOTE: allowChars does not whitelist other glyphs in the same comment.
 			code: "// 512×512 → done\nconst x = 1;",
 			filename: "a.ts",
 			options: [{ allowChars: ["×"] }],
 			errors: [{ messageId: "nonAscii" }],
 		},
 		{
-			// Control characters (here: vertical tab) are not printable ASCII.
+			// NOTE: Control characters (here: vertical tab) are not printable ASCII.
 			code: "// \x0B note\nconst x = 1;",
 			filename: "a.ts",
 			errors: [{ messageId: "nonAscii" }],
@@ -104,9 +99,9 @@ tester.run("comments-english", asRuleModule(commentsEnglish), {
 	],
 });
 
-// Svelte components: both comment kinds are in scope. `<script>` comments
-// come in as ordinary comment tokens; template `<!-- -->` comments only exist
-// as SvelteHTMLComment nodes, which is the case the ts pass cannot reach.
+// NOTE: Svelte components: both comment kinds are in scope. `<script>`
+// comments come in as ordinary comment tokens; template `<!-- -->` comments
+// only exist as SvelteHTMLComment nodes, which the ts pass cannot reach.
 svelteTester.run("comments-english (svelte)", asRuleModule(commentsEnglish), {
 	valid: [
 		{
@@ -122,33 +117,33 @@ svelteTester.run("comments-english (svelte)", asRuleModule(commentsEnglish), {
 			filename: "Component.svelte",
 		},
 		{
-			// allowChars applies to template comments too.
+			// NOTE: allowChars applies to template comments too.
 			code: "<!-- size 512×512 -->\n<main>Hello</main>",
 			filename: "Component.svelte",
 			options: [{ allowChars: ["×"] }],
 		},
 		{
-			// CSS comments in <style> are checked as well, ASCII passes.
+			// NOTE: CSS comments in <style> are checked as well, ASCII passes.
 			code: '<div class="x">hi</div>\n<style>\n/* keep the row height stable */\n.x {\n\tcolor: red;\n}\n</style>',
 			filename: "Component.svelte",
 		},
 	],
 	invalid: [
 		{
-			// The template comment the ts pass could never see.
+			// NOTE: The template comment the ts pass could never see.
 			code: "<!-- русский комментарий -->\n<main>Hello</main>",
 			filename: "Component.svelte",
 			errors: [{ messageId: "nonAscii" }],
 		},
 		{
-			// <style> is a postcss AST, so its comments are invisible to
+			// NOTE: <style> is a postcss AST, so its comments are invisible to
 			// getAllComments(); the loc must still point at the real line.
 			code: '<div class="x">hi</div>\n<style>\n/* русский комментарий в стилях */\n.x {\n\tcolor: red;\n}\n</style>',
 			filename: "Component.svelte",
 			errors: [{ messageId: "nonAscii", line: 3 }],
 		},
 		{
-			// All three comment kinds in one component, reported by position.
+			// NOTE: All three comment kinds in one component, reported by position.
 			code: '<!-- раз -->\n<style>\n/* два */\n.x {\n\tcolor: red;\n}\n</style>\n<script lang="ts">\n// три\n</script>',
 			filename: "Component.svelte",
 			errors: [
@@ -163,13 +158,13 @@ svelteTester.run("comments-english (svelte)", asRuleModule(commentsEnglish), {
 			errors: [{ messageId: "nonAscii" }],
 		},
 		{
-			// One report per comment, script and template alike.
+			// NOTE: One report per comment, script and template alike.
 			code: '<!-- раз -->\n<main>два</main>\n<script lang="ts">\n// три\n</script>',
 			filename: "Component.svelte",
 			errors: [{ messageId: "nonAscii" }, { messageId: "nonAscii" }],
 		},
 		{
-			// allowChars does not whitelist other glyphs in the same comment.
+			// NOTE: allowChars does not whitelist other glyphs in the same comment.
 			code: "<!-- 512×512 → done -->\n<main>Hello</main>",
 			filename: "Component.svelte",
 			options: [{ allowChars: ["×"] }],

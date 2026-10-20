@@ -6,7 +6,7 @@ export interface StepDragData {
 }
 
 interface StepDndOptions {
-	// Compressed-index semantics: `to` counts items with the source excluded,
+	// NOTE: Compressed-index semantics: `to` counts items with the source excluded,
 	// matching moveStep's remove-then-insert.
 	onMove: (from: number, to: number) => void;
 }
@@ -22,16 +22,15 @@ interface DndEvent {
 export interface StepDragAnchor {
 	left: number;
 	width: number;
-	// Pointer Y and the source card's top at drag start: the overlay aligns
+	// NOTE: Pointer Y and the source card's top at drag start: the overlay aligns
 	// its source row under the cursor.
 	startY: number;
 	sourceTop: number;
 }
 
-// Step-reorder state for SchemaToolView. Dragging a card handle opens a
-// compact overlay list (StepReorderOverlay) instead of reshaping the page:
-// the page keeps its layout and scroll position, drop targeting is computed
-// against the overlay rows.
+// NOTE: Step-reorder state for SchemaToolView. Dragging a card handle opens a
+// compact overlay list (StepReorderOverlay) instead of reshaping the page: the
+// page keeps its layout and scroll position, drop targeting uses overlay rows.
 export function createStepDnd({ onMove }: StepDndOptions) {
 	let activeData = $state<StepDragData | null>(null);
 	let indicatorSlot = $state<number | null>(null);
@@ -39,7 +38,7 @@ export function createStepDnd({ onMove }: StepDndOptions) {
 	let anchor = $state<StepDragAnchor | null>(null);
 	let listEl: HTMLElement | null = null;
 
-	// Slot in full-list coordinates: how many overlay rows have their midpoint
+	// NOTE: Slot in full-list coordinates: how many overlay rows have their midpoint
 	// above the pointer. Rows are uniform single-line height.
 	function slotAt(position: { x: number; y: number }): number | null {
 		const el = listEl;
@@ -86,7 +85,7 @@ export function createStepDnd({ onMove }: StepDndOptions) {
 		sourceIndex = null;
 		anchor = null;
 		if (from === null || slot === null) return;
-		// Slots include the source row; moveStep wants the compressed index.
+		// NOTE: Slots include the source row; moveStep wants the compressed index.
 		const to = slot > from ? slot - 1 : slot;
 		if (to === from) return;
 		onMove(from, to);

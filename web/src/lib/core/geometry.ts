@@ -58,11 +58,9 @@ export function tile(
 	return out;
 }
 
-/**
- * Splits the image into a columns x rows grid of strictly equal parts.
- * Canvas transparently padded to a multiple size, so all content survives.
- * Row-major order: row 1 columns first (part 1-1, 1-2, ...), then row 2, etc.
- */
+// NOTE: Splits the image into a columns x rows grid of strictly equal parts;
+// the canvas is transparently padded to a multiple size, so all content
+// survives. Parts follow row-major order.
 export function splitToParts(
 	img: PixelImage,
 	columns: number,
@@ -87,7 +85,7 @@ export function splitToParts(
 	return parts;
 }
 
-/** Split by tile size: canvas transparently padded to a multiple. */
+// NOTE: Split by tile size; the canvas is transparently padded to a multiple.
 export function splitToTileSize(
 	img: PixelImage,
 	tileW: number,
@@ -297,7 +295,7 @@ export type Anchor9 =
 	| "bottom-center"
 	| "bottom-right";
 
-/** Content bounds: pixels with alpha strictly above threshold. Empty image -> null. */
+// NOTE: Content bounds: pixels with alpha strictly above the threshold; null for an empty image.
 export function contentBounds(
 	img: PixelImage,
 	alphaThreshold = 0,
@@ -320,14 +318,14 @@ export function contentBounds(
 	return { x: minX, y: minY, w: maxX - minX + 1, h: maxY - minY + 1 };
 }
 
-/** Trims transparent margins by alpha threshold. Fully empty -> 1x1 transparent pixel. */
+// NOTE: Trims transparent margins by alpha threshold; a fully empty image becomes a 1x1 transparent pixel.
 export function trimToContent(img: PixelImage, alphaThreshold = 0): PixelImage {
 	const b = contentBounds(img, alphaThreshold);
 	if (!b) return crop(img, 0, 0, 1, 1);
 	return crop(img, b.x, b.y, b.w, b.h);
 }
 
-/** Fits the canvas to an exact size: excess is cropped, missing space transparently padded. */
+// NOTE: Fits the canvas to an exact size: excess is cropped, missing space is transparently padded.
 export function changeCanvasSize(
 	img: PixelImage,
 	width: number,
@@ -362,7 +360,7 @@ export function changeCanvasSize(
 	return out;
 }
 
-/** Center crop to an aspect ratio (ratio >= 1 = wide). */
+// NOTE: Center crop to an aspect ratio (ratio >= 1 = wide).
 export function cropToRatio(img: PixelImage, ratio: number): PixelImage {
 	const current = img.width / img.height;
 	if (current > ratio) {
@@ -376,7 +374,7 @@ export function cropToRatio(img: PixelImage, ratio: number): PixelImage {
 	return clonePixelImage(img);
 }
 
-/** Fits into an aspect ratio by adding transparent margins. */
+// NOTE: Fits into an aspect ratio by adding transparent margins.
 export function padToRatio(img: PixelImage, ratio: number): PixelImage {
 	const current = img.width / img.height;
 	let w = img.width;
@@ -388,7 +386,7 @@ export function padToRatio(img: PixelImage, ratio: number): PixelImage {
 	return changeCanvasSize(img, w, h, "center");
 }
 
-/** Rotates the image 90 degrees if its orientation differs from the target. Square untouched. */
+// NOTE: Rotates the image 90 degrees if its orientation differs from the target; a square is left untouched.
 export function forceOrientation(
 	img: PixelImage,
 	target: "portrait" | "landscape",
@@ -403,10 +401,9 @@ export function forceOrientation(
 	return rotate90(img, 1);
 }
 
-/**
- * Symmetric copy: the chosen side of the original gets its mirror appended.
- * axis vertical mirrors across a vertical line (width x2), horizontal across a horizontal one (height x2).
- */
+// NOTE: Symmetric copy: the chosen side of the original gets its mirror
+// appended. A vertical axis mirrors across a vertical line (width x2),
+// a horizontal one across a horizontal line (height x2).
 export function symmetricCopy(
 	img: PixelImage,
 	axis: "vertical" | "horizontal",

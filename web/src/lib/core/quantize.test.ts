@@ -36,7 +36,7 @@ describe("quantizeImage / ditherImage", () => {
 		]);
 		const { image, palette } = quantizeImage(img, 2);
 		expect(palette.length).toBeLessThanOrEqual(2);
-		expect(image.data[2 * 4 + 3]).toBe(0); // transparent kept
+		expect(image.data[2 * 4 + 3]).toBe(0);
 		for (let x = 0; x < 2; x++) {
 			const i = x * 4;
 			const matched = palette.some((hex) => {

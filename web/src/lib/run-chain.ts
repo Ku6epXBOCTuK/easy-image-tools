@@ -32,14 +32,14 @@ export class ChainStepError extends Error {
 
 export interface ChainRunOutput {
 	stepResults: (PixelImage | null)[];
-	/** Full named set per step; empty for text/verdict/none steps. */
+	// NOTE: Full named set per step; empty for text/verdict/none steps.
 	stepFileSets: ToolImageFile[][];
 	stepDims: (Dimension | undefined)[];
 	out: ToolResult;
 	warnings: ChainWarning[];
 }
 
-/** Zip entries are encoded as PNG (see zip.ts), so names stay .png. */
+// NOTE: Zip entries are encoded as PNG (see zip.ts), so names stay .png.
 export function baseName(name: string): string {
 	return name.replace(/\.[^./\\]+$/, "");
 }
@@ -48,10 +48,8 @@ export function glueName(parent: string, part: string): string {
 	return `${baseName(parent)}-${part}`;
 }
 
-/**
- * Zip entries and keyed lists address files by name, so duplicates must not
- * occur: "image.png" repeated -> "image-2.png", "image-3.png".
- */
+// NOTE: Zip entries and keyed lists address files by name, so duplicates must
+// not occur: "image.png" repeated -> "image-2.png", "image-3.png".
 export function uniqueName(name: string, used: Set<string>): string {
 	if (!used.has(name)) return name;
 	const base = baseName(name);
@@ -66,11 +64,9 @@ function isImage(out: ToolResult): out is PixelImage {
 	return typeof out === "object" && out !== null && "data" in out;
 }
 
-/**
- * Fan-out chain runner: image steps apply to every file of the set,
- * files-steps glue part names, analyze steps see only the first file.
- * A step fails the chain only when every file fails (ChainStepError).
- */
+// NOTE: Fan-out chain runner: image steps apply to every file of the set,
+// files-steps glue part names, analyze steps see only the first file.
+// A step fails the chain only when every file fails (ChainStepError).
 export async function runChain(
 	steps: { id: string; params: Record<string, unknown> }[],
 	source: ToolImageFile[],

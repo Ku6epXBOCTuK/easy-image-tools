@@ -23,7 +23,7 @@ export function vignette(img: PixelImage, strengthPercent: number): PixelImage {
 	return out;
 }
 
-/** B/w preview of the vignette falloff: white where darkening is strongest. */
+// NOTE: B/w preview of the vignette falloff: white where darkening is strongest.
 export function vignetteMask(
 	width: number,
 	height: number,

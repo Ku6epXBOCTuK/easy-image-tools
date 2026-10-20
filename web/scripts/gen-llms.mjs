@@ -1,8 +1,6 @@
-// Writes build/llms.txt right after `vite build`: a plain-text manifest for LLM
-// crawlers (llmstxt.org). Same read model as the sitemap (site-pages.mjs), so
-// the manifest cannot advertise a page that is `noindex` or absent from the
-// site. Nothing is hand-maintained: titles and descriptions come from the
-// shipped HTML.
+// NOTE: Writes build/llms.txt right after `vite build`: a plain-text manifest
+// for LLM crawlers (llmstxt.org). Same read model as the sitemap
+// (site-pages.mjs), so it cannot advertise a `noindex` or absent page.
 import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -22,7 +20,7 @@ function decodeEntities(text) {
 		.replaceAll("&amp;", "&");
 }
 
-/** Site title: the `<title>` of the home page, brand suffix stripped. */
+// NOTE: The site title is the home page `<title>` with the brand suffix stripped.
 function siteTitle(pages) {
 	const home = pages.find((page) => page.route === "/");
 	const title = home && attr(home.html, /<title>([^<]*)<\/title>/);
@@ -32,10 +30,8 @@ function siteTitle(pages) {
 		.trim();
 }
 
-/**
- * Site summary: the catalog meta description (it names every tool group) with
- * the home page as the fallback, cut to whole sentences.
- */
+// NOTE: The summary is the catalog meta description (it names every tool
+// group), with the home page as the fallback.
 function siteSummary(pages) {
 	const source =
 		pages.find((page) => page.route === "/list-tools") ??
@@ -57,11 +53,8 @@ function stripTags(text) {
 		.trim();
 }
 
-/**
- * Cut to whole sentences: the first paragraph of the page copy (a direct
- * definition, which is what an LLM quotes) with the meta description as the
- * fallback for pages without long-form copy.
- */
+// NOTE: Cut to whole sentences: the first paragraph of the page copy (a direct
+// definition, which is what an LLM quotes), meta description as the fallback.
 function summaryText(fragment) {
 	const text = stripTags(fragment);
 	if (text === "") return undefined;
@@ -80,7 +73,6 @@ function summary(html) {
 	);
 }
 
-/** Listing name: H1 first, then the SERP title, then the slug as a last resort. */
 function nameOf(html, route) {
 	const heading = stripTags(attr(html, /<h1[^>]*>([\s\S]*?)<\/h1>/) ?? "");
 	if (heading !== "") return heading;
@@ -89,7 +81,6 @@ function nameOf(html, route) {
 	return route.split("/").pop().replaceAll("-", " ");
 }
 
-/** Category of a tool page, from the second crumb of its BreadcrumbList. */
 function categoryOf(html) {
 	const list = attr(
 		html,
@@ -101,7 +92,7 @@ function categoryOf(html) {
 	return category && { name: category.name, url: category.item };
 }
 
-/** Hub pages open with a prose paragraph; the tool pages use `.long`. */
+// NOTE: Hub pages open with a prose paragraph; the tool pages use `.long`.
 function hubSummary(html) {
 	const prose = attr(
 		html,
@@ -118,7 +109,6 @@ function isHub(route) {
 	return route.startsWith("/categories/");
 }
 
-/** llmstxt.org manifest: site title, one-line summary, tools by category. */
 export function renderLlmsTxt(pages) {
 	const tools = pages.filter((page) => isTool(page.route));
 	if (tools.length === 0) {

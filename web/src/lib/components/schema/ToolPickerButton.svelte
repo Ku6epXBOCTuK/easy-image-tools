@@ -20,7 +20,7 @@
 	let btn = $state<HTMLButtonElement | null>(null);
 	let menu = $state<HTMLDivElement | null>(null);
 
-	// While open, keep the popover placed next to the button (scroll/resize).
+	// NOTE: While open, keep the popover placed next to the button (scroll/resize).
 	$effect(() => {
 		if (!open || !menu || !btn) return;
 		return trackPopover(menu, btn, "end");
@@ -105,7 +105,7 @@
 		color: var(--color-text);
 	}
 	.menu {
-		/* Native popover: top layer + light dismiss + Escape out of the box;
+		/* NOTE: Native popover: top layer + light dismiss + Escape out of the box;
 		   positioning is trackPopover (anchor() is not supported everywhere). */
 		position: fixed;
 		margin: 0;
@@ -119,7 +119,7 @@
 		border-radius: var(--radius-m);
 		background: var(--color-panel);
 	}
-	/* display applies only while open: the author display overrides the
+	/* NOTE: display applies only while open: the author display overrides the
 	   UA rule [popover]:not(:popover-open) { display: none }. */
 	.menu:popover-open {
 		display: grid;

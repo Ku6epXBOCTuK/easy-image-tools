@@ -3,9 +3,9 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
-// The analytics tag ships as a static file (`web/static/ga.js`) so it can be
-// gated by PUBLIC_GA_ENABLED at build time; these guards cover the promises of
-// docs/plan-seo.md section 0 - cookieless, no ads, and nothing about the image.
+// NOTE: The analytics tag ships as a static file (`web/static/ga.js`) so it can
+// be gated by PUBLIC_GA_ENABLED at build time; these guards cover the promises
+// of docs/plan-seo.md section 0 - cookieless, no ads, and nothing about the image.
 const WEB_DIR = fileURLToPath(new URL("../../", import.meta.url));
 const GA_PATH = join(WEB_DIR, "static", "ga.js");
 

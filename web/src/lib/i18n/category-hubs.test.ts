@@ -3,11 +3,9 @@ import { CATEGORY_IDS } from "../categories";
 import { en } from "./en";
 import { categoryHubPath, isCategoryHubIndexable } from "./category-hubs";
 
-/**
- * The robots tag on a hub follows the presence of EN copy, so a stub block
- * would index a thin page. Same contract as tool pages
- * (`schema-tool-strings.test.ts`), gate of docs/plan-seo.md S3c.
- */
+// NOTE: The robots tag on a hub follows the presence of EN copy, so a stub block
+// would index a thin page. Same contract as tool pages
+// (`schema-tool-strings.test.ts`), gate of docs/plan-seo.md S3c.
 describe("category hub copy", () => {
 	const withCopy = CATEGORY_IDS.filter((id) => en.categoryHubs?.[id]);
 

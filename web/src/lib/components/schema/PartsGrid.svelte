@@ -24,7 +24,7 @@
 </div>
 
 <style>
-	/* Own scrollbox: usable inside any tile without extra canvas classes. */
+	/* NOTE: Own scrollbox: usable inside any tile without extra canvas classes. */
 	.parts-wrap {
 		width: 100%;
 		max-height: 60vh;

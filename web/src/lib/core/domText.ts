@@ -56,7 +56,6 @@ export interface TextBlockOptions {
 	angleDeg?: number;
 }
 
-/** One caption (auto-wrapped, optional backing plate) over the image. */
 export function drawTextBlock(
 	img: PixelImage,
 	o: TextBlockOptions,
@@ -132,7 +131,6 @@ export interface TextToImageOptions {
 	maxTextWidth?: number;
 }
 
-/** Image from text: canvas sized to the caption plus padding. */
 export function renderTextToImage(o: TextToImageOptions): PixelImage {
 	const measure = ctx2d(8, 8).ctx;
 	measure.font = fontString(o.fontSize, o.font, o.bold);
@@ -161,7 +159,6 @@ export function renderTextToImage(o: TextToImageOptions): PixelImage {
 	return toPixelImage(canvas);
 }
 
-/** Emoji/symbol as PNG: drawn centered with the platform emoji font. */
 export function renderEmoji(symbol: string, size: number): PixelImage {
 	const { canvas, ctx } = ctx2d(size, size);
 	ctx.font = `${Math.round(size * 0.72)}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif`;
@@ -179,7 +176,6 @@ export interface ImageWatermarkOptions {
 	margin: number;
 }
 
-/** Image mark over the image: scale relative to canvas width, 3x3 position. */
 export function drawImageWatermark(
 	img: PixelImage,
 	o: ImageWatermarkOptions,
@@ -221,7 +217,6 @@ export function drawImageWatermark(
 	return toPixelImage(canvas);
 }
 
-/** Repeating diagonal text tile across the whole canvas. */
 export function drawTextTile(img: PixelImage, o: TileTextOptions): PixelImage {
 	const { canvas, ctx } = ctx2d(img.width, img.height);
 	ctx.putImageData(

@@ -47,9 +47,8 @@ describe("runChain", () => {
 			"img-part-1-1.png",
 			"img-part-1-2.png",
 		]);
-		// full per-step sets: split -> 2 parts, grayscale -> 2 images
 		expect(r.stepFileSets.map((s) => s.length)).toEqual([2, 2]);
-		// grayscale is deterministic: part pixels are gray both in R and B
+		// NOTE: grayscale is deterministic: part pixels are gray both in R and B
 		const px = files[0].image.data;
 		expect(px[0]).toBe(px[2]);
 	});
@@ -77,7 +76,7 @@ describe("runChain", () => {
 			undefined,
 			flaky,
 		);
-		// a single survivor degrades to a plain image result
+		// NOTE: a single survivor degrades to a plain image result
 		expect("data" in (r.out as PixelImage)).toBe(true);
 		expect(r.warnings).toEqual([{ kind: "partial", step: 1, ok: 1, total: 2 }]);
 	});

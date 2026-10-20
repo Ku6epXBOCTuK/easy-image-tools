@@ -55,7 +55,7 @@
 	let parts = $derived(
 		resultKind === "files" && fileResult ? fileResult.files.length : undefined,
 	);
-	// All parts share the same size (canvas is padded); show it once.
+	// NOTE: All parts share the same size (canvas is padded); show it once.
 	let partsDims = $derived(
 		resultKind === "files" && fileResult && fileResult.files.length > 0
 			? `${fileResult.files[0].image.width} × ${fileResult.files[0].image.height}`
@@ -128,7 +128,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		/* Nested in PreviewTile.canvas: without stretch it shrank to its
+		/* NOTE: Nested in PreviewTile.canvas: without stretch it shrank to its
 		   content and collapsed parts-grid into a single column. */
 		width: 100%;
 		align-self: stretch;

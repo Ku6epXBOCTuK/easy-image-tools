@@ -1,8 +1,5 @@
-// Rule: SVELTE 5 PROPS MUST USE A LOCAL `interface Props` (AGENTS.md).
-// Banned: the inline generic `$props<T>()`, untyped destructuring, binding
-// the whole `$props()` object, non-local props type names. Purely syntactic
-// check; inline import('...') types are already covered by
-// @typescript-eslint/consistent-type-imports.
+// NOTE: Inline `import('...')` types are already covered by
+// @typescript-eslint/consistent-type-imports, so this rule stays syntactic.
 
 import { isInsideScriptElement } from "./utils.js";
 
@@ -55,7 +52,6 @@ export default {
 				}
 				if (!isInsideScriptElement(node)) return;
 
-				// Inline generic $props<{ ... }>() is banned outright.
 				if (node.typeArguments?.params?.length) {
 					context.report({ node: node.callee, messageId: "inlineGeneric" });
 					return;

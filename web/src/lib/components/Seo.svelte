@@ -5,7 +5,7 @@
 	interface Props {
 		title: string;
 		description: string;
-		/** Page path from the router root ("/", "/list-tools", "/tools/..."). */
+		// NOTE: Page path from the router root ("/", "/list-tools", "/tools/...").
 		path: string;
 	}
 	let { title, description, path }: Props = $props();

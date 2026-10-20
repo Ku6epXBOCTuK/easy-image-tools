@@ -40,13 +40,13 @@ export interface ChainHostCtx {
 	stepState: { steps: ChainStep[]; clearMarks: () => void };
 	source: SourceLike;
 	output: OutputLike;
-	// Drops run state and invalidates any in-flight run from the previous host.
+	// NOTE: Drops run state and invalidates any in-flight run from the previous host.
 	resetRun: () => void;
 	clearMasks: () => void;
 }
 
-// Host lifecycle of SchemaToolView: per-host init (plain tool page vs named
-// chain), handoff across the tool -> pipeline route swap, autosave into the
+// NOTE: Host lifecycle of SchemaToolView: per-host init (plain tool page vs named
+// chain), the handoff across the tool to pipeline route swap, autosave into the
 // chains store and the explicit "save as chain" action.
 export function createChainHost(ctx: ChainHostCtx) {
 	let initedFor = $state("");
@@ -109,7 +109,7 @@ export function createChainHost(ctx: ChainHostCtx) {
 		init();
 	});
 
-	// Named-chain mode autosaves into the chains store; a plain tool page
+	// NOTE: Named-chain mode autosaves into the chains store; a plain tool page
 	// persists nothing -- it becomes a named chain on structural change below.
 	$effect(() => {
 		const chainId = ctx.chainId();
@@ -118,7 +118,7 @@ export function createChainHost(ctx: ChainHostCtx) {
 		updateChainSteps(chainId, ctx.steps());
 	});
 
-	// A tool page turns into a pipeline on the first structural change (step
+	// NOTE: A tool page turns into a pipeline on the first structural change (step
 	// added, first tool swapped): create the named chain and swap routes
 	// seamlessly -- steps persist via the store, the source via the handoff.
 	$effect(() => {
@@ -132,7 +132,7 @@ export function createChainHost(ctx: ChainHostCtx) {
 		get inited() {
 			return initedFor !== "";
 		},
-		// Explicit save for a structurally default chain (single tuned step):
+		// NOTE: Explicit save for a structurally default chain (single tuned step):
 		// the auto-create effect only fires on structural change.
 		saveAsChain: () => openChain(ctx.steps()),
 	};

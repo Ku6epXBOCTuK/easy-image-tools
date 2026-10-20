@@ -26,10 +26,8 @@ export function autoChainName(date = new Date()): string {
 	});
 }
 
-/**
- * Lenient per entry: one broken chain must not kill the rest of the list.
- * Steps reuse the same serialized shape and validation as parseChain.
- */
+// NOTE: Lenient per entry: one broken chain must not kill the rest of the list.
+// Steps reuse the same serialized shape and validation as parseChain.
 export function parseNamedChains(data: unknown): NamedChain[] {
 	if (
 		!data ||
@@ -92,7 +90,6 @@ function writeAll(chains: NamedChain[]): void {
 	safeSetItem(STORE_KEY, JSON.stringify(serializeNamedChains(chains)));
 }
 
-/** Newest first. */
 export function listChains(): NamedChain[] {
 	return readAll().sort((a, b) => b.updatedAt - a.updatedAt);
 }
@@ -130,7 +127,7 @@ export function deleteChain(id: string): void {
 	writeAll(readAll().filter((c) => c.id !== id));
 }
 
-/** State that cannot persist across the tool -> pipeline route swap. */
+// NOTE: State that cannot persist across the tool -> pipeline route swap.
 export interface ChainHandoff {
 	source: PixelImage | null;
 	sourceFiles?: ToolImageFile[];

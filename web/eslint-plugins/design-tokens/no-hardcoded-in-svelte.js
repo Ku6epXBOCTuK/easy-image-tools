@@ -1,8 +1,3 @@
-// Rule: NO HARDCODED COLORS / SIZES / DURATIONS / Z-INDEX IN COMPONENTS.
-// Everything visual in a Svelte <style> block must come from design tokens
-// (var(--...)); direct literals are banned. color-mix() is banned too: its
-// result must be tokenized in the design CSS file.
-
 import {
 	COLOR_LITERAL,
 	COLOR_PROPS,
@@ -14,7 +9,7 @@ import {
 } from "./lists.js";
 import { getStyleNodeLoc, getStyleRoot } from "./style-context.js";
 
-// Strip var(...) bodies so tokens inside are never mistaken for literals.
+// NOTE: Strip var(...) bodies so tokens inside are never mistaken for literals.
 const stripVars = (value) => value.replace(/var\([^)]*\)/g, "");
 
 export default {
@@ -63,18 +58,17 @@ export default {
 					});
 				};
 
-				// --- NO HARDCODED BREAKPOINTS IN @media ---
-				// (max|min)-width followed by a NON-var( number is a raw length.
+				// NOTE: A (max|min)-width followed by a NON-var() number is a raw
+				// length, so it is reported as a hardcoded breakpoint.
 				const BREAKPOINT_RE =
 					/(?:(?:max|min)-width)\s*:\s*(?!var\()(\d+(?:\.\d+)?(?:px|rem|em))/gi;
 
-				// Custom properties do not resolve in @media: var(--bp-*) there is a latent bug.
+				// NOTE: Custom properties do not resolve in @media, so var(--bp-*)
+				// there is a latent bug.
 				const VAR_IN_MEDIA_RE = /var\(\s*(--[a-zA-Z0-9-]+)/g;
 
-				// Sub-rule 6: color-mix() is banned anywhere in a component style.
 				const COLOR_MIX_RE = /color-mix\s*\(/gi;
 
-				// --- @media breakpoints --- //
 				root.walkAtRules("media", (atRule) => {
 					const params = atRule.params ?? "";
 					let m;
@@ -88,17 +82,14 @@ export default {
 					}
 				});
 
-				// --- declarations --- //
 				root.walkDecls((decl) => {
 					const prop = decl.prop ?? "";
 					const value = decl.value ?? "";
 
-					// Sub-rule 6: color-mix in any property.
 					if (COLOR_MIX_RE.test(value)) {
 						report(decl, "colorMix", { value: value.trim() });
 					}
 
-					// Sub-rule 4: durations in transition/animation props.
 					if (DURATION_PROPS.test(prop)) {
 						const withoutVars = stripVars(value);
 						const m = withoutVars.match(FORBIDDEN_DURATION_TOKEN);
@@ -107,7 +98,6 @@ export default {
 						}
 					}
 
-					// Sub-rule 7: z-index must come from a var(--z-...).
 					if (prop === "z-index") {
 						const withoutVars = stripVars(value).trim();
 						if (/^-?\d+$/.test(withoutVars)) {
@@ -115,13 +105,11 @@ export default {
 						}
 					}
 
-					// Only inspect known layout properties from here on.
 					if (!COLOR_PROPS.test(prop) && !SIZE_PROPS.test(prop)) return;
 
-					// Sub-rule 2: sizes. Fire only on a real px/rem/em token:
-					// percentages and unitless values stay legal, a 0px reset is
-					// the only legal absolute length. MIXED_PROPS shorthands are
-					// checked for their SIZE half too.
+					// NOTE: Sizes fire only on a real px/rem/em token: percentages
+					// and unitless values stay legal, and a 0px reset is the only
+					// legal absolute length.
 					if (SIZE_PROPS.test(prop) || MIXED_PROPS.test(prop)) {
 						const withoutVars = stripVars(value);
 						const reported = new Set();
@@ -134,9 +122,9 @@ export default {
 						}
 					}
 
-					// Sub-rule 1: colors. After stripping allowed keywords
-					// (currentColor/transparent/inherit/none/0), any color
-					// literal is reported.
+					// NOTE: Colors: after stripping the allowed keywords
+					// (currentColor/transparent/inherit/none/0), any color literal
+					// is reported.
 					if (COLOR_PROPS.test(prop)) {
 						const withoutVars = stripVars(value);
 						const withoutKeywords = withoutVars

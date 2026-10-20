@@ -30,7 +30,7 @@ type PendingRequest = {
 };
 
 function defaultWorkerFactory(): WorkerLike {
-	// Worker's onerror is typed with ErrorEvent while WorkerLike expects Event;
+	// NOTE: Worker's onerror is typed with ErrorEvent while WorkerLike expects Event;
 	// the DOM lib types are incompatible, hence the double cast.
 	return new Worker(new URL("./executor.worker.ts", import.meta.url), {
 		type: "module",

@@ -16,7 +16,7 @@
 	let btn = $state<HTMLButtonElement | null>(null);
 	let popover = $state<HTMLSpanElement | null>(null);
 
-	// While open, keep the popover placed next to the "?" button.
+	// NOTE: While open, keep the popover placed next to the "?" button.
 	$effect(() => {
 		if (!open || !popover || !btn) return;
 		return trackPopover(popover, btn, "start");
@@ -60,7 +60,7 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		/* Mini target size at 24px: tap without missing. */
+		/* NOTE: Mini target size at 24px: tap without missing. */
 		width: calc(var(--space-xxxl) * 0.66);
 		height: calc(var(--space-xxxl) * 0.66);
 		padding: 0;
@@ -78,7 +78,7 @@
 		color: var(--color-text);
 		border-color: var(--color-main);
 	}
-	/* The native popover lives in the top layer: light dismiss, Escape and
+	/* NOTE: The native popover lives in the top layer: light dismiss, Escape and
 	   stacking above everything come for free. Positioning is trackPopover:
 	   anchor() is not supported in every browser. */
 	.popover {

@@ -51,7 +51,7 @@ import type { PageSlug } from "./registry";
 
 type IconComponent = Component<{ size?: number; class?: string }>;
 
-// Keyed by page slug: a renamed/missing page is a compile error here.
+// NOTE: Keyed by page slug: a renamed/missing page is a compile error here.
 export const TOOL_ICONS: Record<PageSlug, IconComponent> = {
 	"resize-png": Scaling,
 	"crop-png": Crop,
@@ -177,8 +177,8 @@ export const TOOL_ICONS: Record<PageSlug, IconComponent> = {
 	"svg-to-png": FileImage,
 };
 
-// Slugs come from the registry at runtime (Page.slug is string there), so the
-// lookup widens; completeness is guaranteed by the Record<PageSlug, _> above.
+// NOTE: Slugs come from the registry at runtime (Page.slug is string there),
+// so the lookup widens; completeness is guaranteed by the Record above.
 export function toolIcon(slug: string): IconComponent {
 	return TOOL_ICONS[slug as PageSlug];
 }

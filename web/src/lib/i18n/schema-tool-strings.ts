@@ -25,26 +25,24 @@ export function pageDescription(page: Page): string {
 	return getMergedDict().pages?.[page.slug]?.description ?? page.description;
 }
 
-/** Long-form page copy, or undefined while a page has none. */
+// NOTE: Long-form page copy, or undefined while a page has none.
 export function pageSeo(page: Page): SeoContent | undefined {
 	return getMergedDict().pages?.[page.slug]?.seo;
 }
 
-/** SERP copy of a fixed site page (home, catalog, pipelines), or undefined. */
+// NOTE: SERP copy of a fixed site page (home, catalog, pipelines), or undefined.
 export function siteSeo(id: SitePageId): SiteSeo | undefined {
 	return getMergedDict().site?.[id];
 }
 
-/**
- * Indexability follows the content: having EN copy is the only signal, so no
- * hand-maintained list can drift. Read from the base dict so that switching to
- * RU (no `seo` block there yet) cannot flip the robots tag.
- */
+// NOTE: Indexability follows the content: having EN copy is the only signal, so no
+// hand-maintained list can drift. Read from the base dict so that switching to
+// RU (no `seo` block there yet) cannot flip the robots tag.
 export function isPageIndexable(page: Page): boolean {
 	return en.pages?.[page.slug]?.seo !== undefined;
 }
 
-/** SERP `<title>`; the brand prefix is only a fallback for pages without copy. */
+// NOTE: SERP `<title>`; the brand prefix is only a fallback for pages without copy.
 export function pageMetaTitle(page: Page): string {
 	const brand = t("brand");
 	return (
@@ -53,7 +51,7 @@ export function pageMetaTitle(page: Page): string {
 	);
 }
 
-/** SERP meta description; falls back to the registry description. */
+// NOTE: SERP meta description; falls back to the registry description.
 export function pageMetaDescription(page: Page): string {
 	return (
 		getMergedDict().pages?.[page.slug]?.seo?.metaDescription ??
@@ -61,7 +59,7 @@ export function pageMetaDescription(page: Page): string {
 	);
 }
 
-/** Step title for chain UIs: the owning page title, else the raw tool id. */
+// NOTE: Step title for chain UIs: the owning page title, else the raw tool id.
 export function chainStepTitle(toolId: string): string {
 	const owner = PAGES.find((p) => p.steps[0].id === toolId);
 	return owner ? pageTitle(owner) : toolId;
@@ -80,7 +78,8 @@ export function groupLabel(title: string): string {
 	return t(title);
 }
 
-/** Select option label: dict `tools[id].options[fieldId][value]`, fallback is the schema label. */
+// NOTE: Select option label: dict `tools[id].options[fieldId][value]`, fallback
+// is the schema label.
 export function optionLabel(
 	toolId: string,
 	fieldId: string,
@@ -107,13 +106,13 @@ export function verdictTone(key: string): "success" | "danger" | "info" {
 	return "info";
 }
 
-/** Short label for a warning badge; detail holds the full message (popover). */
+// NOTE: Short label for a warning badge; detail holds the full message (popover).
 export interface WarningNotice {
 	label: string;
 	detail: string;
 }
 
-/** Human-readable badge + popover text for a chain run/source warning. */
+// NOTE: Human-readable badge + popover text for a chain run/source warning.
 export function chainWarningNotice(w: ChainWarning): WarningNotice {
 	switch (w.kind) {
 		case "partial":
@@ -166,11 +165,9 @@ export function pageSearchDoc(page: Page): SearchDoc {
 	};
 }
 
-/**
- * Cross-language catalog search: scores via `scoreDoc` over `pageSearchDoc`
- * (titles/descriptions of all locales). Catalog order is preserved,
- * non-matching entries are dropped.
- */
+// NOTE: Cross-language catalog search: scores via `scoreDoc` over `pageSearchDoc`
+// (titles/descriptions of all locales). Catalog order is preserved,
+// non-matching entries are dropped.
 export function searchPages(pages: readonly Page[], query: string): Page[] {
 	const q = normalizeForSearch(query.trim());
 	if (q.length === 0) return [...pages];

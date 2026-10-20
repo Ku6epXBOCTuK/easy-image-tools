@@ -1,9 +1,3 @@
-// Rule: ASCII-ONLY SOURCE (scoped to test files via eslint.config.js).
-// Non-ASCII in test names and expectations hurts grep-ability and hides
-// hardcoded localized strings; intentional glyphs go to the allowChars
-// option. File-content based (not AST), one report per line.
-// Details: web/eslint-plugins/README.md.
-
 const DEFAULT_ALLOW = [];
 
 export default {

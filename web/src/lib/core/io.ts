@@ -84,10 +84,9 @@ export function toBase64(img: PixelImage): string {
 
 const dataUrlCache = new WeakMap<PixelImage, string>();
 
-// Display helper: PNG-encode on the main thread is expensive and templates
-// re-render often with the same image (layout branch swaps, toggles). Results
-// are treated as immutable -- a re-run produces new objects -- so an
-// identity-keyed cache cannot go stale.
+// NOTE: PNG encoding on the main thread is expensive and templates re-render
+// often with the same image. Results are immutable (a re-run produces new
+// objects), so an identity-keyed cache cannot go stale.
 export function cachedDataUrl(img: PixelImage): string {
 	let url = dataUrlCache.get(img);
 	if (url === undefined) {

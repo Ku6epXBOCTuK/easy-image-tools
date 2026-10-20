@@ -1,8 +1,3 @@
-// Rule: NO TOKEN-CATEGORY MISMATCH IN COMPONENTS. A size property must use
-// a SIZE token (--space-*, --size-*, ...), a color property a COLOR token
-// (--color-*, --brand-*). Crossing categories (padding: var(--color-x))
-// means the wrong token is being reused.
-
 import {
 	COLOR_PROPS,
 	COLOR_TOKEN,
@@ -12,7 +7,6 @@ import {
 } from "./lists.js";
 import { getStyleNodeLoc, getStyleRoot } from "./style-context.js";
 
-// Collect the token names referenced by var() in a value.
 const collectVars = (value) =>
 	Array.from(value.matchAll(/var\(\s*(--[\w-]+)/g), (m) => m[1]);
 
@@ -54,10 +48,9 @@ export default {
 					const prop = decl.prop ?? "";
 					const value = decl.value ?? "";
 
-					// Mixed shorthands (border, outline, ...) legitimately take
-					// BOTH a size and a color: the browser assigns sub-properties
-					// by value type, not by position, so skip category checks.
-					// Their longhands are still covered individually.
+					// NOTE: Mixed shorthands legitimately take BOTH a size and a
+					// color: the browser assigns sub-properties by value type, so
+					// the category checks are skipped for them.
 					if (MIXED_PROPS.test(prop)) return;
 
 					const isSizeProp = SIZE_PROPS.test(prop);
@@ -65,7 +58,6 @@ export default {
 					if (!isSizeProp && !isColorProp) return;
 
 					for (const token of collectVars(value)) {
-						// A size property that holds a COLOR token.
 						if (isSizeProp && COLOR_TOKEN.test(token)) {
 							report(decl, "categoryMismatch", {
 								token,
@@ -74,7 +66,6 @@ export default {
 								expected: "size",
 							});
 						}
-						// A color property that holds a SIZE token (z-radius/space/text...).
 						if (isColorProp && SIZE_TOKEN.test(token)) {
 							report(decl, "categoryMismatch", {
 								token,

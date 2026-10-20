@@ -33,7 +33,6 @@ import type { Offset } from "../../registry-schema";
 import { field, toolSchema } from "../../registry-schema";
 import { imgTool, requireSource, type Tool, type ToolContext } from "../types";
 
-/** Mask of an alpha-morphology tool: grayscale alpha of the result. */
 function alphaOfResult<P>(
 	ctx: ToolContext<P>,
 	fn: (img: PixelImage, p: P) => PixelImage,

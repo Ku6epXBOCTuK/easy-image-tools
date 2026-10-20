@@ -11,7 +11,6 @@ import {
 import { makeImage } from "./test-helpers";
 
 const bordered = () => {
-	// 4x4: transparent pixel frame around red 2x2 center
 	const img = makeImage(4, 4, new Array(16).fill([0, 0, 0, 0]));
 	for (let y = 1; y <= 2; y++) {
 		for (let x = 1; x <= 2; x++) {
@@ -112,8 +111,8 @@ describe("forceOrientation / symmetricCopy", () => {
 		const out = symmetricCopy(img, "vertical", "left");
 		expect(out.width).toBe(4);
 		expect(out.data[0]).toBe(10);
-		expect(out.data[8]).toBe(20); // pixel 2 = mirror of start
-		expect(out.data[12]).toBe(10); // pixel 3 = mirror of end
+		expect(out.data[8]).toBe(20);
+		expect(out.data[12]).toBe(10);
 	});
 
 	it("vertical axis doubles height", () => {
@@ -123,7 +122,7 @@ describe("forceOrientation / symmetricCopy", () => {
 		]);
 		const out = symmetricCopy(img, "horizontal", "top");
 		expect(out.height).toBe(4);
-		expect(out.data[(2 * 1 + 0) * 4]).toBe(30); // row 2 = mirror of row 1
-		expect(out.data[(3 * 1 + 0) * 4]).toBe(10); // row 3 = mirror of row 0
+		expect(out.data[(2 * 1 + 0) * 4]).toBe(30);
+		expect(out.data[(3 * 1 + 0) * 4]).toBe(10);
 	});
 });

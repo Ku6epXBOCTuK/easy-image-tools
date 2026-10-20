@@ -1,4 +1,4 @@
-// Generates static/og/default.png: the default 1200x630 OG card.
+// NOTE: Generates static/og/default.png: the default 1200x630 OG card.
 import { mkdirSync } from "node:fs";
 import { chromium } from "playwright";
 

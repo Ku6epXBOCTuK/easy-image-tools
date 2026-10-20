@@ -1,6 +1,6 @@
 import type { CategoryHubContent, PageStrings, SiteSeo } from "./dict";
 
-// Long-form SEO copy: one JSON file per page (`tools/en/<slug>.json`), per
+// NOTE: Long-form SEO copy: one JSON file per page (`tools/en/<slug>.json`), per
 // category hub (`category-hubs/en/<id>.json`) and per fixed site page
 // (`site/en/<id>.json`).
 const toolFiles = import.meta.glob<PageStrings>("./tools/en/*.json", {
@@ -18,15 +18,13 @@ const siteFiles = import.meta.glob<SiteSeo>("./site/en/*.json", {
 	import: "default",
 });
 
-/**
- * Fixed site pages that carry their own SERP copy (`site/en/<id>.json`):
- * the home catalog, the full catalog route and the saved-pipelines page.
- */
+// NOTE: Fixed site pages that carry their own SERP copy (`site/en/<id>.json`):
+// the home catalog, the full catalog route and the saved-pipelines page.
 export const SITE_PAGE_IDS = ["home", "list-tools", "chains"] as const;
 
 export type SitePageId = (typeof SITE_PAGE_IDS)[number];
 
-/** `./tools/en/crop-png.json` -> `crop-png`: the file name is the dict key. */
+// NOTE: `./tools/en/crop-png.json` -> `crop-png`: the file name is the dict key.
 function keyOf(path: string): string {
 	const name = path.slice(path.lastIndexOf("/") + 1);
 	return name.replace(/\.json$/, "");

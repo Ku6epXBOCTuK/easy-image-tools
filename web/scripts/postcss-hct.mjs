@@ -1,7 +1,6 @@
-// postcss-hct: PostCSS plugin that lets design tokens be authored as hct()
-// (literal, `from var(...)` seed, channel math) and emits sRGB hex. `from`
-// seeds resolve from sibling custom properties (#hex, oklch(), rgb(), hct());
-// anything unresolvable is left as-is. HCT stays the single source of truth.
+// NOTE: postcss-hct lets design tokens be authored as hct() (literal, `from
+// var(...)` seed, channel math) and emits sRGB hex. `from` seeds resolve from
+// sibling custom properties (#hex, oklch(), rgb(), hct()); HCT stays the source.
 
 import { Color } from "@panmdaa/colors";
 
@@ -16,12 +15,10 @@ function wrapHue(degrees) {
 	return ((degrees % 360) + 360) % 360;
 }
 
-// --- postcss plugin entry -------------------------------------------------
-
 const postcssHct = {
 	postcssPlugin: "postcss-hct",
 	Once(root, { result }) {
-		// Fallback environment: tokens from :root (highest-level definitions).
+		// NOTE: Fallback environment: tokens from :root (highest-level definitions).
 		const rootEnv = collectTokensFromSelector(root, ":root");
 
 		root.walkRules((rule) => {
@@ -63,8 +60,6 @@ function collectTokensFromSelector(root, selector) {
 	return tokens;
 }
 
-// --- value scanning -------------------------------------------------------
-
 function findBalancedClosing(text, openParenIndex) {
 	let depth = 0;
 	for (let i = openParenIndex; i < text.length; i++) {
@@ -105,9 +100,6 @@ function replaceHctValues(node, value, env, result) {
 	return out;
 }
 
-// --- hct() body parsing ---------------------------------------------------
-
-// Resolve the body of one hct(...) call to { h, c, t } or null.
 function resolveHctBody(inner, env, seen) {
 	const text = inner.trim();
 	if (!text) return null;
@@ -137,7 +129,7 @@ function resolveHctBody(inner, env, seen) {
 		};
 	}
 
-	// Literal: hct(h c t)
+	// NOTE: A literal is hct(h c t).
 	const parts = splitTopLevel(text, " ");
 	if (parts.length !== 3) return null;
 	const nums = parts.map((p) => Number.parseFloat(p));
@@ -153,7 +145,7 @@ function safeNumber(value) {
 	return typeof value === "number" && Number.isFinite(value) ? value : null;
 }
 
-// Read "var(--x)", "hct(...)", a color function or a bare token off the front.
+// NOTE: Read "var(--x)", "hct(...)", a color function or a bare token off the front.
 function readSourceToken(text) {
 	const first = text[0];
 	if (first === "v") {
@@ -184,7 +176,7 @@ function readSourceToken(text) {
 	return null;
 }
 
-// Split on a delimiter, ignoring delimiters inside balanced parentheses.
+// NOTE: Split on a delimiter, ignoring delimiters inside balanced parentheses.
 function splitTopLevel(text, delimiter) {
 	const parts = [];
 	let depth = 0;
@@ -204,14 +196,12 @@ function splitTopLevel(text, delimiter) {
 	return parts;
 }
 
-// --- seed resolution ------------------------------------------------------
-
 function resolveSeed(source, env, seen) {
 	if (VAR_RE.test(source.trim())) {
 		const name = source.trim().match(VAR_RE)[1];
 		const raw = env.get(name);
 		if (raw === undefined) return null;
-		if (seen.has(name)) return null; // circular reference
+		if (seen.has(name)) return null; // NOTE: circular reference
 		seen.add(name);
 		return resolveRawValue(raw, env, seen);
 	}
@@ -227,7 +217,6 @@ function resolveRawValue(raw, env, seen) {
 	return parseColorValue(text);
 }
 
-// Parse a concrete color into HCT channels, or null.
 function parseColorValue(text) {
 	const value = text.trim();
 	if (/^#[0-9a-f]{3}$/i.test(value)) {
@@ -236,7 +225,7 @@ function parseColorValue(text) {
 	if (/^#[0-9a-f]{6}$/i.test(value)) {
 		return channelsFromHex(value);
 	}
-	// Split on whitespace; parseFloat drops "%"/"deg" units.
+	// NOTE: Split on whitespace; parseFloat drops "%"/"deg" units.
 	const oklch = value.match(/^oklch\(([^)]+)\)/i);
 	if (oklch) {
 		const channels = oklch[1]
@@ -299,27 +288,21 @@ function hexFromRgb(r, g, b) {
 	return `#${toByte(r)}${toByte(g)}${toByte(b)}`;
 }
 
-// --- channel arithmetic ---------------------------------------------------
-
-// Evaluate one hct() component: a channel ref (h/c/t), a number, or a calc()
-// expression over the seed channels.
 function evalComponent(text, seed) {
 	const value = text.trim();
 	if (value === "h" || value === "c" || value === "t") {
 		return seed[value];
 	}
 	if (/^[-+]?[\d.]/.test(value)) {
-		// unit-bearing number like "36deg"
+		// NOTE: A unit-bearing number like "36deg" is parsed with parseFloat.
 		return Number.parseFloat(value);
 	}
 	return evaluateExpr(value, seed);
 }
 
-// --- tiny math evaluator for calc()/min()/max()/clamp() ---------------------
-
 const MATH_FUNCS = new Set(["calc", "min", "max", "clamp"]);
 
-// Lex and evaluate a calc() expression. Supported: numbers, + - * /,
+// NOTE: Lex and evaluate a calc() expression. Supported: numbers, + - * /,
 // parentheses, channel refs (h/c/t) and the calc/min/max/clamp functions.
 function evaluateExpr(text, seed) {
 	return new ExprParser(text, seed).parse();

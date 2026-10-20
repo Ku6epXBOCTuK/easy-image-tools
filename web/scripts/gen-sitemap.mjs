@@ -1,8 +1,6 @@
-// Writes build/sitemap.xml right after `vite build` (adapter-static already
-// emitted the HTML there). The URL set is read back from the build output
-// instead of the registry: prerendered pages are exactly the pages that exist,
-// and a page whose HTML carries `noindex` is skipped, so the sitemap can never
-// drift from what was shipped or advertise a page we ask crawlers to ignore.
+// NOTE: Writes build/sitemap.xml right after `vite build` (adapter-static
+// already emitted the HTML there). The URL set is read back from the build
+// output and `noindex` pages are skipped, so the sitemap cannot drift.
 import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { BUILD_DIR, indexablePages, siteOrigin } from "./site-pages.mjs";

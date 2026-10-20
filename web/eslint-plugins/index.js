@@ -1,8 +1,3 @@
-/**
- * Local ESLint plugin "design-tokens": hardcoded colors/sizes are banned in
- * Svelte <style> blocks, everything comes from CSS tokens in app.css.
- * Rule details: web/eslint-plugins/README.md.
- */
 import noCategoryMismatch from "./design-tokens/no-category-mismatch.js";
 import noHardcodedInSvelte from "./design-tokens/no-hardcoded-in-svelte.js";
 import noTokenDefinitionInSvelte from "./design-tokens/no-token-definition-in-svelte.js";

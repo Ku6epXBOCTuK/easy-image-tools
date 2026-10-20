@@ -16,7 +16,7 @@ export function isLocale(value: unknown): value is Locale {
 	);
 }
 
-/** Long-form page copy. EN only until the `/ru/` prefix lands (docs/plan-seo.md). */
+// NOTE: Long-form page copy. EN only until the `/ru/` prefix lands (docs/plan-seo.md).
 export type SeoContent = {
 	metaTitle: string;
 	metaDescription: string;
@@ -25,14 +25,14 @@ export type SeoContent = {
 	faq: { q: string; a: string }[];
 };
 
-/** Page strings (`pages.<slug>`); `seo` absent while the copy is unwritten. */
+// NOTE: Page strings (`pages.<slug>`); `seo` absent while the copy is unwritten.
 export type PageStrings = {
 	title?: string;
 	description?: string;
 	seo?: SeoContent;
 };
 
-/** Hub copy (`categoryHubs.<id>`); EN only, same locale rule as `SeoContent`. */
+// NOTE: Hub copy (`categoryHubs.<id>`); EN only, same locale rule as `SeoContent`.
 export type CategoryHubContent = {
 	heading: string;
 	metaTitle: string;
@@ -40,16 +40,14 @@ export type CategoryHubContent = {
 	paragraphs: string[];
 };
 
-/**
- * SERP copy for a fixed site page (`site.<id>`: home, catalog, pipelines).
- * EN only, same locale rule as `SeoContent`.
- */
+// NOTE: SERP copy for a fixed site page (`site.<id>`: home, catalog, pipelines).
+// EN only, same locale rule as `SeoContent`.
 export type SiteSeo = {
 	metaTitle: string;
 	metaDescription: string;
 };
 
-/** Tool strings (`tools.<id>`): field labels, verdict keys. */
+// NOTE: Tool strings (`tools.<id>`): field labels, verdict keys.
 export type ToolStrings = {
 	params?: Record<string, string>;
 	options?: Record<string, Record<string, string>>;
@@ -73,7 +71,7 @@ export type FooterStrings = {
 };
 
 export type Dict = {
-	/** Brand name; identical in every locale, kept here as the single source. */
+	// NOTE: Brand name; identical in every locale, kept here as the single source.
 	brand: string;
 	header: HeaderStrings;
 	footer: FooterStrings;
@@ -95,10 +93,10 @@ export type Dict = {
 	search: Record<string, string>;
 	ui: Record<string, string>;
 	errors: Record<string, string>;
-	/** Absent in the base locale, EN from the registry is used. */
+	// NOTE: Absent in the base locale, EN from the registry is used.
 	pages?: Record<string, PageStrings>;
 	categoryHubs?: Record<string, CategoryHubContent>;
-	/** Fixed site pages (`site/home.json`, ...); EN only. */
+	// NOTE: Fixed site pages (`site/home.json`, ...); EN only.
 	site?: Record<string, SiteSeo>;
 	tools: Record<string, ToolStrings>;
 	actions?: Record<string, string>;

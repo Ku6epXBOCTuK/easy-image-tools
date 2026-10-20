@@ -11,7 +11,7 @@ describe("normalizeForSearch", () => {
 	});
 
 	it("folds yo to ye", () => {
-		// dictionary word containing U+0451, from the grayscale page title
+		// NOTE: Dictionary word containing U+0451, from the grayscale page title
 		const withYo = (ru.pages?.["grayscale-png"]?.title ?? "").split(" ")[0];
 		expect(withYo).toContain(YO);
 		const withYe = withYo.replaceAll(YO, YE);
@@ -25,7 +25,6 @@ describe("normalizeForSearch", () => {
 });
 
 describe("scoreDoc", () => {
-	// fixture derived from the ru dictionary entry of rotate-free-png
 	const page = ru.pages?.["rotate-free-png"];
 	const doc: SearchDoc = {
 		id: "rotate-free-png",
@@ -46,7 +45,7 @@ describe("scoreDoc", () => {
 	});
 
 	it("title substring scores higher than a description match", () => {
-		// last title word vs a long description word absent from the title
+		// NOTE: Last title word vs a long description word absent from the title
 		const titleWord = normTitle.split(" ").at(-1)!;
 		const descWord = normalizeForSearch(doc.descriptions[0])
 			.split(/[^\p{L}\p{N}]+/u)
@@ -62,7 +61,7 @@ describe("scoreDoc", () => {
 	});
 
 	it("a query with a yo/ye typo still matches", () => {
-		// title prefix with ye replaced by yo, derived from the ru title
+		// NOTE: Title prefix with ye replaced by yo, derived from the ru title
 		const typo = normTitle.slice(0, 8).replace(YE, YO);
 		expect(typo).toContain(YO);
 		expect(scoreDoc(doc, normalizeForSearch(typo))).not.toBeNull();

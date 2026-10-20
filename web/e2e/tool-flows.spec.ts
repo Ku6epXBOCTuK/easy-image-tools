@@ -46,7 +46,7 @@ test("resize-png keeps user-set size when another image is uploaded", async ({
 	await uploadImage(page, opaquePng);
 	const width = page.getByRole("spinbutton", { name: "Width" });
 	await width.fill("25");
-	// keepAspect is on by default: height is recomputed from 64×48 -> 19
+	// NOTE: keepAspect is on by default: height is recomputed from 64x48 -> 19
 	await expect(page.getByRole("spinbutton", { name: "Height" })).toHaveValue(
 		"19",
 	);
@@ -157,7 +157,7 @@ test("download format selector: JPG warns about alpha and produces JPEG", async 
 	await expect(
 		page.getByRole("status").filter({ hasText: /transparency/ }),
 	).toBeVisible();
-	// JPG has a quality setting in the dropdown
+	// NOTE: Choosing the JPG download format adds a Quality setting.
 	await rangeInput(page, "Quality").fill("10");
 	const { name, bytes } = await downloadResultBytes(page);
 	expect(name).toBe("flip-png.jpg");
@@ -205,7 +205,7 @@ test("split-into-parts-png downloads a zip with named PNG parts", async ({
 	await uploadImage(page, landscapePng);
 	await rangeInput(page, "Columns").fill("3");
 	await rangeInput(page, "Rows").fill("2");
-	// Entries are prefixed with the source name (run-chain glueName), so the
+	// NOTE: Entries are prefixed with the source name (run-chain glueName), so the
 	// base is derived from the fixture instead of repeated as a literal.
 	const base = landscapePng.name.replace(/\.[^.]+$/, "");
 	await expect(
@@ -243,7 +243,7 @@ test("blur: changing slider updates result image", async ({ page }) => {
 });
 
 test("runs without Web Worker (fallback)", async ({ browser }, testInfo) => {
-	// newContext() does not inherit use.baseURL from the config - pass it
+	// NOTE: newContext() does not inherit use.baseURL from the config - pass it
 	// explicitly, otherwise the relative goto() in helpers does not resolve.
 	const context = await browser.newContext({
 		baseURL: testInfo.project.use.baseURL,
@@ -283,7 +283,6 @@ test("chain: add step extends pipeline without reload and persists", async ({
 	});
 	await expect(stepTwo).toBeVisible();
 	await expect(resultImage(page)).toBeVisible();
-	// the chain survives a reload (localStorage)
 	await page.reload();
 	await expect(stepTwo).toBeVisible();
 	await expectNoErrorAlert(page);
@@ -300,11 +299,9 @@ test("chain: remove step returns to a single tool", async ({ page }) => {
 		exact: true,
 	});
 	await expect(stepTwo).toBeVisible();
-	// Click remove in the Grayscale card specifically: step order depends on
-	// render timing and can differ between engines. The card is matched by its
-	// own heading, not by hasText on the article - the per-step "Change tool"
-	// popover lists every tool title inside the card, so the text filter would
-	// match all cards at once.
+	// NOTE: The card is matched by its own heading, not by hasText: the per-step
+	// "Change tool" popover lists every tool title, so a text filter would match
+	// all cards at once. Step order depends on render timing.
 	const card = page.getByRole("article").filter({ has: stepTwo });
 	await card.getByLabel("Remove step").click();
 	await expect(stepTwo).toHaveCount(0);

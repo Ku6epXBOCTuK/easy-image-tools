@@ -26,12 +26,12 @@ describe("searchPages (cross-locale catalog search)", () => {
 
 	it("finds the ru title while the locale is en", () => {
 		setLocale("en");
-		// query derived from the ru title
+		// NOTE: Query derived from the ru title
 		const cropQuery = (ru.pages?.["crop-png"]?.title ?? "")
 			.toLowerCase()
 			.slice(0, 5);
 		expect(slugs(searchPages(PAGES, cropQuery))).toContain("crop-png");
-		// two middle words of the ru title (verb, X, Y, PNG)
+		// NOTE: Two middle words of the ru title (verb, X, Y, PNG)
 		const trimQuery = (ru.pages?.["trim-empty-space-png"]?.title ?? "")
 			.toLowerCase()
 			.split(" ")
@@ -54,7 +54,7 @@ describe("searchPages (cross-locale catalog search)", () => {
 	});
 
 	it("yo and ye spellings are one query", () => {
-		// query with U+0451 derived from the ru grayscale title, then folded to U+0435
+		// NOTE: Query with U+0451 derived from the ru grayscale title, then folded to U+0435
 		const qYo = (ru.pages?.["grayscale-png"]?.title ?? "")
 			.split(" ")[0]
 			.slice(0, 5);
@@ -77,10 +77,9 @@ describe("SEO copy and indexability", () => {
 		return text.split(/\s+/).filter((word) => word.length > 0).length;
 	}
 
-	// Copy is no longer partial: every registry page has a `seo` block, so the
+	// NOTE: Copy is no longer partial: every registry page has a `seo` block, so the
 	// guard here is only that the list is not empty (the `it.each` below must
-	// not run on nothing). Content gates for the copy live in
-	// `seo-copy.test.ts`, next to the files they read.
+	// not run on nothing). Content gates live in `seo-copy.test.ts`.
 	it("the suite is not vacuous (a page with copy exists)", () => {
 		expect(withCopy.length).toBeGreaterThan(0);
 		expect(withCopy.length).toBeLessThanOrEqual(PAGES.length);
@@ -101,7 +100,7 @@ describe("SEO copy and indexability", () => {
 		}
 	});
 
-	// The robots tag follows the presence of the `seo` block, so a stub block
+	// NOTE: The robots tag follows the presence of the `seo` block, so a stub block
 	// would index a thin page. These are the gates of docs/plan-seo.md S2.
 	it.each(withCopy.map((page) => [page.slug]))(
 		"%s passes the content gate before it can be indexed",

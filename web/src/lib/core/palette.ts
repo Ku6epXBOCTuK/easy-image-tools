@@ -32,7 +32,7 @@ export function rgbToHex({ r, g, b }: Rgb): string {
 	return `#${byte(r)}${byte(g)}${byte(b)}`;
 }
 
-/** h in [0..360), s,l in [0..1] */
+// NOTE: h in [0..360), s and l in [0..1]
 export function rgbToHsl({ r, g, b }: Rgb): Hsl {
 	const rn = r / 255;
 	const gn = g / 255;
@@ -187,7 +187,7 @@ export function sortPalette(hexes: string[], key: SortKey): string[] {
 		.map((s) => s.h);
 }
 
-/** Horizontal equal swatch columns (strip) or a grid of ~square cells (grid). */
+// NOTE: Horizontal equal swatch columns (strip) or a grid of ~square cells (grid).
 export function renderSwatches(
 	colors: string[],
 	width: number,

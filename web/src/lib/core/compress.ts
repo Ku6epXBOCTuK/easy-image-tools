@@ -2,7 +2,7 @@ import type { OutputMime } from "./io";
 import { quantizeImage } from "./quantize";
 import type { PixelImage } from "./types";
 
-/** Compression presets: level -> number of quantization colors. */
+// NOTE: Level maps to the number of quantization colors.
 export const COMPRESSION_LEVELS = {
 	light: 192,
 	balanced: 96,
@@ -12,11 +12,9 @@ export const COMPRESSION_LEVELS = {
 
 export type CompressionLevel = keyof typeof COMPRESSION_LEVELS;
 
-/**
- * Binary search for the largest k in [2..maxK] whose encoded size fits
- * targetBytes. If even k=2 does not fit, returns 2 (best effort).
- * encodeSize may return null (encode error), treated as "does not fit".
- */
+// NOTE: Binary search for the largest k in [2..maxK] whose encoded size fits
+// targetBytes; if even k=2 does not fit, 2 is returned (best effort).
+// A null encodeSize result (encode error) counts as "does not fit".
 export async function findMaxColorsWithin(
 	targetBytes: number,
 	maxK: number,
@@ -49,11 +47,9 @@ export async function findMaxColorsWithin(
 	return ok;
 }
 
-/**
- * Binary search for the highest quality percent in [min..max] whose encoded
- * size fits targetBytes. If even min does not fit, returns min (best effort).
- * encodeSize may return null (encode error), treated as "does not fit".
- */
+// NOTE: Binary search for the highest quality percent in [min..max] whose
+// encoded size fits targetBytes; if even min does not fit, min is returned.
+// A null encodeSize result (encode error) counts as "does not fit".
 export async function findQualityWithin(
 	targetBytes: number,
 	encodeSize: (quality: number) => Promise<number | null>,
@@ -93,12 +89,13 @@ export type EncodeFn = (
 
 export interface FitWithinBytesResult {
 	blob: Blob;
-	/** Size of the returned blob; > targetBytes means the limit was unreachable. */
+	// NOTE: Size of the returned blob; a value above targetBytes means the
+	// limit was unreachable.
 	achievedBytes: number;
 }
 
-/** Encodes img to fit targetBytes (quality search for lossy, color count for
- *  PNG; BMP as-is). `encodeFn` injected (core/io.encode): policy stays DOM-free. */
+// NOTE: Encodes img to fit targetBytes (quality search for lossy, color count
+// for PNG, BMP as-is); encodeFn is injected so this module stays DOM-free.
 export async function fitWithinBytes(
 	img: PixelImage,
 	mime: OutputMime,

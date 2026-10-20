@@ -50,7 +50,7 @@ export const TOOLS: Tool[] = [
 	...textTools,
 ] as unknown as Tool[];
 
-// Not annotated as Page[] on purpose: the literal slug types must survive
+// NOTE: Not annotated as Page[] on purpose: literal slug types must survive
 // for PageSlug below; every consumer treats PAGES as a readonly Page list.
 export const PAGES = [
 	...geometryPages,
@@ -63,14 +63,13 @@ export const PAGES = [
 	...textPages,
 ];
 
-/** Union of existing page slugs (groups use `satisfies Page[]`, so literals survive). */
 export type PageSlug = (typeof PAGES)[number]["slug"];
 
 export function getTool(id: string): Tool | undefined {
 	return TOOLS.find((tool) => tool.id === id);
 }
 
-/** The only way to get a page: route, crumb, and file name derive from slug. */
+// NOTE: The only way to get a page: route, crumb, and file name derive from slug.
 export function getPageBySlug(slug: string): Page | undefined {
 	return PAGES.find((page) => page.slug === slug);
 }

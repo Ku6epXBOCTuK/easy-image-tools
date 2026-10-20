@@ -23,9 +23,9 @@ describe("pipeline: step chain", () => {
 
 	it("isChainable: image->image and image->files allowed, terminal and text-input not", () => {
 		expect(isChainable("resize")).toBe(true);
-		expect(isChainable("split-into-parts")).toBe(true); // result: files, fan-out
-		expect(isChainable("to-base64")).toBe(false); // result: text
-		expect(isChainable("from-svg")).toBe(false); // input: text
+		expect(isChainable("split-into-parts")).toBe(true);
+		expect(isChainable("to-base64")).toBe(false);
+		expect(isChainable("from-svg")).toBe(false);
 		expect(isChainable("unknown-tool")).toBe(false);
 	});
 
@@ -40,7 +40,6 @@ describe("pipeline: step chain", () => {
 		const grown = insertStep(chain, 0, "resize");
 		expect(grown.map((s) => s.id)).toEqual(["resize", "crop"]);
 		expect(grown[0].params).toHaveProperty("keepAspect");
-		// original chain not mutated
 		expect(chain).toHaveLength(1);
 	});
 

@@ -1,8 +1,6 @@
-// Design-token audit, one command: theme parity, hct-only color authorship and
-// unused-token warnings over src/app.css.
-//
-// Usage: pnpm --dir web exec node scripts/check-tokens.mjs
-// Exit code 1 when a failing check (parity or color authorship) reports.
+// NOTE: Design-token audit in one command: theme parity, hct-only color
+// authorship and unused-token warnings over src/app.css. Exit code 1 when a
+// failing check reports. Usage: pnpm --dir web exec node scripts/check-tokens.mjs
 
 import { FILE, parsePreview } from "./token-audit/helpers.mjs";
 import { checkParity } from "./token-audit/parity.mjs";

@@ -59,7 +59,8 @@ function findChunk(png: Buffer, type: string): number {
 	throw new Error(`PNG chunk ${type} not found`);
 }
 
-/** Builds a valid RGBA PNG at runtime (8-bit, filter type 0, deflate/zlib). */
+// NOTE: Builds a valid RGBA PNG: 8-bit channels, filter type 0 on every row,
+// deflate/zlib compressed IDAT.
 export function makePng(
 	width: number,
 	height: number,
@@ -279,7 +280,7 @@ export const svgMarkup =
 const PIXEL_BYTES = (r: number, g: number, b: number, a: number): string =>
 	`${r} ${g} ${b} ${a}`;
 
-/** Input row for bytes-to-png / rgb-values-to-png, 32 pixels per line by default. */
+// NOTE: Input row for bytes-to-png / rgb-values-to-png, 32 pixels per line by default.
 export function pixelRow(
 	count: number,
 	rgba: [number, number, number, number],

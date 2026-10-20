@@ -1,18 +1,6 @@
-// Tests for i18n/dict-consistency (web/eslint-plugins/i18n/dict-consistency.js).
-//
-// The rule reads its own dict dir from disk (LOCALES in dict.ts + sibling
-// locale files), so it runs through the Linter API with cwd pinned to the
-// fixture tree (see __tests__/helpers.ts). The committed fixtures at
-// __fixtures__/src/lib/i18n/ are mutually consistent (zero-warn) — tests feed
-// MODIFIED variants of en.ts / ru.ts as the linted code so each check is
-// exercised against the on-disk references.
-//
-// Reporting contract: each file reports only its OWN gaps. A key missing in a
-// file produces exactly ONE `missingKey` warning, emitted on the incomplete
-// file itself (the union of all keys comes from the on-disk dicts), regardless
-// of how many other locales have the key. Placeholder parity is compared
-// against the canonical set — the one shared by the most locales (ties by
-// LOCALES order) — so a deviation is reported exactly once.
+// NOTE: Each file reports only its OWN gaps: a key missing in a file produces
+// exactly ONE `missingKey` warning on that file, and placeholder parity is
+// compared against the canonical set (the one shared by the most locales).
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -70,7 +58,8 @@ describe("i18n/dict-consistency", () => {
 	});
 
 	it("allows page texts only in the base locale", () => {
-		// EN не переводит заголовки страниц: их берёт EN-строка реестра.
+		// NOTE: EN does not translate page titles: they come from the EN
+		// registry string.
 		expect(
 			messageIds(lint(fixture("en.ts"), "lib/i18n/en.ts", registryPolicy)),
 		).toEqual([]);

@@ -76,8 +76,8 @@ export async function renderText(page: Page, value: string): Promise<void> {
 }
 
 export async function uploadImage(page: Page, file: SourceFile): Promise<void> {
-	// The page can have two input[type=file]: dropzone + Open image button;
-	// the canonical one is the first (the button in the panel header).
+	// NOTE: The page can have two input[type=file] (dropzone + Open image
+	// button); the canonical one is the first, the button in the panel header.
 	const input = page.locator('input[type="file"]').first();
 	await expect(input).toBeAttached();
 	await input.setInputFiles({
@@ -117,7 +117,7 @@ export async function uploadViaDrop(
 }
 
 export async function downloadResultFile(page: Page): Promise<Download> {
-	// Split button: the main part is "Download" (image) or "Download ZIP" (files).
+	// NOTE: Split button: the main part is "Download" (image) or "Download ZIP" (files).
 	const button = page.getByRole("button", { name: /^Download( ZIP)?$/ });
 	await expect(button).toBeVisible();
 	const [download] = await Promise.all([

@@ -3,7 +3,7 @@ import { createPixelImage } from "./types";
 import { rgbToHsl } from "./palette";
 import type { Rgb } from "./palette";
 
-/** All components normalized to 0..1 in declaration order. */
+// NOTE: Components are normalized to 0..1 and listed in declaration order.
 export type SpaceComponents = number[];
 
 export type SpaceId = "hsl" | "hsv" | "hsi" | "cmyk" | "ycbcr" | "lab";
@@ -75,7 +75,7 @@ function rgbToLab({ r, g, b }: Rgb): [number, number, number] {
 	const fx = f(x);
 	const fy = f(y);
 	const fz = f(z);
-	// L normalized to 0..1; a/b centered at 0.5 with +-0.5 range
+	// NOTE: L normalized to 0..1; a/b centered at 0.5 with a range of +-0.5
 	return [
 		(116 * fy - 16) / 100,
 		(500 * (fx - fy)) / 250 + 0.5,
@@ -105,11 +105,8 @@ export const SPACES: Record<SpaceId, SpaceDef> = {
 
 export type ChannelDisplay = "gray" | "color";
 
-/**
- * Visualizes the selected space: each component goes to its own result
- * channel (mode 'color'), or the selected component is drawn in grayscale
- * (mode 'gray').
- */
+// NOTE: Each component goes to its own result channel (mode 'color'), or
+// the selected component is drawn in grayscale (mode 'gray').
 export function renderSpace(
 	img: PixelImage,
 	space: SpaceId,

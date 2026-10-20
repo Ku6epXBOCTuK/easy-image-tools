@@ -9,7 +9,6 @@ import { SITE_PAGE_IDS } from "./seo-copy";
 
 const I18N_DIR = fileURLToPath(new URL("./", import.meta.url));
 
-// Guard for the long-form SEO layer (`lib/i18n/seo-copy.ts`)
 function jsonNames(dir: string): string[] {
 	return readdirSync(join(I18N_DIR, dir))
 		.filter((name) => name.endsWith(".json"))
@@ -68,7 +67,7 @@ describe("seo copy files", () => {
 });
 
 describe("seo copy content", () => {
-	// The robots tag follows the presence of the `seo` block, so a stub block
+	// NOTE: The robots tag follows the presence of the `seo` block, so a stub block
 	// would index a thin page. Same gates as schema-tool-strings.test.ts, kept
 	// here so the layer is self-sufficient (docs/plan-seo.md, S2a).
 	it.each(TOOL_FILES)("%s has a full seo block", (slug) => {
