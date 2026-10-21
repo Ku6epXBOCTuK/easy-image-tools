@@ -86,10 +86,10 @@ Layering, data flow, and the recipe for adding a tool or a field kind:
 
 ## Roadmap
 
-See [`docs/roadmap.md`](docs/roadmap.md) for phases and
-[`docs/plan-platform.md`](docs/plan-platform.md) for the API/PWA direction. The
-current focus is SEO/GEO ([`docs/plan-seo.md`](docs/plan-seo.md)) plus the
-product tasks in [`docs/backlog.md`](docs/backlog.md).
+See [`docs/roadmap.md`](docs/roadmap.md) for phases, the API/PWA direction and
+the font plan. The current focus is SEO/GEO
+([`docs/plan-seo.md`](docs/plan-seo.md)) plus the open product tasks in
+XBOCT-Log (project `eit`).
 
 ## For AI agents
 

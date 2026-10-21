@@ -17,7 +17,7 @@
 	const chain = $derived(mounted && chainId ? getChain(chainId) : undefined);
 
 	// NOTE: Virtual page: a named chain is addressable on its own, so the tool
-	// page slug no longer applies (docs/backlog.md, idea 3).
+	// page slug no longer applies.
 	const virtualPage = $derived<Page | undefined>(
 		chain
 			? {

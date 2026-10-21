@@ -1,8 +1,7 @@
 # Стратегия e2e-тестирования
 
 > Статус: **active**. Канонические правила для `web/e2e/`; продуктовые решения и
-> известные баги остаются в `docs/backlog.md` и
-> `docs/checklist-manual-testing.md`.
+> известные баги остаются в XBOCT-Log и `docs/checklist-manual-testing.md`.
 
 ## 1. Что проверяем
 
@@ -81,7 +80,7 @@ raw-селекторы. Harness выбирается по контракту: im
 text — `renderText` + результат, generator — auto-run без upload, verdict —
 `verdictStatus`, files — отдельный ZIP-сценарий.
 
-`test.fixme` допускается только для зарегистрированной проблемы в backlog или
+`test.fixme` допускается только для зарегистрированной проблемы в XBOCT-Log или
 checklist. В комментарии указывается ссылка на неё. После исправления тест и
 ссылка обновляются вместе.
 

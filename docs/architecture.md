@@ -64,12 +64,12 @@ Coverage). Всё остальное в `core/**` — чистые функци�
   перестают читаться). Экспортный JSON-формат не устоялся и может меняться до
   фазы 11 `docs/roadmap.md`.
 - **Разделения страниц, которые делят один инструмент** — сводит все
-  convert-страницы на один инструмент; задача в `docs/backlog.md`. Пока
-  `registry.test.ts` не требует, чтобы на инструмент ссылались две страницы, а
-  на практике не ссылается ни одна.
+  convert-страницы на один инструмент (`EIT-35`). Пока `registry.test.ts` не
+  требует, чтобы на инструмент ссылались две страницы, а на практике не
+  ссылается ни одна.
 
-Задачи по обоим пунктам — в `docs/backlog.md`; архитектурные решения по
-пайплайну — `docs/roadmap.md`.
+Задачи по обоим пунктам — в XBOCT-Log; архитектурные решения по пайплайну —
+`docs/roadmap.md`.
 
 ## 2. Поток данных
 
@@ -180,9 +180,15 @@ registry/{tools,pages}/*.ts
 `clampSourceAwareMaxes`, `withAspectLock`), `values.ts` (`defaultSchemaParams`,
 `applySourceDefaults`, `sanitizeSchemaParams`).
 
-- **Виды поля** (`fieldSpecs`): `number`, `slider`, `color`, `select`, `text`,
-  `checkbox`, `dimension`, `color-pair`, `colors`, `offset`, `position9`,
-  `font-style`, `plate`, `gradient`.
+- **Виды поля** (`fieldSpecs`): `number`, `slider`, `color`, `select`,
+  `segmented`, `text`, `checkbox`, `dimension`, `color-pair`, `colors`,
+  `offset`, `position9`, `font-style`, `plate`, `gradient`.
+- **`segmented` и `select`:** короткий закрытый список (2–5 опций) — `segmented`
+  (кнопки видны сразу, без раскрытия); длинный список (9 позиций) и опции,
+  зависящие от данных, — `select`. Сетка 3×3 — `position9`, не `select`.
+- **Defaults ≠ bounds.** `applySourceDefaults` подставляет стартовое значение от
+  размера источника; динамические min/max от источника — отдельный механизм
+  (`EIT-89`) и с defaults не смешиваются.
 - **Фабрика `field.*`** создаёт `Field<T>`; UI-контрол подбирается в
   `SchemaFields.svelte` по `spec.kind` через карту `FIELDS`.
 - **`schema.layout`** группирует поля (`resolveLayoutGroups`); раскладка
