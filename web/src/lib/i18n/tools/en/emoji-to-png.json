@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Emoji to PNG - Free Transparent Emoji Image Maker",
 		"metaDescription": "Turn any emoji or Unicode symbol into a transparent PNG of the size you choose. Free, no upload, no signup, rendered and saved in your browser.",
-		"longDescription": "An emoji PNG is a single character drawn onto a transparent square at the size you ask for, which is what you need when a symbol has to be an image rather than text - a favicon, an avatar, an app icon, a bullet in a document that will not keep its own fonts. Type any emoji or Unicode symbol into the field and pick the Image size; the character is drawn by the platform emoji font at roughly 72 percent of the canvas, centred, on a fully transparent background, and the result is encoded as a PNG in your browser. No upload is needed and no file ever leaves the device, and you can also save it as JPG, WebP or BMP if you need one of those. The honest limitation is that the picture comes from the font on your operating system, not from this tool: the same character looks different on Windows, macOS, Android and Linux, so export it on the machine that matters and check the result on the other platforms.",
+		"longDescription": "Emoji to PNG draws a single character onto a transparent square at the size you ask for — what you need when a symbol has to be an image rather than text: a favicon, an avatar, an app icon, a bullet in a document that will not keep its own fonts. Type any emoji or Unicode symbol and pick the Image size; the character is drawn by the platform emoji font at roughly 72 percent of the canvas, centred, on a fully transparent background. The picture comes from the font on your operating system, not from this tool, so the same character looks different on Windows, macOS, Android and Linux — export it on the machine that matters.",
+		"facts": [
+			"Drawn entirely in your browser: no upload, no server, no signup.",
+			"Any emoji or Unicode symbol; image size from 32 to 1024 px, always a square.",
+			"The background is fully transparent — keep PNG or WebP, JPG flattens it.",
+			"The glyph comes from your system's emoji font, so it differs per platform.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the image is drawn from the character you type.",
 			"Type or paste an emoji, or any Unicode symbol, into the Emoji field.",

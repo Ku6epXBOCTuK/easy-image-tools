@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Extract Color Channel PNG - Red, Green, Blue, Free",
 		"metaDescription": "Pull the red, green or blue channel out of an image and see it as shades of gray. Free and instant, nothing is uploaded - the channel split happens in your browser.",
-		"longDescription": "Extracting a channel keeps one of the three color values of every pixel and writes it into all three output channels, so the picture comes back as a grayscale image in which bright means a lot of that color. It is a diagnostic view rather than a converter: on a photo the green channel usually reveals the most detail because human vision is most sensitive to it, while blue picks up shadows. Everything runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is preserved.",
+		"longDescription": "Extract channel keeps one of the three color values of every pixel and writes it into all three output channels, so the picture comes back as a grayscale image in which bright means a lot of that color. It is a diagnostic view rather than a converter: on a photo the green channel usually reveals the most detail because human vision is most sensitive to it, while blue picks up shadows. Everything runs in your browser, and the alpha channel is preserved.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Red, green or blue — the chosen value is shown as shades of gray.",
+			"A diagnostic view; the alpha channel is carried through, not shown.",
+			"For a real monochrome picture use the grayscale tool instead.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Choose Channel: Red, Green or Blue.",

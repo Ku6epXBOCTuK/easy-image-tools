@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Draw Grid PNG - Free Grid Line Image Generator",
 		"metaDescription": "Draw a grid PNG in your browser: choose columns, rows, line width and color over a transparent or white background. Free, no upload, no signup.",
-		"longDescription": "A grid image is a set of evenly spaced horizontal and vertical lines drawn on a canvas, and this page draws one from four numbers: how many columns, how many rows, how thick the lines are and what color they are. The background is yours to choose - leave Opacity at zero and the result is a transparent PNG with nothing but the lines, which is what you want to overlay on a mockup, a screenshot or a photo; raise it and the background is painted white at that opacity instead. No upload is involved and no source file exists: the grid is rendered in your browser and can be saved as PNG, JPG, WebP or BMP. Use it to check a layout, to draw a table skeleton, or to produce a calibration target. The honest detail is that the column and row counts are the number of spaces between lines, so a count of 8 draws nine lines with one flush against each edge, and the cells are only square when the canvas is.",
+		"longDescription": "Draw a grid renders evenly spaced horizontal and vertical lines on a canvas from four numbers: how many columns, how many rows, how thick the lines are and what color they are. Leave Opacity at zero and the result is a transparent PNG with nothing but the lines — what you want to overlay on a mockup, a screenshot or a photo; raise it and the background is painted white at that opacity instead. There is no source file: the grid is rendered in your browser. Use it to check a layout, draw a table skeleton, or produce a calibration target.",
+		"facts": [
+			"Rendered entirely in your browser: no upload, no server, no signup.",
+			"Cols and Rows from 1 to 64 — the count is the spaces between lines, so 8 gives 9 lines.",
+			"Line width from 1 to 40 px, any line color.",
+			"Background transparent at Opacity 0, white at higher values.",
+			"Cells are square only when the canvas is square and the counts match.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the grid is drawn from the Cols, Rows, Line width and Line color values.",
 			"Set the Canvas size in pixels, or pick a preset.",

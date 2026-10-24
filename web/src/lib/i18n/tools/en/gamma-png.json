@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Gamma Correction PNG - Free Brightness Fix, No Upload",
 		"metaDescription": "Lift or drop the midtones without touching black or white. Free, no upload, no signup - gamma correction runs on your device, in your browser, instantly.",
-		"longDescription": "Gamma correction reshapes the midtones of a picture without moving the black and white end points. The value is used as a lookup on every channel: below 1 the curve pulls midtones down so the picture darkens, above 1 it lifts them so it brightens, and exactly 1 leaves the image alone. That is the tool for a washed-out scan, a photo that looks flat next to a screenshot, or an image saved with the wrong gamma assumption. It runs in your browser on PNG, JPG, WebP and BMP, uploads nothing, and keeps the alpha channel intact.",
+		"longDescription": "Gamma correction reshapes the midtones of a picture without moving the black and white end points. The value is used as a lookup on every channel: below 1 the curve pulls midtones down so the picture darkens, above 1 it lifts them so it brightens, and exactly 1 leaves the image alone. That is the tool for a washed-out scan, a photo that looks flat next to a screenshot, or an image saved with the wrong gamma assumption. It runs in your browser and keeps the alpha channel intact.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Below 1 darkens the midtones, above 1 lifts them, 1 is the untouched original.",
+			"Black and white end points stay put — unlike the brightness slider, nothing clips.",
+			"The alpha channel and the dimensions never change.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Gamma below 1 for darker midtones or above 1 for lighter ones; 1 is the untouched original.",

@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Dark Pixel Mask - Mark Shadow Areas Of An Image",
 		"metaDescription": "Select the pixels darker than a luminance threshold and see them as a mask. Runs free in your browser - your image is never uploaded.",
-		"longDescription": "The dark counterpart of the light pixel mask: this tool marks every pixel below a brightness threshold, using the same luminance measure as the eye perceives light. It is the way to find the shadow side of a photo, to see how much of an image is almost black, or to pull out the dark areas for separate editing. Lowering the threshold makes the mask grow, so it also covers midtones and any color that is simply deep. The mask is rendered in your browser and the image itself is never uploaded.",
+		"longDescription": "Dark pixel mask marks every pixel below a brightness threshold, using the same luminance measure the eye perceives — the dark counterpart of the light pixel mask. It is the way to find the shadow side of a photo, to see how much of an image is almost black, or to pull out the dark areas for separate editing. Lowering the threshold makes the mask grow, so it also covers midtones and any color that is simply deep. The mask is rendered in your browser and the image itself is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Marks pixels below a luminance threshold — measures light, not hue.",
+			"Two views: a black and white mask, or a highlight over the original picture.",
+			"Lower the threshold and the mask grows into shadows and midtones.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Choose the view: a black and white mask, or a highlight over the original picture.",

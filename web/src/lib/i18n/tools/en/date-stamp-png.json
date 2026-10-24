@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Date Stamp PNG - Free Browser Tool With a Format String",
 		"metaDescription": "Write the current date and time onto a picture with a YYYY-MM-DD format string, then style it like any caption. Free, it runs in your browser and nothing is uploaded.",
-		"longDescription": "A date stamp writes the current date and time onto an image, so a photo, a screenshot or a scan carries visible proof of when it was made. Instead of typing a caption by hand you type a short format string and the tokens are substituted: YYYY for the year, MM and DD for the month and day, and hh, mm and ss for hours, minutes and seconds, read from the clock of your device in local time. Everything else you type is kept as it is, so the separators are yours to choose - dashes, slashes, dots or spaces. The stamp is then styled like any other caption: font family, size, weight and color, one of nine positions on a 3x3 grid, a margin from the edge and an optional backing plate for contrast. The lettering is drawn by the browser on your device, so the picture is never uploaded, and the result saves as PNG, JPG, WebP or BMP.",
+		"longDescription": "Date stamp writes the current date and time onto an image, so a photo, a screenshot or a scan carries visible proof of when it was made. Instead of typing a caption by hand you type a short format string and the tokens are substituted — YYYY for the year, MM and DD for the month and day, hh, mm and ss for hours, minutes and seconds, read from the clock of your device in local time. Everything else you type is kept as it is, so the separators are yours to choose. The stamp is styled like any other caption: font, size, weight, color, one of nine positions, a margin and an optional backing plate. The lettering is drawn by the browser on your device, so the picture is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Tokens YYYY, MM, DD, hh, mm, ss; every other character is kept as you type it.",
+			"The date is read from your device clock in local time — a visible label, not file metadata.",
+			"Nine positions on a 3x3 grid, margin, and an optional backing plate for contrast.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Edit the Date format field - YYYY-MM-DD hh:mm:ss fills year, month, day, hours, minutes and seconds.",

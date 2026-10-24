@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Data URI to PNG - Free Browser Decoder, Nothing Uploaded",
 		"metaDescription": "Turn a data:image/...;base64,... value from a stylesheet or a template back into a downloadable picture. Paste the whole string - free, private, no signup.",
-		"longDescription": "Decoding a data URI means taking the whole value out of an attribute - the data:image/png;base64,... string that sits inside src, href or background-image - and turning it back into a picture. Paste that value as it appears in your code and the prefix is removed, the payload decoded and the image shown, ready to save as a real file. That is what makes this useful when a stylesheet contains a giant inline image and you need to see what is inside it, or when a template holds an embedded icon that has to land on disk. The decoding runs in your browser, so the string is never sent anywhere, and what comes back is decoded pixels re-encoded: the picture is faithful, the file bytes may differ.",
+		"longDescription": "Decode a data URI turns the whole value out of an attribute — the data:image/png;base64,... string that sits inside src, href or background-image — back into a picture. Paste that value as it appears in your code and the prefix is removed, the payload decoded and the image shown, ready to save as a real file. That is what makes this useful when a stylesheet contains a giant inline image and you need to see what is inside it, or when a template holds an embedded icon that has to land on disk. The decoding runs in your browser, so the string is never sent anywhere.",
+		"facts": [
+			"Decoding runs entirely in your browser: nothing is sent to a server.",
+			"Paste the complete data: URI or the bare payload — the prefix is stripped automatically.",
+			"A data URI is the image itself; treat it as sensitive when sharing code.",
+			"The picture is faithful; the file bytes may differ from the original.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Copy the complete data: URI, media type and base64 payload, comma included.",
 			"Paste it into the text field on the left - the prefix is stripped automatically.",

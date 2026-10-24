@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Fit Image on Background - Center a PNG in Browser, Free",
 		"metaDescription": "Center an image on a canvas of any size, over a transparent or solid background, right in your browser. Free, no upload, no signup, instant download.",
-		"longDescription": "Fitting an image onto a background places it in the middle of a new canvas of the size you choose. Use it to give a product shot a consistent square backdrop, to give a logo room around it, or to drop a picture into the exact frame size a template expects. The image keeps its own resolution and is never scaled down to fit, so a small picture stays small and centered rather than being blown up to the edges. Set the canvas size in pixels, then decide what fills the space around it: Opacity at 0 leaves the margin fully transparent, and raising it fills the margin with the Background color you pick. Processing happens in your browser, so PNG, JPG, WebP and BMP are loaded and saved without ever leaving your device.",
+		"longDescription": "Fit PNG onto background places an image in the middle of a new canvas of the size you choose — a consistent square backdrop for a product shot, room around a logo, or the exact frame size a template expects. The image keeps its own resolution and is never scaled to fit, so a small picture stays small and centered rather than being blown up to the edges. Opacity at 0 leaves the margin fully transparent; raising it fills the margin with the Background color you pick. Processing happens in your browser, and the files never leave your device.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"An exact target canvas with the image centered, never scaled.",
+			"A picture larger than the canvas grows the canvas instead of being cropped.",
+			"Margin transparent at Opacity 0, or filled with the Background color.",
+			"For the same margin on all four sides use the add padding tool instead.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Canvas size in width and height, or choose one of the presets.",

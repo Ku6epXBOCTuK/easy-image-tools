@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Check If PNG Is Grayscale - Free Local Test",
 		"metaDescription": "Test whether an image uses only shades of gray, or has any color in it. Free, no upload, no signup - the check runs in your browser and the file never leaves it.",
-		"longDescription": "A grayscale image is one where the red, green and blue values of every pixel are identical, which means it can be displayed as pure shades of gray. This test checks that condition on the decoded pixels and answers with a plain yes or no. It runs locally in your browser, so the file is decoded on your own device and is never uploaded. Upload accepts PNG, JPG, WebP and BMP, so the same check works for any of them - the page keeps the png name only because that is how people search for this test.",
+		"longDescription": "Check if a PNG is grayscale tests whether the red, green and blue values of every pixel are identical — the condition for an image that can be displayed as pure shades of gray — and answers with a plain yes or no. The check runs on the decoded pixels in your browser, so the file is decoded on your own device and is never uploaded. Upload accepts PNG, JPG, WebP and BMP, so the same check works for any of them; the page keeps the png name only because that is how people search for this test.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"No settings: the verdict appears as soon as the image loads.",
+			"A no means at least one pixel carries color — often only compression noise.",
+			"The show color pixels mask displays exactly where the color sits.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"The verdict appears immediately; there are no settings to change.",

@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Trace the Contour of a PNG Shape - Free, No Upload",
 		"metaDescription": "Reduce a cutout to a line drawing: keep only the boundary band, 1 to 5 px wide, painted in the color you pick. Free and unlimited, entirely inside your browser.",
-		"longDescription": "Finding the contour reduces a cutout to a line drawing: the shape is shrunk by the Thickness you set, and the pixels that vanish in that step - the band along the boundary - are kept and painted in the Stroke color. Everything else, including the whole interior of the object, becomes fully transparent, so what comes out is an outline rather than a picture with a border. The line is Thickness pixels wide, from 1 to 5 px, and it sits inside the silhouette. PNG, JPG, WebP and BMP are accepted, and the tracing happens in your browser.",
+		"longDescription": "Trace the outline reduces a cutout to a line drawing: the shape is shrunk by the Thickness you set, and the pixels that vanish in that step — the band along the boundary — are kept and painted in the Stroke color. Everything else, including the whole interior of the object, becomes fully transparent, so what comes out is an outline rather than a picture with a border. The line sits inside the silhouette. The tracing happens in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Thickness from 1 to 5 px; the line eats into the object, not around it.",
+			"Only the boundary band survives — the interior becomes fully transparent.",
+			"A shape thinner than the line turns into a solid blob; hairlines need Thickness 1.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the cutout into the source area, or pick a file from your device.",
 			"Set Thickness from 1 to 5 px; 1 px gives the finest line.",

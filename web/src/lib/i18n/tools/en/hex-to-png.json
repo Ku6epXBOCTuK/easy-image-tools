@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "HEX Pixels to PNG - Free Image Builder, Nothing Uploaded",
 		"metaDescription": "Assemble an image from rrggbbaa hex values: paste the tokens, set the width, the height is calculated automatically. Free, private, nothing is uploaded.",
-		"longDescription": "Building an image from hex pixel values is the reverse of dumping one: every pixel is written as eight hexadecimal characters - rrggbbaa, two each for red, green, blue and alpha - and this page assembles those values back into the picture they came from. Paste them into the text field, set Width to the number of pixels in a row, and the height is worked out from the total, so a 64 by 64 sprite is 4096 tokens at a width of 64. The format is strict on purpose: each token must be exactly eight hex characters and whitespace is the only separator, which keeps the list readable as a grid. It is also the form a canvas script or a shader snippet already uses, where a color constant is written as 0xrrggbbaa.",
+		"longDescription": "Build an image from hex pixel values assembles a picture from rrggbbaa tokens — every pixel written as eight hexadecimal characters, two each for red, green, blue and alpha. Paste them into the text field, set Width to the number of pixels in a row, and the height is worked out from the total; a 64 by 64 sprite is 4096 tokens at a width of 64. The format is strict on purpose: each token must be exactly eight hex characters and whitespace is the only separator. It is also the form a canvas script or a shader snippet already uses, where a color constant is written as 0xrrggbbaa.",
+		"facts": [
+			"Assembled entirely in your browser: no upload, no server, no signup.",
+			"Every token is exactly eight hex characters, rrggbbaa; shorthand is rejected.",
+			"Only the width is typed — the height follows from the token count.",
+			"A wrong width shears the picture row by row, the fastest way to spot it.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Paste the rrggbbaa tokens into the text field; spaces and line breaks between them are fine.",
 			"Set Width to the pixel count of one row - the height follows from the token count.",

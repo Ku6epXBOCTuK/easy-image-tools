@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "PNG Dithering Tool - Floyd-Steinberg and Bayer, Free",
 		"metaDescription": "Reduce a picture to 2 to 16 colors without the flat banding, using Floyd-Steinberg error diffusion or an ordered Bayer 4x4 pattern. Free, no upload, runs locally.",
-		"longDescription": "Dithering is how a picture is reduced to very few colors without the harsh flat patches that usually come with it. The tool builds a small palette from the image, then either diffuses the rounding error into neighbouring pixels with Floyd-Steinberg or adds an ordered Bayer 4x4 offset before choosing the nearest palette color. The result uses only a handful of colors yet keeps the gradients readable. It runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is untouched.",
+		"longDescription": "Dithering reduces a picture to very few colors without the harsh flat patches that usually come with it. The tool builds a small palette from the image, then either diffuses the rounding error into neighbouring pixels with Floyd-Steinberg or adds an ordered Bayer 4x4 offset before choosing the nearest palette color — the result uses only a handful of colors yet keeps the gradients readable. It runs in your browser, and the alpha channel is untouched.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Color count from 2 to 16; the palette is built from the image itself.",
+			"Floyd-Steinberg for a photographic look, Bayer 4x4 for a regular ordered grid.",
+			"The dimensions and the alpha channel never change.",
+			"For your own named colors use the custom palette tool first.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Color count between 2 and 16; 4 is a good starting point for a picture that should still read as a picture.",

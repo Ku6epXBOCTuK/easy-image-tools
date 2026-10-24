@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Create Placeholder PNG - Free Size Label Image Maker",
 		"metaDescription": "Make a placeholder PNG with its dimensions printed in the center. Free, no upload, no signup - built in your browser as PNG, JPG, WebP or BMP.",
-		"longDescription": "A placeholder image is a stand-in rectangle that shows its own size, so a layout has something real to hold before the artwork exists and every image slot looks the right shape. This page fills a canvas of the size you choose with a background color and prints the width and height in the middle, for example 800 x 400, in a bold sans face scaled to about 14 percent of the shorter side. Nothing is uploaded because there is nothing to upload: the rectangle is drawn on your device and saved as PNG, JPG, WebP or BMP. Turn off Show text and you get a plain flat rectangle of the same size, which is handy when you only need the dimensions to exist. The one honest limitation is extreme proportions: the label has a minimum readable size, so on a very lopsided canvas such as 40 pixels wide by 500 tall the text can be wider than the canvas and gets clipped at the edges.",
+		"longDescription": "Create a placeholder image fills a canvas of the size you choose with a background color and prints its own dimensions in the middle — a stand-in rectangle, for example 800 x 400, so a layout has something real to hold before the artwork exists and every image slot looks the right shape. The label is a bold sans face scaled to about 14 percent of the shorter side. Turn off Show text and you get a plain flat rectangle of the same size. The rectangle is drawn on your device, with nothing to upload.",
+		"facts": [
+			"Drawn entirely in your browser: no upload, no server, no signup.",
+			"Any canvas size, with presets; the dimensions print in the center.",
+			"Show text off gives a plain flat rectangle.",
+			"On extremely lopsided canvases the label can exceed the width and is clipped.",
+			"For a transparent canvas with no lettering use the create empty PNG tool.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the rectangle is drawn from the size and color values you set.",
 			"Set the Canvas size in pixels, or pick one of the presets.",

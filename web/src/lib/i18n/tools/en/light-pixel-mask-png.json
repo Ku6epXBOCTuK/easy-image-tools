@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Light Pixel Mask - Mark Bright Areas Of An Image",
 		"metaDescription": "Select the pixels brighter than a luminance threshold and see them as a mask. Free and local: the image is analyzed in your browser, never uploaded.",
-		"longDescription": "Brightness of a pixel is measured here as luminance, the weighted mix of the red, green and blue values that matches how the eye perceives light. This tool marks every pixel above the threshold you set, so you can pull out highlights, check whether a photo is overexposed, or separate the light part of an image from the rest to work on it separately. The threshold is a percentage of full brightness, and the default is set high so only genuinely bright pixels appear. Everything runs in your browser, so the image is never uploaded.",
+		"longDescription": "Light pixel mask marks every pixel above a luminance threshold — the weighted mix of red, green and blue that matches how the eye perceives light. Use it to pull out highlights, check whether a photo is overexposed, or separate the light part of an image from the rest to work on it separately. The threshold is a percentage of full brightness, and the default is set high so only genuinely bright pixels appear. Everything runs in your browser, so the image is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Marks pixels above a luminance threshold; threshold 100 is pure white only.",
+			"Two views: a black and white mask, or a highlight over the original picture.",
+			"Luminance weights match human perception — green counts most, blue least.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Choose the view: a black and white mask, or a highlight over the original picture.",

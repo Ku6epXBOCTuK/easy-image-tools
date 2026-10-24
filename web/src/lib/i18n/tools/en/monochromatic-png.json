@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Monochromatic Palette PNG - Free Tone Ramp Generator",
 		"metaDescription": "Build a monochromatic palette from one base color: lightness walks a range while hue and saturation stay fixed. Free, no upload, runs in your browser.",
-		"longDescription": "A monochromatic palette is a set of tones built from a single hue, where the hue and the saturation never change and only the lightness moves, which is what gives you a scale that stays recognizably the same color from the palest tint to the deepest shade. This page freezes the hue and saturation of your base color and walks its lightness across a range you set, centered on the base lightness itself - a Range of 40 spreads the swatches 20 lightness points either side of where the base sits. It needs no upload and no source file: the tones are computed on your device and drawn as flat swatches you can save as PNG, JPG, WebP or BMP. Use it for a single-brand interface, a sequential data ramp where one color has to carry the whole scale, or a dark mode built from one hue. The honest edge case is clamping: a very dark base with a wide range pushes the light end past zero and several swatches collapse into the same near-black.",
+		"longDescription": "Monochromatic color palette builds a set of tones from a single hue, where hue and saturation never change and only the lightness moves — a scale that stays recognizably the same color from the palest tint to the deepest shade. The page freezes the hue and saturation of your base color and walks its lightness across a range you set, centered on the base lightness itself: a Range of 40 spreads the swatches 20 lightness points either side of where the base sits. Use it for a single-brand interface, a sequential data ramp where one color carries the whole scale, or a dark mode built from one hue. The tones are computed on your device and drawn as flat swatches.",
+		"facts": [
+			"Computed entirely in your browser: no upload, no server, no signup.",
+			"2 to 9 tones; lightness range from 10 to 90, centered on the base.",
+			"Hue and saturation are locked — every swatch is the base with a new lightness.",
+			"A very dark base with a wide range clamps, and swatches can collapse together.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the tones are derived from the Base color you pick.",
 			"Set the Base color; its hue and saturation are locked and copied into every swatch.",

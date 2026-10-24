@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Feather PNG Edges - Free Soft Alpha in Your Browser",
 		"metaDescription": "Blur only the alpha channel so a hard cutout edge becomes a soft gradient, with the colors of the picture left untouched. Free, no upload, nothing is stored.",
-		"longDescription": "Feathering softens the boundary of a cutout by blurring only the alpha channel: the opacity of every pixel is mixed with its neighbors over the Radius you set, so a hard rim turns into a gradual ramp while the red, green and blue values are written through untouched. The radius runs from 1 to 20 px and starts at 3. Colors stay exactly as they were, which is what makes this the right tool for shadows, glows and cutouts that were scaled up. It runs in your browser, accepts PNG, JPG, WebP and BMP, and never uploads the file.",
+		"longDescription": "Soften the edges blurs only the alpha channel of a cutout, so a hard rim turns into a gradual ramp: the opacity of every pixel is mixed with its neighbors over the Radius you set, while the red, green and blue values are written through untouched. Colors stay exactly as they were, which is what makes this the right tool for shadows, glows and cutouts that were scaled up. It runs in your browser and never uploads the file.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Radius from 1 to 20 px; the soft edge spreads roughly that far on each side.",
+			"Only alpha is blurred — the picture inside stays sharp.",
+			"Follow with clean edges to pull an old background tint out of the soft pixels.",
+			"Harden edges turns the ramp back into a hard cut.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the cutout into the source area, or pick a file from your device.",
 			"Set Radius from 1 to 20 px; small values soften, large ones dissolve the outline.",

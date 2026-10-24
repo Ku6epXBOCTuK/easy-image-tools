@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Mix Colors PNG - Free Average Color Mixer Tool",
 		"metaDescription": "Average two or more colors into one flat swatch PNG. Free, no upload, no signup - the mix is computed and drawn in your browser instantly.",
-		"longDescription": "Mixing colors here means taking the plain arithmetic mean of the red, green and blue channels of every color you list and filling a rectangle with the result. That is exactly what happens, and being precise about it matters: this is channel arithmetic, not paint, so mixing blue and yellow does not give green - it gives the gray you get from averaging their numbers, and yellow with purple lands on a dull olive. It is the right tool for a quick sanity check on a palette, for producing one representative tone from several similar swatches, or for seeing the flat average of a set of photo colors. No upload is involved and there is no source file: the average is computed and the swatch drawn on your device, then encoded as PNG, JPG, WebP or BMP. Two honest limits follow from the definition - every color counts the same no matter how much area it covers, and the page prints the mix as a flat rectangle rather than a hex code.",
+		"longDescription": "Mix colors takes the plain arithmetic mean of the red, green and blue channels of every color you list and fills a rectangle with the result. Being precise about it matters: this is channel arithmetic, not paint — mixing blue and yellow does not give green, it gives the gray that averaging their numbers produces. It is the right tool for a quick sanity check on a palette, one representative tone from several similar swatches, or the flat average of a set of photo colors. There is no source file: the average is computed and the swatch drawn on your device.",
+		"facts": [
+			"Computed entirely in your browser: no upload, no server, no signup.",
+			"Channel arithmetic, not pigment mixing — opposite hues average to a dull neutral.",
+			"Every color counts once, regardless of the area it covers.",
+			"Width from 128 to 1024 px; the swatch height follows the width.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the mix is computed from the hex values you type.",
 			"Enter the colors to average in the Color list, as hex values separated by commas or spaces.",

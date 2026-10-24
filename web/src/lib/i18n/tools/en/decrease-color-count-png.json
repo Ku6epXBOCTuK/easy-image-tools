@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Decrease Color Count PNG - Free Local Color Reducer",
 		"metaDescription": "Drop a picture to a small palette using the preset levels 2 to 256. Free and no upload - the median-cut reduction runs in your browser and keeps transparency.",
-		"longDescription": "Decrease color count strips a picture down to a small palette using a median-cut algorithm: the pixels are repeatedly split into buckets along their widest channel until the requested number of buckets exists, each bucket collapses to its average color, and every pixel is then repainted with whichever of those colors sits closest to it. Everything runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and fully transparent pixels are passed through untouched instead of being counted as black.",
+		"longDescription": "Decrease color count strips a picture down to a small palette using a median-cut algorithm: the pixels are repeatedly split into buckets along their widest channel until the requested number of buckets exists, each bucket collapses to its average color, and every pixel is repainted with whichever of those colors sits closest. Everything runs in your browser, and fully transparent pixels are passed through untouched instead of being counted as black.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Preset levels from 2 to 256 colors; the palette builder itself caps at 64 buckets.",
+			"Clean flat patches — for photographs use the dithering tool to break up the banding.",
+			"Fully transparent pixels pass through untouched.",
+			"Fewer colors compress much smaller as a PNG at the same dimensions.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Pick Max colors from the preset list; 16 (extreme) is the starting point.",

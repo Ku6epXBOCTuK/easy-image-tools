@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Invert the PNG Alpha Channel - Free, No Upload Needed",
 		"metaDescription": "Swap see-through and solid pixels: the object becomes transparent and the background becomes opaque, colors untouched. Free, instant, nothing is uploaded.",
-		"longDescription": "Inverting the alpha channel swaps what is see-through and what is solid: a fully opaque pixel becomes fully transparent, a transparent one becomes opaque, and a half-transparent pixel becomes the other half. Colors are never changed, only the fourth channel. The catch is that transparent pixels keep whatever color the file happened to store for them, which in most images is black, so the result usually reads as a dark shape on a dark background. There are no settings to tune; PNG, JPG, WebP and BMP go in and the result is written in your browser.",
+		"longDescription": "Invert the alpha channel swaps what is see-through and what is solid: a fully opaque pixel becomes fully transparent, a transparent one becomes opaque, and a half-transparent pixel becomes the other half. Colors are never changed, only the fourth channel. The catch is that transparent pixels keep whatever color the file happened to store for them, which in most images is black, so the result usually reads as a dark shape on a dark background. There are no settings to tune, and the result is written in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Only opacity flips — for a photographic negative use the invert colors tool.",
+			"The old background usually appears black: that is the color stored under it.",
+			"Running it twice returns the original, pixel for pixel.",
+			"Save as PNG or WebP to keep the new alpha channel."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"The result appears at once: the object turns see-through, the background turns solid.",

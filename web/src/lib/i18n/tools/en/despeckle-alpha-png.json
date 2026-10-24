@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Remove Speckles From a PNG Mask - Free, No Signup",
 		"metaDescription": "Delete isolated dots, dust and one-pixel hairs from a transparent cutout, without touching its colors. Free, no limits, and the cleanup runs in your browser.",
-		"longDescription": "Despeckling is the cleaning pass for a mask that came out of a noisy cut: the shape is first shrunk by Radius pixels and then grown back by the same amount, which removes anything too small to survive the shrink - isolated dots, dust, stray hairs - while restoring the rest of the outline. The colors of surviving pixels are left exactly as they were and keep their own opacity, while the ones that do not survive become fully transparent. The Radius runs from 1 to 3 px. It works in your browser, and PNG, JPG, WebP and BMP are accepted.",
+		"longDescription": "Remove specks is the cleaning pass for a mask that came out of a noisy cut: the shape is shrunk by Radius pixels and then grown back by the same amount, which removes anything too small to survive the shrink — isolated dots, dust, stray hairs — while restoring the rest of the outline. The colors of surviving pixels are left exactly as they were and keep their own opacity; the ones that do not survive become fully transparent. It works in your browser, and PNG, JPG, WebP and BMP are accepted.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Morphological opening: radius from 1 to 3 px, gentlest at 1.",
+			"Only alpha changes — surviving pixels keep their color and opacity.",
+			"A stroke one pixel wide cannot survive the shrink; despeckle before adding fine detail.",
+			"The close holes tool is the same operation run the other way round.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the cutout into the source area, or pick a file from your device.",
 			"Set Radius from 1 to 3 px; start at 1, the gentlest setting.",
