@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { resolve } from "$app/paths";
-	import { ArrowUpRight, Star } from "@lucide/svelte";
-	import type { Component } from "svelte";
 	import Icon from "$lib/components/ui/Icon.svelte";
 	import { isFav, toggleFav } from "$lib/favorites.svelte";
 	import { t } from "$lib/i18n/t";
+	import { ArrowUpRight, Star } from "@lucide/svelte";
+	import type { Component } from "svelte";
 
 	interface Props {
 		title: string;
@@ -12,12 +12,21 @@
 		description?: string;
 		index?: number;
 		icon?: Component<{ size?: number; class?: string }>;
+		// NOTE: "feature" - enlarged copy for search-first surfaces; the catalog
+		// keeps the compact default.
+		size?: "feature";
 	}
-	let { title, slug, description, index, icon }: Props = $props();
+	let { title, slug, description, index, icon, size }: Props = $props();
 </script>
 
-<a class="tool-card" href={resolve("/tools/[slug]", { slug })}>
-	{#if icon}<span class="tool-icon"><Icon {icon} size={19} /></span>{/if}
+<a
+	class="tool-card"
+	class:feature={size === "feature"}
+	href={resolve("/tools/[slug]", { slug })}
+>
+	{#if icon}<span class="tool-icon"
+			><Icon {icon} size={size === "feature" ? 22 : 19} /></span
+		>{/if}
 	<span class="tool-copy">
 		<strong>{title}</strong>
 		{#if description}<span>{description}</span>{/if}
@@ -101,5 +110,18 @@
 		font: var(--font-size-s) var(--font-mono);
 		color: var(--color-text-muted);
 		align-self: start;
+	}
+	.tool-card.feature {
+		padding: var(--space-xxl);
+		gap: var(--space-xl);
+	}
+	.tool-card.feature .tool-copy {
+		gap: var(--space-m);
+	}
+	.tool-card.feature .tool-copy strong {
+		font: 600 var(--font-size-l) var(--font-mono);
+	}
+	.tool-card.feature .tool-copy span {
+		font: var(--font-size-m)/1.6 var(--font-mono);
 	}
 </style>

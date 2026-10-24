@@ -173,3 +173,22 @@ export function searchPages(pages: readonly Page[], query: string): Page[] {
 	if (q.length === 0) return [...pages];
 	return pages.filter((page) => scoreDoc(pageSearchDoc(page), q) !== null);
 }
+
+// NOTE: Same scoring as `searchPages`, but the best match comes first (title
+// prefix above infix above description); equal scores keep catalog order. For
+// search-first surfaces where there is no catalog order to preserve.
+export function searchPagesRanked(
+	pages: readonly Page[],
+	query: string,
+): Page[] {
+	const q = normalizeForSearch(query.trim());
+	if (q.length === 0) return [...pages];
+	const scored: { page: Page; index: number; score: number }[] = [];
+	pages.forEach((page, index) => {
+		const score = scoreDoc(pageSearchDoc(page), q);
+		if (score !== null) scored.push({ page, index, score });
+	});
+	return scored
+		.sort((a, b) => b.score - a.score || a.index - b.index)
+		.map((entry) => entry.page);
+}

@@ -190,6 +190,7 @@ export const en: Dict = {
 	search: {
 		placeholder: "Find a tool…",
 		aria: "Search tools",
+		hint: "Fuzzy match on titles, descriptions and slugs — English and Russian, typos are fine.",
 		nothingFound: "Nothing found — try another word.",
 	},
 	ui: {

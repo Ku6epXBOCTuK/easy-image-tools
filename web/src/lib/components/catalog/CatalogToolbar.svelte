@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { Funnel, Search } from "@lucide/svelte";
+	import { Funnel } from "@lucide/svelte";
 	import ChipButton from "$lib/components/ui/ChipButton.svelte";
+	import ToolSearchField from "$lib/components/search/ToolSearchField.svelte";
 	import { t } from "$lib/i18n/t";
 
 	interface Props {
@@ -23,14 +24,7 @@
 </script>
 
 <div class="catalog-toolbar">
-	<label class="catalog-search">
-		<Search size={16} />
-		<input
-			aria-label={t("search.aria")}
-			placeholder={t("search.placeholder")}
-			bind:value={query}
-		/>
-	</label>
+	<ToolSearchField bind:query />
 	<div class="catalog-filters">
 		<Funnel size={15} />
 		{#each FILTERS as f (f.value)}
@@ -51,26 +45,6 @@
 		gap: var(--space-xl);
 		flex-wrap: wrap;
 		padding: var(--space-xl) 0;
-	}
-	.catalog-search {
-		display: inline-flex;
-		align-items: center;
-		gap: var(--space-m);
-		padding: var(--space-m) var(--space-l);
-		border: var(--size-border) solid var(--color-border);
-		border-radius: var(--radius-m);
-		background: var(--color-panel);
-		color: var(--color-text-muted);
-	}
-	.catalog-search input {
-		border: none;
-		background: transparent;
-		outline: none;
-		color: var(--color-text);
-		font: var(--font-size-s) var(--font-mono);
-	}
-	.catalog-search input::placeholder {
-		color: var(--color-text-muted);
 	}
 	.catalog-filters {
 		display: inline-flex;

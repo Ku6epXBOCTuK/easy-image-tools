@@ -65,7 +65,9 @@
 
 <main class="preview-root" data-theme={theme}>
 	<TopBar {theme} {crumb} ontoggle={toggle} />
-	{@render children()}
+	<div class="layout-content">
+		{@render children()}
+	</div>
 	<Footer />
 </main>
 
@@ -79,6 +81,17 @@
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
+	}
+
+	/* NOTE: The middle section stretches so the site footer stays at the bottom
+	   of the viewport on short pages; page roots grow with it. */
+	.layout-content {
+		flex: 1 0 auto;
+		display: flex;
+		flex-direction: column;
+	}
+	.layout-content > :global(*) {
+		flex: 1 0 auto;
 	}
 
 	@layer app, design;

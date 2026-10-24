@@ -1,10 +1,12 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { PAGES } from "../registry";
+import type { Page } from "../registry";
 import { setLocale } from "./locale.svelte";
 import { en } from "./en";
 import { ru } from "./ru";
 import {
 	searchPages,
+	searchPagesRanked,
 	verdictText,
 	isPageIndexable,
 } from "./schema-tool-strings";
@@ -67,6 +69,70 @@ describe("searchPages (cross-locale catalog search)", () => {
 
 	it("no match returns an empty list", () => {
 		expect(searchPages(PAGES, "zzz qqq")).toEqual([]);
+	});
+});
+
+describe("searchPagesRanked (search-first ranking)", () => {
+	// NOTE: Slugs are not in the dictionaries, so titles fall back to the registry
+	// fields of the fixture itself.
+	const fixture: Page[] = [
+		{
+			slug: "fixture-alpha",
+			title: "Resize PNG",
+			description: "first fixture",
+			category: "geometry",
+			steps: [{ id: "fixture-alpha" }],
+		},
+		{
+			slug: "fixture-beta",
+			title: "Image Resize Helper",
+			description: "second fixture",
+			category: "geometry",
+			steps: [{ id: "fixture-beta" }],
+		},
+		{
+			slug: "fixture-gamma",
+			title: "Unrelated",
+			description: "resize things",
+			category: "geometry",
+			steps: [{ id: "fixture-gamma" }],
+		},
+	];
+
+	it("empty query keeps the input order", () => {
+		expect(slugs(searchPagesRanked(fixture, ""))).toEqual([
+			"fixture-alpha",
+			"fixture-beta",
+			"fixture-gamma",
+		]);
+	});
+
+	it("ranks title prefix above infix above description", () => {
+		expect(slugs(searchPagesRanked(fixture, "resize"))).toEqual([
+			"fixture-alpha",
+			"fixture-beta",
+			"fixture-gamma",
+		]);
+	});
+
+	it("keeps description-only matches and drops non-matching entries", () => {
+		expect(slugs(searchPagesRanked(fixture, "unrelated"))).toEqual([
+			"fixture-gamma",
+		]);
+		expect(searchPagesRanked(fixture, "zzz qqq")).toEqual([]);
+	});
+
+	it("equal scores keep the catalog order", () => {
+		const tied: Page[] = fixture.map((page) => ({
+			...page,
+			title: "Same Title",
+			description: "same words",
+		}));
+		expect(slugs(searchPagesRanked(tied, "same"))).toEqual([
+			"fixture-alpha",
+			"fixture-beta",
+			"fixture-gamma",
+		]);
 	});
 });
 

@@ -96,6 +96,8 @@
 		padding: var(--space-page-top)
 			clamp(var(--space-xxl), 4vw, var(--space-page-bottom))
 			var(--space-page-bottom);
+		display: flex;
+		flex-direction: column;
 	}
 	.catalog-groups {
 		display: grid;
@@ -105,8 +107,8 @@
 		display: flex;
 		gap: var(--space-xxl);
 		flex-wrap: wrap;
-		margin-top: var(--space-page-top);
-		padding-top: var(--space-xxl);
+		margin-top: auto;
+		padding-top: var(--space-page-top);
 		border-top: var(--size-border) solid var(--color-border);
 		font: var(--font-size-xs) var(--font-mono);
 		letter-spacing: var(--space-text-l);

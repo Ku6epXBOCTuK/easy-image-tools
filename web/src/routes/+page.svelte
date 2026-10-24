@@ -1,43 +1,37 @@
 <script lang="ts">
-	import { PREVIEW_GROUPS, PREVIEW_TOTAL } from "$lib/catalog";
-	import CatalogGroup from "$lib/components/catalog/CatalogGroup.svelte";
-	import CatalogHeader from "$lib/components/catalog/CatalogHeader.svelte";
-	import CatalogToolbar from "$lib/components/catalog/CatalogToolbar.svelte";
+	import { PREVIEW_TOTAL } from "$lib/catalog";
 	import ToolCard from "$lib/components/catalog/ToolCard.svelte";
-	import Seo from "$lib/components/Seo.svelte";
+	import EmptyState from "$lib/components/feedback/EmptyState.svelte";
 	import JsonLd from "$lib/components/JsonLd.svelte";
-	import { favFirst, isFav } from "$lib/favorites.svelte";
+	import ToolSearchField from "$lib/components/search/ToolSearchField.svelte";
+	import Seo from "$lib/components/Seo.svelte";
+	import { favFirst } from "$lib/favorites.svelte";
 	import {
 		pageDescription,
 		pageTitle,
-		searchPages,
+		searchPagesRanked,
 		siteSeo,
 	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
 	import { PAGES } from "$lib/registry";
 	import { siteSchemaLd } from "$lib/seo";
 	import { toolIcon } from "$lib/tool-icons";
+	import { Search } from "@lucide/svelte";
 
 	let query = $state("");
-	let category = $state<string>("all");
 
-	const favorites = $derived(
-		searchPages(
-			PAGES.filter((p) => isFav(p.slug)),
-			query,
-		),
-	);
+	// NOTE: The home surface sells the search, not the catalog: exactly a handful
+	// of cards in every state - the full listing lives in /list-tools.
+	const TOP_MATCHES = 6;
 
-	const groups = $derived(
-		PREVIEW_GROUPS.map((g) => ({
-			id: g.id,
-			label: t(`categories.${g.id}`),
-			pages: favFirst(
-				searchPages(g.pages, query).filter(
-					() => category === "all" || category === g.id,
-				),
-			),
-		})).filter((g) => g.pages.length > 0),
+	const searching = $derived(query.trim().length > 0);
+
+	// NOTE: With an empty query the six slots are filled favorites-first, in
+	// catalog order; while searching, favorites compete through the ranking.
+	const results = $derived(
+		searching
+			? searchPagesRanked(PAGES, query).slice(0, TOP_MATCHES)
+			: favFirst(PAGES).slice(0, TOP_MATCHES),
 	);
 </script>
 
@@ -48,68 +42,124 @@
 />
 <JsonLd data={siteSchemaLd(t("brand"))} />
 
-<div class="catalog-page">
-	<CatalogHeader total={PREVIEW_TOTAL} />
-	<CatalogToolbar bind:query bind:category />
-	<div class="catalog-groups">
-		{#if favorites.length > 0}
-			<CatalogGroup label={t("catalog.favorites")} count={favorites.length}>
-				{#each favorites as page, i (page.slug)}
+<div class="home-page">
+	<header class="home-hero">
+		<output
+			class="home-total"
+			aria-label={`${PREVIEW_TOTAL} ${t("catalog.toolsAvailable")}`}
+		>
+			<b>{PREVIEW_TOTAL}</b>
+			<span>{t("catalog.toolsAvailable")}</span>
+		</output>
+		<h1>{t("home.heroTitle")}</h1>
+		<p>{t("home.heroLead")}</p>
+		<div class="home-search">
+			<ToolSearchField bind:query variant="hero" />
+		</div>
+		<p class="home-hint">{t("search.hint")}</p>
+	</header>
+
+	<div class="home-results">
+		{#if results.length > 0}
+			<div class="home-grid">
+				{#each results as page, i (page.slug)}
 					<ToolCard
 						title={pageTitle(page)}
 						slug={page.slug}
 						description={pageDescription(page)}
 						index={i + 1}
 						icon={toolIcon(page.slug)}
+						size="feature"
 					/>
 				{/each}
-			</CatalogGroup>
+			</div>
+		{:else if searching}
+			<EmptyState icon={Search} title={t("search.nothingFound")} />
 		{/if}
-		{#each groups as group (group.id)}
-			<CatalogGroup
-				label={group.label}
-				count={group.pages.length}
-				category={group.id}
-			>
-				{#each group.pages as page, i (page.slug)}
-					<ToolCard
-						title={pageTitle(page)}
-						slug={page.slug}
-						description={pageDescription(page)}
-						index={i + 1}
-						icon={toolIcon(page.slug)}
-					/>
-				{/each}
-			</CatalogGroup>
-		{/each}
 	</div>
-	<footer class="catalog-footer">{t("header.footerNote")}</footer>
+
+	<footer class="home-footer">{t("header.footerNote")}</footer>
 </div>
 
 <style>
-	.catalog-page {
+	.home-page {
 		padding: var(--space-page-top)
 			clamp(var(--space-xxl), 4vw, var(--space-page-bottom))
 			var(--space-page-bottom);
-	}
-	.catalog-groups {
-		display: grid;
-		gap: var(--space-page-top) var(--space-xxl);
-	}
-	.catalog-footer {
 		display: flex;
-		gap: var(--space-xxl);
-		flex-wrap: wrap;
-		margin-top: var(--space-page-top);
+		flex-direction: column;
+	}
+	.home-hero {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: var(--space-l);
 		padding-top: var(--space-xxl);
-		border-top: var(--size-border) solid var(--color-border);
+	}
+	.home-total {
+		display: inline-flex;
+		align-items: baseline;
+		gap: var(--space-m);
+		font: var(--font-size-xs) var(--font-mono);
+		letter-spacing: var(--space-text-l);
+		text-transform: uppercase;
+		color: var(--color-text-muted);
+	}
+	.home-total b {
+		font: 700 var(--font-size-s) var(--font-mono);
+		color: var(--color-text);
+	}
+	.home-hero h1 {
+		margin: 0;
+		font-size: var(--font-size-2xl);
+		font-weight: 700;
+		color: var(--color-text);
+	}
+	.home-hero > p {
+		margin: 0;
+		max-width: 56ch;
+		color: var(--color-text-muted);
+		font-size: var(--font-size-m);
+	}
+	.home-search {
+		width: 100%;
+		max-width: var(--size-content-measure);
+		margin-top: var(--space-m);
+	}
+	.home-hint {
+		margin: 0;
 		font: var(--font-size-xs) var(--font-mono);
 		letter-spacing: var(--space-text-l);
 		color: var(--color-text-muted);
 	}
-	@media (--bp-tablet) {
-		.catalog-groups {
+	.home-results {
+		display: grid;
+		gap: var(--space-page-top);
+		margin-top: var(--space-page-top);
+		width: 100%;
+		max-width: var(--size-content-prose);
+		margin-inline: auto;
+	}
+	.home-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-m);
+	}
+	@media (--bp-mobile) {
+		.home-grid {
 			grid-template-columns: 1fr;
 		}
+	}
+	.home-footer {
+		display: flex;
+		gap: var(--space-xxl);
+		flex-wrap: wrap;
+		margin-top: auto;
+		padding-top: var(--space-page-top);
+		border-top: var(--size-border) solid var(--color-border);
+		font: var(--font-size-xs) var(--font-mono);
+		letter-spacing: var(--space-text-l);
+		color: var(--color-text-muted);
 	}
 </style>
