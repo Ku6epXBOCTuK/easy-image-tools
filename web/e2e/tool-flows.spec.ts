@@ -281,6 +281,9 @@ test("chain: add step extends pipeline without reload and persists", async ({
 	await uploadImage(page, opaquePng);
 	await expect(resultImage(page)).toBeVisible();
 	await page.getByRole("button", { name: "Add step" }).last().click();
+	// NOTE: The picker opens with six featured tools; search surfaces any tool.
+	const search = page.getByRole("textbox", { name: "Search tools" });
+	await search.fill(grayTitle);
 	await page.getByRole("menuitem", { name: grayTitle }).click();
 	const stepTwo = page.getByRole("heading", {
 		name: grayTitle,
@@ -298,6 +301,9 @@ test("chain: remove step returns to a single tool", async ({ page }) => {
 	const sink = trackErrors(page);
 	await openTool(page, "flip-png");
 	await page.getByRole("button", { name: "Add step" }).last().click();
+	// NOTE: The picker opens with six featured tools; search surfaces any tool.
+	const search = page.getByRole("textbox", { name: "Search tools" });
+	await search.fill(grayTitle);
 	await page.getByRole("menuitem", { name: grayTitle }).click();
 	const stepTwo = page.getByRole("heading", {
 		name: grayTitle,
@@ -311,6 +317,22 @@ test("chain: remove step returns to a single tool", async ({ page }) => {
 	await card.getByLabel("Remove step").click();
 	await expect(stepTwo).toHaveCount(0);
 	expectNoErrors(sink);
+});
+
+test("chain: picker search filters the menu", async ({ page }) => {
+	await openTool(page, "flip-png");
+	await page.getByRole("button", { name: "Add step" }).last().click();
+	const search = page.getByRole("textbox", { name: "Search tools" });
+	await search.fill(grayTitle);
+	const item = page.getByRole("menuitem", { name: grayTitle });
+	await expect(item).toBeVisible();
+	await expect(page.getByRole("menuitem", { name: "Flip PNG" })).toHaveCount(0);
+	await item.click();
+	const stepTwo = page.getByRole("heading", {
+		name: grayTitle,
+		exact: true,
+	});
+	await expect(stepTwo).toBeVisible();
 });
 
 test("invalid file upload shows error, no crash", async ({ page }) => {

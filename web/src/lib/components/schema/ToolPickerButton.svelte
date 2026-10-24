@@ -1,10 +1,20 @@
 <script lang="ts">
+	import ToolSearchField from "$lib/components/search/ToolSearchField.svelte";
+	import ChipButton from "$lib/components/ui/ChipButton.svelte";
 	import Icon from "$lib/components/ui/Icon.svelte";
 	import { trackPopover } from "$lib/components/ui/popover-position";
-	import { pageTitle } from "$lib/i18n/schema-tool-strings";
+	import {
+		pageDescription,
+		pageTitle,
+		pickFeaturedPages,
+		searchPagesRanked,
+	} from "$lib/i18n/schema-tool-strings";
+	import { t } from "$lib/i18n/t";
+	import { favPages, isFav, toggleFav } from "$lib/favorites.svelte";
 	import { chainablePages } from "$lib/pipeline.svelte";
+	import { popularityOf } from "$lib/registry/popularity";
 	import type { Page } from "$lib/registry";
-	import { Plus, Repeat } from "@lucide/svelte";
+	import { Plus, Repeat, Star } from "@lucide/svelte";
 
 	interface Props {
 		label: string;
@@ -14,6 +24,19 @@
 	let { label, iconOnly = false, onadd }: Props = $props();
 
 	const pages = chainablePages();
+	let query = $state("");
+	let showAll = $state(false);
+	const searching = $derived(query.trim().length > 0);
+	const favSlugs = $derived(new Set(favPages(pages).map((p) => p.slug)));
+	// NOTE: Mirrors the home page: favorites first (capped), the rest by static
+	// popularity; search is ranked and never capped.
+	const list = $derived(
+		searching
+			? searchPagesRanked(pages, query)
+			: showAll
+				? [...pages].sort((a, b) => popularityOf(b.slug) - popularityOf(a.slug))
+				: pickFeaturedPages(pages, favSlugs, 6, 2),
+	);
 
 	const menuId = $props.id();
 	let open = $state(false);
@@ -23,12 +46,32 @@
 	// NOTE: While open, keep the popover placed next to the button (scroll/resize).
 	$effect(() => {
 		if (!open || !menu || !btn) return;
-		return trackPopover(menu, btn, "end");
+		return trackPopover(menu, btn, "side");
 	});
+
+	function handleToggle(e: ToggleEvent) {
+		open = e.newState === "open";
+		if (open) {
+			query = "";
+			showAll = false;
+			requestAnimationFrame(() => menu?.querySelector("input")?.focus());
+		}
+	}
 
 	function choose(page: Page) {
 		onadd(page.steps[0].id);
 		menu?.hidePopover();
+	}
+
+	function toggleFavAt(e: MouseEvent, slug: string) {
+		e.stopPropagation();
+		toggleFav(slug);
+	}
+
+	function activate(e: KeyboardEvent, page: Page) {
+		if (e.key !== "Enter" && e.key !== " ") return;
+		e.preventDefault();
+		choose(page);
 	}
 </script>
 
@@ -54,20 +97,54 @@
 		bind:this={menu}
 		id={menuId}
 		class="menu"
-		role="menu"
 		popover="auto"
-		ontoggle={(e) => (open = e.newState === "open")}
+		ontoggle={handleToggle}
 	>
-		{#each pages as page (page.slug)}
-			<button
-				type="button"
-				class="item"
-				role="menuitem"
-				onclick={() => choose(page)}
-			>
-				{pageTitle(page)}
-			</button>
-		{/each}
+		<ToolSearchField bind:query />
+		{#if !searching}
+			<div class="list-toolbar">
+				<ChipButton
+					label={t("search.showAll")}
+					active={showAll}
+					onclick={() => (showAll = !showAll)}
+				/>
+			</div>
+		{/if}
+		{#if list.length > 0}
+			<div class="items" role="menu">
+				{#each list as page (page.slug)}
+					<div
+						class="item"
+						role="menuitem"
+						tabindex="0"
+						aria-label={pageTitle(page)}
+						onclick={() => choose(page)}
+						onkeydown={(e) => activate(e, page)}
+					>
+						<div class="item-head">
+							<strong>{pageTitle(page)}</strong>
+							<button
+								type="button"
+								class="fav"
+								aria-pressed={isFav(page.slug)}
+								aria-label={isFav(page.slug)
+									? t("ui.removeFav")
+									: t("ui.addFav")}
+								onclick={(e) => toggleFavAt(e, page.slug)}
+							>
+								<Star
+									size={13}
+									fill={isFav(page.slug) ? "currentColor" : "none"}
+								/>
+							</button>
+						</div>
+						<span class="item-desc">{pageDescription(page)}</span>
+					</div>
+				{/each}
+			</div>
+		{:else}
+			<p class="empty">{t("search.nothingFound")}</p>
+		{/if}
 	</div>
 </div>
 
@@ -106,14 +183,12 @@
 	}
 	.menu {
 		/* NOTE: Native popover: top layer + light dismiss + Escape out of the box;
-		   positioning is trackPopover (anchor() is not supported everywhere). */
+		   positioning is trackPopover("side") - right of the anchor, clamped into
+		   the viewport. */
 		position: fixed;
 		margin: 0;
-		translate: 0 var(--space-s);
-		min-width: calc(var(--space-xxxl) * 8);
-		max-height: calc(var(--space-xxxl) * 8);
-		overflow-y: auto;
-		gap: var(--space-s);
+		min-width: calc(var(--size-card-min) * 2);
+		max-width: calc(var(--size-card-min) * 3);
 		padding: var(--space-m);
 		border: var(--size-border) solid var(--color-border);
 		border-radius: var(--radius-m);
@@ -123,22 +198,79 @@
 	   UA rule [popover]:not(:popover-open) { display: none }. */
 	.menu:popover-open {
 		display: grid;
+		gap: var(--space-m);
+	}
+	.list-toolbar {
+		display: flex;
+		justify-content: flex-start;
+	}
+	.items {
+		display: grid;
+		gap: var(--space-s);
+		max-height: calc(var(--space-xxxl) * 10);
+		overflow-y: auto;
+		scrollbar-width: thin;
+		scrollbar-color: var(--color-border) transparent;
+	}
+	.empty {
+		margin: 0;
+		padding: var(--space-m) var(--space-l);
+		color: var(--color-text-muted);
+		font: var(--font-size-s) var(--font-mono);
 	}
 	.item {
 		padding: var(--space-m) var(--space-l);
 		border: var(--size-border) solid transparent;
-		border-radius: var(--radius-s);
+		border-radius: var(--radius-m);
 		background: transparent;
-		color: var(--color-text-muted);
+		color: var(--color-text);
 		font: var(--font-size-s) var(--font-mono);
+		line-height: 1.5;
 		text-align: left;
 		cursor: pointer;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
 	}
 	.item:hover {
-		color: var(--color-text);
 		border-color: var(--color-border);
+	}
+	.item:hover strong {
+		color: var(--color-main);
+	}
+	.item-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-m);
+	}
+	.item-head strong {
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font: 600 var(--font-size-s) var(--font-mono);
+		color: var(--color-text);
+	}
+	.fav {
+		display: grid;
+		place-items: center;
+		flex: none;
+		padding: var(--space-s);
+		border: none;
+		background: none;
+		color: var(--color-text-muted);
+		cursor: pointer;
+	}
+	.fav:hover,
+	.fav[aria-pressed="true"] {
+		color: var(--color-warning);
+	}
+	.item-desc {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		margin-top: var(--space-s);
+		color: var(--color-text-muted);
+		font: var(--font-size-xs) var(--font-mono);
+		line-height: 1.5;
 	}
 </style>

@@ -38,6 +38,10 @@
 		outline: none;
 		color: var(--color-text);
 		font: var(--font-size-s) var(--font-mono);
+		/* NOTE: Grow only inside stretched containers (grid/flex); the toolbar
+		   label shrinks to content, so the natural input size wins there. */
+		flex: 1 1 auto;
+		min-width: 0;
 	}
 	.tool-search input::placeholder {
 		color: var(--color-text-muted);

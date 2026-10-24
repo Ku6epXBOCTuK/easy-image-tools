@@ -191,6 +191,7 @@ export const en: Dict = {
 		placeholder: "Find a tool…",
 		aria: "Search tools",
 		hint: "Fuzzy match on titles, descriptions and slugs — English and Russian, typos are fine.",
+		showAll: "Show all",
 		nothingFound: "Nothing found — try another word.",
 	},
 	ui: {
