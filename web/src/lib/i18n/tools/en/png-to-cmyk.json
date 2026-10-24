@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Convert PNG to CMYK - Free Ink Decomposition, No Upload",
 		"metaDescription": "Split an image into the cyan, magenta, yellow and black inks a press would lay down. Free and local - the separation runs in your browser, nothing is uploaded.",
-		"longDescription": "CMYK is how a page describes color as ink: cyan, magenta, yellow and a black key. This tool takes an image apart into those four components, one after another, so you can look at what each ink would be laying down - K is how much black the darkest channel needs, and C, M and Y are the extra color required once black is removed. The math is the standard conversion from screen RGB. Everything runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and alpha is untouched.",
+		"longDescription": "Convert PNG to CMYK takes an image apart into the four inks a press would lay down — cyan, magenta, yellow and a black key — one component at a time. K is how much black the darkest channel needs, and C, M and Y are the extra color required once black is removed; the math is the standard conversion from screen RGB. Everything runs in your browser, and alpha is untouched.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"One ink at a time as grayscale, or the C/M/Y components side by side as RGB.",
+			"The download is a PNG of the separation, not a press-ready CMYK file.",
+			"Read the K channel first — it carries most of the tonal detail.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Pick Component: C, M, Y or K to see one ink at a time in grayscale.",

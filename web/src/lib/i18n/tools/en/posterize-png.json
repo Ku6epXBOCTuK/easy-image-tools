@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Posterize PNG - Reduce Color Levels, Free and Local",
 		"metaDescription": "Cut an image down to a few tone levels per channel for a flat printed-poster look. Free, no upload - the posterization runs in your browser, instantly.",
-		"longDescription": "Posterizing cuts the number of tone levels each color channel is allowed to have, so a photograph collapses into flat bands of color the way a screen-printed poster does. Each channel value is rounded to the nearest step of a fixed ladder running from black to white - two levels gives pure black and white, four gives the chunky look of cheap printing, sixteen is already close to the original. The steps are applied to red, green and blue independently, which is why the result can shift hue slightly. It runs in your browser on PNG, JPG, WebP and BMP, uploads nothing, and keeps alpha.",
+		"longDescription": "Posterize cuts the number of tone levels each color channel is allowed to have, so a photograph collapses into flat bands of color the way a screen-printed poster does. Each channel value is rounded to the nearest step of a fixed ladder running from black to white — two levels gives pure black and white, four gives the chunky look of cheap printing, sixteen is already close to the original. The steps are applied to red, green and blue independently, which is why the result can shift hue slightly. It runs in your browser and keeps alpha.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Levels from 2 to 16; the default of 4 is a strong poster effect.",
+			"Each channel snaps to its own ladder, so the hue can drift a little.",
+			"The dimensions and the alpha channel never change.",
+			"For a photograph at a low count, follow with the dithering tool.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Levels between 2 and 16; the default of 4 is a strong poster effect.",

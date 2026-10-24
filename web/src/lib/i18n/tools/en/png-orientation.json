@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "PNG Orientation Checker - Portrait, Landscape, Square",
 		"metaDescription": "Find out whether an image is portrait, landscape or square, and see its pixel dimensions. Free, no upload - the file is inspected in your browser, never sent to a server.",
-		"longDescription": "Orientation is decided by the width and height of the image: a shape wider than it is tall is landscape, taller than it is wide is portrait, and equal dimensions make it square. This tool reads those two numbers from the decoded image and reports which case yours is, together with the pixel size. It is useful before a layout decision, because a portrait screenshot and a landscape one need different containers. The check runs locally in your browser, so the file is never uploaded.",
+		"longDescription": "Check PNG orientation reads the width and height of the decoded image and reports which case yours is: wider than tall is landscape, taller than wide is portrait, equal dimensions are square — together with the pixel size. It is useful before a layout decision, because a portrait screenshot and a landscape one need different containers. The check runs locally in your browser, so the file is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"No settings: the verdict and the pixel dimensions appear at once.",
+			"Reads the pixel dimensions, not the EXIF rotation flag of a photo.",
+			"PNG, JPG, WebP and BMP are all accepted.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"The tool reports portrait, landscape or square and shows the pixel dimensions.",

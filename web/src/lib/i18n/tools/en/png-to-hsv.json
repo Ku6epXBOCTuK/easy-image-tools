@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Split PNG into HSV - Hue, Saturation, Value Map, Free",
 		"metaDescription": "See an image as hue, saturation and value, the three parts behind every color picker. Free, no upload, no signup - the decomposition runs in your browser tab.",
-		"longDescription": "HSV is the color model behind most pickers on screen: a hue angle around the wheel, a saturation that says how far the color sits from gray, and a value that is simply the brightest of the three channels. Because value takes the maximum rather than an average, a fully lit primary does reach the top of the scale - pure red shows value 1. That makes it convenient for picking and for masks that should follow brightness. It runs in your browser on PNG, JPG, WebP and BMP files, uploads nothing, and preserves alpha.",
+		"longDescription": "Split PNG into HSV shows the image as hue, saturation and value — the three parts behind most pickers on screen. Value is simply the brightest of the three channels, so a fully lit primary does reach the top of the scale: pure red shows value 1, which makes the model convenient for picking and for masks that should follow brightness. It runs in your browser, uploads nothing, and preserves alpha.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"H, S or V one at a time as grayscale, or all three as RGB.",
+			"Value is the brightest channel — a strong yellow reads as bright as a strong blue.",
+			"Saturation near zero means gray; value near zero means black — do not mix them up.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Pick Component: H for the hue map, S for saturation or V for brightness.",

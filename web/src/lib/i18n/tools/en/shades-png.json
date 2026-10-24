@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Color Shades Ramp PNG - Free Darker Tone Generator",
 		"metaDescription": "Make a shade ramp from a base color: the same hue getting darker step by step to a depth you set. Free, no upload, no signup, drawn in your browser.",
-		"longDescription": "A shade ramp is a one-directional scale that starts at your color and walks only downward into darker versions of it, keeping the hue and saturation fixed the whole way, which is what you need for shadows, hover states, tinted backgrounds and any scale that has to read as the same color getting deeper. This page builds it from a base color, a number of steps and a darken depth, and the first swatch is always the base color exactly as typed. No upload is required and there is no source file: the tones are computed in your browser and drawn as swatches you can save as PNG, JPG, WebP or BMP. The honest edge case is the floor - the darkest tone stops at the base color's own lightness minus a small margin rather than at black, so a dark base with a large depth gives you a short ramp with barely visible steps.",
+		"longDescription": "Color shades ramp builds a one-directional scale that starts at your color and walks only downward into darker versions of it, keeping the hue and saturation fixed the whole way — what you need for shadows, hover states, tinted backgrounds and any scale that has to read as the same color getting deeper. The first swatch is always the base color exactly as typed; the rest come from the step count and the darken depth you set. The tones are computed in your browser and drawn as swatches.",
+		"facts": [
+			"Computed entirely in your browser: no upload, no server, no signup.",
+			"2 to 9 tones; darken depth from 10 to 90 percent.",
+			"The first swatch is the base color; only lightness changes down the ramp.",
+			"A dark base leaves little room — the floor sits above black, not at it.",
+			"For lighter tints as well, use the monochromatic tool.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the ramp is derived from the Base color you pick.",
 			"Set the Base color; it becomes the first and lightest swatch of the ramp.",

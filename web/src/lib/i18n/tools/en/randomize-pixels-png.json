@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Randomize PNG Pixels - Shuffle Blocks Locally",
 		"metaDescription": "Shuffle blocks of an image in your browser. The result is deterministic by seed, so the same settings always give the same scrambled picture. Free, no upload.",
-		"longDescription": "Randomize Pixels cuts the image into square blocks and moves them to each other's places, so the picture turns into an arrangement that is meaningless but built from its own content. It is a quick way to produce an abstract texture, to check that two images really differ, or to anonymize a screenshot so the layout is still visible but the content is not - the block size decides how readable it stays. Because the shuffling comes from a seed rather than from chance, the same settings always produce the same result, and the blocks keep their internal pixels, so a block is never torn apart. Everything runs in your browser and the image is never uploaded.",
+		"longDescription": "Randomize pixels cuts the image into square blocks and moves them to each other's places, so the picture turns into an arrangement that is meaningless but built from its own content. It is a quick way to produce an abstract texture, to check that two images really differ, or to anonymize a screenshot so the layout is still visible but the content is not — the block size decides how readable it stays. The blocks keep their internal pixels and are never torn apart. Everything runs in your browser and the image is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Whole blocks are exchanged; the pixels inside a block stay together.",
+			"Deterministic by seed: same image, block size and seed, same result.",
+			"The original pixels are still in the file — a mockup aid, not real redaction.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set the block size: small blocks keep the texture, large ones destroy the picture.",

@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Sepia Effect PNG - Free One-Click Vintage Tone",
 		"metaDescription": "Give a picture the warm brown tone of an old photograph in one click. Free, no upload, nothing to configure - the classic sepia tone is applied in your browser.",
-		"longDescription": "The sepia effect gives a picture the warm brown tone of an old photograph by pushing a fixed combination of the three channels into red, green and blue - red gets the largest share of the original brightness, green slightly less, blue the least, and that imbalance is what produces the brown cast. It takes no settings and no strength slider: the tone is the classic one, applied in full. Everything runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is left untouched.",
+		"longDescription": "Sepia effect gives a picture the warm brown tone of an old photograph: a fixed combination of the three channels is pushed into red, green and blue — red gets the largest share of the original brightness, green slightly less, blue the least, and that imbalance is what produces the brown cast. It takes no settings and no strength slider: the tone is the classic one, applied in full. Everything runs in your browser, and the alpha channel is left untouched.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"No settings — the classic tone is applied in full.",
+			"For a lighter touch use the tint tool with a low strength.",
+			"The alpha channel is copied through unchanged.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"There is nothing to configure - the classic sepia tone is applied at once.",

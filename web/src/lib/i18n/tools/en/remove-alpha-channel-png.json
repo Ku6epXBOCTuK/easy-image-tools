@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Remove the PNG Alpha Channel - Free, No Upload",
 		"metaDescription": "Blend a transparent image onto a white background and save it with no transparency left at all. Free and unlimited, done in your browser with no upload.",
-		"longDescription": "Removing the alpha channel flattens an image: every pixel is blended with a white background using its own opacity, and the alpha value of the result is set to full everywhere, so the saved file carries no transparency at all. The white is fixed - there is no color control on this page - and the canvas keeps its size, which means a transparent logo comes out as a white square. That is exactly what JPG and BMP expect, and it is the safe way to hand a cutout to an application that does not understand alpha. PNG, JPG, WebP and BMP are accepted and never leave your browser.",
+		"longDescription": "Flatten transparency onto white blends every pixel of an image with a white background using its own opacity, and sets the alpha of the result to full everywhere, so the saved file carries no transparency at all. The white is fixed — there is no color control on this page — and the canvas keeps its size, which means a transparent logo comes out as a white square. That is exactly what JPG and BMP expect, and it is the safe way to hand a cutout to an application that does not understand alpha. The files never leave your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Always white — the fit onto background tool flattens onto a color you pick.",
+			"Once flattened, the transparency cannot be restored; keep the original.",
+			"No settings: the result appears as soon as the image loads.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the transparent image into the source area, or pick a file from your device.",
 			"The result appears at once, opaque, with the transparent parts filled white.",

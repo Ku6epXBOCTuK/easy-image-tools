@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Split PNG into HSL - Hue, Saturation, Lightness Map",
 		"metaDescription": "Decompose an image into hue, saturation and lightness to see where the colors and the tones sit. Free and local, nothing is uploaded - it runs in your browser.",
-		"longDescription": "HSL breaks a color into the three parts a designer thinks in: hue is the angle on the color wheel, saturation is how vivid the color is, and lightness is how light it looks, taken as the midpoint between the brightest and the darkest channel. A fully saturated red therefore has lightness 0.5 rather than 1, because the formula measures the middle of the range instead of the top. It runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and alpha is left exactly as it was.",
+		"longDescription": "Split PNG into HSL decomposes the image into the three parts a designer thinks in: hue is the angle on the color wheel, saturation is how vivid the color is, and lightness is the midpoint between the brightest and the darkest channel. A fully saturated red therefore has lightness 0.5 rather than 1, because the formula measures the middle of the range instead of the top. It runs in your browser, and alpha is left exactly as it was.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"H, S or L one at a time as grayscale, or all three as RGB.",
+			"Lightness is the midpoint of the brightest and darkest channel — vivid red sits at 0.5.",
+			"HSL is the model behind CSS colors; the hue map shows where the color families are.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Pick Component: H for hue, S for saturation or L for lightness.",

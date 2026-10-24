@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Random Color Blocks PNG - Free Seeded Color Mosaic",
 		"metaDescription": "Fill a canvas with random vivid color blocks of the size you choose, fixed by seed. Free, no upload, no signup, generated in your browser.",
-		"longDescription": "Random color blocks are a mosaic where every square of a fixed size is filled with one bright random color, and this page generates exactly that: the canvas is walked in blocks from the top left, each block getting its own hue, and the colors are deliberately vivid, sitting between 65 and 100 percent saturation and between 45 and 70 percent lightness so nothing comes out near-black or washed out. No upload is involved and there is no source file - the mosaic is built in your browser and saved as PNG, JPG, WebP or BMP. Use it as texture behind a title card, as a test pattern, or as a deterministic set of random colors you can reuse: the Seed field decides the whole picture, so the same seed with the same canvas size and block size always rebuilds the identical image. The honest caveat is that the hues are picked independently, so neighbouring blocks can land on colors that clash badly - it is a random mosaic, not a palette.",
+		"longDescription": "Random color blocks fills a canvas with a mosaic where every square of a fixed size gets one bright random color: the canvas is walked in blocks from the top left, each block getting its own hue. The colors are deliberately vivid — saturation between 65 and 100 percent, lightness between 45 and 70 — so nothing comes out near-black or washed out. There is no source file: the mosaic is built in your browser. Use it as texture behind a title card, as a test pattern, or as a deterministic set of random colors you can reuse.",
+		"facts": [
+			"Generated entirely in your browser: no upload, no server, no signup.",
+			"Block size from 4 to 256 px; edges get a clipped block when the sizes do not divide evenly.",
+			"Deterministic by seed: the same seed and sizes always rebuild the identical mosaic.",
+			"Hues are picked independently — neighbouring blocks can clash; it is not a palette.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the blocks are generated from the Canvas size, Block size and Seed values.",
 			"Set the Canvas size in pixels, or pick a preset.",

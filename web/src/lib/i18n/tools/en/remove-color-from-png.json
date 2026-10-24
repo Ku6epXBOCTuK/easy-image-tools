@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Make a Color Transparent in PNG - Free, No Upload",
 		"metaDescription": "Clear every pixel close to a chosen color and leave the rest of the picture alone, with a tolerance from 0 to 100 percent. Free, local, no account needed.",
-		"longDescription": "Removing a color makes every pixel close to a chosen one fully transparent, which is the quick way to drop a flat backdrop. Pick the Target color and the Color tolerance: the tool measures the distance between each pixel and that color in RGB space and clears everything inside the tolerance, expressed as a share of the largest distance a color can have. Nothing else is touched, so the remaining pixels keep their colors and their alpha, and the match is by value only - the same color inside your subject disappears too. It runs in your browser, and PNG, JPG, WebP and BMP are accepted.",
+		"longDescription": "Make a color transparent clears every pixel close to a chosen one — the quick way to drop a flat backdrop. Pick the Target color and the Color tolerance: the tool measures the distance between each pixel and that color in RGB space and clears everything inside the tolerance, expressed as a share of the largest distance a color can have. Nothing else is touched, so the remaining pixels keep their colors and their alpha, and the match is by value only — the same color inside your subject disappears too. It runs in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Tolerance 0 matches one exact shade; 100 would clear every pixel.",
+			"A hard all-or-nothing edge — feather edges adds the graded rim.",
+			"Match is by value, not position; the outer only option in remove background protects the subject.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Pick the Target color in the swatch - set it to the exact backdrop color.",

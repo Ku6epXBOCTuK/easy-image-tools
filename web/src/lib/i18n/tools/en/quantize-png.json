@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Quantize PNG - Reduce to a Fixed Color Count, Free",
 		"metaDescription": "Reduce any picture to a chosen number of colors, 2 to 64, with median-cut. Free, no upload - quantizing runs in your browser and keeps transparency intact.",
-		"longDescription": "Quantizing reduces an image to a chosen number of colors. The tool samples the pixels, groups them into buckets by repeatedly splitting the bucket with the widest spread down its longest channel, takes each bucket's average as one palette entry, and then repaints every pixel with the nearest of those entries. Fully transparent pixels are skipped rather than treated as black, so cut-out graphics survive the reduction. Everything happens in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is preserved.",
+		"longDescription": "Quantize reduces an image to a chosen number of colors. The tool samples the pixels, groups them into buckets by repeatedly splitting the bucket with the widest spread down its longest channel, takes each bucket's average as one palette entry, and repaints every pixel with the nearest of those entries. Fully transparent pixels are skipped rather than treated as black, so cut-out graphics survive the reduction. Everything happens in your browser, and the alpha channel is preserved.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Any color count from 2 to 64 — the free-form version of the preset reducer.",
+			"Median-cut: the palette is derived from the image itself.",
+			"Fully transparent pixels are skipped, so cut-outs survive.",
+			"To name the exact colors use the custom palette tool.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Color count between 2 and 64; 16 is the starting point.",

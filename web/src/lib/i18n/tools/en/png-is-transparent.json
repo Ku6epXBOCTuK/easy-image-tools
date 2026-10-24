@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Check If PNG Is Transparent - Free Local Checker",
 		"metaDescription": "Find out whether an image has transparent or semi-transparent pixels. Free, no upload, nothing is stored - the file is checked in your browser, not on a server.",
-		"longDescription": "A PNG can store transparency, but the file extension does not promise it: a PNG saved from a JPG has no alpha channel at all, and a PNG that does have one may still be fully opaque. This checker decodes the image and reports whether any pixel is fully or partly transparent. Everything runs in your browser on your device - the file is not uploaded, and no copy of it is kept anywhere. Upload accepts PNG, JPG, WebP and BMP, so you can check any of them, not only a PNG.",
+		"longDescription": "Check if a PNG is transparent decodes the image and reports whether any pixel is fully or partly transparent — because the file extension does not promise it: a PNG saved from a JPG has no alpha channel at all, and a PNG that does have one may still be fully opaque. Everything runs in your browser on your device, and no copy of the file is kept anywhere. Upload accepts PNG, JPG, WebP and BMP, so you can check any of them, not only a PNG.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"No settings: the verdict appears as soon as the image is decoded.",
+			"A single see-through pixel anywhere is enough for a yes.",
+			"A JPG always answers no — JPEG has no alpha channel.",
+			"The show transparent areas tool paints every pixel that is not fully opaque.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Wait for the verdict - the image is decoded locally, there is nothing to configure.",

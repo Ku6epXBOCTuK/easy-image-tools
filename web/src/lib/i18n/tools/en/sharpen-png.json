@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Sharpen PNG Online - Free Image Sharpener, No Upload",
 		"metaDescription": "Sharpen an image in your browser by boosting local contrast around edges. Free, no upload, no limits. Works with PNG, JPG, WebP and BMP.",
-		"longDescription": "Sharpen PNG strengthens the contrast between each pixel and its neighbors, which makes edges look crisper. The strength setting blends the sharpened result with the original: at 0% the image comes back unchanged, and at 100% the sharpening kernel is applied at full strength. The tool is for images that are already correctly sized and slightly soft - it does not add detail that was never captured, so it cannot rescue a photo that was enlarged too far. Processing happens in your browser and the file is never uploaded.",
+		"longDescription": "Sharpen PNG strengthens the contrast between each pixel and its neighbors, which makes edges look crisper. The strength setting blends the sharpened result with the original: at 0% the image comes back unchanged, and at 100% the sharpening kernel is applied at full strength. The tool is for images that are already correctly sized and slightly soft — it does not add detail that was never captured, so it cannot rescue a photo that was enlarged too far. Processing happens in your browser and the file is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Strength blends the effect with the original; 0% returns the image unchanged.",
+			"Too much strength creates bright halos around edges — start low.",
+			"Cannot recover detail that was never captured.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set the strength: start low, because too much creates bright halos around edges.",

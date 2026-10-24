@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "PNG to Data URI - Free Embed String, No Upload, No Limits",
 		"metaDescription": "Turn an image into a complete data:image/png;base64,... value for CSS, HTML or JSON and copy it in one click. Free, no upload, no limits, encoded locally.",
-		"longDescription": "A data URI is the complete string that lets an image live inside a text file: the data: prefix, the media type, the base64 marker, a comma and then the encoded picture. This page takes an image and builds exactly that string, ready to paste into a background-image declaration, an HTML src attribute, a JSON config or an email template, with a button that copies the whole value. The encoding always produces a PNG, whatever you loaded, because the pixels are re-encoded through a canvas as a PNG - so a JPG or WebP comes back as PNG bytes inside the data URI. That is the honest catch: you get a data URI for a PNG, not for the WebP you started with. Everything runs in your browser.",
+		"longDescription": "Build a data URI takes an image and produces the complete string that lets it live inside a text file: the data: prefix, the media type, the base64 marker, a comma and the encoded picture — ready to paste into a background-image declaration, an HTML src attribute, a JSON config or an email template, with a button that copies the whole value. The encoding always produces a PNG, whatever you loaded, because the pixels are re-encoded through a canvas: a JPG or WebP comes back as PNG bytes inside the data URI. Everything runs in your browser.",
+		"facts": [
+			"Encoded entirely in your browser: the image and the string never leave the page.",
+			"Complete value with prefix — the payload alone is the Base64 tool.",
+			"The output is always image/png, whatever format went in.",
+			"Base64 costs about a third more characters than the raw bytes.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Wait for the full data:image/png;base64,... string to appear in the result panel.",

@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Convert PNG to YCbCr - Luma and Chroma Channel Map",
 		"metaDescription": "Split an image into luma and the two blue- and red-difference chroma channels used by video and JPEG. Free, no upload - the split runs in your browser tab.",
-		"longDescription": "YCbCr is the color arrangement almost every video codec and JPEG uses: one brightness channel called luma, and two color-difference channels called Cb and Cr. A gray pixel is one where the color channels sit exactly at the middle value, so Cb and Cr double as a map of how much color a pixel carries rather than what color it is. This tool splits your image into those three parts with the full-range weights. It runs in your browser on PNG, JPG, WebP and BMP files, uploads nothing, and leaves alpha alone.",
+		"longDescription": "Convert PNG to YCbCr splits the image into the color arrangement almost every video codec and JPEG uses: one brightness channel called luma, and two color-difference channels called Cb and Cr. A gray pixel is one where the color channels sit exactly at the middle value, so Cb and Cr double as a map of how much color a pixel carries rather than what color it is. The split uses the full-range weights, runs in your browser, and leaves alpha alone.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Y, CB or CR one at a time as grayscale, or all three as RGB.",
+			"Y is the same BT.601 luma as the grayscale tool produces.",
+			"Cb and Cr are differences: mid gray means no color, not darkness.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Pick Component: Y for luma, CB for the blue-difference channel or CR for the red-difference channel.",

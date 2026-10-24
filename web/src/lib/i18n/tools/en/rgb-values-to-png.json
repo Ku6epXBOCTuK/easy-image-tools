@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "RGB Values to PNG - Free Image Builder, Nothing Uploaded",
 		"metaDescription": "Assemble an image from rgba(r, g, b, a) numbers: paste the list, set the width, the height is computed automatically. Free, private, runs in your browser.",
-		"longDescription": "Building an image from rgba values is the reverse of listing one: you have a run of numbers in the CSS spelling of a color - rgba(255, 0, 0, 255) and its neighbours - and want them back as a picture. Paste the values into the text field, set Width to the number of pixels in one row, and the height follows from the total, so a 32 by 32 icon is 256 rgba groups at a width of 32. Commas, parentheses and line breaks are ignored, which means a list copied out of a stylesheet works as it is, but the values are not negotiable: each must be a whole number from 0 to 255, four per pixel, and the pixel count must divide evenly by the width. A wrong width is the one mistake the page cannot detect - it assembles a sheared picture without complaining.",
+		"longDescription": "Build an image from rgba values takes a run of numbers in the CSS spelling of a color — rgba(255, 0, 0, 255) and its neighbours — and assembles them back into a picture. Paste the values into the text field, set Width to the number of pixels in one row, and the height follows from the total; a 32 by 32 icon is 256 rgba groups at a width of 32. Commas, parentheses and line breaks are ignored, so a list copied out of a stylesheet works as it is, but the values are not negotiable: each must be a whole number from 0 to 255, four per pixel, and the pixel count must divide evenly by the width. A wrong width is the one mistake the page cannot detect — it assembles a sheared picture without complaining.",
+		"facts": [
+			"Assembled entirely in your browser: no upload, no server, no signup.",
+			"Only the numbers are read — punctuation and spacing are ignored.",
+			"Alpha is a byte from 0 to 255; multiply a CSS 0.5 by 255 before pasting.",
+			"A partial row stops the page with an error naming both numbers.",
+			"The PNG to RGB values tool prints this exact notation for a round trip.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Paste the rgba(255, 0, 0, 255) style values into the text field; the punctuation is ignored.",
 			"Set Width to the pixel count of a single row - divide the value count by four to get the pixel count, then check that it divides evenly.",

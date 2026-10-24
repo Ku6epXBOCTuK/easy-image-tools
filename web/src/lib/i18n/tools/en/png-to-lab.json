@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Convert PNG to LAB - Perceptual Lightness and Color Map",
 		"metaDescription": "Decompose an image into perceptual lightness plus the green-magenta and blue-yellow axes. Free and local, nothing is uploaded - the conversion runs in your browser.",
-		"longDescription": "LAB is the space built so that equal numeric steps look like equal perceptual steps. L is lightness on the familiar 0 to 100 scale, while a and b are two opponent axes - a runs from green to magenta and b from blue to yellow - each centered on zero, which is neutral gray. The values here are normalized into 0 to 1 with the axes centered at mid gray, because a PNG can only store three bytes per pixel. It runs in your browser on PNG, JPG, WebP and BMP files, uploads nothing, and keeps alpha intact.",
+		"longDescription": "Convert PNG to LAB decomposes the image into perceptual lightness and two opponent axes: L is lightness on the familiar 0 to 100 scale, a runs from green to magenta and b from blue to yellow, each centered on neutral gray. LAB is the space built so that equal numeric steps look like equal perceptual steps — two colors at the same L really do look equally bright. The values here are normalized into 0 to 1 with the axes centered at mid gray, because a PNG can only store three bytes per pixel. It runs in your browser and keeps alpha intact.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"L, A or B one at a time as grayscale, or all three as RGB.",
+			"Mid gray on the a and b maps means neutral — a PNG channel cannot be negative.",
+			"A working space for color management, not an output format.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Pick Component: L for lightness, A for the green-magenta axis or B for the blue-yellow axis.",

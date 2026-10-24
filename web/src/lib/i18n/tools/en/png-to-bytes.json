@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "PNG to RGBA Bytes - Free Pixel Dump, Nothing Is Uploaded",
 		"metaDescription": "Dump every pixel of an image as four decimal bytes, one image row per line, ready for a canvas script or a shader. Free and private: nothing is uploaded.",
-		"longDescription": "Listing the pixels of an image as RGBA byte values means writing out, for every pixel, four decimal numbers between 0 and 255: red, green, blue, alpha. That is the raw form a canvas script works with - the array handed to a typed array, the buffer written into a shader, the sample a colleague wants as numbers rather than as a picture. This page decodes the file and prints the list in the result panel, one image row per line, so the shape of the image stays readable in the text. PNG, JPG, WebP and BMP are accepted on upload, and what you get is always the decoded pixels, so a JPG simply contributes fully opaque alpha values. There is no quality setting involved: the numbers are the picture.",
+		"longDescription": "List image pixels as RGBA byte values writes out, for every pixel, four decimal numbers between 0 and 255: red, green, blue, alpha. That is the raw form a canvas script works with — the array handed to a typed array, the buffer written into a shader, the sample a colleague wants as numbers rather than as a picture. The list prints one image row per line, so the shape of the image stays readable in the text, and what you get is always the decoded pixels, so a JPG simply contributes fully opaque alpha values. There is no quality setting involved: the numbers are the picture.",
+		"facts": [
+			"Decoded entirely in your browser: no upload, no server, no signup.",
+			"Four numbers per pixel, one image row per line.",
+			"A JPG or BMP reports alpha 255 — those formats have no alpha channel.",
+			"The bytes to PNG tool rebuilds the image from exactly this layout.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Read the R G B A groups in the result panel - one line per image row.",

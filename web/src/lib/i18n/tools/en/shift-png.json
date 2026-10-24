@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Shift PNG - Move Image Content, No Upload",
 		"metaDescription": "Move the content of an image by any X and Y offset in pixels, filling the space it leaves behind. Free, no upload, no signup, runs in your browser.",
-		"longDescription": "Shifting moves the whole content of an image by a given number of pixels horizontally and vertically, which is how you nudge a picture inside its frame without changing the file size. The canvas keeps its original dimensions and the area the content vacates is filled with the Fill color, so the result stays exactly the same size as the source. Offsets run from minus 5000 to 5000 pixels per axis, and negative values push the content the other way. Use it to align a subject inside a fixed frame, to add breathing room on one side only, or to build a layered offset for a shadow or glitch effect. Note that the vacated area is filled with a solid color here, not left transparent: if you want a transparent margin, use the add padding tool, which has an opacity control. Everything runs in your browser.",
+		"longDescription": "Shift PNG moves the whole content of an image by a given number of pixels horizontally and vertically — how you nudge a picture inside its frame without changing the file size. The canvas keeps its original dimensions, and the area the content vacates is filled with the Fill color, so the result stays exactly the same size as the source. Use it to align a subject inside a fixed frame, add breathing room on one side only, or build a layered offset for a shadow or glitch effect. Everything runs in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Offsets from -5000 to 5000 px per axis; leave one at 0 to move on a single axis.",
+			"The canvas size never changes; content pushed past the edge is cropped, not wrapped.",
+			"The vacated area takes an opaque Fill color — for a transparent margin use add padding.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Offset X to move the content left or right, from -5000 to 5000 pixels.",

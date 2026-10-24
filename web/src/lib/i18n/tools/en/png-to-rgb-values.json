@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "PNG to RGB Values - Free rgba() List, Decoded Locally Only",
 		"metaDescription": "Print every pixel as rgba(r, g, b, a), one image row per line, for CSS, canvas scripts and tokens. Free, no signup, decoded locally - nothing is uploaded.",
-		"longDescription": "Writing the pixels of an image as rgba values means printing every pixel as rgba(r, g, b, a), with whole numbers from 0 to 255 and an alpha running through the same range. That is the CSS spelling of a color, and the same form turns up in canvas scripts, design tokens and documentation, so it is the convenient one to read when a number has to be understandable rather than compact. This page decodes the image and lists the pixels in the result panel, one image row per line, so you can still count the width by counting the values on a line. PNG, JPG, WebP and BMP are all accepted, and what you get is always the decoded pixels: a JPG has no alpha channel, so its fourth value is 255 on every line.",
+		"longDescription": "List image pixels as rgba values prints every pixel as rgba(r, g, b, a), with whole numbers from 0 to 255 and the alpha running through the same range. That is the CSS spelling of a color, and the same form turns up in canvas scripts, design tokens and documentation — the convenient one to read when a number has to be understandable rather than compact. The pixels are listed one image row per line, so you can still count the width by counting the values on a line. What you get is always the decoded pixels: a JPG has no alpha channel, so its fourth value is 255 on every line.",
+		"facts": [
+			"Decoded entirely in your browser: no upload, no server, no signup.",
+			"rgba(r, g, b, a) per pixel, one image row per line.",
+			"Alpha runs 0 to 255 — multiply a CSS 0-to-1 opacity by 255.",
+			"The RGB values to PNG tool rebuilds the image from exactly this form.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Read the rgba(r, g, b, a) groups in the result panel, one image row per line.",

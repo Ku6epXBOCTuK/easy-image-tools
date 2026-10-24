@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Create Random Noise PNG - Free Seeded Noise Generator",
 		"metaDescription": "Generate a random noise PNG where every pixel gets its own color, fixed by seed. Free, no upload, no signup, made and saved in your browser.",
-		"longDescription": "Random noise is an image in which every single pixel is given its own independent red, green and blue value, which is what produces television static, film grain and a flat test pattern. This page writes exactly that, over an opaque canvas with no transparency anywhere, and it needs no upload and no source file: the pixels are generated on your device and the result saved as PNG, JPG, WebP or BMP. Use it as a transparency test pattern, as a base texture to blend something over, or as an unpredictable-looking background. The Seed field is the part worth understanding - it is the starting number of the small random generator, so the same seed with the same canvas size always rebuilds the identical picture, which is how you get a repeatable noise texture rather than a new one on every visit. It is a reproducibility control, not a security feature.",
+		"longDescription": "Create random noise writes an image in which every single pixel gets its own independent red, green and blue value — what produces television static, film grain and a flat test pattern. The canvas is fully opaque, with no transparency anywhere, and there is no source file: the pixels are generated on your device. Use it as a transparency test pattern, a base texture to blend something over, or an unpredictable-looking background.",
+		"facts": [
+			"Generated entirely in your browser: no upload, no server, no signup.",
+			"Canvas from 1 to 5000 px per side; every pixel is written fully opaque.",
+			"Deterministic by seed: the same seed and size rebuild the identical picture.",
+			"For grain added to an existing picture use the add noise tool instead.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the pixels are generated from the Canvas size and the Seed.",
 			"Set the Canvas size in pixels, or pick a preset; the noise fills every pixel.",
