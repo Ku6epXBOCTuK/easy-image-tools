@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.14.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/aa1d1063aceb1fadcf8550db2dbf261ae954ac10..v0.14.0) - 2026-10-24
+#### Features
+- update tool picker on pipeline - ([e44d8f5](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/e44d8f5e29b25e7f1b9193c15372b9b8ebd6768c)) - Ku6epXBOCTuK
+- add og image generator and generate images - ([61ad067](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/61ad067bdd5c8661814bd6a40649c0a018571e1a)) - Ku6epXBOCTuK
+- add static popularity for tools - ([383a194](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/383a194a5ff63b52220588d3ab4175ce8b7a2d35)) - Ku6epXBOCTuK
+- update main page - ([96872f4](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/96872f4b53e4c53721934fe2d957fdcf05ef56ca)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.13.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/83bc3a6ef172f47c800af7e008bd49b9b74494f9..v0.13.0) - 2026-10-14
 #### Features
 - add pages seo descriptions - ([6fca511](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/6fca511554b1af68d8858fac8f736302ee98386f)) - Ku6epXBOCTuK
