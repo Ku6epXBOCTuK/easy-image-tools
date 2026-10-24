@@ -5,6 +5,7 @@ import { setLocale } from "./locale.svelte";
 import { en } from "./en";
 import { ru } from "./ru";
 import {
+	pickFeaturedPages,
 	searchPages,
 	searchPagesRanked,
 	verdictText,
@@ -132,6 +133,61 @@ describe("searchPagesRanked (search-first ranking)", () => {
 			"fixture-alpha",
 			"fixture-beta",
 			"fixture-gamma",
+		]);
+	});
+
+	it("popularity breaks score ties, catalog order breaks popularity ties", () => {
+		const tied: Page[] = fixture.map((page) => ({
+			...page,
+			title: "Same Title",
+			description: "same words",
+		}));
+		const pop = (slug: string) => (slug === "fixture-gamma" ? 100 : 0);
+		expect(slugs(searchPagesRanked(tied, "same", pop))).toEqual([
+			"fixture-gamma",
+			"fixture-alpha",
+			"fixture-beta",
+		]);
+	});
+});
+
+describe("pickFeaturedPages (home slots)", () => {
+	const pages: Page[] = ["1", "2", "3", "4", "5"].map((n) => ({
+		slug: `fixture-${n}`,
+		title: `Fixture ${n}`,
+		description: `fixture ${n}`,
+		category: "geometry",
+		steps: [{ id: `fixture-${n}` }],
+	}));
+
+	it("caps favorites and fills the rest in catalog order", () => {
+		const favs = new Set(["fixture-1", "fixture-3", "fixture-5"]);
+		expect(slugs(pickFeaturedPages(pages, favs, 4, 2))).toEqual([
+			"fixture-1",
+			"fixture-3",
+			"fixture-2",
+			"fixture-4",
+		]);
+	});
+
+	it("without favorites the first pages win", () => {
+		expect(slugs(pickFeaturedPages(pages, new Set(), 3, 2))).toEqual([
+			"fixture-1",
+			"fixture-2",
+			"fixture-3",
+		]);
+	});
+
+	it("limit below the favorites cap still respects the limit", () => {
+		const favs = new Set(["fixture-1", "fixture-3"]);
+		expect(slugs(pickFeaturedPages(pages, favs, 1, 2))).toEqual(["fixture-1"]);
+	});
+
+	it("popularity reorders the general fill", () => {
+		const pop = (slug: string) => (slug === "fixture-5" ? 100 : 0);
+		expect(slugs(pickFeaturedPages(pages, new Set(), 2, 2, pop))).toEqual([
+			"fixture-5",
+			"fixture-1",
 		]);
 	});
 });

@@ -5,10 +5,11 @@
 	import JsonLd from "$lib/components/JsonLd.svelte";
 	import ToolSearchField from "$lib/components/search/ToolSearchField.svelte";
 	import Seo from "$lib/components/Seo.svelte";
-	import { favFirst } from "$lib/favorites.svelte";
+	import { favPages } from "$lib/favorites.svelte";
 	import {
 		pageDescription,
 		pageTitle,
+		pickFeaturedPages,
 		searchPagesRanked,
 		siteSeo,
 	} from "$lib/i18n/schema-tool-strings";
@@ -24,14 +25,20 @@
 	// of cards in every state - the full listing lives in /list-tools.
 	const TOP_MATCHES = 6;
 
+	// NOTE: Favorites are a resume hint, not the showcase: at most two, so the
+	// remaining slots stay with the best general tools.
+	const MAX_FAVORITES = 2;
+
 	const searching = $derived(query.trim().length > 0);
 
-	// NOTE: With an empty query the six slots are filled favorites-first, in
-	// catalog order; while searching, favorites compete through the ranking.
+	const favSlugs = $derived(new Set(favPages(PAGES).map((p) => p.slug)));
+
+	// NOTE: With an empty query favorites cap the first slots and general tools
+	// fill the rest; while searching, favorites compete through the ranking.
 	const results = $derived(
 		searching
 			? searchPagesRanked(PAGES, query).slice(0, TOP_MATCHES)
-			: favFirst(PAGES).slice(0, TOP_MATCHES),
+			: pickFeaturedPages(PAGES, favSlugs, TOP_MATCHES, MAX_FAVORITES),
 	);
 </script>
 

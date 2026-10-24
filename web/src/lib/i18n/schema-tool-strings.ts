@@ -5,6 +5,7 @@ import type { Field } from "$lib/registry-schema";
 import type { SeoContent, SiteSeo } from "./dict";
 import { getMergedDict } from "./locale.svelte";
 import { normalizeForSearch, scoreDoc, type SearchDoc } from "./matching";
+import { popularityOf } from "../registry/popularity";
 import { ru } from "./ru";
 import { en } from "./en";
 import type { SitePageId } from "./seo-copy";
@@ -175,11 +176,12 @@ export function searchPages(pages: readonly Page[], query: string): Page[] {
 }
 
 // NOTE: Same scoring as `searchPages`, but the best match comes first (title
-// prefix above infix above description); equal scores keep catalog order. For
-// search-first surfaces where there is no catalog order to preserve.
+// prefix above infix); equal scores are broken by popularity, then catalog
+// order. Text score always outranks popularity - it never mixes in.
 export function searchPagesRanked(
 	pages: readonly Page[],
 	query: string,
+	popularity: (slug: string) => number = popularityOf,
 ): Page[] {
 	const q = normalizeForSearch(query.trim());
 	if (q.length === 0) return [...pages];
@@ -189,6 +191,37 @@ export function searchPagesRanked(
 		if (score !== null) scored.push({ page, index, score });
 	});
 	return scored
-		.sort((a, b) => b.score - a.score || a.index - b.index)
+		.sort(
+			(a, b) =>
+				b.score - a.score ||
+				popularity(b.page.slug) - popularity(a.page.slug) ||
+				a.index - b.index,
+		)
 		.map((entry) => entry.page);
+}
+
+// NOTE: Featured slots for the home page: up to `maxFavorites` favorites (in
+// catalog order), the rest filled with the most popular non-favorites (EIT-130
+// map), catalog order on ties. Pure and deterministic.
+export function pickFeaturedPages(
+	pages: readonly Page[],
+	favoriteSlugs: ReadonlySet<string>,
+	limit: number,
+	maxFavorites: number,
+	popularity: (slug: string) => number = popularityOf,
+): Page[] {
+	const favorites: Page[] = [];
+	const rest: { page: Page; index: number }[] = [];
+	pages.forEach((page, index) => {
+		if (favoriteSlugs.has(page.slug)) {
+			if (favorites.length < maxFavorites) favorites.push(page);
+		} else {
+			rest.push({ page, index });
+		}
+	});
+	rest.sort(
+		(a, b) =>
+			popularity(b.page.slug) - popularity(a.page.slug) || a.index - b.index,
+	);
+	return [...favorites, ...rest.map((entry) => entry.page)].slice(0, limit);
 }
