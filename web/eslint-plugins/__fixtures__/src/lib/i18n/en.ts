@@ -12,7 +12,7 @@ export const en: Dict = {
 	errors: {
 		sourceRequired: "Source image required",
 	},
-	// Базовая локаль: тексты страниц берутся из EN-строк реестра.
+	// NOTE: Base locale: page texts are taken from the EN strings of the registry.
 	pages: {},
 	tools: {
 		addBorder: {

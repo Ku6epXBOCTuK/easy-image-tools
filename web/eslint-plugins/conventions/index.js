@@ -1,6 +1,4 @@
 import asciiOnly from "./ascii-only.js";
-import commentFormat from "./comment-format.js";
-import commentsEnglish from "./comments-english.js";
 import interfaceProps from "./interface-props.js";
 import noStringUnionAlias from "./no-string-union-alias.js";
 
@@ -11,8 +9,6 @@ export default {
 	},
 	rules: {
 		"ascii-only": asciiOnly,
-		"comment-format": commentFormat,
-		"comments-english": commentsEnglish,
 		"interface-props": interfaceProps,
 		"no-string-union-alias": noStringUnionAlias,
 	},

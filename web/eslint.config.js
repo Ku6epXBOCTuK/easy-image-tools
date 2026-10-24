@@ -64,8 +64,6 @@ export default tseslint.config(
 						"eslint-plugins/__tests__/dict-consistency.test.ts",
 						"eslint-plugins/__tests__/no-hardcoded-user-text.test.ts",
 						"eslint-plugins/__tests__/ascii-only.test.ts",
-						"eslint-plugins/__tests__/comments-english.test.ts",
-						"eslint-plugins/__tests__/comment-format.test.ts",
 						"eslint-plugins/__fixtures__/src/lib/i18n/dict.ts",
 						"eslint-plugins/__fixtures__/src/lib/i18n/en.ts",
 						"eslint-plugins/__fixtures__/src/lib/i18n/ru.ts",
@@ -194,42 +192,15 @@ export default tseslint.config(
 			"conventions/ascii-only": ["error", { allowChars: ["×"] }],
 		},
 	},
-	// NOTE: Comments in English, in short blocks: excess comments are a cue to
-	// refactor code, not to squeeze them.
 	{
-		files: [
-			"**/src/**/*.ts",
-			"**/src/**/*.svelte",
-			// NOTE: Dogfooding: lint tooling follows the same comment conventions.
-			"**/eslint-plugins/**/*.js",
-			"**/scripts/**/*.mjs",
-			"**/*.config.js",
-			"**/*.config.ts",
-			"**/*.config.mjs",
-		],
-		plugins: {
-			conventions: conventionsPlugin,
-		},
-		rules: {
-			"conventions/comments-english": "error",
-			"conventions/comment-format": [
-				"error",
-				// NOTE: minLines: density skips small files, any header would trip it.
-				{ maxBlockLines: 5, maxRatio: 0.15, minLines: 100 },
-			],
-		},
-	},
-	{
-		// NOTE: Lint-rule fixtures are intentional stubs (non-ASCII and
-		// non-English comments are input cases); the conventions do not apply.
+		// NOTE: Lint-rule fixtures are intentional stubs (non-ASCII strings are
+		// input cases); the convention does not apply.
 		files: [
 			"**/eslint-plugins/__fixtures__/**",
 			"**/eslint-plugins/__tests__/**",
 		],
 		rules: {
 			"conventions/ascii-only": "off",
-			"conventions/comments-english": "off",
-			"conventions/comment-format": "off",
 		},
 	},
 	{
