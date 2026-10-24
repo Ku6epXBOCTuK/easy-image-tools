@@ -3,7 +3,13 @@
 	"seo": {
 		"metaTitle": "Convert PNG to WebP - Free Converter, No Upload",
 		"metaDescription": "Convert PNG to WebP in your browser with a quality slider. Transparency is preserved and the file gets much smaller. Free, no upload, no signup.",
-		"longDescription": "WebP is the modern image format that usually beats PNG on size while still storing transparency. Converting a PNG to WebP here re-encodes the picture in your browser with a quality slider: at high quality the difference is hard to see and the file is noticeably smaller, and at lower quality the savings grow while detail starts to go. Because WebP supports an alpha channel, everything transparent stays transparent - unlike JPG. Nothing is uploaded, there is no watermark, no account and no daily limit.",
+		"longDescription": "Convert PNG to WebP re-encodes your image in the browser into the format that usually beats PNG on size while still storing transparency. A quality slider sets the trade between savings and detail: at high quality the difference is hard to see and the file is noticeably smaller. Everything transparent stays transparent, because WebP has an alpha channel — unlike JPG. Nothing is uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Transparency survives the conversion — WebP has an alpha channel.",
+			"Quality 80–90 is the usual sweet spot between size and detail.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the PNG into the source area, or pick a file from your device.",
 			"Raise or lower Quality: around 80-90 is the sweet spot between size and detail.",

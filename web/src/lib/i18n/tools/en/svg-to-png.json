@@ -3,7 +3,13 @@
 	"seo": {
 		"metaTitle": "SVG to PNG - Free Converter, No Upload",
 		"metaDescription": "Rasterize an SVG into a PNG in your browser: paste the markup, set the size, download the bitmap. No upload of files, no account, no watermark.",
-		"longDescription": "SVG is vector markup: it stores shapes, paths and text, and the browser draws it at whatever size the layout asks for. Some programs do not draw SVG at all, so an icon or a chart sometimes has to be handed over as a bitmap. This page pastes the markup, rasterizes it into a PNG of the size you set, and lets you download it. The SVG is rendered by the browser engine on your machine - no file is uploaded, and no external asset referenced by the SVG is fetched from a server either.",
+		"longDescription": "Convert SVG to PNG rasterizes vector markup into a bitmap of the size you set: paste the SVG code, and the browser engine on your machine draws it into a PNG ready to download. This is what you need when a program does not draw SVG at all — an icon or a chart has to be handed over as pixels. The markup is rendered locally; no file is uploaded and no external asset referenced by the SVG is fetched.",
+		"facts": [
+			"Renders with your browser's own SVG engine — curves, strokes and gradients come out as on a web page.",
+			"Runs entirely in your browser: the markup and the PNG never reach a server.",
+			"External images referenced by the SVG are not fetched from anywhere.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Paste the SVG code into the text field on the left.",
 			"Set the output size in pixels; the drawing is scaled to fit.",

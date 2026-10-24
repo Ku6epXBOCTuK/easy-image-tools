@@ -3,7 +3,13 @@
 	"seo": {
 		"metaTitle": "Create Empty PNG - Blank Image Generator, No Upload",
 		"metaDescription": "Create a blank PNG of any size in your browser: fully transparent or filled with a solid color. No signup, no limits, generated and downloaded instantly.",
-		"longDescription": "Creating an empty PNG gives you a blank canvas of exactly the size you ask for, either fully transparent or filled with one solid color. Nothing is uploaded because there is nothing to upload: the canvas is generated on your device from the width, height, opacity and color you set, and the file is encoded and saved straight to your machine. Use it as a backdrop for a mockup, as a transparent layer in a design tool, as a spacer in a layout, or as a placeholder that has the exact dimensions your project expects. Sizes run from 1 to 20000 pixels on each side, with presets for the common formats.",
+		"longDescription": "Create empty PNG generates a blank canvas of exactly the size you ask for, either fully transparent or filled with one solid color. The canvas is produced on your device from the width, height, opacity and color you set, and the file is encoded and saved straight to your machine — nothing is uploaded because there is nothing to upload. Use it as a backdrop for a mockup, a transparent layer in a design tool, a spacer in a layout, or a placeholder with the exact dimensions your project expects.",
+		"facts": [
+			"Generated entirely in your browser: no upload, no server, no signup.",
+			"Sizes from 1 to 20000 pixels per side, with presets for common formats.",
+			"Opacity 0 gives a fully transparent canvas; any higher value fills it with the chosen color.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Set Width and Height in pixels, or pick one of the presets such as a square or a screen size.",
 			"Leave Opacity at 0 for a fully transparent canvas, or raise it to fill with the chosen color.",

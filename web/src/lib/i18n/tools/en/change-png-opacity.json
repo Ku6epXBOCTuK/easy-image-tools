@@ -3,7 +3,13 @@
 	"seo": {
 		"metaTitle": "Change PNG Opacity - Make Image Transparent, No Upload",
 		"metaDescription": "Reduce the opacity of a PNG in your browser: the alpha channel is multiplied by a percentage, so 0% is invisible and 100% is unchanged. Free, no upload.",
-		"longDescription": "Changing the opacity of a PNG scales its alpha channel, so a fully opaque image becomes semi-transparent and a 0 percent result is completely invisible. The color channels are left exactly as they were, which is what makes the difference between making an image translucent and making it faded: nothing is blended, every pixel keeps its own color. The result stays a PNG with a real alpha channel, so it still drops onto a page, a slide or another image without a white box around it. Everything runs in your browser, so the file is never uploaded.",
+		"longDescription": "Change PNG opacity scales the alpha channel of the whole image, so a fully opaque picture becomes semi-transparent and a 0 percent result is completely invisible. The color channels are left exactly as they were — nothing is blended, every pixel keeps its own color — which is the difference between making an image translucent and making it faded. The result keeps a real alpha channel and drops onto a page, a slide or another image without a white box around it. Everything runs in your browser, so the file is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Alpha is multiplied per pixel; color channels are copied without resampling.",
+			"Save as PNG or WebP to keep transparency — JPG flattens it onto a color.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set the opacity percentage: 100 leaves it untouched, 50 makes it half transparent.",

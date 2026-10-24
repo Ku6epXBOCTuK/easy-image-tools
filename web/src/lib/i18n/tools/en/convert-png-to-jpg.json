@@ -3,7 +3,13 @@
 	"seo": {
 		"metaTitle": "Convert PNG to JPG - Free Converter, No Upload",
 		"metaDescription": "Convert PNG to JPG right in your browser. Transparent areas are filled with the background color you pick, and you set the JPEG quality. Free, no upload.",
-		"longDescription": "Converting a PNG to JPG makes a smaller file that any device and program can open, at the cost of the two things JPG cannot do: transparency and lossless pixels. Everything is done locally in your browser, so your image is never uploaded and never stored anywhere. Pick the background color that transparent areas are filled with - white by default, which is what most white-backed documents expect - set the JPEG quality, and download. The result carries no watermark, no account requirement and no daily limit.",
+		"longDescription": "Convert PNG to JPG re-encodes your image as a JPEG in the browser: a smaller file that any device and program can open, at the cost of transparency and lossless pixels. Transparent areas are filled with the background color you pick, and the quality slider decides how much detail is kept. The file is encoded on your device and never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Transparent areas are filled with the background color you pick — white by default.",
+			"The quality slider trades file size against visible detail; 90 keeps the picture clean.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the PNG into the source area, or pick a file from your device.",
 			"Set Background to the color that transparent parts should be filled with.",

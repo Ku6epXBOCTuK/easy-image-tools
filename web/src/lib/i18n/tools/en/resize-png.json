@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Resize PNG Online - Free Image Resizer, No Upload",
 		"metaDescription": "Resize PNG images in your browser and keep the aspect ratio. Free, no upload, no limits, no signup. Works with PNG, JPG, WebP and BMP.",
-		"longDescription": "Resize PNG scales an image to new pixel dimensions with bilinear interpolation, which keeps edges smooth when the picture is enlarged or reduced. The scaling runs locally in your browser, so the original file is never uploaded and never leaves your device. The upload takes PNG, JPG, WebP and BMP, and you choose the output format in the Download button. With the aspect ratio kept, one side defines the scale and the other follows; if you set both sides, the image is fitted inside them, so it is scaled down until it fits rather than stretched.",
+		"longDescription": "Resize PNG scales an image to new pixel dimensions with bilinear interpolation, which keeps edges smooth when the picture is enlarged or reduced. With the aspect ratio kept, one side defines the scale and the other follows; if you set both sides, the image is fitted inside them — scaled down until it fits rather than stretched. The scaling runs locally in your browser, so the original file never leaves your device.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Bilinear interpolation keeps edges smooth both up and down in size.",
+			"Accepts PNG, JPG, WebP and BMP; exports PNG, JPG, WebP or BMP from the Download button.",
+			"Setting both sides fits the image inside the box — it is never stretched.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop an image into the source area, or pick a file from your device.",
 			"Enter the new width or height; with aspect kept the other side is recalculated for you.",

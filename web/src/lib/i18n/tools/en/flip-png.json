@@ -3,7 +3,13 @@
 	"seo": {
 		"metaTitle": "Flip PNG - Mirror Image Horizontally, No Upload",
 		"metaDescription": "Mirror a PNG in your browser: flip it horizontally or vertically with no quality loss and no cropping. Free, no upload, no signup, instant.",
-		"longDescription": "Flipping mirrors an image along one axis: horizontally turns left into right, vertically turns top into bottom. The pixels are only moved to mirrored positions - nothing is rotated, scaled or resampled, and the canvas keeps its size, so a flipped image is exactly as sharp as the original. It is the quick fix for a selfie taken with a mirrored preview, a scanned page that came out backwards, or a design mockup that needs the opposite direction.",
+		"longDescription": "Flip PNG mirrors an image along one axis: horizontally turns left into right, vertically turns top into bottom. The pixels are only moved to mirrored positions — nothing is rotated, scaled or resampled, and the canvas keeps its size, so a flipped image is exactly as sharp as the original. It is the quick fix for a selfie taken with a mirrored preview, a scanned page that came out backwards, or a mockup that needs the opposite direction. Everything runs in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Pure mirror: each pixel keeps its exact value, only its position changes.",
+			"Flipping both axes one after the other equals a 180 degree rotation.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Choose the axis: Horizontal for left to right, Vertical for top to bottom.",

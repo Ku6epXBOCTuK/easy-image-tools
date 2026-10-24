@@ -3,7 +3,13 @@
 	"seo": {
 		"metaTitle": "Create Gradient PNG - Free Linear Gradient Generator",
 		"metaDescription": "Generate a linear gradient PNG in your browser: two colors, a direction and any canvas size. Free, no upload, no signup, downloads instantly.",
-		"longDescription": "A linear gradient is a smooth transition from one color to another along a straight line, and this page draws one as a PNG of any size. Choose the start and end colors, set the angle, and the canvas is filled with the blend in your browser - there is no upload, because there is no source file: the gradient is computed pixel by pixel and encoded into a PNG you can download. Gradients are the background of most landing pages, slide decks and app shells, and exporting one as an image gives you a background that does not depend on CSS support at all.",
+		"longDescription": "Create gradient PNG draws a linear gradient — a smooth transition from one color to another along a straight line — and encodes it as a PNG of any size. Choose the start and end colors, set the angle, and the canvas is filled with the blend in your browser. There is no upload because there is no source file: the gradient is computed pixel by pixel on your device. Gradients are the background of most landing pages, slide decks and app shells, and exporting one as an image gives a background that does not depend on CSS support at all.",
+		"facts": [
+			"Computed entirely in your browser: no upload, no server, no signup.",
+			"Two colors, an angle in degrees and any canvas size, with presets.",
+			"Per-pixel floating-point blend — smooth transitions stay smooth.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Set the canvas size in pixels, or pick a preset.",
 			"Choose the color the gradient starts from and the color it ends at.",

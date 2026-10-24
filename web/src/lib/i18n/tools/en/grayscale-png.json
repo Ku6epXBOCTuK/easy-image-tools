@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Grayscale PNG Converter - Free, No Upload",
 		"metaDescription": "Turn a PNG into shades of gray with the standard BT.601 luminance formula. Transparency is preserved. Free, no upload, no settings, runs in your browser.",
-		"longDescription": "Converting an image to grayscale replaces every color with a shade of gray, computed from the standard BT.601 luminance formula that matches human brightness perception, so a red pixel becomes the same gray a camera would render rather than a flat average of its channels. Transparency is left untouched, which means a logo keeps its clean edges instead of gaining a gray box around it. There are no settings to tune - upload, read the result, download - and the whole thing happens in your browser, with your file never leaving the device.",
+		"longDescription": "Convert PNG to grayscale replaces every color with a shade of gray, computed with the standard BT.601 luminance formula that matches human brightness perception — a red pixel becomes the same gray a camera would render, not a flat average of its channels. Transparency is left untouched, so a logo keeps its clean edges instead of gaining a gray box. There are no settings to tune: upload, read the result, download — and the whole thing happens in your browser, with your file never leaving the device.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Standard BT.601 luminance formula — the same gray a camera would render.",
+			"Alpha is untouched: a transparent PNG stays transparent.",
+			"Per-pixel calculation, no compression — save as PNG or WebP to keep it lossless.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Read the preview: the colors are already replaced by shades of gray.",

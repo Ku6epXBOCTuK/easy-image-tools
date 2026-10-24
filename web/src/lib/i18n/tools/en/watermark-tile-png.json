@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Watermark Tile PNG - Free Browser Tool, No Upload Needed",
 		"metaDescription": "Cover a picture with a repeating diagonal text watermark: set the wording, angle, spacing and opacity. Runs locally, free, nothing leaves the device.",
-		"longDescription": "A tile watermark covers a whole picture with the same short text repeated in a diagonal grid, which is the usual way to mark a draft, a proof or a preview so it is not mistaken for a finished file. Type the text - DRAFT, SAMPLE, a site name - and then shape the pattern around it: Angle tilts it from -90 to 90 degrees, Step X and Step Y set how far apart repeats sit horizontally and vertically, and Opacity decides how firmly the lettering shows through. The defaults give a diagonal grid at thirty percent; a small picture wants larger steps, a full-size one can carry tighter ones. There is no position grid and no backing plate here, because a repeated tile has no single anchor - this is the counterpart to the add text tool, which draws one label in one corner. The lettering is rendered by the browser using the fonts installed on your device, so the picture is never uploaded, and the result saves as PNG, JPG, WebP or BMP.",
+		"longDescription": "Tile a watermark across a PNG covers the whole picture with the same short text repeated in a diagonal grid — the usual way to mark a draft, a proof or a preview so it is not mistaken for a finished file. Type the text (DRAFT, SAMPLE, a site name) and shape the pattern: Angle tilts it from -90 to 90 degrees, Step X and Step Y set how far apart the repeats sit, Opacity decides how firmly the lettering shows through; the defaults give a diagonal grid at thirty percent. The lettering is rendered by the browser with the fonts on your device, so the picture is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Repeats cover the whole frame — there is no corner to crop away.",
+			"Angle from -90 to 90 degrees; Step X and Step Y control the density of the grid.",
+			"Burned into the pixels: the downloaded file looks the same everywhere.",
+			"Free with no daily limit and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Type the watermark text - a single word such as DRAFT is usually enough.",

@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Invert PNG Colors - Free Negative Image Tool",
 		"metaDescription": "Invert the colors of a PNG in your browser: every channel becomes 255 minus its value, like photographic film negative. Alpha stays unchanged. Free, no upload.",
-		"longDescription": "Inverting an image replaces every color channel with its opposite, so white becomes black, a blue sky turns orange and the whole picture looks like a photographic negative. The operation is arithmetic - each channel is mapped to 255 minus its value - and the alpha channel is deliberately left alone, so transparent regions stay transparent instead of turning into an opaque block. It is instant and lossless: no resampling, no re-compression, just a per-pixel subtraction that happens in your browser with no upload of your file.",
+		"longDescription": "Invert PNG colors replaces every color channel with its opposite — white becomes black, a blue sky turns orange, the whole picture looks like a photographic negative. The operation is arithmetic: each channel is mapped to 255 minus its value, and the alpha channel is deliberately left alone, so transparent regions stay transparent instead of turning into an opaque block. It is instant and lossless — no resampling, no re-compression, just a per-pixel subtraction that happens in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Each channel maps to 255 minus its value; the result inverted twice is identical to the original.",
+			"Alpha is untouched: transparent areas stay transparent.",
+			"Save as PNG or WebP for a byte-exact negative.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"The colors invert as soon as the image is loaded - there are no settings.",

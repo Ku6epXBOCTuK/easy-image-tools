@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Remove PNG Background - Free, No Upload",
 		"metaDescription": "Remove a solid background from a PNG and get a transparent image in your browser. Pick a color, set the tolerance, smooth the edges. Free, no upload.",
-		"longDescription": "Remove background from a PNG makes every pixel of one chosen color transparent, so the subject is left standing on an empty canvas. Pick the background color, widen the tolerance until the whole backdrop disappears, and smooth the boundary if the cut edge looks hard. The result keeps the original resolution and the untouched color of the subject, and it is produced entirely in your browser: the file is decoded, processed and re-encoded on your own device, so nothing is uploaded and nothing is kept on a server. PNG, JPG, WebP and BMP are accepted on upload, and the transparent result can be saved as PNG, JPG, WebP or BMP from the Download button.",
+		"longDescription": "Remove background from PNG makes every pixel of one chosen color transparent, so the subject is left standing on an empty canvas. Pick the background color, widen the tolerance until the whole backdrop disappears, and smooth the boundary if the cut edge looks hard. This is a color-based cut, not AI guessing at objects — instant, offline, and exact on backdrops of roughly one solid color. The result is produced entirely in your browser and keeps the original resolution and the untouched colors of the subject.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Color-based cut, not AI: tolerance decides how far from the picked color a pixel may be.",
+			"Accepts PNG, JPG, WebP and BMP; exports PNG, JPG, WebP or BMP from the Download button.",
+			"Outer regions protects the same color when it appears inside the subject.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Background color to the color of the backdrop you want to get rid of.",

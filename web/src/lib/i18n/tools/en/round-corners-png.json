@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Round Corners PNG - Free Rounded Corner Tool",
 		"metaDescription": "Round the corners of a PNG in your browser: the radius is a percentage of half the smaller side, so it scales with the image. Free, no upload, no signup.",
-		"longDescription": "Rounding the corners of a PNG clips the four corners of the picture and leaves the rest of the pixels untouched, producing the rounded rectangle used by avatars, app icons and cards. The radius is given as a percentage of half the smaller side, so a single value behaves the same on a thumbnail and on a poster - 50 percent is the full circle, and at that point the result becomes a round avatar. No pixel is resampled, and the clipped corner becomes fully transparent instead of being painted over, so the shape stays correct on any background.",
+		"longDescription": "Round PNG corners clips the four corners of the picture and leaves the rest of the pixels untouched, producing the rounded rectangle used by avatars, app icons and cards. The radius is a percentage of half the smaller side, so a single value behaves the same on a thumbnail and on a poster — 50 percent is the full circle, and at that point the result becomes a round avatar. No pixel is resampled: the clipped corners become fully transparent instead of being painted over, so the shape stays correct on any background. Everything runs in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Radius is a percentage of half the smaller side — 50 percent turns the image into a circle.",
+			"Nothing is resampled; the clipped corners become fully transparent.",
+			"Save as PNG or WebP to keep the transparent corners.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Radius as a percentage of half the smaller side: 10 is a subtle rounding, 50 a circle.",

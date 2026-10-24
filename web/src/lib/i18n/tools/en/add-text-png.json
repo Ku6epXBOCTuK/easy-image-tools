@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Add Text to PNG - Free Image Text Tool, No Upload",
 		"metaDescription": "Draw a text label on a PNG in your browser: font, size, color, bold, a position on a 3x3 grid and an optional backing plate. Free, no upload.",
-		"longDescription": "Adding text to an image draws it straight onto the pixels, which is what you want for a label, a watermark, a caption on a mockup or a date on a photo. Pick the font family, size, weight and color, choose one of nine positions around the frame, set the margin from the edge, and switch on a semi-transparent backing plate when the picture behind the text is too busy. The text is rendered by the browser on your device, so the image never leaves it and the result can be saved as PNG, JPG, WebP or BMP.",
+		"longDescription": "Add text to PNG draws a text label straight onto the pixels — the right tool for a caption on a mockup, a date on a photo or a single watermark. Pick the font family, size, weight and color, choose one of nine positions around the frame, set the margin from the edge, and switch on a semi-transparent backing plate when the picture behind is too busy. The text is rendered by the browser on your device, so the image never leaves it.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"One label in one of nine positions — for a repeated pattern use the watermark tile tool.",
+			"Optional semi-transparent backing plate for busy backgrounds.",
+			"The picture is not resampled; saving as PNG or WebP keeps the rest lossless.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Type the text, then set the font, size, bold and color.",

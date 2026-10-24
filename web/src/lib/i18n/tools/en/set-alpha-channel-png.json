@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Set PNG Alpha Channel - Uniform Opacity, No Upload",
 		"metaDescription": "Give every pixel of a PNG the same opacity, or restore full opacity to a faded image. One percentage, colors untouched. Free, runs in your browser.",
-		"longDescription": "Setting the alpha channel writes one and the same opacity into every pixel of the image, while the colors stay untouched. That is different from scaling the existing transparency: a logo that is already half transparent at the edges becomes uniformly 50 percent everywhere after this operation, and a picture someone flattened to a single low opacity can be brought back to solid. It is the fastest way to make a whole PNG translucent, or to repair an image whose alpha channel was flattened. The file is processed in your browser and never uploaded.",
+		"longDescription": "Set alpha channel of PNG writes one and the same opacity into every pixel, while the colors stay untouched. That is different from scaling the existing transparency: a logo already half transparent at the edges becomes uniformly 50 percent everywhere after this operation, and a picture flattened to a single low opacity can be brought back to solid. It is the fastest way to make a whole PNG translucent or to repair an image whose alpha was overwritten. The file is processed in your browser and never uploaded.",
+		"facts": [
+			"Runs entirely in your browser, works offline once the page is loaded.",
+			"Overwrites alpha uniformly — existing differences in transparency are not preserved.",
+			"Colors are copied byte for byte: only the alpha value changes.",
+			"Save as PNG or WebP to keep the alpha channel.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set the percentage: 100 makes every pixel fully opaque, 50 makes them all half transparent.",

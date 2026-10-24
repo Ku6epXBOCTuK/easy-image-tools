@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Pixelate PNG - Free Mosaic Filter, No Upload",
 		"metaDescription": "Pixelate a PNG in your browser: every block is averaged into a single color, the classic mosaic effect. Choose the block size from 2 to 64 px. Free, no upload.",
-		"longDescription": "Pixelating an image hides detail by replacing every square block with one averaged color, which produces the blocky mosaic that covers faces, hides screens or simply reads as a retro effect. The block size slider runs from 2 to 64 pixels: small blocks give a fine grain, large blocks give an unmistakable mosaic. The dimensions of the picture do not change, so a pixelated result can still be used wherever the original size is expected. Like every tool here, it runs inside your browser - the file is never uploaded, and PNG, JPG, WebP and BMP are all accepted.",
+		"longDescription": "Pixelate PNG hides detail by replacing every square block of the picture with one averaged color — the blocky mosaic that covers faces, hides screens or reads as a retro effect. The block size slider runs from 2 to 64 pixels: small blocks give a fine grain, large blocks an unmistakable mosaic. The dimensions of the picture do not change, so the result still fits wherever the original size is expected. Like every tool here, it runs inside your browser and the file is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Block size from 2 to 64 px; the image dimensions never change.",
+			"Hard square edges — mosaic, not blur: each block is one flat averaged color.",
+			"Accepts PNG, JPG, WebP and BMP; transparency survives the averaging.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Block size to a small value for a fine grain or a large one for a heavy mosaic.",

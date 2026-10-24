@@ -3,7 +3,13 @@
 	"seo": {
 		"metaTitle": "Rotate PNG - Free Image Rotator, No Upload",
 		"metaDescription": "Rotate a PNG by 90, 180 or 270 degrees in your browser. Lossless, no quality loss, no upload of your file. Free, no signup, no limits.",
-		"longDescription": "Rotating a PNG turns the picture by a quarter turn or by half a turn. Because the angle is a multiple of 90 degrees, the pixels are only moved to new positions: nothing is resampled, nothing is interpolated and no quality is lost, which is not true of arbitrary-angle rotation. The canvas grows to the new orientation, so a portrait shot rotated becomes landscape and nothing gets cropped. It all happens in your browser - the file is never uploaded, so screenshots, scans and private photos can be turned without leaving your device.",
+		"longDescription": "Rotate PNG turns the picture by 90, 180 or 270 degrees. Because the angle is a multiple of 90, the pixels are only moved to new positions: nothing is resampled, nothing is interpolated and no quality is lost — which is not true of arbitrary-angle rotation. The canvas follows the new orientation, so a portrait shot becomes landscape and nothing gets cropped. It all happens in your browser, so screenshots, scans and private photos can be turned without leaving your device.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Only right angles, on purpose: pixels move without resampling — bit-for-bit sharp.",
+			"Width and height swap at 90 and 270 degrees; no part of the picture is cropped.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Pick the angle: 90 degrees clockwise turns it a quarter turn, 180 flips it upside down, 270 turns it the other way.",

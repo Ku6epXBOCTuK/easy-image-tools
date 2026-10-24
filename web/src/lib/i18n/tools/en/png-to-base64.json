@@ -3,7 +3,13 @@
 	"seo": {
 		"metaTitle": "PNG to Base64 - Free Encoder, No Upload",
 		"metaDescription": "Encode a PNG as a Base64 string in your browser and copy it into CSS, HTML or JSON. No upload, no account, no limits, and the data never leaves the page.",
-		"longDescription": "Base64 is the text encoding that turns binary image data into a string safe to paste into source code: a CSS background, an HTML attribute, a JSON config or an email template. Encoding a PNG here produces that string in the result panel, with a button to copy it to the clipboard. The image is read in your browser and encoded there, so the picture and the resulting data never leave your device - which matters because a Base64 string is the image itself, and uploading it would be uploading your file. The result can be used as a data URI directly.",
+		"longDescription": "Convert PNG to Base64 turns the image into a text string that is safe to paste into source code: a CSS background, an HTML attribute, a JSON config or an email template. The string appears in the result panel with a copy button, and it works as a data URI directly. The image is read and encoded in your browser — the string is the image itself, so it never leaves your device.",
+		"facts": [
+			"Encoding runs entirely in your browser: neither the image nor the string is uploaded.",
+			"The result works as a ready-made data URI for src or background-image.",
+			"Base64 adds about a third to the size: it is a transport encoding, not compression.",
+			"Free with no daily limit, no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Wait for the string to appear in the result panel.",

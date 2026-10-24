@@ -3,7 +3,13 @@
 	"seo": {
 		"metaTitle": "Convert PNG to BMP - Free Converter, No Upload",
 		"metaDescription": "Convert PNG to BMP in your browser. The result is a 24-bit bitmap for Windows and old software. Free, no upload, no signup, no watermark.",
-		"longDescription": "BMP is the uncompressed bitmap format that Windows, office software and a lot of older engineering and printing software still expect. Converting a PNG to BMP writes a plain 24-bit bitmap: every pixel is stored as is, with no compression and no quality loss from the encoding step itself. The catch is alpha - a 24-bit BMP has no transparency, so transparent parts of your PNG are flattened onto black when they are saved this way. The conversion runs in your browser, so the source file is never uploaded.",
+		"longDescription": "Convert PNG to BMP re-encodes your image as a plain 24-bit bitmap — the uncompressed format that Windows, office software and older engineering and printing tools still expect. Every pixel is stored as is, with no compression and no quality loss from the encoding itself. A 24-bit BMP has no transparency, so transparent parts are flattened onto black. The conversion runs in your browser and the source file is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Writes an uncompressed 24-bit BMP: pixels are stored literally, no encoding loss.",
+			"No alpha channel in a 24-bit BMP — transparent areas are flattened onto black.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the PNG into the source area, or pick a file from your device.",
 			"Preview the result; transparent areas are flattened onto black.",
