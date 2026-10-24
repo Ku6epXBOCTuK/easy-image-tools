@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Cut a PNG Into a Circle - Free Mask, No Upload Needed",
 		"metaDescription": "Trim an image to a circle with a movable center: pick the diameter as a share of the shorter side. Free and unlimited, processed right in your browser.",
-		"longDescription": "A circle mask keeps the pixels inside a circle and makes everything outside it transparent. The Shape size slider sets the diameter as a share of the shorter side of the picture, so 100 on a 1200 by 800 image produces a circle 800 pixels wide, and Offset moves that circle into the free space around it. The picture is not resized and its colors are not touched; only the corners lose their opacity. The cut is a hard edge with no anti-aliasing. PNG, JPG, WebP and BMP go in, and the result is written in your browser without an upload.",
+		"longDescription": "Cut an image into a circle keeps the pixels inside a circle and makes everything outside it transparent. The Shape size slider sets the diameter as a share of the shorter side of the picture, so 100 on a 1200 by 800 image produces a circle 800 pixels wide, and Offset moves that circle into the free space around it. The picture is not resized and its colors are not touched; only the corners lose their opacity. The cut is a hard edge with no anti-aliasing, and the result is written in your browser without an upload.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Shape size from 20 to 100 — the diameter as a share of the shorter side.",
+			"The canvas keeps its size; everything outside the circle becomes transparent.",
+			"Hard edge, no anti-aliasing — run feather edges for a soft rim.",
+			"Save as PNG or WebP to keep the transparent corners.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Shape size from 20 to 100; the diameter is a share of the shorter side.",

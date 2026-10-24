@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Auto Contrast PNG - Free Local Tool, No Upload Needed",
 		"metaDescription": "Stretch the real brightness range of a flat or washed-out picture across the full scale. Free and instant, nothing is uploaded - the adjustment happens inside your browser.",
-		"longDescription": "Auto contrast is a one-click fix for a picture whose brightness range is squeezed: a dark scan where the blacks are gray and the whites are off-white. The tool measures the darkest and the brightest value of each color channel separately, then stretches that range across the full 0 to 255 span, so the picture uses all the brightness it can. Everything runs in your browser on PNG, JPG, WebP and BMP files - nothing is uploaded and the alpha channel is left alone.",
+		"longDescription": "Auto contrast PNG stretches the real brightness range of a flat or washed-out picture across the full scale — a one-click fix for a dark scan where the blacks are gray and the whites are off-white. The tool measures the darkest and the brightest value of each color channel separately, then remaps that range across the full 0 to 255 span, so the picture uses all the brightness it can. Everything runs in your browser on PNG, JPG, WebP and BMP files, and the alpha channel is left alone.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"No settings: the darkest and brightest values are found and remapped automatically.",
+			"Each channel is stretched on its own, so a color cast can get amplified.",
+			"The alpha channel is left untouched — cut-outs stay cut out.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"There is nothing to configure - the tool finds the real black and white points itself and remaps them.",

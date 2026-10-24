@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Change PNG Canvas Size - Crop or Pad, No Upload",
 		"metaDescription": "Set an image to an exact canvas size: the overflow is cropped and the missing space is filled with transparency. Nine anchors, free, no upload, no signup.",
-		"longDescription": "Changing the canvas size sets an image to exact pixel dimensions, whatever its original size was. If the new canvas is smaller than the picture, the excess is cropped; if it is larger, the missing space is filled with transparency. The Anchor control decides which part of the image survives and where it sits on the new canvas, with nine positions from top left to bottom right and center as the default. Nothing is scaled, so the remaining picture keeps its full resolution and no interpolation happens anywhere. This is the tool for making a file match a fixed frame that a layout, a game engine or a print template insists on. Everything runs in your browser, and PNG, JPG, WebP and BMP can all be loaded and saved.",
+		"longDescription": "Change canvas size sets an image to exact pixel dimensions, whatever its original size was. If the new canvas is smaller than the picture, the excess is cropped; if it is larger, the missing space is filled with transparency. The Anchor control decides which part survives and where it sits — nine positions from top left to bottom right, center as the default. Nothing is scaled, so the remaining picture keeps its full resolution. This is the tool for making a file match a fixed frame that a layout, a game engine or a print template insists on. Everything runs in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Crops the overflow or pads with transparency — never stretches or scales.",
+			"Nine anchors decide which part stays; center is the default.",
+			"The added area is always fully transparent.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Canvas size to the exact width and height you need, or pick a preset.",

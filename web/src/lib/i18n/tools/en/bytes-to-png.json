@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "RGBA Bytes to PNG - Free Image Builder, Nothing Uploaded",
 		"metaDescription": "Turn decimal RGBA byte values back into a picture: paste the numbers, set the width, the height is worked out for you. Free, private, runs in your browser.",
-		"longDescription": "Turning RGBA byte values back into an image is what a canvas script does when it fills a pixel buffer by hand: every pixel is four numbers - red, green, blue, alpha - and this page assembles them into the picture they describe. Paste them into the text field, set the Width so the rows can be counted, and the height follows from how many pixels you pasted. The parser is forgiving about separators, because only the digits are read, so a list copied out of a JavaScript array works untouched; it is not forgiving about values. Each must be a whole number from 0 to 255, the count must be a multiple of four, and the pixel count must divide evenly by the width.",
+		"longDescription": "Build an image from RGBA byte values assembles a picture from the numbers that describe it: every pixel is four numbers — red, green, blue, alpha — pasted into the text field. Set the Width so the rows can be counted, and the height follows from how many pixels you pasted. The parser is forgiving about separators, because only the digits are read, so a list copied out of a JavaScript array works untouched; it is not forgiving about values: each must be a whole number from 0 to 255, the count must be a multiple of four, and the pixel count must divide evenly by the width.",
+		"facts": [
+			"Assembled entirely in your browser: no upload, no server, no signup.",
+			"Any separators are ignored — spaces, commas, line breaks, parentheses.",
+			"Each value must be a whole number from 0 to 255; fractions are rejected.",
+			"The pixel count must divide evenly by the width, or nothing is assembled.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Paste the RGBA numbers into the text field; any separators between them are ignored.",
 			"Set Width to the number of pixels in one image row - the height is computed from the rest.",

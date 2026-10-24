@@ -3,7 +3,13 @@
 	"seo": {
 		"metaTitle": "PNG File Size Checker - How Big Is My Image, Free",
 		"metaDescription": "See how large an image is when encoded as PNG, in kilobytes. Free and local - the picture is encoded in your browser and never uploaded to a server.",
-		"longDescription": "This tool encodes the image you load as a PNG and reports the size of the result in kilobytes. That number is the size of a fresh PNG encoding, not necessarily the size of the file already on your disk: re-encoding can produce a different file, sometimes smaller, sometimes larger, depending on the encoder settings and the content. For a rough idea of the weight of the original, look at the file properties in your file manager. Everything here happens in your browser, so the image never leaves your device.",
+		"longDescription": "PNG file size checker encodes the loaded image as a PNG and reports the size of the result in kilobytes. That number is the size of a fresh PNG encoding, not necessarily the file already on your disk: re-encoding can land smaller or larger depending on the encoder settings and the content. For the weight of the original file, look at its properties in your file manager. Everything happens in your browser, so the image never leaves your device.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Reports a fresh PNG encoding of the pixels — not necessarily your original file's size.",
+			"A quick verdict against any size limit before you export.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"The tool encodes it as PNG and shows the resulting size in KB.",

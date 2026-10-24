@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Analogous Color Palette PNG - Free Color Harmony Tool",
 		"metaDescription": "Build an analogous palette from one base color: 3 to 9 neighbouring hues with adjustable spread. Free, runs in your browser, no upload, no signup.",
-		"longDescription": "Analogous colors are hues that sit next to each other on the color wheel, and this page turns one base color into a ready-made set of three to nine of them. The base color sits in the middle and the neighbours are rotated away from it by the Spread you choose, so a spread of 30 with five colors gives you minus 60, minus 30, the base itself, plus 30 and plus 60 degrees of hue. Because every member comes from one hue family, the result reads as calm and related rather than loud, which is why analogous palettes turn up in page backgrounds, dashboards, onboarding flows and nature photography. Nothing is uploaded, because there is no file to upload: the palette is computed on your device and drawn as flat swatches you can save as PNG, JPG, WebP or BMP. One honest caveat: the rotation happens in HSL, so saturation and lightness are copied across unchanged and two colors only 30 degrees apart can still differ a lot in apparent brightness.",
+		"longDescription": "Analogous color palette turns one base color into a ready-made set of three to nine neighbouring hues — colors that sit next to each other on the wheel. The base sits in the middle and the neighbours are rotated away by the Spread you choose: a spread of 30 with five colors gives minus 60, minus 30, the base, plus 30 and plus 60 degrees of hue. Because every member comes from one hue family, the result reads as calm and related, which is why analogous palettes turn up in page backgrounds, dashboards and nature photography. The palette is computed on your device and drawn as flat swatches.",
+		"facts": [
+			"Computed entirely in your browser: no upload, no server, no signup.",
+			"3 to 9 swatches; Spread from 10 to 90 degrees around the base color.",
+			"Grid or strip layout; exports PNG, JPG, WebP or BMP.",
+			"Rotation happens in HSL — saturation and lightness are copied across unchanged.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload is needed - the palette is drawn from the Base color you pick, straight in the browser.",
 			"Set the Base color; every other swatch is a hue rotation away from it.",

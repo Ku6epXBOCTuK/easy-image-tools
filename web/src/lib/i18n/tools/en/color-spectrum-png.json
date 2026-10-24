@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Color Spectrum PNG - Free Hue Rainbow Generator",
 		"metaDescription": "Generate a full hue spectrum PNG from red around the wheel and back, horizontal or vertical. Free, no upload, no signup - drawn and saved in your browser.",
-		"longDescription": "A color spectrum is a strip that walks the entire hue circle, from 0 to 360 degrees, so it shows every pure hue at once and finishes where it started. This page draws that strip in the direction you pick and lets you hold the saturation and lightness still while the hue moves, which turns the rainbow into a muted pastel band or a set of deep tones with two slider moves. It needs no upload and no source image: the spectrum is computed pixel by pixel in your browser and can be saved as PNG, JPG, WebP or BMP. Use it as a lookup strip when you want to pick a color by eye, as the background of a spectrum chart, or as the swatch strip on a design system page. The honest details are simple and worth knowing: both ends of the strip are the same red, because hue wraps around at 360, and at zero saturation the whole thing is a single shade of gray.",
+		"longDescription": "Color spectrum draws a strip that walks the entire hue circle, from 0 to 360 degrees — every pure hue at once, finishing where it started. Pick the direction and hold the saturation and lightness still while the hue moves, which turns the rainbow into a muted pastel band or a set of deep tones. There is no source image: the spectrum is computed pixel by pixel in your browser. Use it as a lookup strip for picking a color by eye, the background of a spectrum chart, or the swatch strip on a design system page.",
+		"facts": [
+			"Computed entirely in your browser: no upload, no server, no signup.",
+			"Hue from 0 to 360 degrees, horizontal or vertical; both ends are the same red.",
+			"Saturation 0 collapses the strip to a single gray — hue only exists above it.",
+			"Any canvas size, with presets; exports PNG, JPG, WebP or BMP.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the spectrum is generated from the Direction, Saturation and Lightness values.",
 			"Set the Canvas size in pixels, or pick one of the presets.",

@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Add Border to PNG - Free Online Image Border, No Upload",
 		"metaDescription": "Draw a colored frame around an image right in your browser: set the thickness and the color, then download the bordered picture. Free, no upload, no signup.",
-		"longDescription": "Adding a border to a PNG means growing the canvas by a chosen number of pixels on every side and filling that frame with one solid color. The picture itself is never touched: no pixel is resampled, rescaled or recompressed, so the result is exactly as sharp as the source and only larger, by twice the thickness in each direction. Thickness runs from 1 to 500 pixels, and the frame is drawn fully opaque, which is what a border usually has to be. Use it for a print mat, a framed screenshot, a mockup plate or a certificate edge. Everything is processed locally in your browser, so the file is never uploaded, and PNG, JPG, WebP and BMP can all be loaded and saved.",
+		"longDescription": "Add border to PNG grows the canvas by a chosen number of pixels on every side and fills that frame with one solid color. The picture itself is never touched — no pixel is resampled, rescaled or recompressed, so the result is exactly as sharp as the source and only larger, by twice the thickness in each direction. Use it for a print mat, a framed screenshot, a mockup plate or a certificate edge. Everything is processed locally in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Thickness from 1 to 500 px, same on all four sides; the frame is fully opaque.",
+			"The picture is not resampled — only the canvas grows.",
+			"For a transparent or semi-transparent margin use the add padding tool instead.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Thickness in pixels, from 1 to 500; the default is 5.",

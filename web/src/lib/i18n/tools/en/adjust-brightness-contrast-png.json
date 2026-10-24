@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Brightness and Contrast PNG - Free Local Adjustments",
 		"metaDescription": "Lift or darken a picture and push its contrast, with both sliders running from -100 to 100. Free, no upload - the pixels are adjusted right in your browser tab.",
-		"longDescription": "Brightness and contrast are the two adjustments an image most often needs, and they do different jobs. Brightness shifts every channel value by the same amount, lifting the shadows or dropping the highlights. Contrast stretches or compresses those values around mid-gray, pushing the lights further from the darks or pulling them back together. Both sliders run from -100 to 100 and sit at 0 by default, which means no change at all. Everything runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is left untouched.",
+		"longDescription": "Brightness and contrast PNG adjusts the two settings an image most often needs, and they do different jobs. Brightness shifts every channel value by the same amount, lifting the shadows or dropping the highlights; contrast stretches or compresses those values around mid-gray, pushing the lights further from the darks or pulling them back together. Both sliders run from -100 to 100 and sit at 0 by default, which means no change at all. Everything runs in your browser on PNG, JPG, WebP and BMP files, and the alpha channel is left untouched.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Both sliders from -100 to 100; 0 means no change.",
+			"Brightness shifts all channels equally; contrast works around mid-gray.",
+			"The alpha channel is left untouched.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Brightness first - negative to pull the picture down, positive to lift it.",

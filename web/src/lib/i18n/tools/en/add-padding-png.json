@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Add Padding to PNG - Transparent Margin Maker, Free",
 		"metaDescription": "Add an even margin around an image in your browser: transparent by default, or filled with any solid color you pick. Free, no upload, no signup, instant.",
-		"longDescription": "Adding padding expands an image by the same number of pixels on all four sides, which gives it room to breathe or makes the file the size a layout expects. The padding can stay fully transparent, so the image gains an invisible margin over any background, or it can be filled with any solid color through the Opacity and Fill color controls. The picture itself is untouched, so nothing is resampled and the result is exactly as sharp as the source, only larger by twice the padding in each direction. Padding from 1 to 2000 pixels per side is available, and the common uses are social posts that need a uniform frame, product photos that need white space, and icons that must not sit flush against a border. All of it runs locally in your browser, so nothing is uploaded.",
+		"longDescription": "Add padding to PNG expands an image by the same number of pixels on all four sides, giving it room to breathe or making the file the size a layout expects. The padding can stay fully transparent — an invisible margin over any background — or be filled with any solid color through the Opacity and Fill color controls. The picture itself is untouched: nothing is resampled and the result is exactly as sharp as the source, only larger. The common uses are social posts that need a uniform frame, product photos that need white space, and icons that must not sit flush against a border. All of it runs locally in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Padding from 1 to 2000 px per side, same on all four sides.",
+			"Transparent by default; Opacity and Fill color turn the margin solid.",
+			"The picture is not resampled — the original pixels are copied as they are.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Padding in pixels, from 1 to 2000; the default is 10 on every side.",

@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Fill Small Holes in a Transparent PNG - Free, No Upload",
 		"metaDescription": "Seal pinholes and dropped pixels inside a transparent object with a radius of 1 to 3 px. Free, no signup, the cutout is processed in your browser.",
-		"longDescription": "Morphological closing fills the small transparent gaps inside an object: the shape is first grown by Radius pixels and then shrunk back by the same amount, which swallows holes narrower than about twice the radius. Only pixels that were fully transparent and became covered are added, and they are painted black; the tool never removes a visible pixel, so it cannot eat into the subject. The radius runs from 1 to 3 px, which is what a speck of dust or a dropped pixel needs, while bigger gaps are out of its reach. PNG, JPG, WebP and BMP are accepted and processed locally.",
+		"longDescription": "Fill holes seals the small transparent gaps inside a cutout — pinholes and dropped pixels a scan or a mask left behind. Morphological closing grows the shape by Radius pixels and shrinks it back by the same amount, which swallows holes narrower than about twice the radius. Only pixels that were fully transparent and became covered are added, painted black; the tool never removes a visible pixel, so it cannot eat into the subject. PNG, JPG, WebP and BMP are accepted and processed locally.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Morphological closing: radius from 1 to 3 px, for holes up to about twice that.",
+			"Only adds pixels, never removes — the subject cannot be eaten into.",
+			"Newly filled pixels are painted black.",
+			"A gap touching the canvas border counts as outside and stays open.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the cutout with the pinholes into the source area, or pick a file from your device.",
 			"Set Radius from 1 to 3 px; 1 is enough for a single missing pixel.",

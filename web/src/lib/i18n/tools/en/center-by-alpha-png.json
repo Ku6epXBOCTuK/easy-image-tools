@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Center PNG Content - Fix Off-Center Images, No Upload",
 		"metaDescription": "Move the visible part of a PNG to the middle of its canvas in one click, in your browser. Nothing to configure, free, no upload, no signup, instant.",
-		"longDescription": "Centering a PNG by content finds the rectangle that actually holds visible pixels, ignores the empty margins around it, and moves that content to the middle of the unchanged canvas. It is the one-click fix for a picture that came out shifted into a corner, for a logo sitting off-center inside a transparent square, and for a sprite exported with padding it never needed. The canvas keeps its original width and height and no pixel is resampled, so the result is exactly as sharp as the source: the empty margins simply move to the edges. There are no settings at all, and the content area is shown as a mask in the preview so you can see what the tool treats as visible. Processing runs in your browser, so nothing is uploaded.",
+		"longDescription": "Center PNG by content finds the rectangle that actually holds visible pixels, ignores the empty margins around it, and moves that content to the middle of the unchanged canvas — the one-click fix for a picture shifted into a corner or a logo sitting off-center inside a transparent square. The canvas keeps its original width and height and no pixel is resampled, so the result is exactly as sharp as the source: the empty margins simply move to the edges. There are no settings, and the content area is shown as a mask in the preview. Processing runs in your browser, so nothing is uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"No settings: content is centered as soon as the image loads.",
+			"The canvas size never changes — only the empty margins redistribute.",
+			"Reads the alpha channel: a JPG without transparency comes back unchanged.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the PNG into the source area, or pick a file from your device.",
 			"Look at the preview: the mask marks the visible content that will be centered.",

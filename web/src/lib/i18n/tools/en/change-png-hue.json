@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Change Hue PNG - Free Color Shift in Your Browser",
 		"metaDescription": "Rotate every color in a picture around the hue wheel while saturation and lightness stay put. Free, no upload, no signup - the shift runs entirely in your browser tab.",
-		"longDescription": "Changing hue rotates every color around the color wheel by the angle you give while leaving how saturated and how light each pixel is exactly as it was. A red shirt stays as bright and as vivid as it was, it just arrives at a different color: plus 120 degrees turns red into green, plus 180 gives the opposite color, minus 90 lands on blue. The work happens in your browser tab on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is passed through unchanged.",
+		"longDescription": "Change hue rotates every color in a picture around the color wheel by the angle you give, while how saturated and how light each pixel is stays exactly as it was. A red shirt stays as bright and as vivid as it was, it just arrives at a different color: plus 120 degrees turns red into green, plus 180 gives the opposite color, minus 90 lands on blue. The work happens in your browser tab on PNG, JPG, WebP and BMP files, and the alpha channel is passed through unchanged.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Degrees from -180 to 180; 0 leaves the picture as it is.",
+			"Saturation and lightness are preserved — only the color family moves.",
+			"Gray pixels stay gray: they have no hue to rotate.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Degrees between -180 and 180; the slider starts at 0, which leaves the picture as it is.",

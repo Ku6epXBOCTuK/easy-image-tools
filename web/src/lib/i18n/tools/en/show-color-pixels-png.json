@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Show Color Pixels - Find Colored Areas In A PNG",
 		"metaDescription": "Mark every pixel that carries color, so you can see where the hue sits in an image. Free, runs in your browser, no upload and no signup.",
-		"longDescription": "This tool does the opposite of the gray pixel view: it marks every pixel whose red, green and blue values differ, which is exactly the set of pixels that carry color. Use it when an image looks black and white but is not, when you want to keep only the colored part of a logo, or when a scan has picked up a color cast you cannot see any more. A tolerance decides how large the difference between the channels has to be to count, so lightly tinted pixels can be included or left out. The mask is drawn in your browser and the image is never uploaded.",
+		"longDescription": "Show color pixels marks every pixel whose red, green and blue values differ — exactly the set of pixels that carry hue. Use it when an image looks black and white but is not, when you want to keep only the colored part of a logo, or when a scan has picked up a color cast you can no longer see. A tolerance decides how large the channel difference has to be to count, so lightly tinted pixels can be included or left out. The mask is drawn in your browser and the image is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Marks pixels with unequal red, green and blue values — the pixels that carry hue.",
+			"Two views: a black and white mask, or a highlight over the original picture.",
+			"Tolerance controls how visible a color has to be to count.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Choose the view: a black and white mask, or a highlight over the original picture.",

@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Base64 to PNG - Free Browser Decoder, Nothing Is Uploaded",
 		"metaDescription": "Paste a Base64 string or a data URI and get the picture back, ready to download. Free, no upload, no account - the decoding happens right in your browser.",
-		"longDescription": "Decoding a Base64 string turns text back into the image bytes it was made from. This page runs the PNG to Base64 encoder backwards: you paste the string, the bytes are decoded in your browser and the picture appears beside the text field. Whitespace and line breaks are ignored, and a complete data: URI works as well as the bare payload because the prefix is stripped first. What comes back is the picture, not the original file: the bytes are decoded to pixels and encoded again, so every pixel is identical while the file bytes are not guaranteed to match. Nothing is uploaded - pasted Base64 is often a credential rather than a photo.",
+		"longDescription": "Decode a Base64 string turns the text back into the image bytes it was made from — the PNG to Base64 encoder run backwards. Paste the string, the bytes are decoded in your browser and the picture appears beside the text field; whitespace and line breaks are ignored, and a complete data: URI works as well as the bare payload because the prefix is stripped first. What comes back is the picture, not the original file: the bytes are decoded to pixels and encoded again, so every pixel is identical while the file bytes are not guaranteed to match. Nothing is uploaded — pasted Base64 is often a credential rather than a photo.",
+		"facts": [
+			"Decoding runs entirely in your browser: nothing is sent to a server.",
+			"Accepts the bare payload or a full data: URI; whitespace and line breaks are ignored.",
+			"Reads whatever format the bytes describe — JPG and WebP payloads decode too.",
+			"The pixels match the original; the file bytes are not guaranteed to.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Copy the Base64 string and paste it into the text field on the left; a full data: URI works too.",
 			"The decoded picture appears in the result tile on the right.",

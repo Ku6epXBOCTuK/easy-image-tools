@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Blur PNG Online - Free Image Blur, No Upload",
 		"metaDescription": "Blur an image in your browser with a Gaussian blur: smooth, fast at any radius, and transparent edges do not darken. Free, no upload, no signup.",
-		"longDescription": "Blur PNG softens an image by averaging each pixel with the ones around it. The blur is a true Gaussian approximation - three passes of a separable box blur - which is why it stays fast even at a large radius, where a naive blur would freeze the page. Transparency is handled properly: the blur works on the alpha channel as well, so a transparent area stays transparent instead of picking up dark fringes from the visible pixels next to it. Everything runs in your browser, so the image is decoded, blurred and encoded on your own device and is never uploaded.",
+		"longDescription": "Blur PNG softens an image by averaging each pixel with the ones around it. The blur is a true Gaussian approximation — three passes of a separable box blur — which is why it stays fast even at a large radius, where a naive blur would freeze the page. Transparency is handled properly: the blur works on the alpha channel as well, so a transparent area stays transparent instead of picking up dark fringes from the visible pixels next to it. Everything runs in your browser, and the image is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Gaussian approximation via three box-blur passes — fast at any radius.",
+			"Alpha is blurred too: transparent areas do not pick up dark fringes.",
+			"The radius is in pixels; the same radius hits a small image harder than a large one.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set the radius: small values soften, large values dissolve detail.",

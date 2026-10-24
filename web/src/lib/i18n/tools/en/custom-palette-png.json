@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Custom Palette PNG - Map Pixels to Your Hex Colors",
 		"metaDescription": "Snap every pixel to the nearest color from a list of hex codes you type in. Free and local - your palette and your picture are processed in the browser, never uploaded.",
-		"longDescription": "The custom palette tool snaps every pixel to the nearest color from a list you type in, which is how pixel art, brand palettes and duotone conversions get their exact colors. Paste the hex codes separated by commas, and each pixel is matched to whichever entry is closest in red, green and blue distance; the picture then contains no color that is not on your list. It runs entirely in your browser and accepts PNG, JPG, WebP and BMP, with nothing uploaded and the alpha channel left as it was.",
+		"longDescription": "Custom palette snaps every pixel of an image to the nearest color from a list you type in — how pixel art, brand palettes and duotone conversions get their exact colors. Paste the hex codes separated by commas, and each pixel is matched to whichever entry is closest in red, green and blue distance; the picture then contains no color that is not on your list. It runs entirely in your browser, with the alpha channel left as it was.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Colors go in as full six-digit hex codes; anything malformed is skipped.",
+			"The result contains exactly your colors and nothing else, for the opaque pixels.",
+			"Fully transparent pixels keep their alpha and original color values.",
+			"Run the dithering tool afterwards to break up the banding on photographs.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Type the colors into the Hex list as full six-digit codes, for example #1b2838,#f4c430,#f7f7f7.",

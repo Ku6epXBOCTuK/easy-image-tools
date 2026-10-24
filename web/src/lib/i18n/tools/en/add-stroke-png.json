@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Outline PNG With a Colored Border - Free, No Upload",
 		"metaDescription": "Paint a colored ring right outside every visible pixel of a picture, 1 to 10 px thick, in the color you choose. Free, no upload, no size limit, runs locally.",
-		"longDescription": "Adding an outline means painting a ring of color immediately outside every pixel that is already visible in the picture. The tool takes everything that has any opacity, grows that shape outward by the chosen Thickness, and fills only the newly covered pixels with the Stroke color; the original pixels keep their own colors and their own transparency. The ring is drawn inside the canvas, so an outline that would leave the picture is clipped at the border. PNG, JPG, WebP and BMP are accepted, and every step happens in your browser.",
+		"longDescription": "Add an outline paints a ring of color immediately outside every pixel that is already visible in the picture. The tool takes everything that has any opacity, grows that shape outward by the chosen Thickness, and fills only the newly covered pixels with the Stroke color — the original pixels keep their own colors and their own transparency. The ring is drawn inside the canvas, so an outline that would leave the picture is clipped at the border. Every step happens in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Thickness from 1 to 10 px; only the ring is painted, the picture keeps its colors and transparency.",
+			"The canvas is never enlarged — a ring that would leave the picture is clipped at the border.",
+			"A JPG has no transparency and no free space to outline: convert to PNG first.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Open the Stroke color swatch and pick the color of the ring; red is the starting value.",

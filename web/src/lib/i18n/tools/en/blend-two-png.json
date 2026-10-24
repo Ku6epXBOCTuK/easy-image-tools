@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Blend Two Colors PNG - Free Gradient Maker, No Upload",
 		"metaDescription": "Blend two colors into one continuous horizontal gradient PNG. Set the pair and the width, then download as PNG, JPG, WebP or BMP. Free, nothing is uploaded.",
-		"longDescription": "Blending two colors means showing every step of the path between them, and this page draws that path as a single continuous horizontal strip: the first color at the left edge, the second at the right edge, and every pixel in between carrying its own mix of the two. It needs no upload and no settings beyond the colors themselves, because there is no source file - the blend is computed per pixel on your device and encoded into a file you can save as PNG, JPG, WebP or BMP. Use it to see how a background fade will really look before writing the CSS, to preview a hover transition between a button color and its pressed state, or to sample the middle tone of a two-color scheme. The honest limits are narrow ones: the strip is always horizontal, its height is fixed at a quarter of its width, and there is no angle control - for a diagonal or any exact size, use the linear gradient tool.",
+		"longDescription": "Blend two colors draws every step of the path between them as a single continuous horizontal strip: the first color at the left edge, the second at the right edge, and every pixel in between carrying its own mix of the two. Use it to see how a background fade will really look before writing the CSS, to preview a hover transition, or to sample the middle tone of a two-color scheme. There is no source file — the blend is computed per pixel on your device. The strip is always horizontal, its height is a quarter of its width, and there is no angle control; for a diagonal or any exact size use the linear gradient tool.",
+		"facts": [
+			"Computed entirely in your browser: no upload, no server, no signup.",
+			"Width from 128 to 1024 px; the height follows at a quarter of it.",
+			"Always horizontal, no angle — the linear gradient tool adds both.",
+			"Per-pixel floating-point blend; faint banding is possible only on very low contrast pairs.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - this tool draws the strip from the two colors you pick.",
 			"Set the Color pair: the first color lands on the left edge, the second on the right.",

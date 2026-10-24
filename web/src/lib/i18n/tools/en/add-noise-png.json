@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Add Noise to PNG - Film Grain In Your Browser",
 		"metaDescription": "Add monochrome or color noise to an image in your browser. The grain is deterministic by seed, so the same settings always give the same picture. Free, no upload.",
-		"longDescription": "Add Noise sprinkles grain over the picture, the way film stock adds texture and the way older digital cameras add luminance noise in low light. Monochrome grain changes the brightness of each pixel and leaves its hue alone, which is what film does and what keeps a color palette intact; color noise shifts all three channels, which looks more like a broken sensor. The result is deterministic: the same seed always produces exactly the same grain, so a look can be reproduced later instead of being a lucky roll of the dice. The effect is applied in your browser, and the image is never uploaded.",
+		"longDescription": "Add noise sprinkles grain over the picture, the way film stock adds texture and older digital cameras add luminance noise in low light. Monochrome grain changes the brightness of each pixel and leaves its hue alone, which keeps a color palette intact; color noise shifts all three channels, which looks more like a broken sensor. The result is deterministic — the same seed always produces exactly the same grain, so a look can be reproduced later instead of being a lucky roll of the dice. The effect is applied in your browser, and the image is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Monochrome keeps the color palette; color noise shifts all three channels.",
+			"Deterministic by seed: the same settings always give the same picture.",
+			"Noise hides detail visually but does not remove it from the file.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Choose the noise type: monochrome keeps the color palette, color shifts hue as well.",

@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Remove the Halo From PNG Cutouts - Free, Runs in Browser",
 		"metaDescription": "Pull the leftover background color out of the semi-transparent pixels along a cutout edge, and the transparency stays as it was. Free, runs locally, no upload.",
-		"longDescription": "A color fringe is the halo a cutout picks up when the pixels along its edge still hold the background color even though they have become semi-transparent. Defringing replaces the color of every partly transparent pixel with the color of the nearest fully opaque pixel within the Radius you set, which pulls the background out of the edge and leaves the object's own color behind. Alpha is never touched, so the shape and its softness stay exactly as they were. The scan runs inside your browser, which accepts PNG, JPG, WebP and BMP and sends nothing to a server.",
+		"longDescription": "Clean the color fringe pulls the leftover background color out of the semi-transparent pixels along a cutout edge — the halo a cutout picks up when its edge pixels still hold the old backdrop. Defringing replaces the color of every partly transparent pixel with the color of the nearest fully opaque pixel within the Radius you set, leaving the object's own color behind. Alpha is never touched, so the shape and its softness stay exactly as they were. The scan runs inside your browser and sends nothing to a server.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Recolors only partly transparent pixels; fully opaque and fully transparent ones are skipped.",
+			"Radius from 1 to 10 px; 3 px covers a typical one-pixel halo.",
+			"Alpha is never touched — the edge stays as sharp or as soft as it was.",
+			"Save as PNG to keep the alpha channel intact.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image with the halo into the source area, or pick a file from your device.",
 			"Set Radius from 1 to 10 px; 3 px is enough for a typical one-pixel halo.",

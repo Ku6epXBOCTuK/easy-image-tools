@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Show Grayscale Pixels - Find The Gray Areas",
 		"metaDescription": "Mark every pixel of an image whose red, green and blue values match, so you can see which parts carry no color. Free, local, no upload.",
-		"longDescription": "This tool finds the pixels of an image where the red, green and blue values are the same - the pixels that carry no hue - and renders them as a mask. It is the fastest way to see why a picture that looks colored still has gray areas, or to check whether a logo is purely two-tone before you simplify it. A tolerance setting decides how close the three channels have to be to count as equal, which matters because compression often leaves small differences that the eye ignores. Everything runs in your browser, so the image is never uploaded.",
+		"longDescription": "Show grayscale pixels finds the pixels of an image where the red, green and blue values are the same — the pixels that carry no hue — and renders them as a mask. It is the fastest way to see why a picture that looks colored still has gray areas, or to check whether a logo is purely two-tone before you simplify it. A tolerance decides how close the three channels have to be to count as equal, which matters because compression often leaves small differences the eye ignores. Everything runs in your browser, so the image is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Marks pixels with equal red, green and blue values — the pixels with no hue.",
+			"Two views: a black and white mask, or a highlight over the original picture.",
+			"Tolerance at zero requires exactly equal channels; higher catches near-gray pixels.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Choose the view: a black and white mask, or a highlight over the original picture.",

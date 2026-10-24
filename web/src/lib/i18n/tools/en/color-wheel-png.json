@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Color Wheel PNG - Free HSL Wheel Generator, No Upload",
 		"metaDescription": "Draw an HSL color wheel PNG: hue around the circle, saturation from the center to the rim. Free, no upload, no signup, downloads straight from your browser.",
-		"longDescription": "A color wheel is a circle that encodes two of the three HSL channels at once: the angle around the circle is the hue, and the distance from the center is the saturation, so the middle is a neutral gray that blooms into full color as you move outward. The lightness is held at the one value you choose, which keeps the whole disk readable, and everything outside the circle is left transparent so the wheel drops onto any background. This page needs no upload and no source file - the wheel is drawn pixel by pixel in your browser and saved as PNG, JPG, WebP or BMP. Use it as a picking surface, as the illustration on a color theory page, or as the starting point for a harmony: read a hue off the rim, then feed that color into the complementary, triadic or analogous palette tools. The one real limitation is the lightness slider: pushed to either end the disk becomes flat black or flat white and the hue information is gone.",
+		"longDescription": "Color wheel draws a circle that encodes two of the three HSL channels at once: the angle around the circle is the hue, and the distance from the center is the saturation, so the middle is a neutral gray that blooms into full color as you move outward. The lightness is held at the one value you choose, which keeps the whole disk readable, and everything outside the circle is left transparent so the wheel drops onto any background. There is no source file — the wheel is drawn pixel by pixel in your browser. Use it as a picking surface, as the illustration on a color theory page, or as the starting point for a harmony: read a hue off the rim, then feed that color into the complementary, triadic or analogous palette tools.",
+		"facts": [
+			"Drawn entirely in your browser: no upload, no server, no signup.",
+			"Hue around the circle, saturation from center to rim; lightness is one value for the whole disk.",
+			"Image size from 128 to 1024 px; the area outside the circle stays transparent.",
+			"Lightness pushed to either end flattens the disk to black or white.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the wheel is generated from the Image size and Lightness values.",
 			"Set the Image size between 128 and 1024 pixels; the wheel is always a square.",

@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Black and White PNG - Free Threshold Tool, Runs Locally",
 		"metaDescription": "Turn any picture into pure black and white by cutting it at a luminance threshold you set. Free, no upload - the file is thresholded in your browser, not sent anywhere.",
-		"longDescription": "The black and white threshold tool turns a photo into pure black and pure white with no gray left in between. Every pixel's luminance is computed with the standard BT.601 weights, compared to the threshold you set, and replaced by white when it is at or above the threshold or black when it is below. The result holds exactly two colors, which is what scanners, e-mail signatures and photocopy workflows ask for. It runs in your browser, works on PNG, JPG, WebP and BMP, and leaves the alpha channel of the source untouched.",
+		"longDescription": "Black and white threshold turns a picture into pure black and pure white with no gray left in between. Every pixel's luminance is computed with the standard BT.601 weights, compared to the threshold you set, and replaced by white at or above it, black below it. The result holds exactly two colors, which is what scanners, e-mail signatures and photocopy workflows ask for. It runs in your browser, works on PNG, JPG, WebP and BMP, and leaves the alpha channel of the source untouched.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Hard cut at a luminance threshold — exactly two colors in the result, no grays.",
+			"Standard BT.601 luminance weights; threshold 50 is the middle of the range.",
+			"The alpha channel is copied through untouched.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set the Threshold; 50 is the middle of the brightness range.",
