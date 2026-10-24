@@ -8,6 +8,7 @@ import {
 	opaquePng,
 	transparentPng,
 } from "./helpers/fixtures";
+import { enPageTitle } from "./helpers/i18n";
 import {
 	chooseDownloadFormat,
 	downloadResultBytes,
@@ -23,6 +24,10 @@ import {
 	uploadViaDrop,
 	useEnglish,
 } from "./helpers/page";
+
+// NOTE: The SEO content wave renamed page titles ("Convert PNG to grayscale"),
+// so specs match by the dictionary title, never by a hardcoded literal.
+const grayTitle = enPageTitle("grayscale-png");
 
 test("resize-png uses the source dimensions by default", async ({ page }) => {
 	const sink = trackErrors(page);
@@ -276,9 +281,9 @@ test("chain: add step extends pipeline without reload and persists", async ({
 	await uploadImage(page, opaquePng);
 	await expect(resultImage(page)).toBeVisible();
 	await page.getByRole("button", { name: "Add step" }).last().click();
-	await page.getByRole("menuitem", { name: "Grayscale PNG" }).click();
+	await page.getByRole("menuitem", { name: grayTitle }).click();
 	const stepTwo = page.getByRole("heading", {
-		name: "Grayscale PNG",
+		name: grayTitle,
 		exact: true,
 	});
 	await expect(stepTwo).toBeVisible();
@@ -293,9 +298,9 @@ test("chain: remove step returns to a single tool", async ({ page }) => {
 	const sink = trackErrors(page);
 	await openTool(page, "flip-png");
 	await page.getByRole("button", { name: "Add step" }).last().click();
-	await page.getByRole("menuitem", { name: "Grayscale PNG" }).click();
+	await page.getByRole("menuitem", { name: grayTitle }).click();
 	const stepTwo = page.getByRole("heading", {
-		name: "Grayscale PNG",
+		name: grayTitle,
 		exact: true,
 	});
 	await expect(stepTwo).toBeVisible();

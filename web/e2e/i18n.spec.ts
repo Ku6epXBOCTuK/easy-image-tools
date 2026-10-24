@@ -1,6 +1,6 @@
 import { expect, test } from "playwright/test";
 import { pixelRow } from "./helpers/fixtures";
-import { ruPageTitle } from "./helpers/i18n";
+import { enPageTitle, ruPageTitle } from "./helpers/i18n";
 import { openTool, toolLink, useEnglish } from "./helpers/page";
 
 const flipTitleRu = ruPageTitle("flip-png");
@@ -31,7 +31,7 @@ test("RU/EN: switching the locale translates the tool heading", async ({
 	await expect(heading).toHaveText(ruPageTitle("resize-png"));
 	await expect(ruBtn).toHaveAttribute("aria-pressed", "true");
 	await enBtn.click();
-	await expect(heading).toHaveText("Resize PNG");
+	await expect(heading).toHaveText(enPageTitle("resize-png"));
 });
 
 test("run error is localized and translated on language switch", async ({
