@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Crop PNG Online - Free Image Cropper, No Upload",
 		"metaDescription": "Crop a PNG right in your browser: choose the area, set the size, download the result. Free, no upload, no signup. Works with PNG, JPG, WebP and BMP.",
-		"longDescription": "Crop PNG cuts a rectangular area out of an image and keeps only what you selected. Everything happens inside your browser tab: the file is decoded, cut and re-encoded on your device, so it is never uploaded, never stored on a server and never visible to anyone else. The upload accepts PNG, JPG, WebP and BMP, and the Download button writes the result back as PNG, JPG, WebP or BMP. Coordinates are pixels counted from the top-left corner, and the selected area is clipped to the image — a rectangle that hangs over the edge is cut down to the part that actually exists, and the result tile says so when that happens.",
+		"longDescription": "Crop PNG cuts a rectangular area out of an image and keeps only what you selected — the pixels are copied exactly, with no resampling and no re-compression inside the tool. Everything runs inside your browser tab: the file is decoded, cut and re-encoded on your device, so it is never uploaded to a server.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Accepts PNG, JPG, WebP and BMP as input.",
+			"Exports PNG, JPG, WebP or BMP through the format selector in the Download button.",
+			"Free with no daily limit, also for commercial use.",
+			"Coordinates are pixels from the top-left corner; a rectangle hanging over the edge is clipped to the part that exists, and the result tile reports it."
+		],
 		"howTo": [
 			"Drop an image into the source area, or pick a file from your device.",
 			"Set X and Y to the top-left corner of the area you want to keep.",

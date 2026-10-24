@@ -85,6 +85,14 @@ describe("seo copy content", () => {
 		).toBeGreaterThan(200);
 		expect(seo.howTo.length, `${slug} howTo`).toBeGreaterThanOrEqual(3);
 		expect(seo.faq.length, `${slug} faq`).toBeGreaterThanOrEqual(3);
+		// NOTE: Optional until every page carries facts (EIT-108), then required.
+		if (seo.facts) {
+			expect(seo.facts.length, `${slug} facts count`).toBeGreaterThanOrEqual(3);
+			expect(seo.facts.length, `${slug} facts count`).toBeLessThanOrEqual(6);
+			for (const [index, fact] of seo.facts.entries()) {
+				expect(fact.length, `${slug} fact ${index}`).toBeGreaterThanOrEqual(15);
+			}
+		}
 	});
 
 	it.each(HUB_FILES)("hub %s has landing-page copy", (id) => {

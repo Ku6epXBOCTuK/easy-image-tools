@@ -21,6 +21,7 @@ export type SeoContent = {
 	metaTitle: string;
 	metaDescription: string;
 	longDescription: string;
+	facts?: string[];
 	howTo: string[];
 	faq: { q: string; a: string }[];
 };

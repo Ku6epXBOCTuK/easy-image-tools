@@ -26,6 +26,14 @@
 	<section class="content">
 		<p class="long">{seo.longDescription}</p>
 
+		{#if seo.facts?.length}
+			<ul class="facts">
+				{#each seo.facts as fact (fact)}
+					<li>{fact}</li>
+				{/each}
+			</ul>
+		{/if}
+
 		<h2>{t("toolPage.howToHeading")}</h2>
 		<ol class="steps">
 			{#each seo.howTo as step (step)}
@@ -75,6 +83,17 @@
 		color: var(--color-text);
 		font-size: var(--font-size-l);
 		line-height: 1.65;
+	}
+	.facts {
+		max-width: var(--size-content-measure);
+		margin: 0;
+		padding-left: var(--space-xxl);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+		color: var(--color-text-muted);
+		font-size: var(--font-size-m);
+		line-height: 1.6;
 	}
 	h2 {
 		margin: var(--space-xxxl) 0 var(--space-l);
