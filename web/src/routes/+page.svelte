@@ -14,7 +14,7 @@
 		siteSeo,
 	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
-	import { PAGES } from "$lib/registry";
+	import { CATALOG } from "$lib/catalog";
 	import { siteSchemaLd } from "$lib/seo";
 	import { toolIcon } from "$lib/tool-icons";
 	import { Search } from "@lucide/svelte";
@@ -31,14 +31,14 @@
 
 	const searching = $derived(query.trim().length > 0);
 
-	const favSlugs = $derived(new Set(favPages(PAGES).map((p) => p.slug)));
+	const favSlugs = $derived(new Set(favPages(CATALOG).map((p) => p.slug)));
 
 	// NOTE: With an empty query favorites cap the first slots and general tools
 	// fill the rest; while searching, favorites compete through the ranking.
 	const results = $derived(
 		searching
-			? searchPagesRanked(PAGES, query).slice(0, TOP_MATCHES)
-			: pickFeaturedPages(PAGES, favSlugs, TOP_MATCHES, MAX_FAVORITES),
+			? searchPagesRanked(CATALOG, query).slice(0, TOP_MATCHES)
+			: pickFeaturedPages(CATALOG, favSlugs, TOP_MATCHES, MAX_FAVORITES),
 	);
 </script>
 

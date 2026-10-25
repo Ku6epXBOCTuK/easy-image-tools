@@ -7,7 +7,7 @@
 	import { initLocale } from "$lib/i18n/locale.svelte";
 	import { pageTitle } from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
-	import { getPageBySlug } from "$lib/registry";
+	import { getMetaBySlug } from "$lib/catalog";
 	import { getTheme, initTheme, setTheme } from "$lib/theme.svelte";
 	import type { Snippet } from "svelte";
 	import { onMount } from "svelte";
@@ -45,7 +45,7 @@
 		if (path === "/kit") return "/ " + t("header.uiKit");
 		const match = /^\/tools\/([^/]+)$/.exec(path);
 		if (match) {
-			const page = getPageBySlug(match[1]);
+			const page = getMetaBySlug(match[1]);
 			if (page) return "/ " + pageTitle(page);
 		}
 		return "/ " + t("header.home");

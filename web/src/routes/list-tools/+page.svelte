@@ -14,7 +14,7 @@
 		siteSeo,
 	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
-	import { PAGES } from "$lib/registry";
+	import { CATALOG } from "$lib/catalog";
 	import { breadcrumbSchemaLd } from "$lib/seo";
 	import { toolIcon } from "$lib/tool-icons";
 
@@ -23,7 +23,7 @@
 
 	const favorites = $derived(
 		searchPages(
-			PAGES.filter((p) => isFav(p.slug)),
+			CATALOG.filter((p) => isFav(p.slug)),
 			query,
 		),
 	);

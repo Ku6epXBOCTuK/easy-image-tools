@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build && node scripts/gen-sitemap.mjs && node scripts/gen-llms.mjs",
+		"build": "node scripts/gen-catalog.mjs && vite build && node scripts/gen-sitemap.mjs && node scripts/gen-llms.mjs",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -15,6 +15,7 @@
 		"test:rules": "vitest run eslint-plugins/__tests__",
 		"test:e2e": "playwright test",
 		"gen:og": "node scripts/gen-og.mjs",
+		"gen:catalog": "node scripts/gen-catalog.mjs",
 		"format": "prettier --write . --log-level warn --cache",
 		"format:check": "prettier --check . --log-level warn --cache",
 		"lint": "eslint .",

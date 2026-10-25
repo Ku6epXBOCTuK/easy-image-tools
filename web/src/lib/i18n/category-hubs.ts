@@ -1,6 +1,5 @@
 import type { CategoryId } from "../categories";
-import { PREVIEW_GROUPS } from "../catalog";
-import type { Page } from "../registry";
+import { PREVIEW_GROUPS, type PageMeta } from "../catalog";
 import type { CategoryHubContent } from "./dict";
 import { en } from "./en";
 import { getMergedDict } from "./locale.svelte";
@@ -11,7 +10,7 @@ export function categoryHubPath(id: CategoryId): string {
 }
 
 // NOTE: Tool pages of the category, in catalog order.
-export function categoryHubPages(id: CategoryId): Page[] {
+export function categoryHubPages(id: CategoryId): PageMeta[] {
 	return PREVIEW_GROUPS.find((group) => group.id === id)?.pages ?? [];
 }
 

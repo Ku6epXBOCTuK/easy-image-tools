@@ -7,11 +7,11 @@
 		pageTitle,
 	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
-	import type { Page } from "$lib/registry";
+	import type { PageMeta } from "$lib/catalog";
 	import { toolIcon } from "$lib/tool-icons";
 
 	interface Props {
-		page: Page;
+		page: PageMeta;
 	}
 	let { page }: Props = $props();
 

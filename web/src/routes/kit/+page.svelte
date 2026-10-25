@@ -25,7 +25,8 @@
 	import UploadButton from "$lib/components/ui/UploadButton.svelte";
 	import { Download, ImageOff, Plus, Trash2 } from "@lucide/svelte";
 
-	import { PAGES } from "$lib/registry";
+	import type { PageSlug } from "$lib/registry";
+	import { CATALOG } from "$lib/catalog";
 	import { TOOL_ICONS } from "$lib/tool-icons";
 
 	let mode = $state("preview");
@@ -36,7 +37,7 @@
 	let lossless = $state(true);
 	let animated = $state(false);
 
-	const showcasePages = PAGES.filter((page) =>
+	const showcasePages = CATALOG.filter((page) =>
 		["linear-gradient-png", "resize-png", "quantize-png"].includes(page.slug),
 	);
 </script>
@@ -180,7 +181,7 @@
 					slug={page.slug}
 					description={page.description}
 					index={i + 1}
-					icon={TOOL_ICONS[page.slug]}
+					icon={TOOL_ICONS[page.slug as PageSlug]}
 				/>
 			{/each}
 		</div>

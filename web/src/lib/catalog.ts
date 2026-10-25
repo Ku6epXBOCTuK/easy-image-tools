@@ -1,27 +1,38 @@
 import { CATEGORY_IDS, type CategoryId } from "./categories";
-import { PAGES, type Page } from "./registry";
+import {
+	CATALOG,
+	type CatalogEntry,
+	type PageMeta,
+} from "./registry/catalog.generated";
+
+export { CATALOG };
+export type { CatalogEntry, PageMeta };
 
 export type PreviewGroup = {
 	id: CategoryId;
-	pages: Page[];
+	pages: PageMeta[];
 };
 
 export const PREVIEW_GROUPS: PreviewGroup[] = CATEGORY_IDS.map((category) => ({
 	id: category,
-	pages: PAGES.filter((page) => page.category === category),
+	pages: CATALOG.filter((page) => page.category === category),
 })).filter((group) => group.pages.length > 0);
 
-export const PREVIEW_TOTAL = PAGES.length;
+export const PREVIEW_TOTAL = CATALOG.length;
+
+export function getMetaBySlug(slug: string): PageMeta | undefined {
+	return CATALOG.find((page) => page.slug === slug);
+}
 
 // NOTE: Neighbors for the related block: same category in catalog order, topped
 // up from the whole catalog because the `text` category alone holds too few.
-export function relatedPages(page: Page, count: number): Page[] {
+export function relatedPages(page: PageMeta, count: number): PageMeta[] {
 	const same = (
 		PREVIEW_GROUPS.find((g) => g.id === page.category)?.pages ?? []
 	).filter((candidate) => candidate.slug !== page.slug);
 	if (same.length >= count) return same.slice(0, count);
 
-	const others = PAGES.filter(
+	const others = CATALOG.filter(
 		(candidate) =>
 			candidate.slug !== page.slug && candidate.category !== page.category,
 	);

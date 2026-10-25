@@ -1,7 +1,6 @@
-import type { Page } from "$lib/registry";
-import { PAGES } from "../registry";
 import type { ChainWarning } from "$lib/run-chain";
 import type { Field } from "$lib/registry-schema";
+import { CATALOG, type PageMeta } from "../registry/catalog.generated";
 import type { SeoContent, SiteSeo } from "./dict";
 import { getMergedDict } from "./locale.svelte";
 import { normalizeForSearch, scoreDoc, type SearchDoc } from "./matching";
@@ -18,16 +17,16 @@ function labelOf(id: string): string {
 		.replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
-export function pageTitle(page: Page): string {
+export function pageTitle(page: PageMeta): string {
 	return getMergedDict().pages?.[page.slug]?.title ?? page.title;
 }
 
-export function pageDescription(page: Page): string {
+export function pageDescription(page: PageMeta): string {
 	return getMergedDict().pages?.[page.slug]?.description ?? page.description;
 }
 
 // NOTE: Long-form page copy, or undefined while a page has none.
-export function pageSeo(page: Page): SeoContent | undefined {
+export function pageSeo(page: PageMeta): SeoContent | undefined {
 	return getMergedDict().pages?.[page.slug]?.seo;
 }
 
@@ -39,12 +38,12 @@ export function siteSeo(id: SitePageId): SiteSeo | undefined {
 // NOTE: Indexability follows the content: having EN copy is the only signal, so no
 // hand-maintained list can drift. Read from the base dict so that switching to
 // RU (no `seo` block there yet) cannot flip the robots tag.
-export function isPageIndexable(page: Page): boolean {
+export function isPageIndexable(page: PageMeta): boolean {
 	return en.pages?.[page.slug]?.seo !== undefined;
 }
 
 // NOTE: SERP `<title>`; the brand prefix is only a fallback for pages without copy.
-export function pageMetaTitle(page: Page): string {
+export function pageMetaTitle(page: PageMeta): string {
 	const brand = t("brand");
 	return (
 		getMergedDict().pages?.[page.slug]?.seo?.metaTitle ??
@@ -53,7 +52,7 @@ export function pageMetaTitle(page: Page): string {
 }
 
 // NOTE: SERP meta description; falls back to the registry description.
-export function pageMetaDescription(page: Page): string {
+export function pageMetaDescription(page: PageMeta): string {
 	return (
 		getMergedDict().pages?.[page.slug]?.seo?.metaDescription ??
 		pageDescription(page)
@@ -62,7 +61,7 @@ export function pageMetaDescription(page: Page): string {
 
 // NOTE: Step title for chain UIs: the owning page title, else the raw tool id.
 export function chainStepTitle(toolId: string): string {
-	const owner = PAGES.find((p) => p.steps[0].id === toolId);
+	const owner = CATALOG.find((meta) => meta.firstStepId === toolId);
 	return owner ? pageTitle(owner) : toolId;
 }
 
@@ -149,7 +148,7 @@ function dedupe(values: string[]): string[] {
 	return [...new Set(values.filter((v) => v.length > 0))];
 }
 
-export function pageSearchDoc(page: Page): SearchDoc {
+export function pageSearchDoc(page: PageMeta): SearchDoc {
 	const active = getMergedDict().pages?.[page.slug];
 	return {
 		id: page.slug,
@@ -169,7 +168,10 @@ export function pageSearchDoc(page: Page): SearchDoc {
 // NOTE: Cross-language catalog search: scores via `scoreDoc` over `pageSearchDoc`
 // (titles/descriptions of all locales). Catalog order is preserved,
 // non-matching entries are dropped.
-export function searchPages(pages: readonly Page[], query: string): Page[] {
+export function searchPages<T extends PageMeta>(
+	pages: readonly T[],
+	query: string,
+): T[] {
 	const q = normalizeForSearch(query.trim());
 	if (q.length === 0) return [...pages];
 	return pages.filter((page) => scoreDoc(pageSearchDoc(page), q) !== null);
@@ -178,14 +180,14 @@ export function searchPages(pages: readonly Page[], query: string): Page[] {
 // NOTE: Same scoring as `searchPages`, but the best match comes first (title
 // prefix above infix); equal scores are broken by popularity, then catalog
 // order. Text score always outranks popularity - it never mixes in.
-export function searchPagesRanked(
-	pages: readonly Page[],
+export function searchPagesRanked<T extends PageMeta>(
+	pages: readonly T[],
 	query: string,
 	popularity: (slug: string) => number = popularityOf,
-): Page[] {
+): T[] {
 	const q = normalizeForSearch(query.trim());
 	if (q.length === 0) return [...pages];
-	const scored: { page: Page; index: number; score: number }[] = [];
+	const scored: { page: T; index: number; score: number }[] = [];
 	pages.forEach((page, index) => {
 		const score = scoreDoc(pageSearchDoc(page), q);
 		if (score !== null) scored.push({ page, index, score });
@@ -203,15 +205,15 @@ export function searchPagesRanked(
 // NOTE: Featured slots for the home page: up to `maxFavorites` favorites (in
 // catalog order), the rest filled with the most popular non-favorites (EIT-130
 // map), catalog order on ties. Pure and deterministic.
-export function pickFeaturedPages(
-	pages: readonly Page[],
+export function pickFeaturedPages<T extends PageMeta>(
+	pages: readonly T[],
 	favoriteSlugs: ReadonlySet<string>,
 	limit: number,
 	maxFavorites: number,
 	popularity: (slug: string) => number = popularityOf,
-): Page[] {
-	const favorites: Page[] = [];
-	const rest: { page: Page; index: number }[] = [];
+): T[] {
+	const favorites: T[] = [];
+	const rest: { page: T; index: number }[] = [];
 	pages.forEach((page, index) => {
 		if (favoriteSlugs.has(page.slug)) {
 			if (favorites.length < maxFavorites) favorites.push(page);
