@@ -2,6 +2,26 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.15.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/dab5f926e41b6314f3e789cfeadbd846b295b9bc..v0.15.0) - 2026-10-25
+#### Features
+- preload tool in ssr - ([33d3312](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/33d33126211393217b32141908b564d23a7ce4fd)) - Ku6epXBOCTuK
+- lazy loading registry\pipeline - ([f911598](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/f911598c77ea4a1ed8414d63ad212f7804bc9296)) - Ku6epXBOCTuK
+- ru locale is lazy loading - ([4174e87](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/4174e87e84e046d274c10114a22cfded46ba5ffb)) - Ku6epXBOCTuK
+- split meta data for pages with generated one - ([258304b](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/258304bd53663f522003c535e21cc4de13c5e6fb)) - Ku6epXBOCTuK
+- add lighthouse CWV - ([1c7f298](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/1c7f298017f4d152d3c224715ac5f9e334ea3fd3)) - Ku6epXBOCTuK
+- add facts to tools batch 4 - ([8ee78da](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/8ee78dad0a75e2a767b21cb665dcbd112844da7b)) - Ku6epXBOCTuK
+- add facts to tools batch 3 - ([6c05cda](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/6c05cda7c873a8b5d91cf151c1dc19183c3b1258)) - Ku6epXBOCTuK
+- add facts to tools batch 2 - ([fe7876c](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/fe7876cbbe3c48abf630c92890b35f23989a5f34)) - Ku6epXBOCTuK
+- add facts to tools batch 1 - ([ebea01f](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/ebea01f42e4169cfa32b6d5fba0905a6286ca8d7)) - Ku6epXBOCTuK
+- add facts to core tools - ([f728887](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/f72888710918894dbc001bbbf44f3e3b50e8dde1)) - Ku6epXBOCTuK
+- add facts in page content, now for single tool - ([dab5f92](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/dab5f926e41b6314f3e789cfeadbd846b295b9bc)) - Ku6epXBOCTuK
+#### Bug Fixes
+- CLS fonts loading - ([d7b2ea9](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/d7b2ea97009f6e73c93a2f5d8e91356e5dad4ab7)) - Ku6epXBOCTuK
+- load ga\gtag as defer script - ([a56b4d3](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/a56b4d3458d2ec0a1e283347748e1429ee361565)) - Ku6epXBOCTuK
+- make facts required - ([5abfb3c](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/5abfb3c134c160b1b73a087f556b91e261b2377c)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.14.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/aa1d1063aceb1fadcf8550db2dbf261ae954ac10..v0.14.0) - 2026-10-24
 #### Features
 - update tool picker on pipeline - ([e44d8f5](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/e44d8f5e29b25e7f1b9193c15372b9b8ebd6768c)) - Ku6epXBOCTuK
