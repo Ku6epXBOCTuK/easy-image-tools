@@ -12,6 +12,9 @@ export const de: Dict = {
 	errors: {
 		sourceRequired: "Quelle erforderlich",
 	},
+	plurals: {
+		parts: { one: "{n} Teil", other: "{n} Teile" },
+	},
 	pages: {
 		addBorder: {
 			title: "Rahmen hinzufügen",

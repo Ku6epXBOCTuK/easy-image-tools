@@ -183,6 +183,48 @@ describe("i18n/dict-consistency", () => {
 		expect(messages[0].message).toContain("{author, kind} vs expected {kind}");
 	});
 
+	it("accepts per-locale plural form sets", () => {
+		// NOTE: ru defines one/few/many, en and de only one/other: the form set
+		// follows CLDR of the locale and is not compared literally across files.
+		expect(messageIds(lint(fixture("ru.ts"), "lib/i18n/ru.ts"))).toEqual([]);
+		expect(messageIds(lint(fixture("de.ts"), "lib/i18n/de.ts"))).toEqual([]);
+	});
+
+	it("flags a plural category the locale requires", () => {
+		const ruNoFew = fixture("ru.ts").replace('\t\t\tfew: "{n} части",\n', "");
+		const messages = lint(ruNoFew, "lib/i18n/ru.ts");
+		expect(messageIds(messages)).toEqual(["pluralFormMissing"]);
+		expect(messages[0].message).toContain('"plurals.parts"');
+		expect(messages[0].message).toContain('"few"');
+	});
+
+	it("flags an empty plural form", () => {
+		const ruEmpty = fixture("ru.ts").replace(
+			'other: "{n} части",',
+			'other: "",',
+		);
+		expect(messageIds(lint(ruEmpty, "lib/i18n/ru.ts"))).toEqual(["emptyValue"]);
+	});
+
+	it("flags a plural key that is a plain string in another locale", () => {
+		const deString = fixture("de.ts").replace(
+			'parts: { one: "{n} Teil", other: "{n} Teile" },',
+			'parts: "{n} Teile",',
+		);
+		const messages = lint(deString, "lib/i18n/de.ts");
+		expect(messageIds(messages)).toEqual(["kindMismatch"]);
+	});
+
+	it("flags a placeholder lost in a plural form", () => {
+		const ruLost = fixture("ru.ts").replace(
+			'few: "{n} части",',
+			'few: "части",',
+		);
+		const messages = lint(ruLost, "lib/i18n/ru.ts");
+		expect(messageIds(messages)).toEqual(["placeholderMismatch"]);
+		expect(messages[0].message).toContain('"plurals.parts.few"');
+	});
+
 	it("honours allowPaths for conscious deviations", () => {
 		const enMissing = fixture("en.ts").replace(
 			'\t\tsourceRequired: "Source image required",',

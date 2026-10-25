@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cachedDataUrl } from "$lib/core/io";
 	import type { PixelImage } from "$lib/core/types";
-	import { t } from "$lib/i18n/t";
+	import { t, tPlural } from "$lib/i18n/t";
 	import type { InputMode, ToolImageFile } from "$lib/registry";
 	import Dropzone from "./Dropzone.svelte";
 	import PartsGrid from "./PartsGrid.svelte";
@@ -41,9 +41,7 @@
 	const sourceDims = $derived(
 		source
 			? `${source.width} × ${source.height}` +
-					(fileCount > 1
-						? ` · ${t("sourceCard.countFiles", { count: fileCount })}`
-						: "")
+					(fileCount > 1 ? ` · ${tPlural("plurals.files", fileCount)}` : "")
 			: undefined,
 	);
 

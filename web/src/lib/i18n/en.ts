@@ -46,6 +46,10 @@ export const en: Dict = {
 		toolsCount: "Tools",
 		favorites: "Favorites",
 	},
+	plurals: {
+		parts: { one: "{n} part", other: "{n} parts" },
+		files: { one: "{n} file", other: "{n} files" },
+	},
 	toolPage: {
 		fallbackTitle: "Tool",
 		legendSource: "Source",
@@ -113,7 +117,6 @@ export const en: Dict = {
 		source: "Source",
 		replaceImage: "Replace image",
 		replaceHint: "Click to upload an image",
-		countFiles: "{count} files",
 		chooseImage: "choose an image",
 		noSource: "no source — configure the parameters",
 		alt: "Source image",
@@ -130,7 +133,6 @@ export const en: Dict = {
 		result: "Result",
 		maskToggle: "Mask",
 		previewPanel: "Preview",
-		parts: "parts",
 		clamped: "clamped to image bounds",
 		aspectAdjusted: "size adjusted to keep aspect",
 		grown: "grew beyond requested size — image is larger",

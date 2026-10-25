@@ -48,6 +48,15 @@ export type SiteSeo = {
 	metaDescription: string;
 };
 
+// NOTE: CLDR plural forms; `other` is the fallback for every locale and for
+// categories a locale does not define (ru needs one/few/many, en one).
+export type PluralForms = {
+	other: string;
+	one?: string;
+	few?: string;
+	many?: string;
+};
+
 // NOTE: Tool strings (`tools.<id>`): field labels, verdict keys.
 export type ToolStrings = {
 	params?: Record<string, string>;
@@ -94,6 +103,9 @@ export type Dict = {
 	search: Record<string, string>;
 	ui: Record<string, string>;
 	errors: Record<string, string>;
+	// NOTE: Counted nouns read through `tPlural` (`plurals.parts`, ...); the
+	// sentence itself lives in the form, so `{n}` is never glued in the UI.
+	plurals: Record<string, PluralForms>;
 	// NOTE: Absent in the base locale, EN from the registry is used.
 	pages?: Record<string, PageStrings>;
 	categoryHubs?: Record<string, CategoryHubContent>;

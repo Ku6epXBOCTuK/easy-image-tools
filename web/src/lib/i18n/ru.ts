@@ -46,6 +46,20 @@ export const ru: Dict = {
 		toolsCount: "Инструментов",
 		favorites: "Избранное",
 	},
+	plurals: {
+		parts: {
+			one: "{n} часть",
+			few: "{n} части",
+			many: "{n} частей",
+			other: "{n} части",
+		},
+		files: {
+			one: "{n} файл",
+			few: "{n} файла",
+			many: "{n} файлов",
+			other: "{n} файла",
+		},
+	},
 	toolPage: {
 		fallbackTitle: "Инструмент",
 		legendSource: "Исходник",
@@ -114,7 +128,6 @@ export const ru: Dict = {
 		source: "Источник",
 		replaceImage: "Заменить изображение",
 		replaceHint: "Кликните, чтобы загрузить изображение",
-		countFiles: "{count} шт.",
 		chooseImage: "выберите изображение",
 		noSource: "нет источника — настройте параметры",
 		alt: "Исходное изображение",
@@ -131,7 +144,6 @@ export const ru: Dict = {
 		result: "Результат",
 		maskToggle: "Маска",
 		previewPanel: "Предпросмотр",
-		parts: "частей",
 		clamped: "уменьшено до границ изображения",
 		aspectAdjusted: "размер скорректирован по пропорциям",
 		grown: "больше запрошенного — картинка крупнее",

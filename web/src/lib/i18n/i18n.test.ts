@@ -5,7 +5,7 @@ import {
 	initLocale,
 	setLocale,
 } from "./locale.svelte";
-import { interpolate, t } from "./t";
+import { interpolate, t, tPlural } from "./t";
 import { en } from "./en";
 import { ru } from "./ru";
 
@@ -72,6 +72,44 @@ describe("interpolate", () => {
 
 	it("without variables returns the string unchanged", () => {
 		expect(interpolate("Plain text")).toBe("Plain text");
+	});
+});
+
+describe("tPlural", () => {
+	it("selects the CLDR form of the active locale", () => {
+		setLocale("ru");
+		expect(tPlural("plurals.parts", 1)).toBe(
+			"1 \u0447\u0430\u0441\u0442\u044c",
+		);
+		expect(tPlural("plurals.parts", 2)).toBe(
+			"2 \u0447\u0430\u0441\u0442\u0438",
+		);
+		expect(tPlural("plurals.parts", 5)).toBe(
+			"5 \u0447\u0430\u0441\u0442\u0435\u0439",
+		);
+		expect(tPlural("plurals.parts", 1.5)).toBe(
+			"1.5 \u0447\u0430\u0441\u0442\u0438",
+		);
+		setLocale("en");
+		expect(tPlural("plurals.parts", 1)).toBe("1 part");
+		expect(tPlural("plurals.parts", 3)).toBe("3 parts");
+	});
+
+	it("takes the other form where the locale has no distinct one", () => {
+		setLocale("en");
+		expect(tPlural("plurals.parts", 0)).toBe("0 parts");
+		expect(tPlural("plurals.parts", 21)).toBe("21 parts");
+		expect(tPlural("plurals.parts", 22)).toBe("22 parts");
+	});
+
+	it("puts the count into the template instead of gluing it", () => {
+		setLocale("en");
+		expect(tPlural("plurals.files", 2, { n: 99 })).toBe("2 files");
+	});
+
+	it("returns the path for an unknown or non-plural key", () => {
+		expect(tPlural("no.such.key", 1)).toBe("no.such.key");
+		expect(tPlural("header.workspace", 1)).toBe("header.workspace");
 	});
 });
 

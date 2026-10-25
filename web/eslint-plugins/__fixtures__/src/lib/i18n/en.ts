@@ -12,6 +12,9 @@ export const en: Dict = {
 	errors: {
 		sourceRequired: "Source image required",
 	},
+	plurals: {
+		parts: { one: "{n} part", other: "{n} parts" },
+	},
 	// NOTE: Base locale: page texts are taken from the EN strings of the registry.
 	pages: {},
 	tools: {

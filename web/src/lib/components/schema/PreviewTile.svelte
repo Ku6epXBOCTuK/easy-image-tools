@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { InputMode, ResultKind } from "$lib/registry";
-	import { RefreshCw } from "@lucide/svelte";
-	import { t } from "$lib/i18n/t";
 	import Badge from "$lib/components/ui/Badge.svelte";
 	import DetailBadge from "$lib/components/ui/DetailBadge.svelte";
+	import { tPlural } from "$lib/i18n/t";
+	import type { InputMode, ResultKind } from "$lib/registry";
+	import { RefreshCw } from "@lucide/svelte";
 	import type { Snippet } from "svelte";
 
 	interface Props {
@@ -43,13 +43,19 @@
 <figure class="tile">
 	<figcaption>
 		<span class="tile-label">
-			<span
-				>{label}{#if parts !== undefined}<span class="dims"
-						>: {parts}
-						{t("resultCard.parts")}{#if partsDims}
-							· {partsDims}{/if}</span
-					>{:else if dims}<span class="dims">: {dims}</span>{/if}</span
-			>
+			<span>
+				{label}
+				{#if parts !== undefined}
+					<span class="dims">
+						: {tPlural("plurals.parts", parts)}
+						{#if partsDims}
+							· {partsDims}
+						{/if}
+					</span>
+				{:else if dims}
+					<span class="dims">: {dims} </span>
+				{/if}
+			</span>
 			{#if loading}
 				<RefreshCw class="rotating" size="12" />
 			{/if}

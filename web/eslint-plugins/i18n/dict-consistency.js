@@ -83,6 +83,9 @@ function isStringLiteral(node) {
 const OBJECT = "object";
 const STRING = "string";
 const OPAQUE = "opaque";
+const PLURAL = "plural";
+
+const PLURAL_KEYS = new Set(["zero", "one", "two", "few", "many", "other"]);
 
 function entryKind(node) {
 	if (node.type === "ObjectExpression") return OBJECT;
@@ -109,6 +112,23 @@ function propKey(prop) {
 	return null;
 }
 
+// NOTE: A plural entry is an object of CLDR categories whose only required form
+// is `other`; the form set differs per locale, so it is validated separately.
+function pluralForms(node) {
+	if (node.type !== "ObjectExpression" || node.properties.length === 0) {
+		return null;
+	}
+	const forms = new Map();
+	for (const prop of node.properties) {
+		if (prop.type !== "Property" || prop.computed) return null;
+		const key = propKey(prop);
+		if (key == null || !PLURAL_KEYS.has(key)) return null;
+		if (entryKind(prop.value) !== STRING) return null;
+		forms.set(key, { node: prop, value: entryValue(prop.value) });
+	}
+	return forms.has("other") ? forms : null;
+}
+
 // NOTE: Intermediate objects are recorded too, so a missing whole section is
 // reported once.
 function buildKeyMap(objectNode) {
@@ -121,6 +141,11 @@ function buildKeyMap(objectNode) {
 			const key = propKey(prop);
 			if (key == null) continue;
 			const dot = [...prefix, key].join(".");
+			const forms = pluralForms(prop.value);
+			if (forms) {
+				map.set(dot, { node: prop, kind: PLURAL, value: null, forms });
+				continue;
+			}
 			const kind = entryKind(prop.value);
 			map.set(dot, {
 				node: prop,
@@ -143,6 +168,48 @@ function formatSet(set) {
 	return `{${[...set].sort().join(", ")}}`;
 }
 
+function kindLabel(kind) {
+	if (kind === PLURAL) return "plural object";
+	if (kind === OBJECT) return "object";
+	return "string";
+}
+
+const pluralCategoryCache = new Map();
+
+// NOTE: Required forms come from CLDR for the locale itself (en: one/other,
+// ru: one/few/many/other), so locales never have to mirror each other's sets.
+function pluralCategories(locale) {
+	let categories = pluralCategoryCache.get(locale);
+	if (!categories) {
+		categories = new Set(
+			new Intl.PluralRules(locale).resolvedOptions().pluralCategories,
+		);
+		pluralCategoryCache.set(locale, categories);
+	}
+	return categories;
+}
+
+function reportPlaceholderGap(context, node, key, locale, value, canonical) {
+	if (!canonical) return;
+	const active = placeholders(value);
+	if (
+		active.size === canonical.size &&
+		[...active].every((p) => canonical.has(p))
+	) {
+		return;
+	}
+	context.report({
+		node,
+		messageId: "placeholderMismatch",
+		data: {
+			key,
+			locale,
+			active: formatSet(active),
+			expected: formatSet(canonical),
+		},
+	});
+}
+
 function matchesPattern(key, pattern) {
 	const keyParts = key.split(".");
 	const patternParts = pattern.split(".");
@@ -160,6 +227,41 @@ function* ancestorPaths(key) {
 		yield key.slice(0, i);
 		i = key.lastIndexOf(".", i - 1);
 	}
+}
+
+function addLeaf(leaves, key, locale, set) {
+	if (!leaves.has(key)) leaves.set(key, []);
+	leaves.get(key).push({ locale, set });
+}
+
+// NOTE: Canonical placeholder set per key: the set shared by the most locales;
+// on a tie the base locale wins before LOCALES order.
+function canonicalSetsOf(leaves, baseLocale) {
+	const result = new Map();
+	for (const [key, entries] of leaves) {
+		const counts = new Map();
+		for (const { set } of entries) {
+			const sig = [...set].sort().join("\u0000");
+			counts.set(sig, (counts.get(sig) || 0) + 1);
+		}
+		let bestCount = 0;
+		let bestLocale = null;
+		for (const { locale, set } of entries) {
+			const sig = [...set].sort().join("\u0000");
+			const count = counts.get(sig);
+			if (
+				count > bestCount ||
+				(count === bestCount &&
+					locale === baseLocale &&
+					bestLocale !== baseLocale)
+			) {
+				bestCount = count;
+				bestLocale = locale;
+				result.set(key, set);
+			}
+		}
+	}
+	return result;
 }
 
 // NOTE: Sibling dicts are read once per directory and cached for the whole
@@ -197,50 +299,39 @@ function readDir(dir) {
 	// NOTE: Union of every key across all locales (intermediate paths
 	// included), so a file can report exactly what it is missing.
 	const unionPaths = new Set();
-	// NOTE: Non-empty string leaves per key: locales contribute to the
-	// canonical placeholder set voting (empty values are broken on their own).
+	// NOTE: Non-empty leaves per key: locales contribute to the canonical
+	// placeholder set voting (empty values are broken on their own). Plural
+	// forms vote per `key.form`, so `{n}` parity is checked per form.
 	const stringLeaves = new Map();
+	const pluralLeaves = new Map();
 	for (const d of dicts) {
 		for (const [key, entry] of d.map) {
 			unionPaths.add(key);
 			if (entry.kind === STRING && (entry.value ?? "").trim() !== "") {
-				if (!stringLeaves.has(key)) stringLeaves.set(key, []);
-				stringLeaves.get(key).push({
-					locale: d.locale,
-					set: placeholders(entry.value),
-				});
+				addLeaf(stringLeaves, key, d.locale, placeholders(entry.value));
+			}
+			if (entry.kind === PLURAL) {
+				for (const [form, leaf] of entry.forms) {
+					if ((leaf.value ?? "").trim() === "") continue;
+					addLeaf(
+						pluralLeaves,
+						`${key}.${form}`,
+						d.locale,
+						placeholders(leaf.value),
+					);
+				}
 			}
 		}
 	}
 
-	// NOTE: Canonical placeholder set per key: the set shared by the most
-	// locales; on a tie the base locale wins before LOCALES order.
-	const canonicalSets = new Map();
-	for (const [key, entries] of stringLeaves) {
-		const counts = new Map();
-		for (const { set } of entries) {
-			const sig = [...set].sort().join("\u0000");
-			counts.set(sig, (counts.get(sig) || 0) + 1);
-		}
-		let bestCount = 0;
-		let bestLocale = null;
-		for (const { locale, set } of entries) {
-			const sig = [...set].sort().join("\u0000");
-			const count = counts.get(sig);
-			if (
-				count > bestCount ||
-				(count === bestCount &&
-					locale === baseLocale &&
-					bestLocale !== baseLocale)
-			) {
-				bestCount = count;
-				bestLocale = locale;
-				canonicalSets.set(key, set);
-			}
-		}
-	}
-
-	return { locales, baseLocale, dicts, unionPaths, canonicalSets };
+	return {
+		locales,
+		baseLocale,
+		dicts,
+		unionPaths,
+		canonicalSets: canonicalSetsOf(stringLeaves, baseLocale),
+		pluralCanonicalSets: canonicalSetsOf(pluralLeaves, baseLocale),
+	};
 }
 
 export default {
@@ -276,6 +367,10 @@ export default {
 			emptyValue: 'empty value "{{key}}" in {{locale}}',
 			placeholderMismatch:
 				'placeholder mismatch for "{{key}}" in {{locale}}: {{active}} vs expected {{expected}}',
+			pluralFormMissing:
+				'missing plural form "{{form}}" for "{{key}}" in {{locale}}',
+			kindMismatch:
+				'kind mismatch for "{{key}}" in {{locale}}: {{active}}, but {{expected}}',
 		},
 	},
 	create(context) {
@@ -332,35 +427,80 @@ export default {
 			});
 		}
 
+		const baseMap = dirInfo.dicts.find(
+			(d) => d.locale === dirInfo.baseLocale,
+		)?.map;
+		const expectedKind = (key) => {
+			if (locale !== dirInfo.baseLocale) return baseMap?.get(key)?.kind;
+			return dirInfo.dicts.find((d) => d.locale !== locale)?.map.get(key)?.kind;
+		};
+
 		for (const [key, entry] of own) {
-			if (allowPaths.has(key) || entry.kind !== STRING) continue;
-			if ((entry.value ?? "").trim() === "") {
-				context.report({
-					node: entry.node,
-					messageId: "emptyValue",
-					data: { key, locale },
-				});
-				continue;
-			}
-			const canonical = dirInfo.canonicalSets.get(key);
-			if (!canonical) continue;
-			const active = placeholders(entry.value);
-			if (
-				active.size === canonical.size &&
-				[...active].every((p) => canonical.has(p))
-			) {
-				continue;
-			}
-			context.report({
-				node: entry.node,
-				messageId: "placeholderMismatch",
-				data: {
+			if (allowPaths.has(key)) continue;
+
+			if (entry.kind === PLURAL) {
+				for (const form of pluralCategories(locale)) {
+					if (entry.forms.has(form)) continue;
+					context.report({
+						node: entry.node,
+						messageId: "pluralFormMissing",
+						data: { key, locale, form },
+					});
+				}
+				for (const [form, leaf] of entry.forms) {
+					if ((leaf.value ?? "").trim() === "") {
+						context.report({
+							node: leaf.node,
+							messageId: "emptyValue",
+							data: { key: `${key}.${form}`, locale },
+						});
+						continue;
+					}
+					reportPlaceholderGap(
+						context,
+						leaf.node,
+						`${key}.${form}`,
+						locale,
+						leaf.value,
+						dirInfo.pluralCanonicalSets.get(`${key}.${form}`),
+					);
+				}
+			} else if (entry.kind === STRING) {
+				if ((entry.value ?? "").trim() === "") {
+					context.report({
+						node: entry.node,
+						messageId: "emptyValue",
+						data: { key, locale },
+					});
+					continue;
+				}
+				reportPlaceholderGap(
+					context,
+					entry.node,
 					key,
 					locale,
-					active: formatSet(active),
-					expected: formatSet(canonical),
-				},
-			});
+					entry.value,
+					dirInfo.canonicalSets.get(key),
+				);
+			}
+
+			const other = expectedKind(key);
+			if (
+				other &&
+				other !== entry.kind &&
+				(other === PLURAL || entry.kind === PLURAL)
+			) {
+				context.report({
+					node: entry.node,
+					messageId: "kindMismatch",
+					data: {
+						key,
+						locale,
+						active: kindLabel(entry.kind),
+						expected: kindLabel(other),
+					},
+				});
+			}
 		}
 
 		return {};
