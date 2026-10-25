@@ -15,7 +15,7 @@
 		type WarningNotice,
 	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
-	import { moveStep, type ChainStep } from "$lib/pipeline.svelte";
+	import { createChain, moveStep, type ChainStep } from "$lib/pipeline.svelte";
 	import { getTool, type Page, type Tool } from "$lib/registry";
 	import { DragDropProvider } from "@dnd-kit/svelte";
 	import { Star } from "@lucide/svelte";
@@ -99,6 +99,16 @@
 		result: () => runner.result,
 		setStepValue,
 	});
+
+	// NOTE: Seed the default chain before hydration (EIT-135): the workspace
+	// ships in the prerendered HTML and hydration claims it instead of inserting
+	// a second screen of DOM that shifts the page. Named chains resolve client-side.
+	function seedDefaultHost(): void {
+		if (chainId) return;
+		stepState.steps = createChain(page);
+		output.format = lastTool.output?.mime ?? "image/png";
+	}
+	seedDefaultHost();
 
 	const runner = createSchemaToolRunner({
 		pageSlug: () => page.slug,

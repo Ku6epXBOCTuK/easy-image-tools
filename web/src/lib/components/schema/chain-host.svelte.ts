@@ -77,8 +77,9 @@ export function createChainHost(ctx: ChainHostCtx) {
 				handoff?.format ?? ctx.lastTool().output?.mime ?? "image/png";
 			ctx.output.limitKb = handoff?.limitKb;
 		} else {
-			ctx.stepState.steps = createChain(ctx.page());
-			ctx.output.format = ctx.lastTool().output?.mime ?? "image/png";
+			// NOTE: Steps and format were seeded synchronously at mount (EIT-135),
+			// hydration already claimed that DOM; here only the client-only state
+			// (run, masks, marks) gets reset per host.
 			ctx.output.limitKb = undefined;
 			ctx.source.source = null;
 			ctx.source.sourceFiles = [];

@@ -34,11 +34,13 @@ export function createStep(id: string): ChainStep | null {
 
 export function createChain(page: Page): ChainStep[] {
 	const steps: ChainStep[] = [];
-	for (const s of page.steps) {
+	for (const [index, s] of page.steps.entries()) {
 		const tool = getTool(s.id);
 		if (!tool) continue;
 		steps.push({
-			key: uid(),
+			// NOTE: Deterministic key: the seed chain renders on the server, so the
+			// client must produce the exact same keys for hydration to claim it.
+			key: `${s.id}-${index}`,
 			id: s.id,
 			params: sanitizeSchemaParams(tool.schema, s.params ?? {}),
 		});
