@@ -40,10 +40,25 @@ function tagText(tag) {
 }
 
 // NOTE: TS keeps `{@link X}` as a link part, so the replacement is the name
-// after it; a tag without the link means "deprecated, see docs".
+// after it; a tag without the link means "deprecated, see docs". A link to a
+// URL is not a name, so `https` must not be taken as the replacement.
 function replacementOf(tag) {
-	const match = /\{@link\s+([A-Za-z_$][\w$]*)/.exec(tagText(tag));
-	return match ? match[1] : null;
+	const found = tagText(tag).match(/\{@link\s+([A-Za-z_$][\w$]*)(?=[\s}])/);
+	return found ? found[1] : null;
+}
+
+function deprecatedTag(checker, symbol) {
+	const own = symbol
+		.getJsDocTags(checker)
+		.find((entry) => entry.name === "deprecated");
+	if (own) return own;
+	// NOTE: A barrel re-export yields an alias symbol with no JSDoc of its own,
+	// so the tag is read from the declaration it aliases.
+	if ((symbol.flags & ts.SymbolFlags.Alias) === 0) return undefined;
+	return checker
+		.getAliasedSymbol(symbol)
+		.getJsDocTags(checker)
+		.find((entry) => entry.name === "deprecated");
 }
 
 function deprecationsOf(resolvedFile) {
@@ -59,9 +74,7 @@ function deprecationsOf(resolvedFile) {
 	const deprecations = new Map();
 	if (moduleSymbol) {
 		for (const symbol of checker.getExportsOfModule(moduleSymbol)) {
-			const tag = symbol
-				.getJsDocTags(checker)
-				.find((entry) => entry.name === "deprecated");
+			const tag = deprecatedTag(checker, symbol);
 			if (tag) deprecations.set(symbol.getName(), replacementOf(tag));
 		}
 	}

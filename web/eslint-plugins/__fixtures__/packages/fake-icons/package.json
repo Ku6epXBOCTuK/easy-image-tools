@@ -1,0 +1,12 @@
+{
+	"name": "fake-icons",
+	"version": "0.0.0",
+	"types": "index.d.ts",
+	"main": "index.js",
+	"exports": {
+		".": {
+			"types": "./index.d.ts",
+			"default": "./index.js"
+		}
+	}
+}

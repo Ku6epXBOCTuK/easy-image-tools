@@ -1,11 +1,33 @@
+import { cpSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { RuleTester } from "eslint";
 import tseslint from "typescript-eslint";
-import { describe, it } from "vitest";
+import { afterAll, beforeAll, describe, it } from "vitest";
 import noDeprecatedImport from "../conventions/no-deprecated-import.js";
 import { FIXTURES_DIR, asRuleModule } from "./helpers.js";
 
-const filename = path.join(FIXTURES_DIR, "src", "lib", "icons.ts");
+// NOTE: The rule resolves a bare specifier with `ts.resolveModuleName`, which
+// only looks in node_modules, so the fake package is materialized in a temp
+// dir instead of being committed under an ignored node_modules path.
+const fixtureRoot = mkdtempSync(
+	path.join(os.tmpdir(), "eit-deprecated-import-"),
+);
+const filename = path.join(fixtureRoot, "src", "lib", "icons.ts");
+
+beforeAll(() => {
+	cpSync(
+		path.join(FIXTURES_DIR, "packages", "fake-icons"),
+		path.join(fixtureRoot, "node_modules", "fake-icons"),
+		{ recursive: true },
+	);
+	mkdirSync(path.dirname(filename), { recursive: true });
+	writeFileSync(filename, "");
+});
+
+afterAll(() => {
+	rmSync(fixtureRoot, { recursive: true, force: true });
+});
 
 RuleTester.describe = describe;
 RuleTester.it = it;
@@ -49,6 +71,30 @@ tester.run("no-deprecated-import", asRuleModule(noDeprecatedImport), {
 				{
 					messageId: "deprecatedImport",
 					data: { name: "LEGACY_CONSTANT", module: "fake-icons" },
+				},
+			],
+		},
+		{
+			code: 'import { createAncient } from "fake-icons";',
+			filename,
+			errors: [
+				{
+					messageId: "deprecatedImportReplace",
+					data: {
+						name: "createAncient",
+						module: "fake-icons",
+						replacement: "createNew",
+					},
+				},
+			],
+		},
+		{
+			code: 'import { LEGACY_WITH_URL } from "fake-icons";',
+			filename,
+			errors: [
+				{
+					messageId: "deprecatedImport",
+					data: { name: "LEGACY_WITH_URL", module: "fake-icons" },
 				},
 			],
 		},

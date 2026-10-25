@@ -13,7 +13,7 @@
   - `i18n/` — кросс-языковой линтер словарей (`dict-consistency`).
   - `__tests__/` — юнит-тесты (Vitest + `RuleTester`/`Linter`).
   - `__fixtures__/` — фикстуры для тестов: миниатюрный `src/app.css` (словарь
-    токенов) и мини-словари `lib/i18n/`.
+    токенов), мини-словари `lib/i18n/` и пакет-заглушка `packages/fake-icons/`.
 - `web/scripts/`:
   - `lint-all.mjs` — оркестратор `lint:all`.
   - `check-tokens.mjs` + `token-audit/` — токен-аудит по `app.css`.
@@ -158,7 +158,8 @@ baseline нулевой. Русские ожидания в тестах не х
   файлы линтуются сами. Кэш — на процесс: первый импорт из крупного пакета стоит
   ~4 с (`@lucide/svelte`), дальше бесплатно. Scope — `src/**/*.ts` и
   `src/**/*.svelte`; тест — `__tests__/no-deprecated-import.test.ts`,
-  фикстура-пакет — `__fixtures__/node_modules/fake-icons/`.
+  фикстура-пакет — `__fixtures__/packages/fake-icons/`: тест копирует её во
+  временный `node_modules`, потому что резолв смотрит только туда.
 - `@typescript-eslint/no-deprecated` — warn на `src/**/*.ts`: добавляет то, чего
   нет у правила выше, — устаревшие обращения внутри кода (методы, свойства), а
   не только импорты. `.svelte` не покрывает: типы там не резолвятся.

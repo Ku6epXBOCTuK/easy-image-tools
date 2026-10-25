@@ -73,6 +73,8 @@ export default defineConfig(
 						"eslint-plugins/__fixtures__/src/lib/core/errors.ts",
 						"eslint-plugins/__fixtures__/src/lib/i18n/t.ts",
 						"eslint-plugins/__fixtures__/src/lib/theme.svelte.ts",
+						"eslint-plugins/__fixtures__/packages/fake-icons/index.d.ts",
+						"eslint-plugins/__fixtures__/packages/fake-icons/legacy.d.ts",
 						"eslint-plugins/__fixtures__/src/lib/components/CheckerCanvas.svelte",
 						"eslint-plugins/__fixtures__/src/lib/components/ui/Button.svelte",
 						"eslint-plugins/__fixtures__/src/routes/+page.svelte",
@@ -141,10 +143,19 @@ export default defineConfig(
 		},
 	},
 	// NOTE: A deprecated export is only marked in the installed package types,
-	// so the import is the single place a stale name shows up; src/lib imports
-	// packages too and the production scopes do not cover it.
+	// so the import is the single place a stale name shows up. The rule needs
+	// no type info, so configs and plugins are covered at no lint cost.
 	{
-		files: ["**/src/**/*.ts", "**/src/**/*.svelte"],
+		files: [
+			"**/src/**/*.ts",
+			"**/src/**/*.svelte",
+			"**/*.config.js",
+			"**/*.config.ts",
+			"**/*.config.mjs",
+			"**/eslint-plugins/**/*.js",
+			"**/eslint-plugins/**/*.ts",
+			"**/scripts/**/*.mjs",
+		],
 		plugins: {
 			conventions: conventionsPlugin,
 		},
