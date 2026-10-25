@@ -148,6 +148,18 @@ baseline нулевой. Русские ожидания в тестах не х
 словарей `lib/i18n/` (см. `src/lib/i18n/*.test.ts` и `e2e/helpers/i18n.ts`).
 Тест правила: `__tests__/ascii-only.test.ts`.
 
+- `conventions/no-deprecated-icon` — импорт устаревшего алиаса `@lucide/svelte`
+  (ошибка). Таблица `старое → новое` читается из
+  `dist/aliases/{aliases,prefixed,suffixed}.d.ts` установленного пакета (кэш на
+  процесс), замена берётся из `{@link X}` в JSDoc и сохраняет стиль имени
+  (`Lucide*` / `*Icon`). Пустая таблица — исключение, а не «всё чисто»: смена
+  раскладки `.d.ts` должна ломать линт, а не отключать проверку. Scope —
+  `src/**/*.ts` и `src/**/*.svelte`; тест —
+  `__tests__/no-deprecated-icon.test.ts`, фикстуры — `__fixtures__/lucide/`.
+- `@typescript-eslint/no-deprecated` — warn на `src/**/*.ts`: ловит устаревшие
+  API вообще, но не импорты (правило пропускает `import`) и не `.svelte` (типы
+  там не резолвятся). Универсальный вариант поверх обоих — EIT-138.
+
 ## Токены-префиксы (целевой словарь дизайна)
 
 - Цвета: `--color-*`, бренд `--brand-main` / `--brand-alt` — единственные две

@@ -64,6 +64,9 @@ export default tseslint.config(
 						"eslint-plugins/__tests__/dict-consistency.test.ts",
 						"eslint-plugins/__tests__/no-hardcoded-user-text.test.ts",
 						"eslint-plugins/__tests__/ascii-only.test.ts",
+						"eslint-plugins/__tests__/no-deprecated-icon.test.ts",
+						"eslint-plugins/__fixtures__/lucide/aliases.d.ts",
+						"eslint-plugins/__fixtures__/lucide/prefixed.d.ts",
 						"eslint-plugins/__fixtures__/src/lib/i18n/dict.ts",
 						"eslint-plugins/__fixtures__/src/lib/i18n/en.ts",
 						"eslint-plugins/__fixtures__/src/lib/i18n/ru.ts",
@@ -136,6 +139,26 @@ export default tseslint.config(
 		},
 		rules: {
 			"conventions/no-string-union-alias": "error",
+		},
+	},
+	// NOTE: The deprecated aliases live only in the @lucide/svelte .d.ts, so
+	// the import name is the single place a stale icon shows up; icons are
+	// imported from src/lib too, which the production scopes do not cover.
+	{
+		files: ["**/src/**/*.ts", "**/src/**/*.svelte"],
+		plugins: {
+			conventions: conventionsPlugin,
+		},
+		rules: {
+			"conventions/no-deprecated-icon": "error",
+		},
+	},
+	// NOTE: Type-aware and .ts only: it catches deprecated APIs beyond icons,
+	// while svelte-eslint-parser cannot supply types for .svelte imports.
+	{
+		files: ["**/src/**/*.ts"],
+		rules: {
+			"@typescript-eslint/no-deprecated": "warn",
 		},
 	},
 	// NOTE: The rule reports warnings; `lint:all` runs with --max-warnings=0,
