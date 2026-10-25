@@ -6,20 +6,18 @@
 	import { ButtonVariantDefine } from "$lib/components/ui/define";
 	import Seo from "$lib/components/Seo.svelte";
 	import ToolPickerButton from "$lib/components/schema/ToolPickerButton.svelte";
-	import {
-		autoChainName,
-		createNamedChain,
-		deleteChain,
-		listChains,
-		renameChain,
-		type NamedChain,
-	} from "$lib/chains.svelte";
+	import type { NamedChain } from "$lib/chains.svelte";
+	import { CATALOG } from "$lib/catalog";
 	import { chainStepTitle, siteSeo } from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
-	import { createChain } from "$lib/pipeline.svelte";
-	import { PAGES } from "$lib/registry";
 	import { Workflow as PipelineIcon } from "@lucide/svelte";
 	import { onMount } from "svelte";
+
+	// NOTE: chains.svelte validates steps through the registry (parseChain), so
+	// the API loads lazily: the list is client-only (localStorage) anyway and
+	// the registry chunk stays off the route's critical path (EIT-132).
+	// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+	let chainsApi = $state<typeof import("$lib/chains.svelte") | null>(null);
 
 	let chains = $state<NamedChain[]>([]);
 	let renamingId = $state("");
@@ -27,10 +25,15 @@
 	let confirmDeleteId = $state("");
 
 	function refresh() {
-		chains = listChains();
+		chains = chainsApi?.listChains() ?? [];
 	}
 
-	onMount(refresh);
+	onMount(() => {
+		void import("$lib/chains.svelte").then((mod) => {
+			chainsApi = mod;
+			refresh();
+		});
+	});
 
 	function useChain(id: string) {
 		goto(resolve(`/pipeline?id=${id}`));
@@ -43,7 +46,7 @@
 	}
 
 	function saveRename() {
-		renameChain(renamingId, renameValue);
+		chainsApi?.renameChain(renamingId, renameValue);
 		renamingId = "";
 		refresh();
 	}
@@ -53,15 +56,24 @@
 			confirmDeleteId = id;
 			return;
 		}
-		deleteChain(id);
+		chainsApi?.deleteChain(id);
 		confirmDeleteId = "";
 		refresh();
 	}
 
-	function addNew(toolId: string) {
-		const owner = PAGES.find((p) => p.steps[0].id === toolId);
+	async function addNew(toolId: string) {
+		if (!chainsApi) return;
+		const [{ getPageBySlug }, { createChain }] = await Promise.all([
+			import("$lib/registry"),
+			import("$lib/pipeline.svelte"),
+		]);
+		const ownerMeta = CATALOG.find((meta) => meta.firstStepId === toolId);
+		const owner = ownerMeta ? getPageBySlug(ownerMeta.slug) : undefined;
 		if (!owner) return;
-		const chain = createNamedChain(autoChainName(), createChain(owner));
+		const chain = chainsApi.createNamedChain(
+			chainsApi.autoChainName(),
+			createChain(owner),
+		);
 		goto(resolve(`/pipeline?id=${chain.id}`));
 	}
 </script>

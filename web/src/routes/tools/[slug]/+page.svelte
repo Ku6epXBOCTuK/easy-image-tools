@@ -74,6 +74,9 @@
 	</div>
 {:else}
 	<Breadcrumbs {page} />
+	<!-- NOTE: The workspace stays a static import (EIT-132): Svelte SSR renders
+	     the pending branch of {#await}, so a lazy workspace would vanish from
+	     the prerendered HTML and flash-shift the page on hydration. -->
 	<SchemaToolView {page} {tool} />
 	<PageContent {page} />
 {/if}

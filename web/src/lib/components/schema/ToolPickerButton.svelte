@@ -11,10 +11,10 @@
 	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
 	import { favPages, isFav, toggleFav } from "$lib/favorites.svelte";
-	import { chainablePages } from "$lib/pipeline.svelte";
 	import { popularityOf } from "$lib/registry/popularity";
 	import type { Page } from "$lib/registry";
 	import { Plus, Repeat, Star } from "@lucide/svelte";
+	import { onMount } from "svelte";
 
 	interface Props {
 		label: string;
@@ -23,19 +23,29 @@
 	}
 	let { label, iconOnly = false, onadd }: Props = $props();
 
-	const pages = chainablePages();
+	// NOTE: chainablePages needs the registry; the lazy load keeps that chunk
+	// off the route (EIT-132) and resolves instantly once the page loaded it.
+	let pages = $state<Page[] | null>(null);
+	onMount(() => {
+		void import("$lib/pipeline.svelte").then((mod) => {
+			pages = mod.chainablePages();
+		});
+	});
+
 	let query = $state("");
 	let showAll = $state(false);
 	const searching = $derived(query.trim().length > 0);
-	const favSlugs = $derived(new Set(favPages(pages).map((p) => p.slug)));
+	const favSlugs = $derived(new Set(favPages(pages ?? []).map((p) => p.slug)));
 	// NOTE: Mirrors the home page: favorites first (capped), the rest by static
 	// popularity; search is ranked and never capped.
 	const list = $derived(
 		searching
-			? searchPagesRanked(pages, query)
+			? searchPagesRanked(pages ?? [], query)
 			: showAll
-				? [...pages].sort((a, b) => popularityOf(b.slug) - popularityOf(a.slug))
-				: pickFeaturedPages(pages, favSlugs, 6, 2),
+				? [...(pages ?? [])].sort(
+						(a, b) => popularityOf(b.slug) - popularityOf(a.slug),
+					)
+				: pickFeaturedPages(pages ?? [], favSlugs, 6, 2),
 	);
 
 	const menuId = $props.id();
