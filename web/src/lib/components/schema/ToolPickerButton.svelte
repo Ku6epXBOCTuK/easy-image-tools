@@ -62,10 +62,13 @@
 	function handleToggle(e: ToggleEvent) {
 		open = e.newState === "open";
 		if (open) {
-			query = "";
-			showAll = false;
 			requestAnimationFrame(() => menu?.querySelector("input")?.focus());
+			return;
 		}
+		// NOTE: The toggle event is queued, so a reset on open wipes a query typed
+		// right after the click; resetting on close keeps the next open clean.
+		query = "";
+		showAll = false;
 	}
 
 	function choose(page: Page) {

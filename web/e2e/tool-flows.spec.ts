@@ -16,6 +16,7 @@ import {
 	expectNoErrorAlert,
 	expectNoErrors,
 	openTool,
+	pickTool,
 	rangeInput,
 	resultImage,
 	sourceImage,
@@ -284,7 +285,7 @@ test("chain: add step extends pipeline without reload and persists", async ({
 	// NOTE: The picker opens with six featured tools; search surfaces any tool.
 	const search = page.getByRole("textbox", { name: "Search tools" });
 	await search.fill(grayTitle);
-	await page.getByRole("menuitem", { name: grayTitle }).click();
+	await pickTool(page, grayTitle);
 	const stepTwo = page.getByRole("heading", {
 		name: grayTitle,
 		exact: true,
@@ -304,7 +305,7 @@ test("chain: remove step returns to a single tool", async ({ page }) => {
 	// NOTE: The picker opens with six featured tools; search surfaces any tool.
 	const search = page.getByRole("textbox", { name: "Search tools" });
 	await search.fill(grayTitle);
-	await page.getByRole("menuitem", { name: grayTitle }).click();
+	await pickTool(page, grayTitle);
 	const stepTwo = page.getByRole("heading", {
 		name: grayTitle,
 		exact: true,
@@ -324,10 +325,11 @@ test("chain: picker search filters the menu", async ({ page }) => {
 	await page.getByRole("button", { name: "Add step" }).last().click();
 	const search = page.getByRole("textbox", { name: "Search tools" });
 	await search.fill(grayTitle);
+	await expect(search).toHaveValue(grayTitle);
 	const item = page.getByRole("menuitem", { name: grayTitle });
 	await expect(item).toBeVisible();
 	await expect(page.getByRole("menuitem", { name: "Flip PNG" })).toHaveCount(0);
-	await item.click();
+	await pickTool(page, grayTitle);
 	const stepTwo = page.getByRole("heading", {
 		name: grayTitle,
 		exact: true,

@@ -44,6 +44,15 @@ export async function waitForHydration(page: Page): Promise<void> {
 	await page.locator("html[data-hydrated]").waitFor();
 }
 
+// NOTE: The picker popover is re-placed on every scroll, and Playwright's click
+// waits for a stable box, so a mouse click can spin forever; focus + Enter does
+// not depend on the position.
+export async function pickTool(page: Page, name: string): Promise<void> {
+	const item = page.getByRole("menuitem", { name });
+	await item.focus();
+	await page.keyboard.press("Enter");
+}
+
 export function toolLink(page: Page, slug: string): Locator {
 	return page.locator(`a[href="/tools/${slug}"]`);
 }
