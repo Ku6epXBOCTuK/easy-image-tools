@@ -55,11 +55,7 @@
 <svelte:head>
 	<link rel="icon" href={`${resolve("/")}favicon.svg`} />
 	{#if gaEnabled}
-		<script
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=G-MEQJ7JHRQQ"
-		></script>
-		<script src={`${resolve("/")}ga.js`}></script>
+		<script defer src={`${resolve("/")}ga.js`}></script>
 	{/if}
 </svelte:head>
 
