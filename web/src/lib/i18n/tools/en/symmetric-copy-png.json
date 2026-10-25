@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Symmetric Copy PNG - Mirror Pattern in One Click",
 		"metaDescription": "Mirror one half of an image onto the other for an instant symmetric pattern, in your browser. Pixel-exact, free, no upload, no signup, instant download.",
-		"longDescription": "Making a symmetric copy doubles the canvas and mirrors the half you keep into the empty half, producing a reflection that lines up down the middle. Pick Vertical to mirror across a vertical line, which doubles the width, or Horizontal to mirror across a horizontal one, which doubles the height, then choose which side is kept: left, right, top or bottom. The kept side lands in the first half of the result and its reflection in the second, so the two halves meet at a seamless seam. Pixels are only copied, never resampled or blended, so the pattern is exactly as sharp as the source and the mirror is a true reflection rather than a fade. Use it for symmetrical layouts, a two-panel banner, a mirrored logo mark, or a texture that has to repeat symmetrically. Everything runs in your browser.",
+		"longDescription": "Make a symmetric copy doubles the canvas and mirrors the half you keep into the empty half, producing a reflection that lines up down the middle. Pick Vertical to mirror across a vertical line, which doubles the width, or Horizontal to mirror across a horizontal one, which doubles the height, then choose which side is kept. The kept side lands in the first half of the result and its reflection in the second, so the two halves meet at a seamless seam. Pixels are only copied, never resampled or blended, so the mirror is a true reflection rather than a fade. Use it for symmetrical layouts, a two-panel banner, a mirrored logo mark, or a texture that has to repeat symmetrically.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Vertical doubles the width, Horizontal doubles the height.",
+			"The kept side decides which half survives; the seam falls exactly down the middle.",
+			"A pure pixel copy — both halves equally sharp, no fade.",
+			"Run it twice for a four-way symmetric pattern.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Choose the axis: Vertical doubles the width, Horizontal doubles the height.",

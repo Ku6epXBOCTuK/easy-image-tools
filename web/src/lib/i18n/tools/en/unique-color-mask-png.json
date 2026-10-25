@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Unique Color Mask - Find Rare One-Off Pixels",
 		"metaDescription": "Mark the colors that appear only a few times in an image: compression noise, stray dots and one-off pixels. Free, local, no upload.",
-		"longDescription": "Most images are built from a small number of repeated colors, so the pixels that appear only once are the odd ones out - a compression artifact, a stray dot, a hot pixel, or a line that was left behind in a photo-editing tool. This tool counts how often each color occurs and marks the ones that do not repeat more than the number you set, as a mask. Raising the rarity limit marks more pixels, which is how you look for artifacts that repeat a few times rather than once. The counting happens in your browser, so the image is never uploaded.",
+		"longDescription": "Unique color mask counts how often each color occurs in an image and marks the ones that do not repeat more than the number you set — the odd ones out: a compression artifact, a stray dot, a hot pixel, or a line left behind by an editing tool. Raising the rarity limit marks more pixels, which is how you look for artifacts that repeat a few times rather than once. The counting happens in your browser, so the image is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Rarity limit 1 marks colors that occur exactly once.",
+			"Two views: a black and white mask, or a highlight over the original picture.",
+			"Most useful on flat graphics, logos and icons; photos are full of rare shades.",
+			"Follow with despeckle to remove the marked pixels.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Choose the view: a black and white mask, or a highlight over the original picture.",

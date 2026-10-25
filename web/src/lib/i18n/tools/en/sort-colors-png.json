@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Sort Colors PNG - Free Hue, Brightness, Saturation Order",
 		"metaDescription": "Render your hex colors as swatches sorted by hue, brightness or saturation. Free, no upload, no signup - drawn and exported in your browser.",
-		"longDescription": "Sorting colors is what turns a list you pasted from anywhere into a set you can actually look at, and this page draws your hex values as swatches in a chosen order: by hue for a rainbow sequence, by brightness for a dark to light scale, or by saturation for a dull to vivid scale. The brightness order uses the standard perceptual weighting, where green counts for most and blue for least, so it matches how bright a color actually looks rather than the average of its three channels. No upload is required and there is no source file: the list is sorted in your browser and drawn as swatches you can save as PNG, JPG, WebP or BMP. The honest edge case is the hue order, which sorts on hue angle alone - grays have no meaningful hue, so every gray in your list piles up at one end regardless of how light it is.",
+		"longDescription": "Sort colors draws your hex values as swatches in a chosen order: by hue for a rainbow sequence, by brightness for a dark-to-light scale, or by saturation for a dull-to-vivid scale. The brightness order uses the standard perceptual weighting, where green counts for most and blue for least, so it matches how bright a color actually looks rather than the average of its channels. There is no source file: the list is sorted in your browser and drawn as swatches.",
+		"facts": [
+			"Drawn entirely in your browser: no upload, no server, no signup.",
+			"Hue, Brightness or Saturation order; grid or strip layout.",
+			"The colors themselves never change — only the order.",
+			"Hue order piles grays at one end; switch to Brightness to lay them out.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the swatches are drawn from the hex values you type.",
 			"Enter the colors to sort in the Color list, as hex values separated by commas or spaces.",

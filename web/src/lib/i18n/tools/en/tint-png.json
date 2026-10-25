@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Tint PNG - Push a Whole Image Toward One Color, Free",
 		"metaDescription": "Scale every color channel of an image toward one color you choose, with a strength from 0 to 100. Free, no upload - the tint is applied in your browser.",
-		"longDescription": "Tinting scales the three color channels of every pixel toward one color you choose, with a strength that decides how far it goes. At 0 strength the picture is untouched; as the strength rises, the red, green and blue values are multiplied by the matching parts of the tint, so an orange tint pulls the red channel up and the blue channel down. It is a global cast rather than a recoloring: every pixel moves the same distance in the same direction, whatever it shows. Everything runs in your browser on PNG, JPG, WebP and BMP files, uploads nothing, and keeps alpha.",
+		"longDescription": "Tint scales the three color channels of every pixel toward one color you choose, with a strength that decides how far it goes: at 0 the picture is untouched, and as the strength rises the values are multiplied by the matching parts of the tint — an orange tint pulls red up and blue down. It is a global cast rather than a recoloring: every pixel moves the same distance in the same direction, whatever it shows. Everything runs in your browser and keeps alpha.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Any tint color, strength from 0 to 100; 0 is a safe no-op.",
+			"Applies to every pixel equally — mask the subject first to change one object.",
+			"Shows most in midtones and shadows; bright areas have no headroom left.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Pick the tint in the Color swatch; the default is a warm amber.",

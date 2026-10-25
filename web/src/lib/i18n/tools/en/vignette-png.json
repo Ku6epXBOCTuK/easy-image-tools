@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Vignette PNG Online - Darken Edges, Free, No Upload",
 		"metaDescription": "Add a vignette to an image in your browser: the edges darken smoothly while the center stays untouched. Free, no upload, no signup.",
-		"longDescription": "A vignette darkens the outer part of an image and leaves the middle alone, the way a lens shades the corners of a photograph. The falloff is smooth rather than a hard frame, which is why it reads as a photographic effect instead of a border. It is a quick way to focus attention on the middle of a photo, to match a caption to an image, or to hide the edges of a composite. The effect is computed in your browser and the image is never uploaded.",
+		"longDescription": "Add a vignette darkens the outer part of an image and leaves the middle alone, the way a lens shades the corners of a photograph. The falloff is smooth rather than a hard frame, which is why it reads as a photographic effect instead of a border. It is a quick way to focus attention on the middle of a photo, to match a caption to an image, or to hide the edges of a composite. The effect is computed in your browser and the image is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Strength 0 leaves the image alone; higher values darken the corners more.",
+			"The center stays untouched — the darkening falls to nothing in the middle.",
+			"A smooth falloff with no visible start of the darkening.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set the strength: zero leaves the image alone, higher values darken the edges more.",

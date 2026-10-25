@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Show Transparent Pixels - Visualize PNG Transparency",
 		"metaDescription": "Highlight every transparent and semi-transparent pixel in an image so hidden gaps become visible. Free, no upload - the mask is drawn in your browser.",
-		"longDescription": "A missing corner, a faded logo or a PNG that looks white on a white page can hide a lot of see-through pixels that the eye never notices. This tool paints every pixel that is not fully opaque, so the holes and the soft edges appear at a glance. Two views are available: a black and white mask that marks transparency in a single color, and a highlight that tints the original image so you keep the context. Both run locally in your browser and the picture is never uploaded.",
+		"longDescription": "Show transparent areas paints every pixel that is not fully opaque, so the holes and the soft edges appear at a glance — a missing corner, a faded logo or a PNG that looks white on a white page can hide a lot of see-through pixels the eye never notices. Two views are available: a black and white mask that marks transparency in a single color, and a highlight that tints the original image so you keep the context. Both run locally in your browser and the picture is never uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Marks every pixel below full opacity, including semi-transparent fades.",
+			"Two views: a black and white mask, or a tinted highlight over the original.",
+			"A diagnostic picture, not a transparent copy of your file.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Choose the view: a black and white mask, or a highlight over the original picture.",

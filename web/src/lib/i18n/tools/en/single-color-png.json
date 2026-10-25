@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Create Solid Color PNG - Free Flat Color Rectangle",
 		"metaDescription": "Generate a solid color PNG of any size in your browser: pick a color, set width and height, download. Free, no upload, no signup, no limits.",
-		"longDescription": "A solid color PNG is a rectangle in which every pixel carries the same red, green and blue value, and this page makes one at any size you like. You set the width, the height and the color, and every pixel is filled with it, fully opaque - there is no transparency in the result, because the alpha channel is set to fully opaque for all of them. Nothing is uploaded, since there is no source file involved: the rectangle is generated on your device and encoded into a file you can save as PNG, JPG, WebP or BMP. Use it for a background plate under a layout, a mask shape, a color sample in a spec, or a canvas that other tools on this site can then work on. One honest note: the canvas runs from 1 to 20000 pixels on each side, and a canvas at the top of that range is 400 million pixels, so generation takes a moment. For a rectangle you can also make see-through, use the create empty PNG tool instead.",
+		"longDescription": "Create solid color PNG fills a rectangle of any size you like with one color: you set the width, the height and the color, and every pixel is filled with it, fully opaque — there is no transparency in the result. There is no source file: the rectangle is generated on your device. Use it for a background plate under a layout, a mask shape, a color sample in a spec, or a canvas that other tools on this site can then work on.",
+		"facts": [
+			"Generated entirely in your browser: no upload, no server, no signup.",
+			"Canvas from 1 to 20000 pixels per side, with presets.",
+			"Always fully opaque — for a see-through sheet use the create empty PNG tool.",
+			"A 20000 by 20000 canvas is 400 million pixels and takes a moment.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the rectangle is generated from the size and color you set.",
 			"Set Width and Height in pixels, or pick one of the presets such as a square or a screen size.",

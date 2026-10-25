@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Two Colors PNG - Free Two-Tone Reduction, No Upload",
 		"metaDescription": "Reduce an image to exactly two colors you pick, split at a luminance threshold. Free and instant, no upload - the two-tone result is built in your browser.",
-		"longDescription": "The two colors tool reduces a picture to exactly two shades you pick. Every pixel's brightness is measured with the standard BT.601 luminance weights and compared against the threshold: brighter pixels take the From color, darker ones take the To color. The cut is hard, with no blending along the edge, which is what gives it the crisp look of a poster, a logo silhouette or a duotone. It runs in your browser on PNG, JPG, WebP and BMP files, nothing is uploaded, and the alpha channel is preserved.",
+		"longDescription": "Two colors reduces a picture to exactly two shades you pick: every pixel's brightness is measured with the standard BT.601 luminance weights and compared against the threshold — brighter pixels take the From color, darker ones take the To color. The cut is hard, with no blending along the edge, which is what gives the crisp look of a poster, a logo silhouette or a duotone. It runs in your browser, and the alpha channel is preserved.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"From is the bright color, To the dark one; threshold 50 splits the middle.",
+			"A hard two-value cut — diagonal edges come out as stair steps.",
+			"The alpha channel is copied through unchanged.",
+			"Swapping the two colors turns the result into a negative.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set the Color pair: From is the color for the bright areas, To the color for the dark ones.",

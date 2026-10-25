@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Verify If Image Is a PNG - Signature Check, Free",
 		"metaDescription": "Check whether pasted Base64 or data-URI content is really a PNG by looking at its file signature. Free, no upload - the text is checked in your browser.",
-		"longDescription": "A file extension is not proof: a JPG renamed to .png still has JPG bytes inside, and some downloads arrive with a name that does not match the content. This checker takes Base64 or a data URI, decodes it in your browser and looks at the signature at the start of the data. PNG always begins with the same eight bytes; anything else reports as not a PNG. The text never leaves your browser tab, which matters here more than usual, because pasted Base64 is often a secret - an API key, a session cookie or a signed URL.",
+		"longDescription": "Check if an image really is a PNG takes Base64 or a data URI, decodes it in your browser and looks at the signature at the start of the data — because a file extension is not proof: a JPG renamed to .png still has JPG bytes inside. PNG always begins with the same eight bytes; anything else reports as not a PNG. The text never leaves your browser tab, which matters here more than usual, because pasted Base64 is often a secret — an API key, a session cookie or a signed URL.",
+		"facts": [
+			"Runs entirely in your browser: the pasted text is never sent to a server.",
+			"Accepts the bare Base64 or a full data URI; the prefix is stripped.",
+			"Compares the first bytes against the fixed PNG signature.",
+			"A no means a different format, invalid Base64 or a URL pasted by mistake.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Copy the Base64 string or the full data URI that you want to check.",
 			"Paste it into the text area - a data: prefix is stripped automatically.",

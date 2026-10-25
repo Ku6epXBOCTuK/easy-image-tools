@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Zoom PNG - Magnify Toward the Center, No Upload",
 		"metaDescription": "Magnify an image toward its center without changing the canvas size, in your browser. Zoom from 100 to 500 percent, free, no upload, no signup, instant.",
-		"longDescription": "Zooming magnifies an image toward its center while deliberately keeping the canvas the same size, so the edges are pushed out of view and cropped away. That makes it the right tool for inspecting the middle of a picture, for looking closely before you commit to a real crop, and for pulling detail out of a large image into a smaller frame. The zoom runs from 100 to 500 percent in steps of 10, and 200 percent is the default. The magnification is done by sampling, so at high percentages you are looking at fewer source pixels spread over the same canvas and detail softens as you go up. If you want a bigger file rather than a closer look, use the resize tool: zoom keeps the canvas, resize changes it. All of this happens in your browser.",
+		"longDescription": "Zoom magnifies an image toward its center while deliberately keeping the canvas the same size, so the edges are pushed out of view and cropped away. That makes it the right tool for inspecting the middle of a picture, for looking closely before you commit to a real crop, and for pulling detail out of a large image into a smaller frame. The magnification is done by sampling, so at high percentages fewer source pixels spread over the same canvas and detail softens as you go up. If you want a bigger file rather than a closer look, use the resize tool: zoom keeps the canvas, resize changes it. All of this happens in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Zoom from 100 to 500 percent in steps of 10; the default is 200.",
+			"The canvas size never changes — the edges are cropped, not squeezed.",
+			"Always toward the center; crop the corner out first to zoom on it.",
+			"Interpolation softens detail at high percentages — zoom is for looking, not resolution.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set the Zoom percentage from 100 to 500; the default is 200.",

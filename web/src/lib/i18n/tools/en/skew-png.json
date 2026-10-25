@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Skew PNG - Shear Image Online, Free, No Upload",
 		"metaDescription": "Shear an image horizontally or vertically for a slanted, perspective-like look, right in your browser. Free, no upload, no signup, instant download.",
-		"longDescription": "Skewing shears an image: each row is pushed sideways by an amount that grows with its distance from the center, which is the flat 2D building block behind a perspective look. Set Skew X and Skew Y separately, from minus 80 to 80 degrees each, and the picture leans left, right, up or down, or both at once when the two are combined. The canvas grows to whatever the sheared shape needs, so no corner is chopped off, and the area outside the original rectangle shows through as transparency. The honest limitation is that this is a shear, not a true perspective projection: the effect flattens out with distance rather than converging the way a camera would. Because the pixels have to be resampled, edges soften very slightly. Everything runs in your browser, so nothing is uploaded.",
+		"longDescription": "Skew PNG shears an image: each row is pushed sideways by an amount that grows with its distance from the center — the flat 2D building block behind a perspective look. Set Skew X and Skew Y separately, from minus 80 to 80 degrees each, and the picture leans left, right, up or down, or both at once. The canvas grows to whatever the sheared shape needs, so no corner is chopped off and the area outside the original rectangle shows through as transparency. Because the pixels have to be resampled, edges soften very slightly. Everything runs in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Skew X and Y from -80 to 80 degrees each, combinable.",
+			"The canvas grows to fit; the space around the sheared picture stays transparent.",
+			"A 2D shear, not a true perspective projection — no vanishing point.",
+			"Bilinear resampling softens edges very slightly.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Skew X to lean the image sideways, from -80 to 80 degrees.",

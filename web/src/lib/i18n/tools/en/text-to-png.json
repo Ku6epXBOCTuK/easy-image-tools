@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Text to PNG - Free Image From Text Generator, No Upload",
 		"metaDescription": "Turn text into a PNG sized to fit the label plus padding: font, size, bold, color, background. Free, no upload, no signup, made in your browser.",
-		"longDescription": "A text image is a picture of a label rather than text on a web page, which you need when the words have to survive being copied into a slide, a design tool or an email where the font you chose is not installed. This page measures your string with the browser's own text engine, then sizes the canvas to fit the text plus the padding you set, so the result is cropped tight to the label rather than being a fixed frame with empty space around it. Choose a font, a size from 8 to 300 pixels, bold or regular and a text color, add a background with its own opacity, and it is drawn on your device - no upload, no source file, and the image saves as PNG, JPG, WebP or BMP. The honest limitation is that the text is a single line: there is no wrapping here, so a long sentence produces a very wide and very short image. The other honest fact is that the glyphs come from the fonts installed on your machine, so the export looks like your system, not like everyone else's.",
+		"longDescription": "Text to PNG renders a label as a picture rather than text on a web page — what you need when the words have to survive being copied into a slide, a design tool or an email where your font is not installed. The browser's own text engine measures your string, and the canvas is sized to fit the text plus the padding you set, so the result is cropped tight to the label rather than a fixed frame with empty space around it. It is drawn on your device: no upload, no source file.",
+		"facts": [
+			"Drawn entirely in your browser: no upload, no server, no signup.",
+			"Font size from 8 to 300 px; canvas width follows the measured text.",
+			"Single line only — no wrapping; long sentences give a very wide image.",
+			"Background Opacity 0 keeps the padding fully transparent.",
+			"The glyphs come from your system's fonts, so the export looks like your machine.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the image is drawn from the text you type.",
 			"Type your label into the Text field.",

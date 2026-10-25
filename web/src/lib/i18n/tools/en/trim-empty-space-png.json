@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Trim PNG Empty Space - Remove Transparent Border, Free",
 		"metaDescription": "Cut the transparent margins off a PNG and keep only the content, with an alpha threshold for faint halos. Free, no upload, no signup, runs in your browser.",
-		"longDescription": "Trimming empty space cuts away the transparent or nearly transparent margins around the content of a PNG, so the file ends up with no wasted border. Every pixel whose alpha channel is above the Alpha threshold counts as content, the bounding box of those pixels becomes the new image, and nothing else is touched: no resampling, no smoothing of the cut edge, no change to the colors of the content itself. The threshold matters for cutouts, where a faint halo of near-transparent pixels survives a hard edge; raising it drops that halo at the cost of shaving the outline. This is the cleanup step before exporting a logo, a sticker or an icon, and it also shrinks a screenshot that was padded for sharing. Everything runs in your browser, so nothing is uploaded.",
+		"longDescription": "Trim empty space cuts away the transparent or nearly transparent margins around the content of a PNG, so the file ends up with no wasted border. Every pixel whose alpha is above the Alpha threshold counts as content, the bounding box of those pixels becomes the new image, and nothing else is touched: no resampling, no smoothing of the cut edge, no change to the colors. The threshold matters for cutouts, where a faint halo of near-transparent pixels survives a hard edge. This is the cleanup step before exporting a logo, a sticker or an icon. Everything runs in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Alpha threshold 0 keeps every pixel that is not fully transparent.",
+			"A straight cut at the bounding box — no resampling anywhere.",
+			"A JPG has nothing to trim: every pixel counts as content.",
+			"To keep the canvas and center the content, use the center by content tool.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Leave Alpha threshold at 0 to keep every pixel that is not fully transparent.",

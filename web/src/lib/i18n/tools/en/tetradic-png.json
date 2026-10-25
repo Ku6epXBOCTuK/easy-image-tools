@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Tetradic Palette PNG - Free Four Color Harmony Tool",
 		"metaDescription": "Build a tetradic palette from one base color: four hues in two complementary pairs, 90 degrees apart. Free, no upload, no signup, in your browser.",
-		"longDescription": "A tetradic palette is four colors built from one base by stepping around the wheel in quarters - 0, 90, 180 and 270 degrees - which is exactly two complementary pairs sitting side by side. Pair one is your base and its opposite; pair two is the same rule applied a quarter turn away, so you get the two-color scheme and a second scheme to match it with. Nothing is uploaded because there is no file involved: the four colors are derived from your base and drawn in your browser, ready to save as PNG, JPG, WebP or BMP. Use it for a two-theme product, a chart with four series, or a split-complementary layout where you want more freedom than a straight pair gives you. The honest framing is that this is not a different rule from the complementary one - it is the same 180 degree opposition applied twice - and four saturated colors at equal lightness will fight each other unless two of them stay in the background.",
+		"longDescription": "Tetradic color palette builds four colors from one base by stepping around the wheel in quarters — 0, 90, 180 and 270 degrees — which is exactly two complementary pairs sitting side by side: your base and its opposite, plus the same pair applied a quarter turn away. There is no file involved: the four colors are derived from your base and drawn in your browser. Use it for a two-theme product, a chart with four series, or a split-complementary layout where you want more freedom than a straight pair gives you.",
+		"facts": [
+			"Drawn entirely in your browser: no upload, no server, no signup.",
+			"Four swatches at 90-degree steps — two complementary pairs.",
+			"Only the hue rotates; saturation and lightness carry across unchanged.",
+			"Four saturated colors at equal lightness fight — keep two in the background.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the four colors are derived from the Base color you pick.",
 			"Set the Base color; the tool adds hues 90, 180 and 270 degrees away from it.",

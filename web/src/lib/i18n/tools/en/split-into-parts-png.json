@@ -3,7 +3,15 @@
 	"seo": {
 		"metaTitle": "Split PNG into Equal Parts - Download a ZIP, No Upload",
 		"metaDescription": "Cut a PNG into a grid of equal pieces or into fixed size tiles and get them all in one zip archive. Free, runs in your browser, no upload, no signup.",
-		"longDescription": "Splitting an image into parts cuts it into separate files instead of producing one picture. Choose a grid and say how many columns and rows you need, or switch to Tile size and name the exact piece dimensions you want; the canvas is padded with transparency so that every part comes out the same size and no content is lost. This is the tool for taking a sprite sheet apart, for cutting a long screenshot into phone-sized frames, for a texture atlas ready to import, or for feeding a contact sheet into a text-recognition step. Unlike the other tools here, the result is not a single image: the parts come back as separate PNG files named part-01-01, part-01-02 and so on in reading order, delivered as a single zip archive. Everything is done in your browser.",
+		"longDescription": "Split PNG into parts cuts an image into separate files instead of producing one picture: a grid of columns and rows, or fixed-size tiles you name exactly. The canvas is padded with transparency so that every part comes out the same size and no content is lost. This is the tool for taking a sprite sheet apart, cutting a long screenshot into phone-sized frames, preparing a texture atlas, or feeding a contact sheet into a text-recognition step. The parts come back as separate PNG files named part-01-01, part-01-02 and so on in reading order, delivered as a single zip archive — all built in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Split by a grid count or by an exact tile size; every part matches.",
+			"The canvas is padded so no content is lost, at the cost of empty edge pixels.",
+			"Up to 1024 parts per run; a larger grid is refused instead of freezing the tab.",
+			"The output is a zip of separate PNGs, not a single image.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Choose Split by: Grid for a count of columns and rows, or Tile size for fixed parts.",

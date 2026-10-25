@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Triadic Palette PNG - Free Three Color Harmony Tool",
 		"metaDescription": "Build a triadic palette from one base color: three hues evenly spaced 120 degrees apart. Free, no upload, no signup, drawn in your browser.",
-		"longDescription": "Triadic colors are three hues spaced evenly around the color wheel, each one 120 degrees from the others, so every pair in the set is exactly as far apart as every other pair - there is no dominant relationship inside a triadic palette, which is what makes it feel balanced rather than dramatic. This page takes your base color and rotates its hue by 120 and 240 degrees to get the other two, then draws all three as swatches. Nothing is uploaded, since no file is involved: the three colors are derived on your device and saved as PNG, JPG, WebP or BMP. Reach for it when you genuinely have three equal things - a chart with three series, three onboarding steps, a tricolour mark - or when you want a palette that will not privilege one color. The honest warning is that three saturated colors at equal lightness compete for attention, and that hue rotation in HSL does not balance apparent brightness, so a yellow, a cyan and a red will never weigh the same on screen.",
+		"longDescription": "Triadic color palette builds three hues spaced evenly around the color wheel, each one 120 degrees from the others, by taking your base color and rotating its hue by 120 and 240 degrees. Because the spacing is even, no pair in the set dominates — there is no opposite pair, which is what makes a triadic palette feel balanced rather than dramatic. There is no file involved: the three colors are derived on your device and drawn as swatches. Reach for it when you genuinely have three equal things — a chart with three series, three onboarding steps, a tricolour mark.",
+		"facts": [
+			"Drawn entirely in your browser: no upload, no server, no signup.",
+			"Three swatches at 120-degree steps from the base.",
+			"Only the hue rotates; saturation and lightness carry across unchanged.",
+			"Same HSL lightness does not mean same apparent brightness across hues.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the three colors are derived from the Base color you pick.",
 			"Set the Base color; the tool adds hues 120 and 240 degrees away from it.",

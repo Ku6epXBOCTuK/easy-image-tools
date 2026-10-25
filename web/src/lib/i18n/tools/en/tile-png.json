@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Tile PNG in a Grid - Repeat Image Pattern, No Upload",
 		"metaDescription": "Repeat an image in a grid of the columns and rows you set and download one big PNG. Runs in your browser, free, no upload, no signup, instant.",
-		"longDescription": "Tiling repeats an image in a grid, producing one single output file that is the columns times wider and the rows times taller than the source. It is the quick way to build a pattern for a wallpaper, a contact sheet of thumbnails, a print of repeated icons, or a background when the source tile has matching edges. Each copy is a pixel-for-pixel duplicate: nothing is resampled, blended or overlapped, so the result is exactly as sharp as the input and simply larger. Both counts run from 1 to 50, and a one by one setting returns the image unchanged. Everything is computed inside your browser tab, so the file is never uploaded, and PNG, JPG, WebP and BMP can be loaded and saved.",
+		"longDescription": "Tile PNG repeats an image in a grid, producing one single output file that is the columns times wider and the rows times taller than the source — the quick way to build a pattern for a wallpaper, a contact sheet of thumbnails, a print of repeated icons, or a background when the source tile has matching edges. Each copy is a pixel-for-pixel duplicate: nothing is resampled, blended or overlapped, so the result is exactly as sharp as the input and simply larger. Everything is computed inside your browser tab.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Columns and rows from 1 to 50 each; 1 by 1 returns the image unchanged.",
+			"Copies sit edge to edge — no spacing and no offset between tiles.",
+			"Split into parts with the same grid cuts the result back into single files.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Columns and Rows, from 1 to 50 each; 2 by 2 is a good starting point.",

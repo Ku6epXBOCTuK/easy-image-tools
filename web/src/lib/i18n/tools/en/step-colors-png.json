@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Color Steps PNG - Free Even Color Ramp Generator",
 		"metaDescription": "Generate evenly spaced color steps between two colors as swatches or a strip. Free, no upload, no signup, built in your browser as PNG or JPG.",
-		"longDescription": "Color steps are the discrete colors you get when you cut the path between two colors into equal intervals, and this page generates that set from a start color and an end color. Pick a pair, choose how many steps you want, and you get evenly spaced colors running from the first to the last, drawn either as a grid of square swatches or as one horizontal strip. No upload is involved and there is no source file: the steps are interpolated and drawn on your device, ready to save as PNG, JPG, WebP or BMP. Use it to define a ramp between a background and an accent, to build a scale for a chart, or to see how many colors a design system needs. Two honest details: the count includes both endpoints, so six steps means five intervals between seven endpoint colors, and the interpolation is a straight line through the raw RGB numbers, which is why blending a color with its complement passes through gray.",
+		"longDescription": "Color steps generates the discrete colors you get when the path between two colors is cut into equal intervals: pick a start and an end color, choose how many steps, and you get evenly spaced colors running from the first to the last, drawn as a grid of square swatches or as one horizontal strip. There is no source file: the steps are interpolated and drawn on your device. Use it to define a ramp between a background and an accent, build a scale for a chart, or see how many colors a design system needs.",
+		"facts": [
+			"Computed entirely in your browser: no upload, no server, no signup.",
+			"2 to 12 steps; the count includes both endpoint colors.",
+			"Straight-line RGB interpolation — blending complements passes through gray.",
+			"Grid for reading, strip for a gradient or a legend.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"No upload needed - the steps are computed from the Color pair you set.",
 			"Set the Color pair; the first color is the first step and the second is the last.",

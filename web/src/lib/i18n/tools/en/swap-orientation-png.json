@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Swap PNG Orientation - Force Portrait or Landscape",
 		"metaDescription": "Make an image portrait or landscape the way you ask: it turns by 90 degrees only when the orientation does not match. Free, no upload, no signup, lossless.",
-		"longDescription": "Swapping the orientation sets an image to the orientation you want by turning it a quarter turn when it does not already match. Pick Portrait and a landscape picture is rotated by 90 degrees clockwise into portrait; pick Landscape and a portrait one is turned the other way. If the image already has the orientation you asked for, it is returned untouched, and the same goes for a square image, which has no orientation to swap and comes back pixel-identical. Because the turn is a right angle, the pixels are only moved to new positions: no resampling, no interpolation and no quality loss at all. Use it when a batch of photos has to match one orientation for a gallery, a print sheet or a device screen. Everything runs in your browser, so nothing is uploaded.",
+		"longDescription": "Swap image orientation sets an image to the orientation you want by turning it a quarter turn when it does not already match: pick Portrait and a landscape picture is rotated into portrait, pick Landscape and a portrait one is turned the other way. If the image already has the orientation you asked for, it is returned untouched — and the same goes for a square image, which has no orientation to swap. Because the turn is a right angle, the pixels are only moved to new positions: no resampling and no quality loss at all. Use it when a batch of photos has to match one orientation for a gallery, a print sheet or a device screen. Everything runs in your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Turns 90 degrees clockwise, and only when the orientation does not match.",
+			"A square image has no orientation to swap and comes back unchanged.",
+			"Right-angle turn — lossless, no interpolation.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Choose Orientation: Portrait or Landscape.",

@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Cut a PNG Into a Star Shape - Free, No Upload",
 		"metaDescription": "Cut an image into a star with 3 to 12 points, adjustable inner radius, size and rotation. Free and unlimited, the mask is drawn in your browser.",
-		"longDescription": "A star mask cuts the image into a polygon star. Points sets the number of rays from 3 to 12, Inner radius is the depth of the valleys between them as a share of the outer radius, Shape size is the diameter of the outer circle as a share of the shorter side, and Rotation turns the whole shape in degrees so a star can point up, down or sideways. Offset moves it into the free space. Everything outside the star becomes transparent, the canvas keeps its size, and the edge is a hard cut without anti-aliasing. PNG, JPG, WebP and BMP are accepted, all inside your browser.",
+		"longDescription": "Cut an image into a star clips the picture to a polygon star: Points sets the number of rays from 3 to 12, Inner radius is the depth of the valleys between them, Shape size is the diameter of the outer circle as a share of the shorter side, and Rotation turns the whole shape so a star can point up, down or sideways. Offset moves it into the free space. Everything outside the star becomes transparent, the canvas keeps its size, and the edge is a hard cut without anti-aliasing. All inside your browser.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"3 to 12 points; inner radius from 10 to 90 percent of the outer radius.",
+			"Rotation from -180 to 180 degrees, enough for any orientation.",
+			"The canvas keeps its size; the cut is hard, with no anti-aliasing.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Points from 3 to 12 and Inner radius from 10 to 90 percent.",

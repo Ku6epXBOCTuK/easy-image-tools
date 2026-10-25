@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Temperature PNG - Warm or Cool Color Shift, Free",
 		"metaDescription": "Make a picture warmer or cooler by pushing red and blue in opposite directions. Free, no upload - the color temperature shift runs locally in your browser.",
-		"longDescription": "The temperature slider makes a picture warmer or cooler by pushing the red channel up and the blue channel down, or the other way round, in one step. Positive values add orange, as if the photo were shot under tungsten light, while negative values add blue for a cold overcast look. Green is not touched at all, which keeps skin tones from going fluorescent but also means the effect is a simple cast rather than a full white-balance correction. It runs in your browser on PNG, JPG, WebP and BMP files, uploads nothing, and preserves alpha.",
+		"longDescription": "Temperature makes a picture warmer or cooler by pushing the red channel up and the blue channel down, or the other way round, in one step. Positive values add orange, as if the photo were shot under tungsten light; negative values add blue for a cold overcast look. Green is not touched at all, which keeps skin tones from going fluorescent but also means the effect is a simple cast rather than a full white-balance correction. It runs in your browser and preserves alpha.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Percent from the slider: positive warms, negative cools, 0 changes nothing.",
+			"Only red and blue move, in opposite directions; green stays put.",
+			"A cast, not a white-balance correction — auto contrast handles brightness.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Percent positive for a warmer, more orange picture, negative for a cooler, bluer one; 0 changes nothing.",

@@ -3,7 +3,14 @@
 	"seo": {
 		"metaTitle": "Wavy Circle Mask for PNG - Free, Runs in Browser",
 		"metaDescription": "Trim an image to a circle whose radius follows a sine wave: set the amplitude, the number of waves and the phase. Free, no limits, all done in your browser.",
-		"longDescription": "A wavy mask cuts the image into a circle whose radius is modulated by a sine wave, which is what gives the badge or flower look. Shape size sets the base radius as a share of the shorter side, Amplitude says how far the edge swings in and out, Waves counts the bulges around the circle, and Phase rotates that wobble so the peaks can start anywhere. Offset moves the shape into the free space. Everything outside becomes transparent, the canvas keeps its size, and the edge is a hard cut with no anti-aliasing. PNG, JPG, WebP and BMP are accepted and nothing is uploaded.",
+		"longDescription": "Cut an image into a wavy circle clips the picture to a circle whose radius is modulated by a sine wave — what gives the badge or flower look. Shape size sets the base radius as a share of the shorter side, Amplitude says how far the edge swings in and out, Waves counts the bulges around the circle, and Phase rotates the wobble so the peaks can start anywhere. Offset moves the shape into the free space. Everything outside becomes transparent, the canvas keeps its size, and the edge is a hard cut with no anti-aliasing. Nothing is uploaded.",
+		"facts": [
+			"Runs entirely in your browser: no upload, no server, no signup.",
+			"Waves from 3 to 24, Phase from 0 to 360 degrees.",
+			"The outline is always a rippled circle — never a square or rectangle.",
+			"A hard cut with no anti-aliasing; feather the result to soften the rim.",
+			"Free with no daily limit, no watermark and no account, also for commercial use."
+		],
 		"howTo": [
 			"Drop the image into the source area, or pick a file from your device.",
 			"Set Shape size and Amplitude to control how deep the waves bite.",
