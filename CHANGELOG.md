@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.16.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/1b04f64427f89cdd3d3bcfea60522f5f50249c62..v0.16.0) - 2026-10-25
+#### Features
+- add i18n plural forms - ([b6e8cef](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/b6e8cefb306e5175a2efcc0a77c0673bd2a5d939)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.15.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/dab5f926e41b6314f3e789cfeadbd846b295b9bc..v0.15.0) - 2026-10-25
 #### Features
 - preload tool in ssr - ([33d3312](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/33d33126211393217b32141908b564d23a7ce4fd)) - Ku6epXBOCTuK
