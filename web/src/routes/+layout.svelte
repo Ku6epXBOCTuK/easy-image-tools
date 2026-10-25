@@ -29,6 +29,9 @@
 		initLocale();
 		initTheme();
 		initFavorites();
+		// NOTE: E2E helper openTool waits for this marker: interactions that land
+		// on the SSR markup are discarded when hydration replaces it.
+		document.documentElement.dataset.hydrated = "true";
 	});
 
 	let crumb = $derived(toCrumb(page.url.pathname));

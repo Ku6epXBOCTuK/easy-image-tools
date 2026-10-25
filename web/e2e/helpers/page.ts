@@ -34,7 +34,14 @@ export async function useEnglish(page: Page): Promise<void> {
 export async function openTool(page: Page, slug: string): Promise<void> {
 	await useEnglish(page);
 	await page.goto(`/tools/${slug}`);
+	await waitForHydration(page);
 	await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+}
+
+// NOTE: The heading is server-rendered, so it proves nothing about hydration:
+// uploads and fills that land earlier are reverted when the DOM is hydrated.
+export async function waitForHydration(page: Page): Promise<void> {
+	await page.locator("html[data-hydrated]").waitFor();
 }
 
 export function toolLink(page: Page, slug: string): Locator {
