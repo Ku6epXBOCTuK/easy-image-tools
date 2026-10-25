@@ -75,17 +75,42 @@ download, темы или локализации. Изменения runtime fix
 раздел 7; статус e2e в CI и порядок чтения прогона — `docs/decisions.md`,
 разделы 9–10.
 
+## CWV (Lighthouse)
+
+Лабораторный контроль Core Web Vitals не входит в `verify`: прогон поднимает
+build, статический сервер и браузер, это минуты, а не секунды.
+
+```text
+pnpm --dir web check:cwv
+```
+
+Что делает: production build с GA (как деплой) → `serve-static` → Lighthouse в
+mobile-пресете (эмуляция устройства, slow 4G, simulated throttling) по страницам
+ядра: `/`, топ инструментальных страниц по `POPULARITY` и хабы категорий. Набор
+страниц (флаги `--top N`, `--skip-build`) и пороги «зелёного» — константы
+`web/scripts/check-cwv.mjs`, здесь числа не дублируются. TBT — лабораторный
+прокси полевого INP; сам полевой INP Lighthouse не измеряет.
+
+Когда запускать: после крупных изменений прод-бандла — глобальный layout и
+`app.css`, шрифты, тяжёлые картинки, новые крупные зависимости, каркас
+`+layout`/`+page`. Цель — все строки отчёта зелёные; `FAIL` любой страницы даёт
+ненулевой exit code. Полные HTML-отчёты прогона сохраняются в
+`web/cwv-reports/<время запуска>/` (каталог в gitignore). Правила нагрузки на
+машину — `docs/agent-workflow.md`, раздел 3: один прогон по явной команде, без
+циклов повторов.
+
 ## Быстрые подмножества
 
 Матрица «изменение → минимальный набор проверок»:
 
-| Изменение                                            | Команда                                                 |
-| ---------------------------------------------------- | ------------------------------------------------------- |
-| Только Markdown                                      | `pnpm check:docs`                                       |
-| TypeScript/Svelte                                    | `pnpm --dir web check` и `pnpm --dir web test`          |
-| Lint-правило или lint-конфиг                         | `pnpm --dir web test:rules` и `pnpm --dir web lint:all` |
-| Маршрут, загрузка, результат, download, тема, локаль | `pnpm --dir web test:e2e`                               |
-| Перед ревью или merge                                | `pnpm verify`                                           |
+| Изменение                                                  | Команда                                                 |
+| ---------------------------------------------------------- | ------------------------------------------------------- |
+| Только Markdown                                            | `pnpm check:docs`                                       |
+| TypeScript/Svelte                                          | `pnpm --dir web check` и `pnpm --dir web test`          |
+| Lint-правило или lint-конфиг                               | `pnpm --dir web test:rules` и `pnpm --dir web lint:all` |
+| Маршрут, загрузка, результат, download, тема, локаль       | `pnpm --dir web test:e2e`                               |
+| Крупные изменения UI или бандла (layout, шрифты, картинки) | `pnpm --dir web check:cwv`                              |
+| Перед ревью или merge                                      | `pnpm verify`                                           |
 
 ## Errors и warnings
 

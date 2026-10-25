@@ -124,7 +124,6 @@
 | S4a    | `EIT-110` | Google Search Console, отправка sitemap                                                                                           |
 | S4c    | `EIT-76`  | дистрибуция: репо, alternative.to, Product Hunt, Reddit/HN                                                                        |
 | S4d    | `EIT-111` | сравнительные посадочные «vs …»                                                                                                   |
-| S4e    | `EIT-112` | контроль CWV через Lighthouse                                                                                                     |
 | —      | `EIT-113` | решение по вордстату: интенты «из формата в PNG» и «сжать до N КБ»                                                                |
 | —      | `EIT-114` | универсальный конвертер `/convert-image`                                                                                          |
 
