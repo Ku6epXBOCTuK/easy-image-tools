@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.16.1](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/80f1fccdf928042d0ed205ab6dd74a67bad54d88..v0.16.1) - 2026-10-25
+#### Bug Fixes
+- add hydration checks for tests flow - ([80f1fcc](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/80f1fccdf928042d0ed205ab6dd74a67bad54d88)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.16.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/1b04f64427f89cdd3d3bcfea60522f5f50249c62..v0.16.0) - 2026-10-25
 #### Features
 - add i18n plural forms - ([b6e8cef](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/b6e8cefb306e5175a2efcc0a77c0673bd2a5d939)) - Ku6epXBOCTuK
