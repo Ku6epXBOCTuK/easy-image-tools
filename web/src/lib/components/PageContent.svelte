@@ -26,7 +26,7 @@
 	<section class="content">
 		<p class="long">{seo.longDescription}</p>
 
-		{#if seo.facts?.length}
+		{#if seo.facts.length}
 			<ul class="facts">
 				{#each seo.facts as fact (fact)}
 					<li>{fact}</li>

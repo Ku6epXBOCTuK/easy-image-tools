@@ -235,6 +235,8 @@ describe("SEO copy and indexability", () => {
 			).toBeGreaterThan(200);
 			expect(seo.howTo.length, `${slug} howTo`).toBeGreaterThanOrEqual(3);
 			expect(seo.faq.length, `${slug} faq`).toBeGreaterThanOrEqual(3);
+			expect(seo.facts.length, `${slug} facts`).toBeGreaterThanOrEqual(3);
+			expect(seo.facts.length, `${slug} facts`).toBeLessThanOrEqual(6);
 			expect(seo.metaTitle.length, `${slug} metaTitle`).toBeGreaterThan(20);
 			expect(seo.metaTitle.length, `${slug} metaTitle`).toBeLessThan(70);
 			expect(
