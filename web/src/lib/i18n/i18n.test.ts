@@ -1,5 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { getLocale, initLocale, setLocale } from "./locale.svelte";
+import {
+	ensureLocaleLoaded,
+	getLocale,
+	initLocale,
+	setLocale,
+} from "./locale.svelte";
 import { interpolate, t } from "./t";
 import { en } from "./en";
 import { ru } from "./ru";
@@ -18,7 +23,8 @@ function stubStorage(): { store: Store } {
 	return { store };
 }
 
-beforeEach(() => {
+beforeEach(async () => {
+	await ensureLocaleLoaded("ru");
 	setLocale("ru");
 	delete (en.home as Record<string, string>).onlyEnKey;
 	vi.unstubAllGlobals();

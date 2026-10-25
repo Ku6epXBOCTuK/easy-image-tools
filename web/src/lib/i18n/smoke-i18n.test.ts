@@ -1,5 +1,5 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
-import { getLocale, setLocale } from "./locale.svelte";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { ensureLocaleLoaded, getLocale, setLocale } from "./locale.svelte";
 import { LOCALE_TAGS } from "./dict";
 import { normalizeForSearch } from "./matching";
 import { t } from "./t";
@@ -7,6 +7,10 @@ import { getPageBySlug, PAGES } from "../registry";
 import { pageTitle } from "./schema-tool-strings";
 import { en } from "./en";
 import { ru } from "./ru";
+
+beforeEach(async () => {
+	await ensureLocaleLoaded("ru");
+});
 
 afterEach(() => {
 	setLocale("ru");

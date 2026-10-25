@@ -2,10 +2,9 @@ import type { ChainWarning } from "$lib/run-chain";
 import type { Field } from "$lib/registry-schema";
 import { CATALOG, type PageMeta } from "../registry/catalog.generated";
 import type { SeoContent, SiteSeo } from "./dict";
-import { getMergedDict } from "./locale.svelte";
+import { getMergedDict, getRuDict } from "./locale.svelte";
 import { normalizeForSearch, scoreDoc, type SearchDoc } from "./matching";
 import { popularityOf } from "../registry/popularity";
-import { ru } from "./ru";
 import { en } from "./en";
 import type { SitePageId } from "./seo-copy";
 import { interpolate, t } from "./t";
@@ -150,16 +149,17 @@ function dedupe(values: string[]): string[] {
 
 export function pageSearchDoc(page: PageMeta): SearchDoc {
 	const active = getMergedDict().pages?.[page.slug];
+	const ruPages = getRuDict()?.pages;
 	return {
 		id: page.slug,
 		titles: dedupe([
 			active?.title ?? "",
-			ru.pages?.[page.slug]?.title ?? "",
+			ruPages?.[page.slug]?.title ?? "",
 			page.title,
 		]),
 		descriptions: dedupe([
 			active?.description ?? "",
-			ru.pages?.[page.slug]?.description ?? "",
+			ruPages?.[page.slug]?.description ?? "",
 			page.description,
 		]),
 	};

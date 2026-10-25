@@ -1,7 +1,7 @@
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { PAGES } from "../registry";
 import type { Page } from "../registry";
-import { setLocale } from "./locale.svelte";
+import { ensureLocaleLoaded, setLocale } from "./locale.svelte";
 import { en } from "./en";
 import { ru } from "./ru";
 import {
@@ -14,6 +14,10 @@ import {
 
 const YO = "\u0451";
 const YE = "\u0435";
+
+beforeEach(async () => {
+	await ensureLocaleLoaded("ru");
+});
 
 afterEach(() => {
 	setLocale("ru");

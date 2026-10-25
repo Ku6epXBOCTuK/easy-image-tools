@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Search } from "@lucide/svelte";
+	import { ensureLocaleLoaded } from "$lib/i18n/locale.svelte";
 	import { t } from "$lib/i18n/t";
 
 	// NOTE: The field owns only the input; filtering state and result rendering
@@ -10,6 +11,12 @@
 		variant?: "hero" | "compact";
 	}
 	let { query = $bindable(), variant = "compact" }: Props = $props();
+
+	// NOTE: Cross-language search needs the ru dict; loading it on first focus
+	// keeps the lazy chunk off the initial payload (EIT-132).
+	function warmSearch(): void {
+		void ensureLocaleLoaded("ru");
+	}
 </script>
 
 <label class="tool-search" data-variant={variant}>
@@ -18,6 +25,7 @@
 		aria-label={t("search.aria")}
 		placeholder={t("search.placeholder")}
 		bind:value={query}
+		onfocus={warmSearch}
 	/>
 </label>
 

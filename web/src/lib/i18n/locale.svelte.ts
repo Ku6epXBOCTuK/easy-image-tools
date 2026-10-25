@@ -1,31 +1,45 @@
 import { BASE_LOCALE, isLocale, type Dict, type Locale } from "./dict";
-import { ru } from "./ru";
 import { en } from "./en";
 import { safeSetItem, storage } from "../storage";
 
 const STORAGE_KEY = "locale";
 
-const DICTS: Record<Locale, Dict> = { ru, en };
+// NOTE: ru ships as a lazy chunk (EIT-132): en is the always-present base,
+// ru loads on demand - locale switch, a saved ru choice, or ru search input.
+let ruDict = $state<Dict | null>(null);
+let ruLoading: Promise<void> | null = null;
 
 let locale = $state<Locale>(BASE_LOCALE);
+let lastRequested: Locale | null = null;
+
+export function ensureLocaleLoaded(target: Locale): Promise<void> {
+	if (target === BASE_LOCALE || ruDict) return Promise.resolve();
+	ruLoading ??= import("./ru").then((mod) => {
+		ruDict = mod.ru;
+	});
+	return ruLoading;
+}
 
 export function getLocale(): Locale {
 	return locale;
 }
 
 export function getDict(): Dict {
-	return DICTS[locale];
+	return locale === "ru" ? (ruDict ?? en) : en;
 }
 
-// NOTE: Dictionary of the active locale; missing values fall back to the base locale.
+export function getRuDict(): Dict | undefined {
+	return ruDict ?? undefined;
+}
+
+// NOTE: Dictionary of the active locale; missing values fall back to the base
+// locale. Until a lazy ru chunk arrives the base is served as-is.
 export function getMergedDict(): Dict {
-	if (locale === BASE_LOCALE) return DICTS[BASE_LOCALE];
-	const active = DICTS[locale];
-	const base = DICTS[BASE_LOCALE];
-	return new Proxy(base, {
+	if (locale !== "ru" || !ruDict) return en;
+	return new Proxy(en, {
 		get(_target, section: string) {
-			const a = (active as unknown as Record<string, unknown>)[section];
-			const b = (base as unknown as Record<string, unknown>)[section];
+			const a = (ruDict as unknown as Record<string, unknown>)[section];
+			const b = (en as unknown as Record<string, unknown>)[section];
 			if (a && b && typeof a === "object" && typeof b === "object") {
 				return { ...(b as object), ...(a as object) };
 			}
@@ -34,17 +48,34 @@ export function getMergedDict(): Dict {
 	}) as Dict;
 }
 
+// NOTE: The last requested locale wins: a slow ru load must not override a
+// newer choice. Once ru is loaded, switching is synchronous again.
 export function setLocale(next: Locale): void {
-	locale = next;
-	safeSetItem(STORAGE_KEY, next);
-	syncLangAttr();
+	lastRequested = next;
+	if (next !== BASE_LOCALE && !ruDict) {
+		void ensureLocaleLoaded(next).then(() => {
+			if (lastRequested === next) applyLocale(next);
+		});
+		return;
+	}
+	applyLocale(next);
 }
 
 // NOTE: Reads the saved choice and syncs the lang attribute. Called on the client.
 export function initLocale(): void {
 	if (typeof window === "undefined") return;
 	const saved = storage()?.getItem(STORAGE_KEY);
-	if (isLocale(saved)) locale = saved;
+	if (isLocale(saved)) {
+		lastRequested = saved;
+		locale = saved;
+		void ensureLocaleLoaded(saved);
+	}
+	syncLangAttr();
+}
+
+function applyLocale(next: Locale): void {
+	locale = next;
+	safeSetItem(STORAGE_KEY, next);
 	syncLangAttr();
 }
 
