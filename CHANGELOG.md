@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.16.2](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/cbb64d3a3af5a9aa8c2d9c7bffb5f3f676ce8df7..v0.16.2) - 2026-10-25
+#### Bug Fixes
+- update e2e tests to use kbd for select tool - ([cbb64d3](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/cbb64d3a3af5a9aa8c2d9c7bffb5f3f676ce8df7)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.16.1](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/80f1fccdf928042d0ed205ab6dd74a67bad54d88..v0.16.1) - 2026-10-25
 #### Bug Fixes
 - add hydration checks for tests flow - ([80f1fcc](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/80f1fccdf928042d0ed205ab6dd74a67bad54d88)) - Ku6epXBOCTuK
