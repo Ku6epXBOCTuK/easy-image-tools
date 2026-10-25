@@ -1,9 +1,4 @@
-@import url("@fontsource/ibm-plex-sans/400.css");
-@import url("@fontsource/ibm-plex-sans/500.css");
-@import url("@fontsource/ibm-plex-sans/600.css");
-@import url("@fontsource/ibm-plex-sans/700.css");
-@import url("@fontsource/ibm-plex-mono/400.css");
-@import url("@fontsource/ibm-plex-mono/500.css");
+@import url("./fonts.generated.css");
 
 @custom-media --bp-mobile (max-width: 640px);
 @custom-media --bp-tablet (max-width: 800px);
@@ -95,8 +90,8 @@
 	}
 
 	:root {
-		--font-sans: "IBM Plex Sans", sans-serif;
-		--font-mono: "IBM Plex Mono", monospace;
+		--font-sans: "IBM Plex Sans", "IBM Plex Sans Fallback", sans-serif;
+		--font-mono: "IBM Plex Mono", "IBM Plex Mono Fallback", monospace;
 
 		--brand-main: #86efac;
 		--brand-alt: hct(from var(--brand-main) calc(h + 90) c t);

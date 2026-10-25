@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "node scripts/gen-catalog.mjs && vite build && node scripts/gen-sitemap.mjs && node scripts/gen-llms.mjs",
+		"build": "node scripts/gen-catalog.mjs && node scripts/gen-fonts.mjs && vite build && node scripts/gen-sitemap.mjs && node scripts/gen-llms.mjs",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -38,6 +38,7 @@
 		"eslint": "^10.9.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.23.0",
+		"fontkit": "^2.0.4",
 		"globals": "^17.11.0",
 		"lighthouse": "^13.5.0",
 		"playwright": "^1.62.1",
