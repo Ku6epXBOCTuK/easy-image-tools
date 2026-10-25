@@ -1,6 +1,6 @@
 import asciiOnly from "./ascii-only.js";
 import interfaceProps from "./interface-props.js";
-import noDeprecatedIcon from "./no-deprecated-icon.js";
+import noDeprecatedImport from "./no-deprecated-import.js";
 import noStringUnionAlias from "./no-string-union-alias.js";
 
 export default {
@@ -11,7 +11,7 @@ export default {
 	rules: {
 		"ascii-only": asciiOnly,
 		"interface-props": interfaceProps,
-		"no-deprecated-icon": noDeprecatedIcon,
+		"no-deprecated-import": noDeprecatedImport,
 		"no-string-union-alias": noStringUnionAlias,
 	},
 };
