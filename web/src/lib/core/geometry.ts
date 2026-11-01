@@ -406,6 +406,16 @@ export function forceOrientation(
 // a horizontal one across a horizontal line (height x2).
 export function symmetricCopy(
 	img: PixelImage,
+	axis: "vertical",
+	keepSide: "left" | "right",
+): PixelImage;
+export function symmetricCopy(
+	img: PixelImage,
+	axis: "horizontal",
+	keepSide: "top" | "bottom",
+): PixelImage;
+export function symmetricCopy(
+	img: PixelImage,
 	axis: "vertical" | "horizontal",
 	keepSide: "left" | "right" | "top" | "bottom",
 ): PixelImage {

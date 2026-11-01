@@ -717,11 +717,14 @@ const swapOrientationTool: Tool<SwapOrientationParams> = {
 };
 
 type SymmetricAxis = "horizontal" | "vertical";
-type KeepSide = "left" | "right" | "top" | "bottom";
 
+// NOTE: The kept side is split per axis: a vertical mirror line keeps a
+// left/right half, a horizontal one keeps a top/bottom half, so no field can
+// offer a side that the axis ignores.
 interface SymmetricCopyParams {
 	axis: SymmetricAxis;
-	keepSide: KeepSide;
+	keepSideX: "left" | "right";
+	keepSideY: "top" | "bottom";
 }
 
 export const symmetricCopySchema = toolSchema<SymmetricCopyParams>({
@@ -733,15 +736,23 @@ export const symmetricCopySchema = toolSchema<SymmetricCopyParams>({
 			{ value: "horizontal", label: "Horizontal (double height)" },
 		],
 	}),
-	keepSide: field.select({
-		label: "fields.keepSide",
+	keepSideX: field.select({
+		label: "fields.keepSideX",
 		default: "left",
 		options: [
 			{ value: "left", label: "Left" },
 			{ value: "right", label: "Right" },
+		],
+		visibleWhen: { field: "axis", equals: "vertical" },
+	}),
+	keepSideY: field.select({
+		label: "fields.keepSideY",
+		default: "top",
+		options: [
 			{ value: "top", label: "Top" },
 			{ value: "bottom", label: "Bottom" },
 		],
+		visibleWhen: { field: "axis", equals: "horizontal" },
 	}),
 });
 
@@ -749,7 +760,11 @@ const symmetricCopyTool: Tool<SymmetricCopyParams> = {
 	id: "symmetric-copy",
 	schema: symmetricCopySchema,
 	input: "image",
-	run: imgTool((img, p) => symmetricCopy(img, p.axis, p.keepSide)),
+	run: imgTool((img, p) =>
+		p.axis === "vertical"
+			? symmetricCopy(img, "vertical", p.keepSideX)
+			: symmetricCopy(img, "horizontal", p.keepSideY),
+	),
 };
 
 interface ShiftParams {

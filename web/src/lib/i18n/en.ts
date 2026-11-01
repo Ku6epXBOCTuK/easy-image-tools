@@ -322,7 +322,8 @@ export const en: Dict = {
 		imageSize: "Image size",
 		innerRadius: "Inner radius",
 		keepAspect: "Keep aspect",
-		keepSide: "Kept side",
+		keepSideX: "Kept side",
+		keepSideY: "Kept side",
 		layout: "Layout",
 		levels: "Levels",
 		lightness: "Lightness",
@@ -610,9 +611,11 @@ export const en: Dict = {
 					vertical: "Vertical (double width)",
 					horizontal: "Horizontal (double height)",
 				},
-				keepSide: {
+				keepSideX: {
 					left: "Left",
 					right: "Right",
+				},
+				keepSideY: {
 					top: "Top",
 					bottom: "Bottom",
 				},

@@ -346,6 +346,50 @@ describe("registry-new (migrated tools)", () => {
 		expect(out.height).toBe(100);
 	});
 
+	it("symmetric-copy keeps the side that belongs to the axis", async () => {
+		const tool = TOOLS.find((t) => t.id === "symmetric-copy")!;
+		const img = makeImage(1, 2, [
+			[0, 0, 0, 255],
+			[255, 255, 255, 255],
+		]);
+		const bottom = asImage(
+			await tool.run({
+				source: img,
+				params: sanitizeSchemaParams(tool.schema, {
+					axis: "horizontal",
+					keepSideY: "bottom",
+				}),
+			}),
+		);
+		expect(bottom.height).toBe(4);
+		expect([...bottom.data.slice(0, 4)]).toEqual([255, 255, 255, 255]);
+		expect([...bottom.data.slice(12, 16)]).toEqual([255, 255, 255, 255]);
+		const top = asImage(
+			await tool.run({
+				source: img,
+				params: sanitizeSchemaParams(tool.schema, {
+					axis: "horizontal",
+					keepSideY: "top",
+				}),
+			}),
+		);
+		expect([...top.data.slice(0, 4)]).toEqual([0, 0, 0, 255]);
+		const right = asImage(
+			await tool.run({
+				source: makeImage(2, 1, [
+					[0, 0, 0, 255],
+					[255, 255, 255, 255],
+				]),
+				params: sanitizeSchemaParams(tool.schema, {
+					axis: "vertical",
+					keepSideX: "right",
+				}),
+			}),
+		);
+		expect(right.width).toBe(4);
+		expect([...right.data.slice(0, 4)]).toEqual([255, 255, 255, 255]);
+	});
+
 	it("crop cuts out an area by x/y", async () => {
 		const tool = TOOLS.find((t) => t.id === "crop")!;
 		const img = solid(100, 100);

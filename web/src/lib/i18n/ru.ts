@@ -332,7 +332,8 @@ export const ru: Dict = {
 		imageSize: "Размер изображения",
 		innerRadius: "Внутренний радиус",
 		keepAspect: "Сохранять пропорции",
-		keepSide: "Остающаяся сторона",
+		keepSideX: "Остающаяся сторона",
+		keepSideY: "Остающаяся сторона",
 		layout: "Раскладка",
 		levels: "Уровни",
 		lightness: "Светлота",
@@ -1403,9 +1404,11 @@ export const ru: Dict = {
 					vertical: "Вертикальная (ширина ×2)",
 					horizontal: "Горизонтальная (высота ×2)",
 				},
-				keepSide: {
+				keepSideX: {
 					left: "Левая",
 					right: "Правая",
+				},
+				keepSideY: {
 					top: "Верхняя",
 					bottom: "Нижняя",
 				},

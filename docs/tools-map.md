@@ -114,7 +114,7 @@ Slugs приведены к фактическим в `web/src/lib/registry/page
 - `change-canvas-size-png` — size, anchor (3×3)
 - `change-aspect-ratio-png` — ratio (пресеты), mode (crop/pad)
 - `swap-orientation-png` — target (portrait/landscape)
-- `symmetric-copy-png` — axis, keepSide
+- `symmetric-copy-png` — axis, keepSideX (left/right), keepSideY (top/bottom)
 - `center-by-alpha-png` — без параметров
 
 ### Фильтры (`filters`)
