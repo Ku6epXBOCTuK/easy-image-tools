@@ -116,14 +116,71 @@
 		--color-danger: hct(30 80 48);
 		--color-info: hct(340 80 48);
 
+		--color-main-surface: color-mix(
+			in oklab,
+			var(--color-main) 12%,
+			var(--color-panel)
+		);
+		--color-accent-surface: color-mix(
+			in oklab,
+			var(--color-accent) 12%,
+			var(--color-panel)
+		);
+		--color-success-surface: color-mix(
+			in oklab,
+			var(--color-success) 12%,
+			var(--color-panel)
+		);
+		--color-warning-surface: color-mix(
+			in oklab,
+			var(--color-warning) 12%,
+			var(--color-panel)
+		);
+		--color-danger-surface: color-mix(
+			in oklab,
+			var(--color-danger) 12%,
+			var(--color-panel)
+		);
+		--color-info-surface: color-mix(
+			in oklab,
+			var(--color-info) 12%,
+			var(--color-panel)
+		);
+
+		--color-main-ink: color-mix(
+			in oklab,
+			var(--color-main) 45%,
+			var(--color-text)
+		);
+		--color-accent-ink: color-mix(
+			in oklab,
+			var(--color-accent) 45%,
+			var(--color-text)
+		);
+		--color-success-ink: color-mix(
+			in oklab,
+			var(--color-success) 45%,
+			var(--color-text)
+		);
+		--color-warning-ink: color-mix(
+			in oklab,
+			var(--color-warning) 45%,
+			var(--color-text)
+		);
+		--color-danger-ink: color-mix(
+			in oklab,
+			var(--color-danger) 45%,
+			var(--color-text)
+		);
+		--color-info-ink: color-mix(
+			in oklab,
+			var(--color-info) 45%,
+			var(--color-text)
+		);
+
 		--color-main-tint: hct(from var(--brand-main) h 65 55);
 		--color-main-soft: color-mix(in srgb, var(--color-main) 12%, transparent);
 		--color-scrim: color-mix(in srgb, var(--color-background) 65%, transparent);
-		--color-accent-tint: hct(from var(--brand-alt) h 65 55);
-		--color-success-tint: hct(160 65 55);
-		--color-warning-tint: hct(80 65 55);
-		--color-danger-tint: hct(30 65 55);
-		--color-info-tint: hct(340 65 55);
 
 		--space-s: 4px;
 		--space-m: 8px;
@@ -202,10 +259,5 @@
 		--color-info: hct(340 65 55);
 
 		--color-main-tint: hct(from var(--brand-main) h 45 57);
-		--color-accent-tint: hct(from var(--brand-alt) h 45 57);
-		--color-success-tint: hct(160 50 60);
-		--color-warning-tint: hct(80 50 60);
-		--color-danger-tint: hct(30 50 60);
-		--color-info-tint: hct(340 50 60);
 	}
 }

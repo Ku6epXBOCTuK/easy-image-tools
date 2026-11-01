@@ -71,27 +71,33 @@
 
 	.badge-tone--default {
 		--color-badge-main: var(--color-main);
-		--color-badge-tint: var(--color-main-tint);
+		--color-badge-ink: var(--color-main-ink);
+		--color-badge-surface: var(--color-main-surface);
 	}
 	.badge-tone--accent {
 		--color-badge-main: var(--color-accent);
-		--color-badge-tint: var(--color-accent-tint);
+		--color-badge-ink: var(--color-accent-ink);
+		--color-badge-surface: var(--color-accent-surface);
 	}
 	.badge-tone--success {
 		--color-badge-main: var(--color-success);
-		--color-badge-tint: var(--color-success-tint);
+		--color-badge-ink: var(--color-success-ink);
+		--color-badge-surface: var(--color-success-surface);
 	}
 	.badge-tone--danger {
 		--color-badge-main: var(--color-danger);
-		--color-badge-tint: var(--color-danger-tint);
+		--color-badge-ink: var(--color-danger-ink);
+		--color-badge-surface: var(--color-danger-surface);
 	}
 	.badge-tone--warning {
 		--color-badge-main: var(--color-warning);
-		--color-badge-tint: var(--color-warning-tint);
+		--color-badge-ink: var(--color-warning-ink);
+		--color-badge-surface: var(--color-warning-surface);
 	}
 	.badge-tone--info {
 		--color-badge-main: var(--color-info);
-		--color-badge-tint: var(--color-info-tint);
+		--color-badge-ink: var(--color-info-ink);
+		--color-badge-surface: var(--color-info-surface);
 	}
 
 	.badge-variant--default {
@@ -102,22 +108,22 @@
 
 	.badge-variant--outline {
 		background-color: transparent;
-		border-color: var(--color-badge-tint);
-		color: var(--color-badge-tint);
+		border-color: var(--color-badge-main);
+		color: var(--color-badge-ink);
 	}
 
 	.badge-variant--clear {
 		background-color: transparent;
 		border-color: transparent;
-		color: var(--color-badge-tint);
+		color: var(--color-badge-ink);
 	}
 
 	.badge-variant--tint {
-		background-color: var(--color-badge-tint);
+		background-color: var(--color-badge-surface);
 		border-style: solid;
 		border-color: var(--color-badge-main);
 		border-radius: var(--radius-m);
-		color: var(--color-badge-main);
+		color: var(--color-badge-ink);
 	}
 
 	.badge-size--m {
