@@ -79,3 +79,14 @@ export function withAspectLock(
 	}
 	return { ...next, width: Math.max(1, Math.round(next.height * aspect)) };
 }
+
+// NOTE: Both axes known under lock: fit them into that box, so the fields show
+// exactly what the tool prints instead of a size the tool silently shrinks.
+export function fitAspectBox(box: Dimension, aspect: number): Dimension {
+	if (!(box.width > 0) || !(box.height > 0)) return box;
+	const width = Math.max(1, Math.round(box.width));
+	const height = Math.max(1, Math.round(box.height));
+	return width / height >= aspect
+		? { width: Math.max(1, Math.round(height * aspect)), height }
+		: { width, height: Math.max(1, Math.round(width / aspect)) };
+}

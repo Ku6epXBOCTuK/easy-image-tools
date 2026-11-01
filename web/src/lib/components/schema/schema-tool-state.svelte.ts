@@ -9,6 +9,7 @@ import { getTool } from "$lib/registry";
 import {
 	clampSourceAwareMaxes,
 	defaultSchemaParams,
+	fitAspectBox,
 	withAspectLock,
 	type Dimension,
 } from "$lib/registry-schema";
@@ -54,24 +55,22 @@ function setStepValue(
 		if (
 			spec.kind === "dimension" &&
 			spec.lockAspectWith &&
-			axis !== "both" &&
 			next[spec.lockAspectWith] === true
 		) {
-			next[id] = withAspectLock(
-				value as Dimension,
-				marks.lastAxis[axisKey] ?? "width",
-				aspect,
-			);
+			next[id] =
+				axis === "both"
+					? fitAspectBox(value as Dimension, aspect)
+					: withAspectLock(
+							value as Dimension,
+							marks.lastAxis[axisKey] ?? "width",
+							aspect,
+						);
 		} else if (spec.kind === "checkbox" && value === true) {
 			// NOTE: lockAspect just enabled: snap bound fields to the aspect at once.
 			for (const [fid, f] of Object.entries(stepSchema.fields)) {
 				const fs = f.spec;
 				if (fs.kind === "dimension" && fs.lockAspectWith === id) {
-					next[fid] = withAspectLock(
-						next[fid] as Dimension,
-						marks.lastAxis[`${step.key}:${fid}`] ?? "width",
-						aspect,
-					);
+					next[fid] = fitAspectBox(next[fid] as Dimension, aspect);
 				}
 			}
 		}

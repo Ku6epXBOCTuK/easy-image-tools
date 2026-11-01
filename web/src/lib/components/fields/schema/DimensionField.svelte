@@ -50,7 +50,8 @@
 	}
 
 	function applyPreset(n: number) {
-		// NOTE: A preset sets both axes explicitly; lockAspect does not recompute it.
+		// NOTE: A preset is a box request, not an axis edit: the state fits the
+		// locked aspect into that box.
 		onchange?.({ width: n, height: n }, "both");
 	}
 </script>

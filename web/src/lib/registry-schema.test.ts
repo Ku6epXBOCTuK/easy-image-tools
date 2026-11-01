@@ -4,6 +4,7 @@ import {
 	clampSourceAwareMaxes,
 	defaultSchemaParams,
 	field,
+	fitAspectBox,
 	resolveLayoutGroups,
 	sanitizeSchemaParams,
 	toolSchema,
@@ -86,6 +87,45 @@ describe("registry-schema: withAspectLock", () => {
 		expect(withAspectLock({ width: 1, height: 48 }, "width", aspect)).toEqual({
 			width: 1,
 			height: 1,
+		});
+	});
+});
+
+describe("registry-schema: fitAspectBox", () => {
+	const aspect = 832 / 1232;
+
+	it("fits a square box to a portrait aspect", () => {
+		expect(fitAspectBox({ width: 256, height: 256 }, aspect)).toEqual({
+			width: 173,
+			height: 256,
+		});
+	});
+
+	it("fits a wide box to a wide aspect", () => {
+		expect(fitAspectBox({ width: 300, height: 200 }, 2)).toEqual({
+			width: 300,
+			height: 150,
+		});
+	});
+
+	it("fits a tall box to a wide aspect", () => {
+		expect(fitAspectBox({ width: 200, height: 300 }, 2)).toEqual({
+			width: 200,
+			height: 100,
+		});
+	});
+
+	it("keeps a box that already matches the aspect", () => {
+		expect(fitAspectBox({ width: 832, height: 1232 }, aspect)).toEqual({
+			width: 832,
+			height: 1232,
+		});
+	});
+
+	it("leaves a zero side alone", () => {
+		expect(fitAspectBox({ width: 0, height: 300 }, 2)).toEqual({
+			width: 0,
+			height: 300,
 		});
 	});
 });
