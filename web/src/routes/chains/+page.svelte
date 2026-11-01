@@ -16,8 +16,10 @@
 	// NOTE: chains.svelte validates steps through the registry (parseChain), so
 	// the API loads lazily: the list is client-only (localStorage) anyway and
 	// the registry chunk stays off the route's critical path (EIT-132).
-	// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-	let chainsApi = $state<typeof import("$lib/chains.svelte") | null>(null);
+	const loadChainsApi = () => import("$lib/chains.svelte");
+	type ChainsApi = Awaited<ReturnType<typeof loadChainsApi>>;
+
+	let chainsApi = $state<ChainsApi | null>(null);
 
 	let chains = $state<NamedChain[]>([]);
 	let renamingId = $state("");
@@ -29,7 +31,7 @@
 	}
 
 	onMount(() => {
-		void import("$lib/chains.svelte").then((mod) => {
+		void loadChainsApi().then((mod) => {
 			chainsApi = mod;
 			refresh();
 		});
