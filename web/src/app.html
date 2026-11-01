@@ -15,8 +15,10 @@
 								? "dark"
 								: "light";
 					document.documentElement.dataset.theme = theme;
+					document.documentElement.dataset.uiMode = theme;
 				} catch {
 					document.documentElement.dataset.theme = "light";
+					document.documentElement.dataset.uiMode = "light";
 				}
 			})();
 		</script>

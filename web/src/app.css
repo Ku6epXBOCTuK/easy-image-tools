@@ -1,4 +1,5 @@
 @import url("./fonts.generated.css");
+@import url("@ku6epxboctuk/ui-kit/tokens.css");
 
 @custom-media --bp-mobile (max-width: 640px);
 @custom-media --bp-tablet (max-width: 800px);

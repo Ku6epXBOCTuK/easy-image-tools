@@ -2,7 +2,6 @@
 	import ToolSearchField from "$lib/components/search/ToolSearchField.svelte";
 	import ChipButton from "$lib/components/ui/ChipButton.svelte";
 	import Icon from "$lib/components/ui/Icon.svelte";
-	import { trackPopover } from "$lib/components/ui/popover-position";
 	import {
 		pageDescription,
 		pageTitle,
@@ -13,6 +12,7 @@
 	import { favPages, isFav, toggleFav } from "$lib/favorites.svelte";
 	import { popularityOf } from "$lib/registry/popularity";
 	import type { Page } from "$lib/registry";
+	import Popover from "@ku6epxboctuk/ui-kit/components/Popover";
 	import { Plus, Repeat, Star } from "@lucide/svelte";
 	import { onMount } from "svelte";
 
@@ -51,29 +51,29 @@
 	const menuId = $props.id();
 	let open = $state(false);
 	let btn = $state<HTMLButtonElement | null>(null);
-	let menu = $state<HTMLDivElement | null>(null);
+	let menu = $state<HTMLDivElement>();
 
-	// NOTE: While open, keep the popover placed next to the button (scroll/resize).
-	$effect(() => {
-		if (!open || !menu || !btn) return;
-		return trackPopover(menu, btn, "side");
-	});
-
-	function handleToggle(e: ToggleEvent) {
-		open = e.newState === "open";
-		if (open) {
-			requestAnimationFrame(() => menu?.querySelector("input")?.focus());
-			return;
-		}
+	function close() {
+		open = false;
 		// NOTE: The toggle event is queued, so a reset on open wipes a query typed
 		// right after the click; resetting on close keeps the next open clean.
 		query = "";
 		showAll = false;
 	}
 
+	function toggle() {
+		if (open) close();
+		else open = true;
+	}
+
+	$effect(() => {
+		if (!open) return;
+		requestAnimationFrame(() => menu?.querySelector("input")?.focus());
+	});
+
 	function choose(page: Page) {
 		onadd(page.steps[0].id);
-		menu?.hidePopover();
+		close();
 	}
 
 	function toggleFavAt(e: MouseEvent, slug: string) {
@@ -97,7 +97,7 @@
 		aria-expanded={open}
 		aria-controls={menuId}
 		aria-label={iconOnly ? label : undefined}
-		popovertarget={menuId}
+		onclick={toggle}
 	>
 		{#if iconOnly}
 			<Icon icon={Repeat} size={14} />
@@ -106,12 +106,15 @@
 			<span>{label}</span>
 		{/if}
 	</button>
-	<div
-		bind:this={menu}
+	<Popover
+		{open}
+		anchor={btn}
+		bind:element={menu}
+		placement="side"
 		id={menuId}
-		class="menu"
-		popover="auto"
-		ontoggle={handleToggle}
+		minWidth="calc(var(--size-card-min) * 2)"
+		maxWidth="calc(var(--size-card-min) * 3)"
+		onclose={close}
 	>
 		<ToolSearchField bind:query />
 		{#if !searching}
@@ -158,7 +161,7 @@
 		{:else}
 			<p class="empty">{t("search.nothingFound")}</p>
 		{/if}
-	</div>
+	</Popover>
 </div>
 
 <style>
@@ -193,25 +196,6 @@
 	}
 	.icon-btn:hover {
 		color: var(--color-text);
-	}
-	.menu {
-		/* NOTE: Native popover: top layer + light dismiss + Escape out of the box;
-		   positioning is trackPopover("side") - right of the anchor, clamped into
-		   the viewport. */
-		position: fixed;
-		margin: 0;
-		min-width: calc(var(--size-card-min) * 2);
-		max-width: calc(var(--size-card-min) * 3);
-		padding: var(--space-m);
-		border: var(--size-border) solid var(--color-border);
-		border-radius: var(--radius-m);
-		background: var(--color-panel);
-	}
-	/* NOTE: display applies only while open: the author display overrides the
-	   UA rule [popover]:not(:popover-open) { display: none }. */
-	.menu:popover-open {
-		display: grid;
-		gap: var(--space-m);
 	}
 	.list-toolbar {
 		display: flex;

@@ -14,7 +14,12 @@ export default defineConfig({
 	// NOTE: PUBLIC_* lands in import.meta.env: environment flags like GA.
 	envPrefix: ["VITE_", "PUBLIC_"],
 	ssr: {
-		noExternal: ["@lucide/svelte"],
+		noExternal: ["@lucide/svelte", "@ku6epxboctuk/ui-kit"],
+	},
+	// NOTE: The kit is a linked checkout: pre-bundling it pins stale dep hashes
+	// and hides its HMR, so it is served as source like the app.
+	optimizeDeps: {
+		exclude: ["@ku6epxboctuk/ui-kit"],
 	},
 	plugins: [
 		sveltekit({

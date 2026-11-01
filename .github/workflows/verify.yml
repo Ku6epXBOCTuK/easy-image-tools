@@ -31,9 +31,16 @@ jobs:
       - name: Install root dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Use ui-kit from GitHub
+        run: node web/scripts/use-kit-from-github.mjs
+
       - name: Install web dependencies
         working-directory: web
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Refresh ui-kit
+        working-directory: web
+        run: pnpm update @ku6epxboctuk/ui-kit
 
       - name: Run quality gate
         run: pnpm verify

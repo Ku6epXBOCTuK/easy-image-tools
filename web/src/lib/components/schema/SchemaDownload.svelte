@@ -1,11 +1,11 @@
 <script lang="ts">
 	import RangeControl from "$lib/components/fields/schema/RangeControl.svelte";
 	import Icon from "$lib/components/ui/Icon.svelte";
-	import { trackPopover } from "$lib/components/ui/popover-position";
 	import type { OutputMime } from "$lib/core/io";
 	import { OUTPUT_FORMATS, outputFormatByMime } from "$lib/output-formats";
 	import type { SliderSpec } from "$lib/registry-schema";
 	import { t } from "$lib/i18n/t";
+	import Popover from "@ku6epxboctuk/ui-kit/components/Popover";
 	import { ChevronDown, Download } from "@lucide/svelte";
 
 	interface Props {
@@ -46,13 +46,6 @@
 	const menuId = $props.id();
 	let open = $state(false);
 	let btn = $state<HTMLButtonElement | null>(null);
-	let menu = $state<HTMLDivElement | null>(null);
-
-	// NOTE: While open, keep the popover placed next to the button (scroll/resize).
-	$effect(() => {
-		if (!open || !menu || !btn) return;
-		return trackPopover(menu, btn, "end");
-	});
 
 	function choose(mime: OutputMime) {
 		// NOTE: The menu doubles as a format-settings panel: keep it open on select
@@ -72,7 +65,7 @@
 		class="main"
 		disabled={running}
 		onclick={() => {
-			menu?.hidePopover();
+			open = false;
 			ondownload();
 		}}
 	>
@@ -88,18 +81,19 @@
 		aria-controls={menuId}
 		aria-label={t("actions.formatAria")}
 		disabled={running}
-		popovertarget={menuId}
+		onclick={() => (open = !open)}
 	>
 		<span>{current.label}</span>
 		<Icon icon={ChevronDown} size={14} />
 	</button>
-	<div
-		bind:this={menu}
+	<Popover
+		{open}
+		anchor={btn}
+		placement="end"
 		id={menuId}
-		class="menu"
 		role="menu"
-		popover="auto"
-		ontoggle={(e) => (open = e.newState === "open")}
+		minWidth="calc(var(--space-xxxl) * 9)"
+		onclose={() => (open = false)}
 	>
 		{#each OUTPUT_FORMATS as f (f.mime)}
 			<button
@@ -141,7 +135,7 @@
 				</p>
 			{/if}
 		</div>
-	</div>
+	</Popover>
 </div>
 
 <style>
@@ -175,25 +169,6 @@
 	.toggle:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
-	}
-	.menu {
-		/* NOTE: Native popover: top layer + light dismiss + Escape out of the box;
-		   positioning is trackPopover (anchor() is not supported everywhere). */
-		position: fixed;
-		margin: 0;
-		translate: 0 var(--space-s);
-		/* NOTE: Width for the quality row: number field + steppers + reset. */
-		min-width: calc(var(--space-xxxl) * 9);
-		gap: var(--space-s);
-		padding: var(--space-m);
-		border: var(--size-border) solid var(--color-border);
-		border-radius: var(--radius-m);
-		background: var(--color-panel);
-	}
-	/* NOTE: display applies only while open: the author display overrides the
-	   UA rule [popover]:not(:popover-open) { display: none }. */
-	.menu:popover-open {
-		display: grid;
 	}
 	.item {
 		padding: var(--space-m) var(--space-l);

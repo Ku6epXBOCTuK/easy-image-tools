@@ -16,6 +16,7 @@ function systemTheme(): ThemeChoice {
 function apply(): void {
 	if (typeof document === "undefined") return;
 	document.documentElement.dataset.theme = theme;
+	document.documentElement.dataset.uiMode = theme;
 }
 
 export function getTheme(): ThemeChoice {
