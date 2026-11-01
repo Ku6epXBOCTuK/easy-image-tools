@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.17.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/4f9fbb13d994f2c9b937afd4fcb1b068a001bb39..v0.17.0) - 2026-11-01
+#### Features
+- add ui-kit dep, use popover from ui-kit - ([4f9fbb1](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/4f9fbb13d994f2c9b937afd4fcb1b068a001bb39)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.16.2](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/cbb64d3a3af5a9aa8c2d9c7bffb5f3f676ce8df7..v0.16.2) - 2026-10-25
 #### Bug Fixes
 - update e2e tests to use kbd for select tool - ([cbb64d3](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/cbb64d3a3af5a9aa8c2d9c7bffb5f3f676ce8df7)) - Ku6epXBOCTuK
