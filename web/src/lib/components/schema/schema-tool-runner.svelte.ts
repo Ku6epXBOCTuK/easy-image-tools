@@ -1,5 +1,5 @@
 import { fitWithinBytes } from "$lib/core/compress";
-import { ToolError, type ErrorVars } from "$lib/core/errors";
+import { type ErrorVars, ToolError } from "$lib/core/errors";
 import { downloadBlob, encode, type OutputMime } from "$lib/core/io";
 import type { PixelImage } from "$lib/core/types";
 import { execute } from "$lib/executor";
@@ -47,6 +47,9 @@ interface RunnerState {
 	// NOTE: Generation of the latest run(): a stale in-flight chain (params changed
 	// while the worker was busy) must not overwrite newer results.
 	runGen: number;
+	// NOTE: A run asked to start while another is in flight: coalesced into one
+	// follow-up run with the latest params, so slider drags do not queue jobs.
+	pending: boolean;
 	result: PixelImage | null;
 	fileResult: FileResult | null;
 	textResult: string | null;
@@ -105,6 +108,10 @@ async function run(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 	const schema = ctx.schema();
 	const steps = ctx.steps();
 	if (!schema || steps.length === 0) return;
+	if (s.running) {
+		s.pending = true;
+		return;
+	}
 	const gen = ++s.runGen;
 	s.stepError = null;
 	s.actionError = null;
@@ -152,6 +159,10 @@ async function run(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 		}
 	} finally {
 		if (gen === s.runGen) s.running = false;
+		if (s.pending) {
+			s.pending = false;
+			void run(s, ctx);
+		}
 	}
 }
 
@@ -240,6 +251,7 @@ export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
 		running: false,
 		downloading: false,
 		runGen: 0,
+		pending: false,
 		result: null,
 		fileResult: null,
 		textResult: null,
@@ -307,6 +319,8 @@ export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
 		// in-flight run from the previous host.
 		resetForHost: () => {
 			s.runGen++;
+			s.pending = false;
+			s.running = false;
 			s.runWarnings = [];
 			s.stepFileSets = [];
 			clearResults(s);
