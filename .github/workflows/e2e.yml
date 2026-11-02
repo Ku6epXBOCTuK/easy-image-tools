@@ -1,0 +1,42 @@
+name: E2E
+
+on:
+  workflow_call:
+    inputs:
+      advisory:
+        description: "Keep a failed run non-blocking for the caller"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  e2e:
+    name: E2E
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ inputs.advisory }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-web
+
+      - name: Install Playwright browsers
+        working-directory: web
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
+
+      - name: Run E2E
+        working-directory: web
+        run: pnpm test:e2e
+
+      - name: Upload E2E artifacts
+        if: failure() || cancelled()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-${{ github.run_attempt }}
+          path: |
+            web/e2e-results
+            web/playwright-report
+          if-no-files-found: ignore
+          retention-days: 7

@@ -149,7 +149,8 @@ token warnings раздельно.
 
 - `verify` блокирует PR при ошибке в любом своём джобе: typecheck, lint,
   formatting, docs, unit, rule-test, build или coverage;
-- `e2e` запускается отдельным job после verify и пока не блокирует PR.
+- `e2e` на PR и dispatch идёт после verify и пока не блокирует PR. Сама матрица
+  живёт в reusable `.github/workflows/e2e.yml`.
 
 Внутри `verify.yml` пять независимых джобов — `types`, `lint`, `test`, `build`,
 `coverage` — идут параллельно: общий шаг установки вынесен в
@@ -160,11 +161,14 @@ Stylelint из `actions/cache`; в `lint-all` для обоих задана с�
 
 `.github/workflows/deploy.yml` перед production build запускает тот же
 `pnpm verify`, поэтому deploy не должен проходить при ошибке быстрых проверок.
+E2E на push в `main` запускается здесь же, параллельно `build`, и пока advisory:
+`deploy` ждёт его, но падение выкладку не останавливает. Упавший прогон
+выгружает артефакт `e2e-<attempt>` с `web/e2e-results` и `web/playwright-report`.
 
-| Workflow                 | Триггер                                 | Jobs                        |
-| ------------------------ | --------------------------------------- | --------------------------- |
-| `Deploy to GitHub Pages` | push в `main`, dispatch                 | `verify`, `build`, `deploy` |
-| `Quality`                | push в `main`, `pull_request`, dispatch | `verify`, `e2e`             |
+| Workflow                 | Триггер                                 | Jobs                                  |
+| ------------------------ | --------------------------------------- | ------------------------------------- |
+| `Deploy to GitHub Pages` | push в `main`, dispatch                 | `verify`, `build`, `e2e`, `deploy`    |
+| `Quality`                | push в `main`, `pull_request`, dispatch | `verify`, `e2e` (кроме push в `main`) |
 
 Результат после пуша читается **по отдельным job** — процедура в
 `docs/decisions.md`, раздел 10.

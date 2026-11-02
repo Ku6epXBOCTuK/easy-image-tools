@@ -19,6 +19,13 @@ jobs:
   verify:
     uses: ./.github/workflows/verify.yml
 
+  e2e:
+    # NOTE: advisory for now: a failed e2e does not block the deploy
+    needs: verify
+    uses: ./.github/workflows/e2e.yml
+    with:
+      advisory: true
+
   build:
     needs: verify
     runs-on: ubuntu-latest
@@ -65,7 +72,7 @@ jobs:
           path: web/build
 
   deploy:
-    needs: build
+    needs: [build, e2e]
     runs-on: ubuntu-latest
     environment:
       name: github-pages

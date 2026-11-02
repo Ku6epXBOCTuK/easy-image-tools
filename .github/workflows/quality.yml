@@ -21,39 +21,8 @@ jobs:
   e2e:
     name: E2E (non-blocking baseline)
     needs: verify
-    continue-on-error: true
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: ^11.20.0
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: pnpm
-          cache-dependency-path: web/pnpm-lock.yaml
-
-      - name: Use ui-kit from GitHub
-        run: node web/scripts/use-kit-from-github.mjs
-
-      - name: Install web dependencies
-        working-directory: web
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Refresh ui-kit
-        working-directory: web
-        run: pnpm update @ku6epxboctuk/ui-kit
-
-      - name: Install Playwright browsers
-        working-directory: web
-        run: pnpm exec playwright install --with-deps chromium firefox webkit
-
-      - name: Run E2E
-        working-directory: web
-        run: pnpm test:e2e
+    # NOTE: on a main push Deploy runs the matrix, so skip here to avoid a second run
+    if: github.event_name != 'push'
+    uses: ./.github/workflows/e2e.yml
+    with:
+      advisory: true
