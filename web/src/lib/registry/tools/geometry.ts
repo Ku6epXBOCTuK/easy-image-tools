@@ -27,6 +27,7 @@ import {
 	tile,
 	trimToContent,
 } from "../../core/geometry";
+import { MAX_IMAGE_SIDE } from "../../core/limits";
 import { renderPredicateMask } from "../../core/masks";
 import {
 	type Dimension,
@@ -84,7 +85,7 @@ export const fitOnBackgroundSchema = toolSchema<FitOnBackgroundParams>(
 		size: field.pair({
 			label: "fields.canvasSize",
 			min: 1,
-			max: 20000,
+			max: MAX_IMAGE_SIDE,
 			presets: true,
 			axes: [
 				{ key: "width", label: "ui.width", default: 800 },
@@ -149,7 +150,7 @@ export const changeCanvasSizeSchema = toolSchema<ChangeCanvasSizeParams>(
 		size: field.pair({
 			label: "fields.canvasSize",
 			min: 1,
-			max: 20000,
+			max: MAX_IMAGE_SIDE,
 			presets: true,
 			axes: [
 				{ key: "width", label: "ui.width", default: 800 },
@@ -201,7 +202,7 @@ export const resizeSchema = toolSchema<ResizeParams>(
 		size: field.pair({
 			label: "fields.canvasSize",
 			min: 0,
-			max: 20000,
+			max: MAX_IMAGE_SIDE,
 			lockAspectWith: "keepAspect",
 			presets: true,
 			axes: [
@@ -273,7 +274,7 @@ export const cropSchema = toolSchema<CropParams>(
 		offset: field.pair({
 			label: "fields.offset",
 			min: 0,
-			max: 20000,
+			max: MAX_IMAGE_SIDE,
 			axes: [
 				{
 					key: "x",
@@ -296,7 +297,7 @@ export const cropSchema = toolSchema<CropParams>(
 		size: field.pair({
 			label: "fields.cropAreaSize",
 			min: 1,
-			max: 20000,
+			max: MAX_IMAGE_SIDE,
 			presets: true,
 			axes: [
 				{
@@ -513,7 +514,7 @@ export const splitPartsSchema = toolSchema<SplitPartsParams>(
 		tile: field.pair({
 			label: "fields.tileSize",
 			min: 1,
-			max: 20000,
+			max: MAX_IMAGE_SIDE,
 			presets: true,
 			visibleWhen: { field: "mode", equals: "tile" },
 			axes: [

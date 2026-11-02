@@ -1,6 +1,6 @@
 import { ToolError } from "../core/errors";
 import type { PixelImage } from "../core/types";
-import type { ToolContext, Tool, ToolResult } from "../registry";
+import type { Tool, ToolContext, ToolResult } from "../registry";
 import { sanitizeSchemaParams } from "../registry-schema";
 import {
 	decodeWorkerResponse,
@@ -77,9 +77,19 @@ export function createExecutor(
 					pending.delete(payload.id);
 					entry.resolve(result);
 				} catch (error) {
-					if (error instanceof ToolError) {
+					// NOTE: ok:false means the tool itself threw; the worker is healthy,
+					// so only this request fails and the job is not replayed on the
+					// main thread. Anything else in a payload is a transport fault.
+					if (payload.ok === false) {
 						pending.delete(payload.id);
-						entry.reject(error);
+						entry.reject(
+							error instanceof ToolError
+								? error
+								: new ToolError("errors.workerFailed", {
+										detail:
+											error instanceof Error ? error.message : String(error),
+									}),
+						);
 					} else {
 						failWorker(candidate as WorkerLike, error);
 					}

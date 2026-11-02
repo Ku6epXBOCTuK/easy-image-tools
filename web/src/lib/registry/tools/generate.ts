@@ -6,6 +6,7 @@ import {
 } from "../../core/gen-tools";
 import { noiseImage, solidImage } from "../../core/generate";
 import { changeCanvasSize } from "../../core/geometry";
+import { MAX_IMAGE_SIDE } from "../../core/limits";
 import {
 	analogousSet,
 	complementarySet,
@@ -23,12 +24,12 @@ import {
 } from "../../core/palette";
 import type { PixelImage } from "../../core/types";
 import {
-	field,
-	toolSchema,
 	type ColorPair,
 	type Dimension,
 	type FontStyle,
+	field,
 	type Gradient,
+	toolSchema,
 } from "../../registry-schema";
 import { genTool, type Tool } from "../types";
 
@@ -85,7 +86,7 @@ export const createEmptySchema = toolSchema<CreateEmptyParams>(
 		size: field.pair({
 			label: "fields.canvasSize",
 			min: 1,
-			max: 20000,
+			max: MAX_IMAGE_SIDE,
 			presets: true,
 			axes: [
 				{ key: "width", label: "ui.width", default: 800 },
@@ -133,7 +134,7 @@ export const singleColorSchema = toolSchema<SingleColorParams>({
 	size: field.pair({
 		label: "fields.canvasSize",
 		min: 1,
-		max: 20000,
+		max: MAX_IMAGE_SIDE,
 		presets: true,
 		axes: [
 			{ key: "width", label: "ui.width", default: 256 },
@@ -200,7 +201,7 @@ export const linearGradientSchema = toolSchema<LinearGradientParams>(
 		size: field.pair({
 			label: "fields.canvasSize",
 			min: 1,
-			max: 20000,
+			max: MAX_IMAGE_SIDE,
 			presets: true,
 			axes: [
 				{ key: "width", label: "ui.width", default: 800 },

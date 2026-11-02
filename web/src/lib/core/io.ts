@@ -1,6 +1,7 @@
 import { encodeBmpBytes } from "./bmp";
 import { ToolError } from "./errors";
-import { type PixelImage } from "./types";
+import { assertImageSize, MAX_IMAGE_SIDE } from "./limits";
+import type { PixelImage } from "./types";
 
 export type OutputMime =
 	| "image/png"
@@ -32,6 +33,7 @@ async function toBitmap(source: Blob | File): Promise<ImageBitmap> {
 }
 
 async function decodeBitmap(bitmap: ImageBitmap): Promise<PixelImage> {
+	assertImageSize(bitmap.width, bitmap.height);
 	const canvas = document.createElement("canvas");
 	canvas.width = bitmap.width;
 	canvas.height = bitmap.height;
@@ -70,6 +72,7 @@ export async function decodeBytes(
 }
 
 export function toDataUrl(img: PixelImage): string {
+	assertImageSize(img.width, img.height);
 	const canvas = document.createElement("canvas");
 	canvas.width = img.width;
 	canvas.height = img.height;
@@ -78,7 +81,15 @@ export function toDataUrl(img: PixelImage): string {
 		throw new ToolError("errors.noCanvasCtx");
 	}
 	ctx.putImageData(new ImageData(img.data, img.width, img.height), 0, 0);
-	return canvas.toDataURL("image/png");
+	const url = canvas.toDataURL("image/png");
+	if (!url.startsWith("data:image/png")) {
+		throw new ToolError("errors.imageTooLarge", {
+			width: img.width,
+			height: img.height,
+			max: MAX_IMAGE_SIDE,
+		});
+	}
+	return url;
 }
 
 export function toBase64(img: PixelImage): string {
@@ -127,6 +138,7 @@ export async function encode(
 	mime: OutputMime = "image/png",
 	quality?: number,
 ): Promise<Blob> {
+	assertImageSize(img.width, img.height);
 	if (mime === "image/bmp") {
 		return new Blob([encodeBmpBytes(img)], { type: mime });
 	}
@@ -196,6 +208,7 @@ export async function decodeSvgText(
 		const ratio =
 			img.naturalHeight > 0 ? img.naturalHeight / img.naturalWidth : 1;
 		const h = Math.max(1, Math.round(w * ratio));
+		assertImageSize(w, h);
 		const canvas = document.createElement("canvas");
 		canvas.width = w;
 		canvas.height = h;

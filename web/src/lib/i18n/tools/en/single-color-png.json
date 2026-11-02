@@ -6,9 +6,9 @@
 		"longDescription": "Create solid color PNG fills a rectangle of any size you like with one color: you set the width, the height and the color, and every pixel is filled with it, fully opaque — there is no transparency in the result. There is no source file: the rectangle is generated on your device. Use it for a background plate under a layout, a mask shape, a color sample in a spec, or a canvas that other tools on this site can then work on.",
 		"facts": [
 			"Generated entirely in your browser: no upload, no server, no signup.",
-			"Canvas from 1 to 20000 pixels per side, with presets.",
+			"Canvas from 1 to 8192 pixels per side, with presets.",
 			"Always fully opaque — for a see-through sheet use the create empty PNG tool.",
-			"A 20000 by 20000 canvas is 400 million pixels and takes a moment.",
+			"An 8192 by 8192 canvas is 67 million pixels and takes a moment.",
 			"Free with no daily limit, no watermark and no account, also for commercial use."
 		],
 		"howTo": [
@@ -24,7 +24,7 @@
 			},
 			{
 				"q": "How large can the canvas be?",
-				"a": "From 1 to 20000 pixels per side, with presets for the usual targets. The top end is genuinely heavy - 20000 by 20000 is 400 million pixels - so allow a moment and expect your browser to use a lot of memory."
+				"a": "From 1 to 8192 pixels per side, with presets for the usual targets. The top end is genuinely heavy - 8192 by 8192 is 67 million pixels - so allow a moment and expect your browser to use a lot of memory."
 			},
 			{
 				"q": "Does the file come out as a real PNG?",

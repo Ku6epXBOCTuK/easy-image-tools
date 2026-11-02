@@ -1,5 +1,6 @@
-import type { PixelImage } from "./types";
 import { ToolError } from "./errors";
+import { assertImageSize } from "./limits";
+import type { PixelImage } from "./types";
 
 export function solidImage(
 	width: number,
@@ -14,6 +15,7 @@ export function solidImage(
 	) {
 		throw new ToolError("errors.sizeInt");
 	}
+	assertImageSize(width, height);
 	const data = new Uint8ClampedArray(width * height * 4);
 	for (let i = 0; i < data.length; i += 4) {
 		data[i] = rgba[0];
@@ -37,6 +39,7 @@ export function noiseImage(
 	) {
 		throw new ToolError("errors.sizeInt");
 	}
+	assertImageSize(width, height);
 	const random = mulberry32(seed);
 	const data = new Uint8ClampedArray(width * height * 4);
 	for (let i = 0; i < data.length; i += 4) {
@@ -63,6 +66,7 @@ export function gradientImage(
 	) {
 		throw new ToolError("errors.sizeInt");
 	}
+	assertImageSize(width, height);
 	const out: PixelImage = {
 		width,
 		height,

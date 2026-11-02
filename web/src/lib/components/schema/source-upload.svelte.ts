@@ -1,3 +1,5 @@
+import { onMount } from "svelte";
+import type { SvelteSet } from "svelte/reactivity";
 import { ToolError } from "$lib/core/errors";
 import { decodeFile } from "$lib/core/io";
 import type { PixelImage } from "$lib/core/types";
@@ -7,9 +9,7 @@ import {
 	applySourceDefaults,
 	clampSourceAwareMaxes,
 } from "$lib/registry-schema";
-import { baseName, uniqueName, type ChainWarning } from "$lib/run-chain";
-import { onMount } from "svelte";
-import type { SvelteSet } from "svelte/reactivity";
+import { baseName, type ChainWarning, uniqueName } from "$lib/run-chain";
 import { toolSchemaOf } from "./schema-tool-state.svelte";
 
 export interface SourceUploadCtx {
@@ -19,6 +19,28 @@ export interface SourceUploadCtx {
 	touchedFor: (key: string) => SvelteSet<string>;
 	reportError: (e: unknown) => void;
 	clearError: () => void;
+}
+
+async function decodeUploads(files: File[]): Promise<{
+	decoded: ToolImageFile[];
+	skipped: number;
+	failure: unknown;
+}> {
+	const decoded: ToolImageFile[] = [];
+	const usedNames = new Set<string>();
+	let skipped = 0;
+	let failure: unknown;
+	for (const file of files) {
+		try {
+			const name = uniqueName(`${baseName(file.name)}.png`, usedNames);
+			usedNames.add(name);
+			decoded.push({ name, image: await decodeFile(file) });
+		} catch (error) {
+			skipped++;
+			failure ??= error;
+		}
+	}
+	return { decoded, skipped, failure };
 }
 
 // NOTE: Source state of SchemaToolView: image files / text input, decode warnings,
@@ -33,20 +55,13 @@ export function createSourceUpload(ctx: SourceUploadCtx) {
 	async function handleFiles(files: File[]) {
 		ctx.clearError();
 		sourceWarnings = [];
-		const decoded: ToolImageFile[] = [];
-		const usedNames = new Set<string>();
-		let skipped = 0;
-		for (const file of files) {
-			try {
-				const name = uniqueName(`${baseName(file.name)}.png`, usedNames);
-				usedNames.add(name);
-				decoded.push({ name, image: await decodeFile(file) });
-			} catch {
-				skipped++;
-			}
-		}
+		const { decoded, skipped, failure } = await decodeUploads(files);
 		if (decoded.length === 0) {
-			ctx.reportError(new ToolError("errors.imageDecode"));
+			ctx.reportError(
+				failure instanceof ToolError
+					? failure
+					: new ToolError("errors.imageDecode"),
+			);
 			return;
 		}
 		if (skipped > 0) {

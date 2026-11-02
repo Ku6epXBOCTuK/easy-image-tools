@@ -1,6 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
 import { ToolError } from "../core/errors";
 import type { PixelImage } from "../core/types";
+import type { Tool } from "../registry";
+import { type Dimension, field, toolSchema } from "../registry-schema";
 import {
 	createExecutor,
 	type ExecuteContext,
@@ -14,8 +16,6 @@ import {
 	type WorkerResponse,
 } from "./protocol";
 import { handleWorkerRequest } from "./worker-handler";
-import { field, toolSchema, type Dimension } from "../registry-schema";
-import type { Tool } from "../registry";
 
 class FakeWorker implements WorkerLike {
 	onmessage: ((event: MessageEvent<WorkerResponse>) => void) | null = null;
@@ -179,6 +179,33 @@ describe("createExecutor", () => {
 			vars: { value: "x" },
 		});
 		expect(run).not.toHaveBeenCalled();
+	});
+
+	it("keeps the worker when a tool fails with a plain error message", async () => {
+		const { factory, workers } = createFactory();
+		const execute = createExecutor({ workerFactory: factory });
+		const run = vi.fn(() => "direct");
+		const tool = makeTool(run);
+		const promise = execute(tool, { params: {} });
+		const worker = workers[0];
+		worker.respond({
+			id: worker.requests[0].id,
+			ok: false,
+			error: "Invalid array length",
+		});
+
+		await expect(promise).rejects.toMatchObject({
+			key: "errors.workerFailed",
+			vars: { detail: "Invalid array length" },
+		});
+		expect(run).not.toHaveBeenCalled();
+		expect(worker.terminated).toBe(false);
+
+		const next = execute(tool, { params: {} });
+		expect(workers).toHaveLength(1);
+		expect(worker.requests).toHaveLength(2);
+		worker.respond({ id: worker.requests[1].id, ok: true, text: "worker" });
+		await expect(next).resolves.toBe("worker");
 	});
 
 	it("falls back when worker construction fails", async () => {

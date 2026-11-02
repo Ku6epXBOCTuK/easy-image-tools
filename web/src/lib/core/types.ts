@@ -1,3 +1,5 @@
+import { assertImageSize } from "./limits";
+
 export type PixelImage = {
 	width: number;
 	height: number;
@@ -5,6 +7,7 @@ export type PixelImage = {
 };
 
 export function createPixelImage(width: number, height: number): PixelImage {
+	assertImageSize(width, height);
 	return {
 		width,
 		height,

@@ -1,11 +1,11 @@
 import { fitWithinBytes } from "$lib/core/compress";
 import { ToolError, type ErrorVars } from "$lib/core/errors";
 import { downloadBlob, encode, type OutputMime } from "$lib/core/io";
-import { outputFormatByMime } from "$lib/output-formats";
 import type { PixelImage } from "$lib/core/types";
 import { execute } from "$lib/executor";
 import { chainStepTitle, verdictText } from "$lib/i18n/schema-tool-strings";
 import { t } from "$lib/i18n/t";
+import { outputFormatByMime } from "$lib/output-formats";
 import type { ChainStep } from "$lib/pipeline.svelte";
 import type {
 	FileResult,
@@ -17,8 +17,8 @@ import type { Dimension, ToolSchema } from "$lib/registry-schema";
 import {
 	baseName,
 	ChainStepError,
-	runChain,
 	type ChainWarning,
+	runChain,
 } from "$lib/run-chain";
 import { downloadZip } from "$lib/zip";
 
@@ -131,6 +131,13 @@ async function run(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 		if (e instanceof ChainStepError) {
 			const base = toDisplayError(e.cause);
 			const msg = base.kind === "i18n" ? t(base.key, base.vars) : base.text;
+			s.result = null;
+			s.fileResult = null;
+			s.textResult = null;
+			s.verdictVars = undefined;
+			s.stepDims = [];
+			s.stepResults = [];
+			s.stepFileSets = [];
 			s.stepError = {
 				step: e.stepIndex,
 				label: t("chain.stepFailed", { n: e.stepIndex + 1 }),

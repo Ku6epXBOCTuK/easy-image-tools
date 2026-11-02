@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { PREVIEW_GROUPS } from "../catalog";
 import { contentBounds } from "../core/geometry";
 import type { OutputMime } from "../core/io";
+import { MAX_IMAGE_SIDE } from "../core/limits";
 import { makeImage } from "../core/test-helpers";
 import type { PixelImage } from "../core/types";
 import { defaultSchemaParams, sanitizeSchemaParams } from "../registry-schema";
@@ -244,7 +245,7 @@ describe("registry-new (migrated tools)", () => {
 			opacity: 50,
 			color: "#ff0000",
 		});
-		expect(s.size).toEqual({ width: 20000, height: 1 });
+		expect(s.size).toEqual({ width: MAX_IMAGE_SIDE, height: 1 });
 		const bad = sanitizeSchemaParams(tool.schema, {});
 		expect(bad.size).toEqual({ width: 800, height: 600 });
 	});

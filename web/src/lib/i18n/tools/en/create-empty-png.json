@@ -6,7 +6,7 @@
 		"longDescription": "Create empty PNG generates a blank canvas of exactly the size you ask for, either fully transparent or filled with one solid color. The canvas is produced on your device from the width, height, opacity and color you set, and the file is encoded and saved straight to your machine — nothing is uploaded because there is nothing to upload. Use it as a backdrop for a mockup, a transparent layer in a design tool, a spacer in a layout, or a placeholder with the exact dimensions your project expects.",
 		"facts": [
 			"Generated entirely in your browser: no upload, no server, no signup.",
-			"Sizes from 1 to 20000 pixels per side, with presets for common formats.",
+			"Sizes from 1 to 8192 pixels per side, with presets for common formats.",
 			"Opacity 0 gives a fully transparent canvas; any higher value fills it with the chosen color.",
 			"Free with no daily limit, no watermark and no account, also for commercial use."
 		],
@@ -23,7 +23,7 @@
 			},
 			{
 				"q": "What size can the canvas be?",
-				"a": "From 1 to 20000 pixels per side, with presets for the usual targets. Very large canvases take a moment to generate because every pixel is filled - a 20000 by 20000 canvas is 400 million pixels."
+				"a": "From 1 to 8192 pixels per side, with presets for the usual targets. Very large canvases take a moment to generate because every pixel is filled - an 8192 by 8192 canvas is 67 million pixels."
 			},
 			{
 				"q": "Is the file really a valid PNG?",

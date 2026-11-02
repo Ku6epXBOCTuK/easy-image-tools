@@ -248,7 +248,7 @@ export const ru: Dict = {
 		noImageRun: "Этот инструмент не обрабатывает изображения",
 		sourceRequired: "Сначала загрузите изображение",
 		textRequired: "Сначала введите текст",
-		workerFailed: "Ошибка исполнения в воркере",
+		workerFailed: "Ошибка исполнения в воркере: {detail}",
 		workerUnavailable: "Воркер недоступен",
 		notFound: "Страница не найдена",
 		noWatermark: "Сначала выберите картинку-знак",
@@ -287,6 +287,8 @@ export const ru: Dict = {
 		cropSize: "Ширина и высота области должны быть не меньше 1 px",
 		sizePositive: "Размеры должны быть положительными и конечными",
 		tooManyParts: "Слишком много частей ({count}). Ограничение — {max}.",
+		imageTooLarge:
+			"Изображение {width}×{height}px, а сторона не может быть больше {max}px. Уменьшите размер и попробуйте снова.",
 		pageUnknown: "Страницы «{slug}» нет в каталоге.",
 	},
 	fields: {

@@ -238,7 +238,7 @@ export const en: Dict = {
 		noImageRun: "This tool does not process images",
 		sourceRequired: "Upload an image first",
 		textRequired: "Enter text first",
-		workerFailed: "Worker execution failed",
+		workerFailed: "Worker execution failed: {detail}",
 		workerUnavailable: "Worker is unavailable",
 		notFound: "Page not found",
 		noWatermark: "Pick a watermark image first",
@@ -277,6 +277,8 @@ export const en: Dict = {
 		cropSize: "Crop width and height must be at least 1 px",
 		sizePositive: "Dimensions must be positive and finite",
 		tooManyParts: "Too many parts ({count}). The limit is {max}.",
+		imageTooLarge:
+			"Image is {width}×{height}px, but neither side can exceed {max}px here. Reduce the size and try again.",
 		pageUnknown: 'No page is registered under "{slug}".',
 	},
 	fields: {
