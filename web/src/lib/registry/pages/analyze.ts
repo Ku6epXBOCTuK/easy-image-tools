@@ -57,9 +57,9 @@ export const analyzePages = [
 	},
 	{
 		slug: "verify-is-png",
-		title: "Verify If Image Is a PNG",
+		title: "Verify PNG data",
 		description:
-			"Checks the signature of pasted base64 / data-uri content and reports whether it is a real PNG.",
+			"Paste base64 or a data URI and check whether the data is a real PNG: the tool reads the signature and answers yes or no.",
 		category: "analyze",
 		steps: [{ id: "verify-png" }],
 	},
