@@ -64,6 +64,9 @@ export type Tool<P = Record<string, unknown>> = {
 	run(ctx: ToolContext<P>): Promise<ToolResult> | ToolResult;
 	// NOTE: Needs the DOM (canvas/document); the preview executor runs it in the main thread.
 	domOnly?: boolean;
+	// NOTE: Output depends on more than input and params (clock, random), so its
+	// result cannot be reused across chain runs.
+	impure?: true;
 	output?: OutputFormat;
 	runMask?: (ctx: ToolContext<P>) => PixelImage;
 	// NOTE: Note at the result tile when the outcome differs from requested

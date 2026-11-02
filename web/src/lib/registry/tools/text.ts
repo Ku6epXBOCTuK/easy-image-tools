@@ -135,6 +135,7 @@ const dateStampSchema = toolSchema<DateStampParams>(
 const dateStamp: Tool<DateStampParams> = {
 	id: "date-stamp",
 	domOnly: true,
+	impure: true,
 	schema: dateStampSchema,
 	input: "image",
 	run: imgTool((img, p) =>

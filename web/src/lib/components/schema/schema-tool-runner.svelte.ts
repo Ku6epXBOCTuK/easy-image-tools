@@ -17,6 +17,8 @@ import type { Dimension, ToolSchema } from "$lib/registry-schema";
 import {
 	baseName,
 	ChainStepError,
+	chainResumeIndex,
+	type ChainRunOutput,
 	type ChainWarning,
 	runChain,
 } from "$lib/run-chain";
@@ -47,6 +49,9 @@ interface RunnerState {
 	// NOTE: Generation of the latest run(): a stale in-flight chain (params changed
 	// while the worker was busy) must not overwrite newer results.
 	runGen: number;
+	// NOTE: First step of the active run (0-based): tiles before it show a cached
+	// result and must not display the busy state.
+	runFrom: number;
 	// NOTE: A run asked to start while another is in flight: coalesced into one
 	// follow-up run with the latest params, so slider drags do not queue jobs.
 	pending: boolean;
@@ -104,7 +109,11 @@ function assignResult(s: RunnerState, out: ToolResult) {
 	}
 }
 
-async function run(s: RunnerState, ctx: SchemaToolRunnerCtx) {
+async function run(
+	s: RunnerState,
+	ctx: SchemaToolRunnerCtx,
+	cache: { last: ChainRunOutput | null },
+) {
 	const schema = ctx.schema();
 	const steps = ctx.steps();
 	if (!schema || steps.length === 0) return;
@@ -126,8 +135,11 @@ async function run(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 				: source
 					? [{ name: `${baseName(ctx.pageSlug())}.png`, image: source }]
 					: [];
-		const r = await runChain(steps, input, textSource || undefined, execute);
+		const text = textSource || undefined;
+		s.runFrom = chainResumeIndex(steps, input, text, cache.last);
+		const r = await runChain(steps, input, text, execute, cache.last);
 		if (gen !== s.runGen) return;
+		cache.last = r;
 		s.stepDims = r.stepDims;
 		s.stepResults = r.stepResults;
 		s.stepFileSets = r.stepFileSets;
@@ -161,7 +173,7 @@ async function run(s: RunnerState, ctx: SchemaToolRunnerCtx) {
 		if (gen === s.runGen) s.running = false;
 		if (s.pending) {
 			s.pending = false;
-			void run(s, ctx);
+			void run(s, ctx, cache);
 		}
 	}
 }
@@ -247,10 +259,14 @@ function clearResults(s: RunnerState) {
 // NOTE: Execution state and actions of SchemaToolView: run/download/clipboard and
 // all results. Owns the generation counter (see RunnerState.runGen).
 export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
+	// NOTE: Previous successful chain run: `runChain` reuses its unchanged
+	// leading steps instead of re-executing the whole chain.
+	const cache: { last: ChainRunOutput | null } = { last: null };
 	const s = $state<RunnerState>({
 		running: false,
 		downloading: false,
 		runGen: 0,
+		runFrom: 0,
 		pending: false,
 		result: null,
 		fileResult: null,
@@ -268,6 +284,9 @@ export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
 	return {
 		get running() {
 			return s.running;
+		},
+		get runningFrom() {
+			return s.runFrom;
 		},
 		get downloading() {
 			return s.downloading;
@@ -311,7 +330,7 @@ export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
 		clearSourceError: () => {
 			s.sourceError = null;
 		},
-		run: () => run(s, ctx),
+		run: () => run(s, ctx, cache),
 		download: () => download(s, ctx),
 		copyText: () => copyText(s, ctx),
 		downloadText: () => downloadText(s, ctx),
@@ -321,8 +340,10 @@ export function createSchemaToolRunner(ctx: SchemaToolRunnerCtx) {
 			s.runGen++;
 			s.pending = false;
 			s.running = false;
+			s.runFrom = 0;
 			s.runWarnings = [];
 			s.stepFileSets = [];
+			cache.last = null;
 			clearResults(s);
 		},
 		clearResults: () => clearResults(s),

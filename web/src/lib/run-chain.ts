@@ -35,6 +35,13 @@ export interface ChainRunOutput {
 	// NOTE: Full named set per step; empty for text/verdict/none steps.
 	stepFileSets: ToolImageFile[][];
 	stepDims: (Dimension | undefined)[];
+	// NOTE: What identifies a step for reuse: id, params and the text source it
+	// consumed. The next run reuses the leading prefix that still matches.
+	stepKeys: string[];
+	stepOut: ToolResult[];
+	stepWarnings: ChainWarning[][];
+	source: ToolImageFile[];
+	textSource: string | undefined;
 	out: ToolResult;
 	warnings: ChainWarning[];
 }
@@ -64,6 +71,45 @@ function isImage(out: ToolResult): out is PixelImage {
 	return typeof out === "object" && out !== null && "data" in out;
 }
 
+function sameFileSet(a: ToolImageFile[], b: ToolImageFile[]): boolean {
+	return (
+		a.length === b.length &&
+		a.every((file, i) => file.image === b[i].image && file.name === b[i].name)
+	);
+}
+
+function stepKey(
+	step: { id: string; params: Record<string, unknown> },
+	tool: Tool,
+	textSource: string | undefined,
+): string {
+	const text = tool.input === "text" ? (textSource ?? null) : null;
+	return JSON.stringify([step.id, step.params, text]);
+}
+
+// NOTE: Index of the first step whose cached result is no longer valid; equals
+// the step count when nothing changed and the whole chain can be reused.
+export function chainResumeIndex(
+	steps: { id: string; params: Record<string, unknown> }[],
+	source: ToolImageFile[],
+	textSource: string | undefined,
+	prev: ChainRunOutput | null | undefined,
+): number {
+	if (
+		!prev ||
+		prev.textSource !== textSource ||
+		!sameFileSet(prev.source, source)
+	) {
+		return 0;
+	}
+	for (let i = 0; i < steps.length; i++) {
+		const tool = getTool(steps[i].id);
+		if (!tool || tool.impure || i >= prev.stepKeys.length) return i;
+		if (prev.stepKeys[i] !== stepKey(steps[i], tool, textSource)) return i;
+	}
+	return steps.length;
+}
+
 // NOTE: Fan-out chain runner: image steps apply to every file of the set,
 // files-steps glue part names, analyze steps see only the first file.
 // A step fails the chain only when every file fails (ChainStepError).
@@ -72,17 +118,33 @@ export async function runChain(
 	source: ToolImageFile[],
 	textSource: string | undefined,
 	execute: ChainExecutor,
+	prev?: ChainRunOutput | null,
 ): Promise<ChainRunOutput> {
-	const stepResults: (PixelImage | null)[] = [];
-	const stepFileSets: ToolImageFile[][] = [];
-	const stepDims: (Dimension | undefined)[] = [];
-	const warnings: ChainWarning[] = [];
-	let current: ToolImageFile[] = source;
-	let out: ToolResult = "";
+	const start = chainResumeIndex(steps, source, textSource, prev);
+	const reuse = start > 0 ? (prev ?? null) : null;
+	const stepResults = reuse ? reuse.stepResults.slice(0, start) : [];
+	const stepFileSets = reuse ? reuse.stepFileSets.slice(0, start) : [];
+	const stepDims = reuse ? reuse.stepDims.slice(0, start) : [];
+	const stepKeys = reuse ? reuse.stepKeys.slice(0, start) : [];
+	const stepOut = reuse ? reuse.stepOut.slice(0, start) : [];
+	const stepWarnings = reuse ? reuse.stepWarnings.slice(0, start) : [];
+	let current: ToolImageFile[] = reuse ? reuse.stepFileSets[start - 1] : source;
+	let out: ToolResult = reuse ? reuse.stepOut[start - 1] : "";
 
-	for (let i = 0; i < steps.length; i++) {
+	for (let i = start; i < steps.length; i++) {
 		const tool = getTool(steps[i].id);
-		if (!tool) continue;
+		if (!tool) {
+			stepKeys[i] = "";
+			stepResults[i] = null;
+			stepFileSets[i] = [];
+			stepDims[i] = undefined;
+			stepOut[i] = out;
+			stepWarnings[i] = [];
+			continue;
+		}
+		stepKeys[i] = stepKey(steps[i], tool, textSource);
+		const warnings: ChainWarning[] = [];
+		stepWarnings[i] = warnings;
 
 		if (tool.input === "text" || tool.input === "none") {
 			out = await execute(tool, {
@@ -99,6 +161,7 @@ export async function runChain(
 				stepResults[i] = null;
 				stepFileSets[i] = [];
 			}
+			stepOut[i] = out;
 			continue;
 		}
 
@@ -151,6 +214,7 @@ export async function runChain(
 		stepDims[i] = produced[0]
 			? { width: produced[0].image.width, height: produced[0].image.height }
 			: undefined;
+		stepOut[i] = out;
 	}
 
 	if (current.length > 1) {
@@ -158,5 +222,16 @@ export async function runChain(
 	} else if (current.length === 1) {
 		out = current[0].image;
 	}
-	return { stepResults, stepFileSets, stepDims, out, warnings };
+	return {
+		stepResults,
+		stepFileSets,
+		stepDims,
+		stepKeys,
+		stepOut,
+		stepWarnings,
+		source,
+		textSource,
+		out,
+		warnings: stepWarnings.flat(),
+	};
 }

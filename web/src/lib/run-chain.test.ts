@@ -1,9 +1,15 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { makeImage } from "./core/test-helpers";
 import type { PixelImage } from "./core/types";
 import type { ExecuteContext } from "./executor";
 import { getTool, type Tool, type ToolImageFile } from "./registry";
-import { ChainStepError, glueName, runChain, uniqueName } from "./run-chain";
+import {
+	ChainStepError,
+	chainResumeIndex,
+	glueName,
+	runChain,
+	uniqueName,
+} from "./run-chain";
 
 const realExecute = (tool: Tool, ctx: ExecuteContext) =>
 	Promise.resolve(tool.run(ctx as never));
@@ -104,6 +110,171 @@ describe("runChain", () => {
 		);
 		expect(r.warnings).toEqual([{ kind: "firstOnly", step: 1, total: 2 }]);
 		expect(r.out).toBe("transparentNo");
+	});
+});
+
+describe("runChain: incremental rerun", () => {
+	const resize = (width: number, height: number) => ({
+		id: "resize",
+		params: { size: { width, height }, keepAspect: false },
+	});
+
+	it("changes to the last step rerun only that step", async () => {
+		const calls = vi.fn(realExecute);
+		const source = [named("a.png", img4x2)];
+		const steps = [{ id: "grayscale", params: {} }, resize(4, 2)];
+		const first = await runChain(steps, source, undefined, calls);
+		expect(calls).toHaveBeenCalledTimes(2);
+
+		calls.mockClear();
+		const next = [steps[0], resize(2, 1)];
+		expect(chainResumeIndex(next, source, undefined, first)).toBe(1);
+		const second = await runChain(next, source, undefined, calls, first);
+		expect(calls.mock.calls.map(([tool]) => tool.id)).toEqual(["resize"]);
+		expect(second.stepResults[0]).toBe(first.stepResults[0]);
+		expect(second.stepDims[1]).toEqual({ width: 2, height: 1 });
+	});
+
+	it("a middle change reruns that step and the tail", async () => {
+		const calls = vi.fn(realExecute);
+		const source = [named("a.png", img4x2)];
+		const steps = [
+			resize(4, 2),
+			{ id: "grayscale", params: {} },
+			{ id: "flip", params: {} },
+		];
+		const first = await runChain(steps, source, undefined, calls);
+
+		calls.mockClear();
+		await runChain(
+			[resize(2, 2), ...steps.slice(1)],
+			source,
+			undefined,
+			calls,
+			first,
+		);
+		expect(calls.mock.calls.map(([tool]) => tool.id)).toEqual([
+			"resize",
+			"grayscale",
+			"flip",
+		]);
+	});
+
+	it("a new source invalidates the whole cache", async () => {
+		const calls = vi.fn(realExecute);
+		const steps = [
+			{ id: "grayscale", params: {} },
+			{ id: "flip", params: {} },
+		];
+		const first = await runChain(
+			steps,
+			[named("a.png", img4x2)],
+			undefined,
+			calls,
+		);
+
+		calls.mockClear();
+		const nextSource = [named("a.png", img2x2)];
+		expect(chainResumeIndex(steps, nextSource, undefined, first)).toBe(0);
+		await runChain(steps, nextSource, undefined, calls, first);
+		expect(calls).toHaveBeenCalledTimes(2);
+	});
+
+	it("a changed text source invalidates the whole cache", async () => {
+		const calls = vi.fn(realExecute);
+		const steps = [{ id: "grayscale", params: {} }];
+		const source = [named("a.png", img4x2)];
+		const first = await runChain(steps, source, "one", calls);
+
+		calls.mockClear();
+		await runChain(steps, source, "two", calls, first);
+		expect(calls).toHaveBeenCalledTimes(1);
+	});
+
+	it("appending a step runs only the new step", async () => {
+		const calls = vi.fn(realExecute);
+		const source = [named("a.png", img4x2)];
+		const first = await runChain(
+			[{ id: "grayscale", params: {} }],
+			source,
+			undefined,
+			calls,
+		);
+
+		calls.mockClear();
+		const second = await runChain(
+			[
+				{ id: "grayscale", params: {} },
+				{ id: "flip", params: {} },
+			],
+			source,
+			undefined,
+			calls,
+			first,
+		);
+		expect(calls.mock.calls.map(([tool]) => tool.id)).toEqual(["flip"]);
+		expect(second.stepResults[0]).toBe(first.stepResults[0]);
+	});
+
+	it("removing the last step reuses the rest and returns the earlier output", async () => {
+		const calls = vi.fn(realExecute);
+		const source = [named("a.png", img4x2)];
+		const first = await runChain(
+			[
+				{ id: "grayscale", params: {} },
+				{ id: "flip", params: {} },
+			],
+			source,
+			undefined,
+			calls,
+		);
+
+		calls.mockClear();
+		const trimmed = [{ id: "grayscale", params: {} }];
+		expect(chainResumeIndex(trimmed, source, undefined, first)).toBe(
+			trimmed.length,
+		);
+		const second = await runChain(trimmed, source, undefined, calls, first);
+		expect(calls).not.toHaveBeenCalled();
+		expect(second.out).toBe(first.stepResults[0]);
+	});
+
+	it("keeps warnings of reused steps", async () => {
+		const flaky = (tool: Tool, ctx: ExecuteContext) =>
+			ctx.source?.data[0] === 200
+				? Promise.reject(new Error("bad"))
+				: realExecute(tool, ctx);
+		const source = [named("ok.png", img4x2), named("bad.png", img2x2)];
+		const first = await runChain(
+			[{ id: "grayscale", params: {} }, resize(4, 4)],
+			source,
+			undefined,
+			flaky,
+		);
+		expect(first.warnings).toEqual([
+			{ kind: "partial", step: 1, ok: 1, total: 2 },
+		]);
+
+		const second = await runChain(
+			[{ id: "grayscale", params: {} }, resize(2, 2)],
+			source,
+			undefined,
+			flaky,
+			first,
+		);
+		expect(second.warnings).toEqual([
+			{ kind: "partial", step: 1, ok: 1, total: 2 },
+		]);
+	});
+
+	it("never reuses an impure step", async () => {
+		const calls = vi.fn(() => Promise.resolve(img2x2));
+		const steps = [{ id: "date-stamp", params: {} }];
+		const source = [named("a.png", img4x2)];
+		const first = await runChain(steps, source, undefined, calls);
+
+		await runChain(steps, source, undefined, calls, first);
+		expect(calls).toHaveBeenCalledTimes(2);
 	});
 });
 

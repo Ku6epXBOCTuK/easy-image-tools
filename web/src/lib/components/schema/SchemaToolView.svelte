@@ -137,6 +137,12 @@
 	});
 	const { run, download, copyText, downloadText } = runner;
 	const running = $derived(runner.running);
+	// NOTE: A run recomputes only the steps from the first stale one onwards;
+	// tiles before it show a cached result and must not look busy.
+	const runningFrom = $derived(runner.runningFrom);
+	function stepBusy(index: number): boolean {
+		return running && index >= runningFrom;
+	}
 	// NOTE: Display-level busy: either a run or a download is in flight.
 	const busy = $derived(running || runner.downloading);
 	const result = $derived(runner.result);
@@ -364,7 +370,7 @@
 					width={inputSize?.width}
 					height={inputSize?.height}
 					parts={inSet.length > 1 ? inSet.length : undefined}
-					loading={busy}
+					loading={stepBusy(i - 1)}
 				>
 					{#if inSet.length > 1}
 						<PartsGrid files={inSet} />
@@ -392,7 +398,7 @@
 					{textResult}
 					textVars={verdictVars}
 					toolId={lastTool.id}
-					running={busy}
+					running={stepBusy(i)}
 					mask={masks.masks[i] ?? null}
 					maskOn={masks.maskOn[i] ?? false}
 					ontogglemask={masks.maskable[i]
@@ -413,7 +419,7 @@
 					width={outSize?.width}
 					height={outSize?.height}
 					parts={outSet.length > 1 ? outSet.length : undefined}
-					loading={busy}
+					loading={stepBusy(i)}
 					warnings={warningsByStep[i] ?? []}
 					errors={stepError && stepError.step === i
 						? [{ label: stepError.label, detail: stepError.detail }]
