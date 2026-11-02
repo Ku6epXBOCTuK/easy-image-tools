@@ -34,6 +34,25 @@ const productionSvelte = [
 	"**/src/routes/**/*.svelte",
 ];
 
+// NOTE: A package entry costs seconds of TS program and a stale @deprecated name
+// only appears after a dependency bump, so the rule runs in CI only:
+// verify.yml sets EIT_DEPRECATED_IMPORTS=1.
+const deprecatedImportConfig =
+	process.env.EIT_DEPRECATED_IMPORTS === "1"
+		? [
+				{
+					files: [
+						"**/src/**/*.svelte",
+						"**/eslint-plugins/**/*.js",
+						"**/eslint-plugins/**/*.ts",
+						"**/scripts/**/*.mjs",
+					],
+					plugins: { conventions: conventionsPlugin },
+					rules: { "conventions/no-deprecated-import": "error" },
+				},
+			]
+		: [];
+
 export default defineConfig(
 	{
 		ignores: [
@@ -144,27 +163,10 @@ export default defineConfig(
 			"conventions/no-string-union-alias": "error",
 		},
 	},
-	// NOTE: A deprecated export is only marked in the installed package types,
-	// so the import is the single place a stale name shows up. The rule needs
-	// no type info, so configs and plugins are covered at no lint cost.
-	{
-		files: [
-			"**/src/**/*.ts",
-			"**/src/**/*.svelte",
-			"**/*.config.js",
-			"**/*.config.ts",
-			"**/*.config.mjs",
-			"**/eslint-plugins/**/*.js",
-			"**/eslint-plugins/**/*.ts",
-			"**/scripts/**/*.mjs",
-		],
-		plugins: {
-			conventions: conventionsPlugin,
-		},
-		rules: {
-			"conventions/no-deprecated-import": "error",
-		},
-	},
+	// NOTE: Only where the typed @typescript-eslint/no-deprecated cannot look:
+	// src/**/*.ts is its own scope, and the build configs cost seconds of TS
+	// program each for six files. Left: .svelte, plugins and scripts.
+	...deprecatedImportConfig,
 	// NOTE: Type-aware and .ts only: it reports deprecated usage as well as
 	// imports, while svelte-eslint-parser cannot supply types for .svelte.
 	{

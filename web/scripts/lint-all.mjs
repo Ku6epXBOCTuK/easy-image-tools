@@ -60,9 +60,11 @@ const stylelintCache = () => {
 	return join(dir, ".stylelintcache");
 };
 
+const deprecatedImports = process.env.EIT_DEPRECATED_IMPORTS === "1";
+
 const steps = [
 	{
-		name: "ESLint (svelte) + design-tokens rules",
+		name: `ESLint (svelte) + design-tokens rules${deprecatedImports ? " + deprecated-import" : " (deprecated-import off)"}`,
 		args: [
 			bins.eslint,
 			...colorFlag,

@@ -43,6 +43,8 @@ jobs:
         run: pnpm update @ku6epxboctuk/ui-kit
 
       - name: Run quality gate
+        env:
+          EIT_DEPRECATED_IMPORTS: "1"
         run: pnpm verify
 
   coverage:
