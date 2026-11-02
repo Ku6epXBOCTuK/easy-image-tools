@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Badge from "$lib/components/ui/Badge.svelte";
 	import DetailBadge from "$lib/components/ui/DetailBadge.svelte";
-	import { tPlural } from "$lib/i18n/t";
+	import { t, tPlural } from "$lib/i18n/t";
 	import type { InputMode, ResultKind } from "$lib/registry";
 	import { RefreshCw } from "@lucide/svelte";
 	import type { Snippet } from "svelte";
@@ -97,8 +97,15 @@
 		class:checker={mode === "image"}
 		class:sized={aspect !== undefined}
 		style:aspect-ratio={aspect === undefined ? undefined : String(aspect)}
+		aria-busy={loading ? "true" : undefined}
 	>
 		{@render children()}
+		{#if loading}
+			<span class="busy" role="status">
+				<RefreshCw class="rotating" size="18" />
+				<span>{t("resultCard.processingTitle")}</span>
+			</span>
+		{/if}
 	</div>
 </figure>
 
@@ -119,9 +126,9 @@
 		font: var(--font-size-s) var(--font-mono);
 		text-transform: uppercase;
 		color: var(--color-text-muted);
-		& :global(.rotating) {
-			animation: rotate var(--duration-l) linear infinite;
-		}
+	}
+	.tile :global(.rotating) {
+		animation: rotate var(--duration-l) linear infinite;
 	}
 	.tile-label {
 		display: inline-flex;
@@ -137,6 +144,7 @@
 		color: var(--color-main);
 	}
 	.canvas {
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -147,6 +155,20 @@
 		overflow: hidden;
 		background: var(--color-background-muted);
 		color: var(--color-text-muted);
+	}
+	.busy {
+		position: absolute;
+		inset: 0;
+		display: grid;
+		align-content: center;
+		justify-items: center;
+		gap: var(--space-s);
+		background: var(--color-scrim);
+		color: var(--color-main);
+		font: var(--font-size-s) var(--font-mono);
+		letter-spacing: var(--space-text-l);
+		text-transform: uppercase;
+		pointer-events: none;
 	}
 	.canvas:not(.sized) {
 		min-height: var(--size-tile-canvas-min);

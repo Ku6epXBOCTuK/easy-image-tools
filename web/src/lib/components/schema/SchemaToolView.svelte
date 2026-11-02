@@ -333,6 +333,7 @@
 					width={inputSize?.width}
 					height={inputSize?.height}
 					parts={inSet.length > 1 ? inSet.length : undefined}
+					loading={busy}
 				>
 					{#if inSet.length > 1}
 						<PartsGrid files={inSet} />
@@ -380,6 +381,7 @@
 					width={outSize?.width}
 					height={outSize?.height}
 					parts={outSet.length > 1 ? outSet.length : undefined}
+					loading={busy}
 					warnings={warningsByStep[i] ?? []}
 					errors={stepError && stepError.step === i
 						? [{ label: stepError.label, detail: stepError.detail }]

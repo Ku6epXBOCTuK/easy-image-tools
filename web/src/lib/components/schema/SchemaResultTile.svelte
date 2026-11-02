@@ -3,7 +3,6 @@
 	import type { PixelImage } from "$lib/core/types";
 	import { t } from "$lib/i18n/t";
 	import type { FileResult, ResultKind, ResultNote } from "$lib/registry";
-	import { Check } from "@lucide/svelte";
 	import ChipButton from "$lib/components/ui/ChipButton.svelte";
 	import PartsGrid from "./PartsGrid.svelte";
 	import SchemaTextResult from "./SchemaTextResult.svelte";
@@ -125,7 +124,7 @@
 				alt={t("resultCard.alt")}
 			/>
 		{:else if running}
-			<Check size={22} />
+			<span aria-hidden="true"></span>
 		{:else}
 			<span data-testid="empty-state" class="empty"
 				>{t("resultCard.noResult")}</span
