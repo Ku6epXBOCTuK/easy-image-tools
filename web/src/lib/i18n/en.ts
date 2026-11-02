@@ -323,6 +323,7 @@ export const en: Dict = {
 		highlightColor: "Highlight color",
 		imageSize: "Image size",
 		innerRadius: "Inner radius",
+		invertMask: "Invert mask",
 		keepAspect: "Keep aspect",
 		keepSideX: "Kept side",
 		keepSideY: "Kept side",

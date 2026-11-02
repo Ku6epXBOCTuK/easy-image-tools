@@ -333,6 +333,7 @@ export const ru: Dict = {
 		highlightColor: "Цвет подсветки",
 		imageSize: "Размер изображения",
 		innerRadius: "Внутренний радиус",
+		invertMask: "Инвертировать маску",
 		keepAspect: "Сохранять пропорции",
 		keepSideX: "Остающаяся сторона",
 		keepSideY: "Остающаяся сторона",

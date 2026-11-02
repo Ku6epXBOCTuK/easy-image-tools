@@ -494,6 +494,21 @@ describe("registry-new (migrated tools)", () => {
 		expect(center).toBe(0);
 	});
 
+	it("extract-alpha-mask inverts the mask on request", async () => {
+		const tool = TOOLS.find((t) => t.id === "extract-alpha-mask")!;
+		const img = makeImage(2, 1, [
+			[10, 20, 30, 255],
+			[40, 50, 60, 0],
+		]);
+		const out = asImage(
+			await tool.run({
+				source: img,
+				params: sanitizeSchemaParams(tool.schema, { invertMask: true }),
+			}),
+		);
+		expect([...out.data]).toEqual([0, 0, 0, 255, 255, 255, 255, 255]);
+	});
+
 	it("blend-two: pair defaults and generator output", async () => {
 		const tool = TOOLS.find((t) => t.id === "blend-two")!;
 		const d = defaultSchemaParams(tool.schema);

@@ -9,6 +9,7 @@ import {
 	setAlphaChannel,
 } from "../../core/alpha";
 import { backgroundMaskPreview, removeBackground } from "../../core/background";
+import { invert } from "../../core/color";
 import { diffMask, renderPredicateMask } from "../../core/masks";
 import {
 	closingImage,
@@ -462,13 +463,22 @@ const setAlphaChannelTool: Tool<SetAlphaChannelParams> = {
 	run: imgTool((img, p) => setAlphaChannel(img, p.percent)),
 };
 
-export const extractAlphaMaskSchema = toolSchema<EmptyParams>({});
+interface ExtractAlphaMaskParams {
+	invertMask: boolean;
+}
 
-const extractAlphaMaskTool: Tool<EmptyParams> = {
+export const extractAlphaMaskSchema = toolSchema<ExtractAlphaMaskParams>({
+	invertMask: field.checkbox({ label: "fields.invertMask", default: false }),
+});
+
+const extractAlphaMaskTool: Tool<ExtractAlphaMaskParams> = {
 	id: "extract-alpha-mask",
 	schema: extractAlphaMaskSchema,
 	input: "image",
-	run: imgTool((img) => extractAlphaMask(img)),
+	run: imgTool((img, p) => {
+		const mask = extractAlphaMask(img);
+		return p.invertMask ? invert(mask) : mask;
+	}),
 };
 
 interface RoundCornersParams {
