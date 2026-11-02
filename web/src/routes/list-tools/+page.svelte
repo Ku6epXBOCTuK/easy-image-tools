@@ -93,6 +93,7 @@
 
 <style>
 	.catalog-page {
+		flex: 1 0 auto;
 		padding: var(--space-page-top)
 			clamp(var(--space-xxl), 4vw, var(--space-page-bottom))
 			var(--space-page-bottom);

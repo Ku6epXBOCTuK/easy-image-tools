@@ -82,15 +82,12 @@
 		flex-direction: column;
 	}
 
-	/* NOTE: The middle section stretches so the site footer stays at the bottom
-	   of the viewport on short pages; page roots grow with it. */
+	/* NOTE: Only the middle section stretches so the site footer stays at the
+	   bottom on short pages; a page whose own footer must sink grows itself. */
 	.layout-content {
 		flex: 1 0 auto;
 		display: flex;
 		flex-direction: column;
-	}
-	.layout-content > :global(*) {
-		flex: 1 0 auto;
 	}
 
 	@layer app, design;
