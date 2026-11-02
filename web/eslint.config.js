@@ -19,6 +19,8 @@ const toolingFiles = [
 	"*.config.js",
 ];
 
+// NOTE: @eslint/js ships a single object, while plugins follow the flat
+// array form: the guard keeps the config working across both.
 const jsRecommended = Array.isArray(js.configs.recommended)
 	? js.configs.recommended
 	: [js.configs.recommended];
@@ -255,24 +257,22 @@ export default defineConfig(
 			},
 		},
 	},
-	...[
-		...jsRecommended.map((cfg) => ({
-			...cfg,
-			files: productionCode,
-		})),
-		...jsRecommended.map((cfg) => ({
-			...cfg,
-			files: toolingFiles,
-		})),
-		...tseslint.configs.recommended.map((cfg) => ({
-			...cfg,
-			files: productionCode,
-		})),
-		...svelteRecommended.map((cfg) => ({
-			...cfg,
-			files: productionSvelte,
-		})),
-	],
+	...jsRecommended.map((cfg) => ({
+		...cfg,
+		files: productionCode,
+	})),
+	...jsRecommended.map((cfg) => ({
+		...cfg,
+		files: toolingFiles,
+	})),
+	...tseslint.configs.recommended.map((cfg) => ({
+		...cfg,
+		files: productionCode,
+	})),
+	...svelteRecommended.map((cfg) => ({
+		...cfg,
+		files: productionSvelte,
+	})),
 
 	// NOTE: Svelte 5 props are destructured via `let` (docs convention and
 	// AGENTS.md), so prefer-const is a false positive on them.
