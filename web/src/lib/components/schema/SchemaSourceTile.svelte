@@ -164,6 +164,9 @@
 		font: var(--font-size-s) var(--font-mono);
 	}
 	.text-source-wrap {
+		display: flex;
+		flex-direction: column;
+		align-self: stretch;
 		width: 100%;
 		padding: var(--space-l);
 		box-sizing: border-box;

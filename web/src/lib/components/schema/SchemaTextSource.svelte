@@ -58,14 +58,16 @@
 
 <style>
 	.text-source {
-		display: grid;
+		display: flex;
+		flex-direction: column;
 		gap: var(--space-m);
+		flex: 1;
+		min-height: 0;
 	}
 	textarea {
 		width: 100%;
-		min-height: var(--space-brand);
-		max-height: var(--space-xxxl);
-		resize: vertical;
+		flex: 1;
+		min-height: 0;
 		box-sizing: border-box;
 		padding: var(--space-m);
 		border: var(--size-border) solid var(--color-border);
