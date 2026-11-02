@@ -389,7 +389,17 @@ const autoContrastTool: Tool<EmptyParams> = {
 
 interface DecreaseColorCountParams {
 	maxColors:
-		"2" | "4" | "8" | "16" | "32" | "44" | "64" | "96" | "128" | "192" | "256";
+		| "2"
+		| "4"
+		| "8"
+		| "16"
+		| "32"
+		| "44"
+		| "64"
+		| "96"
+		| "128"
+		| "192"
+		| "256";
 }
 
 export const decreaseColorCountSchema = toolSchema<DecreaseColorCountParams>({

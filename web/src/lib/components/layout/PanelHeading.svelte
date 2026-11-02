@@ -12,10 +12,14 @@
 
 <header class="panel-heading">
 	<div class="heading-text">
-		{#if eyebrow}<MonoLabel accent>{eyebrow}</MonoLabel>{/if}
+		{#if eyebrow}
+			<MonoLabel accent>{eyebrow}</MonoLabel>
+		{/if}
 		<strong class="heading-title">{title}</strong>
 	</div>
-	{#if actions}<div class="heading-actions">{@render actions()}</div>{/if}
+	{#if actions}
+		<div class="heading-actions">{@render actions()}</div>
+	{/if}
 </header>
 
 <style>

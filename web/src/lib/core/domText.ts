@@ -110,10 +110,8 @@ export function drawTextBlock(
 	return toPixelImage(canvas);
 }
 
-export interface TileTextOptions extends Omit<
-	TextBlockOptions,
-	"position" | "margin" | "angleDeg"
-> {
+export interface TileTextOptions
+	extends Omit<TextBlockOptions, "position" | "margin" | "angleDeg"> {
 	stepX: number;
 	stepY: number;
 	angleDeg: number;

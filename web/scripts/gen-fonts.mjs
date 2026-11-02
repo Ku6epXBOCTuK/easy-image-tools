@@ -5,7 +5,7 @@ import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import prettier from "prettier";
+import { formatCode } from "./format-code.mjs";
 
 const require = createRequire(import.meta.url);
 const fontkit = require("fontkit");
@@ -145,10 +145,6 @@ for (const family of FAMILIES) {
 }
 
 const outPath = join(WEB, "src", "fonts.generated.css");
-const config = await prettier.resolveConfig(outPath);
-const formatted = await prettier.format(rules.join("\n\n"), {
-	...config,
-	filepath: outPath,
-});
+const formatted = formatCode(rules.join("\n\n"), outPath);
 writeFileSync(outPath, formatted);
 console.log(`fonts.generated.css written: ${rules.length} rules`);

@@ -24,12 +24,16 @@
 	class:feature={size === "feature"}
 	href={resolve("/tools/[slug]", { slug })}
 >
-	{#if icon}<span class="tool-icon"
+	{#if icon}
+		<span class="tool-icon"
 			><Icon {icon} size={size === "feature" ? 22 : 19} /></span
-		>{/if}
+		>
+	{/if}
 	<span class="tool-copy">
 		<strong>{title}</strong>
-		{#if description}<span>{description}</span>{/if}
+		{#if description}
+			<span>{description}</span>
+		{/if}
 	</span>
 	<button
 		type="button"
@@ -103,7 +107,7 @@
 		color: var(--color-text);
 	}
 	.tool-copy span {
-		font: var(--font-size-s)/1.5 var(--font-mono);
+		font: var(--font-size-s) / 1.5 var(--font-mono);
 		color: var(--color-text-muted);
 	}
 	.tool-index {
@@ -122,6 +126,6 @@
 		font: 600 var(--font-size-l) var(--font-mono);
 	}
 	.tool-card.feature .tool-copy span {
-		font: var(--font-size-m)/1.6 var(--font-mono);
+		font: var(--font-size-m) / 1.6 var(--font-mono);
 	}
 </style>

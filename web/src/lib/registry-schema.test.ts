@@ -109,7 +109,10 @@ describe("registry-schema: withAspectLock", () => {
 
 	it("leading height - width is recomputed", () => {
 		expect(withAspectLock({ width: 64, height: 96 }, "height", aspect)).toEqual(
-			{ width: 128, height: 96 },
+			{
+				width: 128,
+				height: 96,
+			},
 		);
 	});
 

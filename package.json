@@ -10,8 +10,8 @@
     "dev": "pnpm --dir web dev",
     "build": "pnpm --dir web build",
     "format": "pnpm format:docs && pnpm --dir web format",
-    "format:docs": "prettier --write AGENTS.md README.md docs --log-level warn --cache",
-    "check:docs": "prettier --check AGENTS.md README.md docs --cache",
+    "format:docs": "biome format --write AGENTS.md README.md docs web/eslint-plugins/README.md",
+    "check:docs": "biome format AGENTS.md README.md docs web/eslint-plugins/README.md",
     "generate:fixtures": "node tests/fixtures/manual-edge-cases/generate.mjs"
   },
   "keywords": [],
@@ -26,6 +26,6 @@
   },
   "type": "module",
   "devDependencies": {
-    "prettier": "^3.9.6"
+    "@biomejs/biome": "2.6.4"
   }
 }

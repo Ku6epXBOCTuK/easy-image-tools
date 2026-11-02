@@ -52,8 +52,14 @@
 	class="badge badge-tone--{tone} badge-variant--{variant} badge-size--{size}"
 	{...rest}
 >
-	{#if check}<Check size={12} />{/if}
-	{#if children}{@render children()}{:else}{label}{/if}
+	{#if check}
+		<Check size={12} />
+	{/if}
+	{#if children}
+		{@render children()}
+	{:else}
+		{label}
+	{/if}
 </span>
 
 <style>

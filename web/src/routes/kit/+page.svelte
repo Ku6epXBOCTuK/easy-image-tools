@@ -258,9 +258,9 @@
 	.preview-grid {
 		display: grid;
 		grid-template-columns: repeat(
-			auto-fill,
-			minmax(var(--size-card-min-narrow), 1fr)
-		);
+				auto-fill,
+				minmax(var(--size-card-min-narrow), 1fr)
+			);
 		gap: var(--space-l);
 		padding: var(--space-l) var(--space-xl);
 	}

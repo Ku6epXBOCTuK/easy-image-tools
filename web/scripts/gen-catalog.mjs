@@ -4,7 +4,7 @@
 import { mkdirSync, writeFileSync, readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { join } from "node:path";
-import prettier from "prettier";
+import { formatCode } from "./format-code.mjs";
 
 const LIB = fileURLToPath(new URL("../src/lib/", import.meta.url));
 
@@ -74,8 +74,7 @@ ${rows}
 `;
 
 const outPath = join(LIB, "registry", "catalog.generated.ts");
-const config = await prettier.resolveConfig(outPath);
-const formatted = await prettier.format(body, { ...config, filepath: outPath });
+const formatted = formatCode(body, outPath);
 mkdirSync(join(LIB, "registry"), { recursive: true });
 writeFileSync(outPath, formatted);
 console.log(`catalog.generated.ts written: ${pages.length} pages`);

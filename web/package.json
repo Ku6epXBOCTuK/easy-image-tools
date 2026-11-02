@@ -16,8 +16,8 @@
 		"test:e2e": "playwright test",
 		"gen:og": "node scripts/gen-og.mjs",
 		"gen:catalog": "node scripts/gen-catalog.mjs",
-		"format": "prettier --write . --log-level warn --cache",
-		"format:check": "prettier --check . --log-level warn --cache",
+		"format": "biome format --write .",
+		"format:check": "biome format .",
 		"lint": "eslint .",
 		"lint:css": "stylelint \"./src/**/*.css\"",
 		"lint:all": "node scripts/lint-all.mjs",
@@ -26,6 +26,7 @@
 		"check:cwv": "node scripts/check-cwv.mjs"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "2.6.4",
 		"@csstools/postcss-global-data": "^4.0.0",
 		"@eslint/js": "^10.0.1",
 		"@panmdaa/colors": "^0.4.2",
@@ -44,8 +45,6 @@
 		"playwright": "^1.62.1",
 		"postcss": "^8.5.26",
 		"postcss-custom-media": "^12.0.1",
-		"prettier": "^3.9.6",
-		"prettier-plugin-svelte": "^4.1.1",
 		"stylelint": "^17.14.1",
 		"stylelint-config-standard": "^40.0.0",
 		"svelte": "^5.56.1",

@@ -13,7 +13,9 @@
 </script>
 
 <div class="code-block">
-	{#if lang}<span class="code-lang">{lang}</span>{/if}
+	{#if lang}
+		<span class="code-lang">{lang}</span>
+	{/if}
 	<pre class="code-pre"><code>{code}</code></pre>
 	{#if copyable}
 		<div class="code-copy">

@@ -29,7 +29,8 @@ and open source.
   no server
 - **Vite** + **TypeScript** (strict)
 - **Vitest** for unit tests, **Playwright** for e2e
-- **ESLint** (incl. local plugins) + Stylelint + Prettier
+- **ESLint** (incl. local plugins) + Stylelint for linting, **Biome** for
+  formatting
 - **pnpm** (required, ^11.20.0)
 - **Lucide** icons, **IBM Plex** fonts (self-hosted)
 

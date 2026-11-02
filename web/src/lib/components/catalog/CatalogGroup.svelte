@@ -25,8 +25,7 @@
 		{:else}
 			<h2>{label}</h2>
 		{/if}
-		<i>{count.toString().padStart(2, "0")} <!-- --> {t("catalog.toolsCount")}</i
-		>
+		<i>{count.toString().padStart(2, "0")} {t("catalog.toolsCount")}</i>
 	</div>
 	<div class="tool-cards">
 		{@render children()}

@@ -537,10 +537,7 @@
 	   with the input/output pair and the right side reads as one panel. */
 	.workspace {
 		display: grid;
-		grid-template-columns: minmax(var(--size-workspace-min), 1fr) minmax(
-				0,
-				2fr
-			);
+		grid-template-columns: minmax(var(--size-workspace-min), 1fr) minmax(0, 2fr);
 		gap: var(--space-xxl);
 		align-items: start;
 	}

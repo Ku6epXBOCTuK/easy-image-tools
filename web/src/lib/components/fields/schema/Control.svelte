@@ -20,7 +20,9 @@
 <svelte:element this={element} class="control" class:control--row={row}>
 	<span class="label">
 		{label}
-		{#if trailing}{@render trailing()}{/if}
+		{#if trailing}
+			{@render trailing()}
+		{/if}
 	</span>
 	{@render children()}
 </svelte:element>

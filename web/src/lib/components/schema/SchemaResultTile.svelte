@@ -105,7 +105,9 @@
 					ondownload={ondownloadtxt ?? (() => {})}
 				/>
 			</div>
-		{:else if resultKind === "files" && fileResult && fileResult.files.length > 0}
+		{:else if resultKind === "files" &&
+			fileResult &&
+			fileResult.files.length > 0}
 			<PartsGrid files={fileResult.files} />
 		{:else if resultKind === "image" && resultUrl}
 			<img
@@ -148,7 +150,8 @@
 		display: block;
 	}
 	.canvas.checker {
-		background: repeating-conic-gradient(
+		background:
+			repeating-conic-gradient(
 				var(--color-checker-main) 0 25%,
 				var(--color-checker-alt) 0 50%
 			)

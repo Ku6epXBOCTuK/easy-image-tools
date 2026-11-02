@@ -16,9 +16,10 @@ pnpm verify
 1. `pnpm --dir web check` — SvelteKit sync и `svelte-check`.
 2. `pnpm --dir web test` — полный Vitest-набор, включая тесты ESLint-правил.
 3. `pnpm --dir web lint:all` — ESLint, Stylelint и token audit.
-4. `pnpm --dir web format:check` — форматирование кода `web/`.
+4. `pnpm --dir web format:check` — форматирование кода `web/` через Biome
+   (`biome.json` в корне).
 5. `pnpm check:docs` — форматирование Markdown (`AGENTS.md`, `README.md`,
-   `docs/`).
+   `docs/`, `web/eslint-plugins/README.md`) тем же Biome.
 6. `pnpm --dir web build` — production build, затем генераторы `sitemap.xml` и
    `llms.txt` в `build/` (набор страниц берётся из собранного HTML, правило —
    `docs/plan-seo.md`, §1).

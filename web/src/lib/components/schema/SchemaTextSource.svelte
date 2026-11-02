@@ -34,7 +34,8 @@
 				e.preventDefault();
 				onrender();
 			}
-		}}></textarea>
+		}}
+	></textarea>
 	<div class="actions">
 		{#if onsample}
 			<Button

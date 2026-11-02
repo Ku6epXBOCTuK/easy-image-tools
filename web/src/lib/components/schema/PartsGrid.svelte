@@ -34,9 +34,9 @@
 	.parts-grid {
 		display: grid;
 		grid-template-columns: repeat(
-			auto-fill,
-			minmax(var(--size-parts-grid-min), 1fr)
-		);
+				auto-fill,
+				minmax(var(--size-parts-grid-min), 1fr)
+			);
 		gap: var(--space-m);
 		width: 100%;
 		padding: var(--space-l);
@@ -55,7 +55,8 @@
 		display: block;
 		border: var(--size-border) solid var(--color-border);
 		border-radius: var(--radius-s);
-		background: repeating-conic-gradient(
+		background:
+			repeating-conic-gradient(
 				var(--color-checker-main) 0 25%,
 				var(--color-checker-alt) 0 50%
 			)

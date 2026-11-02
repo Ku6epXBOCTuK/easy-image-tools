@@ -33,7 +33,9 @@
 			oninput={handle}
 			spellcheck="false"
 		/>
-		{#if chevron}<ChevronDown class="icon" size={14} />{/if}
+		{#if chevron}
+			<ChevronDown class="icon" size={14} />
+		{/if}
 	</div>
 </label>
 

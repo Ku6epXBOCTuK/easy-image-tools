@@ -1,6 +1,6 @@
 import js from "@eslint/js";
 import { defineConfig } from "eslint/config";
-import prettier from "eslint-config-prettier";
+import formattingRulesOff from "eslint-config-prettier";
 import svelte from "eslint-plugin-svelte";
 import globals from "globals";
 import svelteParser from "svelte-eslint-parser";
@@ -279,6 +279,6 @@ export default defineConfig(
 			"prefer-const": "off",
 		},
 	},
-	// NOTE: prettier goes last to silence formatting rules from the recommended sets.
-	prettier,
+	// NOTE: last, so the formatter's rules stay off; Biome owns formatting.
+	formattingRulesOff,
 );

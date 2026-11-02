@@ -13,7 +13,9 @@
 <div class="field">
 	<MonoLabel>{label}</MonoLabel>
 	<div class="field-control">{@render children()}</div>
-	{#if hint}<span class="field-hint">{hint}</span>{/if}
+	{#if hint}
+		<span class="field-hint">{hint}</span>
+	{/if}
 </div>
 
 <style>

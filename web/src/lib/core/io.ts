@@ -3,7 +3,10 @@ import { ToolError } from "./errors";
 import { type PixelImage } from "./types";
 
 export type OutputMime =
-	"image/png" | "image/jpeg" | "image/webp" | "image/bmp";
+	| "image/png"
+	| "image/jpeg"
+	| "image/webp"
+	| "image/bmp";
 
 export const ACCEPTED_IMAGE_TYPES =
 	"image/png,image/jpeg,image/webp,image/gif,image/bmp,image/x-icon";

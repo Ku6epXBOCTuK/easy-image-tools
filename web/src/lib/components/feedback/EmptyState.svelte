@@ -12,10 +12,16 @@
 </script>
 
 <div class="empty-state">
-	{#if icon}<span class="empty-icon"><Icon {icon} size={28} /></span>{/if}
+	{#if icon}
+		<span class="empty-icon"><Icon {icon} size={28} /></span>
+	{/if}
 	<strong class="empty-title">{title}</strong>
-	{#if description}<span class="empty-desc">{description}</span>{/if}
-	{#if children}<div class="empty-action">{@render children()}</div>{/if}
+	{#if description}
+		<span class="empty-desc">{description}</span>
+	{/if}
+	{#if children}
+		<div class="empty-action">{@render children()}</div>
+	{/if}
 </div>
 
 <style>

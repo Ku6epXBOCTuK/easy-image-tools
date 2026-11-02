@@ -45,9 +45,8 @@ export interface SelectSpec<V extends string = string> extends FieldSpecBase {
 }
 
 // NOTE: Same as select but rendered as segment buttons (1-click choice).
-export interface SegmentedSpec<
-	V extends string = string,
-> extends FieldSpecBase {
+export interface SegmentedSpec<V extends string = string>
+	extends FieldSpecBase {
 	kind: "segmented";
 	default: V;
 	options: { value: V; label: string }[];

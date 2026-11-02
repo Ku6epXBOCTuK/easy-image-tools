@@ -129,7 +129,8 @@ describe("dictionary completeness for the new registry", () => {
 				for (const fieldId of group.fields) {
 					const label = (
 						tool.schema?.fields[fieldId] as
-							{ spec?: { label?: string } } | undefined
+							| { spec?: { label?: string } }
+							| undefined
 					)?.spec?.label;
 					if (!label) continue;
 					const labelKey = label.replace(/^fields\./, "");

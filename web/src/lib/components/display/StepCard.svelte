@@ -42,11 +42,17 @@
 			<GripVertical size={16} class="drag" aria-hidden="true" />
 		</span>
 		<div class="step-heading-text">
-			{#if type}<span class="step-type">{type}</span>{/if}
-			{#if title}<h2 class="step-title">{title}</h2>{/if}
+			{#if type}
+				<span class="step-type">{type}</span>
+			{/if}
+			{#if title}
+				<h2 class="step-title">{title}</h2>
+			{/if}
 		</div>
 		<div class="step-tools">
-			{#if tools}{@render tools()}{/if}
+			{#if tools}
+				{@render tools()}
+			{/if}
 			{#if ontoggle}
 				<IconButton
 					icon={collapsed ? ChevronRight : ChevronDown}

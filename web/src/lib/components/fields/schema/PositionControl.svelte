@@ -25,7 +25,7 @@
 		{#each POSITION9_VALUES as position (position)}
 			<button
 				type="button"
-				class="cell {current === position ? 'active' : ''}"
+				class="cell {current === position ? "active" : ""}"
 				aria-label={position}
 				aria-pressed={current === position}
 				onclick={() => onchange?.(position)}
