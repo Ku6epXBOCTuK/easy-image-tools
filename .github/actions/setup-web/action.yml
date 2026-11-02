@@ -1,0 +1,41 @@
+name: Setup web
+description: pnpm, Node, root and web dependencies, ui-kit from GitHub, SvelteKit sync
+
+runs:
+  using: composite
+  steps:
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: ^11.20.0
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 24
+        cache: pnpm
+        cache-dependency-path: |
+          pnpm-lock.yaml
+          web/pnpm-lock.yaml
+
+    - name: Install root dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile
+
+    - name: Use ui-kit from GitHub
+      shell: bash
+      run: node web/scripts/use-kit-from-github.mjs
+
+    - name: Install web dependencies
+      shell: bash
+      working-directory: web
+      run: pnpm install --no-frozen-lockfile
+
+    - name: Refresh ui-kit
+      shell: bash
+      working-directory: web
+      run: pnpm update @ku6epxboctuk/ui-kit
+
+    - name: Sync SvelteKit
+      shell: bash
+      run: pnpm --dir web exec svelte-kit sync

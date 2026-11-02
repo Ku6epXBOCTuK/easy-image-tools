@@ -7,45 +7,60 @@ permissions:
   contents: read
 
 jobs:
-  verify:
-    name: Fast quality gate
+  types:
+    name: Types
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-web
+      - name: svelte-check
+        run: pnpm --dir web check
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+  lint:
+    name: Lint and formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-web
+      - name: Restore lint caches
+        uses: actions/cache@v4
         with:
-          version: ^11.20.0
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: pnpm
-          cache-dependency-path: |
-            pnpm-lock.yaml
-            web/pnpm-lock.yaml
-
-      - name: Install root dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Use ui-kit from GitHub
-        run: node web/scripts/use-kit-from-github.mjs
-
-      - name: Install web dependencies
-        working-directory: web
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Refresh ui-kit
-        working-directory: web
-        run: pnpm update @ku6epxboctuk/ui-kit
-
-      - name: Run quality gate
+          path: |
+            web/node_modules/.cache/eslint
+            web/node_modules/.cache/stylelint
+          key: lint-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            lint-${{ runner.os }}-
+      - name: Lint
         env:
           EIT_DEPRECATED_IMPORTS: "1"
-        run: pnpm verify
+        run: pnpm --dir web lint:all
+      - name: Check code formatting
+        run: pnpm --dir web format:check
+      - name: Check docs formatting
+        run: pnpm check:docs
+
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-web
+      - name: Vitest
+        run: pnpm --dir web test
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-web
+      - name: Build
+        run: pnpm --dir web build
 
   coverage:
     name: Coverage gate
@@ -53,34 +68,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: ^11.20.0
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: pnpm
-          cache-dependency-path: |
-            pnpm-lock.yaml
-            web/pnpm-lock.yaml
-
-      - name: Install root dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Use ui-kit from GitHub
-        run: node web/scripts/use-kit-from-github.mjs
-
-      - name: Install web dependencies
-        working-directory: web
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Refresh ui-kit
-        working-directory: web
-        run: pnpm update @ku6epxboctuk/ui-kit
-
-      - name: Run coverage
+      - uses: ./.github/actions/setup-web
+      - name: Vitest with coverage
         run: pnpm --dir web test:coverage

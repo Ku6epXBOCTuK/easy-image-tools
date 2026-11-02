@@ -25,7 +25,7 @@ pnpm verify
    `docs/plan-seo.md`, §1).
 
 Coverage в `verify` не входит: порог проверяет отдельный джоб `coverage` в
-`.github/workflows/verify.yml`, который идёт параллельно с гейтом. Быстрый
+`.github/workflows/verify.yml`, который идёт параллельно остальным. Быстрый
 прогон только тестов правил — `pnpm --dir web test:rules`.
 
 ## Coverage
@@ -116,7 +116,7 @@ mobile-пресете (эмуляция устройства, slow 4G, simulated
 
 - `errors` завершают соответствующий инструмент ненулевым кодом.
 - ESLint запускается с `--max-warnings=0`: новые ESLint warnings блокируют gate.
-- `conventions/no-deprecated-import` работает только в CI: в джобе `verify`
+- `conventions/no-deprecated-import` работает только в CI: в джобе `lint`
   задан `EIT_DEPRECATED_IMPORTS=1`, локально правило не подключается (нет
   затрат). Строка `[1/3] ESLint ...` в выводе `lint:all` показывает, включено ли
   оно.
@@ -138,9 +138,16 @@ token warnings раздельно.
 
 `.github/workflows/quality.yml`:
 
-- `verify` блокирует PR при typecheck, unit, rule-test, lint, format, docs или
-  build ошибке;
+- `verify` блокирует PR при ошибке в любом своём джобе: typecheck, lint,
+  formatting, docs, unit, rule-test, build или coverage;
 - `e2e` запускается отдельным job после verify и пока не блокирует PR.
+
+Внутри `verify.yml` пять независимых джобов — `types`, `lint`, `test`, `build`,
+`coverage` — идут параллельно: общий шаг установки вынесен в
+`.github/actions/setup-web` (pnpm, Node с кешем store, корневые и web-зависимости,
+ui-kit из GitHub, `svelte-kit sync`). Джоб `lint` восстанавливает кеши ESLint и
+Stylelint из `actions/cache`; в `lint-all` для обоих задана стратегия `content`,
+иначе свежий checkout меняет mtime и кеш не попадает.
 
 `.github/workflows/deploy.yml` перед production build запускает тот же
 `pnpm verify`, поэтому deploy не должен проходить при ошибке быстрых проверок.
