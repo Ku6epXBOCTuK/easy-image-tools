@@ -475,6 +475,7 @@ describe("registry-new (migrated tools)", () => {
 
 	it("change-canvas-size uses anchor for positioning", async () => {
 		const tool = TOOLS.find((t) => t.id === "change-canvas-size")!;
+		expect(tool.schema.fields.anchor.spec.kind).toBe("position9");
 		const img = solid(10, 10);
 		const out = asImage(
 			await tool.run({
