@@ -5,7 +5,7 @@
 	import { OUTPUT_FORMATS, outputFormatByMime } from "$lib/output-formats";
 	import type { SliderSpec } from "$lib/registry-schema";
 	import { t } from "$lib/i18n/t";
-	import Popover from "@ku6epxboctuk/ui-kit/components/Popover";
+	import Popover from "@ku6epxboctuk/ui-kit/components/Popover.svelte";
 	import { ChevronDown, Download } from "@lucide/svelte";
 
 	interface Props {

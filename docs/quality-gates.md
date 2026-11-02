@@ -13,7 +13,7 @@ pnpm verify
 
 `verify` выполняет последовательно:
 
-1. `pnpm --dir web check` — SvelteKit sync и `svelte-check`.
+1. `pnpm --dir web check` — SvelteKit sync и `svelte-check --incremental`.
 2. `pnpm --dir web test` — полный Vitest-набор, включая тесты ESLint-правил.
 3. `pnpm --dir web lint:all` — ESLint, Stylelint и token audit.
 4. `pnpm --dir web format:check` — форматирование кода `web/` через Biome

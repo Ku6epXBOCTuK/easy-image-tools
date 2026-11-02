@@ -12,7 +12,7 @@
 	import { favPages, isFav, toggleFav } from "$lib/favorites.svelte";
 	import { popularityOf } from "$lib/registry/popularity";
 	import type { Page } from "$lib/registry";
-	import Popover from "@ku6epxboctuk/ui-kit/components/Popover";
+	import Popover from "@ku6epxboctuk/ui-kit/components/Popover.svelte";
 	import { Plus, Repeat, Star } from "@lucide/svelte";
 	import { onMount } from "svelte";
 

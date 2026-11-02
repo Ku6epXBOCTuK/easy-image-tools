@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { t } from "$lib/i18n/t";
-	import Popover from "@ku6epxboctuk/ui-kit/components/Popover";
+	import Popover from "@ku6epxboctuk/ui-kit/components/Popover.svelte";
 	import Badge from "./Badge.svelte";
 
 	interface Props {
