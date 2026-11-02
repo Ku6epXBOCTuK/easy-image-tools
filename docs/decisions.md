@@ -143,7 +143,9 @@ PR и ручном dispatch её запускает `quality.yml`, на push в 
 
 1. Условия matrix пересмотрены: решено, какие спецификации обязаны идти в
    `browserContractTests` и `mobileTests`, нужен ли `png-fixtures` вне Chromium
-   и что делать с engine-специфичными расхождениями декодеров.
+   и что делать с engine-специфичными расхождениями декодеров. Решено:
+   `png-fixtures` — Chromium и Firefox, WebKit из неё убран из-за висящего
+   `createImageBitmap` (`docs/testing-strategy.md`, раздел 7).
 2. Накопились стабильные прогоны на раннере без падений по таймингу.
 3. Вместе с `continue-on-error` снимается и сам trick с общим conclusion: иначе
    зелёный прогон при красном `e2e` останется возможен.

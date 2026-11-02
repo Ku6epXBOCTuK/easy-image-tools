@@ -2,7 +2,6 @@ import { defineConfig } from "playwright/test";
 
 const browserContractTests = [
 	"**/tool-flows.spec.ts",
-	"**/png-fixtures.spec.ts",
 	"**/text-and-verdicts.spec.ts",
 ];
 

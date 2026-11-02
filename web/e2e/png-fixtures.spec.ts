@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "playwright/test";
+import { expect, type Page, test } from "playwright/test";
 import {
 	crcBadAncillaryPng,
 	crcBadIdatPng,
@@ -6,10 +6,10 @@ import {
 	idatCutPng,
 	palette4Png,
 	palette256Png,
+	type SourceFile,
 	sixteenBitPng,
 	truncatedHeaderPng,
 	truncatedNoIendPng,
-	type SourceFile,
 } from "./helpers/fixtures";
 import {
 	errorAlert,
@@ -46,7 +46,7 @@ type DecodeContract = {
 
 const decodeContracts: readonly DecodeContract[] = [
 	{ file: crcBadIdatPng, rejectedIn: ["chromium", "firefox"] },
-	{ file: truncatedHeaderPng, rejectedIn: ["chromium", "firefox", "webkit"] },
+	{ file: truncatedHeaderPng, rejectedIn: ["chromium", "firefox"] },
 	{ file: truncatedNoIendPng, rejectedIn: ["chromium"] },
 	{ file: idatCutPng, rejectedIn: ["chromium"] },
 	{ file: crcBadAncillaryPng, rejectedIn: [] },
@@ -56,24 +56,12 @@ const decodeContracts: readonly DecodeContract[] = [
 	{ file: sixteenBitPng, rejectedIn: [] },
 ];
 
-// NOTE: On these files createImageBitmap in webkit never settles: no result and
-// no error, so the "accept or reject" contract cannot be verified.
-const webkitHangs = new Set([
-	"truncated-header.png",
-	"crc-bad-ancillary.png",
-	"palette-256.png",
-]);
-
 test.describe("PNG special fixtures", () => {
 	for (const { file, rejectedIn } of decodeContracts) {
 		test(`${file.name}: matches the engine decode contract`, async ({
 			browserName,
 			page,
 		}) => {
-			test.fixme(
-				browserName === "webkit" && webkitHangs.has(file.name),
-				"webkit createImageBitmap hangs on this file",
-			);
 			if (rejectedIn.includes(browserName)) {
 				await expectRejected(page, file);
 			} else {

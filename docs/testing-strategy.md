@@ -108,8 +108,14 @@ non-blocking E2E не считается заменой локальному smo
 | ----------------- | -------- | ------------------------------------------------------------------------ |
 | `chromium`        | Chromium | все e2e                                                                  |
 | `firefox`         | Firefox  | `tool-flows`, `png-fixtures`, `text-and-verdicts`                        |
-| `webkit`          | WebKit   | `tool-flows`, `png-fixtures`, `text-and-verdicts`                        |
+| `webkit`          | WebKit   | `tool-flows`, `text-and-verdicts`                                        |
 | `mobile-chromium` | Chromium | `navigation`, `catalog`, `generators`, `tool-flows`, 390×844, `hasTouch` |
+
+- `png-fixtures` идёт только в Chromium и Firefox: на трёх файлах WebKit не
+  завершает `createImageBitmap` ни результатом, ни ошибкой, поэтому контракт
+  «принят или отклонён» там не проверить. Держать спек в WebKit со skip-ами
+  дороже, чем потерять эти проверки: зелёный прогон не должен нести постоянные
+  skipped.
 
 - Название `tool-flows.spec.ts` описывает содержание: сквозной поток одного
   инструмента (загрузка → правка параметра → результат → download) на наборе
@@ -128,13 +134,13 @@ non-blocking E2E не считается заменой локальному smo
 - Расхождения декодеров не ужесточаются и не скрываются skip-ом: они описаны в
   тесте как ожидаемое поведение движка.
 
-  | Fixture                              | Отклоняют                 |
-  | ------------------------------------ | ------------------------- |
-  | `crc-bad-idat.png`                   | Chromium, Firefox         |
-  | `truncated-header.png`               | Chromium, Firefox, WebKit |
-  | `truncated-no-iend.png`              | Chromium                  |
-  | `idat-cut.png`                       | Chromium                  |
-  | ancillary CRC, tail, palette, 16-bit | ни один движок            |
+  | Fixture                              | Отклоняют         |
+  | ------------------------------------ | ----------------- |
+  | `crc-bad-idat.png`                   | Chromium, Firefox |
+  | `truncated-header.png`               | Chromium, Firefox |
+  | `truncated-no-iend.png`              | Chromium          |
+  | `idat-cut.png`                       | Chromium          |
+  | ancillary CRC, tail, palette, 16-bit | ни один движок    |
 
 - `workers` — 1 локально и 2 в CI: Playwright не умеет per-project лимит
   воркеров, а browser matrix ограничена памятью, а не CPU. Правила нагрузки на
