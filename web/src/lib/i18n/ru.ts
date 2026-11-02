@@ -1019,26 +1019,7 @@ export const ru: Dict = {
 	},
 
 	tools: {
-		"from-hex": {
-			params: { width: "Ширина изображения" },
-		},
-		resize: {
-			params: {
-				width: "Ширина (0 — авто)",
-				height: "Высота (0 — авто)",
-				keepAspect: "Сохранять пропорции",
-			},
-		},
-		crop: {
-			params: {
-				x: "X (слева)",
-				y: "Y (сверху)",
-				width: "Ширина области",
-				height: "Высота области",
-			},
-		},
 		rotate: {
-			params: { angle: "Угол поворота" },
 			options: {
 				angle: {
 					"90": "90° по часовой",
@@ -1048,7 +1029,6 @@ export const ru: Dict = {
 			},
 		},
 		flip: {
-			params: { axis: "Ось отражения" },
 			options: {
 				axis: {
 					horizontal: "По горизонтали (слева направо)",
@@ -1056,59 +1036,15 @@ export const ru: Dict = {
 				},
 			},
 		},
-		"add-padding": {
-			params: {
-				padding: "Поля, px",
-				opacity: "Непрозрачность полей, %",
-				color: "Цвет полей",
-			},
-		},
-		"add-border": {
-			params: { thickness: "Толщина рамки, px", color: "Цвет рамки" },
-		},
-		"fit-on-background": {
-			params: {
-				width: "Ширина полотна",
-				height: "Высота полотна",
-				opacity: "Непрозрачность фона, %",
-				color: "Цвет фона",
-			},
-		},
 		"split-into-parts": {
-			params: {
-				mode: "Режим",
-				columns: "Столбцов",
-				rows: "Строк",
-				tile: "Размер тайла",
-			},
 			options: {
 				mode: { grid: "Сетка", tile: "Размер тайла" },
 			},
 		},
-		tile: {
-			params: { columns: "Столбцов", rows: "Строк" },
-		},
-		blur: {
-			params: { radius: "Радиус, px" },
-		},
-		sharpen: {
-			params: { strength: "Сила, %" },
-		},
-		"adjust-brightness-contrast": {
-			params: { brightness: "Яркость", contrast: "Контраст" },
-		},
-		"change-opacity": {
-			params: { percent: "Прозрачность, %" },
-		},
-		"change-hue": {
-			params: { degrees: "Сдвиг тона, °" },
-		},
 		"extract-channel": {
-			params: { channel: "Канал" },
 			options: { channel: { red: "Красный", green: "Зелёный", blue: "Синий" } },
 		},
 		"swap-channels": {
-			params: { pair: "Пара каналов" },
 			options: {
 				pair: {
 					"r-g": "Красный ↔ Зелёный",
@@ -1147,169 +1083,28 @@ export const ru: Dict = {
 				display: { gray: "Оттенки серого", color: "Пространство как RGB" },
 			},
 		},
-		"black-and-white": {
-			params: { threshold: "Порог яркости, %" },
-		},
-		posterize: {
-			params: { levels: "Уровней на канал" },
-		},
-		"two-colors": {
-			params: {
-				lightColor: "Цвет светлых участков",
-				darkColor: "Цвет тёмных участков",
-				threshold: "Порог яркости, %",
-			},
-		},
-		"to-jpg": {
-			params: { background: "Цвет подложки", quality: "Качество JPEG" },
-		},
-		"to-webp": {
-			params: { quality: "Качество WebP" },
-		},
-		"set-alpha-channel": {
-			params: { percent: "Прозрачность, %" },
-		},
-		"round-corners": {
-			params: { radius: "Радиус скругления, %" },
-		},
-		"remove-background": {
-			params: {
-				color: "Цвет фона",
-				tolerance: "Допуск похожести, %",
-				outerOnly: "Только внешние области",
-				smooth: "Сглаживание границы, проходы",
-			},
-		},
-		"add-stroke": {
-			params: { color: "Цвет обводки", thickness: "Толщина, px" },
-		},
-		"find-contour": {
-			params: { color: "Цвет линии", thickness: "Толщина линии, px" },
-		},
-		"make-thicker": {
-			params: { radius: "На сколько px" },
-		},
-		"make-thinner": {
-			params: { radius: "На сколько px" },
-		},
-		"harden-alpha": {
-			params: { threshold: "Порог альфы, %" },
-		},
-		"despeckle-alpha": {
-			params: { radius: "Радиус очистки, px" },
-		},
-		"close-holes": {
-			params: { radius: "Радиус закрытия, px" },
-		},
-		"remove-color-from": {
-			params: {
-				targetColor: "Цвет для удаления",
-				tolerance: "Порог похожести, %",
-			},
-		},
-		"create-empty": {
-			params: {
-				width: "Ширина",
-				height: "Высота",
-				opacity: "Непрозрачность",
-				color: "Цвет",
-			},
-		},
-		"single-color": {
-			params: { width: "Ширина", height: "Высота", color: "Цвет" },
-		},
-		"random-noise": {
-			params: { width: "Ширина", height: "Высота", seed: "Зерно" },
-		},
-		"linear-gradient": {
-			params: {
-				width: "Ширина",
-				height: "Высота",
-				fromColor: "Цвет начала",
-				toColor: "Цвет конца",
-				direction: "Направление",
-			},
-		},
-		"color-wheel": {
-			params: { width: "Размер", lightness: "Светлота, %" },
-		},
 		complementary: {
-			params: {
-				baseColor: "Базовый цвет",
-				width: "Ширина",
-				layout: "Раскладка",
-			},
 			options: { layout: { grid: "Сетка", strip: "Полоса" } },
 		},
 		triadic: {
-			params: {
-				baseColor: "Базовый цвет",
-				width: "Ширина",
-				layout: "Раскладка",
-			},
 			options: { layout: { grid: "Сетка", strip: "Полоса" } },
 		},
 		tetradic: {
-			params: {
-				baseColor: "Базовый цвет",
-				width: "Ширина",
-				layout: "Раскладка",
-			},
 			options: { layout: { grid: "Сетка", strip: "Полоса" } },
 		},
 		analogous: {
-			params: {
-				baseColor: "Базовый цвет",
-				width: "Ширина",
-				layout: "Раскладка",
-				spread: "Разброс оттенка, °",
-				count: "Сколько цветов",
-			},
 			options: { layout: { grid: "Сетка", strip: "Полоса" } },
 		},
 		monochromatic: {
-			params: {
-				baseColor: "Базовый цвет",
-				width: "Ширина",
-				layout: "Раскладка",
-				count: "Сколько цветов",
-				range: "Диапазон светлоты, %",
-			},
 			options: { layout: { grid: "Сетка", strip: "Полоса" } },
 		},
 		shades: {
-			params: {
-				baseColor: "Базовый цвет",
-				width: "Ширина",
-				layout: "Раскладка",
-				count: "Сколько цветов",
-				depth: "Глубина затемнения, %",
-			},
 			options: { layout: { grid: "Сетка", strip: "Полоса" } },
 		},
-		"mix-colors": {
-			params: { colors: "Цвета (hex через запятую)", width: "Ширина" },
-		},
-		"blend-two": {
-			params: { colorA: "Цвет A", colorB: "Цвет B", width: "Ширина" },
-		},
 		"step-colors": {
-			params: {
-				colorA: "Цвет A",
-				colorB: "Цвет B",
-				steps: "Сколько ступеней",
-				width: "Ширина",
-				layout: "Раскладка",
-			},
 			options: { layout: { grid: "Сетка", strip: "Полоса" } },
 		},
 		"sort-colors": {
-			params: {
-				colors: "Цвета (hex через запятую)",
-				order: "Сортировка",
-				width: "Ширина",
-				layout: "Раскладка",
-			},
 			options: {
 				order: { hue: "Оттенок", luma: "Яркость", sat: "Насыщенность" },
 				layout: { grid: "Сетка", strip: "Полоса" },
@@ -1321,46 +1116,7 @@ export const ru: Dict = {
 				grayscaleNo: "Нет — найдены цветные пиксели.",
 			},
 		},
-		"circle-mask": {
-			params: {
-				size: "Диаметр, % меньшей стороны",
-				offsetX: "Смещение X, %",
-				offsetY: "Смещение Y, %",
-			},
-		},
-		"square-mask": {
-			params: {
-				widthPct: "Ширина, % меньшей стороны",
-				heightPct: "Высота, % меньшей стороны",
-				offsetX: "Смещение X, %",
-				offsetY: "Смещение Y, %",
-			},
-		},
-		"star-mask": {
-			params: {
-				points: "Лучи",
-				innerRadius: "Радиус впадин, %",
-				size: "Внешний радиус, % меньшей стороны",
-				rotation: "Поворот, °",
-				offsetX: "Смещение X, %",
-				offsetY: "Смещение Y, %",
-			},
-		},
-		"wavy-mask": {
-			params: {
-				size: "Базовый радиус, % меньшей стороны",
-				amplitude: "Амплитуда волн, %",
-				waves: "Количество волн",
-				phase: "Фаза, °",
-				offsetX: "Смещение X, %",
-				offsetY: "Смещение Y, %",
-			},
-		},
-		"trim-empty-space": {
-			params: { threshold: "Порог альфы" },
-		},
 		"change-canvas-size": {
-			params: { width: "Ширина", height: "Высота", anchor: "Якорь" },
 			options: {
 				anchor: {
 					"top-left": "Сверху слева",
@@ -1376,7 +1132,6 @@ export const ru: Dict = {
 			},
 		},
 		"change-aspect-ratio": {
-			params: { ratio: "Целевое отношение", mode: "Режим" },
 			options: {
 				ratio: {
 					"1:1": "1:1",
@@ -1394,11 +1149,9 @@ export const ru: Dict = {
 			},
 		},
 		"swap-orientation": {
-			params: { target: "Целевая ориентация" },
 			options: { target: { portrait: "Портрет", landscape: "Ландшафт" } },
 		},
 		"symmetric-copy": {
-			params: { axis: "Линия зеркала", keepSide: "Какая сторона остаётся" },
 			options: {
 				axis: {
 					vertical: "Вертикальная (ширина ×2)",
@@ -1414,30 +1167,8 @@ export const ru: Dict = {
 				},
 			},
 		},
-		"feather-edges": {
-			params: { radius: "Радиус растушёвки, px" },
-		},
-		"clean-edges": {
-			params: { radius: "Радиус поиска, px" },
-		},
-		pixelate: {
-			params: { blockSize: "Размер блока, px" },
-		},
-		"randomize-pixels": {
-			params: { blockSize: "Размер блока, px", seed: "Seed" },
-		},
 		"add-noise": {
-			params: { amount: "Сила, %", mode: "Тип шума", seed: "Seed" },
 			options: { mode: { mono: "Монохромное зерно", color: "Цветной шум" } },
-		},
-		silhouette: {
-			params: { color: "Цвет силуэта", threshold: "Порог видимости, %" },
-		},
-		"from-bytes": {
-			params: { width: "Ширина изображения" },
-		},
-		"from-rgb-values": {
-			params: { width: "Ширина изображения" },
 		},
 		"verify-png": {
 			results: {
@@ -1445,66 +1176,12 @@ export const ru: Dict = {
 				verifyNo: "Нет — сигнатура не совпадает с PNG-файлом.",
 			},
 		},
-		"from-text": {
-			params: {
-				text: "Текст",
-				fontSize: "Размер шрифта, px",
-				font: "Шрифт",
-				bold: "Жирный",
-				color: "Цвет текста",
-				bgOpacity: "Непрозрачность фона, %",
-				backgroundColor: "Цвет фона",
-				padding: "Отступ, px",
-			},
-		},
-		"from-emoji": {
-			params: { emoji: "Эмодзи / символ", size: "Размер" },
-		},
-		placeholder: {
-			params: {
-				width: "Ширина",
-				height: "Высота",
-				backgroundColor: "Фон",
-				color: "Цвет текста",
-				showText: "Печатать размеры",
-			},
-		},
 		"color-spectrum": {
-			params: {
-				width: "Ширина",
-				height: "Высота",
-				direction: "Направление",
-				saturation: "Насыщенность, %",
-				lightness: "Светлота, %",
-			},
 			options: {
 				direction: { horizontal: "По горизонтали", vertical: "По вертикали" },
 			},
 		},
-		"random-colors": {
-			params: {
-				width: "Ширина",
-				height: "Высота",
-				blockSize: "Размер блока, px",
-				seed: "Seed",
-			},
-		},
-		"draw-grid": {
-			params: {
-				width: "Ширина",
-				height: "Высота",
-				cols: "Столбцы",
-				rows: "Строки",
-				lineWidth: "Толщина линий, px",
-				color: "Цвет линий",
-				bgOpacity: "Непрозрачность фона, %",
-			},
-		},
-		quantize: {
-			params: { colors: "Цветов (k)" },
-		},
 		"decrease-color-count": {
-			params: { maxColors: "Максимум цветов" },
 			options: {
 				maxColors: {
 					"2": "2",
@@ -1521,11 +1198,7 @@ export const ru: Dict = {
 				},
 			},
 		},
-		"custom-palette": {
-			params: { colors: "Палитра (hex через запятую)" },
-		},
 		dithering: {
-			params: { colors: "Цветов (k)", pattern: "Узор" },
 			options: {
 				pattern: { "floyd-steinberg": "Флойд–Стейнберг", bayer: "Байер 4×4" },
 			},
@@ -1536,150 +1209,34 @@ export const ru: Dict = {
 			},
 		},
 		"show-transparent": {
-			params: {
-				mode: "Режим маски",
-				color: "Цвет подсветки",
-				opacity: "Непрозрачность подсветки, %",
-			},
 			options: {
 				mode: { binary: "Чёрно-белая маска", highlight: "Цветная подсветка" },
 			},
 		},
 		"show-grayscale-pixels": {
-			params: {
-				tolerance: "Допуск по каналам",
-				mode: "Режим маски",
-				color: "Цвет подсветки",
-				opacity: "Непрозрачность подсветки, %",
-			},
 			options: {
 				mode: { binary: "Чёрно-белая маска", highlight: "Цветная подсветка" },
 			},
 		},
 		"show-color-pixels": {
-			params: {
-				tolerance: "Допуск по каналам",
-				mode: "Режим маски",
-				color: "Цвет подсветки",
-				opacity: "Непрозрачность подсветки, %",
-			},
 			options: {
 				mode: { binary: "Чёрно-белая маска", highlight: "Цветная подсветка" },
 			},
 		},
 		"light-pixel-mask": {
-			params: {
-				threshold: "Порог яркости, %",
-				mode: "Режим маски",
-				color: "Цвет подсветки",
-				opacity: "Непрозрачность подсветки, %",
-			},
 			options: {
 				mode: { binary: "Чёрно-белая маска", highlight: "Цветная подсветка" },
 			},
 		},
 		"dark-pixel-mask": {
-			params: {
-				threshold: "Порог яркости, %",
-				mode: "Режим маски",
-				color: "Цвет подсветки",
-				opacity: "Непрозрачность подсветки, %",
-			},
 			options: {
 				mode: { binary: "Чёрно-белая маска", highlight: "Цветная подсветка" },
 			},
 		},
 		"unique-color-mask": {
-			params: {
-				rarity: "Максимум повторов",
-				mode: "Режим маски",
-				color: "Цвет подсветки",
-				opacity: "Непрозрачность подсветки, %",
-			},
 			options: {
 				mode: { binary: "Чёрно-белая маска", highlight: "Цветная подсветка" },
 			},
-		},
-		"extract-color-from": {
-			params: {
-				color: "Какой цвет оставить",
-				tolerance: "Допуск похожести, %",
-			},
-		},
-		"watermark-tile": {
-			params: {
-				text: "Текст",
-				fontSize: "Размер шрифта, px",
-				color: "Цвет текста",
-				opacity: "Непрозрачность, %",
-				angle: "Угол, °",
-				stepX: "Шаг X, px",
-				stepY: "Шаг Y, px",
-				font: "Шрифт",
-				bold: "Жирный",
-			},
-		},
-		"add-text": {
-			params: {
-				text: "Текст",
-				fontSize: "Размер шрифта, px",
-				color: "Цвет текста",
-				font: "Шрифт",
-				bold: "Жирный",
-				position: "Позиция",
-				margin: "Отступ, px",
-				plate: "Подложка",
-				plateColor: "Цвет подложки",
-				plateOpacity: "Прозрачность плашки, %",
-			},
-		},
-		"date-stamp": {
-			params: {
-				format: "Формат",
-				fontSize: "Размер шрифта, px",
-				color: "Цвет текста",
-				font: "Шрифт",
-				bold: "Жирный",
-				position: "Позиция",
-				margin: "Отступ, px",
-				plate: "Подложка",
-				plateColor: "Цвет подложки",
-				plateOpacity: "Прозрачность плашки, %",
-			},
-		},
-		skew: {
-			params: { degX: "Наклон по X, °", degY: "Наклон по Y, °" },
-		},
-		"rotate-free": {
-			params: { angle: "Угол, °" },
-		},
-		zoom: {
-			params: { scale: "Масштаб, %" },
-		},
-		shift: {
-			params: {
-				offsetX: "Смещение X, px",
-				offsetY: "Смещение Y, px",
-				color: "Цвет фона",
-			},
-		},
-		vignette: {
-			params: { strength: "Сила затемнения, %" },
-		},
-		"jpeg-artifacts": {
-			params: { quality: "Качество JPEG" },
-		},
-		gamma: {
-			params: { value: "Гамма" },
-		},
-		temperature: {
-			params: { percent: "Температура" },
-		},
-		tint: {
-			params: { color: "Цвет тонирования", strength: "Сила, %" },
-		},
-		"from-svg": {
-			params: { width: "Ширина результата, px" },
 		},
 		"is-transparent": {
 			results: {

@@ -185,12 +185,7 @@ export default defineConfig(
 				"warn",
 				{
 					baseLocaleFallback: ["pages.*.title", "pages.*.description"],
-					ignoreMissingPatterns: [
-						"tools.*.params",
-						"pages.*.seo",
-						"categoryHubs",
-						"site",
-					],
+					ignoreMissingPatterns: ["pages.*.seo", "categoryHubs", "site"],
 				},
 			],
 		},

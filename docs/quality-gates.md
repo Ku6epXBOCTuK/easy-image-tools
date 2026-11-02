@@ -122,8 +122,8 @@ mobile-пресете (эмуляция устройства, slow 4G, simulated
 - Резолв `var()` в `app.css` — ошибка: несуществующий токен молча роняет
   объявление, поэтому этот check failing, в отличие от unused.
 - `dict-consistency` использует base-locale fallback для registry metadata и
-  pattern-based policy для временно неиспользуемых `tools.*.params`; это не
-  молчаливый `allowPaths`-список.
+  pattern-based policy для meta-текста страниц (`pages.*.seo`, `categoryHubs`,
+  `site`); это не молчаливый `allowPaths`-список.
 
 `lint:all` может завершиться успешно, напечатав unused-token сообщения: это
 единственный неблокирующий сигнал в нём. ESLint warnings, наоборот, роняют gate,

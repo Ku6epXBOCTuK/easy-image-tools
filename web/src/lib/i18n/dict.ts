@@ -59,7 +59,6 @@ export type PluralForms = {
 
 // NOTE: Tool strings (`tools.<id>`): field labels, verdict keys.
 export type ToolStrings = {
-	params?: Record<string, string>;
 	options?: Record<string, Record<string, string>>;
 	results?: Record<string, string>;
 };
