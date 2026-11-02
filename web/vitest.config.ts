@@ -14,6 +14,9 @@ export default defineConfig({
 			"scripts/**/*.test.mjs",
 		],
 		environment: "node",
+		// NOTE: Forks cost more than the tests themselves on Windows: the suite
+		// is ~3x faster in threads and no test relies on process isolation.
+		pool: "threads",
 		coverage: {
 			provider: "v8",
 			reporter: ["text-summary"],
