@@ -402,8 +402,6 @@ export const ru: Dict = {
 		cropArea: "Область кадрирования",
 		fill: "Заливка",
 		grid: "Сетка",
-		splitMode: "Режим разделения",
-		tileSize: "Размер тайла",
 		noise: "Шум",
 		offset: "Смещение",
 		options: "Параметры",

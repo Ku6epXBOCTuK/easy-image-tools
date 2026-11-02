@@ -392,8 +392,6 @@ export const en: Dict = {
 		cropArea: "Crop area",
 		fill: "Fill",
 		grid: "Grid",
-		splitMode: "Split by",
-		tileSize: "Tile size",
 		noise: "Noise",
 		offset: "Offset",
 		options: "Options",

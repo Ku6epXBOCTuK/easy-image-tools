@@ -9,9 +9,9 @@ function toolKeys(tool: Tool): { fields: string[]; groups: string[] } {
 		const label = (field as { spec?: { label?: string } }).spec?.label;
 		if (label) fields.push(label.replace(/^fields\./, ""));
 	}
-	const groups = (tool.schema?.layout?.groups ?? []).map((g) =>
-		(g.title ?? "").replace(/^groups\./, ""),
-	);
+	const groups = (tool.schema?.layout?.groups ?? [])
+		.map((g) => g.title?.replace(/^groups\./, ""))
+		.filter((title): title is string => Boolean(title));
 	return { fields, groups };
 }
 

@@ -34,3 +34,18 @@ export function resolveLayoutGroups<P>(
 	}
 	return named;
 }
+
+export function visibleLayoutGroups<P>(
+	schema: ToolSchema<P>,
+	values: Record<string, unknown>,
+): ResolvedLayoutGroup[] {
+	return resolveLayoutGroups(schema)
+		.map((group) => ({
+			...group,
+			fields: group.fields.filter((fieldId) => {
+				const rule = schema.fields[fieldId as keyof P].spec.visibleWhen;
+				return rule === undefined || values[rule.field] === rule.equals;
+			}),
+		}))
+		.filter((group) => group.fields.length > 0);
+}

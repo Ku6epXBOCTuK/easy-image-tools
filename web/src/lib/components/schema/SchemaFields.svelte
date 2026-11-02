@@ -20,7 +20,7 @@
 		TextSpec,
 		ToolSchema,
 	} from "$lib/registry-schema";
-	import { effectiveMax, resolveLayoutGroups } from "$lib/registry-schema";
+	import { effectiveMax, visibleLayoutGroups } from "$lib/registry-schema";
 	import { fieldLabel, groupLabel } from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
 	import { RotateCcw } from "@lucide/svelte";
@@ -103,7 +103,7 @@
 		onreset,
 	}: Props = $props();
 
-	const layoutGroups = $derived(resolveLayoutGroups(schema));
+	const layoutGroups = $derived(visibleLayoutGroups(schema, values));
 	const isEmpty = $derived(Object.keys(schema.fields).length === 0);
 
 	function effectiveSpec(spec: FieldSpec): FieldSpec {
@@ -111,11 +111,6 @@
 			return { ...spec, max: effectiveMax(spec, sourceDims) };
 		}
 		return spec;
-	}
-
-	function isHidden(spec: FieldSpec): boolean {
-		const rule = spec.visibleWhen;
-		return rule !== undefined && values[rule.field] !== rule.equals;
 	}
 </script>
 
@@ -135,17 +130,15 @@
 			{#each group.fields as id (id)}
 				{@const spec = schema.fields[id].spec}
 				{@const Control = FIELDS[spec.kind]}
-				{#if !isHidden(spec)}
-					<Control
-						label={fieldLabel(schema.fields[id], id)}
-						value={values[id]}
-						spec={effectiveSpec(spec)}
-						{toolId}
-						fieldId={id}
-						{sourceDims}
-						onchange={(v, axis) => onchange(id, v, axis)}
-					/>
-				{/if}
+				<Control
+					label={fieldLabel(schema.fields[id], id)}
+					value={values[id]}
+					spec={effectiveSpec(spec)}
+					{toolId}
+					fieldId={id}
+					{sourceDims}
+					onchange={(v, axis) => onchange(id, v, axis)}
+				/>
 			{/each}
 		</div>
 	{/each}

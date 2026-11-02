@@ -484,9 +484,9 @@ export const splitPartsSchema = toolSchema<SplitPartsParams>(
 	{
 		layout: {
 			groups: [
-				{ title: "groups.splitMode", fields: ["mode"] },
+				{ fields: ["mode"] },
 				{ title: "groups.grid", fields: ["columns", "rows"] },
-				{ title: "groups.tileSize", fields: ["tile"] },
+				{ title: "groups.tile", fields: ["tile"] },
 			],
 		},
 	},

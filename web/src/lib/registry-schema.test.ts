@@ -8,6 +8,7 @@ import {
 	resolveLayoutGroups,
 	sanitizeSchemaParams,
 	toolSchema,
+	visibleLayoutGroups,
 	withAspectLock,
 	type Dimension,
 } from "./registry-schema";
@@ -382,6 +383,88 @@ describe("registry-schema: layout (schema.layout)", () => {
 				cols: 1,
 				fields: ["thickness", "color", "enabled", "count"],
 			},
+		]);
+	});
+});
+
+describe("registry-schema: visible layout groups", () => {
+	interface ModeParams {
+		mode: "grid" | "tile";
+		columns: number;
+		tile: number;
+	}
+
+	const modeSchema = toolSchema<ModeParams>(
+		{
+			mode: field.segmented({
+				default: "grid",
+				options: [
+					{ value: "grid", label: "Grid" },
+					{ value: "tile", label: "Tile" },
+				],
+			}),
+			columns: field.number({
+				min: 1,
+				max: 32,
+				default: 2,
+				visibleWhen: { field: "mode", equals: "grid" },
+			}),
+			tile: field.number({
+				min: 1,
+				max: 20000,
+				default: 32,
+				visibleWhen: { field: "mode", equals: "tile" },
+			}),
+		},
+		{
+			layout: {
+				groups: [
+					{ fields: ["mode"] },
+					{ title: "Box", cols: 2, fields: ["columns", "tile"] },
+				],
+			},
+		},
+	);
+
+	it("drops groups whose fields are all hidden", () => {
+		expect(visibleLayoutGroups(modeSchema, { mode: "grid" })).toEqual([
+			{ key: "group-0", title: undefined, cols: 1, fields: ["mode"] },
+			{ key: "Box-1", title: "Box", cols: 2, fields: ["columns"] },
+		]);
+	});
+
+	it("keeps the group when another of its fields stays visible", () => {
+		expect(visibleLayoutGroups(modeSchema, { mode: "tile" })).toEqual([
+			{ key: "group-0", title: undefined, cols: 1, fields: ["mode"] },
+			{ key: "Box-1", title: "Box", cols: 2, fields: ["tile"] },
+		]);
+	});
+
+	it("does not resurrect hidden fields through the default group", () => {
+		const plain = toolSchema<ModeParams>({
+			mode: field.segmented({
+				default: "grid",
+				options: [
+					{ value: "grid", label: "Grid" },
+					{ value: "tile", label: "Tile" },
+				],
+			}),
+			columns: field.number({
+				min: 1,
+				max: 32,
+				default: 2,
+				visibleWhen: { field: "mode", equals: "grid" },
+			}),
+			tile: field.number({
+				min: 1,
+				max: 20000,
+				default: 32,
+				visibleWhen: { field: "mode", equals: "tile" },
+			}),
+		});
+
+		expect(visibleLayoutGroups(plain, { mode: "tile" })).toEqual([
+			{ key: "__default", cols: 1, fields: ["mode", "tile"] },
 		]);
 	});
 });
