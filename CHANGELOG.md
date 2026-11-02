@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.17.2](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/52c32a7f6f04cddddc3fcae653cbc3393aa402d5..v0.17.2) - 2026-11-02
+#### Bug Fixes
+- pair field preset active - ([efece46](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/efece46353d8b5cf4b46435f120f386f5b07f1cf)) - Ku6epXBOCTuK
+- update to use new ui-kit package - ([bbe303c](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/bbe303cbe9860482b0e25c3264e35619c040bf1c)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.17.1](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/9c35bf3dfeb12c144b0ccc20edea36bc5ecb058c..v0.17.1) - 2026-11-02
 #### Bug Fixes
 - update tool labels - ([7cfaa53](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/7cfaa53a5ce208f865eac693b55ab72b2cfc0b01)) - Ku6epXBOCTuK
