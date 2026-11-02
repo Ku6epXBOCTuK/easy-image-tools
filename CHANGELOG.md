@@ -2,6 +2,25 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.18.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/ddda134d1d81e0630c76e3a9593274176346f38e..v0.18.0) - 2026-11-02
+#### Features
+- add rotate image preview - ([869f9ff](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/869f9ff05ed8282443d8c6ee93b9bfefbf3cd7e7)) - Ku6epXBOCTuK
+- add preview placeholder for tools (change canvas tool) - ([2870dc5](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/2870dc5170441e0724b46f6e3c79ccdbc9d33866)) - Ku6epXBOCTuK
+- add guide for source (crop tool) - ([d213a4a](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/d213a4a0213beea26cbf34abb74c11f104bcb8af)) - Ku6epXBOCTuK
+#### Bug Fixes
+- preview size dont fits result - ([cc3271c](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/cc3271c0572072a70bb841be1322c133fe6fcaf7)) - Ku6epXBOCTuK
+- drop queued tool runs, use only run with last params - ([e600a64](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/e600a6408cd0cf8a2325d8025dcc1943e1025f82)) - Ku6epXBOCTuK
+- reduce size limits - ([2d4f045](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/2d4f04501986c1df40be815c3720bf07332ccf59)) - Ku6epXBOCTuK
+- add busy plate on preview results - ([469ee2c](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/469ee2c136d89956515b0b4f066ec02316962c8e)) - Ku6epXBOCTuK
+- preview tile aspect clamping - ([664dada](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/664dada1ee240e5610a95d979ed7d89e77b117c8)) - Ku6epXBOCTuK
+- height of input text source - ([7667609](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/7667609184d4b3def22efb8e380d684357d8eac3)) - Ku6epXBOCTuK
+- update verify is png description - ([74e73d0](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/74e73d06072d7dd4b76e9d893efff37dad7f37b4)) - Ku6epXBOCTuK
+#### Performance Improvements
+- run only tools with changed params - ([b1f73ac](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/b1f73ac2ddf23fa9a662da6a3529560b0ab3500f)) - Ku6epXBOCTuK
+- reduce memory using for temp images - ([e89230b](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/e89230bd2883b98d75f5af927b87e5dec6799750)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.17.3](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/9d8360786d41f0d2edd845981bce317b3c491e13..v0.17.3) - 2026-11-02
 #### Bug Fixes
 - aspect size and fits to presets box - ([f93257c](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/f93257c04d22d3a815937ea15538983835aa9b43)) - Ku6epXBOCTuK
