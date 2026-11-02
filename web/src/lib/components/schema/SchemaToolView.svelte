@@ -288,7 +288,7 @@
 						sourceDims={i === 0
 							? (upload.source ?? undefined)
 							: stepDims[i - 1]}
-						onchange={(id, v, axis) => setStepValue(i, id, v, axis)}
+						onchange={(id, v, edit) => setStepValue(i, id, v, edit)}
 						onreset={() => resetStep(i)}
 					/>
 				{/if}

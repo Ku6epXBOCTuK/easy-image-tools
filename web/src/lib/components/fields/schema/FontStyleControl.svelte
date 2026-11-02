@@ -41,7 +41,7 @@
 	];
 </script>
 
-<Control {label} caps>
+<Control {label}>
 	<div class="fs-grid">
 		<label class="fs-cell">
 			<span class="fs-sub">{t("ui.font")}</span>

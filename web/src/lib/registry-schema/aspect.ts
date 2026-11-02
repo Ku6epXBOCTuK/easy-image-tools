@@ -1,5 +1,11 @@
 import { clamp } from "../core/math";
-import type { Dimension, DimensionSpec, NumberSpec, ToolSchema } from "./specs";
+import type {
+	Dimension,
+	NumberSpec,
+	PairAxisSpec,
+	PairSpec,
+	ToolSchema,
+} from "./specs";
 
 // NOTE: Field cap: from source dimensions under maxFromSource, else static.
 export function effectiveMax(spec: NumberSpec, source?: Dimension): number {
@@ -9,12 +15,15 @@ export function effectiveMax(spec: NumberSpec, source?: Dimension): number {
 	return spec.max;
 }
 
-export function dimensionAxisMax(
-	spec: DimensionSpec,
-	axis: "width" | "height",
+export function pairAxisMax(
+	spec: PairSpec,
+	axis: PairAxisSpec,
 	source?: Dimension,
 ): number {
-	return spec.maxFromSource && source ? source[axis] : spec.max;
+	if (axis.maxFromSource && source) {
+		return source[axis.maxFromSource] - (axis.maxMinus ?? 0);
+	}
+	return axis.max ?? spec.max;
 }
 
 // NOTE: Clamps maxFromSource fields to the current cap (source changed).
@@ -36,23 +45,26 @@ export function clampSourceAwareMaxes<P>(
 				out[key as string] = clamped;
 				changed = true;
 			}
-		} else if (spec.kind === "dimension" && spec.maxFromSource) {
-			const v = out[key as string] as Partial<Dimension> | undefined;
-			if (typeof v?.width !== "number" || typeof v?.height !== "number") {
-				continue;
+		} else if (spec.kind === "pair") {
+			const v = out[key as string] as Record<string, unknown> | undefined;
+			if (typeof v !== "object" || v === null) continue;
+			const next = { ...v };
+			let touched = false;
+			for (const axis of spec.axes) {
+				const n = next[axis.key];
+				if (typeof n !== "number" || !Number.isFinite(n)) continue;
+				const clamped = clamp(
+					n,
+					axis.min ?? spec.min,
+					pairAxisMax(spec, axis, source),
+				);
+				if (clamped !== n) {
+					next[axis.key] = clamped;
+					touched = true;
+				}
 			}
-			const width = clamp(
-				v.width,
-				spec.min ?? -Infinity,
-				dimensionAxisMax(spec, "width", source),
-			);
-			const height = clamp(
-				v.height,
-				spec.min ?? -Infinity,
-				dimensionAxisMax(spec, "height", source),
-			);
-			if (width !== v.width || height !== v.height) {
-				out[key as string] = { width, height };
+			if (touched) {
+				out[key as string] = next;
 				changed = true;
 			}
 		}

@@ -128,12 +128,14 @@ const circleMaskSchema = toolSchema<CircleMaskParams>(
 			step: 1,
 			default: 100,
 		}),
-		offset: field.offset({
+		offset: field.pair({
 			label: "fields.offset",
 			min: -50,
 			max: 50,
-			x: 0,
-			y: 0,
+			axes: [
+				{ key: "x", label: "ui.x", default: 0 },
+				{ key: "y", label: "ui.y", default: 0 },
+			],
 		}),
 	},
 	{
@@ -195,12 +197,14 @@ const squareMaskSchema = toolSchema<SquareMaskParams>(
 			step: 1,
 			default: 100,
 		}),
-		offset: field.offset({
+		offset: field.pair({
 			label: "fields.offset",
 			min: -50,
 			max: 50,
-			x: 0,
-			y: 0,
+			axes: [
+				{ key: "x", label: "ui.x", default: 0 },
+				{ key: "y", label: "ui.y", default: 0 },
+			],
 		}),
 	},
 	{
@@ -282,12 +286,14 @@ const starMaskSchema = toolSchema<StarMaskParams>(
 			step: 1,
 			default: 0,
 		}),
-		offset: field.offset({
+		offset: field.pair({
 			label: "fields.offset",
 			min: -50,
 			max: 50,
-			x: 0,
-			y: 0,
+			axes: [
+				{ key: "x", label: "ui.x", default: 0 },
+				{ key: "y", label: "ui.y", default: 0 },
+			],
 		}),
 	},
 	{
@@ -369,12 +375,14 @@ const wavyMaskSchema = toolSchema<WavyMaskParams>(
 			step: 1,
 			default: 0,
 		}),
-		offset: field.offset({
+		offset: field.pair({
 			label: "fields.offset",
 			min: -50,
 			max: 50,
-			x: 0,
-			y: 0,
+			axes: [
+				{ key: "x", label: "ui.x", default: 0 },
+				{ key: "y", label: "ui.y", default: 0 },
+			],
 		}),
 	},
 	{

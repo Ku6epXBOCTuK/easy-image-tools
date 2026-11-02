@@ -5,12 +5,12 @@ import type {
 	ColorList,
 	ColorPair,
 	ColorSpec,
-	Dimension,
 	Field,
 	FontStyle,
 	Gradient,
 	NumberSpec,
-	Offset,
+	PairAxisSpec,
+	PairSpec,
 	Plate,
 	SegmentedSpec,
 	SelectSpec,
@@ -44,19 +44,10 @@ export const field = {
 	checkbox: (s: Omit<CheckboxSpec, "kind">): Field<boolean> => ({
 		spec: { kind: "checkbox", ...s },
 	}),
-	dimension: (s: {
-		label?: string;
-		min: number;
-		max: number;
-		width: number;
-		height: number;
-		defaultFromSource?: boolean;
-		maxFromSource?: boolean;
-		lockAspectWith?: string;
-		presets?: boolean;
-		visibleWhen?: { field: string; equals: string };
-	}): Field<Dimension> => ({
-		spec: { kind: "dimension", ...s },
+	pair: <const A extends readonly PairAxisSpec[]>(
+		s: Omit<PairSpec<A>, "kind">,
+	): Field<{ [K in A[number]["key"]]: number }> => ({
+		spec: { kind: "pair", ...s },
 	}),
 	colorPair: (s: {
 		label?: string;
@@ -67,15 +58,6 @@ export const field = {
 	}),
 	colors: (s: { label?: string; default: string[] }): Field<ColorList> => ({
 		spec: { kind: "colors", ...s },
-	}),
-	offset: (s: {
-		label?: string;
-		min: number;
-		max: number;
-		x: number;
-		y: number;
-	}): Field<Offset> => ({
-		spec: { kind: "offset", ...s },
 	}),
 	position9: (s: { label?: string; default: Position9 }): Field<Position9> => ({
 		spec: { kind: "position9", ...s },

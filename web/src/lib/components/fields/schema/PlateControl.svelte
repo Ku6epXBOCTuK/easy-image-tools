@@ -30,7 +30,7 @@
 	}
 </script>
 
-<Control {label} caps>
+<Control {label}>
 	<div class="plate-row {current.enabled ? '' : 'off'}">
 		<label class="plate-enabled">
 			<span>{t("ui.backingPlate")}</span>

@@ -26,7 +26,7 @@
 	}
 </script>
 
-<Control {label} caps>
+<Control {label}>
 	<div class="pair-field">
 		<label class="pair-axis">
 			<ColorSwatchInput

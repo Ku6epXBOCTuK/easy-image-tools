@@ -69,22 +69,36 @@ export interface Dimension {
 	height: number;
 }
 
-// NOTE: Single list of tile presets (squares) for dimension fields.
+// NOTE: Single list of tile presets (squares) for pair fields.
 export const SIZE_PRESETS = [16, 32, 64, 128, 256, 512] as const;
 
-export interface DimensionSpec extends FieldSpecBase {
-	kind: "dimension";
-	// NOTE: Shared range for both dimensions.
+// NOTE: One axis of a pair: its params key, dictionary label and bounds.
+export interface PairAxisSpec {
+	key: string;
+	label: string;
+	default: number;
+	min?: number;
+	max?: number;
+	step?: number;
+	defaultFromSource?: "width" | "height";
+	maxFromSource?: "width" | "height";
+	maxMinus?: number;
+}
+
+// NOTE: Any two-number value (size, offset): one kind, one renderer, one style.
+export interface PairSpec<
+	A extends readonly PairAxisSpec[] = readonly PairAxisSpec[],
+> extends FieldSpecBase {
+	kind: "pair";
+	// NOTE: Shared range; an axis may override it.
 	min: number;
 	max: number;
-	width: number;
-	height: number;
-	defaultFromSource?: boolean;
-	// NOTE: Per-axis cap from the matching source dimension.
-	maxFromSource?: boolean;
+	axes: A;
 	lockAspectWith?: string;
 	presets?: boolean;
 }
+
+export type PairEdit = { axis: string } | { box: true };
 
 export interface SchemaContext {
 	source?: Dimension;
@@ -111,15 +125,6 @@ export interface ColorListSpec extends FieldSpecBase {
 
 // NOTE: Shape/object offset from center: x + y in percent.
 export interface Offset {
-	x: number;
-	y: number;
-}
-
-export interface OffsetSpec extends FieldSpecBase {
-	kind: "offset";
-	// NOTE: Shared range for both axes (in percent).
-	min: number;
-	max: number;
 	x: number;
 	y: number;
 }
@@ -197,10 +202,9 @@ export const fieldSpecs = {
 	segmented: {} as SegmentedSpec,
 	text: {} as TextSpec,
 	checkbox: {} as CheckboxSpec,
-	dimension: {} as DimensionSpec,
+	pair: {} as PairSpec,
 	"color-pair": {} as ColorPairSpec,
 	colors: {} as ColorListSpec,
-	offset: {} as OffsetSpec,
 	position9: {} as Position9Spec,
 	"font-style": {} as FontStyleSpec,
 	plate: {} as PlateSpec,

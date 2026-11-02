@@ -44,15 +44,44 @@ interface SourceParams {
 	fixed: Dimension;
 }
 
+const sizePair = (s: {
+	min: number;
+	max: number;
+	width: number;
+	height: number;
+	defaultFromSource?: boolean;
+	maxFromSource?: boolean;
+}) =>
+	field.pair({
+		min: s.min,
+		max: s.max,
+		axes: [
+			{
+				key: "width",
+				label: "ui.width",
+				default: s.width,
+				defaultFromSource: s.defaultFromSource ? "width" : undefined,
+				maxFromSource: s.maxFromSource ? "width" : undefined,
+			},
+			{
+				key: "height",
+				label: "ui.height",
+				default: s.height,
+				defaultFromSource: s.defaultFromSource ? "height" : undefined,
+				maxFromSource: s.maxFromSource ? "height" : undefined,
+			},
+		],
+	});
+
 const sourceSchema = toolSchema<SourceParams>({
-	size: field.dimension({
+	size: sizePair({
 		min: 1,
 		max: 100,
 		width: 1,
 		height: 1,
 		defaultFromSource: true,
 	}),
-	fixed: field.dimension({ min: 1, max: 100, width: 10, height: 20 }),
+	fixed: sizePair({ min: 1, max: 100, width: 10, height: 20 }),
 });
 
 const source = { width: 64, height: 48 };
@@ -137,7 +166,7 @@ describe("registry-schema: maxFromSource", () => {
 		size: Dimension;
 	}>({
 		x: field.number({ min: 0, max: 20000, default: 0, maxFromSource: "width" }),
-		size: field.dimension({
+		size: sizePair({
 			min: 1,
 			max: 20000,
 			width: 1,
@@ -152,7 +181,7 @@ describe("registry-schema: maxFromSource", () => {
 		expect(s.x).toBe(832);
 	});
 
-	it("dimension clamps to the source axes", () => {
+	it("pair clamps to the source axes", () => {
 		const s = sanitizeSchemaParams(
 			cropLike,
 			{ size: { width: 5000, height: 5000 } },
@@ -222,7 +251,7 @@ describe("registry-schema: maxFromSource", () => {
 		});
 	});
 
-	it("clampSourceAwareMaxes: dimension with garbage is passed through", () => {
+	it("clampSourceAwareMaxes: pair with garbage is passed through", () => {
 		const out = clampSourceAwareMaxes(
 			cropLike,
 			{ size: "not-an-object" as unknown as Dimension },

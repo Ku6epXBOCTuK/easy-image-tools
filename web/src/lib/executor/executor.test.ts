@@ -111,12 +111,23 @@ describe("createExecutor", () => {
 		const { factory, workers } = createFactory();
 		const execute = createExecutor({ workerFactory: factory });
 		const schema = toolSchema<{ size: Dimension }>({
-			size: field.dimension({
+			size: field.pair({
 				min: 1,
 				max: 100,
-				width: 1,
-				height: 1,
-				defaultFromSource: true,
+				axes: [
+					{
+						key: "width",
+						label: "ui.width",
+						default: 1,
+						defaultFromSource: "width",
+					},
+					{
+						key: "height",
+						label: "ui.height",
+						default: 1,
+						defaultFromSource: "height",
+					},
+				],
 			}),
 		});
 		const tool = makeTool(() => "worker", { input: "image", schema });

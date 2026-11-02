@@ -20,7 +20,7 @@
 	);
 </script>
 
-<Control {label} caps>
+<Control {label}>
 	<div class="grid">
 		{#each POSITION9_VALUES as position (position)}
 			<button

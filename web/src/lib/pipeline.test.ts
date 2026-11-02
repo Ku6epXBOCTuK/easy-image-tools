@@ -18,7 +18,7 @@ describe("pipeline: step chain", () => {
 		const chain = createChain(cropPage);
 		expect(chain).toHaveLength(1);
 		expect(chain[0].id).toBe("crop");
-		expect(chain[0].params).toMatchObject({ x: 0, y: 0 });
+		expect(chain[0].params).toMatchObject({ offset: { x: 0, y: 0 } });
 	});
 
 	it("isChainable: image->image and image->files allowed, terminal and text-input not", () => {
@@ -67,7 +67,7 @@ describe("pipeline: parseChain (localStorage/import)", () => {
 	const valid = {
 		version: CHAIN_VERSION,
 		steps: [
-			{ id: "crop", params: { x: 5 } },
+			{ id: "crop", params: { offset: { x: 5 } } },
 			{ id: "resize", params: {} },
 		],
 	};
@@ -75,7 +75,7 @@ describe("pipeline: parseChain (localStorage/import)", () => {
 	it("valid chain parses, params sanitized", () => {
 		const chain = parseChain(valid)!;
 		expect(chain.map((s) => s.id)).toEqual(["crop", "resize"]);
-		expect(chain[0].params).toMatchObject({ x: 5, y: 0 });
+		expect(chain[0].params).toMatchObject({ offset: { x: 5, y: 0 } });
 	});
 
 	it("parseChain keeps collapsed, default expanded", () => {

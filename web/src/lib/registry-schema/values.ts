@@ -1,23 +1,27 @@
 import { clamp } from "../core/math";
 import type { Position9 } from "../core/textdraw";
-import { dimensionAxisMax, effectiveMax } from "./aspect";
+import { effectiveMax, pairAxisMax } from "./aspect";
 import {
 	POSITION9_VALUES,
 	type Dimension,
-	type DimensionSpec,
+	type PairSpec,
 	type SchemaContext,
 	type ToolSchema,
 } from "./specs";
 
-function resolveDimensionDefaults(
-	spec: DimensionSpec,
+function resolvePairDefaults(
+	spec: PairSpec,
 	context?: SchemaContext,
-): Dimension {
-	const source = spec.defaultFromSource ? context?.source : undefined;
-	return {
-		width: clamp(source?.width ?? spec.width, spec.min, spec.max),
-		height: clamp(source?.height ?? spec.height, spec.min, spec.max),
-	};
+): Record<string, number> {
+	const out: Record<string, number> = {};
+	for (const axis of spec.axes) {
+		const source = axis.defaultFromSource ? context?.source : undefined;
+		const raw = source
+			? source[axis.defaultFromSource ?? "width"]
+			: axis.default;
+		out[axis.key] = clamp(raw, axis.min ?? spec.min, axis.max ?? spec.max);
+	}
+	return out;
 }
 
 // NOTE: Defaults from the schema: the single source of default values for the UI.
@@ -28,14 +32,12 @@ export function defaultSchemaParams<P>(
 	const out = {} as Record<keyof P, unknown>;
 	for (const key of Object.keys(schema.fields) as (keyof P)[]) {
 		const spec = schema.fields[key].spec;
-		if (spec.kind === "dimension") {
-			out[key] = resolveDimensionDefaults(spec, context);
+		if (spec.kind === "pair") {
+			out[key] = resolvePairDefaults(spec, context);
 		} else if (spec.kind === "color-pair") {
 			out[key] = { from: spec.from, to: spec.to };
 		} else if (spec.kind === "colors") {
 			out[key] = [...spec.default];
-		} else if (spec.kind === "offset") {
-			out[key] = { x: spec.x, y: spec.y };
 		} else if (spec.kind === "font-style") {
 			out[key] = {
 				font: spec.font,
@@ -74,7 +76,8 @@ export function applySourceDefaults<P>(
 	const defaults = defaultSchemaParams(schema, context);
 	for (const key of Object.keys(schema.fields) as (keyof P)[]) {
 		const spec = schema.fields[key].spec;
-		const fromSource = spec.kind === "dimension" && spec.defaultFromSource;
+		const fromSource =
+			spec.kind === "pair" && spec.axes.some((axis) => axis.defaultFromSource);
 		if (fromSource && !touched?.has(key as string)) continue;
 		if (Object.prototype.hasOwnProperty.call(values, key)) {
 			defaults[key] = values[key as string];
@@ -125,39 +128,39 @@ export function sanitizeSchemaParams<P>(
 			case "text":
 				out[key] = typeof raw === "string" ? raw : spec.default;
 				break;
-			case "dimension": {
+			case "pair": {
 				const r =
-					typeof raw === "object" &&
-					raw !== null &&
-					"width" in raw &&
-					"height" in raw
+					typeof raw === "object" && raw !== null
 						? (raw as Record<string, unknown>)
 						: undefined;
-				const defaults = resolveDimensionDefaults(spec, context);
-				const w =
-					typeof r?.width === "number" && Number.isFinite(r.width)
-						? r.width
-						: defaults.width;
-				const h =
-					typeof r?.height === "number" && Number.isFinite(r.height)
-						? r.height
-						: defaults.height;
-				const sourceSize =
-					spec.defaultFromSource && context?.source && w === 0 && h === 0
+				const defaults = resolvePairDefaults(spec, context);
+				const picked: Record<string, number> = {};
+				let allZero = true;
+				for (const axis of spec.axes) {
+					const v = r?.[axis.key];
+					const n =
+						typeof v === "number" && Number.isFinite(v)
+							? v
+							: defaults[axis.key];
+					picked[axis.key] = n;
+					if (n !== 0) allZero = false;
+				}
+				// NOTE: A zeroed pair means "unset": source defaults fill it instead.
+				const fromSource =
+					allZero &&
+					context?.source &&
+					spec.axes.some((axis) => axis.defaultFromSource)
 						? defaults
-						: { width: w, height: h };
-				out[key] = {
-					width: clamp(
-						sourceSize.width,
-						spec.min,
-						dimensionAxisMax(spec, "width", context?.source),
-					),
-					height: clamp(
-						sourceSize.height,
-						spec.min,
-						dimensionAxisMax(spec, "height", context?.source),
-					),
-				};
+						: picked;
+				const result: Record<string, number> = {};
+				for (const axis of spec.axes) {
+					result[axis.key] = clamp(
+						fromSource[axis.key],
+						axis.min ?? spec.min,
+						pairAxisMax(spec, axis, context?.source),
+					);
+				}
+				out[key] = result;
 				break;
 			}
 			case "color-pair": {
@@ -241,21 +244,6 @@ export function sanitizeSchemaParams<P>(
 						typeof r?.opacity === "number" && Number.isFinite(r.opacity)
 							? clamp(r.opacity, 0, 100)
 							: spec.opacity,
-				};
-				break;
-			}
-			case "offset": {
-				const r =
-					typeof raw === "object" && raw !== null && "x" in raw && "y" in raw
-						? (raw as Record<string, unknown>)
-						: undefined;
-				const x =
-					typeof r?.x === "number" && Number.isFinite(r.x) ? r.x : spec.x;
-				const y =
-					typeof r?.y === "number" && Number.isFinite(r.y) ? r.y : spec.y;
-				out[key] = {
-					x: clamp(x, spec.min, spec.max),
-					y: clamp(y, spec.min, spec.max),
 				};
 				break;
 			}

@@ -4,7 +4,6 @@
 	interface Props {
 		label: string;
 		element?: "div" | "label";
-		caps?: boolean;
 		row?: boolean;
 		trailing?: Snippet;
 		children: Snippet;
@@ -12,7 +11,6 @@
 	let {
 		label,
 		element = "div",
-		caps = false,
 		row = false,
 		trailing,
 		children,
@@ -20,7 +18,7 @@
 </script>
 
 <svelte:element this={element} class="control" class:control--row={row}>
-	<span class="label" class:caps>
+	<span class="label">
 		{label}
 		{#if trailing}{@render trailing()}{/if}
 	</span>
@@ -46,12 +44,5 @@
 	.label {
 		display: flex;
 		justify-content: space-between;
-	}
-
-	.caps {
-		color: var(--color-text);
-		font-size: var(--font-size-s);
-		letter-spacing: var(--space-text-l);
-		text-transform: uppercase;
 	}
 </style>

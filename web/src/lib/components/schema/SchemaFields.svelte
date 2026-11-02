@@ -5,13 +5,13 @@
 		ColorPairSpec,
 		ColorSpec,
 		Dimension,
-		DimensionSpec,
 		FieldSpec,
 		FieldSpecKind,
 		FontStyleSpec,
 		GradientSpec,
 		NumberSpec,
-		OffsetSpec,
+		PairEdit,
+		PairSpec,
 		PlateSpec,
 		Position9Spec,
 		SegmentedSpec,
@@ -26,7 +26,7 @@
 	import { RotateCcw } from "@lucide/svelte";
 	import type { Component } from "svelte";
 	import Button from "$lib/components/ui/Button.svelte";
-	import DimensionField from "$lib/components/fields/schema/DimensionField.svelte";
+	import PairField from "$lib/components/fields/schema/PairField.svelte";
 	import CheckboxControl from "$lib/components/fields/schema/CheckboxControl.svelte";
 	import ColorControl from "$lib/components/fields/schema/ColorControl.svelte";
 	import ColorPairControl from "$lib/components/fields/schema/ColorPairControl.svelte";
@@ -35,7 +35,6 @@
 	import SelectControl from "$lib/components/fields/schema/SelectControl.svelte";
 	import SegmentedControl from "$lib/components/fields/schema/SegmentedControl.svelte";
 	import TextControl from "$lib/components/fields/schema/TextControl.svelte";
-	import OffsetControl from "$lib/components/fields/schema/OffsetControl.svelte";
 	import PositionControl from "$lib/components/fields/schema/PositionControl.svelte";
 	import FontStyleControl from "$lib/components/fields/schema/FontStyleControl.svelte";
 	import PlateControl from "$lib/components/fields/schema/PlateControl.svelte";
@@ -48,7 +47,7 @@
 		toolId: string;
 		fieldId: string;
 		sourceDims?: Dimension;
-		onchange?: (value: unknown, axis?: "width" | "height" | "both") => void;
+		onchange?: (value: unknown, edit?: PairEdit) => void;
 	}
 
 	// NOTE: The kind key of FIELDS guarantees the spec subtype at runtime (fieldSpecs
@@ -73,8 +72,7 @@
 		segmented: controlFor<SegmentedSpec>(SegmentedControl),
 		checkbox: controlFor<CheckboxSpec>(CheckboxControl),
 		text: controlFor<TextSpec>(TextControl),
-		dimension: controlFor<DimensionSpec>(DimensionField),
-		offset: controlFor<OffsetSpec>(OffsetControl),
+		pair: controlFor<PairSpec>(PairField),
 		position9: controlFor<Position9Spec>(PositionControl),
 		"font-style": controlFor<FontStyleSpec>(FontStyleControl),
 		plate: controlFor<PlateSpec>(PlateControl),
@@ -87,11 +85,7 @@
 		toolId: string;
 		// NOTE: Step input dimensions; the cap for maxFromSource fields (crop, etc.).
 		sourceDims?: Dimension;
-		onchange: (
-			id: string,
-			value: unknown,
-			axis?: "width" | "height" | "both",
-		) => void;
+		onchange: (id: string, value: unknown, edit?: PairEdit) => void;
 		onreset: () => void;
 	}
 	let {
@@ -118,28 +112,30 @@
 	<p class="no-params">{t("paramsCard.noParams")}</p>
 {:else}
 	{#each layoutGroups as group (group.key)}
-		{#if group.title}
-			<span class="group-title">{groupLabel(group.title)}</span>
-		{/if}
-		<div
-			class="group-fields"
-			style:grid-template-columns={group.cols > 1
-				? `repeat(${group.cols}, minmax(0, 1fr))`
-				: undefined}
-		>
-			{#each group.fields as id (id)}
-				{@const spec = schema.fields[id].spec}
-				{@const Control = FIELDS[spec.kind]}
-				<Control
-					label={fieldLabel(schema.fields[id], id)}
-					value={values[id]}
-					spec={effectiveSpec(spec)}
-					{toolId}
-					fieldId={id}
-					{sourceDims}
-					onchange={(v, axis) => onchange(id, v, axis)}
-				/>
-			{/each}
+		<div class="group">
+			{#if group.title}
+				<span class="group-title">{groupLabel(group.title)}</span>
+			{/if}
+			<div
+				class="group-fields"
+				style:grid-template-columns={group.cols > 1
+					? `repeat(${group.cols}, minmax(0, 1fr))`
+					: undefined}
+			>
+				{#each group.fields as id (id)}
+					{@const spec = schema.fields[id].spec}
+					{@const Control = FIELDS[spec.kind]}
+					<Control
+						label={fieldLabel(schema.fields[id], id)}
+						value={values[id]}
+						spec={effectiveSpec(spec)}
+						{toolId}
+						fieldId={id}
+						{sourceDims}
+						onchange={(v, edit) => onchange(id, v, edit)}
+					/>
+				{/each}
+			</div>
 		</div>
 	{/each}
 
@@ -155,17 +151,19 @@
 {/if}
 
 <style>
+	.group {
+		margin-top: var(--space-l);
+	}
+	.group:first-child {
+		margin-top: 0;
+	}
 	.group-title {
 		display: block;
-		margin-top: var(--space-l);
 		margin-bottom: var(--space-s);
 		color: var(--color-text-muted);
 		font: var(--font-size-s) var(--font-mono);
 		letter-spacing: var(--space-text-l);
 		text-transform: uppercase;
-	}
-	.group-title:first-child {
-		margin-top: 0;
 	}
 	.no-params {
 		margin: 0;

@@ -31,7 +31,7 @@
 	}
 </script>
 
-<Control {label} caps>
+<Control {label}>
 	<div class="gradient-colors">
 		<label class="color-field">
 			<span>{t("ui.from")}</span>

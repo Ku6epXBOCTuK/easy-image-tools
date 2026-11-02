@@ -82,13 +82,15 @@ interface CreateEmptyParams {
 
 export const createEmptySchema = toolSchema<CreateEmptyParams>(
 	{
-		size: field.dimension({
+		size: field.pair({
 			label: "fields.canvasSize",
 			min: 1,
 			max: 20000,
-			width: 800,
-			height: 600,
 			presets: true,
+			axes: [
+				{ key: "width", label: "ui.width", default: 800 },
+				{ key: "height", label: "ui.height", default: 600 },
+			],
 		}),
 		opacity: field.slider({
 			label: "fields.opacity",
@@ -128,13 +130,15 @@ interface SingleColorParams {
 }
 
 export const singleColorSchema = toolSchema<SingleColorParams>({
-	size: field.dimension({
+	size: field.pair({
 		label: "fields.canvasSize",
 		min: 1,
 		max: 20000,
-		width: 256,
-		height: 256,
 		presets: true,
+		axes: [
+			{ key: "width", label: "ui.width", default: 256 },
+			{ key: "height", label: "ui.height", default: 256 },
+		],
 	}),
 	color: field.color({ label: "fields.color", default: "#ff0000" }),
 });
@@ -156,13 +160,15 @@ interface RandomNoiseParams {
 }
 
 export const randomNoiseSchema = toolSchema<RandomNoiseParams>({
-	size: field.dimension({
+	size: field.pair({
 		label: "fields.canvasSize",
 		min: 1,
 		max: 5000,
-		width: 512,
-		height: 512,
 		presets: true,
+		axes: [
+			{ key: "width", label: "ui.width", default: 512 },
+			{ key: "height", label: "ui.height", default: 512 },
+		],
 	}),
 	seed: field.number({
 		label: "fields.seed",
@@ -191,13 +197,15 @@ interface LinearGradientParams {
 
 export const linearGradientSchema = toolSchema<LinearGradientParams>(
 	{
-		size: field.dimension({
+		size: field.pair({
 			label: "fields.canvasSize",
 			min: 1,
 			max: 20000,
-			width: 800,
-			height: 600,
 			presets: true,
+			axes: [
+				{ key: "width", label: "ui.width", default: 800 },
+				{ key: "height", label: "ui.height", default: 600 },
+			],
 		}),
 		gradient: field.gradient({
 			label: "fields.gradient",
@@ -242,13 +250,15 @@ interface ColorSpectrumParams {
 
 export const colorSpectrumSchema = toolSchema<ColorSpectrumParams>(
 	{
-		size: field.dimension({
+		size: field.pair({
 			label: "fields.canvasSize",
 			min: 1,
 			max: 5000,
-			width: 1024,
-			height: 128,
 			presets: true,
+			axes: [
+				{ key: "width", label: "ui.width", default: 1024 },
+				{ key: "height", label: "ui.height", default: 128 },
+			],
 		}),
 		direction: field.select({
 			label: "fields.direction",
@@ -305,13 +315,15 @@ interface RandomColorsParams {
 
 export const randomColorsSchema = toolSchema<RandomColorsParams>(
 	{
-		size: field.dimension({
+		size: field.pair({
 			label: "fields.canvasSize",
 			min: 1,
 			max: 5000,
-			width: 512,
-			height: 512,
 			presets: true,
+			axes: [
+				{ key: "width", label: "ui.width", default: 512 },
+				{ key: "height", label: "ui.height", default: 512 },
+			],
 		}),
 		blockSize: field.slider({
 			label: "fields.blockSize",
@@ -360,13 +372,15 @@ interface DrawGridParams {
 
 export const drawGridSchema = toolSchema<DrawGridParams>(
 	{
-		size: field.dimension({
+		size: field.pair({
 			label: "fields.canvasSize",
 			min: 1,
 			max: 5000,
-			width: 512,
-			height: 512,
 			presets: true,
+			axes: [
+				{ key: "width", label: "ui.width", default: 512 },
+				{ key: "height", label: "ui.height", default: 512 },
+			],
 		}),
 		cols: field.slider({
 			label: "fields.cols",
@@ -432,13 +446,15 @@ interface PlaceholderParams {
 
 export const placeholderSchema = toolSchema<PlaceholderParams>(
 	{
-		size: field.dimension({
+		size: field.pair({
 			label: "fields.canvasSize",
 			min: 1,
 			max: 5000,
-			width: 800,
-			height: 400,
 			presets: true,
+			axes: [
+				{ key: "width", label: "ui.width", default: 800 },
+				{ key: "height", label: "ui.height", default: 400 },
+			],
 		}),
 		backgroundColor: field.color({
 			label: "fields.backgroundColor",

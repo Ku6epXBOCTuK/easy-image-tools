@@ -25,7 +25,12 @@ import {
 	type FlipAxis,
 } from "../../core/geometry";
 import { renderPredicateMask } from "../../core/masks";
-import { field, toolSchema, type Dimension } from "../../registry-schema";
+import {
+	field,
+	toolSchema,
+	type Dimension,
+	type Offset,
+} from "../../registry-schema";
 import {
 	imgTool,
 	requireSource,
@@ -73,13 +78,15 @@ interface FitOnBackgroundParams {
 
 export const fitOnBackgroundSchema = toolSchema<FitOnBackgroundParams>(
 	{
-		size: field.dimension({
+		size: field.pair({
 			label: "fields.canvasSize",
 			min: 1,
 			max: 20000,
-			width: 800,
-			height: 600,
 			presets: true,
+			axes: [
+				{ key: "width", label: "ui.width", default: 800 },
+				{ key: "height", label: "ui.height", default: 600 },
+			],
 		}),
 		opacity: field.slider({
 			label: "fields.opacity",
@@ -136,13 +143,15 @@ interface ChangeCanvasSizeParams {
 
 export const changeCanvasSizeSchema = toolSchema<ChangeCanvasSizeParams>(
 	{
-		size: field.dimension({
+		size: field.pair({
 			label: "fields.canvasSize",
 			min: 1,
 			max: 20000,
-			width: 800,
-			height: 600,
 			presets: true,
+			axes: [
+				{ key: "width", label: "ui.width", default: 800 },
+				{ key: "height", label: "ui.height", default: 600 },
+			],
 		}),
 		anchor: field.select({
 			label: "fields.anchor",
@@ -188,15 +197,26 @@ interface ResizeParams {
 
 export const resizeSchema = toolSchema<ResizeParams>(
 	{
-		size: field.dimension({
+		size: field.pair({
 			label: "fields.canvasSize",
 			min: 0,
 			max: 20000,
-			width: 1,
-			height: 1,
-			defaultFromSource: true,
 			lockAspectWith: "keepAspect",
 			presets: true,
+			axes: [
+				{
+					key: "width",
+					label: "ui.width",
+					default: 1,
+					defaultFromSource: "width",
+				},
+				{
+					key: "height",
+					label: "ui.height",
+					default: 1,
+					defaultFromSource: "height",
+				},
+			],
 		}),
 		keepAspect: field.checkbox({ label: "fields.keepAspect", default: true }),
 	},
@@ -243,48 +263,61 @@ const resizeTool: Tool<ResizeParams> = {
 };
 
 interface CropParams {
-	x: number;
-	y: number;
+	offset: Offset;
 	size: Dimension;
 }
 
 export const cropSchema = toolSchema<CropParams>(
 	{
-		x: field.number({
-			label: "fields.x",
+		offset: field.pair({
+			label: "fields.offset",
 			min: 0,
 			max: 20000,
-			step: 1,
-			default: 0,
-			maxFromSource: "width",
-			maxMinus: 1,
+			axes: [
+				{
+					key: "x",
+					label: "ui.x",
+					default: 0,
+					step: 1,
+					maxFromSource: "width",
+					maxMinus: 1,
+				},
+				{
+					key: "y",
+					label: "ui.y",
+					default: 0,
+					step: 1,
+					maxFromSource: "height",
+					maxMinus: 1,
+				},
+			],
 		}),
-		y: field.number({
-			label: "fields.y",
-			min: 0,
-			max: 20000,
-			step: 1,
-			default: 0,
-			maxFromSource: "height",
-			maxMinus: 1,
-		}),
-		size: field.dimension({
+		size: field.pair({
 			label: "fields.cropAreaSize",
 			min: 1,
 			max: 20000,
-			width: 1,
-			height: 1,
-			defaultFromSource: true,
-			maxFromSource: true,
 			presets: true,
+			axes: [
+				{
+					key: "width",
+					label: "ui.width",
+					default: 1,
+					defaultFromSource: "width",
+					maxFromSource: "width",
+				},
+				{
+					key: "height",
+					label: "ui.height",
+					default: 1,
+					defaultFromSource: "height",
+					maxFromSource: "height",
+				},
+			],
 		}),
 	},
 	{
 		layout: {
-			groups: [
-				{ title: "groups.offset", fields: ["x", "y"] },
-				{ fields: ["size"] },
-			],
+			groups: [{ fields: ["offset"] }, { fields: ["size"] }],
 		},
 	},
 );
@@ -299,7 +332,7 @@ const cropTool: Tool<CropParams> = {
 		if (w <= 0 || h <= 0) {
 			throw new ToolError("errors.cropSize");
 		}
-		return crop(img, Math.trunc(p.x), Math.trunc(p.y), w, h);
+		return crop(img, Math.trunc(p.offset.x), Math.trunc(p.offset.y), w, h);
 	}),
 	resultNote: (p, result) =>
 		result.width < Math.trunc(p.size.width) ||
@@ -468,14 +501,16 @@ export const splitPartsSchema = toolSchema<SplitPartsParams>(
 			default: 2,
 			visibleWhen: { field: "mode", equals: "grid" },
 		}),
-		tile: field.dimension({
+		tile: field.pair({
 			label: "fields.tileSize",
 			min: 1,
 			max: 20000,
-			width: 32,
-			height: 32,
 			presets: true,
 			visibleWhen: { field: "mode", equals: "tile" },
+			axes: [
+				{ key: "width", label: "ui.width", default: 32 },
+				{ key: "height", label: "ui.height", default: 32 },
+			],
 		}),
 	},
 	{

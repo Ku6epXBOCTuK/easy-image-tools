@@ -12,6 +12,7 @@ import {
 	fitAspectBox,
 	withAspectLock,
 	type Dimension,
+	type PairEdit,
 } from "$lib/registry-schema";
 import { SvelteMap, SvelteSet } from "svelte/reactivity";
 
@@ -36,13 +37,13 @@ function setStepValue(
 	index: number,
 	id: string,
 	value: unknown,
-	axis?: "width" | "height" | "both",
+	edit?: PairEdit,
 ) {
 	const step = s.steps[index];
 	if (!step) return;
 	touchedFor(marks, step.key).add(id);
 	const axisKey = `${step.key}:${id}`;
-	if (axis) marks.lastAxis[axisKey] = axis === "both" ? "width" : axis;
+	if (edit && "axis" in edit) marks.lastAxis[axisKey] = edit.axis;
 	const next: Record<string, unknown> = { ...step.params, [id]: value };
 	const stepSchema = toolSchemaOf(step);
 	const spec = stepSchema?.fields[id]?.spec;
@@ -53,23 +54,23 @@ function setStepValue(
 	if (dims && stepSchema && spec) {
 		const aspect = dims.width / dims.height;
 		if (
-			spec.kind === "dimension" &&
+			spec.kind === "pair" &&
 			spec.lockAspectWith &&
 			next[spec.lockAspectWith] === true
 		) {
 			next[id] =
-				axis === "both"
+				edit && "box" in edit
 					? fitAspectBox(value as Dimension, aspect)
 					: withAspectLock(
 							value as Dimension,
-							marks.lastAxis[axisKey] ?? "width",
+							marks.lastAxis[axisKey] === "height" ? "height" : "width",
 							aspect,
 						);
 		} else if (spec.kind === "checkbox" && value === true) {
 			// NOTE: lockAspect just enabled: snap bound fields to the aspect at once.
 			for (const [fid, f] of Object.entries(stepSchema.fields)) {
 				const fs = f.spec;
-				if (fs.kind === "dimension" && fs.lockAspectWith === id) {
+				if (fs.kind === "pair" && fs.lockAspectWith === id) {
 					next[fid] = fitAspectBox(next[fid] as Dimension, aspect);
 				}
 			}
@@ -103,8 +104,8 @@ interface Marks {
 	// NOTE: Fields edited by the user (per step): on new file load they must not be
 	// overwritten by source defaults. Step reset clears the mark.
 	touchedByStep: SvelteMap<string, SvelteSet<string>>;
-	// NOTE: Last edited axis of a dimension field; leads under lockAspect.
-	lastAxis: Record<string, "width" | "height">;
+	// NOTE: Last edited axis of a pair field; leads under lockAspect.
+	lastAxis: Record<string, string>;
 }
 
 function touchedFor(marks: Marks, key: string): SvelteSet<string> {
@@ -142,8 +143,8 @@ export function createSchemaToolState(ctx: SchemaToolStateCtx) {
 			index: number,
 			id: string,
 			value: unknown,
-			axis?: "width" | "height" | "both",
-		) => setStepValue(s, marks, ctx, index, id, value, axis),
+			edit?: PairEdit,
+		) => setStepValue(s, marks, ctx, index, id, value, edit),
 		resetStep: (index: number) => resetStep(s, marks, ctx, index),
 		addStepAt: (index: number, toolId: string) => {
 			s.steps = insertStep(s.steps, index, toolId);

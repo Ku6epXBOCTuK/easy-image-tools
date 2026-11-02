@@ -41,7 +41,7 @@
 	}
 </script>
 
-<Control {label} caps>
+<Control {label}>
 	<div class="chips">
 		{#each current as hex, i (i)}
 			<div class="chip">

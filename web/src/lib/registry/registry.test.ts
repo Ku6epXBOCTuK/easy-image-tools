@@ -188,10 +188,13 @@ describe("registry-new (migrated tools)", () => {
 		}
 	});
 
-	it("source-aware dimension defaults apply only to image tools", () => {
+	it("source-aware pair defaults apply only to image tools", () => {
 		for (const tool of TOOLS) {
 			for (const field of Object.values(tool.schema.fields)) {
-				if (field.spec.kind === "dimension" && field.spec.defaultFromSource) {
+				if (
+					field.spec.kind === "pair" &&
+					field.spec.axes.some((axis) => axis.defaultFromSource)
+				) {
 					expect(tool.input, tool.id).toBe("image");
 				}
 			}
@@ -214,8 +217,7 @@ describe("registry-new (migrated tools)", () => {
 		const crop = TOOLS.find((t) => t.id === "crop")!;
 		const cropDefaults = defaultSchemaParams(crop.schema, { source });
 		expect(cropDefaults).toMatchObject({
-			x: 0,
-			y: 0,
+			offset: { x: 0, y: 0 },
 			size: { width: 64, height: 48 },
 		});
 		const cropped = asImage(
@@ -397,8 +399,7 @@ describe("registry-new (migrated tools)", () => {
 			await tool.run({
 				source: img,
 				params: sanitizeSchemaParams(tool.schema, {
-					x: 10,
-					y: 20,
+					offset: { x: 10, y: 20 },
 					size: { width: 30, height: 40 },
 				}),
 			}),
