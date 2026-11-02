@@ -63,9 +63,34 @@ test("resize-png keeps user-set size when another image is uploaded", async ({
 	);
 });
 
-test("resize-png applies size preset chips", async ({ page }) => {
+test("resize-png fits the size preset chips into the source aspect", async ({
+	page,
+}) => {
 	await openTool(page, "resize-png");
 	await uploadImage(page, opaquePng);
+	await page.getByRole("button", { name: "32×32" }).click();
+	const width = page.getByRole("spinbutton", { name: "Width" });
+	const height = page.getByRole("spinbutton", { name: "Height" });
+	// NOTE: A chip is a bounding box: the fields show the aspect-fitted size the
+	// tool will print, not the square on the chip.
+	await expect
+		.poll(async () =>
+			Math.max(
+				Number(await width.inputValue()),
+				Number(await height.inputValue()),
+			),
+		)
+		.toBe(32);
+	const w = Number(await width.inputValue());
+	const h = Number(await height.inputValue());
+	expect(Math.abs(w / h - 64 / 48)).toBeLessThan(0.05);
+});
+
+test("resize-png fills a preset box exactly for a square source", async ({
+	page,
+}) => {
+	await openTool(page, "resize-png");
+	await uploadImage(page, transparentPng);
 	await page.getByRole("button", { name: "32×32" }).click();
 	await expect(page.getByRole("spinbutton", { name: "Width" })).toHaveValue(
 		"32",
