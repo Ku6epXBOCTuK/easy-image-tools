@@ -536,6 +536,21 @@ describe("registry-new (migrated tools)", () => {
 		}
 	});
 
+	it("rotate-free preview matches the result box", async () => {
+		const tool = TOOLS.find((t) => t.id === "rotate-free")!;
+		const img = solid(60, 40);
+		for (const angle of [0, 15, 45, 90, -90, 180]) {
+			const params = sanitizeSchemaParams(tool.schema, { angle });
+			const preview = tool.preview?.(params, img);
+			const out = asImage(await tool.run({ source: img, params }));
+			expect([preview?.width, preview?.height], String(angle)).toEqual([
+				out.width,
+				out.height,
+			]);
+			expect(preview?.angle, String(angle)).toBe(angle);
+		}
+	});
+
 	it("extract-alpha-mask inverts the mask on request", async () => {
 		const tool = TOOLS.find((t) => t.id === "extract-alpha-mask")!;
 		const img = makeImage(2, 1, [

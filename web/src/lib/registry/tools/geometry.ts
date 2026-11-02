@@ -1,4 +1,5 @@
 import {
+	rotatedBounds,
 	rotateFreeImage,
 	skewImage,
 	transformImage,
@@ -642,6 +643,16 @@ const rotateFreeTool: Tool<RotateFreeParams> = {
 	schema: rotateFreeSchema,
 	input: "image",
 	run: imgTool((img, p) => rotateFreeImage(img, p.angle)),
+	preview: (p, source) => {
+		const { width, height } = rotatedBounds(source, p.angle);
+		return {
+			width,
+			height,
+			left: (width - source.width) / 2,
+			top: (height - source.height) / 2,
+			angle: p.angle,
+		};
+	},
 };
 
 interface ZoomParams {

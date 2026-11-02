@@ -16,6 +16,8 @@
 		top: `${(canvas.top / canvas.height) * 100}%`,
 		width: `${(source.width / canvas.width) * 100}%`,
 		height: `${(source.height / canvas.height) * 100}%`,
+		rotate:
+			canvas.angle === undefined ? undefined : `rotate(${canvas.angle}deg)`,
 	});
 </script>
 
@@ -27,6 +29,7 @@
 		style:top={frame.top}
 		style:width={frame.width}
 		style:height={frame.height}
+		style:transform={frame.rotate}
 	/>
 </div>
 

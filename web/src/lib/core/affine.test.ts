@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { rotate90, sampleBilinear } from "./geometry";
 import {
+	rotatedBounds,
 	rotateFreeImage,
 	skewImage,
 	transformImage,
-	zoomImage,
 } from "./affine";
+import { sampleBilinear } from "./geometry";
 import { makeImage } from "./test-helpers";
 
 describe("sampleBilinear", () => {
@@ -30,6 +30,27 @@ describe("sampleBilinear", () => {
 	it("out-of-bounds coordinates are clamped", () => {
 		const img = makeImage(1, 1, [[7, 7, 7, 255]]);
 		expect(sampleBilinear(img, -10, -10)).toEqual([7, 7, 7, 255]);
+	});
+});
+
+describe("rotatedBounds", () => {
+	it("gives the size rotateFreeImage returns", () => {
+		const img = makeImage(200, 100, new Array(200 * 100).fill([0, 0, 0, 255]));
+		for (const angle of [0, 15, 45, 90, 135, 180, -180, -45, 360]) {
+			const box = rotatedBounds(img, angle);
+			const out = rotateFreeImage(img, angle);
+			expect([box.width, box.height], String(angle)).toEqual([
+				out.width,
+				out.height,
+			]);
+		}
+	});
+
+	it("swaps the sides at a straight angle", () => {
+		expect(rotatedBounds({ width: 6, height: 4 }, 90)).toEqual({
+			width: 4,
+			height: 6,
+		});
 	});
 });
 

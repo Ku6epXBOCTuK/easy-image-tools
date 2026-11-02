@@ -101,6 +101,8 @@ export interface CanvasPreview {
 	height: number;
 	left: number;
 	top: number;
+	// NOTE: Degrees the source is turned by inside the box, about its own center.
+	angle?: number;
 }
 
 export type PageStep = {

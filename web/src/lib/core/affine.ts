@@ -1,7 +1,7 @@
-import { parseHexColor } from "./palette";
 import { ToolError } from "./errors";
-import { clonePixelImage, createPixelImage, type PixelImage } from "./types";
 import { sampleBilinear } from "./geometry";
+import { parseHexColor } from "./palette";
+import { clonePixelImage, createPixelImage, type PixelImage } from "./types";
 
 export type AffineMatrix = [number, number, number, number, number, number];
 
@@ -66,9 +66,10 @@ export function transformImage(
 	return out;
 }
 
-function centeredTransform(img: PixelImage, forward: AffineMatrix): PixelImage {
-	const inv = invertAffine(forward);
-
+function boundsOf(
+	img: { width: number; height: number },
+	forward: AffineMatrix,
+): { minX: number; minY: number; width: number; height: number } {
 	let minX = Infinity;
 	let maxX = -Infinity;
 	let minY = Infinity;
@@ -86,8 +87,17 @@ function centeredTransform(img: PixelImage, forward: AffineMatrix): PixelImage {
 		minY = Math.min(minY, qy);
 		maxY = Math.max(maxY, qy);
 	}
-	const outW = Math.round(maxX - minX) + 1;
-	const outH = Math.round(maxY - minY) + 1;
+	return {
+		minX,
+		minY,
+		width: Math.round(maxX - minX) + 1,
+		height: Math.round(maxY - minY) + 1,
+	};
+}
+
+function centeredTransform(img: PixelImage, forward: AffineMatrix): PixelImage {
+	const inv = invertAffine(forward);
+	const { minX, minY, width: outW, height: outH } = boundsOf(img, forward);
 	const tx = inv[0] * minX + inv[2] * minY - 0.5;
 	const ty = inv[1] * minX + inv[3] * minY - 0.5;
 	return transformImage(
@@ -96,6 +106,25 @@ function centeredTransform(img: PixelImage, forward: AffineMatrix): PixelImage {
 		outW,
 		outH,
 	);
+}
+
+function rotationMatrix(degrees: number): AffineMatrix {
+	const rad = (degrees * Math.PI) / 180;
+	let cos = Math.cos(rad);
+	let sin = Math.sin(rad);
+	if (Math.abs(sin) < 1e-12) sin = 0;
+	if (Math.abs(cos) < 1e-12) cos = 0;
+	return [cos, sin, -sin, cos, 0, 0];
+}
+
+// NOTE: The box a free rotation lands in, from the same corners the transform
+// uses, so the placeholder cannot drift from the result size.
+export function rotatedBounds(
+	source: { width: number; height: number },
+	degrees: number,
+): { width: number; height: number } {
+	const { width, height } = boundsOf(source, rotationMatrix(degrees));
+	return { width, height };
 }
 
 export function skewImage(
@@ -112,12 +141,7 @@ export function skewImage(
 }
 
 export function rotateFreeImage(img: PixelImage, degrees: number): PixelImage {
-	const rad = (degrees * Math.PI) / 180;
-	let cos = Math.cos(rad);
-	let sin = Math.sin(rad);
-	if (Math.abs(sin) < 1e-12) sin = 0;
-	if (Math.abs(cos) < 1e-12) cos = 0;
-	return centeredTransform(img, [cos, sin, -sin, cos, 0, 0]);
+	return centeredTransform(img, rotationMatrix(degrees));
 }
 
 export function zoomImage(img: PixelImage, scalePercent: number): PixelImage {
