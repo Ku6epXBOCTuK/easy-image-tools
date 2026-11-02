@@ -139,7 +139,7 @@ const circleMaskSchema = toolSchema<CircleMaskParams>(
 	{
 		layout: {
 			groups: [
-				{ title: "groups.shape", fields: ["size"] },
+				{ fields: ["size"] },
 				{ title: "groups.position", fields: ["offset"] },
 			],
 		},

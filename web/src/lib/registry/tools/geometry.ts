@@ -88,12 +88,12 @@ export const fitOnBackgroundSchema = toolSchema<FitOnBackgroundParams>(
 			step: 1,
 			default: 100,
 		}),
-		color: field.color({ label: "fields.background", default: "#ffffff" }),
+		color: field.color({ label: "fields.backgroundColor", default: "#ffffff" }),
 	},
 	{
 		layout: {
 			groups: [
-				{ title: "groups.canvas", fields: ["size"] },
+				{ fields: ["size"] },
 				{ title: "groups.background", fields: ["opacity", "color"] },
 			],
 		},
@@ -162,10 +162,7 @@ export const changeCanvasSizeSchema = toolSchema<ChangeCanvasSizeParams>(
 	},
 	{
 		layout: {
-			groups: [
-				{ title: "groups.canvas", fields: ["size"] },
-				{ title: "groups.anchor", fields: ["anchor"] },
-			],
+			groups: [{ fields: ["size"] }, { fields: ["anchor"] }],
 		},
 	},
 );
@@ -206,7 +203,7 @@ export const resizeSchema = toolSchema<ResizeParams>(
 	{
 		layout: {
 			groups: [
-				{ title: "groups.canvas", fields: ["size"] },
+				{ fields: ["size"] },
 				{ title: "groups.scaling", fields: ["keepAspect"] },
 			],
 		},
@@ -286,7 +283,7 @@ export const cropSchema = toolSchema<CropParams>(
 		layout: {
 			groups: [
 				{ title: "groups.offset", fields: ["x", "y"] },
-				{ title: "groups.cropArea", fields: ["size"] },
+				{ fields: ["size"] },
 			],
 		},
 	},
@@ -383,7 +380,7 @@ export const addPaddingSchema = toolSchema<AddPaddingParams>(
 	{
 		layout: {
 			groups: [
-				{ title: "groups.padding", fields: ["padding"] },
+				{ fields: ["padding"] },
 				{ title: "groups.fill", fields: ["opacity", "color"] },
 			],
 		},
@@ -486,7 +483,7 @@ export const splitPartsSchema = toolSchema<SplitPartsParams>(
 			groups: [
 				{ fields: ["mode"] },
 				{ title: "groups.grid", fields: ["columns", "rows"] },
-				{ title: "groups.tile", fields: ["tile"] },
+				{ fields: ["tile"] },
 			],
 		},
 	},

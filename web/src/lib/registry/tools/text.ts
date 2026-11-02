@@ -50,9 +50,9 @@ const addTextSchema = toolSchema<AddTextParams>(
 	{
 		layout: {
 			groups: [
-				{ title: "groups.text", fields: ["text", "style"] },
+				{ fields: ["text", "style"] },
 				{ title: "groups.placement", fields: ["position", "margin"] },
-				{ title: "groups.plate", fields: ["plate"] },
+				{ fields: ["plate"] },
 			],
 		},
 	},
@@ -126,7 +126,7 @@ const dateStampSchema = toolSchema<DateStampParams>(
 			groups: [
 				{ title: "groups.text", fields: ["format", "style"] },
 				{ title: "groups.placement", fields: ["position", "margin"] },
-				{ title: "groups.plate", fields: ["plate"] },
+				{ fields: ["plate"] },
 			],
 		},
 	},

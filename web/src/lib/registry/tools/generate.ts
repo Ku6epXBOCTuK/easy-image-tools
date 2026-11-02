@@ -102,7 +102,7 @@ export const createEmptySchema = toolSchema<CreateEmptyParams>(
 	{
 		layout: {
 			groups: [
-				{ title: "groups.canvas", fields: ["size"] },
+				{ fields: ["size"] },
 				{ title: "groups.fill", fields: ["opacity", "color"] },
 			],
 		},
@@ -209,7 +209,7 @@ export const linearGradientSchema = toolSchema<LinearGradientParams>(
 	{
 		layout: {
 			groups: [
-				{ title: "groups.canvas", fields: ["size"] },
+				{ fields: ["size"] },
 				{ title: "groups.colors", fields: ["gradient"] },
 			],
 		},
@@ -276,7 +276,7 @@ export const colorSpectrumSchema = toolSchema<ColorSpectrumParams>(
 	{
 		layout: {
 			groups: [
-				{ title: "groups.canvas", fields: ["size"] },
+				{ fields: ["size"] },
 				{
 					title: "groups.spectrum",
 					fields: ["direction", "saturation", "lightness"],
@@ -331,7 +331,7 @@ export const randomColorsSchema = toolSchema<RandomColorsParams>(
 	{
 		layout: {
 			groups: [
-				{ title: "groups.canvas", fields: ["size"] },
+				{ fields: ["size"] },
 				{ title: "groups.random", cols: 2, fields: ["blockSize", "seed"] },
 			],
 		},
@@ -401,7 +401,7 @@ export const drawGridSchema = toolSchema<DrawGridParams>(
 	{
 		layout: {
 			groups: [
-				{ title: "groups.canvas", fields: ["size"] },
+				{ fields: ["size"] },
 				{
 					title: "groups.grid",
 					cols: 2,
@@ -450,13 +450,13 @@ export const placeholderSchema = toolSchema<PlaceholderParams>(
 	{
 		layout: {
 			groups: [
-				{ title: "groups.canvas", fields: ["size"] },
+				{ fields: ["size"] },
 				{
 					title: "groups.colors",
 					cols: 2,
 					fields: ["backgroundColor", "color"],
 				},
-				{ title: "groups.text", fields: ["showText"] },
+				{ fields: ["showText"] },
 			],
 		},
 	},
@@ -660,7 +660,7 @@ const paletteBaseSchema = {
 const paletteLayoutGroup = {
 	layout: {
 		groups: [
-			{ title: "groups.baseColor", fields: ["baseColor"] },
+			{ fields: ["baseColor"] },
 			{
 				title: "groups.output",
 				cols: 2,
@@ -972,12 +972,12 @@ export const textToPngSchema = toolSchema<TextToPngParams>(
 	{
 		layout: {
 			groups: [
-				{ title: "groups.text", fields: ["text", "style"] },
+				{ fields: ["text", "style"] },
 				{
 					title: "groups.background",
 					fields: ["bgOpacity", "backgroundColor"],
 				},
-				{ title: "groups.padding", fields: ["padding"] },
+				{ fields: ["padding"] },
 			],
 		},
 	},

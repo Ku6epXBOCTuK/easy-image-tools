@@ -194,7 +194,7 @@ export const addNoiseSchema = toolSchema<AddNoiseParams>(
 		layout: {
 			groups: [
 				{ title: "groups.noise", cols: 2, fields: ["amount", "mode"] },
-				{ title: "groups.seed", fields: ["seed"] },
+				{ fields: ["seed"] },
 			],
 		},
 	},

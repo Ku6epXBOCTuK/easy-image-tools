@@ -31,6 +31,10 @@ function selectOptions(
 	return result;
 }
 
+function normalize(value: string): string {
+	return value.trim().toLocaleLowerCase();
+}
+
 describe("dictionary completeness for the new registry", () => {
 	it("every page has an ru translation with non-empty title/description", () => {
 		for (const page of PAGES) {
@@ -113,6 +117,42 @@ describe("dictionary completeness for the new registry", () => {
 			}
 			for (const key of Object.keys(dict.groups ?? {})) {
 				expect(usedGroups.has(key), `extra groups key: ${key}`).toBe(true);
+			}
+		}
+	});
+
+	it("group titles do not repeat the label of a field they contain", () => {
+		for (const tool of TOOLS) {
+			for (const group of tool.schema?.layout?.groups ?? []) {
+				if (!group.title) continue;
+				const titleKey = group.title.replace(/^groups\./, "");
+				for (const fieldId of group.fields) {
+					const label = (
+						tool.schema?.fields[fieldId] as
+							{ spec?: { label?: string } } | undefined
+					)?.spec?.label;
+					if (!label) continue;
+					const labelKey = label.replace(/^fields\./, "");
+					for (const [locale, dict] of [
+						["en", en],
+						["ru", ru],
+					] as const) {
+						const titleText = normalize(dict.groups?.[titleKey] ?? "");
+						const labelText = normalize(dict.fields?.[labelKey] ?? "");
+						expect(titleText, `${tool.id} ${locale}: ${titleKey}`).not.toBe("");
+						expect(labelText, `${tool.id} ${locale}: ${labelKey}`).not.toBe("");
+						expect(
+							titleText === labelText,
+							`${tool.id} ${locale}: group "${titleText}" repeats field label "${labelText}"`,
+						).toBe(false);
+						if (group.fields.length === 1) {
+							expect(
+								labelText.startsWith(titleText),
+								`${tool.id} ${locale}: group "${titleText}" restates field label "${labelText}"`,
+							).toBe(false);
+						}
+					}
+				}
 			}
 		}
 	});
