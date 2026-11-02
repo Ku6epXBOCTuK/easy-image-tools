@@ -2,6 +2,23 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.17.1](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/9c35bf3dfeb12c144b0ccc20edea36bc5ecb058c..v0.17.1) - 2026-11-02
+#### Bug Fixes
+- update tool labels - ([7cfaa53](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/7cfaa53a5ce208f865eac693b55ab72b2cfc0b01)) - Ku6epXBOCTuK
+- all dimensions use axis component with number and range - ([bd6d6b6](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/bd6d6b6b392d5ba51ebf182b02b1ae061d24e6a4)) - Ku6epXBOCTuK
+- remove doubling tool fields labels - ([a9be672](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/a9be6722eed6145a34126847672ee04bee5bd6c1)) - Ku6epXBOCTuK
+- crumbs grows - ([04a649e](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/04a649e9f4533afe64de8d5f3d9256d5491721dc)) - Ku6epXBOCTuK
+- remove unused params - ([a35af4d](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/a35af4d810f2ed3326500e7b54ae696970c4136e)) - Ku6epXBOCTuK
+- eslint config - ([868237b](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/868237b69ae849dcaaacdbeb5625773dbc7851bc)) - Ku6epXBOCTuK
+- lazy import dont use eslint-ignore - ([5448939](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/5448939cf2e43163c73c0a243ac8be867c1c4270)) - Ku6epXBOCTuK
+- horizontal use top\bottom, and vertical use left\right - ([cf7d556](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/cf7d556e0b2cc0c0f8e88ead2c610de48a3dd20b)) - Ku6epXBOCTuK
+- aspect ratio and size presets - ([3f0a0da](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/3f0a0da1b14aac58a6336c9b9b78e51e49910498)) - Ku6epXBOCTuK
+- badge text background contrast - ([9c35bf3](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/9c35bf3dfeb12c144b0ccc20edea36bc5ecb058c)) - Ku6epXBOCTuK
+#### Refactoring
+- unified pair field, move tools to them - ([ddc88b8](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/ddc88b83ba02e7d78a1e36523ebeffc61115c4c3)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.17.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/4f9fbb13d994f2c9b937afd4fcb1b068a001bb39..v0.17.0) - 2026-11-01
 #### Features
 - add ui-kit dep, use popover from ui-kit - ([4f9fbb1](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/4f9fbb13d994f2c9b937afd4fcb1b068a001bb39)) - Ku6epXBOCTuK
