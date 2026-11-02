@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.17.3](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/9d8360786d41f0d2edd845981bce317b3c491e13..v0.17.3) - 2026-11-02
+#### Bug Fixes
+- aspect size and fits to presets box - ([f93257c](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/f93257c04d22d3a815937ea15538983835aa9b43)) - Ku6epXBOCTuK
+- add invert for extract alpha mask - ([9342b61](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/9342b61451624d3431598bb04721dd3e708a13f7)) - Ku6epXBOCTuK
+- change canvas size use position 9 anchor - ([9d83607](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/9d8360786d41f0d2edd845981bce317b3c491e13)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.17.2](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/52c32a7f6f04cddddc3fcae653cbc3393aa402d5..v0.17.2) - 2026-11-02
 #### Bug Fixes
 - pair field preset active - ([efece46](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/efece46353d8b5cf4b46435f120f386f5b07f1cf)) - Ku6epXBOCTuK
