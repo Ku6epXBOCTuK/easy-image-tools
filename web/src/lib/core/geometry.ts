@@ -1,7 +1,7 @@
-import { parseHexColor } from "./palette";
 import { ToolError } from "./errors";
-import { clonePixelImage, createPixelImage, type PixelImage } from "./types";
 import { clampInt } from "./math";
+import { parseHexColor } from "./palette";
+import { clonePixelImage, createPixelImage, type PixelImage } from "./types";
 
 export function expandCanvas(
 	img: PixelImage,
@@ -347,6 +347,26 @@ export function trimToContent(img: PixelImage, alphaThreshold = 0): PixelImage {
 	return crop(img, b.x, b.y, b.w, b.h);
 }
 
+// NOTE: Where the source lands on the target canvas, shared by the result and
+// its preview so the placeholder cannot drift from the pixels.
+export function canvasPlacement(
+	canvas: { width: number; height: number },
+	source: { width: number; height: number },
+	anchor: Anchor9,
+): { left: number; top: number } {
+	const left = anchor.endsWith("-left")
+		? 0
+		: anchor.endsWith("-right")
+			? canvas.width - source.width
+			: Math.floor((canvas.width - source.width) / 2);
+	const top = anchor.startsWith("top-")
+		? 0
+		: anchor.startsWith("bottom-")
+			? canvas.height - source.height
+			: Math.floor((canvas.height - source.height) / 2);
+	return { left, top };
+}
+
 // NOTE: Fits the canvas to an exact size: excess is cropped, missing space is transparently padded.
 export function changeCanvasSize(
 	img: PixelImage,
@@ -355,16 +375,11 @@ export function changeCanvasSize(
 	anchor: Anchor9,
 ): PixelImage {
 	const out = createPixelImage(width, height);
-	const pasteX = anchor.endsWith("-left")
-		? 0
-		: anchor.endsWith("-right")
-			? width - img.width
-			: Math.floor((width - img.width) / 2);
-	const pasteY = anchor.startsWith("top-")
-		? 0
-		: anchor.startsWith("bottom-")
-			? height - img.height
-			: Math.floor((height - img.height) / 2);
+	const { left: pasteX, top: pasteY } = canvasPlacement(
+		{ width, height },
+		img,
+		anchor,
+	);
 	for (let y = 0; y < height; y++) {
 		const sy = y - pasteY;
 		if (sy < 0 || sy >= img.height) continue;

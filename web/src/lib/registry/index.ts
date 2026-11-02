@@ -17,6 +17,7 @@ import { textTools } from "./tools/text";
 import type { Page, Tool } from "./types";
 
 export type {
+	CanvasPreview,
 	FileResult,
 	InputMode,
 	Page,

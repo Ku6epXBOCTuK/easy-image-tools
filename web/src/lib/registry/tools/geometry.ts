@@ -7,6 +7,7 @@ import {
 import { ToolError } from "../../core/errors";
 import {
 	type Anchor9,
+	canvasPlacement,
 	centerByAlpha,
 	changeCanvasSize,
 	clampCropBox,
@@ -178,6 +179,15 @@ const changeCanvasSizeTool: Tool<ChangeCanvasSizeParams> = {
 			p.anchor,
 		),
 	),
+	preview: (p, source) => {
+		const width = Math.trunc(p.size.width);
+		const height = Math.trunc(p.size.height);
+		return {
+			width,
+			height,
+			...canvasPlacement({ width, height }, source, p.anchor),
+		};
+	},
 };
 
 interface ResizeParams {

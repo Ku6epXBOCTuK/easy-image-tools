@@ -146,6 +146,23 @@
 	const stepDims = $derived(runner.stepDims);
 	const stepResults = $derived(runner.stepResults);
 	const stepFileSets = $derived(runner.stepFileSets);
+	// NOTE: Target canvas of the last step, shown until its own result lands.
+	const resultPreview = $derived.by(() => {
+		const last = steps[steps.length - 1];
+		if (!last) return null;
+		const image =
+			steps.length > 1
+				? (stepResults[steps.length - 2] ?? null)
+				: upload.source;
+		if (!image) return null;
+		const lastStepTool = getTool(last.id);
+		if (!lastStepTool?.preview) return null;
+		const canvas = lastStepTool.preview(
+			sanitizeSchemaParams(lastStepTool.schema, last.params),
+			image,
+		);
+		return canvas ? { canvas, image } : null;
+	});
 	const runWarnings = $derived(runner.runWarnings);
 	// NOTE: Feedback zones: source tile / step tiles / download button area.
 	const sourceNotices = $derived(upload.sourceWarnings.map(chainWarningNotice));
@@ -383,6 +400,7 @@
 						: undefined}
 					oncopy={copyText}
 					ondownloadtxt={downloadText}
+					preview={resultPreview}
 				/>
 			{:else}
 				{@const outSet = stepFileSets[i] ?? []}

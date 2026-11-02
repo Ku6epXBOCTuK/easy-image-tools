@@ -78,6 +78,15 @@ export type Tool<P = Record<string, unknown>> = {
 			height: number;
 		},
 	) => ToolGuide | null;
+	// NOTE: Shape of the result while it is being computed: target canvas and
+	// where the source sits on it, in canvas pixels.
+	preview?: (
+		params: P,
+		source: {
+			width: number;
+			height: number;
+		},
+	) => CanvasPreview | null;
 };
 
 export interface ToolGuide {
@@ -85,6 +94,13 @@ export interface ToolGuide {
 	y: number;
 	width: number;
 	height: number;
+}
+
+export interface CanvasPreview {
+	width: number;
+	height: number;
+	left: number;
+	top: number;
 }
 
 export type PageStep = {

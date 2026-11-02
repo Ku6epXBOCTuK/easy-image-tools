@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+	canvasPlacement,
 	centerByAlpha,
 	clampCropBox,
 	crop,
@@ -120,6 +121,39 @@ describe("crop", () => {
 
 	it("throws ToolError for area outside image", () => {
 		expect(() => crop(grid(), 5, 5, 2, 2)).toThrow(/errors\.cropBounds/);
+	});
+});
+
+describe("canvasPlacement", () => {
+	const canvas = { width: 100, height: 80 };
+	const small = { width: 40, height: 20 };
+
+	it("places a smaller source by each anchor", () => {
+		expect(canvasPlacement(canvas, small, "top-left")).toEqual({
+			left: 0,
+			top: 0,
+		});
+		expect(canvasPlacement(canvas, small, "bottom-right")).toEqual({
+			left: 60,
+			top: 60,
+		});
+		expect(canvasPlacement(canvas, small, "center")).toEqual({
+			left: 30,
+			top: 30,
+		});
+		expect(canvasPlacement(canvas, small, "middle-right")).toEqual({
+			left: 60,
+			top: 30,
+		});
+	});
+
+	it("keeps a negative offset when the source is larger than the canvas", () => {
+		expect(
+			canvasPlacement(canvas, { width: 140, height: 100 }, "center"),
+		).toEqual({ left: -20, top: -10 });
+		expect(
+			canvasPlacement(canvas, { width: 140, height: 100 }, "bottom-right"),
+		).toEqual({ left: -40, top: -20 });
 	});
 });
 

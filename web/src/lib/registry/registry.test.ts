@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { PREVIEW_GROUPS } from "../catalog";
+import { contentBounds } from "../core/geometry";
 import type { OutputMime } from "../core/io";
 import { makeImage } from "../core/test-helpers";
 import type { PixelImage } from "../core/types";
@@ -510,6 +511,29 @@ describe("registry-new (migrated tools)", () => {
 		const center = out.data[(10 * out.width + 10) * 4 + 3];
 		expect(topLeft).toBe(255);
 		expect(center).toBe(0);
+	});
+
+	it("change-canvas-size preview matches the pasted area", async () => {
+		const tool = TOOLS.find((t) => t.id === "change-canvas-size")!;
+		const img = solid(10, 10);
+		for (const anchor of ["top-left", "center", "bottom-right"]) {
+			const params = sanitizeSchemaParams(tool.schema, {
+				size: { width: 30, height: 20 },
+				anchor,
+			});
+			const preview = tool.preview?.(params, img);
+			const out = asImage(await tool.run({ source: img, params }));
+			const pasted = contentBounds(out);
+			expect(preview, anchor).not.toBeNull();
+			expect([preview?.left, preview?.top], anchor).toEqual([
+				pasted?.x,
+				pasted?.y,
+			]);
+			expect([preview?.width, preview?.height], anchor).toEqual([
+				out.width,
+				out.height,
+			]);
+		}
 	});
 
 	it("extract-alpha-mask inverts the mask on request", async () => {

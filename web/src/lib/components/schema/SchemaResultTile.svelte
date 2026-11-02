@@ -1,12 +1,18 @@
 <script lang="ts">
+	import ChipButton from "$lib/components/ui/ChipButton.svelte";
 	import { cachedDataUrl } from "$lib/core/io";
 	import type { PixelImage } from "$lib/core/types";
 	import { t } from "$lib/i18n/t";
-	import type { FileResult, ResultKind, ResultNote } from "$lib/registry";
-	import ChipButton from "$lib/components/ui/ChipButton.svelte";
+	import type {
+		CanvasPreview,
+		FileResult,
+		ResultKind,
+		ResultNote,
+	} from "$lib/registry";
 	import PartsGrid from "./PartsGrid.svelte";
-	import SchemaTextResult from "./SchemaTextResult.svelte";
+	import PreviewCanvas from "./PreviewCanvas.svelte";
 	import PreviewTile from "./PreviewTile.svelte";
+	import SchemaTextResult from "./SchemaTextResult.svelte";
 
 	interface Props {
 		resultKind?: ResultKind;
@@ -24,6 +30,7 @@
 		ontogglemask?: () => void;
 		oncopy?: () => void;
 		ondownloadtxt?: () => void;
+		preview?: { canvas: CanvasPreview; image: PixelImage } | null;
 	}
 	let {
 		resultKind = "image",
@@ -41,6 +48,7 @@
 		ontogglemask,
 		oncopy,
 		ondownloadtxt,
+		preview = null,
 	}: Props = $props();
 
 	const shown = $derived(maskOn && mask ? mask : result);
@@ -117,6 +125,8 @@
 			fileResult &&
 			fileResult.files.length > 0}
 			<PartsGrid files={fileResult.files} />
+		{:else if running && preview}
+			<PreviewCanvas canvas={preview.canvas} source={preview.image} />
 		{:else if resultKind === "image" && resultUrl}
 			<img
 				data-testid="result-image"
