@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cachedDataUrl } from "$lib/core/io";
+	import { previewDataUrl } from "$lib/core/preview";
 	import type { PixelImage } from "$lib/core/types";
 	import type { CanvasPreview } from "$lib/registry";
 
@@ -9,7 +9,7 @@
 	}
 	let { canvas, source }: Props = $props();
 
-	const url = $derived(cachedDataUrl(source));
+	const url = $derived(previewDataUrl(source));
 	const frame = $derived({
 		ratio: `${canvas.width} / ${canvas.height}`,
 		left: `${(canvas.left / canvas.width) * 100}%`,

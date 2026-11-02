@@ -6,7 +6,7 @@
 	import { ButtonVariantDefine } from "$lib/components/ui/define";
 	import Toggle from "$lib/components/ui/Toggle.svelte";
 	import { debounce } from "$lib/core/debounce";
-	import { cachedDataUrl } from "$lib/core/io";
+	import { previewDataUrl } from "$lib/core/preview";
 	import type { PixelImage } from "$lib/core/types";
 	import { isFav, toggleFav } from "$lib/favorites.svelte";
 	import {
@@ -369,7 +369,7 @@
 					{#if inSet.length > 1}
 						<PartsGrid files={inSet} />
 					{:else if input}
-						<img src={cachedDataUrl(input)} alt="" />
+						<img src={previewDataUrl(input)} alt="" />
 					{:else}
 						<span class="empty">{t("resultCard.noResult")}</span>
 					{/if}
@@ -426,7 +426,7 @@
 						<PartsGrid files={outSet} />
 					{:else if out}
 						<img
-							src={cachedDataUrl(
+							src={previewDataUrl(
 								masks.maskOn[i] && masks.masks[i]
 									? (masks.masks[i] as PixelImage)
 									: out,

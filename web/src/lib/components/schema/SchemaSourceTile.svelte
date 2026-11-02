@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cachedDataUrl } from "$lib/core/io";
+	import { previewDataUrl } from "$lib/core/preview";
 	import type { PixelImage } from "$lib/core/types";
 	import { t, tPlural } from "$lib/i18n/t";
 	import type { InputMode, ToolGuide, ToolImageFile } from "$lib/registry";
@@ -40,7 +40,7 @@
 		onuploadmany,
 	}: Props = $props();
 
-	const sourceUrl = $derived(source ? cachedDataUrl(source) : null);
+	const sourceUrl = $derived(source ? previewDataUrl(source) : null);
 	const sourceSize = $derived(
 		sources.length > 1 && sources[0] ? sources[0].image : source,
 	);

@@ -4,14 +4,14 @@ import type { FileResult, ToolResult } from "../registry";
 export type WorkerImage = {
 	width: number;
 	height: number;
-	data: Uint8ClampedArray;
+	data: Uint8ClampedArray<ArrayBuffer>;
 };
 
 export type WorkerFile = {
 	name: string;
 	width: number;
 	height: number;
-	data: Uint8ClampedArray;
+	data: Uint8ClampedArray<ArrayBuffer>;
 };
 
 export type WorkerRequest = {

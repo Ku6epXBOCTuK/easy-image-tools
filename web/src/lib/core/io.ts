@@ -96,20 +96,6 @@ export function toBase64(img: PixelImage): string {
 	return toDataUrl(img).slice("data:image/png;base64,".length);
 }
 
-const dataUrlCache = new WeakMap<PixelImage, string>();
-
-// NOTE: PNG encoding on the main thread is expensive and templates re-render
-// often with the same image. Results are immutable (a re-run produces new
-// objects), so an identity-keyed cache cannot go stale.
-export function cachedDataUrl(img: PixelImage): string {
-	let url = dataUrlCache.get(img);
-	if (url === undefined) {
-		url = toDataUrl(img);
-		dataUrlCache.set(img, url);
-	}
-	return url;
-}
-
 export async function decodeTextImage(text: string): Promise<PixelImage> {
 	const cleaned = text.trim().replace(/^data:[^,]*,/, "");
 	if (cleaned.length === 0) {

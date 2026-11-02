@@ -137,7 +137,7 @@ export function createExecutor(
 						? {
 								width: ctx.source.width,
 								height: ctx.source.height,
-								data: new Uint8ClampedArray(ctx.source.data),
+								data: ctx.source.data,
 							}
 						: undefined,
 					text: ctx.text,

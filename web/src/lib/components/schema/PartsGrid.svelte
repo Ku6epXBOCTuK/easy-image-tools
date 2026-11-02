@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cachedDataUrl } from "$lib/core/io";
+	import { previewDataUrl } from "$lib/core/preview";
 	import type { ToolImageFile } from "$lib/registry";
 
 	interface Props {
@@ -8,7 +8,7 @@
 	let { files }: Props = $props();
 
 	const parts = $derived(
-		files.map((file) => ({ name: file.name, url: cachedDataUrl(file.image) })),
+		files.map((file) => ({ name: file.name, url: previewDataUrl(file.image) })),
 	);
 </script>
 

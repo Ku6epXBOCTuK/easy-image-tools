@@ -21,7 +21,7 @@ export async function handleWorkerRequest(
 			? {
 					width: request.source.width,
 					height: request.source.height,
-					data: new Uint8ClampedArray(request.source.data),
+					data: request.source.data,
 				}
 			: undefined;
 		const output = await tool.run({

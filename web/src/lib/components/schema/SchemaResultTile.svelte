@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ChipButton from "$lib/components/ui/ChipButton.svelte";
-	import { cachedDataUrl } from "$lib/core/io";
+	import { previewDataUrl } from "$lib/core/preview";
 	import type { PixelImage } from "$lib/core/types";
 	import { t } from "$lib/i18n/t";
 	import type {
@@ -52,7 +52,7 @@
 	}: Props = $props();
 
 	const shown = $derived(maskOn && mask ? mask : result);
-	const resultUrl = $derived(shown ? cachedDataUrl(shown) : null);
+	const resultUrl = $derived(shown ? previewDataUrl(shown) : null);
 	const resultDims = $derived(
 		resultKind === "image" && result
 			? `${result.width} × ${result.height}`
