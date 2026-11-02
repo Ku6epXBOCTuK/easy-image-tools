@@ -1,15 +1,15 @@
 <script lang="ts">
+	import ChipButton from "$lib/components/ui/ChipButton.svelte";
 	import { t } from "$lib/i18n/t";
 	import {
-		pairAxisMax,
-		SIZE_PRESETS,
 		type Dimension,
 		type PairEdit,
 		type PairSpec,
+		pairAxisMax,
+		SIZE_PRESETS,
 	} from "$lib/registry-schema";
-	import ChipButton from "$lib/components/ui/ChipButton.svelte";
-	import Control from "./Control.svelte";
 	import AxisRow from "./AxisRow.svelte";
+	import Control from "./Control.svelte";
 
 	interface Props {
 		label: string;
@@ -50,6 +50,12 @@
 		// locked aspect into that box.
 		onchange?.({ [firstKey]: n, [secondKey]: n }, { box: true });
 	}
+
+	// NOTE: The chip is active when the size sits in its box, not only when both
+	// axes equal n: a fitted preset touches the box on its longer side.
+	function isActivePreset(n: number) {
+		return Math.max(current[firstKey], current[secondKey]) === n;
+	}
 </script>
 
 <Control {label}>
@@ -71,7 +77,7 @@
 			{#each SIZE_PRESETS as n (n)}
 				<ChipButton
 					label={`${n}×${n}`}
-					active={current[firstKey] === n && current[secondKey] === n}
+					active={isActivePreset(n)}
 					onclick={() => applyPreset(n)}
 				/>
 			{/each}

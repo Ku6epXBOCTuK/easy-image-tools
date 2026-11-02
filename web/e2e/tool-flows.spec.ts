@@ -68,7 +68,8 @@ test("resize-png fits the size preset chips into the source aspect", async ({
 }) => {
 	await openTool(page, "resize-png");
 	await uploadImage(page, opaquePng);
-	await page.getByRole("button", { name: "32×32" }).click();
+	const chip = page.getByRole("button", { name: "32×32" });
+	await chip.click();
 	const width = page.getByRole("spinbutton", { name: "Width" });
 	const height = page.getByRole("spinbutton", { name: "Height" });
 	// NOTE: A chip is a bounding box: the fields show the aspect-fitted size the
@@ -81,6 +82,7 @@ test("resize-png fits the size preset chips into the source aspect", async ({
 			),
 		)
 		.toBe(32);
+	await expect(chip).toHaveAttribute("aria-pressed", "true");
 	const w = Number(await width.inputValue());
 	const h = Number(await height.inputValue());
 	expect(Math.abs(w / h - 64 / 48)).toBeLessThan(0.05);
