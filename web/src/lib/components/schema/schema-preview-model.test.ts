@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
 	hasPreviewResult,
+	placementAttrs,
 	type SchemaPreviewModelInput,
 	tileAspect,
 } from "./schema-preview-model";
@@ -72,5 +73,44 @@ describe("tileAspect", () => {
 		expect(tileAspect(1000, undefined)).toBeUndefined();
 		expect(tileAspect(0, 1000)).toBeUndefined();
 		expect(tileAspect(1000, 0)).toBeUndefined();
+	});
+});
+
+describe("placementAttrs", () => {
+	it("draws the source at its pixel size at the placement offset", () => {
+		expect(
+			placementAttrs({ width: 30, height: 20 }, { left: 85, top: 90 }),
+		).toEqual({ x: 85, y: 90, width: 30, height: 20 });
+	});
+
+	it("draws a result without a frame at the canvas origin", () => {
+		expect(placementAttrs({ width: 200, height: 200 }, null)).toEqual({
+			x: 0,
+			y: 0,
+			width: 200,
+			height: 200,
+		});
+	});
+
+	it("keeps a source larger than the canvas at negative offsets", () => {
+		expect(
+			placementAttrs({ width: 300, height: 100 }, { left: -50, top: 0 }),
+		).toMatchObject({ x: -50, y: 0, width: 300, height: 100 });
+	});
+
+	it("turns the source about its own center", () => {
+		expect(
+			placementAttrs(
+				{ width: 100, height: 50 },
+				{ left: 20, top: 10, angle: 90 },
+			).transform,
+		).toBe("rotate(90 70 35)");
+	});
+
+	it("omits the transform when the angle is zero", () => {
+		expect(
+			placementAttrs({ width: 10, height: 10 }, { left: 0, top: 0, angle: 0 })
+				.transform,
+		).toBeUndefined();
 	});
 });

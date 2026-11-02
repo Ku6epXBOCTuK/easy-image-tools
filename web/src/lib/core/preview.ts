@@ -7,15 +7,29 @@ export const PREVIEW_MAX_SIDE = 512;
 
 const previewCache = new WeakMap<PixelImage, string>();
 
+// NOTE: A preview element must have the same pixel size as the thumbnail the
+// result <img> shows, otherwise the two scale differently inside one tile.
+export function previewSize(
+	width: number,
+	height: number,
+	maxSide = PREVIEW_MAX_SIDE,
+): { width: number; height: number } {
+	const long = Math.max(width, height);
+	if (long <= maxSide) return { width, height };
+	const scale = maxSide / long;
+	return {
+		width: Math.max(1, Math.round(width * scale)),
+		height: Math.max(1, Math.round(height * scale)),
+	};
+}
+
 export function downscaleForPreview(
 	img: PixelImage,
 	maxSide: number,
 ): PixelImage {
-	const long = Math.max(img.width, img.height);
-	if (long <= maxSide) return img;
-	const scale = maxSide / long;
-	const width = Math.max(1, Math.round(img.width * scale));
-	const height = Math.max(1, Math.round(img.height * scale));
+	const size = previewSize(img.width, img.height, maxSide);
+	if (size.width === img.width && size.height === img.height) return img;
+	const { width, height } = size;
 	const data = new Uint8ClampedArray(width * height * 4);
 	for (let y = 0; y < height; y++) {
 		const sy = Math.min(img.height - 1, Math.floor((y * img.height) / height));

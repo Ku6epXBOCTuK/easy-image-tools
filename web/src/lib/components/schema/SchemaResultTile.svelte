@@ -10,7 +10,7 @@
 		ResultNote,
 	} from "$lib/registry";
 	import PartsGrid from "./PartsGrid.svelte";
-	import PreviewCanvas from "./PreviewCanvas.svelte";
+	import PreviewBox from "./PreviewBox.svelte";
 	import PreviewTile from "./PreviewTile.svelte";
 	import SchemaTextResult from "./SchemaTextResult.svelte";
 
@@ -52,10 +52,19 @@
 	}: Props = $props();
 
 	const shown = $derived(maskOn && mask ? mask : result);
+	// NOTE: While a run is in flight the tile shows the target canvas, so its
+	// frame and caption must come from that canvas, not from the stale result.
+	const pendingCanvas = $derived(
+		running && preview && resultKind === "image" ? preview.canvas : null,
+	);
 	const resultUrl = $derived(shown ? previewDataUrl(shown) : null);
 	const resultDims = $derived(
-		resultKind === "image" && result
-			? `${result.width} × ${result.height}`
+		resultKind === "image"
+			? pendingCanvas
+				? `${pendingCanvas.width} × ${pendingCanvas.height}`
+				: result
+					? `${result.width} × ${result.height}`
+					: undefined
 			: undefined,
 	);
 
@@ -72,7 +81,7 @@
 		resultKind === "files" && fileResult && fileResult.files.length > 0
 			? fileResult.files[0].image
 			: resultKind === "image"
-				? shown
+				? (pendingCanvas ?? shown)
 				: null,
 	);
 </script>
@@ -126,7 +135,11 @@
 			fileResult.files.length > 0}
 			<PartsGrid files={fileResult.files} />
 		{:else if running && preview}
-			<PreviewCanvas canvas={preview.canvas} source={preview.image} />
+			<PreviewBox
+				canvas={preview.canvas}
+				source={preview.image}
+				url={previewDataUrl(preview.image)}
+			/>
 		{:else if resultKind === "image" && resultUrl}
 			<img
 				data-testid="result-image"

@@ -29,6 +29,38 @@ export function tileAspect(
 	return Math.min(MAX_TILE_ASPECT, Math.max(MIN_TILE_ASPECT, width / height));
 }
 
+// NOTE: SVG attributes of the source inside the target canvas. Both the preview
+// box and the result <img> are capped at the canvas pixel size, so one unit is
+// one CSS px and the placeholder cannot render a different size than the output.
+export interface PlacementAttrs {
+	x: number;
+	y: number;
+	width: number;
+	height: number;
+	transform?: string;
+}
+
+export function placementAttrs(
+	source: { width: number; height: number },
+	frame: { left: number; top: number; angle?: number } | null,
+): PlacementAttrs {
+	const left = frame?.left ?? 0;
+	const top = frame?.top ?? 0;
+	const attrs: PlacementAttrs = {
+		x: left,
+		y: top,
+		width: source.width,
+		height: source.height,
+	};
+	const angle = frame?.angle;
+	if (angle) {
+		const cx = left + source.width / 2;
+		const cy = top + source.height / 2;
+		attrs.transform = `rotate(${angle} ${cx} ${cy})`;
+	}
+	return attrs;
+}
+
 export function hasPreviewResult(input: SchemaPreviewModelInput): boolean {
 	const { resultKind, result, fileResult, textResult } = input;
 	if (resultKind === "image") return Boolean(result);

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { downscaleForPreview } from "./preview";
+import { downscaleForPreview, previewSize } from "./preview";
 import { makeImage } from "./test-helpers";
 
 function filled(width: number, height: number) {
@@ -39,5 +39,19 @@ describe("downscaleForPreview", () => {
 		const out = downscaleForPreview(filled(10000, 3), 512);
 		expect(out.width).toBe(512);
 		expect(out.height).toBe(1);
+	});
+});
+
+describe("previewSize", () => {
+	it("matches the size of the thumbnail rendered from the same image", () => {
+		const img = downscaleForPreview(filled(8192, 8192), 512);
+		expect(previewSize(8192, 8192)).toEqual({
+			width: img.width,
+			height: img.height,
+		});
+	});
+
+	it("keeps small canvases at their own pixel size", () => {
+		expect(previewSize(200, 300)).toEqual({ width: 200, height: 300 });
 	});
 });
