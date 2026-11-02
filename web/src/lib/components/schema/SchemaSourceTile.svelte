@@ -38,6 +38,9 @@
 	}: Props = $props();
 
 	const sourceUrl = $derived(source ? cachedDataUrl(source) : null);
+	const sourceSize = $derived(
+		sources.length > 1 && sources[0] ? sources[0].image : source,
+	);
 	const sourceDims = $derived(
 		source
 			? `${source.width} × ${source.height}` +
@@ -89,6 +92,8 @@
 	label={t("sourceCard.source")}
 	viewMode={mode}
 	dims={sourceDims}
+	width={sourceSize?.width}
+	height={sourceSize?.height}
 	{warnings}
 	{errors}
 >

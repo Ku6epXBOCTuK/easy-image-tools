@@ -324,10 +324,14 @@
 			{:else}
 				{@const input = stepResults[i - 1]}
 				{@const inSet = stepFileSets[i - 1] ?? []}
+				{@const inputSize =
+					inSet.length > 1 && inSet[0] ? inSet[0].image : input}
 				<PreviewTile
 					label={t("chain.inputLegend")}
 					viewMode="image"
 					dims={input ? `${input.width} × ${input.height}` : undefined}
+					width={inputSize?.width}
+					height={inputSize?.height}
 					parts={inSet.length > 1 ? inSet.length : undefined}
 				>
 					{#if inSet.length > 1}
@@ -367,10 +371,14 @@
 				/>
 			{:else}
 				{@const outSet = stepFileSets[i] ?? []}
+				{@const outSize =
+					outSet.length > 1 && outSet[0] ? outSet[0].image : out}
 				<PreviewTile
 					label={t("chain.stepResult", { n: i + 1 })}
 					viewMode="image"
 					dims={out ? `${out.width} × ${out.height}` : undefined}
+					width={outSize?.width}
+					height={outSize?.height}
 					parts={outSet.length > 1 ? outSet.length : undefined}
 					warnings={warningsByStep[i] ?? []}
 					errors={stepError && stepError.step === i
@@ -581,6 +589,8 @@
 		gap: var(--space-l);
 	}
 	.cell {
+		display: flex;
+		flex-direction: column;
 		min-width: 0;
 	}
 

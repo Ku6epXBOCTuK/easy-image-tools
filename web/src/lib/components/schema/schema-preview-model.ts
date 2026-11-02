@@ -16,6 +16,19 @@ export type SchemaPreviewModelInput = {
 	textResult: string | null;
 };
 
+// NOTE: A tile follows the result proportion only inside 16:9 to 9:16, so a
+// panorama stays readable and a tall strip does not tower over its pair.
+const MAX_TILE_ASPECT = 16 / 9;
+const MIN_TILE_ASPECT = 9 / 16;
+
+export function tileAspect(
+	width?: number,
+	height?: number,
+): number | undefined {
+	if (!width || !height) return undefined;
+	return Math.min(MAX_TILE_ASPECT, Math.max(MIN_TILE_ASPECT, width / height));
+}
+
 export function hasPreviewResult(input: SchemaPreviewModelInput): boolean {
 	const { resultKind, result, fileResult, textResult } = input;
 	if (resultKind === "image") return Boolean(result);

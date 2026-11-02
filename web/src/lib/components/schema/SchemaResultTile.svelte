@@ -61,6 +61,13 @@
 			? `${fileResult.files[0].image.width} × ${fileResult.files[0].image.height}`
 			: undefined,
 	);
+	const resultSize = $derived(
+		resultKind === "files" && fileResult && fileResult.files.length > 0
+			? fileResult.files[0].image
+			: resultKind === "image"
+				? shown
+				: null,
+	);
 </script>
 
 <PreviewTile
@@ -70,6 +77,8 @@
 	{parts}
 	{partsDims}
 	dims={resultDims}
+	width={resultSize?.width}
+	height={resultSize?.height}
 	note={resultNote ? t(resultNote.key) : undefined}
 	noteTone={resultNote?.tone ?? "warning"}
 	{warnings}
@@ -130,22 +139,20 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		/* NOTE: Nested in PreviewTile.canvas: without stretch it shrank to its
-		   content and collapsed parts-grid into a single column. */
+		/* NOTE: Nested in PreviewTile.canvas: it carries the border and the
+		   height, this box only stretches so the parts grid fills the tile. */
 		width: 100%;
 		align-self: stretch;
-		min-height: var(--size-tile-canvas-min);
-		border: var(--size-border) solid var(--color-border);
-		border-radius: var(--radius-s);
+		flex-grow: 1;
+		min-height: 0;
 		overflow: auto;
-		background: var(--color-background-muted);
 		color: var(--color-text-muted);
 	}
 	.canvas img {
 		width: auto;
 		max-width: 100%;
 		height: auto;
-		max-height: 60vh;
+		max-height: 100%;
 		object-fit: contain;
 		display: block;
 	}

@@ -5,6 +5,7 @@
 	import type { InputMode, ResultKind } from "$lib/registry";
 	import { RefreshCw } from "@lucide/svelte";
 	import type { Snippet } from "svelte";
+	import { tileAspect } from "./schema-preview-model";
 
 	interface Props {
 		label: string;
@@ -14,6 +15,8 @@
 		parts?: number;
 		partsDims?: string;
 		dims?: string;
+		width?: number;
+		height?: number;
 		note?: string;
 		noteTone?: "warning" | "info";
 		// NOTE: Runtime warnings (chain/source/download events): badges next to the
@@ -32,12 +35,16 @@
 		parts = undefined,
 		partsDims = undefined,
 		dims = undefined,
+		width = undefined,
+		height = undefined,
 		note = undefined,
 		noteTone = "warning",
 		warnings = [],
 		errors = [],
 		actions = undefined,
 	}: Props = $props();
+
+	const aspect = $derived(tileAspect(width, height));
 </script>
 
 <figure class="tile">
@@ -85,12 +92,22 @@
 			{/each}
 		</span>
 	</figcaption>
-	<div class="canvas" class:checker={mode === "image"}>
+	<div
+		class="canvas"
+		class:checker={mode === "image"}
+		class:sized={aspect !== undefined}
+		style:aspect-ratio={aspect === undefined ? undefined : String(aspect)}
+	>
 		{@render children()}
 	</div>
 </figure>
 
 <style>
+	.tile {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
 	.tile figcaption {
 		display: flex;
 		align-items: center;
@@ -123,12 +140,16 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		min-height: var(--size-tile-canvas-min);
+		flex-grow: 1;
+		max-height: 60vh;
 		border: var(--size-border) solid var(--color-border);
 		border-radius: var(--radius-s);
 		overflow: hidden;
 		background: var(--color-background-muted);
 		color: var(--color-text-muted);
+	}
+	.canvas:not(.sized) {
+		min-height: var(--size-tile-canvas-min);
 	}
 	.canvas :global(img) {
 		width: auto;
@@ -137,6 +158,9 @@
 		max-height: 60vh;
 		object-fit: contain;
 		display: block;
+	}
+	.canvas.sized :global(img) {
+		max-height: 100%;
 	}
 	.canvas.checker {
 		background:
