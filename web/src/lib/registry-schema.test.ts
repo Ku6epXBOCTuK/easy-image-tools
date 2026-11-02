@@ -2,15 +2,16 @@ import { describe, expect, it } from "vitest";
 import {
 	applySourceDefaults,
 	clampSourceAwareMaxes,
+	type Dimension,
 	defaultSchemaParams,
 	field,
 	fitAspectBox,
+	fitsPresetBox,
 	resolveLayoutGroups,
 	sanitizeSchemaParams,
 	toolSchema,
 	visibleLayoutGroups,
 	withAspectLock,
-	type Dimension,
 } from "./registry-schema";
 
 interface FrameParams {
@@ -160,6 +161,25 @@ describe("registry-schema: fitAspectBox", () => {
 			width: 0,
 			height: 300,
 		});
+	});
+});
+
+describe("registry-schema: fitsPresetBox", () => {
+	const aspect = 64 / 48;
+
+	it("matches a fitted preset on its longer side", () => {
+		expect(
+			fitsPresetBox(fitAspectBox({ width: 32, height: 32 }, aspect), 32),
+		).toBe(true);
+	});
+
+	it("ignores the short side", () => {
+		expect(fitsPresetBox({ width: 32, height: 24 }, 32)).toBe(true);
+	});
+
+	it("rejects a size that overflows the box or misses it", () => {
+		expect(fitsPresetBox({ width: 32, height: 40 }, 32)).toBe(false);
+		expect(fitsPresetBox({ width: 31, height: 24 }, 32)).toBe(false);
 	});
 });
 

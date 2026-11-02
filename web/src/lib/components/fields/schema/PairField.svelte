@@ -3,6 +3,7 @@
 	import { t } from "$lib/i18n/t";
 	import {
 		type Dimension,
+		fitsPresetBox,
 		type PairEdit,
 		type PairSpec,
 		pairAxisMax,
@@ -54,7 +55,10 @@
 	// NOTE: The chip is active when the size sits in its box, not only when both
 	// axes equal n: a fitted preset touches the box on its longer side.
 	function isActivePreset(n: number) {
-		return Math.max(current[firstKey], current[secondKey]) === n;
+		return fitsPresetBox(
+			{ width: current[firstKey], height: current[secondKey] },
+			n,
+		);
 	}
 </script>
 

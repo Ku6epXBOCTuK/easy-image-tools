@@ -95,3 +95,9 @@ export function fitAspectBox(box: Dimension, aspect: number): Dimension {
 		? { width: Math.max(1, Math.round(height * aspect)), height }
 		: { width, height: Math.max(1, Math.round(width / aspect)) };
 }
+
+// NOTE: A preset is a box, not a size: the fitted result touches it on its
+// longer side, so comparing both axes to the preset hides the active chip.
+export function fitsPresetBox(size: Dimension, box: number): boolean {
+	return Math.max(size.width, size.height) === box;
+}
