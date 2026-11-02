@@ -14,31 +14,30 @@ pnpm verify
 `verify` выполняет последовательно:
 
 1. `pnpm --dir web check` — SvelteKit sync и `svelte-check`.
-2. `pnpm --dir web test:coverage` — полный Vitest-набор вместе с
-   coverage-гейтом.
-3. `pnpm --dir web test:rules` — отдельный быстрый прогон тестов ESLint-правил.
-4. `pnpm --dir web lint:all` — ESLint, Stylelint и token audit.
-5. `pnpm --dir web format:check` — форматирование кода `web/`.
-6. `pnpm check:docs` — форматирование Markdown (`AGENTS.md`, `README.md`,
+2. `pnpm --dir web test` — полный Vitest-набор, включая тесты ESLint-правил.
+3. `pnpm --dir web lint:all` — ESLint, Stylelint и token audit.
+4. `pnpm --dir web format:check` — форматирование кода `web/`.
+5. `pnpm check:docs` — форматирование Markdown (`AGENTS.md`, `README.md`,
    `docs/`).
-7. `pnpm --dir web build` — production build, затем генераторы `sitemap.xml` и
+6. `pnpm --dir web build` — production build, затем генераторы `sitemap.xml` и
    `llms.txt` в `build/` (набор страниц берётся из собранного HTML, правило —
    `docs/plan-seo.md`, §1).
 
-Полный `test` уже включает тесты lint-правил; отдельный `test:rules` в `verify`
-оставлен как явный быстрый диагностический этап.
+Coverage в `verify` не входит: порог проверяет отдельный джоб `coverage` в
+`.github/workflows/verify.yml`, который идёт параллельно с гейтом. Быстрый
+прогон только тестов правил — `pnpm --dir web test:rules`.
 
 ## Coverage
 
-`pnpm --dir web test:coverage` считает покрытие только по `src/lib` и падает
+`pnpm test:coverage` (из корня) считает покрытие только по `src/lib` и падает
 ниже порога. Пороги и список исключений из scope — в `web/vitest.config.ts`
 (`coverage.thresholds`, `coverage.exclude`); здесь они не дублируются, чтобы
 числа не устарели молча (`AGENTS.md`).
 
 Порог — нижняя граница, а не оценка качества: он блокирует регрессию и не
-требует сначала закрывать весь долг. Актуальные проценты даёт
-`pnpm --dir web test:coverage`. Локальный замер занимает единицы секунд, поэтому
-отдельного прогона в `verify` нет — `test:coverage` заменяет `test`.
+требует сначала закрывать весь долг. Актуальные проценты даёт тот же
+`pnpm test:coverage`; в `verify` он не входит, чтобы не удваивать прогон тестов,
+регрессию порога ловит CI-джоб `coverage` (`verify.yml`).
 
 Исключения из scope и их причины:
 

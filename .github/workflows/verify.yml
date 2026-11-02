@@ -44,3 +44,41 @@ jobs:
 
       - name: Run quality gate
         run: pnpm verify
+
+  coverage:
+    name: Coverage gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ^11.20.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: |
+            pnpm-lock.yaml
+            web/pnpm-lock.yaml
+
+      - name: Install root dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Use ui-kit from GitHub
+        run: node web/scripts/use-kit-from-github.mjs
+
+      - name: Install web dependencies
+        working-directory: web
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Refresh ui-kit
+        working-directory: web
+        run: pnpm update @ku6epxboctuk/ui-kit
+
+      - name: Run coverage
+        run: pnpm --dir web test:coverage
