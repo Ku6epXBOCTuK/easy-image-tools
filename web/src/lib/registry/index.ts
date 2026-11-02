@@ -1,11 +1,3 @@
-import { alphaTools } from "./tools/alpha";
-import { analyzeTools } from "./tools/analyze";
-import { colorTools } from "./tools/color";
-import { convertTools } from "./tools/convert";
-import { filtersTools } from "./tools/filters";
-import { generateTools } from "./tools/generate";
-import { geometryTools } from "./tools/geometry";
-import { textTools } from "./tools/text";
 import { alphaPages } from "./pages/alpha";
 import { analyzePages } from "./pages/analyze";
 import { colorPages } from "./pages/color";
@@ -14,17 +6,16 @@ import { filtersPages } from "./pages/filters";
 import { generatePages } from "./pages/generate";
 import { geometryPages } from "./pages/geometry";
 import { textPages } from "./pages/text";
+import { alphaTools } from "./tools/alpha";
+import { analyzeTools } from "./tools/analyze";
+import { colorTools } from "./tools/color";
+import { convertTools } from "./tools/convert";
+import { filtersTools } from "./tools/filters";
+import { generateTools } from "./tools/generate";
+import { geometryTools } from "./tools/geometry";
+import { textTools } from "./tools/text";
 import type { Page, Tool } from "./types";
 
-export {
-	genTool,
-	imgTool,
-	INPUT_MODES,
-	requireSource,
-	requireText,
-	RESULT_KINDS,
-	textGen,
-} from "./types";
 export type {
 	FileResult,
 	InputMode,
@@ -34,9 +25,19 @@ export type {
 	ResultNote,
 	Tool,
 	ToolContext,
+	ToolGuide,
 	ToolImageFile,
 	ToolResult,
 	VerdictResult,
+} from "./types";
+export {
+	genTool,
+	INPUT_MODES,
+	imgTool,
+	RESULT_KINDS,
+	requireSource,
+	requireText,
+	textGen,
 } from "./types";
 
 export const TOOLS: Tool[] = [

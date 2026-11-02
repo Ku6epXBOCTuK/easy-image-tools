@@ -69,7 +69,23 @@ export type Tool<P = Record<string, unknown>> = {
 	// NOTE: Note at the result tile when the outcome differs from requested
 	// (clamped, aspect-corrected, grew past canvas).
 	resultNote?: (params: P, result: PixelImage) => ResultNote | null;
+	// NOTE: Overlay on the source tile: the part of the source the result shows.
+	// Same size contract as `source`, so percent math stays honest.
+	guide?: (
+		params: P,
+		source: {
+			width: number;
+			height: number;
+		},
+	) => ToolGuide | null;
 };
+
+export interface ToolGuide {
+	x: number;
+	y: number;
+	width: number;
+	height: number;
+}
 
 export type PageStep = {
 	id: string;

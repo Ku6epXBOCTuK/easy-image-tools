@@ -2,9 +2,10 @@
 	import { cachedDataUrl } from "$lib/core/io";
 	import type { PixelImage } from "$lib/core/types";
 	import { t, tPlural } from "$lib/i18n/t";
-	import type { InputMode, ToolImageFile } from "$lib/registry";
+	import type { InputMode, ToolGuide, ToolImageFile } from "$lib/registry";
 	import Dropzone from "./Dropzone.svelte";
 	import PartsGrid from "./PartsGrid.svelte";
+	import PreviewGuide from "./PreviewGuide.svelte";
 	import PreviewTile from "./PreviewTile.svelte";
 	import SchemaTextSource from "./SchemaTextSource.svelte";
 
@@ -17,6 +18,7 @@
 		fileCount?: number;
 		warnings?: { label: string; detail?: string }[];
 		errors?: { label: string; detail?: string }[];
+		guide?: ToolGuide | null;
 		ontextinput?: (text: string) => void;
 		onrendertext?: () => void;
 		onupload?: (file: File) => void;
@@ -31,6 +33,7 @@
 		fileCount = 0,
 		warnings = [],
 		errors = [],
+		guide = null,
 		ontextinput,
 		onrendertext,
 		onupload,
@@ -145,11 +148,16 @@
 			{#if sources.length > 1}
 				<PartsGrid files={sources} />
 			{:else}
-				<img
-					data-testid="source-image"
-					src={sourceUrl}
-					alt={t("sourceCard.alt")}
-				/>
+				<span class="pic">
+					<img
+						data-testid="source-image"
+						src={sourceUrl}
+						alt={t("sourceCard.alt")}
+					/>
+					{#if guide && source}
+						<PreviewGuide {guide} {source} />
+					{/if}
+				</span>
 			{/if}
 			{#if dragging}
 				<span class="drop-hint">{t("dropZone.overlayDefault")}</span>
@@ -183,6 +191,12 @@
 		justify-content: center;
 		width: 100%;
 		align-self: stretch;
+	}
+	.pic {
+		position: relative;
+		display: flex;
+		max-width: 100%;
+		max-height: 100%;
 	}
 	.tile-drop.dragging::after {
 		content: "";

@@ -6,11 +6,14 @@ import {
 } from "../../core/affine";
 import { ToolError } from "../../core/errors";
 import {
+	type Anchor9,
 	centerByAlpha,
 	changeCanvasSize,
+	clampCropBox,
 	crop,
 	cropToRatio,
 	expandCanvas,
+	type FlipAxis,
 	flip,
 	forceOrientation,
 	padToRatio,
@@ -21,15 +24,13 @@ import {
 	symmetricCopy,
 	tile,
 	trimToContent,
-	type Anchor9,
-	type FlipAxis,
 } from "../../core/geometry";
 import { renderPredicateMask } from "../../core/masks";
 import {
-	field,
-	toolSchema,
 	type Dimension,
+	field,
 	type Offset,
+	toolSchema,
 } from "../../registry-schema";
 import {
 	imgTool,
@@ -328,6 +329,14 @@ const cropTool: Tool<CropParams> = {
 		result.height < Math.trunc(p.size.height)
 			? { key: "resultCard.clamped" }
 			: null,
+	guide: (p, source) =>
+		clampCropBox(
+			source,
+			Math.trunc(p.offset.x),
+			Math.trunc(p.offset.y),
+			Math.trunc(p.size.width),
+			Math.trunc(p.size.height),
+		),
 };
 
 interface RotateParams {

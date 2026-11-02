@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { DragDropProvider } from "@dnd-kit/svelte";
+	import { Star } from "@lucide/svelte";
 	import Button from "$lib/components/ui/Button.svelte";
 	import ChipButton from "$lib/components/ui/ChipButton.svelte";
-	import Toggle from "$lib/components/ui/Toggle.svelte";
 	import { ButtonVariantDefine } from "$lib/components/ui/define";
+	import Toggle from "$lib/components/ui/Toggle.svelte";
 	import { debounce } from "$lib/core/debounce";
 	import { cachedDataUrl } from "$lib/core/io";
 	import type { PixelImage } from "$lib/core/types";
@@ -15,11 +17,12 @@
 		type WarningNotice,
 	} from "$lib/i18n/schema-tool-strings";
 	import { t } from "$lib/i18n/t";
-	import { createChain, moveStep, type ChainStep } from "$lib/pipeline.svelte";
+	import { type ChainStep, createChain, moveStep } from "$lib/pipeline.svelte";
 	import { getTool, type Page, type Tool } from "$lib/registry";
-	import { DragDropProvider } from "@dnd-kit/svelte";
-	import { Star } from "@lucide/svelte";
+	import { sanitizeSchemaParams } from "$lib/registry-schema";
 	import AddStepButton from "./AddStepButton.svelte";
+	import { createChainHost } from "./chain-host.svelte";
+	import { createOutputControls } from "./output-controls.svelte";
 	import PartsGrid from "./PartsGrid.svelte";
 	import PreviewTile from "./PreviewTile.svelte";
 	import SchemaActions from "./SchemaActions.svelte";
@@ -28,9 +31,6 @@
 	import SchemaSourceTile from "./SchemaSourceTile.svelte";
 	import SortableStepCard from "./SortableStepCard.svelte";
 	import StepReorderOverlay from "./StepReorderOverlay.svelte";
-	import ToolPickerButton from "./ToolPickerButton.svelte";
-	import { createChainHost } from "./chain-host.svelte";
-	import { createOutputControls } from "./output-controls.svelte";
 	import { hasPreviewResult } from "./schema-preview-model";
 	import type { DisplayError } from "./schema-tool-runner.svelte";
 	import { createSchemaToolRunner } from "./schema-tool-runner.svelte";
@@ -41,6 +41,7 @@
 	import { createSourceUpload } from "./source-upload.svelte";
 	import { createStepDnd } from "./step-dnd.svelte";
 	import { createStepMasks } from "./step-mask.svelte";
+	import ToolPickerButton from "./ToolPickerButton.svelte";
 
 	interface Props {
 		page: Page;
@@ -82,6 +83,18 @@
 		replaceStepTool,
 	} = stepState;
 	const steps = $derived(stepState.steps);
+	// NOTE: Guide of the first step: the part of the source its result shows.
+	const sourceGuide = $derived.by(() => {
+		const first = steps[0];
+		const src = upload.source;
+		if (!first || !src || upload.sourceFiles.length > 1) return null;
+		const firstTool = getTool(first.id);
+		if (!firstTool?.guide) return null;
+		return firstTool.guide(
+			sanitizeSchemaParams(firstTool.schema, first.params),
+			src,
+		);
+	});
 	const stepDnd = createStepDnd({
 		onMove: (from, to) => {
 			stepState.steps = moveStep(stepState.steps, from, to);
@@ -316,6 +329,7 @@
 					fileCount={upload.sourceFiles.length}
 					warnings={sourceNotices}
 					errors={errorBadge(sourceError)}
+					guide={sourceGuide}
 					ontextinput={(v) => (upload.textSource = v)}
 					onrendertext={run}
 					onupload={upload.handleFile}

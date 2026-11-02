@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
 	centerByAlpha,
+	clampCropBox,
 	crop,
 	expandCanvas,
 	flip,
@@ -119,6 +120,43 @@ describe("crop", () => {
 
 	it("throws ToolError for area outside image", () => {
 		expect(() => crop(grid(), 5, 5, 2, 2)).toThrow(/errors\.cropBounds/);
+	});
+});
+
+describe("clampCropBox", () => {
+	const size = { width: 3, height: 3 };
+
+	it("keeps an area inside the bounds", () => {
+		expect(clampCropBox(size, 1, 1, 2, 2)).toEqual({
+			x: 1,
+			y: 1,
+			width: 2,
+			height: 2,
+		});
+	});
+
+	it("cuts an area that starts outside the bounds", () => {
+		expect(clampCropBox(size, -1, -1, 2, 2)).toEqual({
+			x: 0,
+			y: 0,
+			width: 1,
+			height: 1,
+		});
+	});
+
+	it("limits an oversized area to the image", () => {
+		expect(clampCropBox(size, 1, 1, 100, 100)).toEqual({
+			x: 1,
+			y: 1,
+			width: 2,
+			height: 2,
+		});
+	});
+
+	it("returns null when nothing of the area remains", () => {
+		expect(clampCropBox(size, 5, 5, 2, 2)).toBeNull();
+		expect(clampCropBox(size, 0, 0, 0, 2)).toBeNull();
+		expect(clampCropBox(size, 0, 0, 2, 0)).toBeNull();
 	});
 });
 

@@ -173,6 +173,30 @@ function rotateClockwise(img: PixelImage): PixelImage {
 	return out;
 }
 
+export interface CropBox {
+	x: number;
+	y: number;
+	width: number;
+	height: number;
+}
+
+// NOTE: Single clamp for crop() and the source guide, so the frame cannot drift
+// from the result. Returns null for an empty window.
+export function clampCropBox(
+	source: { width: number; height: number },
+	x: number,
+	y: number,
+	width: number,
+	height: number,
+): CropBox | null {
+	const sx = clampInt(x, 0, source.width);
+	const sy = clampInt(y, 0, source.height);
+	const ex = clampInt(x + width, sx, source.width);
+	const ey = clampInt(y + height, sy, source.height);
+	if (ex - sx <= 0 || ey - sy <= 0) return null;
+	return { x: sx, y: sy, width: ex - sx, height: ey - sy };
+}
+
 export function crop(
 	img: PixelImage,
 	x: number,
@@ -180,19 +204,17 @@ export function crop(
 	width: number,
 	height: number,
 ): PixelImage {
-	const sx = clampInt(x, 0, img.width);
-	const sy = clampInt(y, 0, img.height);
-	const ex = clampInt(x + width, sx, img.width);
-	const ey = clampInt(y + height, sy, img.height);
-	const w = ex - sx;
-	const h = ey - sy;
-	if (w <= 0 || h <= 0) {
+	const box = clampCropBox(img, x, y, width, height);
+	if (!box) {
 		throw new ToolError("errors.cropBounds");
 	}
-	const out = createPixelImage(w, h);
-	for (let row = 0; row < h; row++) {
-		const si = (sy + row) * img.width * 4 + sx * 4;
-		out.data.set(img.data.subarray(si, si + w * 4), row * w * 4);
+	const out = createPixelImage(box.width, box.height);
+	for (let row = 0; row < box.height; row++) {
+		const si = (box.y + row) * img.width * 4 + box.x * 4;
+		out.data.set(
+			img.data.subarray(si, si + box.width * 4),
+			row * box.width * 4,
+		);
 	}
 	return out;
 }

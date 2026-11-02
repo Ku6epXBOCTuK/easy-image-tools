@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { PAGES, TOOLS } from ".";
 import { PREVIEW_GROUPS } from "../catalog";
-import type { PixelImage } from "../core/types";
 import type { OutputMime } from "../core/io";
 import { makeImage } from "../core/test-helpers";
+import type { PixelImage } from "../core/types";
 import { defaultSchemaParams, sanitizeSchemaParams } from "../registry-schema";
+import { PAGES, TOOLS } from ".";
 import type { FileResult, ToolResult } from "./types";
 
 function asImage(result: ToolResult): PixelImage {
@@ -406,6 +406,24 @@ describe("registry-new (migrated tools)", () => {
 		);
 		expect(out.width).toBe(30);
 		expect(out.height).toBe(40);
+	});
+
+	it("crop guide matches the cropped result", async () => {
+		const tool = TOOLS.find((t) => t.id === "crop")!;
+		const img = solid(100, 60);
+		const cases = [
+			{ offset: { x: 10, y: 20 }, size: { width: 30, height: 40 } },
+			{ offset: { x: -10, y: 45 }, size: { width: 40, height: 40 } },
+			{ offset: { x: 90, y: 0 }, size: { width: 30, height: 30 } },
+			{ offset: { x: 0, y: 0 }, size: { width: 1, height: 1 } },
+		];
+		for (const values of cases) {
+			const params = sanitizeSchemaParams(tool.schema, values);
+			const guide = tool.guide?.(params, img);
+			const out = asImage(await tool.run({ source: img, params }));
+			expect(guide).not.toBeNull();
+			expect([guide?.width, guide?.height]).toEqual([out.width, out.height]);
+		}
 	});
 
 	it("fit-on-background centers the image on the canvas", async () => {
