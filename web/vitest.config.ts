@@ -17,6 +17,11 @@ export default defineConfig({
 		// NOTE: Forks cost more than the tests themselves on Windows: the suite
 		// is ~3x faster in threads and no test relies on process isolation.
 		pool: "threads",
+		experimental: {
+			// NOTE: Warm cache cuts a run from 28s to 18s, a cold one pays 66s to
+			// fill it; CI always starts cold, so it stays off there.
+			fsModuleCache: !process.env.CI,
+		},
 		coverage: {
 			provider: "v8",
 			reporter: ["text-summary"],
