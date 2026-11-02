@@ -7,6 +7,7 @@
 	} from "$lib/registry-schema";
 	import ChipButton from "$lib/components/ui/ChipButton.svelte";
 	import Control from "./Control.svelte";
+	import AxisRow from "./AxisRow.svelte";
 
 	interface Props {
 		label: string;
@@ -58,28 +59,22 @@
 
 <Control {label} caps>
 	<div class="dimension-field">
-		<label class="dimension-axis">
-			<span>{t("ui.width")}</span>
-			<input
-				type="number"
-				min={sp.min}
-				max={maxW}
-				value={current.width}
-				oninput={(e) =>
-					setAxis("width", Number((e.target as HTMLInputElement).value))}
-			/>
-		</label>
-		<label class="dimension-axis">
-			<span>{t("ui.height")}</span>
-			<input
-				type="number"
-				min={sp.min}
-				max={maxH}
-				value={current.height}
-				oninput={(e) =>
-					setAxis("height", Number((e.target as HTMLInputElement).value))}
-			/>
-		</label>
+		<AxisRow
+			label={t("ui.width")}
+			value={current.width}
+			min={sp.min}
+			max={maxW}
+			default={sp.width}
+			onchange={(n) => setAxis("width", n)}
+		/>
+		<AxisRow
+			label={t("ui.height")}
+			value={current.height}
+			min={sp.min}
+			max={maxH}
+			default={sp.height}
+			onchange={(n) => setAxis("height", n)}
+		/>
 	</div>
 	{#if sp.presets}
 		<div class="dimension-presets">
@@ -96,22 +91,9 @@
 
 <style>
 	.dimension-field {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
+		display: flex;
+		flex-direction: column;
 		gap: var(--space-m);
-	}
-	.dimension-axis > span {
-		display: block;
-		margin-bottom: var(--space-m);
-	}
-	.dimension-axis input {
-		width: 100%;
-		padding: var(--space-m) var(--space-l);
-		background: var(--color-background);
-		border: var(--size-border) solid var(--color-border);
-		border-radius: var(--radius-s);
-		color: var(--color-text);
-		font: var(--font-size-s) var(--font-mono);
 	}
 	.dimension-presets {
 		display: flex;

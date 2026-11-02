@@ -103,7 +103,7 @@ export function sanitizeSchemaParams<P>(
 					spec.kind === "number"
 						? effectiveMax(spec, context?.source)
 						: spec.max;
-				out[key] = clamp(n, spec.min ?? -Infinity, max ?? Infinity);
+				out[key] = clamp(n, spec.min, max);
 				break;
 			}
 			case "select":

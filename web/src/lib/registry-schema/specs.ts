@@ -16,8 +16,9 @@ export interface FieldSpecBase {
 export interface NumberSpec extends FieldSpecBase {
 	kind: "number";
 	default: number;
-	min?: number;
-	max?: number;
+	// NOTE: Required: every number field renders a slider, so it needs a range.
+	min: number;
+	max: number;
 	step?: number;
 	// NOTE: Cap from source dimensions (axis); static max is the fallback.
 	maxFromSource?: "width" | "height";

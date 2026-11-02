@@ -2,10 +2,7 @@ import { clamp } from "../core/math";
 import type { Dimension, DimensionSpec, NumberSpec, ToolSchema } from "./specs";
 
 // NOTE: Field cap: from source dimensions under maxFromSource, else static.
-export function effectiveMax(
-	spec: NumberSpec,
-	source?: Dimension,
-): number | undefined {
+export function effectiveMax(spec: NumberSpec, source?: Dimension): number {
 	if (spec.maxFromSource && source) {
 		return source[spec.maxFromSource] - (spec.maxMinus ?? 0);
 	}
@@ -34,11 +31,7 @@ export function clampSourceAwareMaxes<P>(
 		if (spec.kind === "number" && spec.maxFromSource) {
 			const v = out[key as string];
 			if (typeof v !== "number" || !Number.isFinite(v)) continue;
-			const clamped = clamp(
-				v,
-				spec.min ?? -Infinity,
-				effectiveMax(spec, source) ?? Infinity,
-			);
+			const clamped = clamp(v, spec.min, effectiveMax(spec, source));
 			if (clamped !== v) {
 				out[key as string] = clamped;
 				changed = true;
