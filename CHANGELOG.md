@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.18.1](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/591d2efc713785c0781c6f9686bb40e6b2eba422..v0.18.1) - 2026-11-03
+#### Bug Fixes
+- multi file preview fits images to squares - ([591d2ef](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/591d2efc713785c0781c6f9686bb40e6b2eba422)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.18.0](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/ddda134d1d81e0630c76e3a9593274176346f38e..v0.18.0) - 2026-11-02
 #### Features
 - add rotate image preview - ([869f9ff](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/869f9ff05ed8282443d8c6ee93b9bfefbf3cd7e7)) - Ku6epXBOCTuK
