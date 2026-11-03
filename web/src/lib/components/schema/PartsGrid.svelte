@@ -16,7 +16,9 @@
 	<div class="parts-grid">
 		{#each parts as part (part.name)}
 			<figure class="part">
-				<img src={part.url} alt={part.name} loading="lazy" />
+				<div class="part-frame">
+					<img src={part.url} alt={part.name} loading="lazy" />
+				</div>
 				<figcaption>{part.name}</figcaption>
 			</figure>
 		{/each}
@@ -42,6 +44,7 @@
 		padding: var(--space-l);
 		box-sizing: border-box;
 		align-content: start;
+		align-items: start;
 	}
 	.part {
 		margin: 0;
@@ -49,10 +52,17 @@
 		flex-direction: column;
 		gap: var(--space-s);
 	}
-	.part img {
+	/* NOTE: Square cell: file proportions stay inside one grid, so a 1x4000
+		 strip cannot stretch the row. */
+	.part-frame {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		width: 100%;
-		height: auto;
-		display: block;
+		aspect-ratio: 1;
+		box-sizing: border-box;
+		overflow: hidden;
 		border: var(--size-border) solid var(--color-border);
 		border-radius: var(--radius-s);
 		background:
@@ -61,6 +71,15 @@
 				var(--color-checker-alt) 0 50%
 			)
 			50% / 16px 16px;
+	}
+	.part img {
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
+		display: block;
+		object-fit: contain;
+		object-position: center;
 	}
 	.part figcaption {
 		font: var(--font-size-s) var(--font-mono);
