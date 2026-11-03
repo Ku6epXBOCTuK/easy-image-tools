@@ -15,6 +15,7 @@
 		"test:rules": "vitest run eslint-plugins/__tests__",
 		"test:e2e": "playwright test",
 		"gen:og": "node scripts/gen-og.mjs",
+		"gen:screens": "node scripts/gen-screenshots.mjs",
 		"gen:catalog": "node scripts/gen-catalog.mjs",
 		"format": "biome format --write .",
 		"format:check": "biome format .",

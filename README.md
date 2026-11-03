@@ -1,10 +1,18 @@
 # easy-image-tools
 
-Browser-based image utility toolkit — no server, no data upload, everything runs
+Browser-based image utility toolkit — no server, no upload, everything runs
 locally in your browser.
 
-Inspired by online services like onlinepngtools.com, but fully offline-capable
-and open source.
+**[Open easy-image-tools.com →](https://easy-image-tools.com/)**
+
+| Home                                                                                                                                                            | Crop with before/after preview                                                                                                                                                            |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![easy-image-tools home page](docs/screenshot-home-light.png#gh-light-mode-only) ![easy-image-tools home page](docs/screenshot-home-dark.png#gh-dark-mode-only) | ![Crop tool with before and after preview](docs/screenshot-crop-light.png#gh-light-mode-only) ![Crop tool with before and after preview](docs/screenshot-crop-dark.png#gh-dark-mode-only) |
+
+Inspired by online services like onlinepngtools.com, but open source, fully
+static, and the file never leaves your browser. Offline work is still on the
+roadmap ([`docs/roadmap.md`](docs/roadmap.md), phase 10): the app needs a network
+on first load.
 
 ## Features
 
