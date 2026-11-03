@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.18.2](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/07d017dc49c4250bceff3c2f5346590f9e37e822..v0.18.2) - 2026-11-03
+#### Bug Fixes
+- related pages use static popularity - ([07d017d](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/07d017dc49c4250bceff3c2f5346590f9e37e822)) - Ku6epXBOCTuK
+#### Performance Improvements
+- cache for tool masks - ([d69282a](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/d69282a7b57548f2d21a3389f8798ec18032cadc)) - Ku6epXBOCTuK
+
+- - -
+
 ## [v0.18.1](https://github.com/Ku6epXBOCTuK/easy-image-tools/compare/591d2efc713785c0781c6f9686bb40e6b2eba422..v0.18.1) - 2026-11-03
 #### Bug Fixes
 - multi file preview fits images to squares - ([591d2ef](https://github.com/Ku6epXBOCTuK/easy-image-tools/commit/591d2efc713785c0781c6f9686bb40e6b2eba422)) - Ku6epXBOCTuK
